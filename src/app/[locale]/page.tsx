@@ -84,7 +84,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div className="w-20 h-20 rounded-xl overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
-                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400" 
+                    src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=400" 
                     alt="Dough ball" 
                     className="w-full h-full object-cover"
                   />

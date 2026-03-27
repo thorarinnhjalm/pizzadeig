@@ -20,14 +20,21 @@ export default function LoginPage() {
     setLoading(true);
     
     try {
+      let userCredential;
       if (isLogin) {
-        await signInWithEmailAndPassword(auth, email, password);
+        userCredential = await signInWithEmailAndPassword(auth, email, password);
       } else {
-        await createUserWithEmailAndPassword(auth, email, password);
+        userCredential = await createUserWithEmailAndPassword(auth, email, password);
       }
       
-      // Send user to front page upon successful auth
-      router.push('/');
+      const user = userCredential.user;
+      const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());
+      
+      if (adminEmails.includes(user.email?.toLowerCase() || '')) {
+        router.push('/admin');
+      } else {
+        router.push(`/notandi/${user.uid}`);
+      }
     } catch (err: any) {
       console.error(err);
       setError(isLogin 
@@ -43,10 +50,16 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
+      const userCredential = await signInWithPopup(auth, provider);
       
-      // Send user to front page upon successful auth
-      router.push('/');
+      const user = userCredential.user;
+      const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());
+      
+      if (adminEmails.includes(user.email?.toLowerCase() || '')) {
+        router.push('/admin');
+      } else {
+        router.push(`/notandi/${user.uid}`);
+      }
     } catch (err: any) {
       console.error(err);
       setError('Ekki tókst að skrá inn með Google.');
