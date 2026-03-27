@@ -30,7 +30,7 @@ const styles = [
     title_en: 'Neapolitan Pizza',
     subtitle_is: 'Upprunalega — frá hjarta Napólí',
     subtitle_en: 'The original — from the heart of Naples',
-    desc_is: 'Napólítönsk pizza er grunnurinn að öllu. Deigið er einfalt — vatn, mjöl, salt og ger — en fullkomnað með löngri gerjun sem gefur því djúpt bragð og létta áferð. Botninn er mjúkur, loftugur og aðeins kolbrúnn (\"leopard spots\") frá 500°C steinofni. Klassísku variantarnir eru Margherita (San Marzano tómatsósa, mozzarella di bufala, basil, ólífuolía) og Marinara (tómatar, hvítlaukur, óreganó). Samkvæmt reglum AVPN (Associazione Verace Pizza Napoletana) má pizzan ekki vera stærri en 35 cm og á að baka á innan við 90 sekúndum.',
+    desc_is: 'Napólítönsk pizza er grunnurinn að öllu. Deigið er einfalt — vatn, mjöl, salt og ger — en fullkomnað með langri gerjun sem gefur því djúpt bragð og létta áferð. Botninn er mjúkur, loftugur og með kolbrúna bletti ("leopard spots") frá 500°C steinofni. Klassísku útgáfurnar eru Margherita (San Marzano tómatsósa, mozzarella di bufala, basíl, ólífuolía) og Marinara (tómatar, hvítlaukur, óreganó). Samkvæmt reglum AVPN (Associazione Verace Pizza Napoletana) má pizzan ekki vera stærri en 35 cm og á að bakast á innan við 90 sekúndum.',
     desc_en: 'Neapolitan pizza is the foundation of it all. The dough is simple — water, flour, salt, and yeast — but perfected through long fermentation that gives it deep flavor and light texture. The crust is soft, airy, and lightly charred ("leopard spots") from a 500°C stone oven. The classic variants are Margherita (San Marzano tomato sauce, mozzarella di bufala, basil, olive oil) and Marinara (tomatoes, garlic, oregano). According to AVPN rules, the pizza must not exceed 35 cm and should bake in under 90 seconds.',
     hydration: '60–65%',
     ferment_is: '24–72 klst',
@@ -39,7 +39,7 @@ const styles = [
     flour: 'Caputo Tipo 00',
     color: 'from-red-500/10 to-orange-500/5',
     accent: 'text-red-600',
-    tips_is: 'Notaðu alltaf ferska mozzarella og heilaðu henni vel áður en þú setur á pizzuna. Forðastu of mikið álegg — einfaldleikinn er lykillinn.',
+    tips_is: 'Notaðu alltaf ferska mozzarella og þurrkaðu hana vel áður en þú setur hana á pizzuna. Forðastu of mikið álegg — einfaldleikinn er lykillinn.',
     tips_en: 'Always use fresh mozzarella and drain it well before placing on the pizza. Avoid overloading with toppings — simplicity is key.',
   },
   {
@@ -49,7 +49,7 @@ const styles = [
     title_en: 'New York Style',
     subtitle_is: 'Stóra sneiðin — sveigjanleg og bragðmikil',
     subtitle_en: 'The big slice — foldable and flavorful',
-    desc_is: 'New York-pizza er stór (45–50 cm), þunn og sveigjanleg — seld í risastórum sneiðum sem eru brotnar saman til að borða á gangi. Deigið inniheldur olíu og sykur sem gefur skorpunni gyllt og aðeins stökkt ytra lag á meðan innihaldið er mjúkt. Bökuð í venjulegum ofni á 250–300°C í 10–15 mínútur. Low-moisture mozzarella er notuð í stað ferskrar til að forðast of mikinn vökva. New York-stíll á rætur sínar í ítölskum innflytjendum sem aðlöguðu napólítönskar hefðir að bandarísku hráefni og ofnum.',
+    desc_is: 'New York-pizza er stór (45–50 cm), þunn og sveigjanleg — seld í risastórum sneiðum sem eru brotnar saman til að borða á ferðinni. Deigið inniheldur olíu og sykur sem gefur skorpunni gyllt og aðeins stökkt ytra lag á meðan botninn er mjúkur. Bökuð í venjulegum ofni á 250–300°C í 10–15 mínútur. Þurr mozzarella er notuð í stað ferskrar til að forðast of mikinn vökva. New York-stíll á rætur sínar að rekja til ítölskra innflytjenda sem aðlöguðu napólítönskar hefðir að bandarískum hráefnum og ofnum.',
     desc_en: 'New York pizza is large (45–50 cm), thin, and foldable — sold in oversized slices meant to be folded and eaten on the go. The dough contains oil and sugar which gives the crust a golden, slightly crispy outer layer while keeping the inside soft. Baked in a standard oven at 250–300°C for 10–15 minutes. Low-moisture mozzarella is used instead of fresh to avoid excess liquid. NY-style traces its roots to Italian immigrants who adapted Neapolitan traditions to American ingredients and ovens.',
     hydration: '58–62%',
     ferment_is: '24–48 klst',
@@ -68,7 +68,7 @@ const styles = [
     title_en: 'Al Taglio (Roman)',
     subtitle_is: 'Skorin af bakka — létt eins og ský',
     subtitle_en: 'Cut from the tray — light as a cloud',
-    desc_is: 'Pizza al taglio (\"pizza skorin\") er rómversk hefð þar sem pizzan er bökuð á stórum bökkum og skorin með skærum. Deigið er með mjög hátt vatnshlutfall (80%+) sem skapar ótrúlega létta og loftuga áferð — nánast eins og skýjabotn. Gerjunin tekur 48–72 klukkustundir í kæli sem gefur dýpt í bragði. Áleggssamsetningarnar eru oft óhefðbundnar og skapandi — frá kartöflum og rósmaríni til mortadella og pistasjukremi. Gabriele Bonci í Róm er helsti frumkvöðullinn.',
+    desc_is: 'Pizza al taglio ("pizza skorin") er rómversk hefð þar sem pizzan er bökuð á stórum bökkum og skorin með skærum. Deigið er með mjög hátt vatnshlutfall (80%+) sem skapar ótrúlega létta og loftuga áferð — nánast eins og ský. Gerjunin tekur 48–72 klukkustundir í kæli sem gefur bragðdýpt. Áleggssamsetningarnar eru oft óhefðbundnar og skapandi — allt frá kartöflum og rósmaríni til mortadellu og pistasíukremi. Gabriele Bonci í Róm er helsti frumkvöðullinn.',
     desc_en: 'Pizza al taglio ("pizza by the cut") is a Roman tradition where pizza is baked on large trays and cut with scissors. The dough has very high hydration (80%+) creating an incredibly light and airy texture — almost cloud-like. Fermentation takes 48–72 hours in the fridge, giving depth of flavor. Topping combinations are often unconventional and creative — from potatoes and rosemary to mortadella and pistachio cream. Gabriele Bonci in Rome is the pioneering figure.',
     hydration: '80–85%',
     ferment_is: '48–72 klst',
@@ -77,7 +77,7 @@ const styles = [
     flour: 'Tipo 0 / Tipo 1',
     color: 'from-emerald-500/10 to-green-500/5',
     accent: 'text-emerald-600',
-    tips_is: 'Þetta deig er mjög blautt og erfitt í meðhöndlun. Notaðu „stretch and fold" tækni í stað þess að hnoða. Bleyjðu hendurnar vel í olíu.',
+    tips_is: 'Þetta deig er mjög blautt og erfitt í meðhöndlun. Notaðu „stretch and fold" tækni í stað þess að hnoða. Olíusmyrðu hendurnar vel.',
     tips_en: 'This dough is very wet and tricky to handle. Use stretch and fold technique instead of kneading. Keep your hands well oiled.',
   },
   {
@@ -87,7 +87,7 @@ const styles = [
     title_en: 'Detroit Style',
     subtitle_is: 'Ferhyrnd og flotleg — ostaskorpan er drottningin',
     subtitle_en: 'Rectangular and bold — the cheese crust is queen',
-    desc_is: 'Detroit-pizza er ferhyrnd og bökuð í djúpri stálpönnu (upprunalega bílhlutapönnur frá verksmiðjum Detroit). Sérstæðasta einkenni hennar er Wisconsin brick cheese sem er lagt alla leið út að brúnum pönnunnar — þar sem það rennur niður og karamelliserast í ótrúlega stökka og ríka ostaskorpu. Sósan fer ofan á ostinn í „racing stripes" mynstri. Botninn er létt og loftugur af löngri gerjun en ytra lagið er stökkt og smjörkenndt frá pönnubökun.',
+    desc_is: 'Detroit-pizza er ferhyrnd og bökuð í djúpri stálpönnu (upprunalega bílhlutapönnur frá verksmiðjum Detroit). Sérstæðasta einkenni hennar er Wisconsin brick cheese sem er lagt alla leið út að brúnum pönnunnar — þar sem það bráðnar niður og karamelliserast í ótrúlega stökka og ríka ostaskorpu. Sósan fer ofan á ostinn í „racing stripes“ mynstri. Botninn er léttur og loftugur af langri gerjun en ytra lagið er stökkt og smjörkenndt frá pönnubökun.',
     desc_en: 'Detroit pizza is rectangular and baked in a deep steel pan (originally repurposed auto parts trays from Detroit factories). Its most distinctive feature is Wisconsin brick cheese laid all the way to the pan edges — where it flows down and caramelizes into an incredibly crispy, rich cheese crust. Sauce goes on top of the cheese in "racing stripes" pattern. The interior is light and airy from long fermentation while the outer layer is crispy and buttery from pan baking.',
     hydration: '65–70%',
     ferment_is: '24–48 klst',
@@ -96,7 +96,7 @@ const styles = [
     flour: 'Bread Flour',
     color: 'from-amber-500/10 to-yellow-500/5',
     accent: 'text-amber-600',
-    tips_is: 'Smyrðu pönnuna ríkulega með smjöri. Leggðu ostinn alla leið út í hornin — það er þar sem töfrar gerast. Sosan fer ALLTAF ofan á.',
+    tips_is: 'Smyrðu pönnuna ríkulega með smjöri. Leggðu ostinn alla leið út í hornin — það er þar sem töfrar gerast. Sósan fer ALLTAF ofan á.',
     tips_en: 'Generously butter the pan. Push the cheese all the way to the corners — that\'s where the magic happens. Sauce ALWAYS goes on top.',
   },
   {
@@ -106,7 +106,7 @@ const styles = [
     title_en: 'Sicilian Pizza (Sfincione)',
     subtitle_is: 'Þykk, mjúk og ríkuleg — pizza með sál',
     subtitle_en: 'Thick, soft, and rich — pizza with soul',
-    desc_is: 'Sfincione er sísílísk hátíðarpizza sem á rætur sínar í Palermo. Hún er þykk og mjúk — svipar til focaccia en er ríkari. Hefðbundin sfincione heldur tómatsósu, lauk, caciocavallo osti, andsjóvíum og brauðmylsnu sem myndar stökkt ytra lag. Brauðmylsnan var upprunalega notuð til að gera pizzuna ódýrari en endaði sem einkennandi áferðarþáttur. Deigið er olíuríkt og gerjað í 12–24 klukkustundir. Bökkuð í stórum ferhyrndum bökkum.',
+    desc_is: 'Sfincione er sísílísk hátíðarpizza sem á rætur sínar í Palermo. Hún er þykk og mjúk — svipar til focacciu en er ríkari. Hefðbundin sfincione hefur tómatsósu, lauk, caciocavallo ost, ansjósur og brauðmylsnu sem myndar stökkt ytra lag. Brauðmylsnan var upprunalega notuð til að gera pizzuna ódýrari en varð að einkennandi áferðarþætti. Deigið er olíuríkt og gerjað í 12–24 klukkustundir. Bökuð í stórum ferhyrndum bökkum.',
     desc_en: 'Sfincione is a Sicilian celebration pizza rooted in Palermo. It\'s thick and soft — similar to focaccia but richer. Traditional sfincione features tomato sauce, onion, caciocavallo cheese, anchovies, and breadcrumbs that form a crispy outer layer. The breadcrumbs were originally used to make the pizza cheaper but became a defining textural element. The dough is oil-rich and fermented for 12–24 hours. Baked in large rectangular trays.',
     hydration: '70–75%',
     ferment_is: '12–24 klst',
@@ -125,7 +125,7 @@ const styles = [
     title_en: 'Pinsa Romana',
     subtitle_is: 'Forn rómversk hefð í nútímalegum búningi',
     subtitle_en: 'Ancient Roman tradition in modern dress',
-    desc_is: 'Pinsa er nútímaleg túlkun á forn-rómverskum brauðhefðum. Hún nýtir blöndu af hveiti, hrísgrjónamjöli og sojamjöli sem skapar einstaka áferð — mjög létt á meltingu og aðeins stökkari en hefðbundin pizza. Sporöskjulaga form gefur henni sérstætt útlit. Deigið á sér langa gerjun (48–72 klst) og hátt vatnshlutfall sem skapar loftbólur og léttleika. Pinsa varð vinsæl um allan heim á 2010-áratugnum sem hollur valkostur við hefðbundna pizzu.',
+    desc_is: 'Pinsa er nútímaleg túlkun á forn-rómverskum brauðhefðum. Hún nýtir blöndu af hveitimjöli, hrísgrjónamjöli og sojamjöli sem skapar einstaka áferð — mjög létt á meltingu og aðeins stökkari en hefðbundin pizza. Sporöskjulaga formið gefur henni sérstætt útlit. Deigið fer í langa gerjun (48–72 klst) og hátt vatnshlutfall skapar loftbólur og léttleika. Pinsa varð vinsæl um allan heim á áratugnum 2010–2020 sem hollari kostur en hefðbundin pizza.',
     desc_en: 'Pinsa is a modern interpretation of ancient Roman bread traditions. It uses a blend of wheat, rice, and soy flours creating a unique texture — very light on digestion and slightly crispier than traditional pizza. Its oval shape gives it a distinctive look. The dough has long fermentation (48–72 hrs) and high hydration creating air pockets and lightness. Pinsa gained worldwide popularity in the 2010s as a healthier alternative to traditional pizza.',
     hydration: '75–80%',
     ferment_is: '48–72 klst',
@@ -161,7 +161,7 @@ export default async function StilarPage({ params }: { params: Promise<{ locale:
           </h1>
           <p className="text-lg md:text-xl text-(--color-text-secondary) max-w-2xl mx-auto leading-relaxed">
             {isIs
-              ? 'Frá Napólí til New York, Detroit til Rómar — hvert form hefur sína sögu, sína tækni og eigin karakter. Hér finnurðu allt sem þú þarft til að ná tökum á þeim öllum.'
+              ? 'Frá Napólí til New York, Detroit til Rómar — hver stíll hefur sína sögu, sína tækni og eigin karakter. Hér finnur þú allt sem þú þarft til að ná tökum á þeim öllum.'
               : 'From Naples to New York, Detroit to Rome — every form has its story, its technique, and its own character. Here you\'ll find everything you need to master them all.'}
           </p>
         </div>
