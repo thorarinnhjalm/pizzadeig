@@ -85,36 +85,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* ===== SEARCH SECTION: "Hvað er til í skápnum?" ===== */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-(--color-text-primary) mb-3">
-            {isIs ? 'Hvað er til í skápnum?' : "What's in the cupboard?"}
-          </h2>
-          <p className="text-(--color-text-secondary) mb-8 italic">
-            {isIs ? 'Segðu okkur hvað þú átt, við segjum þér hvað á að baka.' : "Tell us what you have, we'll tell you what to bake."}
-          </p>
-          <div className="max-w-2xl mx-auto bg-(--color-bg-secondary) rounded-full flex items-center p-2 shadow-sm border border-(--color-border)">
-            <Search className="w-5 h-5 text-muted-foreground ml-4 shrink-0" />
-            <input 
-              type="text" 
-              placeholder={isIs ? 'Sláðu inn hráefni (t.d. ger, hveiti, tómatar...)' : 'Enter ingredients (e.g. yeast, flour, tomatoes...)'}
-              className="flex-1 bg-transparent px-4 py-3 text-(--color-text-primary) placeholder:text-muted-foreground focus:outline-none font-body"
-            />
-            <Link href="/hvad-a-eg" className="inline-flex items-center gap-2 h-10 px-6 bg-ring text-white font-semibold rounded-full hover:bg-(--color-gold-light) transition-colors shrink-0">
-              <UtensilsCrossed className="w-4 h-4" />
-              {isIs ? 'Finna uppskrift' : 'Find recipe'}
-            </Link>
-          </div>
-          <div className="flex gap-2 justify-center mt-5 flex-wrap">
-            {['Tómatar', 'Basil', 'Mozzarella', 'Ólífuolía'].map((tag) => (
-              <span key={tag} className="px-4 py-1.5 rounded-full border border-(--color-border) text-sm text-(--color-text-secondary) hover:bg-(--color-bg-secondary) cursor-pointer transition-colors">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ===== POPULAR RECIPES (Stitch: 3-col cards) ===== */}
       <section className="py-20 bg-(--color-bg-secondary)">
