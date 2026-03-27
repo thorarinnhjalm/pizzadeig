@@ -1,5 +1,26 @@
+import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
 import { ChevronRight, Flame, Droplets, Clock, Wheat, ThermometerSun, Pizza } from 'lucide-react';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isIs = locale === 'is';
+  return {
+    title: isIs
+      ? 'Pizzustílar heimsins — Napólítönsk, New York, Detroit og fleiri | Pizzadeig.is'
+      : 'Pizza Styles of the World — Neapolitan, New York, Detroit & More | Pizzadeig.is',
+    description: isIs
+      ? 'Kynntu þér alla helstu pizzustíla: napólítönsk, New York, al taglio, Detroit, sísílísk og pinsa. Vatnshlutfall, gerjun, hiti og ráð frá meistara.'
+      : 'Learn all major pizza styles: Neapolitan, New York, al taglio, Detroit, Sicilian, and pinsa. Hydration, fermentation, temperature, and pro tips.',
+    openGraph: {
+      title: isIs ? 'Pizzustílar heimsins | Pizzadeig.is' : 'Pizza Styles of the World | Pizzadeig.is',
+      url: `https://www.pizzadeig.is/${locale}/stilar`,
+      siteName: 'Pizzadeig.is',
+      locale: isIs ? 'is_IS' : 'en_US',
+      type: 'article',
+    },
+  };
+}
 
 const styles = [
   {

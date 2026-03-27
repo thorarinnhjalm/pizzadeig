@@ -38,6 +38,27 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   
   return (
     <main className="flex-1 flex flex-col w-full">
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Pizzadeig.is',
+            url: 'https://www.pizzadeig.is',
+            description: isIs
+              ? 'Allt um pizzadeig og pizza uppskriftir. Uppskriftir, deigreiknivél og pizzustaðir á Íslandi.'
+              : 'Everything about pizza dough and recipes. Recipes, dough calculator, and pizza restaurants in Iceland.',
+            inLanguage: isIs ? 'is' : 'en',
+            publisher: {
+              '@type': 'Organization',
+              name: 'Pizzadeig.is',
+              url: 'https://www.pizzadeig.is',
+            },
+          }),
+        }}
+      />
       {/* ===== HERO SECTION (Stitch: split layout) ===== */}
       <section className="bg-(--color-bg-secondary) py-16 lg:py-24">
         <div className="container mx-auto px-4">
@@ -48,13 +69,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {isIs ? 'Artisan Pizzería Leiðbeiningar' : 'Artisan Pizzeria Guide'}
               </span>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-(--color-text-primary) leading-[1.05] tracking-tight mb-6">
-                {isIs ? 'Listin að baka' : 'The art of baking'}
+                {isIs ? 'Fullkomnaðu þitt' : 'Perfect your'}
                 <br />
                 <em className="text-(--color-brand) font-normal italic">
-                  {isIs ? 'hina fullkomnu' : 'the perfect'}
+                  {isIs ? 'pizzadeig' : 'pizza dough'}
                 </em>
                 <br />
-                {isIs ? 'pizzu.' : 'pizza.'}
+                {isIs ? 'og uppskriftir.' : 'and recipes.'}
               </h1>
               <p className="text-lg text-(--color-text-secondary) mb-8 leading-relaxed max-w-md">
                 {isIs 
@@ -76,7 +97,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <div className="rounded-3xl overflow-hidden shadow-2xl aspect-4/3">
                 <Image 
                   src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1200" 
-                  alt="Neapolitan pizza" 
+                  alt={isIs ? "Fullkomin napólítönsk pizza bökuð úr heimagerðu pizzadeigi" : "Perfect Neapolitan pizza baked from homemade pizza dough"} 
                   fill 
                   priority
                   className="object-cover" 

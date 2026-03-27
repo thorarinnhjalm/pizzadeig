@@ -1,4 +1,25 @@
+import type { Metadata } from 'next';
 import { Pizza, Users, Heart, BookOpen } from 'lucide-react';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isIs = locale === 'is';
+  return {
+    title: isIs
+      ? 'Um Pizzadeig.is — Íslands pizzusamfélag'
+      : 'About Pizzadeig.is — Iceland\'s Pizza Community',
+    description: isIs
+      ? 'Pizzadeig.is er íslenskt pizzusamfélag byggt af pizzuáhugafólki. Uppskriftir, veitingastaðir, deigreiknivél og fleira.'
+      : 'Pizzadeig.is is an Icelandic pizza community built by pizza enthusiasts. Recipes, restaurants, dough calculator, and more.',
+    openGraph: {
+      title: isIs ? 'Um Pizzadeig.is' : 'About Pizzadeig.is',
+      url: `https://www.pizzadeig.is/${locale}/um-okkur`,
+      siteName: 'Pizzadeig.is',
+      locale: isIs ? 'is_IS' : 'en_US',
+      type: 'website',
+    },
+  };
+}
 
 export default async function UmOkkurPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

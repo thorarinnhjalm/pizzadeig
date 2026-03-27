@@ -8,31 +8,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sitemapEntries: MetadataRoute.Sitemap = [];
   const locales = ['is', 'en'];
 
-  // Core structured root trees
+  // Core pages with SEO priority ranking
   const staticRoutes = [
-    '', 
-    '/uppskriftir', 
-    '/stadir', 
-    '/samfelag', 
-    '/vorur', 
-    '/stilar', 
-    '/um-okkur', 
-    '/skilmalar',
-    '/hvad-a-eg',
-    '/deigreiknivel'
+    { path: '', changeFrequency: 'daily' as const, priority: 1.0 },
+    { path: '/uppskriftir', changeFrequency: 'daily' as const, priority: 0.95 },
+    { path: '/stadir', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/stilar', changeFrequency: 'monthly' as const, priority: 0.85 },
+    { path: '/deigreiknivel', changeFrequency: 'monthly' as const, priority: 0.85 },
+    { path: '/topplisti', changeFrequency: 'weekly' as const, priority: 0.8 },
+    { path: '/samfelag', changeFrequency: 'weekly' as const, priority: 0.6 },
+    { path: '/um-okkur', changeFrequency: 'monthly' as const, priority: 0.5 },
+    { path: '/tengilidir', changeFrequency: 'yearly' as const, priority: 0.3 },
+    { path: '/skilmalar', changeFrequency: 'yearly' as const, priority: 0.2 },
+    { path: '/personuvernd', changeFrequency: 'yearly' as const, priority: 0.2 },
+    { path: '/auglysingar', changeFrequency: 'monthly' as const, priority: 0.3 },
   ];
 
   for (const locale of locales) {
     for (const route of staticRoutes) {
       sitemapEntries.push({
-        url: `${BASE_URL}/${locale}${route}`,
+        url: `${BASE_URL}/${locale}${route.path}`,
         lastModified: new Date(),
-        changeFrequency: route === '' ? 'daily' : 'weekly',
-        priority: route === '' ? 1.0 : 0.8,
+        changeFrequency: route.changeFrequency,
+        priority: route.priority,
         alternates: {
           languages: {
-            is: `${BASE_URL}/is${route}`,
-            en: `${BASE_URL}/en${route}`,
+            is: `${BASE_URL}/is${route.path}`,
+            en: `${BASE_URL}/en${route.path}`,
           },
         },
       });

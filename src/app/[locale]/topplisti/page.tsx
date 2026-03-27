@@ -1,7 +1,28 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { mockRecipes } from '@/lib/mockData';
 import { Trophy, Star, Clock, ChefHat } from 'lucide-react';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isIs = locale === 'is';
+  return {
+    title: isIs
+      ? 'Topplisti — Hæst metnu pizza uppskriftirnar | Pizzadeig.is'
+      : 'Top List — Highest Rated Pizza Recipes | Pizzadeig.is',
+    description: isIs
+      ? 'Topplisti yfir hæst metnu pizzu uppskriftirnar á Íslandi. Samfélagið kýs bestu deigin, sósurnar og pizzurnar.'
+      : 'Top list of highest rated pizza recipes in Iceland. The community votes on the best dough, sauces, and pizzas.',
+    openGraph: {
+      title: isIs ? 'Topplisti uppskrifta | Pizzadeig.is' : 'Top Rated Recipes | Pizzadeig.is',
+      url: `https://www.pizzadeig.is/${locale}/topplisti`,
+      siteName: 'Pizzadeig.is',
+      locale: isIs ? 'is_IS' : 'en_US',
+      type: 'website',
+    },
+  };
+}
 
 export default async function TopplistiPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
