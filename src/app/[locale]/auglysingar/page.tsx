@@ -56,11 +56,11 @@ export default function AuglysingarPage() {
             Viltu vita meira um verð, staðsetningar eða aðra samstarfsmöguleika? Sendu okkur línu og við svörum fljótt og vel.
           </p>
           <a
-            href="mailto:hallo@pizzadeig.is"
+            href="mailto:thorarinnhjalmarsson@gmail.com?subject=Fyrirspurn um auglýsingar á Pizzadeig.is"
             className="inline-flex items-center justify-center space-x-3 bg-(--color-brand) text-white px-8 py-4 rounded-full font-bold hover:bg-(--color-brand)/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
           >
             <Mail className="w-5 h-5" />
-            <span>Senda póst á hallo@pizzadeig.is</span>
+            <span>Senda póst</span>
           </a>
         </div>
         
