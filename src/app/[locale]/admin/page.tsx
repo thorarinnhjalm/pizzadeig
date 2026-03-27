@@ -6,6 +6,7 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import { collection, doc, setDoc, getDocs, deleteDoc, writeBatch, query, limit, orderBy } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
+import { allRecipes } from '@/lib/recipeData';
 import { Users, Pizza, Store, Activity, Database, AlertTriangle, UploadCloud, Eye, MousePointerClick, LayoutDashboard, Settings, BookOpen, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
@@ -63,10 +64,18 @@ export default function AdminSeedPage() {
       const stSnap = await getDocs(collection(db, 'restaurants'));
       const mSnap = await getDocs(collection(db, 'menu_items'));
       const aSnap = await getDocs(collection(db, 'ads'));
+
+      // Merge Firestore recipes with hardcoded recipeData
+      const firestoreRecipes = rSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      const firestoreRecipeIds = new Set(firestoreRecipes.map(r => r.id));
+      const hardcodedRecipes = allRecipes
+        .filter(r => !firestoreRecipeIds.has(r.id))
+        .map(r => ({ ...r, _source: 'hardcoded' as const }));
+      const mergedRecipes = [...firestoreRecipes, ...hardcodedRecipes];
       
       setStats({
         users: uSnap.empty ? 0 : uSnap.size,
-        recipes: rSnap.size,
+        recipes: mergedRecipes.length,
         restaurants: stSnap.size,
         menuItems: mSnap.size,
         ads: aSnap.size
@@ -74,7 +83,7 @@ export default function AdminSeedPage() {
 
       setRecentUsers(uSnap.docs.map(d => ({ uid: d.id, ...d.data() })));
       setAdsList(aSnap.docs.map(d => ({ id: d.id, ...d.data() })));
-      setRecipesList(rSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+      setRecipesList(mergedRecipes);
     } catch (err) {
       console.error('Failed to load stats', err);
     }
@@ -376,6 +385,9 @@ export default function AdminSeedPage() {
             <BookOpen className="w-5 h-5 text-(--color-brand)" />
             Allar uppskriftir í kerfinu ({recipesList.length})
           </h2>
+          <p className="text-sm text-muted-foreground mb-4 -mt-4">
+            {recipesList.filter((r: any) => r._source === 'hardcoded').length} úr recipeData (innbyggðar) · {recipesList.filter((r: any) => !r._source).length} í Firestore
+          </p>
           
           <div className="bg-white border border-(--color-border) rounded-2xl overflow-hidden shadow-sm">
             {recipesList.length > 0 ? (
