@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { db, auth } from '@/lib/firebase';
+import { db, auth, storage } from '@/lib/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { collection, doc, setDoc, getDocs, deleteDoc, writeBatch, query, limit, orderBy } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
-import { Users, Pizza, Store, Activity, Database, AlertTriangle } from 'lucide-react';
+import { Users, Pizza, Store, Activity, Database, AlertTriangle, UploadCloud } from 'lucide-react';
 
 export default function AdminSeedPage() {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ export default function AdminSeedPage() {
     format: '1018x360',
     status: 'active'
   });
+  const [adFile, setAdFile] = useState<File | null>(null);
   const [adLoading, setAdLoading] = useState(false);
 
   useEffect(() => {
@@ -160,10 +162,20 @@ export default function AdminSeedPage() {
     setAdLoading(true);
     setMessage('');
     try {
-      if (!adForm.client || !adForm.image_url) {
-        throw new Error('Vantar viðskiptavin eða mynd.');
+      if (!adForm.client || (!adFile && !adForm.image_url)) {
+        throw new Error('Vantar viðskiptavin, og annaðhvort skrá eða vefslóð á mynd.');
       }
       const newId = `ad-${Date.now()}`;
+      let finalImageUrl = adForm.image_url;
+
+      // Handle direct file upload to Firebase Storage
+      if (adFile) {
+        setMessage('Hleð upp mynd...');
+        const storageRef = ref(storage, `ads/${Date.now()}_${adFile.name}`);
+        const snapshot = await uploadBytes(storageRef, adFile);
+        finalImageUrl = await getDownloadURL(snapshot.ref);
+      }
+
       const docRef = doc(db, 'ads', newId);
       
       await setDoc(docRef, {
@@ -172,9 +184,9 @@ export default function AdminSeedPage() {
         name: adForm.name || 'Án nafns',
         format: adForm.format,
         creatives: {
-          [adForm.format]: adForm.image_url
+          [adForm.format]: finalImageUrl
         },
-        image_url: adForm.image_url,
+        image_url: finalImageUrl,
         target_url: adForm.target_url,
         status: adForm.status,
         placements: adForm.format === '1018x360' ? ['home_hero'] : ['home_featured', 'recipe_sidebar'],
@@ -183,8 +195,14 @@ export default function AdminSeedPage() {
         created_at: new Date()
       });
       
-      setMessage(`Auglýsing fyrir ${adForm.client} hefur verið vistuð! 🎉`);
+      setMessage(`Auglýsing fyrir ${adForm.client} hefur verið vistuð með mynd! 🎉`);
       setAdForm({ client: '', name: '', image_url: '', target_url: 'https://', format: '1018x360', status: 'active' });
+      setAdFile(null);
+      
+      // Reset file input UI manually if needed, or it will clear natively if we controlled it via value
+      const fileInput = document.getElementById('adFileInput') as HTMLInputElement;
+      if (fileInput) fileInput.value = '';
+
       loadStats();
     } catch (error: any) {
       console.error(error);
