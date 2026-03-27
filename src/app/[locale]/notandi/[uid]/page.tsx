@@ -43,10 +43,10 @@ export default async function UserProfilePage({ params }: { params: Promise<{ ui
   const authorName = user?.display_name || (recipes.length > 0 ? recipes[0].author_name : 'Óþekktur Pizzagerðarmaður');
   const authorAvatar = user?.avatar_url || (recipes.length > 0 ? recipes[0].author_avatar : undefined);
 
-  // Instead of 404ing immediately, we can show an empty state or basic profile if we want
-  // But if strictly absolutely nothing exists (no user and no recipes), we 404
+  // Provide a generic fallback for users that authenticated but don't exist in Firestore yet (legacy)
   if (!user && recipes.length === 0) {
-    notFound();
+    // Avoid 404 since it might be a valid Firebase Auth user who just hasn't got a Firestore document yet
+    // We'll just render the empty state.
   }
 
   return (
