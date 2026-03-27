@@ -8,8 +8,8 @@ import { UserAvatar } from '@/components/community/UserAvatar';
 import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
 import { is, enUS } from 'date-fns/locale';
-import { Users, Pizza, Calendar, ChefHat } from 'lucide-react';
-import { FollowButton } from '@/components/community/FollowButton';
+import { Calendar, ChefHat, Pizza, Users } from 'lucide-react';
+import { ProfileActions } from '@/components/community/ProfileActions';
 
 async function getUserProfile(uid: string): Promise<UserProfile | null> {
   try {
@@ -75,8 +75,8 @@ export default async function UserProfilePage({ params }: { params: Promise<{ ui
             </div>
           </div>
           
-          <div className="mt-10 flex gap-4">
-             <FollowButton targetUid={uid} locale={locale as 'is' | 'en'} />
+          <div className="mt-10 flex flex-wrap gap-4 justify-center">
+             <ProfileActions targetUid={uid} locale={locale as 'is' | 'en'} initialUser={user} />
           </div>
         </div>
       </div>
