@@ -327,6 +327,97 @@ export default function DeigreiknivelPage() {
 
         </div>
       </div>
+
+      {/* Instructions */}
+      <div className="container mx-auto px-4 max-w-5xl mt-8">
+        <div className="bg-white rounded-3xl p-6 md:p-10 border border-(--color-border) shadow-sm">
+          <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+            <span className="bg-(--color-brand) text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">✓</span>
+            {isIs ? 'Skref fyrir skref leiðbeiningar' : 'Step-by-step Instructions'}
+          </h2>
+          
+          <div className="space-y-8">
+            {/* Step 1: Blöndun */}
+            <div className="flex gap-4">
+              <div className="w-8 shrink-0 text-center font-bold text-(--color-brand) text-xl">1</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">{isIs ? 'Blöndun' : 'Mixing'}</h3>
+                <p className="text-(--color-text-secondary) leading-relaxed">
+                  {isIs 
+                    ? `Leystu gerið (${yeast.toFixed(2)}%) upp í vatninu (${hydration}%). Bættu hveitinu við í smáum skömmtum og hnoðaðu rólega. Þegar deigið er farið að taka á sig mynd skaltu bæta saltinu${oil > 0 ? ' og olíunni ' : ' '}við og hnoða áfram í 10-15 mínútur þar til deigið er slétt og mjúkt.`
+                    : `Dissolve yeast (${yeast.toFixed(2)}%) in the water (${hydration}%). Add flour gradually and mix slowly. Once the dough comes together, add the salt${oil > 0 ? ' and oil ' : ' '}and knead for 10-15 minutes until smooth.`}
+                </p>
+              </div>
+            </div>
+            
+            {/* Step 2: Hvíld & Brot (Fold) */}
+            <div className="flex gap-4">
+              <div className="w-8 shrink-0 text-center font-bold text-(--color-brand) text-xl">2</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">{isIs ? 'Fyrsta hvíld og brot (Stretch & Fold)' : 'First Rest & Fold'}</h3>
+                <p className="text-(--color-text-secondary) leading-relaxed">
+                  {isIs
+                    ? 'Láttu deigið hvíla undir rökum klút eða loki í 30 mínútur við stofuhita. Eftir hvíldina skaltu brjóta deigið saman (stretch and fold) hringinn til að byggja upp styrk og glútein.'
+                    : 'Let dough rest under a damp cloth for 30 minutes. Perform a full stretch and fold to build dough strength.'}
+                </p>
+              </div>
+            </div>
+            
+            {/* Step 3: Magnhefun (Bulk Ferment) */}
+            <div className="flex gap-4">
+              <div className="w-8 shrink-0 text-center font-bold text-(--color-brand) text-xl">3</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">{isIs ? 'Magnhefun (Bulk Fermentation)' : 'Bulk Fermentation'}</h3>
+                <p className="text-(--color-text-secondary) leading-relaxed">
+                  {isFridge
+                    ? (isIs ? `Settu deigið í loftþétt ílát og beint inn í ísskáp (4°C). Láttu það hefast þar í u.þ.b. ${Math.max(1, fermentHours - 4)} klukkustundir.` : `Place dough in an airtight container in the fridge (4°C) for approx. ${Math.max(1, fermentHours - 4)} hours.`)
+                    : (isIs ? `Leyfðu deiginu að hefast áfram í heilu lagi við herbergishita (21°C) í loftþéttu íláti í u.þ.b. ${Math.max(1, fermentHours - 4)} klukkustundir.` : `Let the dough bulk ferment at room temp (21°C) for ${Math.max(1, fermentHours - 4)} hours.`)}
+                </p>
+              </div>
+            </div>
+            
+            {/* Step 4: Kúlur */}
+            <div className="flex gap-4">
+              <div className="w-8 shrink-0 text-center font-bold text-(--color-brand) text-xl">4</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">{isIs ? 'Kúlun (Balling)' : 'Balling'}</h3>
+                <p className="text-(--color-text-secondary) leading-relaxed">
+                  {isIs
+                    ? `Skerðu deigið niður og vigtaðu ${balls} kúlur, hverja um sig nákvæmlega ${weight}g. Lokaðu kúlunum vel og hyldu svo þær þorni ekki.`
+                    : `Cut and weigh the dough into ${balls} balls of exactly ${weight}g each. Shape them tight and place in a proofing box.`}
+                </p>
+              </div>
+            </div>
+            
+            {/* Step 5: Lokagerjun */}
+            <div className="flex gap-4">
+              <div className="w-8 shrink-0 text-center font-bold text-(--color-brand) text-xl">5</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">{isIs ? 'Lokagerjun' : 'Final Proof'}</h3>
+                <p className="text-(--color-text-secondary) leading-relaxed">
+                  {isIs
+                    ? 'Láttu kúlurnar hefast við stofuhita í 3-4 klukkustundir fyrir bakstur, eða þar til þær hafa amk. tvöfaldað stærð sína og eru orðnar mjög mjúkar viðkomu.'
+                    : 'Let the dough balls proof at room temperature for 3-4 hours until doubled and soft to the touch.'}
+                  {isFridge && (isIs ? ' (Þar sem deigið var í kæli getur tekið lengri tíma fyrir þær að ná stofuhita).' : ' (Allow extra time to reach room temp from the fridge).')}
+                </p>
+              </div>
+            </div>
+            
+            {/* Step 6: Bakstur */}
+            <div className="flex gap-4">
+              <div className="w-8 shrink-0 text-center font-bold text-(--color-brand) text-xl">6</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">{isIs ? 'Bakstur!' : 'Bake!'}</h3>
+                <p className="text-(--color-text-secondary) leading-relaxed">
+                  {isIs
+                    ? 'Hitaðu ofninn eða pizzuofninn í alveg botn! Flettu deigið varlega út úr miðjunni upp úr hveiti/semólínu, settu álegg á og bakaðu þar til botninn og jöðrin eru svörtdepilótt.'
+                    : 'Preheat oven to max temp, open dough gently from the center using flour/semolina, top, and bake until beautifully charred.'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
