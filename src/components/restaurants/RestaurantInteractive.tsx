@@ -1,6 +1,8 @@
 'use client';
 
+import { useState, useCallback } from 'react';
 import { ReviewForm } from '@/components/community/ReviewForm';
+import { ReviewList } from '@/components/community/ReviewList';
 import { MenuItemRating } from '@/components/restaurants/MenuItemRating';
 import { MenuItem } from '@/types/restaurant';
 import { UtensilsCrossed } from 'lucide-react';
@@ -13,6 +15,12 @@ interface Props {
 
 export function RestaurantInteractive({ restaurantId, menuItems, locale }: Props) {
   const isIs = locale === 'is';
+  const [reviewKey, setReviewKey] = useState(0);
+
+  const handleReviewSubmitted = useCallback(() => {
+    // Increment key to force ReviewList to re-fetch
+    setReviewKey(k => k + 1);
+  }, []);
 
   // Group menu items by category
   const grouped = menuItems.reduce((acc, item) => {
@@ -69,12 +77,29 @@ export function RestaurantInteractive({ restaurantId, menuItems, locale }: Props
         </section>
       )}
 
-      {/* Restaurant review form */}
+      {/* Restaurant reviews section */}
       <section>
         <h2 className="text-2xl font-display font-bold text-(--color-text-primary) mb-6">
-          {isIs ? '📝 Gefðu staðnum umsögn' : '📝 Rate this place'}
+          {isIs ? '📝 Umsagnir um staðinn' : '📝 Reviews'}
         </h2>
-        <ReviewForm targetId={restaurantId} targetType="restaurant" locale={locale} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <ReviewForm
+              targetId={restaurantId}
+              targetType="restaurant"
+              locale={locale}
+              onReviewSubmitted={handleReviewSubmitted}
+            />
+          </div>
+          <div>
+            <ReviewList
+              key={reviewKey}
+              targetId={restaurantId}
+              targetType="restaurant"
+              locale={locale}
+            />
+          </div>
+        </div>
       </section>
     </div>
   );
