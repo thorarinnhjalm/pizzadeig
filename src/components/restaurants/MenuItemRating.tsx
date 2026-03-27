@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { RatingPizzas } from '@/components/community/RatingPizzas';
 import { db } from '@/lib/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { Loader2 } from 'lucide-react';
+import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
+import { Loader2, Pizza } from 'lucide-react';
 
 interface Props {
   itemId: string;
@@ -18,7 +18,44 @@ export function MenuItemRating({ itemId, itemName, locale }: Props) {
   const [rating, setRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [communityAvg, setCommunityAvg] = useState(0);
+  const [communityCount, setCommunityCount] = useState(0);
+  const [fetchingRating, setFetchingRating] = useState(true);
   const isIs = locale === 'is';
+
+  // Fetch existing community rating
+  useEffect(() => {
+    const fetchRating = async () => {
+      try {
+        const q = query(
+          collection(db, 'reviews'),
+          where('target_id', '==', itemId),
+          where('target_type', '==', 'menu_item')
+        );
+        const snapshot = await getDocs(q);
+        if (snapshot.size > 0) {
+          const total = snapshot.docs.reduce((sum, doc) => sum + (doc.data().rating || 0), 0);
+          setCommunityAvg(total / snapshot.size);
+          setCommunityCount(snapshot.size);
+
+          // Check if current user already rated
+          if (user) {
+            const userReview = snapshot.docs.find(doc => doc.data().author_uid === user.uid);
+            if (userReview) {
+              setRating(userReview.data().rating);
+              setSubmitted(true);
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Error fetching menu item rating:', err);
+      } finally {
+        setFetchingRating(false);
+      }
+    };
+
+    fetchRating();
+  }, [itemId, user]);
 
   const handleRate = async (newRating: number) => {
     if (!user) return;
@@ -39,6 +76,11 @@ export function MenuItemRating({ itemId, itemName, locale }: Props) {
         created_at: serverTimestamp(),
       });
       setSubmitted(true);
+      // Update community stats optimistically
+      const newTotal = communityAvg * communityCount + newRating;
+      const newCount = communityCount + 1;
+      setCommunityAvg(newTotal / newCount);
+      setCommunityCount(newCount);
     } catch (err) {
       console.error('Rating error:', err);
     } finally {
@@ -46,29 +88,49 @@ export function MenuItemRating({ itemId, itemName, locale }: Props) {
     }
   };
 
+  // Show existing community rating
+  const ratingDisplay = communityCount > 0 && (
+    <div className="flex items-center gap-1 text-xs text-(--color-text-secondary)">
+      <Pizza className="w-3 h-3 text-(--color-brand)" />
+      <span className="font-bold text-(--color-text-primary)">{communityAvg.toFixed(1)}</span>
+      <span>({communityCount})</span>
+    </div>
+  );
+
+  if (fetchingRating) {
+    return <div className="h-5" />;
+  }
+
   if (submitted) {
     return (
-      <div className="flex items-center gap-1.5 text-xs text-green-600 font-medium">
-        <span>🍕</span> {isIs ? `${rating}/5 — Takk!` : `${rating}/5 — Thanks!`}
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 text-xs text-green-600 font-medium">
+          <span>🍕</span> {isIs ? `${rating}/5 — Takk!` : `${rating}/5 — Thanks!`}
+        </div>
+        {ratingDisplay}
       </div>
     );
   }
 
   if (!user) {
     return (
-      <div className="text-[10px] text-(--color-text-secondary) italic">
-        {isIs ? 'Skráðu þig inn til að gefa einkunn' : 'Log in to rate'}
+      <div className="flex items-center gap-3">
+        {ratingDisplay}
+        <div className="text-[10px] text-(--color-text-secondary) italic">
+          {isIs ? 'Skráðu þig inn til að gefa einkunn' : 'Log in to rate'}
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-3">
       {loading ? (
         <Loader2 className="w-4 h-4 animate-spin text-(--color-brand)" />
       ) : (
         <RatingPizzas rating={rating} onChange={handleRate} size={16} />
       )}
+      {ratingDisplay}
     </div>
   );
 }
