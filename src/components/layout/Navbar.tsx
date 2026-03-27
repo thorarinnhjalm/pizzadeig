@@ -23,7 +23,6 @@ export function Navbar() {
     { href: '/deigreiknivel', label: isIs ? 'Reiknivél' : 'Calculator' },
     { href: '/stadir', label: isIs ? 'Staðir' : 'Restaurants' },
     { href: '/samfelag', label: isIs ? 'Samfélag' : 'Community' },
-    { href: '/vorur', label: isIs ? 'Búðin' : 'Shop' },
     { href: '/stilar', label: isIs ? 'Stílar' : 'Mastery' },
   ];
 
