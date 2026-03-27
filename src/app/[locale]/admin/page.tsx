@@ -6,15 +6,21 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import { collection, doc, setDoc, getDocs, deleteDoc, writeBatch, query, limit, orderBy } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
-import { Users, Pizza, Store, Activity, Database, AlertTriangle, UploadCloud } from 'lucide-react';
+import { Users, Pizza, Store, Activity, Database, AlertTriangle, UploadCloud, Eye, MousePointerClick, LayoutDashboard, Settings } from 'lucide-react';
 
 export default function AdminSeedPage() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  
+  // Tab stýring
+  const [activeTab, setActiveTab] = useState<'yfirlit' | 'auglysingar' | 'kerfi'>('yfirlit');
+
+  // Gögn
   const [stats, setStats] = useState({ users: 0, recipes: 0, restaurants: 0, menuItems: 0, ads: 0 });
   const [recentUsers, setRecentUsers] = useState<any[]>([]);
+  const [adsList, setAdsList] = useState<any[]>([]);
 
   // Form fyrir nýja auglýsingu
   const [adForm, setAdForm] = useState({
@@ -32,33 +38,24 @@ export default function AdminSeedPage() {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-        // Compare the current user's email against a comma-separated list of admin emails in .env
         const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());
         const userEmail = currentUser.email?.toLowerCase() || '';
-        
-        if (adminEmails.includes(userEmail)) {
-          setIsAdmin(true);
-        }
+        if (adminEmails.includes(userEmail)) setIsAdmin(true);
       } else {
         setUser(null);
         setIsAdmin(false);
       }
       setLoading(false);
     });
-    
     return () => unsubscribe();
   }, []);
 
-  // Fetch admin stats if the user is verified as admin
   useEffect(() => {
-    if (isAdmin) {
-      loadStats();
-    }
+    if (isAdmin) loadStats();
   }, [isAdmin]);
 
   const loadStats = async () => {
     try {
-      // Very basic top-level counting (not optimized for millions of docs, but fine for now)
       const uSnap = await getDocs(query(collection(db, 'users'), orderBy('joined_at', 'desc'), limit(10)));
       const rSnap = await getDocs(collection(db, 'recipes'));
       const stSnap = await getDocs(collection(db, 'restaurants'));
@@ -66,15 +63,15 @@ export default function AdminSeedPage() {
       const aSnap = await getDocs(collection(db, 'ads'));
       
       setStats({
-        users: uSnap.empty ? 0 : uSnap.size, // Note: real counting needs getCountFromServer
+        users: uSnap.empty ? 0 : uSnap.size,
         recipes: rSnap.size,
         restaurants: stSnap.size,
         menuItems: mSnap.size,
         ads: aSnap.size
       });
 
-      const recent = uSnap.docs.map(d => ({ uid: d.id, ...d.data() }));
-      setRecentUsers(recent);
+      setRecentUsers(uSnap.docs.map(d => ({ uid: d.id, ...d.data() })));
+      setAdsList(aSnap.docs.map(d => ({ id: d.id, ...d.data() })));
     } catch (err) {
       console.error('Failed to load stats', err);
     }
@@ -86,18 +83,15 @@ export default function AdminSeedPage() {
     try {
       const batch = writeBatch(db);
 
-      // Seed Restaurants
       mockRestaurants.forEach((restaurant) => {
-        const ref = doc(db, 'restaurants', restaurant.id);
-        // Add a flag to easily identify seeded data
-        batch.set(ref, { ...restaurant, is_seeded: true, created_at: new Date() });
+        const refD = doc(db, 'restaurants', restaurant.id);
+        batch.set(refD, { ...restaurant, is_seeded: true, created_at: new Date() });
       });
 
-      // Seed Menu Items (Pizzas)
       mockMenuItems.forEach((item) => {
-        const ref = doc(db, 'menu_items', item.id); // Or generate custom ID
+        const refD = doc(db, 'menu_items', item.id);
         const restaurant = mockRestaurants.find(r => r.id === item.restaurant_id);
-        batch.set(ref, { 
+        batch.set(refD, { 
           ...item, 
           restaurant_name: restaurant?.name || '',
           is_seeded: true,
@@ -105,14 +99,14 @@ export default function AdminSeedPage() {
         });
       });
 
-      // Seed Ads
       mockAds.forEach((ad) => {
-        const ref = doc(db, 'ads', ad.id);
-        batch.set(ref, { ...ad, is_seeded: true, created_at: new Date() });
+        const refD = doc(db, 'ads', ad.id);
+        batch.set(refD, { ...ad, is_seeded: true, impressions: 0, clicks: 0, created_at: new Date() });
       });
 
       await batch.commit();
       setMessage('Gagnagrunnur var uppfærður með gervigögnum! 🎉');
+      loadStats();
     } catch (error: any) {
       console.error(error);
       setMessage('Villa við að vista: ' + error.message);
@@ -123,32 +117,24 @@ export default function AdminSeedPage() {
 
   const clearSeededData = async () => {
     if (!window.confirm('Ertu viss um að þú viljir eyða öllum gervigögnum úr Firebase?')) return;
-    
     setLoading(true);
     setMessage('Eyði gervigögnum...');
     try {
       const collectionsToClear = ['restaurants', 'menu_items', 'ads'];
-      
       for (const colName of collectionsToClear) {
         const querySnapshot = await getDocs(collection(db, colName));
         const batch = writeBatch(db);
         let count = 0;
-        
         querySnapshot.forEach((document) => {
-          // Aðeins eyða þeim sem eru merkt "is_seeded"
           if (document.data().is_seeded) {
             batch.delete(document.ref);
             count++;
           }
         });
-        
-        if (count > 0) {
-          await batch.commit();
-        }
+        if (count > 0) await batch.commit();
       }
-      
       setMessage('Öllum gervigögnum eytt! 🗑️');
-      loadStats(); // endurhlaða tölur
+      loadStats();
     } catch (error: any) {
       console.error(error);
       setMessage('Villa við að eyða: ' + error.message);
@@ -168,9 +154,8 @@ export default function AdminSeedPage() {
       const newId = `ad-${Date.now()}`;
       let finalImageUrl = adForm.image_url;
 
-      // Handle direct file upload to Firebase Storage
       if (adFile) {
-        setMessage('Hleð upp mynd...');
+        setMessage('Hleð upp mynd í Firebase Storage...');
         const storageRef = ref(storage, `ads/${Date.now()}_${adFile.name}`);
         const snapshot = await uploadBytes(storageRef, adFile);
         finalImageUrl = await getDownloadURL(snapshot.ref);
@@ -190,16 +175,17 @@ export default function AdminSeedPage() {
         target_url: adForm.target_url,
         status: adForm.status,
         placements: adForm.format === '1018x360' ? ['home_hero'] : ['home_featured', 'recipe_sidebar'],
+        impressions: 0,
+        clicks: 0,
         start_date: new Date(),
-        end_date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // Active for 30 days default
+        end_date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
         created_at: new Date()
       });
       
-      setMessage(`Auglýsing fyrir ${adForm.client} hefur verið vistuð með mynd! 🎉`);
+      setMessage(`Auglýsing hefur verið vistuð með mynd og er nú virk í kerfinu! 🎉`);
       setAdForm({ client: '', name: '', image_url: '', target_url: 'https://', format: '1018x360', status: 'active' });
       setAdFile(null);
       
-      // Reset file input UI manually if needed, or it will clear natively if we controlled it via value
       const fileInput = document.getElementById('adFileInput') as HTMLInputElement;
       if (fileInput) fileInput.value = '';
 
@@ -240,140 +226,259 @@ export default function AdminSeedPage() {
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-5xl">
-      <div className="flex items-center gap-4 mb-10">
-        <div className="bg-red-100 p-3 rounded-2xl">
-          <Activity className="w-8 h-8 text-red-600" />
-        </div>
-        <div>
-          <h1 className="text-3xl font-display font-bold text-(--color-text-primary)">Admin Mælaborð</h1>
-          <p className="text-muted-foreground">Velkomin/n, {user.email}. Hér er yfirlit yfir vettvanginn.</p>
+      {/* HEADER */}
+      <div className="flex flex-col md:flex-row md:items-center gap-6 mb-10 justify-between">
+        <div className="flex items-center gap-4">
+          <div className="bg-red-100 p-3 rounded-2xl hidden sm:block">
+            <LayoutDashboard className="w-8 h-8 text-red-600" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-display font-bold text-(--color-text-primary)">Admin Mælaborð</h1>
+            <p className="text-muted-foreground">Velkomin/n, {user.email}.</p>
+          </div>
         </div>
       </div>
       
-      {/* Top Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
-        <div className="bg-white border border-(--color-border) p-6 rounded-3xl shadow-sm flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-            <Users className="w-6 h-6" />
-          </div>
-          <div>
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Notendur</p>
-            <p className="text-3xl font-display font-extrabold">{stats.users}</p>
-          </div>
-        </div>
-        
-        <div className="bg-white border border-(--color-border) p-6 rounded-3xl shadow-sm flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
-            <Pizza className="w-6 h-6" />
-          </div>
-          <div>
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Pizzur</p>
-            <p className="text-3xl font-display font-extrabold">{stats.menuItems}</p>
-          </div>
-        </div>
-
-        <div className="bg-white border border-(--color-border) p-6 rounded-3xl shadow-sm flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
-            <Store className="w-6 h-6" />
-          </div>
-          <div>
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Staðir</p>
-            <p className="text-3xl font-display font-extrabold">{stats.restaurants}</p>
-          </div>
-        </div>
-        
-        <div className="bg-white border border-(--color-border) p-6 rounded-3xl shadow-sm flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center shrink-0">
-            <Activity className="w-6 h-6" />
-          </div>
-          <div>
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Uppskriftir</p>
-            <p className="text-3xl font-display font-extrabold">{stats.recipes}</p>
-          </div>
-        </div>
-
-        <div className="bg-white border border-(--color-border) p-6 rounded-3xl shadow-sm flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center shrink-0">
-            <Database className="w-6 h-6" />
-          </div>
-          <div>
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Auglýsingar</p>
-            <p className="text-3xl font-display font-extrabold">{stats.ads}</p>
-          </div>
-        </div>
+      {/* TABS NAVIGATION */}
+      <div className="flex gap-2 sm:gap-6 border-b border-(--color-border) mb-8 overflow-x-auto hide-scrollbar pb-1">
+        <button 
+          onClick={() => setActiveTab('yfirlit')} 
+          className={`flex items-center gap-2 px-4 py-2.5 font-bold transition-all whitespace-nowrap rounded-t-lg ${activeTab === 'yfirlit' ? 'text-(--color-brand) border-b-2 border-(--color-brand) bg-(--color-brand)/5' : 'text-muted-foreground hover:text-(--color-text-primary) hover:bg-(--color-bg-secondary)'}`}
+        >
+          <Activity className="w-4 h-4" /> Yfirlit / Tölfræði
+        </button>
+        <button 
+          onClick={() => setActiveTab('auglysingar')} 
+          className={`flex items-center gap-2 px-4 py-2.5 font-bold transition-all whitespace-nowrap rounded-t-lg ${activeTab === 'auglysingar' ? 'text-(--color-brand) border-b-2 border-(--color-brand) bg-(--color-brand)/5' : 'text-muted-foreground hover:text-(--color-text-primary) hover:bg-(--color-bg-secondary)'}`}
+        >
+          <Database className="w-4 h-4" /> Auglýsingar
+        </button>
+        <button 
+          onClick={() => setActiveTab('kerfi')} 
+          className={`flex items-center gap-2 px-4 py-2.5 font-bold transition-all whitespace-nowrap rounded-t-lg ${activeTab === 'kerfi' ? 'text-red-600 border-b-2 border-red-600 bg-red-50' : 'text-muted-foreground hover:text-red-500 hover:bg-red-50/50'}`}
+        >
+          <Settings className="w-4 h-4" /> Kerfisstjórnun
+        </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Left Col: Users */}
-        <div className="space-y-6">
-          <h2 className="text-xl font-bold flex items-center gap-2">
-            <Users className="w-5 h-5 text-(--color-text-secondary)" /> 
-            Nýskráningar
-          </h2>
-          <div className="bg-white border border-(--color-border) rounded-2xl overflow-hidden shadow-sm">
-            {recentUsers.length > 0 ? (
-              <div className="divide-y divide-(--color-border-light)">
-                {recentUsers.map(ru => (
-                  <div key={ru.uid} className="p-4 flex items-center gap-3">
-                    {ru.avatar_url ? (
-                      <img src={ru.avatar_url} alt="Profile" className="w-10 h-10 rounded-full" />
-                    ) : (
-                      <div className="w-10 h-10 rounded-full bg-(--color-bg-secondary) flex items-center justify-center border border-(--color-border)">
-                        <Users className="w-5 h-5 text-muted-foreground" />
-                      </div>
-                    )}
-                    <div>
-                      <p className="font-semibold text-sm">{ru.display_name}</p>
-                      <p className="text-xs text-muted-foreground">{ru.email}</p>
-                    </div>
-                  </div>
-                ))}
+      {message && (
+        <div className="mb-8 p-4 bg-white border border-(--color-border) text-sm rounded-xl font-mono shadow-sm flex items-center justify-between">
+          <span className="text-(--color-text-primary)">{message}</span>
+          <button onClick={() => setMessage('')} className="text-muted-foreground hover:text-(--color-text-primary)">✕</button>
+        </div>
+      )}
+
+      {/* --- TAB 1: YFIRLIT --- */}
+      {activeTab === 'yfirlit' && (
+        <div className="animate-in fade-in duration-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
+            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                <Users className="w-5 h-5" />
               </div>
-            ) : (
-              <div className="p-8 text-center text-muted-foreground text-sm">
-                Engir notendur fundust eða gagnagrunnur tómur.
+              <div>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Notendur</p>
+                <p className="text-2xl font-display font-extrabold">{stats.users}</p>
               </div>
-            )}
+            </div>
+            
+            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                <Pizza className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Pizzur</p>
+                <p className="text-2xl font-display font-extrabold">{stats.menuItems}</p>
+              </div>
+            </div>
+
+            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+                <Store className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Staðir</p>
+                <p className="text-2xl font-display font-extrabold">{stats.restaurants}</p>
+              </div>
+            </div>
+            
+            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center shrink-0">
+                <Activity className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Uppskriftir</p>
+                <p className="text-2xl font-display font-extrabold">{stats.recipes}</p>
+              </div>
+            </div>
+
+            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center shrink-0">
+                <Database className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Auglýsingar</p>
+                <p className="text-2xl font-display font-extrabold">{stats.ads}</p>
+              </div>
+            </div>
           </div>
 
-          {/* Ný auglýsing form */}
-          <div className="space-y-6 mt-10">
+          <div className="max-w-3xl">
+            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <Users className="w-5 h-5 text-(--color-text-secondary)" /> 
+              Nýlegar Skráningar
+            </h2>
+            <div className="bg-white border border-(--color-border) rounded-2xl overflow-hidden shadow-sm">
+              {recentUsers.length > 0 ? (
+                <div className="divide-y divide-(--color-border-light)">
+                  {recentUsers.map(ru => (
+                    <div key={ru.uid} className="p-4 flex items-center gap-3 hover:bg-(--color-bg-secondary) transition-colors">
+                      {ru.avatar_url ? (
+                        <img src={ru.avatar_url} alt="Profile" className="w-10 h-10 rounded-full" />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-(--color-bg-secondary) flex items-center justify-center border border-(--color-border)">
+                          <Users className="w-5 h-5 text-muted-foreground" />
+                        </div>
+                      )}
+                      <div>
+                        <p className="font-semibold text-sm text-(--color-text-primary)">{ru.display_name}</p>
+                        <p className="text-xs text-muted-foreground">{ru.email}</p>
+                      </div>
+                      <div className="ml-auto text-xs text-muted-foreground">
+                        {ru.joined_at?.toDate ? new Date(ru.joined_at.toDate()).toLocaleDateString('is-IS') : 'Óþekkt'}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="p-8 text-center text-muted-foreground text-sm">
+                  Engir notendur fundust eða gagnagrunnur tómur.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* --- TAB 2: AUGLÝSINGAR --- */}
+      {activeTab === 'auglysingar' && (
+        <div className="animate-in fade-in duration-300 grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <div className="lg:col-span-8 space-y-6">
             <h2 className="text-xl font-bold flex items-center gap-2">
               <Database className="w-5 h-5 text-(--color-brand)" /> 
-              Búa til nýtt
+              Yfirlit Auglýsinga
+            </h2>
+            
+            <div className="bg-white border border-(--color-border) rounded-2xl overflow-hidden shadow-sm">
+              {adsList.length > 0 ? (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm whitespace-nowrap">
+                    <thead className="bg-(--color-bg-secondary) border-b border-(--color-border)">
+                      <tr>
+                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Auglýsandi</th>
+                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Herferð</th>
+                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Birtingar</th>
+                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Smellir</th>
+                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">CTR %</th>
+                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Staða</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-(--color-border-light)">
+                      {adsList.map(ad => {
+                        const imps = ad.impressions || 0;
+                        const clicks = ad.clicks || 0;
+                        const ctr = imps > 0 ? ((clicks / imps) * 100).toFixed(2) : '0.00';
+                        
+                        return (
+                          <tr key={ad.id} className="hover:bg-slate-50 transition-colors">
+                            <td className="px-4 py-3 font-medium">{ad.client}</td>
+                            <td className="px-4 py-3 text-muted-foreground">{ad.name}</td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="inline-flex items-center gap-1.5 text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full font-bold">
+                                <Eye className="w-3.5 h-3.5" /> {imps.toLocaleString('is-IS')}
+                              </span>
+                            </td>
+                            <td className="px-4 py-3 text-center">
+                              <span className="inline-flex items-center gap-1.5 text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-bold">
+                                <MousePointerClick className="w-3.5 h-3.5" /> {clicks.toLocaleString('is-IS')}
+                              </span>
+                            </td>
+                            <td className="px-4 py-3 text-center font-mono text-xs">{ctr}%</td>
+                            <td className="px-4 py-3">
+                              <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${ad.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>
+                                {ad.status}
+                              </span>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="p-8 text-center text-muted-foreground text-sm">
+                  Engar auglýsingar fundust. Búðu til nýja!
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="lg:col-span-4 space-y-6">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              Búa til nýja
             </h2>
             <div className="bg-white border border-(--color-border) p-6 rounded-2xl shadow-sm">
-              <h3 className="font-bold text-lg mb-4">Setja inn auglýsingu</h3>
               <form onSubmit={createAd} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-semibold mb-1">Viðskiptavinur</label>
-                    <input required placeholder="t.d. Pizzan ehf." value={adForm.client} onChange={e => setAdForm({...adForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-1">Heiti Hérferðar</label>
-                    <input placeholder="t.d. Vordagar 2026" value={adForm.name} onChange={e => setAdForm({...adForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                  </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Viðskiptavinur</label>
+                  <input required placeholder="t.d. Pizzan ehf." value={adForm.client} onChange={e => setAdForm({...adForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1">Mynd (URL)</label>
-                  <input required placeholder="https://..." value={adForm.image_url} onChange={e => setAdForm({...adForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                  <label className="block text-sm font-semibold mb-1">Heiti Herferðar</label>
+                  <input placeholder="t.d. Vordagar 2026" value={adForm.name} onChange={e => setAdForm({...adForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                </div>
+                
+                <div className="pt-2 pb-1">
+                  <div className="h-px bg-(--color-border-light) w-full"></div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-1 flex items-center gap-1">
+                    <UploadCloud className="w-4 h-4 text-blue-500"/> Hlaða upp mynd
+                  </label>
+                  <input 
+                    id="adFileInput"
+                    type="file" 
+                    accept="image/*"
+                    onChange={e => setAdFile(e.target.files?.[0] || null)}
+                    className="w-full border rounded-lg px-3 py-2 text-xs bg-blue-50/50 cursor-pointer file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" 
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1">Smellislóð (Target URL)</label>
+                  <label className="block text-sm font-semibold mb-1">Eða beina smellislóð (URL)</label>
+                  <input placeholder="https://unsplash..." value={adForm.image_url} onChange={e => setAdForm({...adForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                </div>
+                
+                <div className="pt-2 pb-1">
+                  <div className="h-px bg-(--color-border-light) w-full"></div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Smellislóð (Target)</label>
                   <input required placeholder="https://..." value={adForm.target_url} onChange={e => setAdForm({...adForm, target_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-semibold mb-1">Stærð / Sniðmát</label>
-                    <select value={adForm.format} onChange={e => setAdForm({...adForm, format: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm bg-white">
-                      <option value="1018x360">Forsíðuborði (1018x360)</option>
-                      <option value="310x400">Skjáauglýsing Hlið (310x400)</option>
+                    <label className="block text-sm font-semibold mb-1">Sniðmát</label>
+                    <select value={adForm.format} onChange={e => setAdForm({...adForm, format: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+                      <option value="1018x360">Forsíðuborði</option>
+                      <option value="310x400">Skjáauglýsing Hlið</option>
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm font-semibold mb-1">Staða</label>
-                    <select value={adForm.status} onChange={e => setAdForm({...adForm, status: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+                    <select value={adForm.status} onChange={e => setAdForm({...adForm, status: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
                       <option value="active">Virk</option>
                       <option value="paused">Í bið</option>
                     </select>
@@ -382,61 +487,57 @@ export default function AdminSeedPage() {
                 <button 
                   type="submit" 
                   disabled={adLoading}
-                  className="w-full mt-2 bg-(--color-brand) text-white font-bold py-2.5 rounded-xl hover:bg-opacity-90 disabled:opacity-50 transition-colors"
+                  className="w-full mt-4 bg-(--color-brand) text-white font-bold py-3 rounded-xl hover:bg-opacity-90 disabled:opacity-50 transition-colors"
                 >
-                  {adLoading ? 'Vistar...' : 'Búa til Auglýsingu'}
+                  {adLoading ? 'Vistar / Hleður upp...' : 'Búa til Auglýsingu'}
                 </button>
               </form>
             </div>
           </div>
         </div>
+      )}
 
-        {/* Right Col: Danger Zone & Seeder */}
-        <div className="space-y-6">
-          <h2 className="text-xl font-bold flex items-center gap-2">
+      {/* --- TAB 3: KERFI --- */}
+      {activeTab === 'kerfi' && (
+        <div className="animate-in fade-in duration-300 max-w-2xl">
+          <h2 className="text-xl font-bold flex items-center gap-2 mb-4">
             <AlertTriangle className="w-5 h-5 text-red-500" /> 
             Gagnagrunns Stjórnun (Dev)
           </h2>
           
-          <div className="bg-red-50/50 border border-red-100 p-6 rounded-2xl space-y-6">
+          <div className="bg-red-50 border border-red-200 p-8 rounded-2xl space-y-8 shadow-sm">
             <div>
-              <h3 className="text-lg font-bold mb-1 flex items-center gap-2">
-                <Database className="w-4 h-4" /> 1. Fræfæða (Seed) Firebase
+              <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
+                <Database className="w-5 h-5" /> 1. Fræfæða (Seed) Firebase
               </h3>
               <p className="text-muted-foreground text-sm mb-4">
-                Tekur allar pizzur, staði og auglýsingar úr mockData og setur í lifandi Firebase gagnagrunninn með `is_seeded: true`.
+                Tekur allar pizzur, staði og upphaflegar auglýsingar úr mockData og setur í stöðugan Firebase gagnagrunninn (`is_seeded: true`). Mælt er með þessu í upphafi.
               </p>
               <button 
                 onClick={seedDatabase}
                 disabled={loading}
-                className="px-5 py-2 text-sm bg-white border border-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-50 disabled:opacity-50"
+                className="px-6 py-2.5 bg-white border border-gray-300 text-gray-800 font-bold rounded-xl hover:bg-gray-50 focus:ring-4 focus:ring-gray-100 transition-all disabled:opacity-50"
               >
-                {loading ? 'Keyri...' : 'Sturta gögnum (Seed)'}
+                {loading ? 'Keyri...' : 'Sturta gögnum inn í Firebase'}
               </button>
             </div>
 
-            <div className="border-t border-red-200/50 pt-5">
-              <h3 className="text-lg font-bold mb-1 text-red-700">2. Hreinsa Gervigögn (Clear)</h3>
-              <p className="text-muted-foreground text-sm mb-4">
-                Finnur öll skjöl í Firestore sem eru með `is_seeded: true` og eyðir þeim endanlega.
+            <div className="border-t border-red-200/50 pt-8">
+              <h3 className="text-lg font-bold mb-2 text-red-700">2. Hreinsa Gervigögn (Clear)</h3>
+              <p className="text-red-700/70 text-sm mb-4 font-medium">
+                Varúð: Þetta mun eyða endanlega öllum skjölum í Firestore sem eru merkt sérstaklega sem gervigögn (`is_seeded: true`). Ekki afturkræft.
               </p>
               <button 
                 onClick={clearSeededData}
                 disabled={loading}
-                className="px-5 py-2 text-sm bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 disabled:opacity-50 shadow-sm"
+                className="px-6 py-2.5 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 focus:ring-4 focus:ring-red-200 transition-all disabled:opacity-50 shadow-sm"
               >
                 {loading ? 'Eyði...' : 'Eyða öllum gervigögnum'}
               </button>
             </div>
-
-            {message && (
-              <div className="mt-4 p-4 bg-white border border-gray-200 text-sm rounded-lg font-mono shadow-sm">
-                {message}
-              </div>
-            )}
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
