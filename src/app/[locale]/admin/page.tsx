@@ -444,7 +444,7 @@ export default function AdminSeedPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold mb-1 flex items-center gap-1">
+                  <label className="flex text-sm font-semibold mb-1 items-center gap-1">
                     <UploadCloud className="w-4 h-4 text-blue-500"/> Hlaða upp mynd
                   </label>
                   <input 
