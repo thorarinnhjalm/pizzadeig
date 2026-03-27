@@ -93,6 +93,11 @@ export default function AdminSeedPage() {
     setLoading(true);
     setMessage('Byrja að fræfæða gagnagrunninn...');
     try {
+      // Ensure current user has admin role in Firestore (required by security rules)
+      if (user) {
+        await setDoc(doc(db, 'users', user.uid), { role: 'admin' }, { merge: true });
+      }
+
       const batch = writeBatch(db);
 
       mockRestaurants.forEach((restaurant) => {

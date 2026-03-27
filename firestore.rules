@@ -23,6 +23,13 @@ service cloud.firestore {
       }
     }
 
+    // Matseðilsatriði (top-level): Les öllum, skrif admin
+    match /menu_items/{itemId} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
     // Reviews: Les öllum, skrif innskráðum
     match /reviews/{reviewId} {
       allow read: if true;
