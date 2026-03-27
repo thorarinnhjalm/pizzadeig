@@ -1,5 +1,5 @@
 import { Recipe } from '@/types/recipe';
-import { Restaurant } from '@/types/restaurant';
+import { Restaurant, MenuItem } from '@/types/restaurant';
 
 export function recipeJsonLd(recipe: Recipe, locale: string) {
   return {
@@ -26,7 +26,7 @@ export function recipeJsonLd(recipe: Recipe, locale: string) {
   };
 }
 
-export function restaurantJsonLd(restaurant: Restaurant, locale: string) {
+export function restaurantJsonLd(restaurant: Restaurant, locale: string, menuItems?: MenuItem[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Restaurant',
@@ -52,6 +52,19 @@ export function restaurantJsonLd(restaurant: Restaurant, locale: string) {
       ratingValue: restaurant.rating_avg,
       ratingCount: restaurant.rating_count
     } : undefined,
-    priceRange: Array(restaurant.price_level).fill('$').join('')
+    priceRange: Array(restaurant.price_level).fill('$').join(''),
+    hasMenu: menuItems?.length ? {
+      '@type': 'Menu',
+      hasMenuItem: menuItems.map(item => ({
+        '@type': 'MenuItem',
+        name: locale === 'is' ? item.name_is : item.name_en,
+        description: locale === 'is' ? (item.description_is || '') : (item.description_en || ''),
+        offers: {
+          '@type': 'Offer',
+          price: item.price,
+          priceCurrency: 'ISK'
+        }
+      }))
+    } : undefined
   };
 }

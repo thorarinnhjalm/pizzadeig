@@ -7,7 +7,8 @@ import { db } from '@/lib/firebase';
 import { Restaurant } from '@/types/restaurant';
 import { Map } from '@/components/restaurants/Map';
 import { Loader2, Search, MapPin, Star } from 'lucide-react';
-import { mockRestaurants } from '@/lib/mockData';
+import { mockRestaurants, mockMenuItems } from '@/lib/mockData';
+import { restaurantJsonLd } from '@/lib/seo';
 import { Link } from '@/i18n/routing';
 
 export default function RestaurantsPage() {
@@ -84,12 +85,20 @@ export default function RestaurantsPage() {
             </div>
           ) : (
             <div className="space-y-6">
-              {filtered.map(restaurant => (
-                <Link
-                  key={restaurant.id}
-                  href={`/stadir/${restaurant.slug || restaurant.id}`}
-                  className="block bg-(--color-bg-secondary) rounded-2xl border border-(--color-border) overflow-hidden hover:shadow-lg transition-shadow group"
-                >
+              {filtered.map(restaurant => {
+                const restaurantMenus = mockMenuItems.filter(m => m.restaurant_id === restaurant.id);
+                const ldJson = restaurantJsonLd(restaurant, locale, restaurantMenus);
+                
+                return (
+                <div key={restaurant.id}>
+                  <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
+                  />
+                  <Link
+                    href={`/stadir/${restaurant.slug || restaurant.id}`}
+                    className="block bg-(--color-bg-secondary) rounded-2xl border border-(--color-border) overflow-hidden hover:shadow-lg transition-shadow group"
+                  >
                   {/* Restaurant image */}
                   {restaurant.image_urls?.[0] && (
                     <div className="relative h-48 overflow-hidden">
@@ -154,8 +163,9 @@ export default function RestaurantsPage() {
                       </div>
                     </div>
                   </div>
-                </Link>
-              ))}
+                  </Link>
+                </div>
+              )})}
             </div>
           )}
         </div>
