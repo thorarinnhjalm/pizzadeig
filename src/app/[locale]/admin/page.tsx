@@ -317,66 +317,64 @@ export default function AdminSeedPage() {
               </div>
             )}
           </div>
-        </div>
 
-        {/* Ný auglýsing form */}
-        <div className="space-y-6 mt-10">
-          <h2 className="text-xl font-bold flex items-center gap-2">
-            <Database className="w-5 h-5 text-(--color-brand)" /> 
-            Búa til nýtt
-          </h2>
-          <div className="bg-white border border-(--color-border) p-6 rounded-2xl shadow-sm">
-            <h3 className="font-bold text-lg mb-4">Setja inn auglýsingu</h3>
-            <form onSubmit={createAd} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold mb-1">Viðskiptavinur</label>
-                  <input required placeholder="t.d. Pizzan ehf." value={adForm.client} onChange={e => setAdForm({...adForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+          {/* Ný auglýsing form */}
+          <div className="space-y-6 mt-10">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              <Database className="w-5 h-5 text-(--color-brand)" /> 
+              Búa til nýtt
+            </h2>
+            <div className="bg-white border border-(--color-border) p-6 rounded-2xl shadow-sm">
+              <h3 className="font-bold text-lg mb-4">Setja inn auglýsingu</h3>
+              <form onSubmit={createAd} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold mb-1">Viðskiptavinur</label>
+                    <input required placeholder="t.d. Pizzan ehf." value={adForm.client} onChange={e => setAdForm({...adForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-1">Heiti Hérferðar</label>
+                    <input placeholder="t.d. Vordagar 2026" value={adForm.name} onChange={e => setAdForm({...adForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1">Heiti Hérferðar</label>
-                  <input placeholder="t.d. Vordagar 2026" value={adForm.name} onChange={e => setAdForm({...adForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-semibold mb-1">Mynd (URL)</label>
-                <input required placeholder="https://..." value={adForm.image_url} onChange={e => setAdForm({...adForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold mb-1">Smellislóð (Target URL)</label>
-                <input required placeholder="https://..." value={adForm.target_url} onChange={e => setAdForm({...adForm, target_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold mb-1">Stærð / Sniðmát</label>
-                  <select value={adForm.format} onChange={e => setAdForm({...adForm, format: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm bg-white">
-                    <option value="1018x360">Forsíðuborði (1018x360)</option>
-                    <option value="310x400">Skjáauglýsing Hlið (310x400)</option>
-                  </select>
+                  <label className="block text-sm font-semibold mb-1">Mynd (URL)</label>
+                  <input required placeholder="https://..." value={adForm.image_url} onChange={e => setAdForm({...adForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1">Staða</label>
-                  <select value={adForm.status} onChange={e => setAdForm({...adForm, status: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm bg-white">
-                    <option value="active">Virk</option>
-                    <option value="paused">Í bið</option>
-                  </select>
+                  <label className="block text-sm font-semibold mb-1">Smellislóð (Target URL)</label>
+                  <input required placeholder="https://..." value={adForm.target_url} onChange={e => setAdForm({...adForm, target_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
                 </div>
-              </div>
-              <button 
-                type="submit" 
-                disabled={adLoading}
-                className="w-full mt-2 bg-(--color-brand) text-white font-bold py-2.5 rounded-xl hover:bg-opacity-90 disabled:opacity-50 transition-colors"
-              >
-                {adLoading ? 'Vistar...' : 'Búa til Auglýsingu'}
-              </button>
-            </form>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold mb-1">Stærð / Sniðmát</label>
+                    <select value={adForm.format} onChange={e => setAdForm({...adForm, format: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+                      <option value="1018x360">Forsíðuborði (1018x360)</option>
+                      <option value="310x400">Skjáauglýsing Hlið (310x400)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-1">Staða</label>
+                    <select value={adForm.status} onChange={e => setAdForm({...adForm, status: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+                      <option value="active">Virk</option>
+                      <option value="paused">Í bið</option>
+                    </select>
+                  </div>
+                </div>
+                <button 
+                  type="submit" 
+                  disabled={adLoading}
+                  className="w-full mt-2 bg-(--color-brand) text-white font-bold py-2.5 rounded-xl hover:bg-opacity-90 disabled:opacity-50 transition-colors"
+                >
+                  {adLoading ? 'Vistar...' : 'Búa til Auglýsingu'}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 
-      </div>
-
-      {/* Right Col: Danger Zone & Seeder */}
-      <div className="space-y-6">
+        {/* Right Col: Danger Zone & Seeder */}
+        <div className="space-y-6">
           <h2 className="text-xl font-bold flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-red-500" /> 
             Gagnagrunns Stjórnun (Dev)
