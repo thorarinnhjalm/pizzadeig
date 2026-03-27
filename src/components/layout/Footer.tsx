@@ -53,6 +53,7 @@ export function Footer() {
                 <li><Link href="/skilmalar" className="hover:text-(--color-gold-light) transition-colors">{t('terms')}</Link></li>
                 <li><Link href="/personuvernd" className="hover:text-(--color-gold-light) transition-colors">{t('privacy')}</Link></li>
                 <li><Link href="/tengilidir" className="hover:text-(--color-gold-light) transition-colors">{t('contact')}</Link></li>
+                <li><Link href="/auglysingar" className="hover:text-(--color-gold-light) transition-colors">Auglýsa á Pizzadeig.is</Link></li>
               </ul>
             </div>
           </div>
