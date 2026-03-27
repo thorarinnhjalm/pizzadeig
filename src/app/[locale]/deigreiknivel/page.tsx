@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Calculator, Plus, Minus, Info, Droplets, Wheat, Pizza } from 'lucide-react';
+import { Calculator, Plus, Minus, Info, Droplets, Wheat, Pizza, Clock, Thermometer } from 'lucide-react';
 
 export default function DeigreiknivelPage() {
   const locale = useLocale() as 'is' | 'en';
@@ -13,8 +13,25 @@ export default function DeigreiknivelPage() {
   const [weight, setWeight] = useState(250); // grams per ball
   const [hydration, setHydration] = useState(65); // %
   const [salt, setSalt] = useState(2.8); // %
-  const [yeast, setYeast] = useState(0.2); // % IDY
+  const [yeast, setYeast] = useState(0.05); // % IDY
   const [oil, setOil] = useState(0); // %
+
+  // Fermentation setup
+  const [fermentHours, setFermentHours] = useState(24);
+  const [isFridge, setIsFridge] = useState(false);
+
+  // Auto-calculate yeast when time or temp changes
+  useEffect(() => {
+    let suggestedYeast = 0.2;
+    // Extremely simplified PizzApp/Craig model approximation for IDY
+    if (isFridge) {
+      suggestedYeast = 10.0 / fermentHours;
+    } else {
+      suggestedYeast = 1.2 / fermentHours;
+    }
+    suggestedYeast = Math.max(0.01, Math.min(2.0, suggestedYeast));
+    setYeast(Number(suggestedYeast.toFixed(2)));
+  }, [fermentHours, isFridge]); 
 
   // Calculations
   const totalWeight = balls * weight;
@@ -114,6 +131,69 @@ export default function DeigreiknivelPage() {
                     <span>400g (NY)</span>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="bg-white border border-(--color-border) rounded-3xl p-6 md:p-8 shadow-sm mb-8">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-indigo-500" />
+                  {isIs ? 'Hefunartími (Gerjun)' : 'Fermentation Time'}
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                {/* Time */}
+                <div>
+                  <label className="text-sm font-bold text-(--color-text-secondary) uppercase tracking-wider mb-3 block flex justify-between">
+                    <span>{isIs ? 'Tímalengd' : 'Duration'}</span>
+                    <span className="text-indigo-600 font-bold bg-indigo-50 px-2 py-0.5 rounded">{fermentHours} klst</span>
+                  </label>
+                  <input 
+                    type="range" 
+                    min="2" max="72" step="1" 
+                    value={fermentHours} 
+                    onChange={e => setFermentHours(Number(e.target.value))}
+                    className="w-full accent-indigo-500 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mt-4"
+                  />
+                  <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                    <span>2h</span>
+                    <span>24h</span>
+                    <span>72h</span>
+                  </div>
+                </div>
+
+                {/* Temperature */}
+                <div>
+                  <label className="text-sm font-bold text-(--color-text-secondary) uppercase tracking-wider mb-3 block">
+                    {isIs ? 'Hitastig (Umhverfi)' : 'Temperature'}
+                  </label>
+                  <div className="flex bg-(--color-bg-secondary) p-1.5 rounded-xl border border-(--color-border-light)">
+                    <button 
+                      onClick={() => setIsFridge(false)}
+                      className={`flex-1 flex justify-center items-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-colors ${!isFridge ? 'bg-white shadow-sm text-(--color-brand)' : 'text-(--color-text-secondary) hover:bg-white/50'}`}
+                    >
+                      <Thermometer className="w-4 h-4" />
+                      {isIs ? 'Herbergishiti (21°)' : 'Room Temp.'}
+                    </button>
+                    <button 
+                      onClick={() => setIsFridge(true)}
+                      className={`flex-1 flex justify-center items-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-colors ${isFridge ? 'bg-white shadow-sm text-blue-500' : 'text-(--color-text-secondary) hover:bg-white/50'}`}
+                    >
+                      <Thermometer className="w-4 h-4" />
+                      {isIs ? 'Ísskápur (4°)' : 'Fridge'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 p-4 bg-amber-50 rounded-2xl border border-amber-200">
+                <Info className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <p className="text-sm text-amber-900 leading-relaxed font-medium">
+                  {isIs 
+                    ? `Gerhlutfallið hefur reiknast sjálfkrafa sem ${yeast}% (IDY) út frá tíma og hita. Þú getur fínpússað það handvirkt hér að neðan.` 
+                    : `Yeast has been auto-calculated to ${yeast}% (IDY) based on time & temp. You can still tweak it manually below.`}
+                </p>
               </div>
             </div>
 
