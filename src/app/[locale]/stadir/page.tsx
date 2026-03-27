@@ -6,6 +6,7 @@ import { Restaurant } from '@/types/restaurant';
 import { Search, MapPin, Star, ChefHat, Clock, DollarSign } from 'lucide-react';
 import { mockRestaurants } from '@/lib/mockData';
 import { Link } from '@/i18n/routing';
+import { CommunityRatingBadge } from '@/components/community/CommunityRatingBadge';
 import Image from 'next/image';
 
 export default function RestaurantsPage() {
@@ -142,6 +143,16 @@ export default function RestaurantsPage() {
                   <MapPin className="w-3.5 h-3.5" />
                   {restaurant.city} · {priceLabel(restaurant.price_level || 2)}
                 </p>
+
+                {/* Community Rating */}
+                <div className="mb-3">
+                  <CommunityRatingBadge
+                    targetId={restaurant.slug || restaurant.id}
+                    targetType="restaurant"
+                    locale={locale}
+                    size="sm"
+                  />
+                </div>
 
                 {/* Features */}
                 <div className="flex flex-wrap gap-1.5 mb-3">

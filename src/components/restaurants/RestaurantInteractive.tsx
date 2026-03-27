@@ -3,9 +3,10 @@
 import { useState, useCallback } from 'react';
 import { ReviewForm } from '@/components/community/ReviewForm';
 import { ReviewList } from '@/components/community/ReviewList';
+import { CommunityRatingBadge } from '@/components/community/CommunityRatingBadge';
 import { MenuItemRating } from '@/components/restaurants/MenuItemRating';
 import { MenuItem } from '@/types/restaurant';
-import { UtensilsCrossed } from 'lucide-react';
+import { UtensilsCrossed, Pizza } from 'lucide-react';
 
 interface Props {
   restaurantId: string;
@@ -32,6 +33,23 @@ export function RestaurantInteractive({ restaurantId, menuItems, locale }: Props
 
   return (
     <div className="space-y-10 mt-10 border-t border-(--color-border-light) pt-10">
+      {/* Community rating summary */}
+      <section className="flex items-center gap-3 bg-(--color-bg-secondary) p-5 rounded-2xl border border-(--color-border)">
+        <div className="w-12 h-12 bg-(--color-brand)/10 rounded-xl flex items-center justify-center">
+          <Pizza className="w-6 h-6 text-(--color-brand)" />
+        </div>
+        <div>
+          <h3 className="font-bold text-(--color-text-primary) text-sm">
+            {isIs ? 'Einkunn samfélagsins' : 'Community Rating'}
+          </h3>
+          <CommunityRatingBadge
+            key={reviewKey}
+            targetId={restaurantId}
+            targetType="restaurant"
+            locale={locale}
+          />
+        </div>
+      </section>
       {/* Menu section */}
       {menuItems.length > 0 && (
         <section>
