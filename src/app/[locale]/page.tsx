@@ -79,20 +79,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   className="object-cover" 
                 />
               </div>
-              {/* Floating dough card */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-3 border border-(--color-border-light)">
-                <div className="w-20 h-20 rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img 
-                    src="/images/dough-frontpage.jpg" 
-                    alt="Pizza Dough" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="text-sm font-medium italic text-(--color-text-secondary) mt-2 px-0.5">
-                  {isIs ? '00 Mjöl & Ást' : '00 Flour & Love'}
-                </p>
-              </div>
+
             </div>
           </div>
         </div>
