@@ -1,0 +1,42 @@
+{
+  "Index": {
+    "title": "Allt um pizzu — frá deigi til disks",
+    "description": "Íslenskt pizzusamfélag.",
+    "hero_subtitle": "Uppgötvaðu bestu uppskriftirnar, finndu falda gersemar veitingahúsa, og deildu ástríðu þinni fyrir fullkominni pizzu.",
+    "hero_badge": "✨ Nýtt Samfélag",
+    "btn_recipes": "Skoða safnið",
+    "btn_places": "Besta í Reykjavík",
+    "popular_title": "Vinsælustu Uppskriftirnar",
+    "popular_subtitle": "Það sem brennur heitast í samfélaginu í dag",
+    "popular_link": "Sjá allar uppskriftir",
+    "card_badge": "Deig",
+    "card_title": "Sannkallað Napólí Deig",
+    "card_desc": "Lærðu að gera fullkomið deig með aðeins 4 hráefnum sem lyftir sér í 48 klukkustundir fyrir mesta bragðið.",
+    "card_diff": "Miðlungs",
+    "card_time": "24 klst"
+  },
+  "Navbar": {
+    "recipes": "Uppskriftir",
+    "places": "Veitingastaðir",
+    "login": "Innskráning",
+    "dough": "Deig",
+    "sauces": "Sósur",
+    "cheese": "Ostur",
+    "toppings": "Álegg",
+    "tools": "Tól",
+    "toplist": "Topplisti"
+  },
+  "Footer": {
+    "slogan": "Allt um pizzu — frá deigi til disks",
+    "links_title_1": "Tenglar",
+    "links_title_2": "Um Okkur",
+    "about": "Um Pizzadeig",
+    "privacy": "Persónuvernd",
+    "terms": "Skilmálar",
+    "contact": "Tengiliðir"
+  },
+  "ratings": {
+    "outOf": "{value} af 5 pizzum",
+    "rate": "Gefðu einkunn"
+  }
+}

@@ -1,0 +1,76 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Uppskriftir: Lesanlegar öllum, skrifanlegar eiganda
+    match /recipes/{recipeId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null &&
+        (request.auth.uid == resource.data.author_uid ||
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin');
+    }
+
+    // Veitingastaðir: Lesanlegt öllum, skrif admin
+    match /restaurants/{restId} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      match /menu_items/{itemId} {
+        allow read: if true;
+        allow write: if request.auth != null &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      }
+    }
+
+    // Reviews: Les öllum, skrif innskráðum
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth.uid == resource.data.author_uid;
+    }
+
+    // Users: Les öllum, skrif eiganda
+    match /users/{uid} {
+      allow read: if true;
+      allow write: if request.auth.uid == uid;
+    }
+
+    // Likes, follows: Eigandi
+    match /likes/{likeId} {
+      allow read: if true;
+      allow create, delete: if request.auth != null && request.auth.uid == request.resource.data.user_uid;
+    }
+    match /follows/{followId} {
+      allow read: if true;
+      allow create, delete: if request.auth != null;
+    }
+
+    // Auglýsingar: Les öllum (til birtinga), skrif admin
+    match /ads/{adId} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Ad events: Skrif öllum (API route), les admin
+    match /ad_events/{eventId} {
+      allow create: if true;   // API route skrifar
+      allow read: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Ad daily stats: Les/skrif admin
+    match /ad_daily_stats/{statId} {
+      allow read, write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Categories: Les öllum, skrif admin
+    match /categories/{catId} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+  }
+}

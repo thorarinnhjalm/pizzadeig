@@ -1,0 +1,76 @@
+'use client';
+
+import { useLocale } from 'next-intl';
+import { useRecipes } from '@/hooks/useRecipes';
+import { RecipeGrid } from '@/components/recipes/RecipeGrid';
+import { Loader2 } from 'lucide-react';
+import { useState } from 'react';
+
+const CATEGORIES = [
+  { key: '', label_is: 'Allt', label_en: 'All' },
+  { key: 'deig', label_is: 'Deig', label_en: 'Dough' },
+  { key: 'sosur', label_is: 'Sósur', label_en: 'Sauces' },
+  { key: 'ostur', label_is: 'Ostur', label_en: 'Cheese' },
+  { key: 'alegg', label_is: 'Álegg', label_en: 'Toppings' },
+  { key: 'pizzur', label_is: 'Pizzur', label_en: 'Pizzas' },
+];
+
+export default function RecipesPage() {
+  const locale = useLocale() as 'is' | 'en';
+  const isIs = locale === 'is';
+  const { recipes, loading } = useRecipes();
+  const [selected, setSelected] = useState('');
+
+  const filtered = selected
+    ? recipes.filter(r => r.category === selected)
+    : recipes;
+
+  return (
+    <main className="flex-1 w-full bg-[var(--color-bg-primary)] min-h-screen">
+      {/* Hero header */}
+      <section className="pt-16 pb-8 text-center">
+        <h1 className="font-display italic text-5xl md:text-7xl font-bold text-[var(--color-brand)] mb-4">
+          Uppskriftasafn
+        </h1>
+        <p className="text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto leading-relaxed">
+          {isIs
+            ? 'Uppgötvaðu leyndarmálið á bak við fullkomna ítölsku pizzu. Frá hinu fullkomna súrdeigi yfir í bragðgóðar sósur.'
+            : 'Discover the secrets behind perfect Italian pizza. From sourdough to flavorful sauces.'}
+        </p>
+      </section>
+
+      {/* Filter pills */}
+      <section className="pb-10">
+        <div className="flex justify-center gap-3 flex-wrap px-4">
+          {CATEGORIES.map(cat => (
+            <button
+              key={cat.key}
+              onClick={() => setSelected(cat.key)}
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+                selected === cat.key
+                  ? 'bg-[var(--color-brand)] text-white shadow-md'
+                  : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]'
+              }`}
+            >
+              {isIs ? cat.label_is : cat.label_en}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Recipe grid */}
+      <section className="container mx-auto px-4 pb-24">
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-32 space-y-4">
+            <Loader2 className="w-12 h-12 animate-spin text-[var(--color-brand)]" />
+            <p className="text-[var(--color-text-tertiary)] animate-pulse">
+              {isIs ? 'Sæki uppskriftir...' : 'Loading recipes...'}
+            </p>
+          </div>
+        ) : (
+          <RecipeGrid recipes={filtered} locale={locale} />
+        )}
+      </section>
+    </main>
+  );
+}

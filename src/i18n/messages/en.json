@@ -1,0 +1,42 @@
+{
+  "Index": {
+    "title": "Everything pizza — from dough to dish",
+    "description": "Icelandic pizza community.",
+    "hero_subtitle": "Discover the best recipes, find hidden restaurant gems, and share your passion for the perfect pizza.",
+    "hero_badge": "✨ New Community",
+    "btn_recipes": "Browse recipes",
+    "btn_places": "Best in Reykjavík",
+    "popular_title": "Most Popular Recipes",
+    "popular_subtitle": "What's burning hottest in the community today",
+    "popular_link": "See all recipes",
+    "card_badge": "Dough",
+    "card_title": "Authentic Napoli Dough",
+    "card_desc": "Learn to make the perfect dough with only 4 ingredients that proofs for 48 hours for maximum flavor.",
+    "card_diff": "Medium",
+    "card_time": "24 hrs"
+  },
+  "Navbar": {
+    "recipes": "Recipes",
+    "places": "Restaurants",
+    "login": "Sign in",
+    "dough": "Dough",
+    "sauces": "Sauces",
+    "cheese": "Cheese",
+    "toppings": "Toppings",
+    "tools": "Tools",
+    "toplist": "Top Places"
+  },
+  "Footer": {
+    "slogan": "Everything pizza — from dough to dish",
+    "links_title_1": "Links",
+    "links_title_2": "About Us",
+    "about": "About Pizzadeig",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact"
+  },
+  "ratings": {
+    "outOf": "{value} out of 5 pizzas",
+    "rate": "Rate this"
+  }
+}
