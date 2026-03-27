@@ -42,6 +42,10 @@ export default function AdminSeedPage() {
   const [editAdForm, setEditAdForm] = useState<any>({});
   const [editAdFile, setEditAdFile] = useState<File | null>(null);
 
+  // Edit uppskrift
+  const [editingRecipe, setEditingRecipe] = useState<string | null>(null);
+  const [editRecipeForm, setEditRecipeForm] = useState<any>({});
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
@@ -395,70 +399,195 @@ export default function AdminSeedPage() {
 
       {/* --- TAB: UPPSKRIFTIR --- */}
       {activeTab === 'uppskriftir' && (
-        <div className="animate-in fade-in duration-300">
-          <h2 className="text-xl font-bold flex items-center gap-2 mb-6">
-            <BookOpen className="w-5 h-5 text-(--color-brand)" />
-            Allar uppskriftir í kerfinu ({recipesList.length})
-          </h2>
-          <p className="text-sm text-muted-foreground mb-4 -mt-4">
-            {recipesList.filter((r: any) => r._source === 'hardcoded').length} úr recipeData (innbyggðar) · {recipesList.filter((r: any) => !r._source).length} í Firestore
-          </p>
-          
-          <div className="bg-white border border-(--color-border) rounded-2xl overflow-hidden shadow-sm">
+        <div className="animate-in fade-in duration-300 space-y-8">
+          <div>
+            <h2 className="text-xl font-bold flex items-center gap-2 mb-2">
+              <BookOpen className="w-5 h-5 text-(--color-brand)" />
+              Allar uppskriftir ({recipesList.length})
+            </h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              {recipesList.filter((r: any) => r._source === 'hardcoded').length} innbyggðar · {recipesList.filter((r: any) => !r._source).length} í Firestore
+            </p>
+
             {recipesList.length > 0 ? (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm whitespace-nowrap">
-                  <thead className="bg-(--color-bg-secondary) border-b border-(--color-border)">
-                    <tr>
-                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">#</th>
-                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Titill (IS)</th>
-                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Höfundur</th>
-                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Slug</th>
-                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Erfiðleiki</th>
-                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Skammtar</th>
-                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Mynd</th>
-                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)"></th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-(--color-border-light)">
-                    {recipesList.map((r, idx) => (
-                      <tr key={r.id} className="hover:bg-slate-50 transition-colors">
-                        <td className="px-4 py-3 text-muted-foreground font-mono text-xs">{idx + 1}</td>
-                        <td className="px-4 py-3 font-semibold text-(--color-text-primary) max-w-[250px] truncate">{r.title_is || r.title_en || '—'}</td>
-                        <td className="px-4 py-3 text-muted-foreground">{r.author_name || '—'}</td>
-                        <td className="px-4 py-3 text-muted-foreground font-mono text-xs">{r.slug || '—'}</td>
-                        <td className="px-4 py-3 text-center">
-                          <span className={`px-2 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider ${
-                            r.difficulty === 'audvelt' ? 'bg-green-100 text-green-700' :
-                            r.difficulty === 'midlungs' ? 'bg-amber-100 text-amber-700' :
-                            'bg-red-100 text-red-700'
-                          }`}>
-                            {r.difficulty === 'audvelt' ? 'Auðvelt' : r.difficulty === 'midlungs' ? 'Miðlungs' : r.difficulty || '—'}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-center font-medium">{r.servings || '—'}</td>
-                        <td className="px-4 py-3 text-center">
-                          {r.image_urls?.[0] ? (
-                            <img src={r.image_urls[0]} alt="" className="w-10 h-10 rounded-lg object-cover inline-block" />
+              <div className="space-y-6">
+                {recipesList.map((r: any) => {
+                  const isEditing = editingRecipe === r.id;
+
+                  return (
+                    <div key={r.id} className="bg-white border border-(--color-border) rounded-2xl shadow-sm overflow-hidden">
+                      {/* Image + info header */}
+                      <div className="flex flex-col sm:flex-row">
+                        {/* Thumbnail */}
+                        {r.image_urls?.[0] && (
+                          <div className="sm:w-48 sm:min-h-[160px] bg-gray-100 flex-shrink-0">
+                            <img src={r.image_urls[0]} alt={r.title_is || ''} className="w-full h-full object-cover sm:rounded-l-2xl" style={{ maxHeight: '200px' }} />
+                          </div>
+                        )}
+
+                        <div className="flex-1 p-5">
+                          {isEditing ? (
+                            /* ---- EDIT MODE ---- */
+                            <div className="space-y-3">
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Titill (IS)</label>
+                                  <input value={editRecipeForm.title_is || ''} onChange={e => setEditRecipeForm({...editRecipeForm, title_is: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                                </div>
+                                <div>
+                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Titill (EN)</label>
+                                  <input value={editRecipeForm.title_en || ''} onChange={e => setEditRecipeForm({...editRecipeForm, title_en: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                                </div>
+                              </div>
+                              <div>
+                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Lýsing (IS)</label>
+                                <textarea value={editRecipeForm.description_is || ''} onChange={e => setEditRecipeForm({...editRecipeForm, description_is: e.target.value})} rows={2} className="w-full border rounded-lg px-3 py-2 text-sm resize-none" />
+                              </div>
+                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <div>
+                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Erfiðleiki</label>
+                                  <select value={editRecipeForm.difficulty || 'audvelt'} onChange={e => setEditRecipeForm({...editRecipeForm, difficulty: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+                                    <option value="audvelt">Auðvelt</option>
+                                    <option value="midlungs">Miðlungs</option>
+                                    <option value="erfitt">Erfitt</option>
+                                  </select>
+                                </div>
+                                <div>
+                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Skammtar</label>
+                                  <input type="number" value={editRecipeForm.servings || ''} onChange={e => setEditRecipeForm({...editRecipeForm, servings: parseInt(e.target.value) || 0})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                                </div>
+                                <div>
+                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Flokkur</label>
+                                  <select value={editRecipeForm.category || 'deig'} onChange={e => setEditRecipeForm({...editRecipeForm, category: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+                                    <option value="deig">Deig</option>
+                                    <option value="sosa">Sósa</option>
+                                    <option value="aleg">Álegg</option>
+                                  </select>
+                                </div>
+                                <div>
+                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Mynd URL</label>
+                                  <input value={editRecipeForm.image_url_0 || ''} onChange={e => setEditRecipeForm({...editRecipeForm, image_url_0: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="https://..." />
+                                </div>
+                              </div>
+                              <div className="flex gap-2 pt-2">
+                                <button
+                                  onClick={async () => {
+                                    try {
+                                      setAdLoading(true);
+                                      const imageUrls = editRecipeForm.image_url_0 ? [editRecipeForm.image_url_0] : (r.image_urls || []);
+                                      await updateDoc(doc(db, 'recipes', r.id), {
+                                        title_is: editRecipeForm.title_is,
+                                        title_en: editRecipeForm.title_en,
+                                        description_is: editRecipeForm.description_is,
+                                        difficulty: editRecipeForm.difficulty,
+                                        servings: editRecipeForm.servings,
+                                        category: editRecipeForm.category,
+                                        image_urls: imageUrls,
+                                        updated_at: new Date(),
+                                      });
+                                      setMessage('Uppskrift uppfærð! ✅');
+                                      setEditingRecipe(null);
+                                      loadStats();
+                                    } catch (err: any) {
+                                      setMessage('Villa: ' + err.message);
+                                    } finally {
+                                      setAdLoading(false);
+                                    }
+                                  }}
+                                  disabled={adLoading}
+                                  className="flex items-center gap-1.5 px-4 py-2 bg-green-600 text-white text-sm font-bold rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors"
+                                >
+                                  <Check className="w-4 h-4" /> Vista
+                                </button>
+                                <button onClick={() => setEditingRecipe(null)} className="flex items-center gap-1.5 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-bold rounded-lg hover:bg-gray-200 transition-colors">
+                                  <X className="w-4 h-4" /> Hætta við
+                                </button>
+                              </div>
+                            </div>
                           ) : (
-                            <span className="text-muted-foreground text-xs">Engin</span>
+                            /* ---- VIEW MODE ---- */
+                            <div>
+                              <div className="flex items-start justify-between mb-2">
+                                <div>
+                                  <h3 className="text-lg font-bold text-(--color-text-primary)">{r.title_is || r.title_en || '—'}</h3>
+                                  <p className="text-xs text-muted-foreground">{r.author_name || 'Óþekktur'} · {r.slug}</p>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  {r._source === 'hardcoded' && (
+                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-100 text-blue-700">Innbyggð</span>
+                                  )}
+                                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                                    r.difficulty === 'audvelt' ? 'bg-green-100 text-green-700' :
+                                    r.difficulty === 'midlungs' ? 'bg-amber-100 text-amber-700' :
+                                    'bg-red-100 text-red-700'
+                                  }`}>
+                                    {r.difficulty === 'audvelt' ? 'Auðvelt' : r.difficulty === 'midlungs' ? 'Miðlungs' : r.difficulty || '—'}
+                                  </span>
+                                </div>
+                              </div>
+
+                              <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{r.description_is || r.description_en || ''}</p>
+
+                              {/* Meta */}
+                              <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground mb-4">
+                                <span>🍕 {r.servings || '—'} skammtar</span>
+                                <span>⏱ {r.prep_time_min || 0} mín. undirbúningur</span>
+                                {r.rest_time_min > 0 && <span>🕐 {r.rest_time_min >= 60 ? `${Math.round(r.rest_time_min / 60)} klst.` : `${r.rest_time_min} mín.`} gerjun</span>}
+                                <span>📂 {r.category}</span>
+                                {r.tags?.length > 0 && <span>🏷️ {r.tags.slice(0, 3).join(', ')}</span>}
+                              </div>
+
+                              {/* Actions */}
+                              <div className="flex gap-2 flex-wrap">
+                                {r.slug && (
+                                  <Link href={`/is/uppskriftir/${r.slug}`} target="_blank" className="flex items-center gap-1.5 px-3 py-2 bg-(--color-bg-secondary) text-(--color-text-primary) text-sm font-semibold rounded-lg hover:bg-(--color-border) transition-colors">
+                                    <ExternalLink className="w-3.5 h-3.5" /> Skoða
+                                  </Link>
+                                )}
+                                <button
+                                  onClick={() => {
+                                    setEditingRecipe(r.id);
+                                    setEditRecipeForm({
+                                      title_is: r.title_is,
+                                      title_en: r.title_en,
+                                      description_is: r.description_is,
+                                      difficulty: r.difficulty,
+                                      servings: r.servings,
+                                      category: r.category,
+                                      image_url_0: r.image_urls?.[0] || '',
+                                    });
+                                  }}
+                                  className="flex items-center gap-1.5 px-3 py-2 bg-(--color-bg-secondary) text-(--color-text-primary) text-sm font-semibold rounded-lg hover:bg-(--color-border) transition-colors"
+                                >
+                                  <Pencil className="w-3.5 h-3.5" /> Breyta
+                                </button>
+                                <button
+                                  onClick={async () => {
+                                    if (!window.confirm(`Eyða uppskrift: ${r.title_is}?`)) return;
+                                    try {
+                                      await deleteDoc(doc(db, 'recipes', r.id));
+                                      setMessage('Uppskrift eytt. 🗑️');
+                                      loadStats();
+                                    } catch (err: any) {
+                                      setMessage('Villa: ' + err.message);
+                                    }
+                                  }}
+                                  className="flex items-center gap-1.5 px-3 py-2 bg-red-50 text-red-600 text-sm font-semibold rounded-lg hover:bg-red-100 transition-colors"
+                                >
+                                  <Trash2 className="w-3.5 h-3.5" /> Eyða
+                                </button>
+                              </div>
+                            </div>
                           )}
-                        </td>
-                        <td className="px-4 py-3">
-                          {r.slug && (
-                            <Link href={`/is/uppskriftir/${r.slug}`} target="_blank" className="text-(--color-brand) hover:underline inline-flex items-center gap-1 text-xs font-semibold">
-                              Skoða <ExternalLink className="w-3 h-3" />
-                            </Link>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             ) : (
-              <div className="p-8 text-center text-muted-foreground text-sm">
-                Engar uppskriftir fundust í gagnagrunninum.
+              <div className="bg-white border border-(--color-border) rounded-2xl p-8 text-center text-muted-foreground text-sm">
+                Engar uppskriftir fundust. Keyrðu &quot;Sturta gögnum&quot; á Kerfi-tabinu til að byrja.
               </div>
             )}
           </div>
