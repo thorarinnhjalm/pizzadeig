@@ -78,14 +78,14 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
           {recipe.image_urls?.[0] ? (
             <>
               <Image src={recipe.image_urls[0]} alt={title || ''} fill priority className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
             </>
           ) : (
-            <div className="absolute inset-0 bg-[var(--color-bg-tertiary)]" />
+            <div className="absolute inset-0 bg-(--color-bg-tertiary)" />
           )}
           
           <div className="relative z-10 container mx-auto px-4 pb-12">
-            <span className="inline-block px-4 py-1.5 rounded-md bg-[var(--color-brand)] text-white text-[10px] font-bold uppercase tracking-widest mb-4 shadow-md">
+            <span className="inline-block px-4 py-1.5 rounded-md bg-(--color-brand) text-white text-[10px] font-bold uppercase tracking-widest mb-4 shadow-md">
               {isIs ? 'Meistara Uppskrift' : 'Masterclass Series'}
             </span>
             <h1 className="text-5xl md:text-7xl font-display italic text-white leading-[1.05] tracking-tight mb-4 drop-shadow-lg max-w-3xl">
@@ -98,42 +98,42 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
         </section>
 
         {/* ===== STATS BAR (Stitch: 4 icons in row) ===== */}
-        <section className="bg-[var(--color-bg-primary)] border-b border-[var(--color-border)]">
+        <section className="bg-background border-b border-(--color-border)">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[var(--color-border)]">
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-(--color-border)">
               <div className="flex flex-col items-center py-6 gap-2">
-                <Clock className="w-6 h-6 text-[var(--color-brand)]" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-text-tertiary)]">
+                <Clock className="w-6 h-6 text-(--color-brand)" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                   {isIs ? 'Undirbúningur' : 'Prep Time'}
                 </span>
-                <span className="text-lg font-bold text-[var(--color-text-primary)]">
+                <span className="text-lg font-bold text-(--color-text-primary)">
                   {formatTime(recipe.prep_time_min)}
                 </span>
               </div>
               <div className="flex flex-col items-center py-6 gap-2">
-                <Timer className="w-6 h-6 text-[var(--color-brand)]" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-text-tertiary)]">
+                <Timer className="w-6 h-6 text-(--color-brand)" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                   {isIs ? 'Hvíld' : 'Rest Time'}
                 </span>
-                <span className="text-lg font-bold text-[var(--color-text-primary)]">
+                <span className="text-lg font-bold text-(--color-text-primary)">
                   {formatTime(recipe.rest_time_min || 0)}
                 </span>
               </div>
               <div className="flex flex-col items-center py-6 gap-2">
-                <Users className="w-6 h-6 text-[var(--color-brand)]" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-text-tertiary)]">
+                <Users className="w-6 h-6 text-(--color-brand)" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                   {isIs ? 'Skammtar' : 'Servings'}
                 </span>
-                <span className="text-lg font-bold text-[var(--color-text-primary)]">
+                <span className="text-lg font-bold text-(--color-text-primary)">
                   {recipe.servings} {isIs ? 'Pizzur' : 'Pizzas'}
                 </span>
               </div>
               <div className="flex flex-col items-center py-6 gap-2">
-                <BarChart3 className="w-6 h-6 text-[var(--color-brand)]" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-text-tertiary)]">
+                <BarChart3 className="w-6 h-6 text-(--color-brand)" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                   {isIs ? 'Erfiðleiki' : 'Difficulty'}
                 </span>
-                <span className="text-lg font-bold text-[var(--color-text-primary)]">
+                <span className="text-lg font-bold text-(--color-text-primary)">
                   {getDifficultyLabel(recipe.difficulty, isIs)}
                 </span>
               </div>
@@ -143,12 +143,12 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
 
         {/* ===== BREADCRUMBS + ACTIONS ===== */}
         <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <nav className="text-sm text-[var(--color-text-secondary)] font-medium flex items-center gap-2">
+          <nav className="text-sm text-(--color-text-secondary) font-medium flex items-center gap-2">
             <Link href="/" className="hover:text-[var(--color-brand)] transition-colors">{isIs ? 'Forsíða' : 'Home'}</Link>
-            <span className="text-[var(--color-text-tertiary)]">/</span>
-            <Link href="/uppskriftir" className="hover:text-[var(--color-brand)] transition-colors">{isIs ? 'Uppskriftir' : 'Recipes'}</Link>
-            <span className="text-[var(--color-text-tertiary)]">/</span>
-            <span className="text-[var(--color-text-primary)] font-bold">{title}</span>
+            <span className="text-muted-foreground">/</span>
+            <Link href="/uppskriftir" className="hover:text-(--color-brand) transition-colors">{isIs ? 'Uppskriftir' : 'Recipes'}</Link>
+            <span className="text-muted-foreground">/</span>
+            <span className="text-(--color-text-primary) font-bold">{title}</span>
           </nav>
           <div className="flex items-center gap-4">
             <ShareButtons url={`https://pizzadeig.is/${locale}/uppskriftir/${slug}`} title={title || ''} locale={locale as 'is'|'en'} />
@@ -161,8 +161,8 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Ingredients — stone card (left) */}
             <div className="lg:col-span-2">
-              <div className="sticky top-24 bg-[var(--color-bg-secondary)] rounded-2xl p-8 border border-[var(--color-border)]">
-                <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-6">
+              <div className="sticky top-24 bg-(--color-bg-secondary) rounded-2xl p-8 border border-(--color-border)">
+                <h2 className="text-2xl font-bold text-(--color-text-primary) mb-6">
                   {isIs ? 'Hráefni' : 'Ingredients'}
                 </h2>
                 <IngredientList recipe={recipe} locale={locale as 'is' | 'en'} />
@@ -172,7 +172,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
             {/* Steps — right */}
             <div className="lg:col-span-3 space-y-12">
               <div>
-                <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-6">
+                <h2 className="text-2xl font-bold text-(--color-text-primary) mb-6">
                   {isIs ? 'Leiðbeiningar' : 'Instructions'}
                 </h2>
                 <StepByStep recipe={recipe} locale={locale as 'is' | 'en'} />
@@ -180,12 +180,12 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
 
               {/* Pro Tips */}
               {(recipe.tips_is || recipe.tips_en) && (
-                <div className="bg-[var(--color-bg-secondary)] border-l-4 border-[var(--color-gold)] p-6 rounded-r-2xl">
-                  <h4 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 flex items-center">
-                    <Pizza className="w-5 h-5 text-[var(--color-gold)] mr-2" />
+                <div className="bg-(--color-bg-secondary) border-l-4 border-ring p-6 rounded-r-2xl">
+                  <h4 className="text-lg font-bold text-(--color-text-primary) mb-2 flex items-center">
+                    <Pizza className="w-5 h-5 text-ring mr-2" />
                     {isIs ? 'Sérfræðiráð' : 'Pro Tips'}
                   </h4>
-                  <p className="text-[var(--color-text-secondary)]">
+                  <p className="text-(--color-text-secondary)">
                     {isIs ? recipe.tips_is : recipe.tips_en}
                   </p>
                 </div>
@@ -200,9 +200,9 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
         </section>
 
         {/* ===== REVIEWS ===== */}
-        <section className="bg-[var(--color-bg-secondary)] py-16 border-t border-[var(--color-border)]">
+        <section className="bg-(--color-bg-secondary) py-16 border-t border-(--color-border)">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl font-bold text-[var(--color-text-primary)] mb-10 text-center">
+            <h2 className="text-3xl font-bold text-(--color-text-primary) mb-10 text-center">
               {isIs ? 'Hvað finnst samfélaginu?' : 'Community Reviews'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start">

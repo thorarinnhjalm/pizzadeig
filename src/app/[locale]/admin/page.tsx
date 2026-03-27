@@ -6,7 +6,8 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import { collection, doc, setDoc, getDocs, deleteDoc, writeBatch, query, limit, orderBy } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
-import { Users, Pizza, Store, Activity, Database, AlertTriangle, UploadCloud, Eye, MousePointerClick, LayoutDashboard, Settings } from 'lucide-react';
+import { Users, Pizza, Store, Activity, Database, AlertTriangle, UploadCloud, Eye, MousePointerClick, LayoutDashboard, Settings, BookOpen, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AdminSeedPage() {
   const [loading, setLoading] = useState(true);
@@ -15,12 +16,13 @@ export default function AdminSeedPage() {
   const [isAdmin, setIsAdmin] = useState(false);
   
   // Tab stýring
-  const [activeTab, setActiveTab] = useState<'yfirlit' | 'auglysingar' | 'kerfi'>('yfirlit');
+  const [activeTab, setActiveTab] = useState<'yfirlit' | 'uppskriftir' | 'auglysingar' | 'kerfi'>('yfirlit');
 
   // Gögn
   const [stats, setStats] = useState({ users: 0, recipes: 0, restaurants: 0, menuItems: 0, ads: 0 });
   const [recentUsers, setRecentUsers] = useState<any[]>([]);
   const [adsList, setAdsList] = useState<any[]>([]);
+  const [recipesList, setRecipesList] = useState<any[]>([]);
 
   // Form fyrir nýja auglýsingu
   const [adForm, setAdForm] = useState({
@@ -72,6 +74,7 @@ export default function AdminSeedPage() {
 
       setRecentUsers(uSnap.docs.map(d => ({ uid: d.id, ...d.data() })));
       setAdsList(aSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+      setRecipesList(rSnap.docs.map(d => ({ id: d.id, ...d.data() })));
     } catch (err) {
       console.error('Failed to load stats', err);
     }
@@ -254,6 +257,12 @@ export default function AdminSeedPage() {
           <Database className="w-4 h-4" /> Auglýsingar
         </button>
         <button 
+          onClick={() => setActiveTab('uppskriftir')} 
+          className={`flex items-center gap-2 px-4 py-2.5 font-bold transition-all whitespace-nowrap rounded-t-lg ${activeTab === 'uppskriftir' ? 'text-(--color-brand) border-b-2 border-(--color-brand) bg-(--color-brand)/5' : 'text-muted-foreground hover:text-(--color-text-primary) hover:bg-(--color-bg-secondary)'}`}
+        >
+          <BookOpen className="w-4 h-4" /> Uppskriftir
+        </button>
+        <button 
           onClick={() => setActiveTab('kerfi')} 
           className={`flex items-center gap-2 px-4 py-2.5 font-bold transition-all whitespace-nowrap rounded-t-lg ${activeTab === 'kerfi' ? 'text-red-600 border-b-2 border-red-600 bg-red-50' : 'text-muted-foreground hover:text-red-500 hover:bg-red-50/50'}`}
         >
@@ -302,15 +311,15 @@ export default function AdminSeedPage() {
               </div>
             </div>
             
-            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
+            <button onClick={() => setActiveTab('uppskriftir')} className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4 hover:border-(--color-brand) hover:shadow-md transition-all text-left cursor-pointer">
               <div className="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center shrink-0">
-                <Activity className="w-5 h-5" />
+                <BookOpen className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Uppskriftir</p>
                 <p className="text-2xl font-display font-extrabold">{stats.recipes}</p>
               </div>
-            </div>
+            </button>
 
             <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center shrink-0">
@@ -356,6 +365,75 @@ export default function AdminSeedPage() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* --- TAB: UPPSKRIFTIR --- */}
+      {activeTab === 'uppskriftir' && (
+        <div className="animate-in fade-in duration-300">
+          <h2 className="text-xl font-bold flex items-center gap-2 mb-6">
+            <BookOpen className="w-5 h-5 text-(--color-brand)" />
+            Allar uppskriftir í kerfinu ({recipesList.length})
+          </h2>
+          
+          <div className="bg-white border border-(--color-border) rounded-2xl overflow-hidden shadow-sm">
+            {recipesList.length > 0 ? (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm whitespace-nowrap">
+                  <thead className="bg-(--color-bg-secondary) border-b border-(--color-border)">
+                    <tr>
+                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">#</th>
+                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Titill (IS)</th>
+                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Höfundur</th>
+                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Slug</th>
+                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Erfiðleiki</th>
+                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Skammtar</th>
+                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Mynd</th>
+                      <th className="px-4 py-3 font-semibold text-(--color-text-secondary)"></th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-(--color-border-light)">
+                    {recipesList.map((r, idx) => (
+                      <tr key={r.id} className="hover:bg-slate-50 transition-colors">
+                        <td className="px-4 py-3 text-muted-foreground font-mono text-xs">{idx + 1}</td>
+                        <td className="px-4 py-3 font-semibold text-(--color-text-primary) max-w-[250px] truncate">{r.title_is || r.title_en || '—'}</td>
+                        <td className="px-4 py-3 text-muted-foreground">{r.author_name || '—'}</td>
+                        <td className="px-4 py-3 text-muted-foreground font-mono text-xs">{r.slug || '—'}</td>
+                        <td className="px-4 py-3 text-center">
+                          <span className={`px-2 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider ${
+                            r.difficulty === 'audvelt' ? 'bg-green-100 text-green-700' :
+                            r.difficulty === 'midlungs' ? 'bg-amber-100 text-amber-700' :
+                            'bg-red-100 text-red-700'
+                          }`}>
+                            {r.difficulty === 'audvelt' ? 'Auðvelt' : r.difficulty === 'midlungs' ? 'Miðlungs' : r.difficulty || '—'}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3 text-center font-medium">{r.servings || '—'}</td>
+                        <td className="px-4 py-3 text-center">
+                          {r.image_urls?.[0] ? (
+                            <img src={r.image_urls[0]} alt="" className="w-10 h-10 rounded-lg object-cover inline-block" />
+                          ) : (
+                            <span className="text-muted-foreground text-xs">Engin</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-3">
+                          {r.slug && (
+                            <Link href={`/is/uppskriftir/${r.slug}`} target="_blank" className="text-(--color-brand) hover:underline inline-flex items-center gap-1 text-xs font-semibold">
+                              Skoða <ExternalLink className="w-3 h-3" />
+                            </Link>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="p-8 text-center text-muted-foreground text-sm">
+                Engar uppskriftir fundust í gagnagrunninum.
+              </div>
+            )}
           </div>
         </div>
       )}

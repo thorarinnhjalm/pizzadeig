@@ -1,11 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { auth, db } from '@/lib/firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
+} from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { useRouter } from '@/i18n/routing';
 import { Mail, Lock, AlertCircle } from 'lucide-react';
+
+function isMobile(): boolean {
+  if (typeof window === 'undefined') return false;
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+}
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -14,6 +26,30 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  // Handle redirect result on mount (for mobile Google sign-in)
+  useEffect(() => {
+    getRedirectResult(auth).then(async (result) => {
+      if (result?.user) {
+        const user = result.user;
+        await setDoc(doc(db, 'users', user.uid), {
+          uid: user.uid,
+          email: user.email,
+          display_name: user.displayName || 'Pizzagerðarmaður',
+          avatar_url: user.photoURL || null,
+        }, { merge: true });
+
+        const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());
+        if (adminEmails.includes(user.email?.toLowerCase() || '')) {
+          router.push('/admin');
+        } else {
+          router.push(`/notandi/${user.uid}`);
+        }
+      }
+    }).catch((err) => {
+      console.error('Redirect sign-in error:', err);
+    });
+  }, [router]);
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,16 +87,23 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
+      
+      if (isMobile()) {
+        // Mobile: use redirect (popups are blocked)
+        await signInWithRedirect(auth, provider);
+        // Page will redirect — result handled in useEffect above
+        return;
+      }
+      
+      // Desktop: use popup
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
       
-      // Upsert Google user profile to Firestore
       await setDoc(doc(db, 'users', user.uid), {
         uid: user.uid,
         email: user.email,
         display_name: user.displayName || 'Pizzagerðarmaður',
         avatar_url: user.photoURL || null,
-        // we use merge so we don't accidentally wipe existing things like followers
       }, { merge: true });
 
       const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());

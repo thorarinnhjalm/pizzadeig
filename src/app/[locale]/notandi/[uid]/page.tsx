@@ -45,28 +45,28 @@ export default async function UserProfilePage({ params }: { params: Promise<{ ui
   }
 
   return (
-    <main className="flex-1 w-full bg-[var(--color-bg-light)] min-h-screen">
+    <main className="flex-1 w-full bg-(--color-bg-light) min-h-screen">
       {/* Profile Header */}
-      <div className="bg-gradient-to-b from-white to-[var(--color-bg-light)] border-b border-[var(--color-border)] pt-16 pb-12 mb-12 shadow-sm relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-32 bg-[var(--color-brand)]/5"></div>
+      <div className="bg-linear-to-b from-white to-(--color-bg-light) border-b border-(--color-border) pt-16 pb-12 mb-12 shadow-sm relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-32 bg-(--color-brand)/5"></div>
         <div className="container mx-auto px-4 flex flex-col items-center max-w-3xl text-center relative z-10">
-          <UserAvatar url={authorAvatar} name={authorName} className="w-32 h-32 md:w-40 md:h-40 border-4 border-white shadow-xl mb-6 ring-4 ring-[var(--color-brand)]/10" />
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] mb-3 capitalize drop-shadow-sm">{authorName}</h1>
+          <UserAvatar url={authorAvatar} name={authorName} className="w-32 h-32 md:w-40 md:h-40 border-4 border-white shadow-xl mb-6 ring-4 ring-(--color-brand)/10" />
+          <h1 className="text-4xl md:text-5xl font-extrabold text-(--color-text-primary) mb-3 capitalize drop-shadow-sm">{authorName}</h1>
           
-          <p className="text-[var(--color-text-secondary)] mb-8 flex items-center gap-2 justify-center bg-[var(--color-bg-secondary)]/60 px-4 py-1.5 rounded-full backdrop-blur-sm border border-[var(--color-border)]">
-             <Calendar className="w-4 h-4 text-[var(--color-gold)]" /> 
+          <p className="text-(--color-text-secondary) mb-8 flex items-center gap-2 justify-center bg-(--color-bg-secondary)/60 px-4 py-1.5 rounded-full backdrop-blur-sm border border-(--color-border)">
+             <Calendar className="w-4 h-4 text-ring" /> 
              {locale === 'is' ? 'Meðlimur síðan' : 'Joined'} {user?.joined_at ? format(user.joined_at.toDate(), 'MMMM yyyy', { locale: locale === 'is' ? is : enUS }) : 'Nýverið'}
           </p>
           
-          <div className="flex gap-4 md:gap-12 mt-4 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-2xl p-6 md:px-12 justify-center w-full shadow-md">
+          <div className="flex gap-4 md:gap-12 mt-4 bg-(--color-bg-secondary) border border-(--color-border) rounded-2xl p-6 md:px-12 justify-center w-full shadow-md">
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-[var(--color-brand)] flex items-center gap-2"><Pizza className="w-7 h-7" /> {user?.recipes_count || recipes.length}</span>
-              <span className="text-xs md:text-sm text-[var(--color-text-secondary)] uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Uppskriftir' : 'Recipes'}</span>
+              <span className="text-3xl font-extrabold text-(--color-brand) flex items-center gap-2"><Pizza className="w-7 h-7" /> {user?.recipes_count || recipes.length}</span>
+              <span className="text-xs md:text-sm text-(--color-text-secondary) uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Uppskriftir' : 'Recipes'}</span>
             </div>
             <div className="w-px bg-gray-200" />
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-[var(--color-gold)] flex items-center gap-2"><Users className="w-7 h-7" /> {user?.followers_count || 0}</span>
-              <span className="text-xs md:text-sm text-[var(--color-text-secondary)] uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Fylgjendur' : 'Followers'}</span>
+              <span className="text-3xl font-extrabold text-ring flex items-center gap-2"><Users className="w-7 h-7" /> {user?.followers_count || 0}</span>
+              <span className="text-xs md:text-sm text-(--color-text-secondary) uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Fylgjendur' : 'Followers'}</span>
             </div>
           </div>
           
@@ -78,16 +78,16 @@ export default async function UserProfilePage({ params }: { params: Promise<{ ui
 
       {/* User Recipes Library */}
       <div className="container mx-auto px-4 pb-24">
-        <h2 className="text-3xl font-bold text-[var(--color-text-primary)] mb-10 flex items-center gap-3">
-          <ChefHat className="w-8 h-8 text-[var(--color-green)]" />
+        <h2 className="text-3xl font-bold text-(--color-text-primary) mb-10 flex items-center gap-3">
+          <ChefHat className="w-8 h-8 text-(--color-green)" />
           {locale === 'is' ? `Uppskriftir eftir ${authorName.split(' ')[0]}` : `Recipes by ${authorName.split(' ')[0]}`}
         </h2>
         {recipes.length > 0 ? (
           <RecipeGrid recipes={recipes} locale={locale as 'is' | 'en'} />
         ) : (
-          <div className="text-center py-20 bg-[var(--color-bg-secondary)] rounded-2xl border border-dashed border-[var(--color-border)]">
+          <div className="text-center py-20 bg-(--color-bg-secondary) rounded-2xl border border-dashed border-(--color-border)">
              <Pizza className="w-16 h-16 text-gray-200 mx-auto mb-4" />
-             <p className="text-xl text-[var(--color-text-secondary)] font-medium">{locale === 'is' ? 'Engar uppskriftir birtar enn.' : 'No recipes published yet.'}</p>
+             <p className="text-xl text-(--color-text-secondary) font-medium">{locale === 'is' ? 'Engar uppskriftir birtar enn.' : 'No recipes published yet.'}</p>
           </div>
         )}
       </div>
