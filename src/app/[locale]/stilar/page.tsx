@@ -154,7 +154,7 @@ export default async function StilarPage({ params }: { params: Promise<{ locale:
             className="bg-white border border-(--color-border) rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
           >
             {/* Header strip with gradient */}
-            <div className={`bg-gradient-to-r ${style.color} px-8 py-6 border-b border-(--color-border-light)`}>
+            <div className={`bg-linear-to-r ${style.color} px-8 py-6 border-b border-(--color-border-light)`}>
               <div className="flex items-center gap-4">
                 <span className="text-5xl">{style.emoji}</span>
                 <div>

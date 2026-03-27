@@ -6,6 +6,28 @@ description: Run an SEO audit and improve metadata, content, and structure acros
 
 Audit all pages on pizzadeig.is for SEO best practices and optimize metadata, headings, content, and structure. Stay within the existing Next.js framework — no external tools or services.
 
+## Target Keywords (from Google Search Console)
+
+These are the proven queries the site already gets impressions for. Optimize content and metadata to improve rankings for these:
+
+| Query | Clicks | Impressions | Avg Position | Priority |
+|-------|--------|-------------|-------------|----------|
+| pizzadeig uppskrift | 3 | 53 | 12.8 | 🔥 HIGH — close to page 1 |
+| pizzadeig | 1 | 55 | 31.0 | 🔥 HIGH — most impressions |
+| pizza deig | 0 | 13 | 11.9 | ⚡ MED — already page 1-2 |
+| pizza deig uppskrift | 0 | 3 | 21.0 | ⚡ MED |
+| tilbúnir matarpakkar | 0 | 3 | 26.0 | LOW |
+| pizza uppskrift | 0 | 1 | 48.0 | ⚡ MED — high intent |
+| pizzur | 0 | 1 | 75.0 | LOW |
+
+**Misspelling variants to capture:** pitsadeig, pizadeig, pizzadeig oppskrift, tilbúið pizzadeig
+
+**Strategy:**
+- The landing page (`/`) should target: "pizzadeig", "pizzadeig uppskrift", "pizza deig"
+- The recipes page (`/uppskriftir`) should target: "pizzadeig uppskrift", "pizza deig uppskrift", "pizza uppskrift"
+- Ensure these exact phrases appear naturally in `<h1>`, `<title>`, and `<meta description>` tags
+- Use the misspelling variants in alt text or body content where natural
+
 ## Steps
 
 // turbo-all
