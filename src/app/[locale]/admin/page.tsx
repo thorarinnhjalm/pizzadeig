@@ -291,42 +291,5 @@ export default function AdminSeedPage() {
         </div>
       </div>
     </div>
-        <div>
-          <h2 className="text-xl font-bold mb-2">1. Fræfæða (Seed) Firebase</h2>
-          <p className="text-muted-foreground mb-4">
-            Tekur allar pizzur, staði og auglýsingar úr `mockData.ts` og setur í lifandi Firebase gagnagrunninn.  
-            Setur `is_seeded: true` flagg á öll skjöl.
-          </p>
-          <button 
-            onClick={seedDatabase}
-            disabled={loading}
-            className="px-6 py-2 bg-(--color-brand) text-white font-semibold rounded-lg hover:bg-opacity-90 disabled:opacity-50"
-          >
-            {loading ? 'Keyri...' : 'Sturta gögnum inn í Firebase'}
-          </button>
-        </div>
-
-        <div className="border-t border-(--color-border) pt-6">
-          <h2 className="text-xl font-bold mb-2 text-red-600">2. Hreinsa Gervigögn (Clear)</h2>
-          <p className="text-muted-foreground mb-4">
-            Finnur öll skjöl í Firestore sem eru með `is_seeded: true` og eyðir þeim endanlega. 
-            Þettan snertir EKKI skjöl sem almennir notendur hafa búið til.
-          </p>
-          <button 
-            onClick={clearSeededData}
-            disabled={loading}
-            className="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 disabled:opacity-50"
-          >
-            {loading ? 'Eyði...' : 'Eyða öllum gervigögnum'}
-          </button>
-        </div>
-
-        {message && (
-          <div className="mt-4 p-4 bg-background border border-(--color-border) text-(--color-text-primary) rounded-lg font-mono text-sm">
-            {message}
-          </div>
-        )}
-      </div>
-    </div>
   );
 }
