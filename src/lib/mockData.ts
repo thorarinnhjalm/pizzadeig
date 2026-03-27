@@ -10,9 +10,9 @@ export const mockAds: Ad[] = [
     client: 'Pizzan ehf.',
     format: '1018x360',
     creatives: {
-      '1018x360': 'https://images.unsplash.com/photo-1590947132387-155cc3dd2671?q=80&w=1018&h=360&fit=crop'
+      '1018x360': 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1018&h=360&fit=crop'
     },
-    image_url: 'https://images.unsplash.com/photo-1590947132387-155cc3dd2671?q=80&w=1018&h=360&fit=crop',
+    image_url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1018&h=360&fit=crop',
     target_url: '#',
     status: 'active',
     placements: ['home_hero'],
@@ -25,9 +25,9 @@ export const mockAds: Ad[] = [
     client: 'Sælgætisgerðin',
     format: '310x400',
     creatives: {
-      '310x400': 'https://images.unsplash.com/photo-1542010589005-d1eabd394997?q=80&w=310&h=400&fit=crop'
+      '310x400': 'https://images.unsplash.com/photo-1555992336-03a23c7b20ee?q=80&w=310&h=400&fit=crop'
     },
-    image_url: 'https://images.unsplash.com/photo-1542010589005-d1eabd394997?q=80&w=310&h=400&fit=crop',
+    image_url: 'https://images.unsplash.com/photo-1555992336-03a23c7b20ee?q=80&w=310&h=400&fit=crop',
     target_url: '#',
     status: 'active',
     placements: ['home_featured'],
@@ -317,7 +317,7 @@ export const mockRestaurants: Restaurant[] = [
     opening_hours: { mán: '11:30-22', þri: '11:30-22', mið: '11:30-22', fim: '11:30-22', fös: '11:30-23', lau: '12-23', sun: '12-22' },
     price_level: 3,
     features: ['Dine-in', 'Viðarofn', 'Sögulegt hús'],
-    image_urls: ['https://images.unsplash.com/photo-1625631980560-4aeeed597e9f?q=80&w=1200'],
+    image_urls: ['https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200'],
     rating_avg: 0, rating_count: 0, rating_google: 4.2, rating_tripadvisor: 4.0,
     likes_count: 0, is_verified: false, tags: ['Viðarofn', 'Miðborg', 'Sögulegt'],
     created_at: null as any, updated_at: null as any,
@@ -357,7 +357,7 @@ export const mockRestaurants: Restaurant[] = [
     opening_hours: { mán: '11:30-22', þri: '11:30-22', mið: '11:30-22', fim: '11:30-22', fös: '11:30-23', lau: '12-23', sun: '12-22' },
     price_level: 2,
     features: ['Dine-in', 'Fjölskylduvænlegt', 'Bar'],
-    image_urls: ['https://images.unsplash.com/photo-1552539618-7eee9b73b4e8?q=80&w=1200'],
+    image_urls: ['https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1200'],
     rating_avg: 0, rating_count: 0, rating_google: 4.1, rating_tripadvisor: 4.0,
     likes_count: 0, is_verified: false, tags: ['Fjölskylda', 'Akureyri'],
     created_at: null as any, updated_at: null as any,
@@ -379,7 +379,7 @@ export const mockRestaurants: Restaurant[] = [
     opening_hours: { mán: '11:30-21', þri: '11:30-21', mið: '11:30-21', fim: '11:30-21', fös: '11:30-22', lau: '12-22', sun: '12-21' },
     price_level: 2,
     features: ['Dine-in', 'Steinofn', 'Pasta'],
-    image_urls: ['https://images.unsplash.com/photo-1548365328-8b849b3e5b18?q=80&w=1200'],
+    image_urls: ['https://images.unsplash.com/photo-1485182708500-e8f1f318ba72?q=80&w=1200'],
     rating_avg: 0, rating_count: 0, rating_google: 4.3, rating_tripadvisor: 4.0,
     likes_count: 0, is_verified: false, tags: ['Steinofn', 'Keflavík', 'Ítalía'],
     created_at: null as any, updated_at: null as any,
@@ -397,7 +397,7 @@ export const mockRestaurants: Restaurant[] = [
     opening_hours: { mán: '11:30-21', þri: '11:30-21', mið: '11:30-21', fim: '11:30-21', fös: '11:30-22', lau: '12-22', sun: '12-21' },
     price_level: 2,
     features: ['Dine-in', 'Takeaway'],
-    image_urls: ['https://images.unsplash.com/photo-1590947132387-155cc3dd2671?q=80&w=1200'],
+    image_urls: ['https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1200'],
     rating_avg: 0, rating_count: 0, rating_google: 4.0, rating_tripadvisor: 3.5,
     likes_count: 0, is_verified: false, tags: ['Keflavík', 'Ítalía'],
     created_at: null as any, updated_at: null as any,
