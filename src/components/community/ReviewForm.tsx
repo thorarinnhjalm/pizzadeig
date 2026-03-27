@@ -22,11 +22,15 @@ export function ReviewForm({ targetId, targetType, locale, onReviewSubmitted }: 
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || rating === 0) return;
     setLoading(true);
+    setError('');
+    setSuccess(false);
 
     try {
       const reviewData = {
@@ -46,9 +50,11 @@ export function ReviewForm({ targetId, targetType, locale, onReviewSubmitted }: 
       
       setRating(0);
       setComment('');
+      setSuccess(true);
       if (onReviewSubmitted) onReviewSubmitted();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error submitting review:', error);
+      setError(locale === 'is' ? 'Villa kom upp við að senda umsögn. Reyndu aftur.' : 'Error submitting review. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -73,6 +79,8 @@ export function ReviewForm({ targetId, targetType, locale, onReviewSubmitted }: 
         {loading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
         {locale === 'is' ? 'Senda Umsögn' : 'Submit Review'}
       </Button>
+      {error && <p className="text-sm text-red-600 bg-red-50 p-3 rounded-lg">{error}</p>}
+      {success && <p className="text-sm text-green-700 bg-green-50 p-3 rounded-lg">{locale === 'is' ? 'Umsögn þín hefur verið send! 🎉' : 'Your review has been submitted! 🎉'}</p>}
     </form>
   );
 }

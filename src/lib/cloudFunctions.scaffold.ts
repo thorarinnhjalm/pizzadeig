@@ -14,6 +14,7 @@ import * as admin from 'firebase-admin';
 
 if (!admin.apps.length) admin.initializeApp();
 const db = admin.firestore();
+db.settings({ databaseId: 'pizzadeig' });
 
 /**
  * When a new review is created, notify the recipe/restaurant owner.

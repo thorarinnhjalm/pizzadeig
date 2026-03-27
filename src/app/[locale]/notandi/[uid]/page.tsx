@@ -1,47 +1,83 @@
-import { notFound } from 'next/navigation';
+'use client';
+
+import { useEffect, useState } from 'react';
 import { db } from '@/lib/firebase';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { RecipeGrid } from '@/components/recipes/RecipeGrid';
 import { Recipe } from '@/types/recipe';
 import { UserProfile } from '@/types/user';
 import { UserAvatar } from '@/components/community/UserAvatar';
-import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
 import { is, enUS } from 'date-fns/locale';
-import { Users, Pizza, Calendar, ChefHat } from 'lucide-react';
+import { Users, Pizza, Calendar, ChefHat, Loader2 } from 'lucide-react';
 import { FollowButton } from '@/components/community/FollowButton';
+import { useParams } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
-async function getUserProfile(uid: string): Promise<UserProfile | null> {
-  try {
-    const userDoc = await getDoc(doc(db, 'users', uid));
-    if (userDoc.exists()) {
-      return { uid: userDoc.id, ...userDoc.data() } as UserProfile;
+export default function UserProfilePage() {
+  const params = useParams();
+  const uid = params.uid as string;
+  const locale = useLocale() as 'is' | 'en';
+  const isIs = locale === 'is';
+
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+
+  useEffect(() => {
+    async function load() {
+      setLoading(true);
+      try {
+        // Fetch user profile
+        const userDoc = await getDoc(doc(db, 'users', uid));
+        const userData = userDoc.exists() ? { uid: userDoc.id, ...userDoc.data() } as UserProfile : null;
+        setUser(userData);
+
+        // Fetch user recipes
+        const q = query(collection(db, 'recipes'), where('author_uid', '==', uid));
+        const snapshot = await getDocs(q);
+        const recipesData = snapshot.docs.map(d => ({ id: d.id, ...d.data() } as Recipe));
+        setRecipes(recipesData);
+
+        if (!userData && recipesData.length === 0) {
+          setNotFound(true);
+        }
+      } catch (e) {
+        console.error('Error loading profile:', e);
+        // Still try to show the page even if there's an error
+      } finally {
+        setLoading(false);
+      }
     }
-  } catch (e) { }
-  return null;
-}
+    if (uid) load();
+  }, [uid]);
 
-async function getUserRecipes(uid: string): Promise<Recipe[]> {
-  try {
-    const q = query(collection(db, 'recipes'), where('author_uid', '==', uid));
-    const snapshot = await getDocs(q);
-    return snapshot.docs.map(d => ({ id: d.id, ...d.data() } as Recipe));
-  } catch (e) {
-    return [];
-  }
-}
-
-export default async function UserProfilePage({ params }: { params: Promise<{ uid: string, locale: string }> }) {
-  const { uid, locale } = await params;
-  const user = await getUserProfile(uid);
-  const recipes = await getUserRecipes(uid);
-
-  // Determine fallback details if user prof isn't setup
-  const authorName = user?.display_name || (recipes.length > 0 ? recipes[0].author_name : 'Unknown User');
+  // Determine fallback details
+  const authorName = user?.display_name || (recipes.length > 0 ? recipes[0].author_name : isIs ? 'Óþekktur notandi' : 'Unknown User');
   const authorAvatar = user?.avatar_url || (recipes.length > 0 ? recipes[0].author_avatar : undefined);
 
-  if (!user && recipes.length === 0) {
-    notFound();
+  if (loading) {
+    return (
+      <main className="flex-1 w-full bg-(--color-bg-light) min-h-screen flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <Loader2 className="w-12 h-12 animate-spin text-(--color-brand) mx-auto" />
+          <p className="text-muted-foreground animate-pulse">{isIs ? 'Hleð prófíl...' : 'Loading profile...'}</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (notFound) {
+    return (
+      <main className="flex-1 w-full bg-(--color-bg-light) min-h-screen flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <Pizza className="w-16 h-16 text-gray-200 mx-auto" />
+          <h1 className="text-2xl font-bold text-(--color-text-primary)">{isIs ? 'Notandi fannst ekki' : 'User not found'}</h1>
+          <p className="text-muted-foreground">{isIs ? 'Þessi notandi er ekki skráður.' : 'This user does not exist.'}</p>
+        </div>
+      </main>
+    );
   }
 
   return (
@@ -55,23 +91,23 @@ export default async function UserProfilePage({ params }: { params: Promise<{ ui
           
           <p className="text-(--color-text-secondary) mb-8 flex items-center gap-2 justify-center bg-(--color-bg-secondary)/60 px-4 py-1.5 rounded-full backdrop-blur-sm border border-(--color-border)">
              <Calendar className="w-4 h-4 text-ring" /> 
-             {locale === 'is' ? 'Meðlimur síðan' : 'Joined'} {user?.joined_at ? format(user.joined_at.toDate(), 'MMMM yyyy', { locale: locale === 'is' ? is : enUS }) : 'Nýverið'}
+             {isIs ? 'Meðlimur síðan' : 'Joined'} {user?.joined_at ? format(user.joined_at.toDate(), 'MMMM yyyy', { locale: isIs ? is : enUS }) : isIs ? 'Nýverið' : 'Recently'}
           </p>
           
           <div className="flex gap-4 md:gap-12 mt-4 bg-(--color-bg-secondary) border border-(--color-border) rounded-2xl p-6 md:px-12 justify-center w-full shadow-md">
             <div className="flex flex-col items-center">
               <span className="text-3xl font-extrabold text-(--color-brand) flex items-center gap-2"><Pizza className="w-7 h-7" /> {user?.recipes_count || recipes.length}</span>
-              <span className="text-xs md:text-sm text-(--color-text-secondary) uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Uppskriftir' : 'Recipes'}</span>
+              <span className="text-xs md:text-sm text-(--color-text-secondary) uppercase tracking-widest font-bold mt-1.5">{isIs ? 'Uppskriftir' : 'Recipes'}</span>
             </div>
             <div className="w-px bg-gray-200" />
             <div className="flex flex-col items-center">
               <span className="text-3xl font-extrabold text-ring flex items-center gap-2"><Users className="w-7 h-7" /> {user?.followers_count || 0}</span>
-              <span className="text-xs md:text-sm text-(--color-text-secondary) uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Fylgjendur' : 'Followers'}</span>
+              <span className="text-xs md:text-sm text-(--color-text-secondary) uppercase tracking-widest font-bold mt-1.5">{isIs ? 'Fylgjendur' : 'Followers'}</span>
             </div>
           </div>
           
           <div className="mt-10 flex gap-4">
-             <FollowButton targetUid={uid} locale={locale as 'is' | 'en'} />
+             <FollowButton targetUid={uid} locale={locale} />
           </div>
         </div>
       </div>
@@ -80,14 +116,14 @@ export default async function UserProfilePage({ params }: { params: Promise<{ ui
       <div className="container mx-auto px-4 pb-24">
         <h2 className="text-3xl font-bold text-(--color-text-primary) mb-10 flex items-center gap-3">
           <ChefHat className="w-8 h-8 text-(--color-green)" />
-          {locale === 'is' ? `Uppskriftir eftir ${authorName.split(' ')[0]}` : `Recipes by ${authorName.split(' ')[0]}`}
+          {isIs ? `Uppskriftir eftir ${authorName.split(' ')[0]}` : `Recipes by ${authorName.split(' ')[0]}`}
         </h2>
         {recipes.length > 0 ? (
-          <RecipeGrid recipes={recipes} locale={locale as 'is' | 'en'} />
+          <RecipeGrid recipes={recipes} locale={locale} />
         ) : (
           <div className="text-center py-20 bg-(--color-bg-secondary) rounded-2xl border border-dashed border-(--color-border)">
              <Pizza className="w-16 h-16 text-gray-200 mx-auto mb-4" />
-             <p className="text-xl text-(--color-text-secondary) font-medium">{locale === 'is' ? 'Engar uppskriftir birtar enn.' : 'No recipes published yet.'}</p>
+             <p className="text-xl text-(--color-text-secondary) font-medium">{isIs ? 'Engar uppskriftir birtar enn.' : 'No recipes published yet.'}</p>
           </div>
         )}
       </div>
