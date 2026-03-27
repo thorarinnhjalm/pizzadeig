@@ -10,13 +10,6 @@ import { mockRecipes } from '@/lib/mockData';
 import { NewsletterForm } from '@/components/layout/NewsletterForm';
 
 async function getPopularRecipes(): Promise<Recipe[]> {
-  try {
-    const q = query(collection(db, 'recipes'), orderBy('rating_avg', 'desc'), limit(3));
-    const snapshot = await getDocs(q);
-    if (!snapshot.empty) return snapshot.docs.map(d => ({ id: d.id, ...d.data() } as Recipe));
-  } catch {
-    console.warn('Firebase offline fallback active');
-  }
   return mockRecipes.slice(0, 3);
 }
 

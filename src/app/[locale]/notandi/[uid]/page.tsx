@@ -12,23 +12,11 @@ import { Users, Pizza, Calendar, ChefHat } from 'lucide-react';
 import { FollowButton } from '@/components/community/FollowButton';
 
 async function getUserProfile(uid: string): Promise<UserProfile | null> {
-  try {
-    const userDoc = await getDoc(doc(db, 'users', uid));
-    if (userDoc.exists()) {
-      return { uid: userDoc.id, ...userDoc.data() } as UserProfile;
-    }
-  } catch (e) { }
   return null;
 }
 
 async function getUserRecipes(uid: string): Promise<Recipe[]> {
-  try {
-    const q = query(collection(db, 'recipes'), where('author_uid', '==', uid));
-    const snapshot = await getDocs(q);
-    return snapshot.docs.map(d => ({ id: d.id, ...d.data() } as Recipe));
-  } catch (e) {
-    return [];
-  }
+  return [];
 }
 
 export default async function UserProfilePage({ params }: { params: Promise<{ uid: string, locale: string }> }) {

@@ -10,20 +10,12 @@ import { ReviewList } from '@/components/community/ReviewList';
 import { ReviewForm } from '@/components/community/ReviewForm';
 import { Clock, Flame, Users, ChefHat, Star } from 'lucide-react';
 
+import { mockRecipes } from '@/lib/mockData';
+
 async function getRecipe(slug: string): Promise<Recipe | null> {
-  try {
-    const q = query(
-      collection(db, 'recipes'),
-      where('slug', '==', slug),
-      limit(1)
-    );
-    const snapshot = await getDocs(q);
-    if (snapshot.empty) return null;
-    return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as Recipe;
-  } catch (error) {
-    console.error('Error fetching recipe:', error);
-    return null;
-  }
+  // Use mockData temporarily to prevent Next.js build hangs
+  const recipe = mockRecipes.find(r => r.slug === slug);
+  return recipe || null;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, locale: string }> }) {
