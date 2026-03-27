@@ -2,16 +2,16 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { mockRecipes } from '@/lib/mockData';
-import { RecipeType } from '@/types/recipe';
 import { Clock, BarChart3 } from 'lucide-react';
 
-const validTypes: Record<string, { label_is: string; label_en: string; description_is: string; description_en: string; emoji: string }> = {
+const validCategories: Record<string, { label_is: string; label_en: string; description_is: string; description_en: string; emoji: string; category: string }> = {
   deig: {
     label_is: 'Deig',
     label_en: 'Dough',
     description_is: 'Allt um pizzudeig — frá klassísku napólísku deigjunum til súrdeigs og alls þar á milli.',
     description_en: 'Everything about pizza dough — from classic Neapolitan to sourdough and everything in between.',
     emoji: '🫓',
+    category: 'deig',
   },
   sosur: {
     label_is: 'Sósur',
@@ -19,6 +19,7 @@ const validTypes: Record<string, { label_is: string; label_en: string; descripti
     description_is: 'Pizzusósur sem breyta öllu. San Marzano tómatssósa, hvítlauksolía, pesto og fleira.',
     description_en: 'Pizza sauces that change everything. San Marzano tomato sauce, garlic oil, pesto, and more.',
     emoji: '🍅',
+    category: 'sosur',
   },
   ostur: {
     label_is: 'Ostur',
@@ -26,14 +27,8 @@ const validTypes: Record<string, { label_is: string; label_en: string; descripti
     description_is: 'Besti pizzuosturinn — frá mozzarella di bufala til pecorino romano og gorgonzola.',
     description_en: 'The best pizza cheese — from mozzarella di bufala to pecorino romano and gorgonzola.',
     emoji: '🧀',
+    category: 'ostur',
   },
-};
-
-// Map URL slugs to RecipeType values
-const slugToType: Record<string, RecipeType> = {
-  deig: 'deig',
-  sosur: 'sosa', // URL slug is "sosur" but type is "sosa"
-  ostur: 'ostur',
 };
 
 function getDifficultyLabel(d: string, isIs: boolean) {
@@ -54,11 +49,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
   const { locale, type: slug } = await params;
   const isIs = locale === 'is';
 
-  const categoryMeta = validTypes[slug];
+  const categoryMeta = validCategories[slug];
   if (!categoryMeta) notFound();
 
-  const recipeType = slugToType[slug];
-  const recipes = mockRecipes.filter(r => r.type === recipeType && r.published);
+  // Filter by the `category` field (not `type` — all recipes have type='heildar')
+  const recipes = mockRecipes.filter(r => r.category === categoryMeta.category && r.published);
 
   return (
     <main className="flex-1 w-full bg-background min-h-screen pb-20">

@@ -20,7 +20,7 @@ export default async function SkilmalarPage({ params }: { params: Promise<{ loca
         </div>
       </div>
 
-      <div className="container mx-auto px-4 max-w-3xl mt-12 prose prose-lg max-w-none text-(--color-text-secondary)">
+      <div className="container mx-auto px-4 max-w-3xl mt-12 prose prose-lg text-(--color-text-secondary)">
         <h2 className="text-xl font-bold text-(--color-text-primary)">{isIs ? '1. Almennir skilmálar' : '1. General Terms'}</h2>
         <p>
           {isIs
