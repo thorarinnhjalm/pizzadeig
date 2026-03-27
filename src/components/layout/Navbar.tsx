@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Link, usePathname } from '@/i18n/routing';
+import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ShoppingCart, Menu, X, User } from 'lucide-react';
@@ -26,7 +27,8 @@ export function Navbar() {
       <header className="sticky top-0 z-50 bg-[var(--color-bg-primary)]/95 backdrop-blur-sm border-b border-[var(--color-border-light)]">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="shrink-0">
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Image src="/icons/icon-192.png" alt="Pizzadeig Logo" width={32} height={32} className="w-8 h-8 rounded-full shadow-sm" />
             <span className="font-display text-2xl font-bold text-[var(--color-brand)]">Pizzadeig.is</span>
           </Link>
 
