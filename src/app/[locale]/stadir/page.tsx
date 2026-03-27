@@ -7,16 +7,6 @@ import { Search, MapPin, Star, ChefHat, Clock, DollarSign } from 'lucide-react';
 import { mockRestaurants } from '@/lib/mockData';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
-
-const Map = dynamic(() => import('@/components/restaurants/Map').then(m => m.Map), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full bg-(--color-bg-secondary) flex items-center justify-center rounded-2xl border border-(--color-border)">
-      <span className="text-4xl">🗺️</span>
-    </div>
-  ),
-});
 
 export default function RestaurantsPage() {
   const locale = useLocale() as 'is' | 'en';
@@ -105,109 +95,95 @@ export default function RestaurantsPage() {
         </div>
       </div>
 
-      {/* Main content */}
+      {/* Restaurant grid */}
       <div className="container mx-auto px-4 max-w-6xl py-10">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Map — only takes space if API key is set */}
-          <div className="hidden lg:block lg:w-[45%] lg:min-h-[500px] lg:sticky lg:top-4 rounded-2xl overflow-hidden">
-            <Map restaurants={filtered} />
-          </div>
+        <p className="text-sm text-(--color-text-secondary) mb-6 font-medium">
+          {filtered.length} {isIs ? 'staðir fundust' : 'places found'}
+        </p>
 
-          {/* Restaurant list */}
-          <div className="flex-1">
-          <p className="text-sm text-(--color-text-secondary) mb-6 font-medium">
-            {filtered.length} {isIs ? 'staðir fundust' : 'places found'}
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filtered.map(restaurant => (
+            <Link
+              href={`/stadir/${restaurant.slug || restaurant.id}`}
+              key={restaurant.id}
+              className="block bg-white rounded-2xl border border-(--color-border) overflow-hidden hover:shadow-lg transition-all duration-300 group"
+            >
+              {/* Image */}
+              {restaurant.image_urls?.[0] && (
+                <div className="h-48 relative overflow-hidden">
+                  <Image
+                    src={restaurant.image_urls[0]}
+                    alt={restaurant.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  {restaurant.is_verified && (
+                    <span className="absolute top-3 left-3 bg-green-500 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded-full tracking-wider flex items-center gap-1">
+                      <ChefHat className="w-3 h-3" /> {isIs ? 'Staðfest' : 'Verified'}
+                    </span>
+                  )}
+                </div>
+              )}
 
-          <div className="space-y-6">
-            {filtered.map(restaurant => (
-              <Link
-                href={`/stadir/${restaurant.slug || restaurant.id}`}
-                key={restaurant.id}
-                className="block bg-white rounded-2xl border border-(--color-border) overflow-hidden hover:shadow-lg transition-all duration-300 group"
-              >
-                <div className="flex flex-col sm:flex-row">
-                  {/* Image */}
-                  {restaurant.image_urls?.[0] && (
-                    <div className="sm:w-48 h-48 sm:h-auto relative overflow-hidden shrink-0">
-                      <Image
-                        src={restaurant.image_urls[0]}
-                        alt={restaurant.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      {restaurant.is_verified && (
-                        <span className="absolute top-3 left-3 bg-green-500 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded-full tracking-wider flex items-center gap-1">
-                          <ChefHat className="w-3 h-3" /> {isIs ? 'Staðfest' : 'Verified'}
-                        </span>
-                      )}
+              {/* Details */}
+              <div className="p-5">
+                <div className="flex items-start justify-between mb-1">
+                  <h3 className="font-display text-xl font-bold text-(--color-text-primary) group-hover:text-(--color-brand) transition-colors">
+                    {restaurant.name}
+                  </h3>
+                  {(restaurant.rating_google ?? 0) > 0 && (
+                    <div className="flex items-center gap-1 bg-amber-50 text-amber-700 px-2 py-0.5 rounded-lg text-sm font-bold shrink-0 ml-2">
+                      <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      {restaurant.rating_google?.toFixed(1)}
                     </div>
                   )}
-
-                  {/* Details */}
-                  <div className="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-start justify-between mb-1">
-                        <h3 className="font-display text-xl font-bold text-(--color-text-primary) group-hover:text-(--color-brand) transition-colors">
-                          {restaurant.name}
-                        </h3>
-                        {(restaurant.rating_google ?? 0) > 0 && (
-                          <div className="flex items-center gap-1 bg-amber-50 text-amber-700 px-2 py-0.5 rounded-lg text-sm font-bold shrink-0 ml-2">
-                            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                            {restaurant.rating_google?.toFixed(1)}
-                          </div>
-                        )}
-                      </div>
-                      <p className="text-sm text-(--color-text-secondary) flex items-center gap-1.5 mb-3">
-                        <MapPin className="w-3.5 h-3.5" />
-                        {restaurant.city} · {priceLabel(restaurant.price_level || 2)}
-                      </p>
-                    </div>
-
-                    {/* Features & tags */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {restaurant.features?.slice(0, 4).map(f => (
-                        <span key={f} className="px-2.5 py-0.5 bg-(--color-bg-secondary) text-(--color-text-secondary) text-xs rounded-full border border-(--color-border-light)">
-                          {f}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Opening hours preview */}
-                    {restaurant.opening_hours && (
-                      <div className="mt-3 pt-3 border-t border-(--color-border-light) flex items-center gap-1.5 text-xs text-(--color-text-secondary)">
-                        <Clock className="w-3.5 h-3.5" />
-                        {isIs ? 'Opið í dag: ' : 'Open today: '}
-                        {(() => {
-                          const days = ['sun', 'mán', 'þri', 'mið', 'fim', 'fös', 'lau'];
-                          const today = days[new Date().getDay()];
-                          const hours = restaurant.opening_hours as Record<string, string>;
-                          return hours[today] || (isIs ? 'Lokað' : 'Closed');
-                        })()}
-                      </div>
-                    )}
-                  </div>
                 </div>
-              </Link>
-            ))}
-
-            {filtered.length === 0 && (
-              <div className="text-center py-20">
-                <span className="text-5xl block mb-4">🔍</span>
-                <p className="text-xl text-(--color-text-secondary) font-medium">
-                  {isIs ? 'Engir staðir fundust.' : 'No places found.'}
+                <p className="text-sm text-(--color-text-secondary) flex items-center gap-1.5 mb-3">
+                  <MapPin className="w-3.5 h-3.5" />
+                  {restaurant.city} · {priceLabel(restaurant.price_level || 2)}
                 </p>
-                <button
-                  onClick={() => { setSearchQuery(''); setSelectedCity(null); }}
-                  className="mt-4 text-(--color-brand) font-semibold hover:underline"
-                >
-                  {isIs ? 'Hreinsa leit' : 'Clear search'}
-                </button>
+
+                {/* Features */}
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {restaurant.features?.slice(0, 3).map(f => (
+                    <span key={f} className="px-2.5 py-0.5 bg-(--color-bg-secondary) text-(--color-text-secondary) text-xs rounded-full border border-(--color-border-light)">
+                      {f}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Opening hours */}
+                {restaurant.opening_hours && (
+                  <div className="pt-3 border-t border-(--color-border-light) flex items-center gap-1.5 text-xs text-(--color-text-secondary)">
+                    <Clock className="w-3.5 h-3.5" />
+                    {isIs ? 'Opið í dag: ' : 'Open today: '}
+                    {(() => {
+                      const days = ['sun', 'mán', 'þri', 'mið', 'fim', 'fös', 'lau'];
+                      const today = days[new Date().getDay()];
+                      const hours = restaurant.opening_hours as Record<string, string>;
+                      return hours[today] || (isIs ? 'Lokað' : 'Closed');
+                    })()}
+                  </div>
+                )}
               </div>
-            )}
+            </Link>
+          ))}
+        </div>
+
+        {filtered.length === 0 && (
+          <div className="text-center py-20">
+            <span className="text-5xl block mb-4">🔍</span>
+            <p className="text-xl text-(--color-text-secondary) font-medium">
+              {isIs ? 'Engir staðir fundust.' : 'No places found.'}
+            </p>
+            <button
+              onClick={() => { setSearchQuery(''); setSelectedCity(null); }}
+              className="mt-4 text-(--color-brand) font-semibold hover:underline"
+            >
+              {isIs ? 'Hreinsa leit' : 'Clear search'}
+            </button>
           </div>
-        </div>
-        </div>
+        )}
       </div>
     </main>
   );
