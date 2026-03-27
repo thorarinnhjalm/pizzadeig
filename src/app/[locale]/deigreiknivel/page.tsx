@@ -113,8 +113,8 @@ export default function DeigreiknivelPage() {
                 </div>
 
                 {/* Weight */}
-                <div>
-                  <label className="text-sm font-bold text-(--color-text-secondary) uppercase tracking-wider mb-3 block flex justify-between">
+                <div className="flex flex-col justify-center">
+                  <label className="text-sm font-bold text-(--color-text-secondary) uppercase tracking-wider mb-3 flex items-center justify-between">
                     <span>{isIs ? 'Þyngd pr. botn' : 'Weight per pizza'}</span>
                     <span className="text-(--color-brand)">{weight}g</span>
                   </label>
@@ -123,12 +123,12 @@ export default function DeigreiknivelPage() {
                     min="150" max="400" step="10" 
                     value={weight} 
                     onChange={e => setWeight(Number(e.target.value))}
-                    className="w-full accent-(--color-brand) h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mt-4"
+                    className="w-full accent-(--color-brand) h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mt-2"
                   />
-                  <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                    <span>150g (Pan)</span>
-                    <span>250g (Napoli)</span>
-                    <span>400g (NY)</span>
+                  <div className="flex justify-between text-xs text-muted-foreground mt-3 px-1">
+                    <span>150g</span>
+                    <span>250g</span>
+                    <span>400g</span>
                   </div>
                 </div>
               </div>
@@ -144,8 +144,8 @@ export default function DeigreiknivelPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 {/* Time */}
-                <div>
-                  <label className="text-sm font-bold text-(--color-text-secondary) uppercase tracking-wider mb-3 block flex justify-between">
+                <div className="flex flex-col justify-center">
+                  <label className="text-sm font-bold text-(--color-text-secondary) uppercase tracking-wider mb-3 flex items-center justify-between">
                     <span>{isIs ? 'Tímalengd' : 'Duration'}</span>
                     <span className="text-indigo-600 font-bold bg-indigo-50 px-2 py-0.5 rounded">{fermentHours} klst</span>
                   </label>
@@ -154,9 +154,9 @@ export default function DeigreiknivelPage() {
                     min="2" max="72" step="1" 
                     value={fermentHours} 
                     onChange={e => setFermentHours(Number(e.target.value))}
-                    className="w-full accent-indigo-500 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mt-4"
+                    className="w-full accent-indigo-500 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mt-2"
                   />
-                  <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                  <div className="flex justify-between text-xs text-muted-foreground mt-3 px-1">
                     <span>2h</span>
                     <span>24h</span>
                     <span>72h</span>
@@ -168,17 +168,17 @@ export default function DeigreiknivelPage() {
                   <label className="text-sm font-bold text-(--color-text-secondary) uppercase tracking-wider mb-3 block">
                     {isIs ? 'Hitastig (Umhverfi)' : 'Temperature'}
                   </label>
-                  <div className="flex bg-(--color-bg-secondary) p-1.5 rounded-xl border border-(--color-border-light)">
+                  <div className="flex flex-col sm:flex-row bg-(--color-bg-secondary) p-1.5 rounded-xl border border-(--color-border-light) gap-1 sm:gap-2">
                     <button 
                       onClick={() => setIsFridge(false)}
-                      className={`flex-1 flex justify-center items-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-colors ${!isFridge ? 'bg-white shadow-sm text-(--color-brand)' : 'text-(--color-text-secondary) hover:bg-white/50'}`}
+                      className={`flex-1 flex justify-center items-center gap-2 py-3 sm:py-2.5 rounded-lg text-[13px] sm:text-sm font-bold transition-colors ${!isFridge ? 'bg-white shadow-sm text-(--color-brand)' : 'text-(--color-text-secondary) hover:bg-white/50'}`}
                     >
                       <Thermometer className="w-4 h-4" />
-                      {isIs ? 'Herbergishiti (21°)' : 'Room Temp.'}
+                      {isIs ? 'Herbergi (21°)' : 'Room Temp'}
                     </button>
                     <button 
                       onClick={() => setIsFridge(true)}
-                      className={`flex-1 flex justify-center items-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-colors ${isFridge ? 'bg-white shadow-sm text-blue-500' : 'text-(--color-text-secondary) hover:bg-white/50'}`}
+                      className={`flex-1 flex justify-center items-center gap-2 py-3 sm:py-2.5 rounded-lg text-[13px] sm:text-sm font-bold transition-colors ${isFridge ? 'bg-white shadow-sm text-blue-500' : 'text-(--color-text-secondary) hover:bg-white/50'}`}
                     >
                       <Thermometer className="w-4 h-4" />
                       {isIs ? 'Ísskápur (4°)' : 'Fridge'}
