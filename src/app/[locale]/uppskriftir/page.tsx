@@ -26,13 +26,13 @@ export default function RecipesPage() {
     : recipes;
 
   return (
-    <main className="flex-1 w-full bg-[var(--color-bg-primary)] min-h-screen">
+    <main className="flex-1 w-full bg-background min-h-screen">
       {/* Hero header */}
       <section className="pt-16 pb-8 text-center">
-        <h1 className="font-display italic text-5xl md:text-7xl font-bold text-[var(--color-brand)] mb-4">
+        <h1 className="font-display italic text-5xl md:text-7xl font-bold text-(--color-brand) mb-4">
           Uppskriftasafn
         </h1>
-        <p className="text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto leading-relaxed">
+        <p className="text-lg text-(--color-text-secondary) max-w-xl mx-auto leading-relaxed">
           {isIs
             ? 'Uppgötvaðu leyndarmálið á bak við fullkomna ítölsku pizzu. Frá hinu fullkomna súrdeigi yfir í bragðgóðar sósur.'
             : 'Discover the secrets behind perfect Italian pizza. From sourdough to flavorful sauces.'}
@@ -48,8 +48,8 @@ export default function RecipesPage() {
               onClick={() => setSelected(cat.key)}
               className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
                 selected === cat.key
-                  ? 'bg-[var(--color-brand)] text-white shadow-md'
-                  : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]'
+                  ? 'bg-(--color-brand) text-white shadow-md'
+                  : 'bg-(--color-bg-secondary) text-(--color-text-secondary) border border-(--color-border) hover:border-(--color-brand) hover:text-(--color-brand)'
               }`}
             >
               {isIs ? cat.label_is : cat.label_en}
@@ -62,8 +62,8 @@ export default function RecipesPage() {
       <section className="container mx-auto px-4 pb-24">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-32 space-y-4">
-            <Loader2 className="w-12 h-12 animate-spin text-[var(--color-brand)]" />
-            <p className="text-[var(--color-text-tertiary)] animate-pulse">
+            <Loader2 className="w-12 h-12 animate-spin text-(--color-brand)" />
+            <p className="text-muted-foreground animate-pulse">
               {isIs ? 'Sæki uppskriftir...' : 'Loading recipes...'}
             </p>
           </div>

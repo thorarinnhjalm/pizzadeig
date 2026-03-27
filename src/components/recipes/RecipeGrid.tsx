@@ -9,7 +9,7 @@ interface RecipeGridProps {
 export function RecipeGrid({ recipes, locale }: RecipeGridProps) {
   if (!recipes?.length) {
     return (
-      <div className="w-full py-12 text-center text-[var(--color-text-tertiary)]">
+      <div className="w-full py-12 text-center text-muted-foreground">
         <p>{locale === 'is' ? 'Engar uppskriftir fundust.' : 'No recipes found.'}</p>
       </div>
     );

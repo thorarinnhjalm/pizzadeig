@@ -15,12 +15,12 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-[var(--color-bg-primary)] flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       <div className="absolute inset-0 bg-wood opacity-40 mix-blend-overlay pointer-events-none" />
-      <div className="relative z-10 text-center max-w-lg bg-[var(--color-bg-secondary)] p-12 rounded-3xl border border-[var(--color-border)] shadow-2xl">
-        <h1 className="font-display font-bold text-6xl text-[var(--color-brand)] mb-6">Úbbs!</h1>
-        <h2 className="font-chalk text-3xl text-[var(--color-gold)] mb-6">Deigið féll</h2>
-        <p className="font-body text-[var(--color-text-secondary)] mb-8 text-lg">
+      <div className="relative z-10 text-center max-w-lg bg-(--color-bg-secondary) p-12 rounded-3xl border border-(--color-border) shadow-2xl">
+        <h1 className="font-display font-bold text-6xl text-(--color-brand) mb-6">Úbbs!</h1>
+        <h2 className="font-chalk text-3xl text-ring mb-6">Deigið féll</h2>
+        <p className="font-body text-(--color-text-secondary) mb-8 text-lg">
           Eitthvað fór úrskeiðis við baksturinn á þessari síðu. Við erum strax byrjuð að hnoða nýtt deig.
         </p>
         <div className="flex gap-4 justify-center">

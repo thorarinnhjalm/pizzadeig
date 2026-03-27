@@ -22,18 +22,18 @@ export function MenuSection({ items, locale }: { items: MenuItem[], locale: 'is'
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
             {items.map(item => (
               <div key={item.id} className="flex justify-between items-start group relative">
-                <div className="flex-1 pr-6 z-10 bg-[var(--color-bg-secondary)] shadow-[8px_0_12px_rgba(255,255,255,1)]">
-                  <h4 className="font-bold text-[var(--color-text-primary)] text-xl group-hover:text-[var(--color-brand)] transition-colors">
+                <div className="flex-1 pr-6 z-10 bg-(--color-bg-secondary) shadow-[8px_0_12px_rgba(255,255,255,1)]">
+                  <h4 className="font-bold text-(--color-text-primary) text-xl group-hover:text-(--color-brand) transition-colors">
                     {locale === 'is' ? item.name_is : item.name_en}
                   </h4>
                   {(item.description_is || item.description_en) && (
-                     <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed mt-2 text-justify">
+                     <p className="text-(--color-text-secondary) text-sm leading-relaxed mt-2 text-justify">
                        {locale === 'is' ? item.description_is : item.description_en}
                      </p>
                   )}
                 </div>
                 <div className="w-full h-px bg-gray-200 absolute top-3.5 -z-0"></div>
-                <div className="font-extrabold text-[var(--color-text-primary)] text-lg bg-[#F8FAFC] px-4 py-1.5 rounded-xl border-2 border-gray-100 shadow-sm whitespace-nowrap z-10 group-hover:bg-[var(--color-brand)] group-hover:text-white group-hover:border-[var(--color-brand)] transition-all">
+                <div className="font-extrabold text-(--color-text-primary) text-lg bg-[#F8FAFC] px-4 py-1.5 rounded-xl border-2 border-gray-100 shadow-sm whitespace-nowrap z-10 group-hover:bg-(--color-brand) group-hover:text-white group-hover:border-(--color-brand) transition-all">
                   {formatIsk(item.price)}
                 </div>
               </div>

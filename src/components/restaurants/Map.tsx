@@ -20,15 +20,15 @@ export function Map({ restaurants, focusedRestaurantId, onMarkerClick }: Props) 
 
   if (!apiKey) {
     return (
-      <div className="w-full h-full bg-[var(--color-bg-secondary)] flex flex-col items-center justify-center text-center p-8 border border-[var(--color-border)] rounded-2xl shadow-sm relative overflow-hidden">
+      <div className="w-full h-full bg-(--color-bg-secondary) flex flex-col items-center justify-center text-center p-8 border border-(--color-border) rounded-2xl shadow-sm relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=64.1466,-21.9426&zoom=13&size=800x800&key=INVALID')] opacity-10 bg-cover bg-center" />
-        <div className="relative z-10 bg-[var(--color-bg-secondary)]/80 p-6 rounded-xl backdrop-blur-sm border border-gray-100 shadow-sm max-w-sm">
+        <div className="relative z-10 bg-(--color-bg-secondary)/80 p-6 rounded-xl backdrop-blur-sm border border-gray-100 shadow-sm max-w-sm">
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-dashed border-gray-300">
             <span className="text-2xl">🗺️</span>
           </div>
-          <p className="text-[var(--color-text-primary)] font-bold text-lg mb-2">Kort vantar API Lykil</p>
-          <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-            Til þess að sýna kortið þarf að setja inn <code className="bg-gray-100 px-1 py-0.5 rounded text-[var(--color-brand)]">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> í <code className="bg-gray-100 px-1 py-0.5 rounded text-[var(--color-brand)]">.env.local</code>.
+          <p className="text-(--color-text-primary) font-bold text-lg mb-2">Kort vantar API Lykil</p>
+          <p className="text-sm text-(--color-text-secondary) leading-relaxed">
+            Til þess að sýna kortið þarf að setja inn <code className="bg-gray-100 px-1 py-0.5 rounded text-(--color-brand)">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> í <code className="bg-gray-100 px-1 py-0.5 rounded text-(--color-brand)">.env.local</code>.
           </p>
         </div>
       </div>
@@ -36,7 +36,7 @@ export function Map({ restaurants, focusedRestaurantId, onMarkerClick }: Props) 
   }
 
   return (
-    <div className="w-full h-full rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-sm bg-gray-100">
+    <div className="w-full h-full rounded-2xl overflow-hidden border border-(--color-border) shadow-sm bg-gray-100">
       <APIProvider apiKey={apiKey}>
         <GoogleMap
           defaultCenter={center}

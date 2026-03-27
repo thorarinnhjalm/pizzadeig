@@ -28,13 +28,13 @@ export function RatingStars({ rating, max = 5, size = 20, onChange, readonly = f
             onClick={() => !readonly && onChange?.(starValue)}
             onMouseEnter={() => !readonly && setHoverRating(starValue)}
             onMouseLeave={() => !readonly && setHoverRating(null)}
-            className={`transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--pizza-red)] rounded-full ${
+            className={`transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-(--pizza-red) rounded-full ${
               readonly ? 'cursor-default' : 'cursor-pointer hover:scale-125'
             }`}
             aria-label={`${starValue} stjörnur`}
           >
             <Star
-              className={`${isActive ? 'text-[var(--pizza-gold)] fill-[var(--pizza-gold)]' : 'text-gray-200 fill-gray-100'} transition-all`}
+              className={`${isActive ? 'text-(--pizza-gold) fill-(--pizza-gold)' : 'text-gray-200 fill-gray-100'} transition-all`}
               style={{ width: size, height: size }}
             />
           </button>

@@ -83,13 +83,13 @@ export function UserGallery({ recipeId, locale }: Props) {
   };
 
   return (
-    <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-2xl p-6 md:p-8 mb-12 shadow-md">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 border-b border-[var(--color-border-light)] pb-6">
+    <div className="bg-(--color-bg-secondary) border border-(--color-border) rounded-2xl p-6 md:p-8 mb-12 shadow-md">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 border-b border-(--color-border-light) pb-6">
         <div>
-           <h3 className="font-display font-bold text-3xl text-[var(--color-text-primary)]">
+           <h3 className="font-display font-bold text-3xl text-(--color-text-primary)">
              {locale === 'is' ? 'Ég gerði þessa pizzu 📸' : 'I made this! 📸'}
            </h3>
-           <p className="text-[var(--color-text-secondary)] mt-1 font-body">
+           <p className="text-(--color-text-secondary) mt-1 font-body">
              {locale === 'is' ? 'Deildu afrakstrinum með samfélaginu.' : 'Share the result with the community.'}
            </p>
         </div>
@@ -114,10 +114,10 @@ export function UserGallery({ recipeId, locale }: Props) {
       
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {photos.length === 0 ? (
-          <div className="aspect-square relative rounded-xl overflow-hidden bg-[var(--color-bg-tertiary)] border border-dashed border-[var(--color-border-light)] group cursor-pointer hover:bg-[var(--color-bg-warm)] transition-colors flex flex-col items-center justify-center"
+          <div className="aspect-square relative rounded-xl overflow-hidden bg-(--color-bg-tertiary) border border-dashed border-(--color-border-light) group cursor-pointer hover:bg-(--color-bg-warm) transition-colors flex flex-col items-center justify-center"
                onClick={() => user && fileInputRef.current?.click()}>
-             <Camera className="w-8 h-8 text-[var(--color-text-tertiary)] mb-2" />
-             <span className="font-bold text-sm text-[var(--color-text-tertiary)] px-4 text-center">
+             <Camera className="w-8 h-8 text-muted-foreground mb-2" />
+             <span className="font-bold text-sm text-muted-foreground px-4 text-center">
                {locale === 'is' ? 'Vertu fyrstur!' : 'Be the first!'}
              </span>
           </div>
@@ -125,7 +125,7 @@ export function UserGallery({ recipeId, locale }: Props) {
           photos.map((photo) => (
             <div 
               key={photo.id} 
-              className="aspect-square relative rounded-xl overflow-hidden cursor-pointer group border border-[var(--color-border-light)]"
+              className="aspect-square relative rounded-xl overflow-hidden cursor-pointer group border border-(--color-border-light)"
               onClick={() => setSelectedPhoto(photo)}
             >
               <Image
@@ -135,7 +135,7 @@ export function UserGallery({ recipeId, locale }: Props) {
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
-              <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-0 left-0 right-0 p-2 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                 <p className="text-white text-xs font-bold truncate">{photo.user_name}</p>
               </div>
             </div>
@@ -146,7 +146,7 @@ export function UserGallery({ recipeId, locale }: Props) {
       {/* Lightbox */}
       {selectedPhoto && (
         <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onClick={() => setSelectedPhoto(null)}>
-          <button className="absolute top-6 right-6 text-white hover:text-[var(--color-brand)] z-10" onClick={() => setSelectedPhoto(null)}>
+          <button className="absolute top-6 right-6 text-white hover:text-(--color-brand) z-10" onClick={() => setSelectedPhoto(null)}>
             <X className="w-8 h-8" />
           </button>
           <div className="relative max-w-3xl max-h-[80vh] w-full h-full" onClick={e => e.stopPropagation()}>

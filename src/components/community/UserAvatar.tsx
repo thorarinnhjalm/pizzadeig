@@ -13,7 +13,7 @@ export function UserAvatar({ url, name, className = "w-10 h-10" }: Props) {
   return (
     <Avatar className={className}>
       <AvatarImage src={url} alt={name} />
-      <AvatarFallback className="bg-[var(--color-brand)]/10 text-[var(--color-brand)] border border-[var(--color-brand)]/20 font-bold shadow-sm">
+      <AvatarFallback className="bg-(--color-brand)/10 text-(--color-brand) border border-(--color-brand)/20 font-bold shadow-sm">
         {!url ? <ChefHat className="w-1/2 h-1/2" /> : initials}
       </AvatarFallback>
     </Avatar>

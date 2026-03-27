@@ -28,13 +28,13 @@ export function RatingPizzas({ rating, max = 5, size = 20, onChange, readonly = 
             onClick={() => !readonly && onChange?.(starValue)}
             onMouseEnter={() => !readonly && setHoverRating(starValue)}
             onMouseLeave={() => !readonly && setHoverRating(null)}
-            className={`transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-brand)] rounded-full ${
+            className={`transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-(--color-brand) rounded-full ${
               readonly ? 'cursor-default' : 'cursor-pointer hover:scale-125'
             }`}
             aria-label={`${starValue} pizzur`}
           >
             <Pizza
-              className={`${isActive ? 'text-[var(--color-brand)] fill-[var(--color-brand)]' : 'text-gray-300 fill-transparent'} transition-all`}
+              className={`${isActive ? 'text-(--color-brand) fill-(--color-brand)' : 'text-gray-300 fill-transparent'} transition-all`}
               style={{ width: size, height: size }}
             />
           </button>

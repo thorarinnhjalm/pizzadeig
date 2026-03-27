@@ -82,25 +82,25 @@ export function NotificationsDropdown({ locale }: Props) {
     <div className="relative" ref={dropdownRef}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 relative text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors rounded-full hover:bg-[var(--color-bg-tertiary)] cursor-pointer"
+        className="p-2 relative text-(--color-text-secondary) hover:text-(--color-brand) transition-colors rounded-full hover:bg-(--color-bg-tertiary) cursor-pointer"
         aria-label={locale === 'is' ? 'Tilkynningar' : 'Notifications'}
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
-          <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-[var(--color-brand)] rounded-full text-[10px] font-bold text-white flex items-center justify-center border-2 border-[var(--color-bg-primary)] animate-pulse">
+          <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-(--color-brand) rounded-full text-[10px] font-bold text-white flex items-center justify-center border-2 border-(--color-bg-primary) animate-pulse">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 bg-[var(--color-bg-primary)] border border-[var(--color-border-light)] rounded-xl shadow-xl z-50 overflow-hidden">
-          <div className="p-4 border-b border-[var(--color-border-light)] bg-[var(--color-bg-secondary)] flex justify-between items-center">
-            <h3 className="font-bold font-display text-[var(--color-text-primary)]">{locale === 'is' ? 'Tilkynningar' : 'Notifications'}</h3>
+        <div className="absolute right-0 mt-2 w-80 bg-background border border-(--color-border-light) rounded-xl shadow-xl z-50 overflow-hidden">
+          <div className="p-4 border-b border-(--color-border-light) bg-(--color-bg-secondary) flex justify-between items-center">
+            <h3 className="font-bold font-display text-(--color-text-primary)">{locale === 'is' ? 'Tilkynningar' : 'Notifications'}</h3>
             {unreadCount > 0 && (
               <button 
                 onClick={markAllRead}
-                className="text-[10px] uppercase font-bold text-[var(--color-text-tertiary)] cursor-pointer hover:text-[var(--color-brand)] transition-colors"
+                className="text-[10px] uppercase font-bold text-muted-foreground cursor-pointer hover:text-(--color-brand) transition-colors"
               >
                 {locale === 'is' ? 'Lesa allt' : 'Mark all read'}
               </button>
@@ -108,7 +108,7 @@ export function NotificationsDropdown({ locale }: Props) {
           </div>
           <div className="max-h-96 overflow-y-auto">
             {notifications.length === 0 ? (
-              <div className="p-8 text-center text-[var(--color-text-tertiary)] text-sm">
+              <div className="p-8 text-center text-muted-foreground text-sm">
                 {locale === 'is' ? 'Engar tilkynningar' : 'No notifications'}
               </div>
             ) : (
@@ -125,13 +125,13 @@ export function NotificationsDropdown({ locale }: Props) {
                       markAsRead(notif.id);
                       if (notif.link) window.location.href = notif.link;
                     }}
-                    className={`p-4 border-b border-[var(--color-border-light)] hover:bg-[var(--color-bg-tertiary)] cursor-pointer flex gap-3 transition-colors ${!notif.read ? 'bg-[var(--color-bg-secondary)]' : 'opacity-60'}`}
+                    className={`p-4 border-b border-(--color-border-light) hover:bg-(--color-bg-tertiary) cursor-pointer flex gap-3 transition-colors ${!notif.read ? 'bg-(--color-bg-secondary)' : 'opacity-60'}`}
                   >
-                    <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${!notif.read ? 'bg-[var(--color-brand)]' : 'bg-transparent'}`} />
+                    <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${!notif.read ? 'bg-(--color-brand)' : 'bg-transparent'}`} />
                     <div className="min-w-0">
-                      <p className="text-sm font-bold text-[var(--color-text-primary)] truncate">{title}</p>
-                      <p className="text-xs text-[var(--color-text-secondary)] mt-0.5 line-clamp-2">{body}</p>
-                      <span className="text-[10px] text-[var(--color-text-tertiary)] mt-1 block">{timeAgo}</span>
+                      <p className="text-sm font-bold text-(--color-text-primary) truncate">{title}</p>
+                      <p className="text-xs text-(--color-text-secondary) mt-0.5 line-clamp-2">{body}</p>
+                      <span className="text-[10px] text-muted-foreground mt-1 block">{timeAgo}</span>
                     </div>
                   </div>
                 );

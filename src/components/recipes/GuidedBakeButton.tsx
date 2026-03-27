@@ -21,7 +21,7 @@ export function GuidedBakeButton({ recipe, locale }: Props) {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        className="btn-primary h-14 px-8 text-lg gap-3 shadow-lg shadow-[var(--color-brand)]/20 hover:shadow-[var(--color-brand)]/40 transition-all hover:-translate-y-0.5"
+        className="btn-primary h-14 px-8 text-lg gap-3 shadow-lg shadow-(--color-brand)/20 hover:shadow-(--color-brand)/40 transition-all hover:-translate-y-0.5"
       >
         <ChefHat className="w-6 h-6" />
         {locale === 'is' ? 'Byrja bakstur 🔥' : 'Start baking 🔥'}

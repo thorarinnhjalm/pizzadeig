@@ -69,9 +69,9 @@ export function SearchBar({ locale }: Props) {
   return (
     <div className="relative hidden md:flex items-center w-64" ref={dropdownRef}>
       {loading ? (
-        <Loader2 className="w-4 h-4 absolute left-3 text-[var(--color-brand)] animate-spin" />
+        <Loader2 className="w-4 h-4 absolute left-3 text-(--color-brand) animate-spin" />
       ) : (
-        <Search className="w-4 h-4 absolute left-3 text-[var(--color-text-tertiary)]" />
+        <Search className="w-4 h-4 absolute left-3 text-muted-foreground" />
       )}
       <Input
         type="search"
@@ -79,11 +79,11 @@ export function SearchBar({ locale }: Props) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onFocus={() => hits.length > 0 && setIsOpen(true)}
-        className="pl-9 bg-[var(--color-bg-tertiary)] border-[var(--color-border-light)] text-sm rounded-full focus-visible:ring-[var(--color-brand)] h-10 w-full font-body placeholder:text-[var(--color-text-tertiary)] text-[var(--color-text-primary)]"
+        className="pl-9 bg-(--color-bg-tertiary) border-(--color-border-light) text-sm rounded-full focus-visible:ring-(--color-brand) h-10 w-full font-body placeholder:text-muted-foreground text-(--color-text-primary)"
       />
 
       {isOpen && hits.length > 0 && (
-        <div className="absolute top-12 left-0 right-0 bg-[var(--color-bg-primary)] border border-[var(--color-border-light)] rounded-xl shadow-xl z-50 overflow-hidden max-h-80 overflow-y-auto">
+        <div className="absolute top-12 left-0 right-0 bg-background border border-(--color-border-light) rounded-xl shadow-xl z-50 overflow-hidden max-h-80 overflow-y-auto">
           {hits.map((hit) => {
             const title = locale === 'is' ? hit.title_is : hit.title_en;
             return (
@@ -91,21 +91,21 @@ export function SearchBar({ locale }: Props) {
                 key={hit.objectID}
                 href={`/${locale}/uppskriftir/${hit.slug}`}
                 onClick={() => { setIsOpen(false); setQuery(''); }}
-                className="flex items-center gap-3 p-3 hover:bg-[var(--color-bg-tertiary)] transition-colors border-b border-[var(--color-border-light)] last:border-0"
+                className="flex items-center gap-3 p-3 hover:bg-(--color-bg-tertiary) transition-colors border-b border-(--color-border-light) last:border-0"
               >
                 {hit.image_urls?.[0] ? (
                   <div className="w-10 h-10 rounded-lg overflow-hidden relative shrink-0">
                     <Image src={hit.image_urls[0]} alt={title || ''} fill className="object-cover" />
                   </div>
                 ) : (
-                  <div className="w-10 h-10 rounded-lg bg-[var(--color-bg-tertiary)] shrink-0" />
+                  <div className="w-10 h-10 rounded-lg bg-(--color-bg-tertiary) shrink-0" />
                 )}
                 <div className="min-w-0">
-                  <p className="text-sm font-bold text-[var(--color-text-primary)] truncate">{title}</p>
-                  <p className="text-[10px] uppercase text-[var(--color-text-tertiary)] tracking-wide">{hit.category}</p>
+                  <p className="text-sm font-bold text-(--color-text-primary) truncate">{title}</p>
+                  <p className="text-[10px] uppercase text-muted-foreground tracking-wide">{hit.category}</p>
                 </div>
                 {hit.rating_avg && (
-                  <span className="ml-auto text-xs font-bold text-[var(--color-gold)]">🍕 {hit.rating_avg.toFixed(1)}</span>
+                  <span className="ml-auto text-xs font-bold text-ring">🍕 {hit.rating_avg.toFixed(1)}</span>
                 )}
               </Link>
             );

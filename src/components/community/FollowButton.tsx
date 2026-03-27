@@ -69,8 +69,8 @@ export function FollowButton({ targetUid, locale }: Props) {
       variant={following ? "outline" : "default"}
       className={`px-10 h-14 text-lg rounded-xl transition-all duration-300 font-bold ${
         following 
-        ? "border-[var(--color-brand)] text-[var(--color-brand)] hover:bg-[var(--color-brand)]/5" 
-        : "bg-[var(--color-brand)] hover:bg-[#b02e0b] shadow-[0_4px_14px_0_rgba(212,56,13,0.39)] hover:shadow-[0_6px_20px_rgba(212,56,13,0.23)] hover:-translate-y-1 text-white"
+        ? "border-(--color-brand) text-(--color-brand) hover:bg-(--color-brand)/5" 
+        : "bg-(--color-brand) hover:bg-[#b02e0b] shadow-[0_4px_14px_0_rgba(212,56,13,0.39)] hover:shadow-[0_6px_20px_rgba(212,56,13,0.23)] hover:-translate-y-1 text-white"
       }`}
     >
       {loading ? <Loader2 className="w-5 h-5 mr-2 animate-spin" /> : 

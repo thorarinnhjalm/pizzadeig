@@ -42,22 +42,22 @@ export function InstallPrompt({ locale }: Props) {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:w-96 z-50 bg-[var(--color-bg-secondary)] border border-[var(--color-border-gold)] rounded-2xl p-4 shadow-2xl flex items-center gap-4 animate-in slide-in-from-bottom-4 duration-500">
-      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-dark)] flex items-center justify-center shrink-0">
+    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:w-96 z-50 bg-(--color-bg-secondary) border border-(--color-border-gold) rounded-2xl p-4 shadow-2xl flex items-center gap-4 animate-in slide-in-from-bottom-4 duration-500">
+      <div className="w-12 h-12 rounded-xl bg-linear-to-br from-(--color-brand) to-(--color-brand-dark) flex items-center justify-center shrink-0">
         <span className="text-2xl">🍕</span>
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-bold text-[var(--color-text-primary)]">
+        <p className="text-sm font-bold text-(--color-text-primary)">
           {locale === 'is' ? 'Settu Pizzadeig á heimaskjá!' : 'Add Pizzadeig to home screen!'}
         </p>
-        <p className="text-xs text-[var(--color-text-tertiary)]">
+        <p className="text-xs text-muted-foreground">
           {locale === 'is' ? 'Fáðu uppskriftir offline' : 'Get recipes offline'}
         </p>
       </div>
       <Button onClick={handleInstall} className="btn-primary px-3 py-2 h-auto text-xs shrink-0">
         <Download className="w-4 h-4" />
       </Button>
-      <button onClick={() => setShowBanner(false)} className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] shrink-0">
+      <button onClick={() => setShowBanner(false)} className="text-muted-foreground hover:text-(--color-text-primary) shrink-0">
         <X className="w-4 h-4" />
       </button>
     </div>

@@ -75,7 +75,7 @@ export default async function LocaleLayout({
         <meta name="theme-color" content="#FDF9F2" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
-      <body className="min-h-full flex flex-col antialiased bg-[var(--color-bg-primary)]">
+      <body className="min-h-full flex flex-col antialiased bg-background">
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           {children}

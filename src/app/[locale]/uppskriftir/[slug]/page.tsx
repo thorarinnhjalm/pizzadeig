@@ -66,7 +66,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="flex-1 w-full bg-[var(--bg-cream)]">
+      <main className="flex-1 w-full bg-(--bg-cream)">
         {/* Hero Section */}
         <section className="w-full relative h-[40vh] min-h-[400px] md:h-[60vh] md:min-h-[500px] flex items-end pb-12">
           {recipe.image_urls?.[0] ? (
@@ -78,15 +78,15 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
                 priority
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/50 to-transparent" />
             </>
           ) : (
-            <div className="absolute inset-0 bg-[var(--text-dark)]" />
+            <div className="absolute inset-0 bg-(--text-dark)" />
           )}
           
           <div className="container mx-auto px-4 relative z-10 w-full">
             <div className="w-full max-w-4xl backdrop-blur-md bg-black/30 p-6 md:p-8 rounded-2xl border border-white/20 shadow-2xl">
-              <span className="inline-block px-3 py-1 rounded-full bg-[var(--pizza-gold)] text-black text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
+              <span className="inline-block px-3 py-1 rounded-full bg-(--pizza-gold) text-black text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
                 {recipe.type}
               </span>
               <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-md leading-tight">
@@ -98,11 +98,11 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
               
               <div className="flex flex-wrap gap-4 items-center mb-6">
                 <div className="flex items-center gap-2 text-white bg-white/10 px-4 py-2 rounded-lg backdrop-blur-md border border-white/20">
-                  <Clock className="w-5 h-5 text-[var(--pizza-gold)]" />
+                  <Clock className="w-5 h-5 text-(--pizza-gold)" />
                   <span className="font-semibold">{formatTime(totalTime)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-white bg-white/10 px-4 py-2 rounded-lg backdrop-blur-md border border-white/20">
-                  <Flame className="w-5 h-5 text-[var(--pizza-red)]" />
+                  <Flame className="w-5 h-5 text-(--pizza-red)" />
                   <span className="font-semibold capitalize">{recipe.difficulty}</span>
                 </div>
                 <div className="flex items-center gap-2 text-white bg-white/10 px-4 py-2 rounded-lg backdrop-blur-md border border-white/20">
@@ -115,7 +115,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
                 {recipe.author_avatar ? (
                   <Image src={recipe.author_avatar} alt={recipe.author_name} width={40} height={40} className="rounded-full border-2 border-white shadow-sm" />
                 ) : (
-                  <div className="w-10 h-10 rounded-full bg-[var(--pizza-red)] flex items-center justify-center text-white border-2 border-white shadow-sm">
+                  <div className="w-10 h-10 rounded-full bg-(--pizza-red) flex items-center justify-center text-white border-2 border-white shadow-sm">
                     <ChefHat className="w-5 h-5" />
                   </div>
                 )}
@@ -145,12 +145,12 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
               
               {/* Ráð og tips */}
               {(recipe.tips_is || recipe.tips_en) && (
-                <div className="bg-yellow-50 border-l-4 border-[var(--pizza-gold)] p-6 rounded-r-xl">
-                  <h4 className="text-lg font-bold text-[var(--text-dark)] mb-2 flex items-center">
-                    <Star className="w-5 h-5 text-[var(--pizza-gold)] mr-2" />
+                <div className="bg-yellow-50 border-l-4 border-(--pizza-gold) p-6 rounded-r-xl">
+                  <h4 className="text-lg font-bold text-(--text-dark) mb-2 flex items-center">
+                    <Star className="w-5 h-5 text-(--pizza-gold) mr-2" />
                     {locale === 'is' ? 'Sérfræðiráð' : 'Pro Tips'}
                   </h4>
-                  <p className="text-[var(--text-medium)]">
+                  <p className="text-(--text-medium)">
                     {locale === 'is' ? recipe.tips_is : recipe.tips_en}
                   </p>
                 </div>
@@ -160,7 +160,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
             {/* Sidebar (Right, 1 col wide on LG) */}
             <div className="lg:col-span-1 space-y-8">
               {/* AdSlot: recipes_sidebar */}
-              <div className="w-full aspect-[6/5] bg-gray-200 border-2 border-dashed border-gray-400 flex items-center justify-center text-gray-500 rounded-lg shadow-inner sticky top-24">
+              <div className="w-full aspect-6/5 bg-gray-200 border-2 border-dashed border-gray-400 flex items-center justify-center text-gray-500 rounded-lg shadow-inner sticky top-24">
                 AdSlot: recipes_sidebar (300x250)
               </div>
             </div>
@@ -169,11 +169,11 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
         </div>
 
         {/* Reviews Section */}
-        <section className="bg-white py-16 border-t border-[var(--border)] overflow-hidden">
+        <section className="bg-white py-16 border-t border-(--border) overflow-hidden">
           <div className="container mx-auto px-4 max-w-5xl">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--text-dark)] mb-10 text-center relative inline-block left-1/2 -translate-x-1/2">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-(--text-dark) mb-10 text-center relative inline-block left-1/2 -translate-x-1/2">
               {locale === 'is' ? 'Hvað finnst samfélaginu?' : 'Community Feedback'}
-              <span className="absolute -bottom-3 left-1/4 right-1/4 h-1.5 bg-[var(--pizza-red)] rounded-full"></span>
+              <span className="absolute -bottom-3 left-1/4 right-1/4 h-1.5 bg-(--pizza-red) rounded-full"></span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start mt-8">
               <div className="md:col-span-2 sticky top-24">
@@ -187,7 +187,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
         </section>
         
         {/* Placeholder AdSlot: global_footer */}
-        <div className="w-full bg-[var(--bg-white)] py-8 border-t border-[var(--border)]">
+        <div className="w-full bg-(--bg-white) py-8 border-t border-(--border)">
           <div className="container mx-auto flex justify-center">
             <div className="w-[728px] h-[90px] bg-gray-200 border-2 border-dashed border-gray-400 flex items-center justify-center text-gray-500 text-sm font-medium rounded-lg shadow-inner">
               AdSlot: global_footer (728x90)
