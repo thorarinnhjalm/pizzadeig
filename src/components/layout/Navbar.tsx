@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Link, usePathname } from '@/i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
+import { useAuth } from '@/hooks/useAuth';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ShoppingCart, Menu, X, User, Pizza } from 'lucide-react';
 
@@ -11,10 +12,15 @@ export function Navbar() {
   const locale = useLocale() as 'is' | 'en';
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user } = useAuth();
   const isIs = locale === 'is';
+  
+  const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());
+  const isAdmin = user && adminEmails.includes(user.email?.toLowerCase() || '');
 
   const navLinks = [
     { href: '/uppskriftir', label: isIs ? 'Uppskriftir' : 'Recipes' },
+    { href: '/deigreiknivel', label: isIs ? 'Reiknivél' : 'Calculator' },
     { href: '/stadir', label: isIs ? 'Staðir' : 'Restaurants' },
     { href: '/samfelag', label: isIs ? 'Samfélag' : 'Community' },
     { href: '/vorur', label: isIs ? 'Búðin' : 'Shop' },
@@ -59,9 +65,25 @@ export function Navbar() {
             <button className="p-2 text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors">
               <ShoppingCart className="w-5 h-5" />
             </button>
-            <Link href="/notandi/login" className="p-2 text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors">
-              <User className="w-5 h-5" />
-            </Link>
+            {user ? (
+              <div className="flex items-center gap-2">
+                {isAdmin && (
+                  <Link href="/admin" className="text-[10px] font-bold tracking-widest uppercase text-red-600 bg-red-50/80 px-2 py-1 rounded-md border border-red-100 hover:bg-red-100 transition-colors">Admin</Link>
+                )}
+                <Link href={`/notandi/${user.uid}`} className="w-8 h-8 rounded-full overflow-hidden border-2 border-(--color-brand)/20 hover:border-(--color-brand) transition-all flex items-center justify-center bg-background">
+                  {user.photoURL ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={user.photoURL} alt="Profile" className="w-full h-full object-cover" />
+                  ) : (
+                    <User className="w-4 h-4 text-(--color-brand)" />
+                  )}
+                </Link>
+              </div>
+            ) : (
+              <Link href="/notandi/login" className="p-2 text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors">
+                <User className="w-5 h-5" />
+              </Link>
+            )}
           </div>
 
           {/* Mobile: hamburger */}
@@ -101,15 +123,42 @@ export function Navbar() {
                 );
               })}
             </div>
-            <div className="p-4 border-t border-(--color-border-light) flex gap-3">
-              <Link
-                href="/notandi/login"
-                onClick={() => setMobileOpen(false)}
-                className="flex-1 inline-flex items-center justify-center gap-2 h-11 bg-(--color-brand) text-white font-semibold rounded-full"
-              >
-                <User className="w-4 h-4" />
-                {t('login')}
-              </Link>
+            <div className="p-4 border-t border-(--color-border-light) flex flex-col gap-3">
+              {user ? (
+                <>
+                  <Link
+                    href={`/notandi/${user.uid}`}
+                    onClick={() => setMobileOpen(false)}
+                    className="w-full inline-flex items-center justify-center gap-2 h-11 bg-(--color-brand) text-white font-semibold rounded-full"
+                  >
+                    {user.photoURL ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={user.photoURL} alt="Profile" className="w-5 h-5 rounded-full" />
+                    ) : (
+                      <User className="w-4 h-4" />
+                    )}
+                    {isIs ? 'Minn Aðgangur' : 'My Profile'}
+                  </Link>
+                  {isAdmin && (
+                    <Link
+                      href="/admin"
+                      onClick={() => setMobileOpen(false)}
+                      className="w-full inline-flex items-center justify-center gap-2 h-11 bg-red-600 text-white font-semibold rounded-full"
+                    >
+                      Admin Panel
+                    </Link>
+                  )}
+                </>
+              ) : (
+                <Link
+                  href="/notandi/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="w-full inline-flex items-center justify-center gap-2 h-11 bg-(--color-brand) text-white font-semibold rounded-full"
+                >
+                  <User className="w-4 h-4" />
+                  {t('login')}
+                </Link>
+              )}
             </div>
           </nav>
         </div>
