@@ -48,6 +48,44 @@ export default function AuglysingarPage() {
         </div>
       </div>
 
+      {/* Sizes and Placements Section */}
+      <div className="mb-20">
+        <h2 className="text-3xl font-display font-bold text-center text-(--color-text-primary) mb-10">
+          Staðsetningar og stærðir
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-(--color-bg-secondary) p-6 rounded-2xl border border-(--color-border) shadow-sm">
+            <div className="aspect-1018/360 bg-gray-100 rounded-xl mb-4 border-2 border-dashed border-gray-300 flex items-center justify-center">
+              <span className="text-sm font-bold text-gray-500">1018 x 360</span>
+            </div>
+            <h4 className="text-lg font-bold mb-2">Forsíða (Top Borði)</h4>
+            <p className="text-sm text-(--color-text-secondary)">
+              Stór og áberandi borði efst á forsíðunni. Fullkomin staðsetning til að ná hámarks athygli allra sem heimsækja vefinn.
+            </p>
+          </div>
+
+          <div className="bg-(--color-bg-secondary) p-6 rounded-2xl border border-(--color-border) shadow-sm">
+            <div className="aspect-1080/240 bg-gray-100 rounded-xl mb-4 border-2 border-dashed border-gray-300 flex items-center justify-center">
+              <span className="text-sm font-bold text-gray-500">1080 x 240</span>
+            </div>
+            <h4 className="text-lg font-bold mb-2">Botnborði (Allar síður)</h4>
+            <p className="text-sm text-(--color-text-secondary)">
+              Breiður borði sem birtist neðst á öllum síðum vefsins þegar hann er skoðaður í tölvu eða spjaldtölvu.
+            </p>
+          </div>
+
+          <div className="bg-(--color-bg-secondary) p-6 rounded-2xl border border-(--color-border) shadow-sm">
+            <div className="w-[320px] h-[50px] mx-auto bg-gray-100 rounded-lg mb-4 border-2 border-dashed border-gray-300 flex items-center justify-center">
+              <span className="text-xs font-bold text-gray-500">320 x 50</span>
+            </div>
+            <h4 className="text-lg font-bold mb-2">Símaborði (Mobile Sticky)</h4>
+            <p className="text-sm text-(--color-text-secondary)">
+              Sérstakur borði sem festist neðst á skjáinn þegar vefurinn er skoðaður í snjallsímum og tryggir stöðugan sýnileika.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* CTA Section */}
       <div className="bg-(--color-bg-secondary) rounded-3xl p-8 md:p-12 border border-(--color-border) text-center relative overflow-hidden shadow-sm">
         <div className="relative z-10">
