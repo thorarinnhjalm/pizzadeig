@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { mockRestaurants } from '@/lib/mockData';
+import { mockRestaurants, mockMenuItems } from '@/lib/mockData';
 import { MapPin, Star, Clock, Globe, Phone, ChefHat, ArrowLeft } from 'lucide-react';
+import { RestaurantInteractive } from '@/components/restaurants/RestaurantInteractive';
 
 export default async function RestaurantDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
@@ -12,6 +13,7 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
   if (!restaurant) notFound();
 
   const priceLabel = '€'.repeat(restaurant.price_level || 2);
+  const menuItems = mockMenuItems.filter(m => m.restaurant_id === (restaurant.slug || restaurant.id));
 
   return (
     <main className="flex-1 w-full bg-(--color-bg-light) min-h-screen">
@@ -67,6 +69,11 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Left: Details */}
           <div>
+            {/* Description */}
+            <p className="text-(--color-text-secondary) mb-8 leading-relaxed">
+              {isIs ? restaurant.description_is : restaurant.description_en}
+            </p>
+
             {/* Features */}
             {restaurant.features && restaurant.features.length > 0 && (
               <div className="mb-8">
@@ -77,22 +84,6 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                   {restaurant.features.map(f => (
                     <span key={f} className="px-3 py-1.5 bg-(--color-bg-secondary) text-(--color-text-secondary) text-sm rounded-full border border-(--color-border-light)">
                       {f}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Tags */}
-            {restaurant.tags && restaurant.tags.length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-lg font-bold text-(--color-text-primary) mb-3">
-                  {isIs ? 'Merki' : 'Tags'}
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {restaurant.tags.map(t => (
-                    <span key={t} className="px-3 py-1.5 bg-(--color-brand)/10 text-(--color-brand) text-sm rounded-full font-medium">
-                      {t}
                     </span>
                   ))}
                 </div>
@@ -150,7 +141,15 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
             )}
           </div>
         </div>
+
+        {/* Menu + Reviews (client interactive section) */}
+        <RestaurantInteractive
+          restaurantId={restaurant.slug || restaurant.id}
+          menuItems={menuItems}
+          locale={locale as 'is' | 'en'}
+        />
       </div>
     </main>
   );
 }
+
