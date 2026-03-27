@@ -1,13 +1,37 @@
 'use client';
 
-import { useState } from 'react';
-import { db } from '@/lib/firebase';
+import { useState, useEffect } from 'react';
+import { db, auth } from '@/lib/firebase';
+import { onAuthStateChanged, User } from 'firebase/auth';
 import { collection, doc, setDoc, getDocs, deleteDoc, writeBatch } from 'firebase/firestore';
 import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
 
 export default function AdminSeedPage() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
+  const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        // Compare the current user's email against a comma-separated list of admin emails in .env
+        const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());
+        const userEmail = currentUser.email?.toLowerCase() || '';
+        
+        if (adminEmails.includes(userEmail)) {
+          setIsAdmin(true);
+        }
+      } else {
+        setUser(null);
+        setIsAdmin(false);
+      }
+      setLoading(false);
+    });
+    
+    return () => unsubscribe();
+  }, []);
 
   const seedDatabase = async () => {
     setLoading(true);
@@ -84,6 +108,32 @@ export default function AdminSeedPage() {
       setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-16 max-w-2xl text-center">
+        <p className="text-muted-foreground animate-pulse">Eru að sannreyna aðgangsheimildir...</p>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="container mx-auto px-4 py-16 max-w-2xl text-center">
+        <h1 className="text-2xl font-bold text-red-600 mb-4">Aðgangur bannaður</h1>
+        <p className="text-muted-foreground">Þú verður að skrá þig inn fyrst til að sjá þessa síðu.</p>
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="container mx-auto px-4 py-16 max-w-2xl text-center">
+        <h1 className="text-2xl font-bold text-red-600 mb-4">Engin heimild</h1>
+        <p className="text-muted-foreground">Þetta netfang ({user.email}) hefur ekki stjórnandaréttindi (Admin).</p>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-2xl">
