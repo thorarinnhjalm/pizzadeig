@@ -116,6 +116,11 @@ export default function AdminSeedPage() {
         batch.set(refD, { ...ad, is_seeded: true, impressions: 0, clicks: 0, created_at: new Date() });
       });
 
+      allRecipes.forEach((recipe) => {
+        const refD = doc(db, 'recipes', recipe.id);
+        batch.set(refD, { ...recipe, is_seeded: true, created_at: new Date(), updated_at: new Date() });
+      });
+
       await batch.commit();
       setMessage('Gagnagrunnur var uppfærður með gervigögnum! 🎉');
       loadStats();
@@ -132,7 +137,7 @@ export default function AdminSeedPage() {
     setLoading(true);
     setMessage('Eyði gervigögnum...');
     try {
-      const collectionsToClear = ['restaurants', 'menu_items', 'ads'];
+      const collectionsToClear = ['restaurants', 'menu_items', 'ads', 'recipes'];
       for (const colName of collectionsToClear) {
         const querySnapshot = await getDocs(collection(db, colName));
         const batch = writeBatch(db);
