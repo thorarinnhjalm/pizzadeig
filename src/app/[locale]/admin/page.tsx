@@ -15,6 +15,17 @@ export default function AdminSeedPage() {
   const [stats, setStats] = useState({ users: 0, recipes: 0, restaurants: 0, menuItems: 0, ads: 0 });
   const [recentUsers, setRecentUsers] = useState<any[]>([]);
 
+  // Form fyrir nýja auglýsingu
+  const [adForm, setAdForm] = useState({
+    client: '',
+    name: '',
+    image_url: '',
+    target_url: 'https://',
+    format: '1018x360',
+    status: 'active'
+  });
+  const [adLoading, setAdLoading] = useState(false);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
@@ -135,6 +146,7 @@ export default function AdminSeedPage() {
       }
       
       setMessage('Öllum gervigögnum eytt! 🗑️');
+      loadStats(); // endurhlaða tölur
     } catch (error: any) {
       console.error(error);
       setMessage('Villa við að eyða: ' + error.message);
@@ -143,7 +155,46 @@ export default function AdminSeedPage() {
     }
   };
 
-  if (loading) {
+  const createAd = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAdLoading(true);
+    setMessage('');
+    try {
+      if (!adForm.client || !adForm.image_url) {
+        throw new Error('Vantar viðskiptavin eða mynd.');
+      }
+      const newId = `ad-${Date.now()}`;
+      const docRef = doc(db, 'ads', newId);
+      
+      await setDoc(docRef, {
+        id: newId,
+        client: adForm.client,
+        name: adForm.name || 'Án nafns',
+        format: adForm.format,
+        creatives: {
+          [adForm.format]: adForm.image_url
+        },
+        image_url: adForm.image_url,
+        target_url: adForm.target_url,
+        status: adForm.status,
+        placements: adForm.format === '1018x360' ? ['home_hero'] : ['home_featured', 'recipe_sidebar'],
+        start_date: new Date(),
+        end_date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // Active for 30 days default
+        created_at: new Date()
+      });
+      
+      setMessage(`Auglýsing fyrir ${adForm.client} hefur verið vistuð! 🎉`);
+      setAdForm({ client: '', name: '', image_url: '', target_url: 'https://', format: '1018x360', status: 'active' });
+      loadStats();
+    } catch (error: any) {
+      console.error(error);
+      setMessage('Villa við að búa til auglýsingu: ' + error.message);
+    } finally {
+      setAdLoading(false);
+    }
+  };
+
+  if (loading && !isAdmin && !user) {
     return (
       <div className="container mx-auto px-4 py-16 max-w-2xl text-center">
         <p className="text-muted-foreground animate-pulse">Eru að sannreyna aðgangsheimildir...</p>
@@ -268,8 +319,64 @@ export default function AdminSeedPage() {
           </div>
         </div>
 
-        {/* Right Col: Danger Zone & Seeder */}
-        <div className="space-y-6">
+        {/* Ný auglýsing form */}
+        <div className="space-y-6 mt-10">
+          <h2 className="text-xl font-bold flex items-center gap-2">
+            <Database className="w-5 h-5 text-(--color-brand)" /> 
+            Búa til nýtt
+          </h2>
+          <div className="bg-white border border-(--color-border) p-6 rounded-2xl shadow-sm">
+            <h3 className="font-bold text-lg mb-4">Setja inn auglýsingu</h3>
+            <form onSubmit={createAd} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Viðskiptavinur</label>
+                  <input required placeholder="t.d. Pizzan ehf." value={adForm.client} onChange={e => setAdForm({...adForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Heiti Hérferðar</label>
+                  <input placeholder="t.d. Vordagar 2026" value={adForm.name} onChange={e => setAdForm({...adForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold mb-1">Mynd (URL)</label>
+                <input required placeholder="https://..." value={adForm.image_url} onChange={e => setAdForm({...adForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold mb-1">Smellislóð (Target URL)</label>
+                <input required placeholder="https://..." value={adForm.target_url} onChange={e => setAdForm({...adForm, target_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Stærð / Sniðmát</label>
+                  <select value={adForm.format} onChange={e => setAdForm({...adForm, format: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+                    <option value="1018x360">Forsíðuborði (1018x360)</option>
+                    <option value="310x400">Skjáauglýsing Hlið (310x400)</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-1">Staða</label>
+                  <select value={adForm.status} onChange={e => setAdForm({...adForm, status: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm bg-white">
+                    <option value="active">Virk</option>
+                    <option value="paused">Í bið</option>
+                  </select>
+                </div>
+              </div>
+              <button 
+                type="submit" 
+                disabled={adLoading}
+                className="w-full mt-2 bg-(--color-brand) text-white font-bold py-2.5 rounded-xl hover:bg-opacity-90 disabled:opacity-50 transition-colors"
+              >
+                {adLoading ? 'Vistar...' : 'Búa til Auglýsingu'}
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Right Col: Danger Zone & Seeder */}
+      <div className="space-y-6">
           <h2 className="text-xl font-bold flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-red-500" /> 
             Gagnagrunns Stjórnun (Dev)
@@ -307,7 +414,7 @@ export default function AdminSeedPage() {
             </div>
 
             {message && (
-              <div className="mt-4 p-3 bg-white border border-gray-200 text-sm rounded-lg font-mono">
+              <div className="mt-4 p-4 bg-white border border-gray-200 text-sm rounded-lg font-mono shadow-sm">
                 {message}
               </div>
             )}
