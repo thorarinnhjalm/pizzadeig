@@ -19,10 +19,13 @@ function getDifficultyLabel(d: string, isIs: boolean) {
   return isIs ? 'Erfitt' : 'Advanced';
 }
 
-function getFermentTime(recipe: Recipe): string {
+function getFermentTime(recipe: Recipe, isIs: boolean): string {
   const total = (recipe.rest_time_min || 0);
-  if (total >= 60) return `${Math.round(total / 60)}h ferment`;
-  if (total > 0) return `${total}m ferment`;
+  if (total >= 60) {
+    const h = Math.round(total / 60);
+    return `${h} ${isIs ? 'klst. gerjun' : 'h ferment'}`;
+  }
+  if (total > 0) return `${total} ${isIs ? 'mín. gerjun' : 'm ferment'}`;
   const cook = recipe.prep_time_min + recipe.cook_time_min;
   return `${cook} mín`;
 }
@@ -135,7 +138,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         {'🍕'.repeat(pizzaRating)}{'🤍'.repeat(Math.max(0, 5 - pizzaRating))}
                       </span>
                       <span className="text-xs text-muted-foreground">
-                        ({recipe.rating_count || 0} reviews)
+                        ({recipe.rating_count || 0} {isIs ? 'umsagnir' : 'reviews'})
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-(--color-text-primary) mb-2 group-hover:text-(--color-brand) transition-colors">
@@ -148,7 +151,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-(--color-border-light)">
                       <span className="flex items-center gap-1.5">
                         <Clock className="w-3.5 h-3.5" />
-                        {getFermentTime(recipe)}
+                        {getFermentTime(recipe, isIs)}
                       </span>
                       <span className="flex items-center gap-1.5">
                         <BarChart3 className="w-3.5 h-3.5" />
