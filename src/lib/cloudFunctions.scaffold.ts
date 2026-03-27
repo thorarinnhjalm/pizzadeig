@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Pizzadeig.is — Cloud Functions for Notifications
  * 
