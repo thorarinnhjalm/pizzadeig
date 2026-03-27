@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { auth } from '@/lib/firebase';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useRouter } from '@/i18n/routing';
 import { Mail, Lock, AlertCircle } from 'lucide-react';
 
 export default function LoginPage() {
