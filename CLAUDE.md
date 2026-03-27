@@ -1,109 +1,116 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 @AGENTS.md
 
-# PIZZADEIG.IS - Ítarleg Kerfislýsing
-Þetta skjal þjónar sem heildaryfirsýn (System Architecture & Blueprint) fyrir þróun á Pizzadeig.is, sérstaklega hannað til að gefa Claude / LLM allar nauðsynlegar upplýsingar.
+## Build & Dev Commands
 
----
+```bash
+npm run dev        # Start dev server (Turbopack)
+npm run build      # Production build
+npm run start      # Start production server
+npm run lint       # ESLint (flat config, ESLint 9)
+```
 
-## 1. Tæknistakkur & Grunnur
-- **Framework:** Next.js 16+ (App Router, Turbopack)
-- **UI & Stílar:** React 19, Tailwind CSS (Sérsmíðaðar CSS breytur í `globals.css`)
-- **Tvítyngi (i18n):** `next-intl` (Hýsir `is` og `en`). Öll layout og pages eru vafin innan `[locale]`.
-- **Gagnagrunnur & Auth:** Firebase (Firestore fyrir gögn, Auth fyrir innskráningu, Storage fyrir myndir).
-- **Ikonar:** `lucide-react` ásamt sérsniðnum SVG skjölum (t.d. samfélagsmiðlar).
+No test framework is configured.
 
----
+## Tech Stack
 
-## 2. Veftré (Sitemap & Routing)
-Kerfið byggir algjörlega á App Router og hefur eftirfarandi grunnslóðir innan `src/app/[locale]/`:
+- **Next.js 16+** (App Router, Turbopack) — read `node_modules/next/dist/docs/` before using new APIs
+- **React 19**, **TypeScript 5** (strict mode)
+- **Tailwind CSS v4** (via `@tailwindcss/postcss`), **shadcn/ui** (Base UI React)
+- **next-intl** for bilingual i18n (`is` / `en`, default `is`)
+- **Firebase**: Firestore (database `pizzadeig`), Auth (Google Sign-in), Cloud Storage
+- **Google Maps** (`@vis.gl/react-google-maps`), **lucide-react** icons, **Resend** for email
 
-### Almenningur (Public Routes)
-- `/` - Forsíða (Hero, nýjustu uppskriftir, flokkar).
-- `/uppskriftir` - Safn allra uppskrifta.
-- `/uppskriftir/[slug]` - Upplýsingasíða fyrir staka uppskrift (Ingredients, Steps, Reviews).
-- `/stadir` - Kort/listi yfir veitingastaði.
-- `/stadir/[slug]` - Upplýsingasíða um stakan veitingastað.
-- `/flokkar/[type]` - Dynamískar síður fyrir flokka (t.d. `/flokkar/deig`, `/flokkar/sosur`).
-- `/topplisti` - Vinsælustu dæmin dæmd út frá `rating_avg` / `likes_count`.
-- `/notandi/[uid]` - Opinber prófíll notanda.
-- `/um-okkur`, `/skilmalar`, `/personuvernd`, `/tengilidir` - Upplýsingasíður.
+## Path Alias
 
-### Lokað / Admin (Protected Routes)
-- `/admin` - Yfirlit/Mælaborð Super Admin.
-- `/admin/uppskriftir` - Umsjón með innkominni uppskriftum (Approve/Reject/Edit).
-- `/admin/stadir` - Umsjón með veitingastöðum.
-- `/admin/notendur` - Umsjón meō notendum.
-- `/admin/auglysingar` - Stjórnborð auglýsingaherferða (búa til, setja creatives, stýra status).
+`@/*` maps to `./src/*` — always use `@/` imports (e.g., `import { Recipe } from '@/types/recipe'`).
 
----
+## Architecture
 
-## 3. Gagnagrunnsskipulag (Firestore Schema)
-Gögnin eru vistuð í Firestore collections. Mörg skjöl halda utan um bæði íslensku (`_is`) og ensku (`_en`) inni í sama skjali.
+### Routing & i18n
 
-### `recipes` (Uppskriftir)
-- `id` (string), `slug` (string)
-- `title_is`, `title_en` (string)
-- `description_is`, `description_en` (string)
-- `type` (RecipeType: 'deig' | 'sosa' | 'ostur' | 'alegg' | 'tol' | 'heildar')
-- `category` (string), `difficulty` ('audvelt' | 'midlungs' | 'erfitt')
-- `prep_time_min`, `cook_time_min`, `rest_time_min`, `servings` (number)
+All pages live under `src/app/[locale]/`. Every route receives a `locale` param (`is` or `en`). The i18n config is in `src/i18n/`:
+- `routing.ts` — locale definitions, exports `Link`, `useRouter`, `usePathname` from `next-intl/navigation`
+- `request.ts` — server-side message loading
+- `messages/is.json`, `messages/en.json` — translation strings
+
+Use `useTranslations('Namespace')` in client components and `getTranslations('Namespace')` in server components.
+
+### Bilingual Data Pattern
+
+Firestore documents store both languages inline with `_is` / `_en` suffixes:
+- `title_is`, `title_en`, `description_is`, `description_en`
 - `ingredients_is`, `ingredients_en` (Array of `{ amount, unit, name }`)
 - `steps_is`, `steps_en` (Array of strings)
-- `tips_is`, `tips_en` (string, optional)
-- `image_urls` (Array of URLs), `video_url` (string)
-- `author_uid`, `author_name`, `author_avatar` (Denormalized auth data)
-- `likes_count`, `rating_avg`, `rating_count` (Aggregated metrics)
-- `tags` (Array of strings), `published` (boolean)
-- `seo_...` (SEO yfirskriftir/lýsingar), `created_at`, `updated_at` (Timestamp)
 
-### `restaurants` (Veitingastaðir)
-- `id` (string), `slug` (string), `name` (string)
-- `description_is`, `description_en` (string)
-- `address`, `city`, `postal_code` (string), `location` (GeoPoint)
-- `phone`, `website` (string)
-- `opening_hours` (Map<string, string>)
-- `price_level` (1-4)
-- `features`, `tags`, `image_urls` (Array of strings)
-- `owner_uid` (string), `is_verified` (boolean)
-- `rating_avg`, `rating_count`, `likes_count` (metrics)
-- *Subcollection eða vísun:* `menu_items` (fyrir matseðil)
+Select the correct field based on the current locale.
 
-### `users` (Notendur)
-- `uid` (string - Firebase Auth ID)
-- `display_name`, `email`, `avatar_url` (string)
-- `bio_is`, `bio_en` (string)
-- `role` ('user' | 'admin')
-- `recipes_count`, `reviews_count`, `followers_count`, `following_count` (Aggregates)
+### Key Directories
 
-### `reviews` (Umsagnir)
-- `id`, `target_id`, `target_type` ('recipe' | 'restaurant')
-- `user_uid`, `user_name`, `user_avatar`
-- `rating` (number 1-5), `comment` (string)
-- `is_verified_purchase` (boolean), `status` ('pending' | 'approved' | 'rejected')
+- `src/components/` — React components organized by domain (`recipes/`, `restaurants/`, `ads/`, `community/`, `dough/`, `layout/`, `ui/`)
+- `src/hooks/` — `useAuth.ts` (Firebase Auth), `useRecipes.ts` (Firestore queries with mock fallback), `useCommunityRating.ts`
+- `src/lib/` — utilities and data (`firebase.ts`, `recipeData.ts` with hardcoded recipes, `mockData.ts`, `doughCalculator.ts`, `seo.ts`)
+- `src/types/` — TypeScript interfaces (`recipe.ts`, `restaurant.ts`, `ad.ts`, `user.ts`, `review.ts`, `category.ts`)
 
-### `ads` (Auglýsingar)
-- `id` (string), `campaign_name` (string)
-- `sponsor_name`, `sponsor_id` (string)
-- `target_url` (string)
-- `status` ('active' | 'paused' | 'ended' | 'scheduled')
-- `creatives` (Record<AdFormat, string> – getur geymt path/url á mynd fyrir mismunandi formöt: `1018x360`, `310x400`, `300x250`, `1080x240`, `320x50`, `468x60`)
-- `placements` (Array of strings - t.d. `home_mid`, `recipes_sidebar`, `global_footer`)
-- `start_date`, `end_date` (Timestamp)
-- `impressions`, `clicks` (number)
+### Firebase
 
----
+Initialized in `src/lib/firebase.ts`. Client-side only (no Admin SDK). Auth uses Google popup on desktop, redirect on mobile. Firestore security rules are in `firestore.rules` with role-based access (admin role checked via `NEXT_PUBLIC_ADMIN_EMAILS` env var).
 
-## 4. Hönnunarkerfi og Tilþrif (Design Tokens)
-- Öll UI components eiga að nota Tailwind utility classes ásamt the custom variables.
-- Notast er við **DM Serif Display** í gegnum klasann `.heading-display` (fyrir allar aðal fyrirsagnir) og **Source Sans 3** í gegnum almenna skrifaða texta.
-- Litaþemu eru stýrð með CSS breytum: `var(--pizza-red)`, `var(--pizza-gold)`, `var(--pizza-green)`, `var(--bg-cream)`, `var(--text-dark)`, `var(--color-accent-green-light)`.
-- Færa þarf hluti til baka með CSS frekar en hörðum gulum/grænum TW litum þar sem það á við.
-- Micro-interactions innifelur klassana: `.card-hover` og `.skeleton` (loading state).
+### Ad System
 
----
+`<AdSlot placement="..." format="..." />` in `src/components/ads/AdSlot.tsx`. Queries Firestore for active ads matching placement/format, renders random eligible ad, tracks impressions/clicks via `ad_events` collection.
 
-## 5. Auglýsingakóði (`AdSlot.tsx`)
-- Notast er við `<AdSlot />` (klippt og skorið component) til að fella inn auglýsingar.
-- Það tekur inn `placement` og `format` (t.d. `format="1080x240"`).
-- Kóðinn finnur hvaða borðar eru `active` og í réttu formati og birtir af handahófi (eða fallback ef ekkert er).
-- Inniheldur líka tvítyngda textamerkingu (`Ad` / `Auglýsing`) með CSS after element.
+## Design Tokens
+
+Defined in `src/app/globals.css` as CSS custom properties. Use these instead of hardcoded Tailwind colors:
+
+| Token | Usage |
+|-------|-------|
+| `--color-brand` (#B91C1C) | Primary red, CTAs |
+| `--color-brand-light` (#DC2626) | Hover state |
+| `--color-gold` (#D97706) | Ratings, accents |
+| `--color-bg-primary` (#FDF9F2) | Main background (cream) |
+| `--color-bg-secondary` (#F1EDE6) | Cards, sections |
+| `--color-bg-tertiary` (#E8E2D8) | Inputs, nested |
+| `--color-text-primary` (#1C1C18) | Main text |
+| `--color-text-secondary` (#57534E) | Secondary text |
+| `--color-text-tertiary` (#8B7D6B) | Muted text |
+| `--color-border` (#D6D3D1) | Standard borders |
+| `--color-green` (#4D7C0F) | Green accent |
+
+### Typography
+
+- **Headings:** Playfair Display (700 weight) — use `.heading-display` class
+- **Body:** Work Sans (400–700)
+- **Decorative:** Caveat (badges, handwritten accents)
+
+### Utility Classes
+
+- `.card-hover` — lift + shadow on hover
+- `.skeleton` — loading shimmer animation
+- `.btn-primary`, `.btn-secondary`, `.btn-chalk` — button variants
+- `.bg-wood`, `.bg-brick`, `.bg-chalk`, `.bg-checkered`, `.bg-paper` — texture backgrounds
+
+## Firestore Schema
+
+### Key Collections
+
+**recipes**: `id`, `slug`, `title_is/en`, `description_is/en`, `type` (`'deig'|'sosa'|'ostur'|'alegg'|'tol'|'heildar'`), `difficulty` (`'audvelt'|'midlungs'|'erfitt'`), `prep_time_min`, `cook_time_min`, `rest_time_min`, `servings`, `ingredients_is/en`, `steps_is/en`, `tips_is/en`, `image_urls`, `author_uid`, `likes_count`, `rating_avg`, `rating_count`, `tags`, `published`
+
+**restaurants**: `id`, `slug`, `name`, `description_is/en`, `address`, `city`, `location` (GeoPoint), `phone`, `website`, `opening_hours`, `price_level` (1–4), `features`, `image_urls`, `owner_uid`, `is_verified`, `rating_avg`, `rating_count` — subcollection: `menu_items`
+
+**reviews**: `id`, `target_type` (`'recipe'|'restaurant'|'menu_item'`), `target_id`, `author_uid`, `rating` (1–5), `comment_is/en`, `image_urls`
+
+**users**: `uid`, `display_name`, `email`, `avatar_url`, `role` (`'user'|'admin'`), `recipes_count`, `reviews_count`
+
+**ads**: `id`, `name`, `client`, `format`, `creatives` (Record<AdFormat, string>), `target_url`, `status` (`'active'|'paused'|'ended'`), `placements`, `start_date`, `end_date`, `impressions`, `clicks`
+
+### Ad Formats
+`'1018x360'|'1080x240'|'300x250'|'310x400'|'320x50'|'468x60'|'sponsored_card'`
+
+## Icelandic Route Names
+
+Routes use Icelandic names: `/uppskriftir` (recipes), `/stadir` (restaurants), `/flokkar` (categories), `/topplisti` (top list), `/notandi` (user), `/deigreiknivel` (dough calculator), `/stilar` (styles), `/samfelag` (community), `/um-okkur` (about), `/skilmalar` (terms), `/personuvernd` (privacy), `/tengilidir` (contact).
