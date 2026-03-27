@@ -106,14 +106,15 @@ export default function RestaurantsPage() {
       </div>
 
       {/* Main content */}
-      <div className="flex flex-col lg:flex-row">
-        {/* Map */}
-        <div className="w-full lg:w-[45%] h-[350px] lg:h-auto lg:min-h-[calc(100vh-300px)] lg:sticky lg:top-0">
-          <Map restaurants={filtered} />
-        </div>
+      <div className="container mx-auto px-4 max-w-6xl py-10">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Map — only takes space if API key is set */}
+          <div className="hidden lg:block lg:w-[45%] lg:min-h-[500px] lg:sticky lg:top-4 rounded-2xl overflow-hidden">
+            <Map restaurants={filtered} />
+          </div>
 
-        {/* Restaurant list */}
-        <div className="w-full lg:w-[55%] p-6 lg:p-8">
+          {/* Restaurant list */}
+          <div className="flex-1">
           <p className="text-sm text-(--color-text-secondary) mb-6 font-medium">
             {filtered.length} {isIs ? 'staðir fundust' : 'places found'}
           </p>
@@ -205,6 +206,7 @@ export default function RestaurantsPage() {
               </div>
             )}
           </div>
+        </div>
         </div>
       </div>
     </main>
