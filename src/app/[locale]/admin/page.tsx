@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react';
 import { db, auth, storage } from '@/lib/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { collection, doc, setDoc, getDocs, deleteDoc, writeBatch, query, limit, orderBy } from 'firebase/firestore';
+import { collection, doc, setDoc, getDocs, deleteDoc, updateDoc, writeBatch, query, limit, orderBy } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
 import { allRecipes } from '@/lib/recipeData';
-import { Users, Pizza, Store, Activity, Database, AlertTriangle, UploadCloud, Eye, MousePointerClick, LayoutDashboard, Settings, BookOpen, ExternalLink } from 'lucide-react';
+import { Users, Pizza, Store, Activity, Database, AlertTriangle, UploadCloud, Eye, MousePointerClick, LayoutDashboard, Settings, BookOpen, ExternalLink, Pencil, Trash2, X, Check, ImageIcon } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminSeedPage() {
@@ -36,6 +36,11 @@ export default function AdminSeedPage() {
   });
   const [adFile, setAdFile] = useState<File | null>(null);
   const [adLoading, setAdLoading] = useState(false);
+
+  // Edit auglýsingu
+  const [editingAd, setEditingAd] = useState<string | null>(null);
+  const [editAdForm, setEditAdForm] = useState<any>({});
+  const [editAdFile, setEditAdFile] = useState<File | null>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -462,110 +467,232 @@ export default function AdminSeedPage() {
 
       {/* --- TAB 2: AUGLÝSINGAR --- */}
       {activeTab === 'auglysingar' && (
-        <div className="animate-in fade-in duration-300 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="animate-in fade-in duration-300 space-y-8">
           
-          <div className="lg:col-span-8 space-y-6">
-            <h2 className="text-xl font-bold flex items-center gap-2">
-              <Database className="w-5 h-5 text-(--color-brand)" /> 
-              Yfirlit Auglýsinga
+          {/* Yfirlit auglýsinga sem kort */}
+          <div>
+            <h2 className="text-xl font-bold flex items-center gap-2 mb-6">
+              <Database className="w-5 h-5 text-(--color-brand)" />
+              Allar auglýsingar ({adsList.length})
             </h2>
-            
-            <div className="bg-white border border-(--color-border) rounded-2xl overflow-hidden shadow-sm">
-              {adsList.length > 0 ? (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-sm whitespace-nowrap">
-                    <thead className="bg-(--color-bg-secondary) border-b border-(--color-border)">
-                      <tr>
-                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Auglýsandi</th>
-                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Herferð</th>
-                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Birtingar</th>
-                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">Smellir</th>
-                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary) text-center">CTR %</th>
-                        <th className="px-4 py-3 font-semibold text-(--color-text-secondary)">Staða</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-(--color-border-light)">
-                      {adsList.map(ad => {
-                        const imps = ad.impressions || 0;
-                        const clicks = ad.clicks || 0;
-                        const ctr = imps > 0 ? ((clicks / imps) * 100).toFixed(2) : '0.00';
-                        
-                        return (
-                          <tr key={ad.id} className="hover:bg-slate-50 transition-colors">
-                            <td className="px-4 py-3 font-medium">{ad.client}</td>
-                            <td className="px-4 py-3 text-muted-foreground">{ad.name}</td>
-                            <td className="px-4 py-3 text-center">
-                              <span className="inline-flex items-center gap-1.5 text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full font-bold">
-                                <Eye className="w-3.5 h-3.5" /> {imps.toLocaleString('is-IS')}
-                              </span>
-                            </td>
-                            <td className="px-4 py-3 text-center">
-                              <span className="inline-flex items-center gap-1.5 text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-bold">
-                                <MousePointerClick className="w-3.5 h-3.5" /> {clicks.toLocaleString('is-IS')}
-                              </span>
-                            </td>
-                            <td className="px-4 py-3 text-center font-mono text-xs">{ctr}%</td>
-                            <td className="px-4 py-3">
+
+            {adsList.length > 0 ? (
+              <div className="space-y-6">
+                {adsList.map(ad => {
+                  const imps = ad.impressions || 0;
+                  const clicks = ad.clicks || 0;
+                  const ctr = imps > 0 ? ((clicks / imps) * 100).toFixed(2) : '0.00';
+                  const isEditing = editingAd === ad.id;
+
+                  return (
+                    <div key={ad.id} className="bg-white border border-(--color-border) rounded-2xl shadow-sm overflow-hidden">
+                      {/* Image preview */}
+                      {ad.image_url && (
+                        <div className="relative bg-gray-100 w-full" style={{ maxHeight: '220px' }}>
+                          <img src={ad.image_url} alt={`Auglýsing: ${ad.client}`} className="w-full h-full object-contain" style={{ maxHeight: '220px' }} />
+                          <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/60 text-white text-[10px] font-bold uppercase rounded tracking-wider">Forskoðun</span>
+                          {ad.target_url && (
+                            <a href={ad.target_url} target="_blank" rel="noopener noreferrer" className="absolute top-2 right-2 px-2 py-1 bg-white/90 text-xs font-semibold rounded-lg flex items-center gap-1 hover:bg-white transition-colors shadow-sm">
+                              <ExternalLink className="w-3 h-3" /> Slóð
+                            </a>
+                          )}
+                        </div>
+                      )}
+
+                      <div className="p-5">
+                        {isEditing ? (
+                          /* ---- EDIT MODE ---- */
+                          <div className="space-y-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                              <div>
+                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Viðskiptavinur</label>
+                                <input value={editAdForm.client || ''} onChange={e => setEditAdForm({...editAdForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                              </div>
+                              <div>
+                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Herferð</label>
+                                <input value={editAdForm.name || ''} onChange={e => setEditAdForm({...editAdForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                              </div>
+                            </div>
+                            <div>
+                              <label className="block text-xs font-semibold mb-1 text-muted-foreground">Smellislóð</label>
+                              <input value={editAdForm.target_url || ''} onChange={e => setEditAdForm({...editAdForm, target_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                              <div>
+                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Mynd URL (eða hlaða upp)</label>
+                                <input value={editAdForm.image_url || ''} onChange={e => setEditAdForm({...editAdForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                              </div>
+                              <div>
+                                <label className="flex text-xs font-semibold mb-1 text-muted-foreground items-center gap-1"><ImageIcon className="w-3 h-3"/> Skipta um mynd</label>
+                                <input type="file" accept="image/*" onChange={e => setEditAdFile(e.target.files?.[0] || null)} className="w-full border rounded-lg px-2 py-1.5 text-xs bg-blue-50/50 cursor-pointer file:mr-2 file:py-0.5 file:px-2 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-100 file:text-blue-700" />
+                              </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-3">
+                              <div>
+                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Sniðmát</label>
+                                <select value={editAdForm.format || '1018x360'} onChange={e => setEditAdForm({...editAdForm, format: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+                                  <option value="1018x360">Forsíðuborði</option>
+                                  <option value="310x400">Skjáauglýsing Hlið</option>
+                                </select>
+                              </div>
+                              <div>
+                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Staða</label>
+                                <select value={editAdForm.status || 'active'} onChange={e => setEditAdForm({...editAdForm, status: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
+                                  <option value="active">Virk</option>
+                                  <option value="paused">Í bið</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div className="flex gap-2 pt-2">
+                              <button
+                                onClick={async () => {
+                                  try {
+                                    setAdLoading(true);
+                                    let finalUrl = editAdForm.image_url;
+                                    if (editAdFile) {
+                                      const storageRef = ref(storage, `ads/${Date.now()}_${editAdFile.name}`);
+                                      const snap = await uploadBytes(storageRef, editAdFile);
+                                      finalUrl = await getDownloadURL(snap.ref);
+                                    }
+                                    await updateDoc(doc(db, 'ads', ad.id), {
+                                      client: editAdForm.client,
+                                      name: editAdForm.name,
+                                      target_url: editAdForm.target_url,
+                                      image_url: finalUrl,
+                                      format: editAdForm.format,
+                                      status: editAdForm.status,
+                                      placements: editAdForm.format === '1018x360' ? ['home_hero'] : ['home_featured', 'recipe_sidebar'],
+                                      creatives: { [editAdForm.format]: finalUrl },
+                                    });
+                                    setMessage('Auglýsing uppfærð! ✅');
+                                    setEditingAd(null);
+                                    setEditAdFile(null);
+                                    loadStats();
+                                  } catch (err: any) {
+                                    setMessage('Villa: ' + err.message);
+                                  } finally {
+                                    setAdLoading(false);
+                                  }
+                                }}
+                                disabled={adLoading}
+                                className="flex items-center gap-1.5 px-4 py-2 bg-green-600 text-white text-sm font-bold rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors"
+                              >
+                                <Check className="w-4 h-4" /> Vista breytingar
+                              </button>
+                              <button onClick={() => { setEditingAd(null); setEditAdFile(null); }} className="flex items-center gap-1.5 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-bold rounded-lg hover:bg-gray-200 transition-colors">
+                                <X className="w-4 h-4" /> Hætta við
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          /* ---- VIEW MODE ---- */
+                          <div>
+                            <div className="flex items-start justify-between mb-3">
+                              <div>
+                                <h3 className="text-lg font-bold text-(--color-text-primary)">{ad.client}</h3>
+                                <p className="text-sm text-muted-foreground">{ad.name || 'Án nafns'}</p>
+                              </div>
                               <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${ad.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>
-                                {ad.status}
+                                {ad.status === 'active' ? 'Virk' : 'Í bið'}
                               </span>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <div className="p-8 text-center text-muted-foreground text-sm">
-                  Engar auglýsingar fundust. Búðu til nýja!
-                </div>
-              )}
-            </div>
+                            </div>
+
+                            {/* Stats */}
+                            <div className="grid grid-cols-3 gap-3 mb-4">
+                              <div className="bg-blue-50 rounded-xl p-3 text-center">
+                                <div className="flex items-center justify-center gap-1 text-blue-700 mb-1"><Eye className="w-3.5 h-3.5" /><span className="text-xs font-bold">Birtingar</span></div>
+                                <p className="text-xl font-bold text-blue-800">{imps.toLocaleString('is-IS')}</p>
+                              </div>
+                              <div className="bg-green-50 rounded-xl p-3 text-center">
+                                <div className="flex items-center justify-center gap-1 text-green-700 mb-1"><MousePointerClick className="w-3.5 h-3.5" /><span className="text-xs font-bold">Smellir</span></div>
+                                <p className="text-xl font-bold text-green-800">{clicks.toLocaleString('is-IS')}</p>
+                              </div>
+                              <div className="bg-purple-50 rounded-xl p-3 text-center">
+                                <div className="flex items-center justify-center gap-1 text-purple-700 mb-1"><Activity className="w-3.5 h-3.5" /><span className="text-xs font-bold">CTR</span></div>
+                                <p className="text-xl font-bold text-purple-800">{ctr}%</p>
+                              </div>
+                            </div>
+
+                            {/* Info row */}
+                            <div className="text-xs text-muted-foreground mb-4 flex flex-wrap gap-x-4 gap-y-1">
+                              <span>Sniðmát: <strong>{ad.format}</strong></span>
+                              {ad.target_url && <span>Slóð: <strong className="break-all">{ad.target_url}</strong></span>}
+                            </div>
+
+                            {/* Actions */}
+                            <div className="flex gap-2 flex-wrap">
+                              <button
+                                onClick={() => { setEditingAd(ad.id); setEditAdForm({ client: ad.client, name: ad.name, target_url: ad.target_url, image_url: ad.image_url, format: ad.format, status: ad.status }); }}
+                                className="flex items-center gap-1.5 px-3 py-2 bg-(--color-bg-secondary) text-(--color-text-primary) text-sm font-semibold rounded-lg hover:bg-(--color-border) transition-colors"
+                              >
+                                <Pencil className="w-3.5 h-3.5" /> Breyta
+                              </button>
+                              <button
+                                onClick={async () => {
+                                  const newStatus = ad.status === 'active' ? 'paused' : 'active';
+                                  await updateDoc(doc(db, 'ads', ad.id), { status: newStatus });
+                                  setMessage(`Auglýsing ${newStatus === 'active' ? 'virkjuð' : 'stöðvuð'}.`);
+                                  loadStats();
+                                }}
+                                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-lg transition-colors ${ad.status === 'active' ? 'bg-amber-50 text-amber-700 hover:bg-amber-100' : 'bg-green-50 text-green-700 hover:bg-green-100'}`}
+                              >
+                                {ad.status === 'active' ? '⏸ Stöðva' : '▶ Virkja'}
+                              </button>
+                              <button
+                                onClick={async () => {
+                                  if (!window.confirm(`Eyða auglýsingu frá ${ad.client}?`)) return;
+                                  await deleteDoc(doc(db, 'ads', ad.id));
+                                  setMessage('Auglýsingu eytt. 🗑️');
+                                  loadStats();
+                                }}
+                                className="flex items-center gap-1.5 px-3 py-2 bg-red-50 text-red-600 text-sm font-semibold rounded-lg hover:bg-red-100 transition-colors"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" /> Eyða
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="bg-white border border-(--color-border) rounded-2xl p-8 text-center text-muted-foreground text-sm">
+                Engar auglýsingar fundust. Búðu til nýja hér að neðan!
+              </div>
+            )}
           </div>
 
-          <div className="lg:col-span-4 space-y-6">
-            <h2 className="text-xl font-bold flex items-center gap-2">
-              Búa til nýja
+          {/* Búa til nýja auglýsingu */}
+          <div className="max-w-xl">
+            <h2 className="text-xl font-bold flex items-center gap-2 mb-4">
+              ➕ Búa til nýja auglýsingu
             </h2>
             <div className="bg-white border border-(--color-border) p-6 rounded-2xl shadow-sm">
               <form onSubmit={createAd} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold mb-1">Viðskiptavinur</label>
-                  <input required placeholder="t.d. Pizzan ehf." value={adForm.client} onChange={e => setAdForm({...adForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-sm font-semibold mb-1">Viðskiptavinur</label>
+                    <input required placeholder="t.d. Pizzan ehf." value={adForm.client} onChange={e => setAdForm({...adForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-1">Heiti Herferðar</label>
+                    <input placeholder="t.d. Vordagar 2026" value={adForm.name} onChange={e => setAdForm({...adForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                  </div>
                 </div>
+                <div className="pt-2 pb-1"><div className="h-px bg-(--color-border-light) w-full"></div></div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1">Heiti Herferðar</label>
-                  <input placeholder="t.d. Vordagar 2026" value={adForm.name} onChange={e => setAdForm({...adForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                </div>
-                
-                <div className="pt-2 pb-1">
-                  <div className="h-px bg-(--color-border-light) w-full"></div>
-                </div>
-
-                <div>
-                  <label className="flex text-sm font-semibold mb-1 items-center gap-1">
-                    <UploadCloud className="w-4 h-4 text-blue-500"/> Hlaða upp mynd
-                  </label>
-                  <input 
-                    id="adFileInput"
-                    type="file" 
-                    accept="image/*"
-                    onChange={e => setAdFile(e.target.files?.[0] || null)}
-                    className="w-full border rounded-lg px-3 py-2 text-xs bg-blue-50/50 cursor-pointer file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" 
-                  />
+                  <label className="flex text-sm font-semibold mb-1 items-center gap-1"><UploadCloud className="w-4 h-4 text-blue-500"/> Hlaða upp mynd</label>
+                  <input id="adFileInput" type="file" accept="image/*" onChange={e => setAdFile(e.target.files?.[0] || null)} className="w-full border rounded-lg px-3 py-2 text-xs bg-blue-50/50 cursor-pointer file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1">Eða beina smellislóð (URL)</label>
-                  <input placeholder="https://unsplash..." value={adForm.image_url} onChange={e => setAdForm({...adForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                  <label className="block text-sm font-semibold mb-1">Eða beina mynd-URL</label>
+                  <input placeholder="https://..." value={adForm.image_url} onChange={e => setAdForm({...adForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
                 </div>
-                
-                <div className="pt-2 pb-1">
-                  <div className="h-px bg-(--color-border-light) w-full"></div>
-                </div>
-
+                <div className="pt-2 pb-1"><div className="h-px bg-(--color-border-light) w-full"></div></div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1">Smellislóð (Target)</label>
+                  <label className="block text-sm font-semibold mb-1">Smellislóð (Target URL)</label>
                   <input required placeholder="https://..." value={adForm.target_url} onChange={e => setAdForm({...adForm, target_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
@@ -584,11 +711,7 @@ export default function AdminSeedPage() {
                     </select>
                   </div>
                 </div>
-                <button 
-                  type="submit" 
-                  disabled={adLoading}
-                  className="w-full mt-4 bg-(--color-brand) text-white font-bold py-3 rounded-xl hover:bg-opacity-90 disabled:opacity-50 transition-colors"
-                >
+                <button type="submit" disabled={adLoading} className="w-full mt-4 bg-(--color-brand) text-white font-bold py-3 rounded-xl hover:bg-opacity-90 disabled:opacity-50 transition-colors">
                   {adLoading ? 'Vistar / Hleður upp...' : 'Búa til Auglýsingu'}
                 </button>
               </form>
