@@ -91,15 +91,15 @@ export default function RestaurantsPage() {
                   className="block bg-[var(--color-bg-secondary)] rounded-2xl border border-[var(--color-border)] overflow-hidden hover:shadow-lg transition-shadow group"
                 >
                   {/* Restaurant image */}
-                  {restaurant.image_url && (
+                  {restaurant.image_urls?.[0] && (
                     <div className="relative h-48 overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={restaurant.image_url}
+                        src={restaurant.image_urls[0]}
                         alt={restaurant.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      {restaurant.featured && (
+                      {restaurant.tags?.includes('featured') && (
                         <span className="absolute top-3 right-3 bg-[var(--color-brand)] text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full tracking-wider">
                           {isIs ? 'Ritstjórnarval' : "Editor's Pick"}
                         </span>
@@ -115,7 +115,7 @@ export default function RestaurantsPage() {
                         </h3>
                         <p className="text-sm text-[var(--color-text-tertiary)] flex items-center gap-1 mt-1">
                           <MapPin className="w-3.5 h-3.5" />
-                          {restaurant.city?.toUpperCase()} · {restaurant.price_range || '$$'}
+                          {restaurant.city?.toUpperCase()} · {Array(restaurant.price_level || 2).fill('$').join('')}
                         </p>
                       </div>
                       {restaurant.rating_avg > 0 && (
@@ -139,7 +139,7 @@ export default function RestaurantsPage() {
                       <div className="text-center">
                         <div className="flex justify-center gap-0.5 mb-1">
                           {[1,2,3,4,5].map(i => (
-                            <Star key={i} className={`w-3 h-3 ${i <= (restaurant.google_rating || 4) ? 'text-amber-400 fill-amber-400' : 'text-gray-300'}`} />
+                            <Star key={i} className={`w-3 h-3 ${i <= (restaurant.rating_google || 4) ? 'text-amber-400 fill-amber-400' : 'text-gray-300'}`} />
                           ))}
                         </div>
                         <p className="text-[9px] font-bold uppercase tracking-wider text-[var(--color-text-tertiary)]">Google</p>
@@ -147,7 +147,7 @@ export default function RestaurantsPage() {
                       <div className="text-center">
                         <div className="flex justify-center gap-0.5 mb-1">
                           {[1,2,3,4,5].map(i => (
-                            <span key={i} className={`w-2.5 h-2.5 rounded-full inline-block ${i <= (restaurant.tripadvisor_rating || 4) ? 'bg-green-500' : 'bg-gray-300'}`} />
+                            <span key={i} className={`w-2.5 h-2.5 rounded-full inline-block ${i <= (restaurant.rating_tripadvisor || 4) ? 'bg-green-500' : 'bg-gray-300'}`} />
                           ))}
                         </div>
                         <p className="text-[9px] font-bold uppercase tracking-wider text-[var(--color-text-tertiary)]">TripAdvisor</p>
