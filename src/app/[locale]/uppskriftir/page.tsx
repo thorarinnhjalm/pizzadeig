@@ -3,7 +3,8 @@
 import { useLocale } from 'next-intl';
 import { useRecipes } from '@/hooks/useRecipes';
 import { RecipeGrid } from '@/components/recipes/RecipeGrid';
-import { Loader2 } from 'lucide-react';
+import { Loader2, PlusCircle } from 'lucide-react';
+import { Link } from '@/i18n/routing';
 import { useState } from 'react';
 
 const CATEGORIES = [
@@ -37,6 +38,13 @@ export default function RecipesPage() {
             ? 'Uppgötvaðu leyndarmálið á bak við fullkomna ítölsku pizzu. Frá hinu fullkomna súrdeigi yfir í bragðgóðar sósur.'
             : 'Discover the secrets behind perfect Italian pizza. From sourdough to flavorful sauces.'}
         </p>
+        <Link
+          href="/uppskriftir/ny"
+          className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-(--color-brand) text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+        >
+          <PlusCircle className="w-5 h-5" />
+          {isIs ? 'Deila uppskrift' : 'Share a recipe'}
+        </Link>
       </section>
 
       {/* Filter pills */}

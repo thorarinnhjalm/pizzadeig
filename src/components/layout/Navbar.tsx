@@ -5,7 +5,7 @@ import { Link, usePathname } from '@/i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
 import { useAuth } from '@/hooks/useAuth';
 import { LanguageSwitcher } from './LanguageSwitcher';
-import { ShoppingCart, Menu, X, User, Pizza } from 'lucide-react';
+import { Menu, X, User, Pizza, PlusCircle } from 'lucide-react';
 
 export function Navbar() {
   const t = useTranslations('Navbar');
@@ -61,9 +61,12 @@ export function Navbar() {
           {/* Desktop: Right actions */}
           <div className="hidden md:flex items-center gap-4">
             <LanguageSwitcher />
-            <button className="p-2 text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors">
-              <ShoppingCart className="w-5 h-5" />
-            </button>
+            {user && (
+              <Link href="/uppskriftir/ny" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-(--color-brand) text-white text-sm font-bold rounded-full hover:bg-(--color-brand)/90 shadow-sm hover:shadow-md transition-all">
+                <PlusCircle className="w-4 h-4" />
+                {isIs ? 'Ný uppskrift' : 'New recipe'}
+              </Link>
+            )}
             {user ? (
               <div className="flex items-center gap-2">
                 {isAdmin && (
@@ -125,6 +128,14 @@ export function Navbar() {
             <div className="p-4 border-t border-(--color-border-light) flex flex-col gap-3">
               {user ? (
                 <>
+                  <Link
+                    href="/uppskriftir/ny"
+                    onClick={() => setMobileOpen(false)}
+                    className="w-full inline-flex items-center justify-center gap-2 h-11 bg-(--color-brand)/10 text-(--color-brand) font-semibold rounded-full border border-(--color-brand)/20"
+                  >
+                    <PlusCircle className="w-4 h-4" />
+                    {isIs ? 'Ný uppskrift' : 'New recipe'}
+                  </Link>
                   <Link
                     href={`/notandi/${user.uid}`}
                     onClick={() => setMobileOpen(false)}
