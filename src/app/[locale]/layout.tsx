@@ -71,9 +71,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${playfair.variable} ${caveat.variable} ${workSans.variable}`}>
       <head>
-        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#FDF9F2" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
       <body className="min-h-full flex flex-col antialiased bg-background">
         <NextIntlClientProvider messages={messages}>
