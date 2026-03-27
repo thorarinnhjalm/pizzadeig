@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { auth } from '@/lib/firebase';
+import { auth, db } from '@/lib/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { useRouter } from '@/i18n/routing';
 import { Mail, Lock, AlertCircle } from 'lucide-react';
 
@@ -51,8 +52,17 @@ export default function LoginPage() {
     try {
       const provider = new GoogleAuthProvider();
       const userCredential = await signInWithPopup(auth, provider);
-      
       const user = userCredential.user;
+      
+      // Upsert Google user profile to Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        uid: user.uid,
+        email: user.email,
+        display_name: user.displayName || 'Pizzagerðarmaður',
+        avatar_url: user.photoURL || null,
+        // we use merge so we don't accidentally wipe existing things like followers
+      }, { merge: true });
+
       const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());
       
       if (adminEmails.includes(user.email?.toLowerCase() || '')) {

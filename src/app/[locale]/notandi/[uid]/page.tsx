@@ -12,10 +12,25 @@ import { Users, Pizza, Calendar, ChefHat } from 'lucide-react';
 import { FollowButton } from '@/components/community/FollowButton';
 
 async function getUserProfile(uid: string): Promise<UserProfile | null> {
+  try {
+    const userDoc = await getDoc(doc(db, 'users', uid));
+    if (userDoc.exists()) {
+      return userDoc.data() as UserProfile;
+    }
+  } catch (e) {
+    console.error('Error fetching user profile:', e);
+  }
   return null;
 }
 
 async function getUserRecipes(uid: string): Promise<Recipe[]> {
+  try {
+    const q = query(collection(db, 'recipes'), where('author_id', '==', uid));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Recipe));
+  } catch (e) {
+    console.error('Error fetching user recipes:', e);
+  }
   return [];
 }
 
@@ -25,9 +40,11 @@ export default async function UserProfilePage({ params }: { params: Promise<{ ui
   const recipes = await getUserRecipes(uid);
 
   // Determine fallback details if user prof isn't setup
-  const authorName = user?.display_name || (recipes.length > 0 ? recipes[0].author_name : 'Unknown User');
+  const authorName = user?.display_name || (recipes.length > 0 ? recipes[0].author_name : 'Óþekktur Pizzagerðarmaður');
   const authorAvatar = user?.avatar_url || (recipes.length > 0 ? recipes[0].author_avatar : undefined);
 
+  // Instead of 404ing immediately, we can show an empty state or basic profile if we want
+  // But if strictly absolutely nothing exists (no user and no recipes), we 404
   if (!user && recipes.length === 0) {
     notFound();
   }
