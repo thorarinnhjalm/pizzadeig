@@ -1,21 +1,51 @@
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { mockRestaurants, mockMenuItems } from '@/lib/mockData';
+import { restaurantJsonLd } from '@/lib/seo';
 import { MapPin, Star, Clock, Globe, Phone, ChefHat, ArrowLeft } from 'lucide-react';
 import { RestaurantInteractive } from '@/components/restaurants/RestaurantInteractive';
+
+function getRestaurant(slug: string) {
+  return mockRestaurants.find(r => (r.slug || r.id) === slug) || null;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const restaurant = getRestaurant(slug);
+  if (!restaurant) return {};
+  const isIs = locale === 'is';
+  const desc = isIs ? restaurant.description_is : restaurant.description_en;
+  return {
+    title: `${restaurant.name} — ${isIs ? 'Pizza í' : 'Pizza in'} ${restaurant.city} | Pizzadeig.is`,
+    description: desc?.slice(0, 155) || `${restaurant.name} — ${restaurant.city}`,
+    openGraph: {
+      title: `${restaurant.name} | Pizzadeig.is`,
+      description: desc?.slice(0, 155),
+      url: `https://www.pizzadeig.is/${locale}/stadir/${slug}`,
+      siteName: 'Pizzadeig.is',
+      locale: isIs ? 'is_IS' : 'en_US',
+      type: 'website',
+      images: restaurant.image_urls?.[0] ? [restaurant.image_urls[0]] : [],
+    },
+  };
+}
 
 export default async function RestaurantDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
   const isIs = locale === 'is';
 
-  const restaurant = mockRestaurants.find(r => (r.slug || r.id) === slug);
+  const restaurant = getRestaurant(slug);
   if (!restaurant) notFound();
 
   const priceLabel = '€'.repeat(restaurant.price_level || 2);
   const menuItems = mockMenuItems.filter(m => m.restaurant_id === (restaurant.slug || restaurant.id));
+  const jsonLd = restaurantJsonLd(restaurant, locale, menuItems);
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <main className="flex-1 w-full bg-(--color-bg-light) min-h-screen">
       {/* Hero image */}
       {restaurant.image_urls?.[0] && (
@@ -150,6 +180,7 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
         />
       </div>
     </main>
+    </>
   );
 }
 
