@@ -12,7 +12,7 @@ export default function AdminSeedPage() {
   const [message, setMessage] = useState('');
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [stats, setStats] = useState({ users: 0, recipes: 0, restaurants: 0 });
+  const [stats, setStats] = useState({ users: 0, recipes: 0, restaurants: 0, menuItems: 0 });
   const [recentUsers, setRecentUsers] = useState<any[]>([]);
 
   useEffect(() => {
@@ -49,11 +49,13 @@ export default function AdminSeedPage() {
       const uSnap = await getDocs(query(collection(db, 'users'), orderBy('joined_at', 'desc'), limit(10)));
       const rSnap = await getDocs(collection(db, 'recipes'));
       const stSnap = await getDocs(collection(db, 'restaurants'));
+      const mSnap = await getDocs(collection(db, 'menu_items'));
       
       setStats({
         users: uSnap.empty ? 0 : uSnap.size, // Note: real counting needs getCountFromServer
         recipes: rSnap.size,
-        restaurants: stSnap.size
+        restaurants: stSnap.size,
+        menuItems: mSnap.size
       });
 
       const recent = uSnap.docs.map(d => ({ uid: d.id, ...d.data() }));
@@ -178,7 +180,7 @@ export default function AdminSeedPage() {
       </div>
       
       {/* Top Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         <div className="bg-white border border-(--color-border) p-6 rounded-3xl shadow-sm flex items-center gap-4">
           <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
             <Users className="w-6 h-6" />
@@ -190,12 +192,12 @@ export default function AdminSeedPage() {
         </div>
         
         <div className="bg-white border border-(--color-border) p-6 rounded-3xl shadow-sm flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center shrink-0">
+          <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
             <Pizza className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Uppskriftir</p>
-            <p className="text-3xl font-display font-extrabold">{stats.recipes}</p>
+            <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Pizzur (Matseðlar)</p>
+            <p className="text-3xl font-display font-extrabold">{stats.menuItems}</p>
           </div>
         </div>
 
@@ -206,6 +208,16 @@ export default function AdminSeedPage() {
           <div>
             <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Veitingastaðir</p>
             <p className="text-3xl font-display font-extrabold">{stats.restaurants}</p>
+          </div>
+        </div>
+        
+        <div className="bg-white border border-(--color-border) p-6 rounded-3xl shadow-sm flex items-center gap-4">
+          <div className="w-14 h-14 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center shrink-0">
+            <Activity className="w-6 h-6" />
+          </div>
+          <div>
+            <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Uppskriftir</p>
+            <p className="text-3xl font-display font-extrabold">{stats.recipes}</p>
           </div>
         </div>
       </div>
