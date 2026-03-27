@@ -8,30 +8,27 @@ import { UserAvatar } from '@/components/community/UserAvatar';
 import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
 import { is, enUS } from 'date-fns/locale';
-import { Calendar, ChefHat, Pizza, Users } from 'lucide-react';
-import { ProfileActions } from '@/components/community/ProfileActions';
+import { Users, Pizza, Calendar, ChefHat } from 'lucide-react';
+import { FollowButton } from '@/components/community/FollowButton';
 
 async function getUserProfile(uid: string): Promise<UserProfile | null> {
   try {
     const userDoc = await getDoc(doc(db, 'users', uid));
     if (userDoc.exists()) {
-      return userDoc.data() as UserProfile;
+      return { uid: userDoc.id, ...userDoc.data() } as UserProfile;
     }
-  } catch (e) {
-    console.error('Error fetching user profile:', e);
-  }
+  } catch (e) { }
   return null;
 }
 
 async function getUserRecipes(uid: string): Promise<Recipe[]> {
   try {
-    const q = query(collection(db, 'recipes'), where('author_id', '==', uid));
+    const q = query(collection(db, 'recipes'), where('author_uid', '==', uid));
     const snapshot = await getDocs(q);
-    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Recipe));
+    return snapshot.docs.map(d => ({ id: d.id, ...d.data() } as Recipe));
   } catch (e) {
-    console.error('Error fetching user recipes:', e);
+    return [];
   }
-  return [];
 }
 
 export default async function UserProfilePage({ params }: { params: Promise<{ uid: string, locale: string }> }) {
@@ -40,59 +37,57 @@ export default async function UserProfilePage({ params }: { params: Promise<{ ui
   const recipes = await getUserRecipes(uid);
 
   // Determine fallback details if user prof isn't setup
-  const authorName = user?.display_name || (recipes.length > 0 ? recipes[0].author_name : 'Óþekktur Pizzagerðarmaður');
+  const authorName = user?.display_name || (recipes.length > 0 ? recipes[0].author_name : 'Unknown User');
   const authorAvatar = user?.avatar_url || (recipes.length > 0 ? recipes[0].author_avatar : undefined);
 
-  // Provide a generic fallback for users that authenticated but don't exist in Firestore yet (legacy)
   if (!user && recipes.length === 0) {
-    // Avoid 404 since it might be a valid Firebase Auth user who just hasn't got a Firestore document yet
-    // We'll just render the empty state.
+    notFound();
   }
 
   return (
-    <main className="flex-1 w-full bg-(--bg-cream) min-h-screen">
+    <main className="flex-1 w-full bg-[var(--color-bg-light)] min-h-screen">
       {/* Profile Header */}
-      <div className="bg-linear-to-b from-white to-(--bg-cream) border-b border-(--border) pt-16 pb-12 mb-12 shadow-sm relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-32 bg-(--pizza-red)/5"></div>
+      <div className="bg-gradient-to-b from-white to-[var(--color-bg-light)] border-b border-[var(--color-border)] pt-16 pb-12 mb-12 shadow-sm relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-32 bg-[var(--color-brand)]/5"></div>
         <div className="container mx-auto px-4 flex flex-col items-center max-w-3xl text-center relative z-10">
-          <UserAvatar url={authorAvatar} name={authorName} className="w-32 h-32 md:w-40 md:h-40 border-4 border-white shadow-xl mb-6 ring-4 ring-(--pizza-red)/10" />
-          <h1 className="text-4xl md:text-5xl font-extrabold text-(--text-dark) mb-3 capitalize drop-shadow-sm">{authorName}</h1>
+          <UserAvatar url={authorAvatar} name={authorName} className="w-32 h-32 md:w-40 md:h-40 border-4 border-white shadow-xl mb-6 ring-4 ring-[var(--color-brand)]/10" />
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] mb-3 capitalize drop-shadow-sm">{authorName}</h1>
           
-          <p className="text-(--text-medium) mb-8 flex items-center gap-2 justify-center bg-white/60 px-4 py-1.5 rounded-full backdrop-blur-sm border border-(--border)">
-             <Calendar className="w-4 h-4 text-(--pizza-gold)" /> 
+          <p className="text-[var(--color-text-secondary)] mb-8 flex items-center gap-2 justify-center bg-[var(--color-bg-secondary)]/60 px-4 py-1.5 rounded-full backdrop-blur-sm border border-[var(--color-border)]">
+             <Calendar className="w-4 h-4 text-[var(--color-gold)]" /> 
              {locale === 'is' ? 'Meðlimur síðan' : 'Joined'} {user?.joined_at ? format(user.joined_at.toDate(), 'MMMM yyyy', { locale: locale === 'is' ? is : enUS }) : 'Nýverið'}
           </p>
           
-          <div className="flex gap-4 md:gap-12 mt-4 bg-white border border-(--border) rounded-2xl p-6 md:px-12 justify-center w-full shadow-md">
+          <div className="flex gap-4 md:gap-12 mt-4 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-2xl p-6 md:px-12 justify-center w-full shadow-md">
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-(--pizza-red) flex items-center gap-2"><Pizza className="w-7 h-7" /> {user?.recipes_count || recipes.length}</span>
-              <span className="text-xs md:text-sm text-(--text-medium) uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Uppskriftir' : 'Recipes'}</span>
+              <span className="text-3xl font-extrabold text-[var(--color-brand)] flex items-center gap-2"><Pizza className="w-7 h-7" /> {user?.recipes_count || recipes.length}</span>
+              <span className="text-xs md:text-sm text-[var(--color-text-secondary)] uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Uppskriftir' : 'Recipes'}</span>
             </div>
             <div className="w-px bg-gray-200" />
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-extrabold text-(--pizza-gold) flex items-center gap-2"><Users className="w-7 h-7" /> {user?.followers_count || 0}</span>
-              <span className="text-xs md:text-sm text-(--text-medium) uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Fylgjendur' : 'Followers'}</span>
+              <span className="text-3xl font-extrabold text-[var(--color-gold)] flex items-center gap-2"><Users className="w-7 h-7" /> {user?.followers_count || 0}</span>
+              <span className="text-xs md:text-sm text-[var(--color-text-secondary)] uppercase tracking-widest font-bold mt-1.5">{locale === 'is' ? 'Fylgjendur' : 'Followers'}</span>
             </div>
           </div>
           
-          <div className="mt-10 flex flex-wrap gap-4 justify-center">
-             <ProfileActions targetUid={uid} locale={locale as 'is' | 'en'} initialUser={user} />
+          <div className="mt-10 flex gap-4">
+             <FollowButton targetUid={uid} locale={locale as 'is' | 'en'} />
           </div>
         </div>
       </div>
 
       {/* User Recipes Library */}
       <div className="container mx-auto px-4 pb-24">
-        <h2 className="text-3xl font-bold text-(--text-dark) mb-10 flex items-center gap-3">
-          <ChefHat className="w-8 h-8 text-(--pizza-green)" />
+        <h2 className="text-3xl font-bold text-[var(--color-text-primary)] mb-10 flex items-center gap-3">
+          <ChefHat className="w-8 h-8 text-[var(--color-green)]" />
           {locale === 'is' ? `Uppskriftir eftir ${authorName.split(' ')[0]}` : `Recipes by ${authorName.split(' ')[0]}`}
         </h2>
         {recipes.length > 0 ? (
           <RecipeGrid recipes={recipes} locale={locale as 'is' | 'en'} />
         ) : (
-          <div className="text-center py-20 bg-white rounded-2xl border border-dashed border-(--border)">
+          <div className="text-center py-20 bg-[var(--color-bg-secondary)] rounded-2xl border border-dashed border-[var(--color-border)]">
              <Pizza className="w-16 h-16 text-gray-200 mx-auto mb-4" />
-             <p className="text-xl text-(--text-medium) font-medium">{locale === 'is' ? 'Engar uppskriftir birtar enn.' : 'No recipes published yet.'}</p>
+             <p className="text-xl text-[var(--color-text-secondary)] font-medium">{locale === 'is' ? 'Engar uppskriftir birtar enn.' : 'No recipes published yet.'}</p>
           </div>
         )}
       </div>

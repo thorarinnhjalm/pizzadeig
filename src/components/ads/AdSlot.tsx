@@ -88,26 +88,8 @@ export function AdSlot({ placement, format, className = '', fallbackText }: AdSl
   }
 
   if (!ad) {
-    const isSquare = format === 'square' || format === 'box';
-    const dummyImg = isSquare ? '/ads/dummy-square.svg' : '/ads/dummy-horizontal.svg';
-
-    return (
-      <a 
-        href="/auglysingar"
-        className={`block relative overflow-hidden rounded-xl bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md transition-all cursor-pointer group ${className}`}
-        aria-label="Viltu auglýsa hér? Hafðu samband"
-      >
-        <span className="absolute top-2 left-2 px-2 py-0.5 bg-white/80 backdrop-blur-md border border-gray-200 rounded text-[10px] font-bold text-gray-500 uppercase tracking-widest z-10 shadow-sm pointer-events-none">
-          Auglýsing
-        </span>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img 
-          src={dummyImg} 
-          alt="Viltu auglýsa hér? Hafðu samband" 
-          className="w-full h-full object-cover origin-center transition-transform duration-700 group-hover:scale-105"
-        />
-      </a>
-    );
+    // No active ad — render nothing
+    return null;
   }
 
   return (

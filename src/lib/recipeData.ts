@@ -166,7 +166,7 @@ export const allRecipes: Recipe[] = [
     description_en: 'Use sourdough starter instead of yeast. Deep, complex flavor with tangy notes. 3-day process.',
     author_uid: 'pizzadeig', author_name: 'Pizzadeig.is',
     difficulty: 'erfitt', prep_time_min: 30, cook_time_min: 2, rest_time_min: 4320, servings: 4,
-    image_urls: ['https://images.unsplash.com/photo-1620921568790-c1cf8a8f0c18?q=80&w=1200'],
+    image_urls: ['https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?q=80&w=1200'],
     published: true, category: 'deig', type: 'heildar',
     tags: ['Súrdeig', 'Langtímahefun', 'Gerlaust'],
     rating_avg: 0, rating_count: 0, likes_count: 0,
