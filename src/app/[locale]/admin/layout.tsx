@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Link } from '@/i18n/routing';
-import { LayoutDashboard, Utensils, Store, Users, Target, ArrowLeft } from 'lucide-react';
+import { LayoutDashboard, Utensils, Store, Users, Target, BarChart3, ArrowLeft } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const navItems = [
@@ -9,12 +9,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     { name: 'Veitingastaðir', href: '/admin/stadir', icon: Store },
     { name: 'Notendur', href: '/admin/notendur', icon: Users },
     { name: 'Auglýsingar', href: '/admin/auglysingar', icon: Target },
+    { name: 'Tölfræði', href: '/admin/tolfraedi', icon: BarChart3 },
   ];
 
   return (
     <div className="h-[calc(100vh-64px)] bg-(--color-bg-light) flex overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-(--color-border) flex-shrink-0 flex flex-col hidden md:flex shadow-sm z-10">
+      <aside className="w-64 bg-white border-r border-(--color-border) shrink-0 hidden md:flex flex-col shadow-sm z-10">
         <div className="p-6 border-b border-(--color-border)">
           <Link href="/" className="flex items-center text-xs font-bold uppercase tracking-wide text-gray-400 hover:text-(--color-brand) transition-colors mb-6">
             <ArrowLeft className="w-4 h-4 mr-2" /> Vefur
