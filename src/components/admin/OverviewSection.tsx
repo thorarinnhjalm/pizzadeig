@@ -5,12 +5,8 @@ import {
   Users,
   UtensilsCrossed,
   MessageSquareText,
-  TrendingUp,
   Megaphone,
-  Bell,
-  Activity,
   ArrowUpRight,
-  TrendingDown,
   Clock
 } from 'lucide-react';
 import { Recipe } from '@/types/recipe';
@@ -32,48 +28,43 @@ interface OverviewSectionProps {
 }
 
 export function OverviewSection({ stats, recentUsers, adsList, recipesList }: OverviewSectionProps) {
-  // Demo trends
-  const trends = [
-    { label: 'Uppskriftir', value: stats.recipes, change: '+12%', isUp: true, icon: UtensilsCrossed, color: 'text-amber-600', bg: 'bg-amber-500/10' },
-    { label: 'Notendur', value: stats.users, change: '+24%', isUp: true, icon: Users, color: 'text-blue-600', bg: 'bg-blue-500/10' },
-    { label: 'Umsagnir', value: 142, change: '-4%', isUp: false, icon: MessageSquareText, color: 'text-purple-600', bg: 'bg-purple-500/10' },
-    { label: 'Auglýsingatekjur', value: '450.k', change: '+38%', isUp: true, icon: TrendingUp, color: 'text-green-600', bg: 'bg-green-500/10' },
-  ];
-
-  const pendingRecipes = recipesList.filter(r => !r.published || r.status === 'draft').slice(0, 4);
   const activeAds = adsList.filter(a => a.status === 'active');
+  const pendingRecipes = recipesList.filter(r => !r.published || r.status === 'draft').slice(0, 4);
+
+  const metrics = [
+    { label: 'Uppskriftir', value: stats.recipes, icon: UtensilsCrossed, color: 'text-amber-600', bg: 'bg-amber-500/10' },
+    { label: 'Notendur', value: stats.users, icon: Users, color: 'text-blue-600', bg: 'bg-blue-500/10' },
+    { label: 'Umsagnir', value: '—', icon: MessageSquareText, color: 'text-purple-600', bg: 'bg-purple-500/10', note: 'Tengist Analytics' },
+    { label: 'Virkar auglýsingar', value: activeAds.length, icon: Megaphone, color: 'text-green-600', bg: 'bg-green-500/10' },
+  ];
 
   return (
     <div className="animate-in fade-in duration-300">
       <div className="flex items-center justify-between mb-8">
         <div>
           <h2 className="text-2xl font-display font-bold text-foreground">
-            Yfirlit & Tölfræði
+            Yfirlit
           </h2>
-          <p className="text-muted-foreground">Velkomin aftur, hér er staðan á kerfinu í dag.</p>
-        </div>
-        <div className="flex gap-2">
-          <button className="bg-background border border-border text-sm font-bold px-4 py-2 rounded-xl shadow-sm hover:bg-destructive/5 hover:text-destructive transition-colors flex items-center gap-2 cursor-pointer">
-            Sækja Skýrslu
-          </button>
+          <p className="text-muted-foreground">Rauntímatölur úr gagnagrunni.</p>
         </div>
       </div>
 
-      {/* Metrics Grid */}
+      {/* Metrics Grid — real counts only */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {trends.map((t, idx) => (
+        {metrics.map((t, idx) => (
           <div key={idx} className="bg-card border border-border p-5 rounded-2xl shadow-sm flex flex-col hover:border-primary transition-all group">
             <div className="flex justify-between items-start mb-4">
               <div className={`p-3 rounded-xl ${t.bg} ${t.color} group-hover:scale-110 transition-transform`}>
                 <t.icon className="w-5 h-5" />
               </div>
-              <span className={`flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-full ${t.isUp ? 'text-green-700 bg-green-100' : 'text-red-700 bg-red-100'}`}>
-                {t.isUp ? <ArrowUpRight className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-                {t.change}
-              </span>
+              {t.note && (
+                <span className="text-[10px] font-medium text-muted-foreground bg-muted px-2 py-1 rounded-full">
+                  {t.note}
+                </span>
+              )}
             </div>
             <div>
-              <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">Heildar {t.label}</p>
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">{t.label}</p>
               <h3 className="text-3xl font-display font-extrabold">{t.value}</h3>
             </div>
           </div>
@@ -92,9 +83,11 @@ export function OverviewSection({ stats, recentUsers, adsList, recipesList }: Ov
                 <Clock className="w-5 h-5 text-amber-500" />
                 Uppskriftir í bið
               </h3>
-              <button className="text-xs font-bold text-primary hover:underline cursor-pointer">
-                Sjá allar (+{Math.max(0, pendingRecipes.length - 4)})
-              </button>
+              {pendingRecipes.length > 4 && (
+                <button className="text-xs font-bold text-primary hover:underline cursor-pointer">
+                  Sjá allar (+{pendingRecipes.length - 4})
+                </button>
+              )}
             </div>
             {pendingRecipes.length > 0 ? (
               <div className="divide-y divide-border/50">
@@ -103,6 +96,7 @@ export function OverviewSection({ stats, recentUsers, adsList, recipesList }: Ov
                     <div className="flex items-center gap-4">
                        {r.image_urls?.[0] ? (
                           <div className="w-12 h-12 rounded-lg bg-muted overflow-hidden shrink-0">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img src={r.image_urls[0]} alt="" className="w-full h-full object-cover" />
                           </div>
                        ) : (
@@ -113,7 +107,6 @@ export function OverviewSection({ stats, recentUsers, adsList, recipesList }: Ov
                        <div>
                          <p className="font-bold text-sm">{r.title_is}</p>
                          <p className="text-xs text-muted-foreground line-clamp-1">{r.description_is}</p>
-                         <p className="text-xs text-muted-foreground">Eftir: {r.author_uid || 'Kerfi'}</p>
                        </div>
                     </div>
                     <div className="flex gap-2">
@@ -148,6 +141,7 @@ export function OverviewSection({ stats, recentUsers, adsList, recipesList }: Ov
                   <div key={u.uid} className="p-4 flex items-center justify-between hover:bg-muted/50 transition-colors">
                     <div className="flex items-center gap-3">
                       {u.avatar_url ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
                         <img src={u.avatar_url} alt="Profile" className="w-10 h-10 rounded-full" />
                       ) : (
                         <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center border border-border">
@@ -173,7 +167,7 @@ export function OverviewSection({ stats, recentUsers, adsList, recipesList }: Ov
 
         {/* Right Column (1/3) */}
         <div className="space-y-6">
-          {/* Ad Status Card (Dark) */}
+          {/* Ad Status Card */}
           <div className="bg-stone-900 dark:bg-stone-950 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden">
              <div className="absolute top-0 right-0 w-32 h-32 bg-primary rounded-full blur-[80px] opacity-30 mt-[-20px] mr-[-20px]"></div>
              <h3 className="font-bold flex items-center gap-2 mb-4 relative z-10">
@@ -189,56 +183,18 @@ export function OverviewSection({ stats, recentUsers, adsList, recipesList }: Ov
              </button>
           </div>
 
-          {/* System Health */}
-          <div className="bg-white border border-(--color-border) rounded-2xl p-6 shadow-sm">
-            <h3 className="font-bold flex items-center gap-2 mb-4">
-              <Activity className="w-5 h-5 text-primary" />
-              Kerfisheilsa
+          {/* Analytics placeholder */}
+          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+            <h3 className="font-bold flex items-center gap-2 mb-3">
+              <ArrowUpRight className="w-5 h-5 text-primary" />
+              Tölfræði
             </h3>
-            <div className="space-y-4">
-              <div>
-                <div className="flex justify-between text-xs font-bold mb-1">
-                  <span>Gagnagrunnur</span>
-                  <span className="text-green-600">eðlilegur</span>
-                </div>
-                <div className="w-full bg-muted rounded-full h-1.5"><div className="bg-green-500 h-1.5 rounded-full" style={{ width: '92%' }}></div></div>
-              </div>
-              <div>
-                <div className="flex justify-between text-xs font-bold mb-1">
-                  <span>API Svaranir</span>
-                  <span className="text-green-600">tæpar 18ms</span>
-                </div>
-                <div className="w-full bg-muted rounded-full h-1.5"><div className="bg-green-500 h-1.5 rounded-full" style={{ width: '98%' }}></div></div>
-              </div>
-              <div>
-                <div className="flex justify-between text-xs font-bold mb-1">
-                  <span>Geymslurými Images</span>
-                  <span className="text-amber-600">76% fullt</span>
-                </div>
-                <div className="w-full bg-gray-100 rounded-full h-1.5"><div className="bg-amber-500 h-1.5 rounded-full" style={{ width: '76%' }}></div></div>
-              </div>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              Tengdu Google Analytics og Search Console til að sjá umferðartölur, leitarorð og fleira hér.
+            </p>
+            <div className="text-xs text-muted-foreground bg-muted rounded-lg p-3 font-mono">
+              Bíður eftir Analytics tengingu...
             </div>
-          </div>
-          
-          {/* Notifications */}
-          <div className="bg-card border border-border rounded-2xl shadow-sm p-2">
-             <div className="p-3 border-b border-border flex gap-2 items-center">
-               <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center">
-                 <Bell className="w-4 h-4" /> 
-               </div>
-               <h3 className="font-bold text-sm">Tilkynningar</h3>
-               <span className="ml-auto bg-destructive/10 text-destructive text-[10px] font-bold px-2 py-0.5 rounded-full">3 Nýjar</span>
-             </div>
-             <div className="p-2 space-y-1">
-               <div className="p-2 hover:bg-muted/50 rounded-lg cursor-pointer transition-colors">
-                 <p className="text-xs font-semibold mb-0.5">Umsögn flagguð sem spam</p>
-                 <p className="text-[10px] text-muted-foreground">Kerfið flaggaði umsögn um &quot;Flatey&quot;.</p>
-               </div>
-               <div className="p-2 hover:bg-muted/50 rounded-lg cursor-pointer transition-colors">
-                 <p className="text-xs font-semibold mb-0.5">Nýr veitingastaður skráður</p>
-                 <p className="text-[10px] text-muted-foreground">Eigandi var að skrá veitingastaðinn &quot;Blackbox&quot; og biður um... </p>
-               </div>
-             </div>
           </div>
         </div>
       </div>

@@ -81,20 +81,31 @@ export default function AdminAdsPage() {
           </div>
         </div>
 
-        {/* Global Stats Summary */}
+        {/* Stats from real data */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-4">
-           {['Virkar Herferðir', 'Birtingar í dag', 'Smellir (CTR)'].map((stat, i) => (
-             <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-(--color-border) relative overflow-hidden group">
+           {(() => {
+             const activeCount = ads.filter(a => a.status === 'active').length;
+             const totalImpressions = ads.reduce((sum, a) => sum + (a.impressions || 0), 0);
+             const totalClicks = ads.reduce((sum, a) => sum + (a.clicks || 0), 0);
+             const ctr = totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(1) + '%' : '—';
+             const statItems = [
+               { label: 'Virkar Herferðir', value: activeCount },
+               { label: 'Heildar birtingar', value: totalImpressions.toLocaleString('is-IS') },
+               { label: 'Smellir (CTR)', value: ctr },
+             ];
+             return statItems.map((stat, i) => (
+              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-(--color-border) relative overflow-hidden group">
                 <div className="absolute top-0 right-0 -mr-4 -mt-4 w-20 h-20 bg-(--color-brand)/5 rounded-full blur-xl group-hover:bg-(--color-brand)/10 transition-colors" />
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="text-gray-500 font-bold uppercase tracking-wider text-xs mb-2">{stat}</h4>
-                    <p className="text-3xl font-extrabold text-(--color-text-primary)">{i === 0 ? ads.filter(a => a.status === 'active').length : (i === 1 ? '12.450' : '4.2%')}</p>
+                    <h4 className="text-gray-500 font-bold uppercase tracking-wider text-xs mb-2">{stat.label}</h4>
+                    <p className="text-3xl font-extrabold text-(--color-text-primary)">{stat.value}</p>
                   </div>
                   <BarChart3 className="w-6 h-6 text-(--color-brand)/30" />
                 </div>
-             </div>
-           ))}
+              </div>
+            ));
+           })()}
         </div>
 
         {/* Dynamic Ad Table */}
