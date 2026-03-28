@@ -8,7 +8,7 @@ import { Playfair_Display, Caveat, Work_Sans } from 'next/font/google';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { InstallPrompt } from '@/components/layout/InstallPrompt';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { ConditionalGA4 } from '@/components/analytics/ConditionalGA4';
 import '../globals.css';
 
 const playfair = Playfair_Display({ subsets: ['latin'], weight: ['400', '700'], style: ['normal', 'italic'], variable: '--font-display' });
@@ -81,7 +81,7 @@ export default async function LocaleLayout({
           <InstallPrompt locale={locale as 'is' | 'en'} />
         </NextIntlClientProvider>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+          <ConditionalGA4 gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
       </body>
     </html>

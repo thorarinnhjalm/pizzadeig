@@ -1,22 +1,26 @@
 import { NextResponse } from 'next/server';
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
+import { getServiceAccountCredentials } from '@/lib/google-auth';
 
 export async function GET() {
   const propertyId = process.env.GA4_PROPERTY_ID;
-  const credentials = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
+  const credentials = getServiceAccountCredentials();
 
-  if (!propertyId || !credentials) {
+  if (!propertyId) {
+    return NextResponse.json({ error: 'GA4_PROPERTY_ID vantar í env' }, { status: 400 });
+  }
+
+  if (!credentials) {
     return NextResponse.json(
-      { error: 'GA4_PROPERTY_ID or GOOGLE_SERVICE_ACCOUNT_KEY missing' },
+      { error: 'Service account vantar. Settu GOOGLE_SERVICE_ACCOUNT_KEY_PATH eða service-account.json í rót verkefnis.' },
       { status: 400 }
     );
   }
 
   try {
-    const parsed = JSON.parse(credentials);
-    const client = new BetaAnalyticsDataClient({ credentials: parsed });
+    const client = new BetaAnalyticsDataClient({ credentials });
 
-    // Fetch last 30 days of key metrics
+    // Fetch last 30 days and 7 days of key metrics
     const [report] = await client.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [
@@ -51,7 +55,6 @@ export async function GET() {
       metrics: [{ name: 'activeUsers' }],
     });
 
-    // Parse 30-day totals
     const row30d = report.rows?.[0];
     const row7d = report.rows?.[1];
 
@@ -77,17 +80,10 @@ export async function GET() {
 
     const realtimeUsers = Number(realtime.rows?.[0]?.metricValues?.[0]?.value ?? 0);
 
-    return NextResponse.json({
-      metrics30d,
-      metrics7d,
-      topPages,
-      realtimeUsers,
-    });
+    return NextResponse.json({ metrics30d, metrics7d, topPages, realtimeUsers });
   } catch (err) {
-    console.error('GA4 API error:', err);
-    return NextResponse.json(
-      { error: 'Failed to fetch GA4 data' },
-      { status: 500 }
-    );
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    console.error('GA4 API error:', message);
+    return NextResponse.json({ error: `GA4 villa: ${message}` }, { status: 500 });
   }
 }

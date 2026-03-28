@@ -1,27 +1,26 @@
 import { NextResponse } from 'next/server';
 import { google } from 'googleapis';
+import { getServiceAccountCredentials } from '@/lib/google-auth';
 
 export async function GET() {
   const siteUrl = process.env.SEARCH_CONSOLE_SITE_URL || 'sc-domain:pizzadeig.is';
-  const credentials = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
+  const credentials = getServiceAccountCredentials();
 
   if (!credentials) {
     return NextResponse.json(
-      { error: 'GOOGLE_SERVICE_ACCOUNT_KEY missing' },
+      { error: 'Service account vantar. Settu GOOGLE_SERVICE_ACCOUNT_KEY_PATH eða service-account.json í rót verkefnis.' },
       { status: 400 }
     );
   }
 
   try {
-    const parsed = JSON.parse(credentials);
     const auth = new google.auth.GoogleAuth({
-      credentials: parsed,
+      credentials,
       scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
     });
 
     const searchconsole = google.searchconsole({ version: 'v1', auth });
 
-    // Last 28 days performance
     const endDate = new Date();
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - 28);
@@ -38,7 +37,6 @@ export async function GET() {
       },
     });
 
-    // Also get page-level data
     const pagesResponse = await searchconsole.searchanalytics.query({
       siteUrl,
       requestBody: {
@@ -49,7 +47,6 @@ export async function GET() {
       },
     });
 
-    // Totals
     const totals = (response.data.rows ?? []).reduce(
       (acc: { clicks: number; impressions: number; ctr: number; position: number }, row) => ({
         clicks: acc.clicks + (row.clicks ?? 0),
@@ -86,10 +83,8 @@ export async function GET() {
       period: { start: fmt(startDate), end: fmt(endDate) },
     });
   } catch (err) {
-    console.error('Search Console API error:', err);
-    return NextResponse.json(
-      { error: 'Failed to fetch Search Console data' },
-      { status: 500 }
-    );
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    console.error('Search Console API error:', message);
+    return NextResponse.json({ error: `Search Console villa: ${message}` }, { status: 500 });
   }
 }
