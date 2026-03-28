@@ -27,6 +27,7 @@ export interface Restaurant {
   tripadvisor_url?: string;
   likes_count: number;
   is_verified: boolean;
+  is_seeded?: boolean;
   tags: string[];
   created_at: Timestamp;
   updated_at: Timestamp;

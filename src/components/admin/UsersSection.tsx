@@ -6,7 +6,7 @@ import { Users, Shield, ShieldAlert, Mail } from 'lucide-react';
 import { db } from '@/lib/firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
-interface UserDoc {
+export interface UserDoc {
   uid: string;
   email?: string;
   role?: string;

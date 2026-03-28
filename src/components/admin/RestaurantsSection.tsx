@@ -137,7 +137,7 @@ export function RestaurantsSection({ restaurantsList, onRefresh, showMessage }: 
                    <label className="block text-sm font-semibold mb-1">Póstnúmer</label>
                    <input value={form.postal_code || ''} onChange={e => setForm({...form, postal_code: e.target.value})} className="w-full border rounded-xl px-4 py-2 text-sm bg-white" />
                  </div>
-                 <div className="flex-[2]">
+                 <div className="flex-2">
                    <label className="block text-sm font-semibold mb-1">Borg/Bær</label>
                    <input value={form.city || ''} onChange={e => setForm({...form, city: e.target.value})} className="w-full border rounded-xl px-4 py-2 text-sm bg-white" />
                  </div>
@@ -189,7 +189,7 @@ export function RestaurantsSection({ restaurantsList, onRefresh, showMessage }: 
                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Leita að stað eða borg..." className="w-full pl-9 pr-4 py-2 bg-white border border-(--color-border) rounded-xl text-sm focus:outline-none focus:border-(--color-brand) transition-colors" />
              </div>
-             <button onClick={handleCreateNew} className="shrink-0 flex items-center gap-2 bg-(--color-bg-primary) border border-(--color-border) hover:border-(--color-brand) hover:text-(--color-brand) font-bold text-sm px-4 py-2 rounded-xl transition-colors shadow-sm cursor-pointer w-full sm:w-auto justify-center">
+             <button onClick={handleCreateNew} className="shrink-0 flex items-center gap-2 bg-background border border-(--color-border) hover:border-(--color-brand) hover:text-(--color-brand) font-bold text-sm px-4 py-2 rounded-xl transition-colors shadow-sm cursor-pointer w-full sm:w-auto justify-center">
                <Plus className="w-4 h-4" /> Nýr Staður
              </button>
           </div>
@@ -213,7 +213,7 @@ export function RestaurantsSection({ restaurantsList, onRefresh, showMessage }: 
                      <MapPin className="w-3 h-3" /> {r.city || 'Óþekkt'}, {r.postal_code || ''}
                    </p>
                    {r.rating_google && r.rating_google > 0 && (
-                     <p className="text-[10px] font-bold tracking-wide flex items-center gap-1 text-amber-600 mb-3 block">
+                     <p className="text-[10px] font-bold tracking-wide flex items-center gap-1 text-amber-600 mb-3">
                        ★ {r.rating_google} á Google
                      </p>
                    )}

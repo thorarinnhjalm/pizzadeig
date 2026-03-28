@@ -301,7 +301,7 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
                  <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                  <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Leita í uppskriftum..." className="w-full pl-9 pr-4 py-2 bg-white border border-(--color-border) rounded-xl text-sm focus:outline-none focus:border-(--color-brand) transition-colors" />
                </div>
-               <button onClick={handleCreateNew} className="shrink-0 flex items-center gap-2 bg-(--color-bg-primary) border border-(--color-border) hover:border-(--color-brand) hover:text-(--color-brand) font-bold text-sm px-4 py-2 rounded-xl transition-colors shadow-sm cursor-pointer">
+               <button onClick={handleCreateNew} className="shrink-0 flex items-center gap-2 bg-background border border-(--color-border) hover:border-(--color-brand) hover:text-(--color-brand) font-bold text-sm px-4 py-2 rounded-xl transition-colors shadow-sm cursor-pointer">
                  <Plus className="w-4 h-4" /> Ný Uppskrift
                </button>
              </div>

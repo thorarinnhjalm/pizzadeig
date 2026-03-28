@@ -19,7 +19,7 @@ import { OverviewSection } from '@/components/admin/OverviewSection';
 import { RecipesSection } from '@/components/admin/RecipesSection';
 import { RestaurantsSection } from '@/components/admin/RestaurantsSection';
 import { AdsSection } from '@/components/admin/AdsSection';
-import { UsersSection } from '@/components/admin/UsersSection';
+import { UsersSection, UserDoc } from '@/components/admin/UsersSection';
 import { SystemSection } from '@/components/admin/SystemSection';
 
 export default function AdminDashboardPage() {
@@ -34,7 +34,7 @@ export default function AdminDashboardPage() {
   
   // Data States
   const [stats, setStats] = useState({ users: 0, recipes: 0, restaurants: 0, menuItems: 0, ads: 0 });
-  const [recentUsers, setRecentUsers] = useState<Record<string, unknown>[]>([]);
+  const [recentUsers, setRecentUsers] = useState<UserDoc[]>([]);
   const [adsList, setAdsList] = useState<Ad[]>([]);
   const [recipesList, setRecipesList] = useState<Recipe[]>([]);
   const [restaurantsList, setRestaurantsList] = useState<Restaurant[]>([]);
@@ -81,7 +81,7 @@ export default function AdminDashboardPage() {
         ads: aSnap.size
       });
 
-      setRecentUsers(uSnap.docs.map(d => ({ uid: d.id, ...d.data() })));
+      setRecentUsers(uSnap.docs.map(d => ({ uid: d.id, ...d.data() }) as UserDoc));
       setAdsList(aSnap.docs.map(d => ({ id: d.id, ...d.data() })) as Ad[]);
       setRecipesList(mergedRecipes);
       setRestaurantsList(stSnap.docs.map(d => ({ id: d.id, ...d.data() })) as Restaurant[]);
@@ -102,7 +102,7 @@ export default function AdminDashboardPage() {
 
   if (loading && !isAdmin && !user) {
     return (
-      <div className="fixed inset-0 bg-(--color-bg-primary) z-50 flex items-center justify-center">
+      <div className="fixed inset-0 bg-background z-50 flex items-center justify-center">
         <p className="text-muted-foreground animate-pulse font-bold">Verið að sannreyna aðgang...</p>
       </div>
     );
@@ -110,7 +110,7 @@ export default function AdminDashboardPage() {
 
   if (!user || !isAdmin) {
     return (
-      <div className="fixed inset-0 bg-(--color-bg-primary) z-50 flex items-center justify-center">
+      <div className="fixed inset-0 bg-background z-50 flex items-center justify-center">
         <div className="text-center p-8 bg-white rounded-3xl shadow-xl max-w-sm w-full border border-(--color-border)">
           <ShieldAlert className="w-12 h-12 text-red-500 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-red-600 mb-2">Aðgangur Læstur</h1>
@@ -124,7 +124,7 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <div className="fixed inset-0 bg-(--color-bg-primary) z-50 flex overflow-hidden">
+    <div className="fixed inset-0 bg-background z-50 flex overflow-hidden">
       {/* Sidebar Navigation */}
       <AdminSidebar activeSection={activeSection} setActiveSection={setActiveSection} />
 

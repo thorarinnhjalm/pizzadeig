@@ -32,7 +32,7 @@ export function AdminSidebar({ activeSection, setActiveSection }: AdminSidebarPr
   ] as const;
 
   return (
-    <aside className="w-64 bg-white border-r border-(--color-border) flex flex-col h-full z-10 shrink-0 shadow-sm relative sticky top-0">
+    <aside className="w-64 bg-white border-r border-(--color-border) flex flex-col h-full z-10 shrink-0 shadow-sm sticky top-0">
       {/* Brand */}
       <div className="p-6 border-b border-(--color-border) flex items-center gap-3 shrink-0">
         <div className="bg-(--color-brand) text-white p-2 rounded-xl shadow-lg ring-1 ring-black/5">
@@ -76,7 +76,7 @@ export function AdminSidebar({ activeSection, setActiveSection }: AdminSidebarPr
       {/* CTA Bottom */}
       <div className="p-4 border-t border-(--color-border) bg-(--color-bg-secondary) shrink-0">
         <div className="bg-stone-900 border border-stone-800 rounded-2xl p-4 shadow-xl mb-2 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-br from-red-500/10 to-transparent"></div>
           <div className="relative z-10">
             <h4 className="font-bold text-white text-sm mb-1">Ný Uppskrift?</h4>
             <p className="text-stone-400 text-xs mb-3 leading-relaxed">Bættu við nýrri spennandi pizzuuppskrift í gagnagrunninn.</p>

@@ -104,7 +104,8 @@ export function OverviewSection({ stats, recentUsers, adsList, recipesList }: Ov
                        )}
                        <div>
                          <p className="font-bold text-sm">{r.title_is}</p>
-                         <p className="text-xs text-muted-foreground">Eftir: {r.author_id || 'Kerfi'}</p>
+                         <p className="text-xs text-muted-foreground line-clamp-1">{r.description_is}</p>
+                         <p className="text-xs text-muted-foreground">Eftir: {r.author_uid || 'Kerfi'}</p>
                        </div>
                     </div>
                     <div className="flex gap-2">
