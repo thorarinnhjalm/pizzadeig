@@ -25,6 +25,9 @@ export interface Ad {
   budget_limit?: number;         // ISK
   created_at?: Timestamp;
   updated_at?: Timestamp;
+  impressions?: number;
+  clicks?: number;
+  is_seeded?: boolean;
 }
 
 export interface AdEvent {

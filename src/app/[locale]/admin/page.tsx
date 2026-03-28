@@ -1,55 +1,49 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { db, auth, storage } from '@/lib/firebase';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { auth, db } from '@/lib/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { collection, doc, setDoc, getDocs, deleteDoc, updateDoc, writeBatch, query, limit, orderBy } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
-import { allRecipes } from '@/lib/recipeData';
-import { Users, Pizza, Store, Activity, Database, AlertTriangle, UploadCloud, Eye, MousePointerClick, LayoutDashboard, Settings, BookOpen, ExternalLink, Pencil, Trash2, X, Check, ImageIcon } from 'lucide-react';
-import Link from 'next/link';
+import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 
-export default function AdminSeedPage() {
-  const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState('');
+// Data types
+import { Recipe } from '@/types/recipe';
+import { Ad } from '@/types/ad';
+import { Restaurant } from '@/types/restaurant';
+import { allRecipes } from '@/lib/recipeData'; // Fallback
+import { ShieldAlert, LogOut, X } from 'lucide-react';
+
+// Sections
+import { AdminSidebar, AdminSection } from '@/components/admin/AdminSidebar';
+import { OverviewSection } from '@/components/admin/OverviewSection';
+import { RecipesSection } from '@/components/admin/RecipesSection';
+import { RestaurantsSection } from '@/components/admin/RestaurantsSection';
+import { AdsSection } from '@/components/admin/AdsSection';
+import { UsersSection } from '@/components/admin/UsersSection';
+import { SystemSection } from '@/components/admin/SystemSection';
+
+export default function AdminDashboardPage() {
+  const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // Global State
+  const [activeSection, setActiveSection] = useState<AdminSection>('overview');
+  const [message, setMessage] = useState('');
   
-  // Tab stýring
-  const [activeTab, setActiveTab] = useState<'yfirlit' | 'uppskriftir' | 'auglysingar' | 'kerfi'>('yfirlit');
-
-  // Gögn
+  // Data States
   const [stats, setStats] = useState({ users: 0, recipes: 0, restaurants: 0, menuItems: 0, ads: 0 });
-  const [recentUsers, setRecentUsers] = useState<any[]>([]);
-  const [adsList, setAdsList] = useState<any[]>([]);
-  const [recipesList, setRecipesList] = useState<any[]>([]);
-
-  // Form fyrir nýja auglýsingu
-  const [adForm, setAdForm] = useState({
-    client: '',
-    name: '',
-    image_url: '',
-    target_url: 'https://',
-    format: '1018x360',
-    status: 'active'
-  });
-  const [adFile, setAdFile] = useState<File | null>(null);
-  const [adLoading, setAdLoading] = useState(false);
-
-  // Edit auglýsingu
-  const [editingAd, setEditingAd] = useState<string | null>(null);
-  const [editAdForm, setEditAdForm] = useState<any>({});
-  const [editAdFile, setEditAdFile] = useState<File | null>(null);
-
-  // Edit uppskrift
-  const [editingRecipe, setEditingRecipe] = useState<string | null>(null);
-  const [editRecipeForm, setEditRecipeForm] = useState<any>({});
+  const [recentUsers, setRecentUsers] = useState<Record<string, unknown>[]>([]);
+  const [adsList, setAdsList] = useState<Ad[]>([]);
+  const [recipesList, setRecipesList] = useState<Recipe[]>([]);
+  const [restaurantsList, setRestaurantsList] = useState<Restaurant[]>([]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
+        // Admin validation
         const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());
         const userEmail = currentUser.email?.toLowerCase() || '';
         if (adminEmails.includes(userEmail)) setIsAdmin(true);
@@ -62,11 +56,8 @@ export default function AdminSeedPage() {
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    if (isAdmin) loadStats();
-  }, [isAdmin]);
-
-  const loadStats = async () => {
+  const loadData = async () => {
+    if (!isAdmin) return;
     try {
       const uSnap = await getDocs(query(collection(db, 'users'), orderBy('joined_at', 'desc'), limit(10)));
       const rSnap = await getDocs(collection(db, 'recipes'));
@@ -74,16 +65,16 @@ export default function AdminSeedPage() {
       const mSnap = await getDocs(collection(db, 'menu_items'));
       const aSnap = await getDocs(collection(db, 'ads'));
 
-      // Merge Firestore recipes with hardcoded recipeData
-      const firestoreRecipes = rSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+      // Merge Recipes (Firestore + Fallback)
+      const firestoreRecipes = rSnap.docs.map(d => ({ id: d.id, ...d.data() })) as Recipe[];
       const firestoreRecipeIds = new Set(firestoreRecipes.map(r => r.id));
       const hardcodedRecipes = allRecipes
         .filter(r => !firestoreRecipeIds.has(r.id))
-        .map(r => ({ ...r, _source: 'hardcoded' as const }));
+        .map(r => ({ ...r, status: 'published', published: true, is_seeded: false })) as unknown as Recipe[];
       const mergedRecipes = [...firestoreRecipes, ...hardcodedRecipes];
-      
+
       setStats({
-        users: uSnap.empty ? 0 : uSnap.size,
+        users: uSnap.empty ? 0 : uSnap.size, // Size limitation for users but serves intent
         recipes: mergedRecipes.length,
         restaurants: stSnap.size,
         menuItems: mSnap.size,
@@ -91,805 +82,117 @@ export default function AdminSeedPage() {
       });
 
       setRecentUsers(uSnap.docs.map(d => ({ uid: d.id, ...d.data() })));
-      setAdsList(aSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+      setAdsList(aSnap.docs.map(d => ({ id: d.id, ...d.data() })) as Ad[]);
       setRecipesList(mergedRecipes);
+      setRestaurantsList(stSnap.docs.map(d => ({ id: d.id, ...d.data() })) as Restaurant[]);
+
     } catch (err) {
-      console.error('Failed to load stats', err);
+      console.error('Failed to load admin stats', err);
     }
   };
 
-  const seedDatabase = async () => {
-    setLoading(true);
-    setMessage('Byrja að fræfæða gagnagrunninn...');
-    try {
-      // Ensure current user has admin role in Firestore (required by security rules)
-      if (user) {
-        await setDoc(doc(db, 'users', user.uid), { role: 'admin' }, { merge: true });
-      }
+  useEffect(() => {
+    loadData();
+  }, [isAdmin]);
 
-      const batch = writeBatch(db);
-
-      mockRestaurants.forEach((restaurant) => {
-        const refD = doc(db, 'restaurants', restaurant.id);
-        batch.set(refD, { ...restaurant, is_seeded: true, created_at: new Date() });
-      });
-
-      mockMenuItems.forEach((item) => {
-        const refD = doc(db, 'menu_items', item.id);
-        const restaurant = mockRestaurants.find(r => r.id === item.restaurant_id);
-        batch.set(refD, { 
-          ...item, 
-          restaurant_name: restaurant?.name || '',
-          is_seeded: true,
-          created_at: new Date()
-        });
-      });
-
-      mockAds.forEach((ad) => {
-        const refD = doc(db, 'ads', ad.id);
-        batch.set(refD, { ...ad, is_seeded: true, impressions: 0, clicks: 0, created_at: new Date() });
-      });
-
-      allRecipes.forEach((recipe) => {
-        const refD = doc(db, 'recipes', recipe.id);
-        batch.set(refD, { ...recipe, is_seeded: true, created_at: new Date(), updated_at: new Date() });
-      });
-
-      await batch.commit();
-      setMessage('Gagnagrunnur var uppfærður með gervigögnum! 🎉');
-      loadStats();
-    } catch (error: any) {
-      console.error(error);
-      setMessage('Villa við að vista: ' + error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const clearSeededData = async () => {
-    if (!window.confirm('Ertu viss um að þú viljir eyða öllum gervigögnum úr Firebase?')) return;
-    setLoading(true);
-    setMessage('Eyði gervigögnum...');
-    try {
-      const collectionsToClear = ['restaurants', 'menu_items', 'ads', 'recipes'];
-      for (const colName of collectionsToClear) {
-        const querySnapshot = await getDocs(collection(db, colName));
-        const batch = writeBatch(db);
-        let count = 0;
-        querySnapshot.forEach((document) => {
-          if (document.data().is_seeded) {
-            batch.delete(document.ref);
-            count++;
-          }
-        });
-        if (count > 0) await batch.commit();
-      }
-      setMessage('Öllum gervigögnum eytt! 🗑️');
-      loadStats();
-    } catch (error: any) {
-      console.error(error);
-      setMessage('Villa við að eyða: ' + error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const createAd = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setAdLoading(true);
-    setMessage('');
-    try {
-      if (!adForm.client || (!adFile && !adForm.image_url)) {
-        throw new Error('Vantar viðskiptavin, og annaðhvort skrá eða vefslóð á mynd.');
-      }
-      const newId = `ad-${Date.now()}`;
-      let finalImageUrl = adForm.image_url;
-
-      if (adFile) {
-        setMessage('Hleð upp mynd í Firebase Storage...');
-        const storageRef = ref(storage, `ads/${Date.now()}_${adFile.name}`);
-        const snapshot = await uploadBytes(storageRef, adFile);
-        finalImageUrl = await getDownloadURL(snapshot.ref);
-      }
-
-      const docRef = doc(db, 'ads', newId);
-      
-      await setDoc(docRef, {
-        id: newId,
-        client: adForm.client,
-        name: adForm.name || 'Án nafns',
-        format: adForm.format,
-        creatives: {
-          [adForm.format]: finalImageUrl
-        },
-        image_url: finalImageUrl,
-        target_url: adForm.target_url,
-        status: adForm.status,
-        placements: adForm.format === '1018x360' ? ['home_hero'] : ['home_featured', 'recipe_sidebar'],
-        impressions: 0,
-        clicks: 0,
-        start_date: new Date(),
-        end_date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-        created_at: new Date()
-      });
-      
-      setMessage(`Auglýsing hefur verið vistuð með mynd og er nú virk í kerfinu! 🎉`);
-      setAdForm({ client: '', name: '', image_url: '', target_url: 'https://', format: '1018x360', status: 'active' });
-      setAdFile(null);
-      
-      const fileInput = document.getElementById('adFileInput') as HTMLInputElement;
-      if (fileInput) fileInput.value = '';
-
-      loadStats();
-    } catch (error: any) {
-      console.error(error);
-      setMessage('Villa við að búa til auglýsingu: ' + error.message);
-    } finally {
-      setAdLoading(false);
-    }
+  const showMessage = (msg: string) => {
+    setMessage(msg);
+    setTimeout(() => setMessage(''), 5000);
   };
 
   if (loading && !isAdmin && !user) {
     return (
-      <div className="container mx-auto px-4 py-16 max-w-2xl text-center">
-        <p className="text-muted-foreground animate-pulse">Eru að sannreyna aðgangsheimildir...</p>
+      <div className="fixed inset-0 bg-(--color-bg-primary) z-50 flex items-center justify-center">
+        <p className="text-muted-foreground animate-pulse font-bold">Verið að sannreyna aðgang...</p>
       </div>
     );
   }
 
-  if (!user) {
+  if (!user || !isAdmin) {
     return (
-      <div className="container mx-auto px-4 py-16 max-w-2xl text-center">
-        <h1 className="text-2xl font-bold text-red-600 mb-4">Aðgangur bannaður</h1>
-        <p className="text-muted-foreground">Þú verður að skrá þig inn fyrst til að sjá þessa síðu.</p>
-      </div>
-    );
-  }
-
-  if (!isAdmin) {
-    return (
-      <div className="container mx-auto px-4 py-16 max-w-2xl text-center">
-        <h1 className="text-2xl font-bold text-red-600 mb-4">Engin heimild</h1>
-        <p className="text-muted-foreground">Þetta netfang ({user.email}) hefur ekki stjórnandaréttindi (Admin).</p>
+      <div className="fixed inset-0 bg-(--color-bg-primary) z-50 flex items-center justify-center">
+        <div className="text-center p-8 bg-white rounded-3xl shadow-xl max-w-sm w-full border border-(--color-border)">
+          <ShieldAlert className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-red-600 mb-2">Aðgangur Læstur</h1>
+          <p className="text-sm text-muted-foreground mb-6">Þetta svæði er eingöngu fyrir starfsfólk Pizzadeigs.</p>
+          <button onClick={() => router.push('/')} className="w-full bg-(--color-brand) text-white font-bold py-3 rounded-xl hover:bg-opacity-90 transition-colors">
+            Fara á forsíðu
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-5xl">
-      {/* HEADER */}
-      <div className="flex flex-col md:flex-row md:items-center gap-6 mb-10 justify-between">
-        <div className="flex items-center gap-4">
-          <div className="bg-red-100 p-3 rounded-2xl hidden sm:block">
-            <LayoutDashboard className="w-8 h-8 text-red-600" />
+    <div className="fixed inset-0 bg-(--color-bg-primary) z-50 flex overflow-hidden">
+      {/* Sidebar Navigation */}
+      <AdminSidebar activeSection={activeSection} setActiveSection={setActiveSection} />
+
+      {/* Main Content Area */}
+      <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 flex flex-col relative text-(--color-text-primary)">
+        
+        {/* Top App Bar */}
+        <header className="bg-white border-b border-(--color-border) h-16 flex items-center justify-between px-8 sticky top-0 z-20 shrink-0">
+           <div className="flex items-center gap-4 flex-1">
+             <h2 className="font-bold text-lg hidden sm:block">Pizzadeig Vefstjórnarkerfi</h2>
+           </div>
+           
+           <div className="flex items-center gap-4">
+             {/* User Profile Info */}
+             <div className="flex items-center gap-3 border-l border-(--color-border) pl-4">
+               <div className="text-right hidden sm:block">
+                 <p className="text-sm font-bold leading-tight">{user.displayName || 'Stjórnandi'}</p>
+                 <p className="text-[10px] text-muted-foreground">{user.email}</p>
+               </div>
+               <button onClick={() => auth.signOut()} className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors cursor-pointer" title="Skrá út">
+                 <LogOut className="w-5 h-5" />
+               </button>
+             </div>
+           </div>
+        </header>
+
+        {/* Global Toast Message */}
+        {message && (
+          <div className="absolute top-20 left-1/2 -translate-x-1/2 z-50 bg-stone-900 text-white px-6 py-3 rounded-xl shadow-xl font-bold text-sm flex items-center gap-3 animate-in slide-in-from-top-4 fade-in">
+            {message}
+            <button onClick={() => setMessage('')} className="text-stone-400 hover:text-white cursor-pointer"><X className="w-4 h-4" /></button>
           </div>
-          <div>
-            <h1 className="text-3xl font-display font-bold text-(--color-text-primary)">Admin Mælaborð</h1>
-            <p className="text-muted-foreground">Velkomin/n, {user.email}.</p>
-          </div>
-        </div>
-      </div>
-      
-      {/* TABS NAVIGATION */}
-      <div className="flex gap-2 sm:gap-6 border-b border-(--color-border) mb-8 overflow-x-auto hide-scrollbar pb-1">
-        <button 
-          onClick={() => setActiveTab('yfirlit')} 
-          className={`flex items-center gap-2 px-4 py-2.5 font-bold transition-all whitespace-nowrap rounded-t-lg ${activeTab === 'yfirlit' ? 'text-(--color-brand) border-b-2 border-(--color-brand) bg-(--color-brand)/5' : 'text-muted-foreground hover:text-(--color-text-primary) hover:bg-(--color-bg-secondary)'}`}
-        >
-          <Activity className="w-4 h-4" /> Yfirlit / Tölfræði
-        </button>
-        <button 
-          onClick={() => setActiveTab('auglysingar')} 
-          className={`flex items-center gap-2 px-4 py-2.5 font-bold transition-all whitespace-nowrap rounded-t-lg ${activeTab === 'auglysingar' ? 'text-(--color-brand) border-b-2 border-(--color-brand) bg-(--color-brand)/5' : 'text-muted-foreground hover:text-(--color-text-primary) hover:bg-(--color-bg-secondary)'}`}
-        >
-          <Database className="w-4 h-4" /> Auglýsingar
-        </button>
-        <button 
-          onClick={() => setActiveTab('uppskriftir')} 
-          className={`flex items-center gap-2 px-4 py-2.5 font-bold transition-all whitespace-nowrap rounded-t-lg ${activeTab === 'uppskriftir' ? 'text-(--color-brand) border-b-2 border-(--color-brand) bg-(--color-brand)/5' : 'text-muted-foreground hover:text-(--color-text-primary) hover:bg-(--color-bg-secondary)'}`}
-        >
-          <BookOpen className="w-4 h-4" /> Uppskriftir
-        </button>
-        <button 
-          onClick={() => setActiveTab('kerfi')} 
-          className={`flex items-center gap-2 px-4 py-2.5 font-bold transition-all whitespace-nowrap rounded-t-lg ${activeTab === 'kerfi' ? 'text-red-600 border-b-2 border-red-600 bg-red-50' : 'text-muted-foreground hover:text-red-500 hover:bg-red-50/50'}`}
-        >
-          <Settings className="w-4 h-4" /> Kerfisstjórnun
-        </button>
-      </div>
+        )}
 
-      {message && (
-        <div className="mb-8 p-4 bg-white border border-(--color-border) text-sm rounded-xl font-mono shadow-sm flex items-center justify-between">
-          <span className="text-(--color-text-primary)">{message}</span>
-          <button onClick={() => setMessage('')} className="text-muted-foreground hover:text-(--color-text-primary)">✕</button>
-        </div>
-      )}
-
-      {/* --- TAB 1: YFIRLIT --- */}
-      {activeTab === 'yfirlit' && (
-        <div className="animate-in fade-in duration-300">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
-            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                <Users className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Notendur</p>
-                <p className="text-2xl font-display font-extrabold">{stats.users}</p>
-              </div>
-            </div>
-            
-            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
-                <Pizza className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Pizzur</p>
-                <p className="text-2xl font-display font-extrabold">{stats.menuItems}</p>
-              </div>
-            </div>
-
-            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
-                <Store className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Staðir</p>
-                <p className="text-2xl font-display font-extrabold">{stats.restaurants}</p>
-              </div>
-            </div>
-            
-            <button onClick={() => setActiveTab('uppskriftir')} className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4 hover:border-(--color-brand) hover:shadow-md transition-all text-left cursor-pointer">
-              <div className="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center shrink-0">
-                <BookOpen className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Uppskriftir</p>
-                <p className="text-2xl font-display font-extrabold">{stats.recipes}</p>
-              </div>
-            </button>
-
-            <div className="bg-white border border-(--color-border) p-5 rounded-2xl shadow-sm flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center shrink-0">
-                <Database className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-0.5">Auglýsingar</p>
-                <p className="text-2xl font-display font-extrabold">{stats.ads}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="max-w-3xl">
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <Users className="w-5 h-5 text-(--color-text-secondary)" /> 
-              Nýlegar Skráningar
-            </h2>
-            <div className="bg-white border border-(--color-border) rounded-2xl overflow-hidden shadow-sm">
-              {recentUsers.length > 0 ? (
-                <div className="divide-y divide-(--color-border-light)">
-                  {recentUsers.map(ru => (
-                    <div key={ru.uid} className="p-4 flex items-center gap-3 hover:bg-(--color-bg-secondary) transition-colors">
-                      {ru.avatar_url ? (
-                        <img src={ru.avatar_url} alt="Profile" className="w-10 h-10 rounded-full" />
-                      ) : (
-                        <div className="w-10 h-10 rounded-full bg-(--color-bg-secondary) flex items-center justify-center border border-(--color-border)">
-                          <Users className="w-5 h-5 text-muted-foreground" />
-                        </div>
-                      )}
-                      <div>
-                        <p className="font-semibold text-sm text-(--color-text-primary)">{ru.display_name}</p>
-                        <p className="text-xs text-muted-foreground">{ru.email}</p>
-                      </div>
-                      <div className="ml-auto text-xs text-muted-foreground">
-                        {ru.joined_at?.toDate ? new Date(ru.joined_at.toDate()).toLocaleDateString('is-IS') : 'Óþekkt'}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="p-8 text-center text-muted-foreground text-sm">
-                  Engir notendur fundust eða gagnagrunnur tómur.
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* --- TAB: UPPSKRIFTIR --- */}
-      {activeTab === 'uppskriftir' && (
-        <div className="animate-in fade-in duration-300 space-y-8">
-          <div>
-            <h2 className="text-xl font-bold flex items-center gap-2 mb-2">
-              <BookOpen className="w-5 h-5 text-(--color-brand)" />
-              Allar uppskriftir ({recipesList.length})
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              {recipesList.filter((r: any) => r._source === 'hardcoded').length} innbyggðar · {recipesList.filter((r: any) => !r._source).length} í Firestore
-            </p>
-
-            {recipesList.length > 0 ? (
-              <div className="space-y-6">
-                {recipesList.map((r: any) => {
-                  const isEditing = editingRecipe === r.id;
-
-                  return (
-                    <div key={r.id} className="bg-white border border-(--color-border) rounded-2xl shadow-sm overflow-hidden">
-                      {/* Image + info header */}
-                      <div className="flex flex-col sm:flex-row">
-                        {/* Thumbnail */}
-                        {r.image_urls?.[0] && (
-                          <div className="sm:w-48 sm:min-h-[160px] bg-gray-100 flex-shrink-0">
-                            <img src={r.image_urls[0]} alt={r.title_is || ''} className="w-full h-full object-cover sm:rounded-l-2xl" style={{ maxHeight: '200px' }} />
-                          </div>
-                        )}
-
-                        <div className="flex-1 p-5">
-                          {isEditing ? (
-                            /* ---- EDIT MODE ---- */
-                            <div className="space-y-3">
-                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <div>
-                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Titill (IS)</label>
-                                  <input value={editRecipeForm.title_is || ''} onChange={e => setEditRecipeForm({...editRecipeForm, title_is: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                                </div>
-                                <div>
-                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Titill (EN)</label>
-                                  <input value={editRecipeForm.title_en || ''} onChange={e => setEditRecipeForm({...editRecipeForm, title_en: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                                </div>
-                              </div>
-                              <div>
-                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Lýsing (IS)</label>
-                                <textarea value={editRecipeForm.description_is || ''} onChange={e => setEditRecipeForm({...editRecipeForm, description_is: e.target.value})} rows={2} className="w-full border rounded-lg px-3 py-2 text-sm resize-none" />
-                              </div>
-                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                                <div>
-                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Erfiðleiki</label>
-                                  <select value={editRecipeForm.difficulty || 'audvelt'} onChange={e => setEditRecipeForm({...editRecipeForm, difficulty: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                                    <option value="audvelt">Auðvelt</option>
-                                    <option value="midlungs">Miðlungs</option>
-                                    <option value="erfitt">Erfitt</option>
-                                  </select>
-                                </div>
-                                <div>
-                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Skammtar</label>
-                                  <input type="number" value={editRecipeForm.servings || ''} onChange={e => setEditRecipeForm({...editRecipeForm, servings: parseInt(e.target.value) || 0})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                                </div>
-                                <div>
-                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Flokkur</label>
-                                  <select value={editRecipeForm.category || 'deig'} onChange={e => setEditRecipeForm({...editRecipeForm, category: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                                    <option value="deig">Deig</option>
-                                    <option value="sosa">Sósa</option>
-                                    <option value="aleg">Álegg</option>
-                                  </select>
-                                </div>
-                                <div>
-                                  <label className="block text-xs font-semibold mb-1 text-muted-foreground">Mynd URL</label>
-                                  <input value={editRecipeForm.image_url_0 || ''} onChange={e => setEditRecipeForm({...editRecipeForm, image_url_0: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="https://..." />
-                                </div>
-                              </div>
-                              <div className="flex gap-2 pt-2">
-                                <button
-                                  onClick={async () => {
-                                    try {
-                                      setAdLoading(true);
-                                      const imageUrls = editRecipeForm.image_url_0 ? [editRecipeForm.image_url_0] : (r.image_urls || []);
-                                      await updateDoc(doc(db, 'recipes', r.id), {
-                                        title_is: editRecipeForm.title_is,
-                                        title_en: editRecipeForm.title_en,
-                                        description_is: editRecipeForm.description_is,
-                                        difficulty: editRecipeForm.difficulty,
-                                        servings: editRecipeForm.servings,
-                                        category: editRecipeForm.category,
-                                        image_urls: imageUrls,
-                                        updated_at: new Date(),
-                                      });
-                                      setMessage('Uppskrift uppfærð! ✅');
-                                      setEditingRecipe(null);
-                                      loadStats();
-                                    } catch (err: any) {
-                                      setMessage('Villa: ' + err.message);
-                                    } finally {
-                                      setAdLoading(false);
-                                    }
-                                  }}
-                                  disabled={adLoading}
-                                  className="flex items-center gap-1.5 px-4 py-2 bg-green-600 text-white text-sm font-bold rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors"
-                                >
-                                  <Check className="w-4 h-4" /> Vista
-                                </button>
-                                <button onClick={() => setEditingRecipe(null)} className="flex items-center gap-1.5 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-bold rounded-lg hover:bg-gray-200 transition-colors">
-                                  <X className="w-4 h-4" /> Hætta við
-                                </button>
-                              </div>
-                            </div>
-                          ) : (
-                            /* ---- VIEW MODE ---- */
-                            <div>
-                              <div className="flex items-start justify-between mb-2">
-                                <div>
-                                  <h3 className="text-lg font-bold text-(--color-text-primary)">{r.title_is || r.title_en || '—'}</h3>
-                                  <p className="text-xs text-muted-foreground">{r.author_name || 'Óþekktur'} · {r.slug}</p>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  {r._source === 'hardcoded' && (
-                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-100 text-blue-700">Innbyggð</span>
-                                  )}
-                                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                                    r.difficulty === 'audvelt' ? 'bg-green-100 text-green-700' :
-                                    r.difficulty === 'midlungs' ? 'bg-amber-100 text-amber-700' :
-                                    'bg-red-100 text-red-700'
-                                  }`}>
-                                    {r.difficulty === 'audvelt' ? 'Auðvelt' : r.difficulty === 'midlungs' ? 'Miðlungs' : r.difficulty || '—'}
-                                  </span>
-                                </div>
-                              </div>
-
-                              <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{r.description_is || r.description_en || ''}</p>
-
-                              {/* Meta */}
-                              <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground mb-4">
-                                <span>🍕 {r.servings || '—'} skammtar</span>
-                                <span>⏱ {r.prep_time_min || 0} mín. undirbúningur</span>
-                                {r.rest_time_min > 0 && <span>🕐 {r.rest_time_min >= 60 ? `${Math.round(r.rest_time_min / 60)} klst.` : `${r.rest_time_min} mín.`} gerjun</span>}
-                                <span>📂 {r.category}</span>
-                                {r.tags?.length > 0 && <span>🏷️ {r.tags.slice(0, 3).join(', ')}</span>}
-                              </div>
-
-                              {/* Actions */}
-                              <div className="flex gap-2 flex-wrap">
-                                {r.slug && (
-                                  <Link href={`/is/uppskriftir/${r.slug}`} target="_blank" className="flex items-center gap-1.5 px-3 py-2 bg-(--color-bg-secondary) text-(--color-text-primary) text-sm font-semibold rounded-lg hover:bg-(--color-border) transition-colors">
-                                    <ExternalLink className="w-3.5 h-3.5" /> Skoða
-                                  </Link>
-                                )}
-                                <button
-                                  onClick={() => {
-                                    setEditingRecipe(r.id);
-                                    setEditRecipeForm({
-                                      title_is: r.title_is,
-                                      title_en: r.title_en,
-                                      description_is: r.description_is,
-                                      difficulty: r.difficulty,
-                                      servings: r.servings,
-                                      category: r.category,
-                                      image_url_0: r.image_urls?.[0] || '',
-                                    });
-                                  }}
-                                  className="flex items-center gap-1.5 px-3 py-2 bg-(--color-bg-secondary) text-(--color-text-primary) text-sm font-semibold rounded-lg hover:bg-(--color-border) transition-colors"
-                                >
-                                  <Pencil className="w-3.5 h-3.5" /> Breyta
-                                </button>
-                                <button
-                                  onClick={async () => {
-                                    if (!window.confirm(`Eyða uppskrift: ${r.title_is}?`)) return;
-                                    try {
-                                      await deleteDoc(doc(db, 'recipes', r.id));
-                                      setMessage('Uppskrift eytt. 🗑️');
-                                      loadStats();
-                                    } catch (err: any) {
-                                      setMessage('Villa: ' + err.message);
-                                    }
-                                  }}
-                                  className="flex items-center gap-1.5 px-3 py-2 bg-red-50 text-red-600 text-sm font-semibold rounded-lg hover:bg-red-100 transition-colors"
-                                >
-                                  <Trash2 className="w-3.5 h-3.5" /> Eyða
-                                </button>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="bg-white border border-(--color-border) rounded-2xl p-8 text-center text-muted-foreground text-sm">
-                Engar uppskriftir fundust. Keyrðu &quot;Sturta gögnum&quot; á Kerfi-tabinu til að byrja.
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* --- TAB 2: AUGLÝSINGAR --- */}
-      {activeTab === 'auglysingar' && (
-        <div className="animate-in fade-in duration-300 space-y-8">
+        {/* Section Content Rendering */}
+        <div className="p-8 max-w-7xl mx-auto w-full pb-24">
+          {activeSection === 'overview' && (
+            <OverviewSection stats={stats} recentUsers={recentUsers} adsList={adsList} recipesList={recipesList} />
+          )}
           
-          {/* Yfirlit auglýsinga sem kort */}
-          <div>
-            <h2 className="text-xl font-bold flex items-center gap-2 mb-6">
-              <Database className="w-5 h-5 text-(--color-brand)" />
-              Allar auglýsingar ({adsList.length})
-            </h2>
+          {activeSection === 'recipes' && (
+            <RecipesSection recipesList={recipesList} onRefresh={loadData} showMessage={showMessage} />
+          )}
 
-            {adsList.length > 0 ? (
-              <div className="space-y-6">
-                {adsList.map(ad => {
-                  const imps = ad.impressions || 0;
-                  const clicks = ad.clicks || 0;
-                  const ctr = imps > 0 ? ((clicks / imps) * 100).toFixed(2) : '0.00';
-                  const isEditing = editingAd === ad.id;
+          {activeSection === 'restaurants' && (
+            <RestaurantsSection restaurantsList={restaurantsList} onRefresh={loadData} showMessage={showMessage} />
+          )}
 
-                  return (
-                    <div key={ad.id} className="bg-white border border-(--color-border) rounded-2xl shadow-sm overflow-hidden">
-                      {/* Image preview */}
-                      {ad.image_url && (
-                        <div className="relative bg-gray-100 w-full" style={{ maxHeight: '220px' }}>
-                          <img src={ad.image_url} alt={`Auglýsing: ${ad.client}`} className="w-full h-full object-contain" style={{ maxHeight: '220px' }} />
-                          <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/60 text-white text-[10px] font-bold uppercase rounded tracking-wider">Forskoðun</span>
-                          {ad.target_url && (
-                            <a href={ad.target_url} target="_blank" rel="noopener noreferrer" className="absolute top-2 right-2 px-2 py-1 bg-white/90 text-xs font-semibold rounded-lg flex items-center gap-1 hover:bg-white transition-colors shadow-sm">
-                              <ExternalLink className="w-3 h-3" /> Slóð
-                            </a>
-                          )}
-                        </div>
-                      )}
+          {activeSection === 'ads' && (
+            <AdsSection adsList={adsList} onRefresh={loadData} showMessage={showMessage} />
+          )}
 
-                      <div className="p-5">
-                        {isEditing ? (
-                          /* ---- EDIT MODE ---- */
-                          <div className="space-y-4">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                              <div>
-                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Viðskiptavinur</label>
-                                <input value={editAdForm.client || ''} onChange={e => setEditAdForm({...editAdForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                              </div>
-                              <div>
-                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Herferð</label>
-                                <input value={editAdForm.name || ''} onChange={e => setEditAdForm({...editAdForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                              </div>
-                            </div>
-                            <div>
-                              <label className="block text-xs font-semibold mb-1 text-muted-foreground">Smellislóð</label>
-                              <input value={editAdForm.target_url || ''} onChange={e => setEditAdForm({...editAdForm, target_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                              <div>
-                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Mynd URL (eða hlaða upp)</label>
-                                <input value={editAdForm.image_url || ''} onChange={e => setEditAdForm({...editAdForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                              </div>
-                              <div>
-                                <label className="flex text-xs font-semibold mb-1 text-muted-foreground items-center gap-1"><ImageIcon className="w-3 h-3"/> Skipta um mynd</label>
-                                <input type="file" accept="image/*" onChange={e => setEditAdFile(e.target.files?.[0] || null)} className="w-full border rounded-lg px-2 py-1.5 text-xs bg-blue-50/50 cursor-pointer file:mr-2 file:py-0.5 file:px-2 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-100 file:text-blue-700" />
-                              </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-3">
-                              <div>
-                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Sniðmát</label>
-                                <select value={editAdForm.format || '1018x360'} onChange={e => setEditAdForm({...editAdForm, format: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                                  <option value="1018x360">Forsíðuborði</option>
-                                  <option value="310x400">Skjáauglýsing Hlið</option>
-                                </select>
-                              </div>
-                              <div>
-                                <label className="block text-xs font-semibold mb-1 text-muted-foreground">Staða</label>
-                                <select value={editAdForm.status || 'active'} onChange={e => setEditAdForm({...editAdForm, status: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                                  <option value="active">Virk</option>
-                                  <option value="paused">Í bið</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="flex gap-2 pt-2">
-                              <button
-                                onClick={async () => {
-                                  try {
-                                    setAdLoading(true);
-                                    let finalUrl = editAdForm.image_url;
-                                    if (editAdFile) {
-                                      const storageRef = ref(storage, `ads/${Date.now()}_${editAdFile.name}`);
-                                      const snap = await uploadBytes(storageRef, editAdFile);
-                                      finalUrl = await getDownloadURL(snap.ref);
-                                    }
-                                    await updateDoc(doc(db, 'ads', ad.id), {
-                                      client: editAdForm.client,
-                                      name: editAdForm.name,
-                                      target_url: editAdForm.target_url,
-                                      image_url: finalUrl,
-                                      format: editAdForm.format,
-                                      status: editAdForm.status,
-                                      placements: editAdForm.format === '1018x360' ? ['home_hero'] : ['home_featured', 'recipe_sidebar'],
-                                      creatives: { [editAdForm.format]: finalUrl },
-                                    });
-                                    setMessage('Auglýsing uppfærð! ✅');
-                                    setEditingAd(null);
-                                    setEditAdFile(null);
-                                    loadStats();
-                                  } catch (err: any) {
-                                    setMessage('Villa: ' + err.message);
-                                  } finally {
-                                    setAdLoading(false);
-                                  }
-                                }}
-                                disabled={adLoading}
-                                className="flex items-center gap-1.5 px-4 py-2 bg-green-600 text-white text-sm font-bold rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors"
-                              >
-                                <Check className="w-4 h-4" /> Vista breytingar
-                              </button>
-                              <button onClick={() => { setEditingAd(null); setEditAdFile(null); }} className="flex items-center gap-1.5 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-bold rounded-lg hover:bg-gray-200 transition-colors">
-                                <X className="w-4 h-4" /> Hætta við
-                              </button>
-                            </div>
-                          </div>
-                        ) : (
-                          /* ---- VIEW MODE ---- */
-                          <div>
-                            <div className="flex items-start justify-between mb-3">
-                              <div>
-                                <h3 className="text-lg font-bold text-(--color-text-primary)">{ad.client}</h3>
-                                <p className="text-sm text-muted-foreground">{ad.name || 'Án nafns'}</p>
-                              </div>
-                              <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${ad.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>
-                                {ad.status === 'active' ? 'Virk' : 'Í bið'}
-                              </span>
-                            </div>
+          {activeSection === 'users' && (
+            <UsersSection recentUsers={recentUsers} showMessage={showMessage} onRefresh={loadData} />
+          )}
 
-                            {/* Stats */}
-                            <div className="grid grid-cols-3 gap-3 mb-4">
-                              <div className="bg-blue-50 rounded-xl p-3 text-center">
-                                <div className="flex items-center justify-center gap-1 text-blue-700 mb-1"><Eye className="w-3.5 h-3.5" /><span className="text-xs font-bold">Birtingar</span></div>
-                                <p className="text-xl font-bold text-blue-800">{imps.toLocaleString('is-IS')}</p>
-                              </div>
-                              <div className="bg-green-50 rounded-xl p-3 text-center">
-                                <div className="flex items-center justify-center gap-1 text-green-700 mb-1"><MousePointerClick className="w-3.5 h-3.5" /><span className="text-xs font-bold">Smellir</span></div>
-                                <p className="text-xl font-bold text-green-800">{clicks.toLocaleString('is-IS')}</p>
-                              </div>
-                              <div className="bg-purple-50 rounded-xl p-3 text-center">
-                                <div className="flex items-center justify-center gap-1 text-purple-700 mb-1"><Activity className="w-3.5 h-3.5" /><span className="text-xs font-bold">CTR</span></div>
-                                <p className="text-xl font-bold text-purple-800">{ctr}%</p>
-                              </div>
-                            </div>
+          {activeSection === 'settings' && (
+            <SystemSection showMessage={showMessage} onRefresh={loadData} user={user} />
+          )}
 
-                            {/* Info row */}
-                            <div className="text-xs text-muted-foreground mb-4 flex flex-wrap gap-x-4 gap-y-1">
-                              <span>Sniðmát: <strong>{ad.format}</strong></span>
-                              {ad.target_url && <span>Slóð: <strong className="break-all">{ad.target_url}</strong></span>}
-                            </div>
-
-                            {/* Actions */}
-                            <div className="flex gap-2 flex-wrap">
-                              <button
-                                onClick={() => { setEditingAd(ad.id); setEditAdForm({ client: ad.client, name: ad.name, target_url: ad.target_url, image_url: ad.image_url, format: ad.format, status: ad.status }); }}
-                                className="flex items-center gap-1.5 px-3 py-2 bg-(--color-bg-secondary) text-(--color-text-primary) text-sm font-semibold rounded-lg hover:bg-(--color-border) transition-colors"
-                              >
-                                <Pencil className="w-3.5 h-3.5" /> Breyta
-                              </button>
-                              <button
-                                onClick={async () => {
-                                  const newStatus = ad.status === 'active' ? 'paused' : 'active';
-                                  await updateDoc(doc(db, 'ads', ad.id), { status: newStatus });
-                                  setMessage(`Auglýsing ${newStatus === 'active' ? 'virkjuð' : 'stöðvuð'}.`);
-                                  loadStats();
-                                }}
-                                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-semibold rounded-lg transition-colors ${ad.status === 'active' ? 'bg-amber-50 text-amber-700 hover:bg-amber-100' : 'bg-green-50 text-green-700 hover:bg-green-100'}`}
-                              >
-                                {ad.status === 'active' ? '⏸ Stöðva' : '▶ Virkja'}
-                              </button>
-                              <button
-                                onClick={async () => {
-                                  if (!window.confirm(`Eyða auglýsingu frá ${ad.client}?`)) return;
-                                  await deleteDoc(doc(db, 'ads', ad.id));
-                                  setMessage('Auglýsingu eytt. 🗑️');
-                                  loadStats();
-                                }}
-                                className="flex items-center gap-1.5 px-3 py-2 bg-red-50 text-red-600 text-sm font-semibold rounded-lg hover:bg-red-100 transition-colors"
-                              >
-                                <Trash2 className="w-3.5 h-3.5" /> Eyða
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="bg-white border border-(--color-border) rounded-2xl p-8 text-center text-muted-foreground text-sm">
-                Engar auglýsingar fundust. Búðu til nýja hér að neðan!
-              </div>
-            )}
-          </div>
-
-          {/* Búa til nýja auglýsingu */}
-          <div className="max-w-xl">
-            <h2 className="text-xl font-bold flex items-center gap-2 mb-4">
-              ➕ Búa til nýja auglýsingu
-            </h2>
-            <div className="bg-white border border-(--color-border) p-6 rounded-2xl shadow-sm">
-              <form onSubmit={createAd} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-sm font-semibold mb-1">Viðskiptavinur</label>
-                    <input required placeholder="t.d. Pizzan ehf." value={adForm.client} onChange={e => setAdForm({...adForm, client: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-1">Heiti Herferðar</label>
-                    <input placeholder="t.d. Vordagar 2026" value={adForm.name} onChange={e => setAdForm({...adForm, name: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                  </div>
-                </div>
-                <div className="pt-2 pb-1"><div className="h-px bg-(--color-border-light) w-full"></div></div>
-                <div>
-                  <label className="flex text-sm font-semibold mb-1 items-center gap-1"><UploadCloud className="w-4 h-4 text-blue-500"/> Hlaða upp mynd</label>
-                  <input id="adFileInput" type="file" accept="image/*" onChange={e => setAdFile(e.target.files?.[0] || null)} className="w-full border rounded-lg px-3 py-2 text-xs bg-blue-50/50 cursor-pointer file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200" />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold mb-1">Eða beina mynd-URL</label>
-                  <input placeholder="https://..." value={adForm.image_url} onChange={e => setAdForm({...adForm, image_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                </div>
-                <div className="pt-2 pb-1"><div className="h-px bg-(--color-border-light) w-full"></div></div>
-                <div>
-                  <label className="block text-sm font-semibold mb-1">Smellislóð (Target URL)</label>
-                  <input required placeholder="https://..." value={adForm.target_url} onChange={e => setAdForm({...adForm, target_url: e.target.value})} className="w-full border rounded-lg px-3 py-2 text-sm" />
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-sm font-semibold mb-1">Sniðmát</label>
-                    <select value={adForm.format} onChange={e => setAdForm({...adForm, format: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                      <option value="1018x360">Forsíðuborði</option>
-                      <option value="310x400">Skjáauglýsing Hlið</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-1">Staða</label>
-                    <select value={adForm.status} onChange={e => setAdForm({...adForm, status: e.target.value})} className="w-full border rounded-lg px-2 py-2 text-sm bg-white">
-                      <option value="active">Virk</option>
-                      <option value="paused">Í bið</option>
-                    </select>
-                  </div>
-                </div>
-                <button type="submit" disabled={adLoading} className="w-full mt-4 bg-(--color-brand) text-white font-bold py-3 rounded-xl hover:bg-opacity-90 disabled:opacity-50 transition-colors">
-                  {adLoading ? 'Vistar / Hleður upp...' : 'Búa til Auglýsingu'}
-                </button>
-              </form>
+          {activeSection === 'analytics' && (
+            <div className="text-center py-20 text-muted-foreground w-full max-w-lg mx-auto bg-white border rounded-3xl mt-10">
+              <h2 className="text-xl font-bold mb-2">Google Analytics Gögn</h2>
+              <p className="text-sm">Væntanlegt í næstu uppfærslu: Tenging við GA4 API fyrir lifandi línurit á umferð.</p>
             </div>
-          </div>
+          )}
         </div>
-      )}
-
-      {/* --- TAB 3: KERFI --- */}
-      {activeTab === 'kerfi' && (
-        <div className="animate-in fade-in duration-300 max-w-2xl">
-          <h2 className="text-xl font-bold flex items-center gap-2 mb-4">
-            <AlertTriangle className="w-5 h-5 text-red-500" /> 
-            Gagnagrunns Stjórnun (Dev)
-          </h2>
-          
-          <div className="bg-red-50 border border-red-200 p-8 rounded-2xl space-y-8 shadow-sm">
-            <div>
-              <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
-                <Database className="w-5 h-5" /> 1. Fræfæða (Seed) Firebase
-              </h3>
-              <p className="text-muted-foreground text-sm mb-4">
-                Tekur allar pizzur, staði og upphaflegar auglýsingar úr mockData og setur í stöðugan Firebase gagnagrunninn (`is_seeded: true`). Mælt er með þessu í upphafi.
-              </p>
-              <button 
-                onClick={seedDatabase}
-                disabled={loading}
-                className="px-6 py-2.5 bg-white border border-gray-300 text-gray-800 font-bold rounded-xl hover:bg-gray-50 focus:ring-4 focus:ring-gray-100 transition-all disabled:opacity-50"
-              >
-                {loading ? 'Keyri...' : 'Sturta gögnum inn í Firebase'}
-              </button>
-            </div>
-
-            <div className="border-t border-red-200/50 pt-8">
-              <h3 className="text-lg font-bold mb-2 text-red-700">2. Hreinsa Gervigögn (Clear)</h3>
-              <p className="text-red-700/70 text-sm mb-4 font-medium">
-                Varúð: Þetta mun eyða endanlega öllum skjölum í Firestore sem eru merkt sérstaklega sem gervigögn (`is_seeded: true`). Ekki afturkræft.
-              </p>
-              <button 
-                onClick={clearSeededData}
-                disabled={loading}
-                className="px-6 py-2.5 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 focus:ring-4 focus:ring-red-200 transition-all disabled:opacity-50 shadow-sm"
-              >
-                {loading ? 'Eyði...' : 'Eyða öllum gervigögnum'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      </main>
     </div>
   );
 }

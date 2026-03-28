@@ -45,4 +45,6 @@ export interface Recipe {
   seo_description_en?: string;
   created_at: Timestamp;
   updated_at: Timestamp;
+  status?: 'draft' | 'published' | 'archived';
+  is_seeded?: boolean;
 }
