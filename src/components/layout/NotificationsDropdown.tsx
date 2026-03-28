@@ -17,7 +17,7 @@ interface Notification {
   body_en: string;
   read: boolean;
   link?: string;
-  created_at: any;
+  created_at?: { toDate?: () => Date };
 }
 
 interface Props {
@@ -82,25 +82,25 @@ export function NotificationsDropdown({ locale }: Props) {
     <div className="relative" ref={dropdownRef}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 relative text-(--color-text-secondary) hover:text-(--color-brand) transition-colors rounded-full hover:bg-(--color-bg-tertiary) cursor-pointer"
+        className="p-2 relative text-muted-foreground hover:text-primary transition-colors rounded-full hover:bg-muted cursor-pointer"
         aria-label={locale === 'is' ? 'Tilkynningar' : 'Notifications'}
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
-          <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-(--color-brand) rounded-full text-[10px] font-bold text-white flex items-center justify-center border-2 border-(--color-bg-primary) animate-pulse">
+          <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-primary rounded-full text-[10px] font-bold text-white flex items-center justify-center border-2 border-background animate-pulse">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 bg-background border border-(--color-border-light) rounded-xl shadow-xl z-50 overflow-hidden">
-          <div className="p-4 border-b border-(--color-border-light) bg-(--color-bg-secondary) flex justify-between items-center">
-            <h3 className="font-bold font-display text-(--color-text-primary)">{locale === 'is' ? 'Tilkynningar' : 'Notifications'}</h3>
+        <div className="absolute right-0 mt-2 w-80 bg-background border border-border/50 rounded-xl shadow-xl z-50 overflow-hidden">
+          <div className="p-4 border-b border-border/50 bg-secondary flex justify-between items-center">
+            <h3 className="font-bold font-display text-foreground">{locale === 'is' ? 'Tilkynningar' : 'Notifications'}</h3>
             {unreadCount > 0 && (
               <button 
                 onClick={markAllRead}
-                className="text-[10px] uppercase font-bold text-muted-foreground cursor-pointer hover:text-(--color-brand) transition-colors"
+                className="text-[10px] uppercase font-bold text-muted-foreground cursor-pointer hover:text-primary transition-colors"
               >
                 {locale === 'is' ? 'Lesa allt' : 'Mark all read'}
               </button>
@@ -125,12 +125,12 @@ export function NotificationsDropdown({ locale }: Props) {
                       markAsRead(notif.id);
                       if (notif.link) window.location.href = notif.link;
                     }}
-                    className={`p-4 border-b border-(--color-border-light) hover:bg-(--color-bg-tertiary) cursor-pointer flex gap-3 transition-colors ${!notif.read ? 'bg-(--color-bg-secondary)' : 'opacity-60'}`}
+                    className={`p-4 border-b border-border/50 hover:bg-muted cursor-pointer flex gap-3 transition-colors ${!notif.read ? 'bg-secondary' : 'opacity-60'}`}
                   >
-                    <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${!notif.read ? 'bg-(--color-brand)' : 'bg-transparent'}`} />
+                    <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${!notif.read ? 'bg-primary' : 'bg-transparent'}`} />
                     <div className="min-w-0">
-                      <p className="text-sm font-bold text-(--color-text-primary) truncate">{title}</p>
-                      <p className="text-xs text-(--color-text-secondary) mt-0.5 line-clamp-2">{body}</p>
+                      <p className="text-sm font-bold text-foreground truncate">{title}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{body}</p>
                       <span className="text-[10px] text-muted-foreground mt-1 block">{timeAgo}</span>
                     </div>
                   </div>

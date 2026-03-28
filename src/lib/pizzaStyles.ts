@@ -13,6 +13,7 @@ export interface PizzaStyle {
   hydration: string;
   emoji: string;
   gradient: string;
+  image_url?: string;
 }
 
 export const PIZZA_STYLES: PizzaStyle[] = [

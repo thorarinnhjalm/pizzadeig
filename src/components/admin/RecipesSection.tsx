@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { db, storage } from '@/lib/firebase';
-import { collection, doc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { doc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { Recipe, Ingredient } from '@/types/recipe';
-import { Plus, Search, Filter, UtensilsCrossed, Pencil, Trash2, Eye, EyeOff, X, Check, UploadCloud, Link as LinkIcon } from 'lucide-react';
+import { Recipe, Ingredient, Difficulty } from '@/types/recipe';
+import { Plus, Search, UtensilsCrossed, Pencil, Trash2, Eye, EyeOff, X, Check, UploadCloud, Link as LinkIcon } from 'lucide-react';
 
 interface RecipesSectionProps {
   recipesList: Recipe[];
@@ -90,9 +90,10 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
       showMessage(`Uppskrift "${form.title_is}" var vistuð! ✅`);
       setEditingId(null);
       onRefresh();
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
-      showMessage('Villa: ' + err.message);
+      const message = err instanceof Error ? err.message : 'Óþekkt villa';
+      showMessage('Villa: ' + message);
     } finally {
       setLoading(false);
     }
@@ -105,8 +106,9 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
       await deleteDoc(doc(db, 'recipes', id));
       showMessage('Uppskrift eytt. 🗑️');
       onRefresh();
-    } catch (err: any) {
-      showMessage('Villa: ' + err.message);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Óþekkt villa';
+      showMessage('Villa: ' + message);
     } finally {
       setLoading(false);
     }
@@ -120,7 +122,7 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
     }));
   };
 
-  const updateIngredient = (index: number, field: keyof Ingredient, value: any) => {
+  const updateIngredient = (index: number, field: keyof Ingredient, value: string | number) => {
     const newIngs = [...(form.ingredients_is || [])];
     newIngs[index] = { ...newIngs[index], [field]: value };
     setForm({ ...form, ingredients_is: newIngs });
@@ -135,10 +137,10 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
     <div className="animate-in fade-in duration-300">
       {editingId ? (
         /* EDIT FORM */
-        <div className="bg-white border border-(--color-border) rounded-2xl shadow-sm overflow-hidden">
-          <div className="bg-gray-50 border-b border-(--color-border) p-5 flex items-center justify-between">
+        <div className="bg-card border border-border rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-muted border-b border-border p-5 flex items-center justify-between">
             <h2 className="text-xl font-bold flex items-center gap-2">
-              <Pencil className="w-5 h-5 text-(--color-brand)" />
+              <Pencil className="w-5 h-5 text-primary" />
               {editingId === 'new' ? 'Ný Uppskrift' : `Breyta: ${form.title_is}`}
             </h2>
             <button onClick={() => setEditingId(null)} className="p-2 hover:bg-gray-200 rounded-full transition-colors cursor-pointer">
@@ -149,30 +151,58 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
           <form onSubmit={handleSave} className="p-6 space-y-8">
             {/* GRUNNUPPLÝSINGAR */}
             <section className="space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground border-b pb-2">1. Grunnupplýsingar</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">1. Grunnupplýsingar</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <label className="block text-sm font-bold text-foreground/70 uppercase tracking-wider">Heiti uppskriftar (Íslenska)</label>
+                  <input
+                    required
+                    value={form.title_is || ''}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, title_is: e.target.value })}
+                    className="w-full bg-background border border-border rounded-xl px-5 py-3 text-foreground focus:border-primary outline-none transition-all font-medium"
+                  />
+                </div>
+                <div className="space-y-4">
+                  <label className="block text-sm font-bold text-foreground/70 uppercase tracking-wider">Title (English)</label>
+                  <input
+                    required
+                    value={form.title_en || ''}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, title_en: e.target.value })}
+                    className="w-full bg-background border border-border rounded-xl px-5 py-3 text-foreground focus:border-primary outline-none transition-all font-medium"
+                  />
+                </div>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold mb-1">Titill (ÍS) <span className="text-red-500">*</span></label>
-                  <input required value={form.title_is || ''} onChange={e => setForm({...form, title_is: e.target.value})} className="w-full border rounded-xl px-4 py-2 text-sm bg-gray-50 focus:bg-white transition-colors" />
-                </div>
-                <div>
                   <label className="block text-sm font-semibold mb-1">Slug (vefslóð) <span className="text-red-500">*</span></label>
-                  <input required value={form.slug || ''} onChange={e => setForm({...form, slug: e.target.value.toLowerCase().replace(/[\s_]+/g, '-')})} className="w-full border rounded-xl px-4 py-2 text-sm bg-gray-50 focus:bg-white font-mono" placeholder="t.d. margherita-pizza" />
+                  <input required value={form.slug || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({...form, slug: e.target.value.toLowerCase().replace(/[\s_]+/g, '-')})} className="w-full border border-border rounded-xl px-4 py-2 text-sm bg-background focus:border-primary outline-none font-mono" placeholder="t.d. margherita-pizza" />
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-sm font-semibold mb-1">Lýsing (ÍS)</label>
-                  <textarea rows={3} value={form.description_is || ''} onChange={e => setForm({...form, description_is: e.target.value})} className="w-full border rounded-xl px-4 py-2 text-sm bg-gray-50 focus:bg-white resize-none" />
+                  <textarea rows={3} value={form.description_is || ''} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setForm({...form, description_is: e.target.value})} className="w-full border border-border rounded-xl px-4 py-2 text-sm bg-background focus:border-primary outline-none resize-none" />
                 </div>
               </div>
             </section>
 
             {/* FLOKKUN & TÍMI */}
             <section className="space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground border-b pb-2">2. Flokkun & Tími</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">2. Flokkun & Tími</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="space-y-4">
+                  <label className="block text-sm font-bold text-foreground/70 uppercase tracking-wider">Erfiðleikastig</label>
+                  <select
+                    value={form.difficulty || 'midlungs'}
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setForm({ ...form, difficulty: e.target.value as Difficulty })}
+                    className="w-full bg-background border border-border rounded-xl px-5 py-3 text-foreground focus:border-primary outline-none transition-all font-medium appearance-none cursor-pointer"
+                  >
+                    <option value="audvelt">Auðvelt</option>
+                    <option value="midlungs">Miðlungs</option>
+                    <option value="erfitt">Erfitt</option>
+                  </select>
+                </div>
                 <div>
                   <label className="block text-sm font-semibold mb-1">Flokkur</label>
-                  <select value={form.category || 'pizza'} onChange={e => setForm({...form, category: e.target.value})} className="w-full border rounded-xl px-3 py-2 text-sm bg-white">
+                  <select value={form.category || 'pizza'} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setForm({...form, category: e.target.value})} className="w-full border border-border rounded-xl px-3 py-2 text-sm bg-background">
                     <option value="pizza">Pizza</option>
                     <option value="dough">Deig</option>
                     <option value="sauce">Sósa</option>
@@ -180,20 +210,12 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-1">Erfiðleikastig</label>
-                  <select value={form.difficulty || 'medium'} onChange={e => setForm({...form, difficulty: e.target.value as any})} className="w-full border rounded-xl px-3 py-2 text-sm bg-white">
-                    <option value="easy">Létt</option>
-                    <option value="medium">Miðlungs</option>
-                    <option value="hard">Erfitt</option>
-                  </select>
-                </div>
-                <div>
                   <label className="block text-sm font-semibold mb-1">Skammtar (manna)</label>
-                  <input type="number" min="1" value={form.servings || 1} onChange={e => setForm({...form, servings: parseInt(e.target.value)})} className="w-full border rounded-xl px-3 py-2 text-sm bg-white" />
+                  <input type="number" min="1" value={form.servings || 1} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({...form, servings: parseInt(e.target.value)})} className="w-full border border-border rounded-xl px-3 py-2 text-sm bg-background" />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold mb-1">Staða</label>
-                  <select value={form.status || 'draft'} onChange={e => setForm({...form, status: e.target.value as any, published: e.target.value === 'published'})} className="w-full border rounded-xl px-3 py-2 text-sm bg-white font-bold">
+                  <select value={form.status || 'draft'} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setForm({...form, status: e.target.value as 'draft' | 'published' | 'archived', published: e.target.value === 'published'})} className="w-full border border-border rounded-xl px-3 py-2 text-sm bg-background font-bold text-primary">
                     <option value="draft">Í bið (Draft)</option>
                     <option value="published">Birt (Published)</option>
                     <option value="archived">Geymsla (Archived)</option>
@@ -201,28 +223,28 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
                 </div>
                 <div>
                   <label className="block text-sm font-semibold mb-1">Undirbúningur (mín)</label>
-                  <input type="number" value={form.prep_time_min || 0} onChange={e => setForm({...form, prep_time_min: parseInt(e.target.value)})} className="w-full border rounded-xl px-3 py-2 text-sm bg-white" />
+                  <input type="number" value={form.prep_time_min || 0} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({...form, prep_time_min: parseInt(e.target.value)})} className="w-full border border-border rounded-xl px-3 py-2 text-sm bg-background" />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold mb-1">Eldun (mín)</label>
-                  <input type="number" value={form.cook_time_min || 0} onChange={e => setForm({...form, cook_time_min: parseInt(e.target.value)})} className="w-full border rounded-xl px-3 py-2 text-sm bg-white" />
+                  <input type="number" value={form.cook_time_min || 0} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({...form, cook_time_min: parseInt(e.target.value)})} className="w-full border border-border rounded-xl px-3 py-2 text-sm bg-background" />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold mb-1">Hvíldartími (mín)</label>
-                  <input type="number" value={form.rest_time_min || 0} onChange={e => setForm({...form, rest_time_min: parseInt(e.target.value)})} className="w-full border rounded-xl px-3 py-2 text-sm bg-white" />
+                  <input type="number" value={form.rest_time_min || 0} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({...form, rest_time_min: parseInt(e.target.value)})} className="w-full border border-border rounded-xl px-3 py-2 text-sm bg-background" />
                 </div>
               </div>
             </section>
 
             {/* MYNDIR & MIÐLAR */}
             <section className="space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground border-b pb-2">3. Myndir & Miðlar</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">3. Myndir & Miðlar</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="border rounded-2xl p-4 bg-gray-50 border-dashed border-gray-300 text-center flex flex-col items-center justify-center">
+                <div className="border border-dashed border-border rounded-2xl p-4 bg-muted/30 text-center flex flex-col items-center justify-center">
                   <UploadCloud className="w-8 h-8 text-muted-foreground mb-2" />
-                  <label className="font-bold text-sm bg-white border px-4 py-2 rounded-xl shadow-sm cursor-pointer hover:bg-gray-50">
+                  <label className="font-bold text-sm bg-background border border-border px-4 py-2 rounded-xl shadow-sm cursor-pointer hover:bg-muted transition-colors">
                     Sækja mynd úr tölvu
-                    <input type="file" accept="image/*" onChange={e => setImageFile(e.target.files?.[0] || null)} className="hidden" />
+                    <input type="file" accept="image/*" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setImageFile(e.target.files?.[0] || null)} className="hidden" />
                   </label>
                   {imageFile && <p className="text-xs text-green-600 mt-2 font-bold">{imageFile.name}</p>}
                 </div>
@@ -231,38 +253,38 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
                     <label className="block text-sm font-semibold mb-1">Eða beina slóð á mynd (URL)</label>
                     <input 
                       value={form.image_urls?.[0] || ''} 
-                      onChange={e => setForm({...form, image_urls: [e.target.value]})} 
-                      className="w-full border rounded-xl px-4 py-2 text-sm bg-white" placeholder="https://" 
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({...form, image_urls: [e.target.value]})} 
+                      className="w-full border border-border rounded-xl px-4 py-2 text-sm bg-background focus:border-primary outline-none" placeholder="https://" 
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold mb-1">Myndband URL (T.d. YouTube/TikTok)</label>
                     <input 
                       value={form.video_url || ''} 
-                      onChange={e => setForm({...form, video_url: e.target.value})} 
-                      className="w-full border rounded-xl px-4 py-2 text-sm bg-white" placeholder="https://" 
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({...form, video_url: e.target.value})} 
+                      className="w-full border border-border rounded-xl px-4 py-2 text-sm bg-background focus:border-primary outline-none" placeholder="https://" 
                     />
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* INNIHALD & LEIÐBEININGAR (Einfaldar útgáfur f. texta) */}
+            {/* INNIHALD & LEIÐBEININGAR */}
             <section className="space-y-4 text-sm">
-               <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground border-b pb-2">4. Innihald & Skref (Íslenska)</h3>
+               <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground border-b border-border pb-2">4. Innihald & Skref (Íslenska)</h3>
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                  <div>
                    <div className="flex justify-between items-center mb-2">
-                     <label className="font-semibold">Hráefni (Ingredients)</label>
-                     <button type="button" onClick={addIngredient} className="text-xs font-bold text-(--color-brand) hover:underline">+ Bæta við hráefni</button>
+                     <label className="font-semibold text-foreground">Hráefni (Ingredients)</label>
+                     <button type="button" onClick={addIngredient} className="text-xs font-bold text-primary hover:underline cursor-pointer">+ Bæta við hráefni</button>
                    </div>
                    <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2">
                      {(form.ingredients_is || []).map((ing, i) => (
                        <div key={i} className="flex gap-2 items-center">
-                         <input value={ing.name} onChange={e => updateIngredient(i, 'name', e.target.value)} placeholder="Nafn hráefnis" className="flex-1 border rounded-lg px-2 py-1 text-sm" />
-                         <input type="text" value={ing.amount} onChange={e => updateIngredient(i, 'amount', e.target.value)} className="w-16 border rounded-lg px-2 py-1 text-sm text-center" />
-                         <input value={ing.unit} onChange={e => updateIngredient(i, 'unit', e.target.value)} placeholder="g" className="w-12 border rounded-lg px-2 py-1 text-sm text-center" />
-                         <button type="button" onClick={() => removeIngredient(i)} className="text-muted-foreground hover:text-red-500"><X className="w-4 h-4"/></button>
+                         <input value={ing.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateIngredient(i, 'name', e.target.value)} placeholder="Nafn hráefnis" className="flex-1 border border-border bg-background rounded-lg px-2 py-1 text-sm outline-none focus:border-primary transition-colors" />
+                         <input type="text" value={ing.amount} onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateIngredient(i, 'amount', e.target.value)} className="w-16 border border-border bg-background rounded-lg px-2 py-1 text-sm text-center outline-none focus:border-primary transition-colors" />
+                         <input value={ing.unit} onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateIngredient(i, 'unit', e.target.value)} placeholder="g" className="w-12 border border-border bg-background rounded-lg px-2 py-1 text-sm text-center outline-none focus:border-primary transition-colors" />
+                         <button type="button" onClick={() => removeIngredient(i)} className="text-muted-foreground hover:text-destructive transition-colors cursor-pointer"><X className="w-4 h-4"/></button>
                        </div>
                      ))}
                      {(!form.ingredients_is || form.ingredients_is.length === 0) && <p className="text-xs text-muted-foreground italic">Engin hráefni skráð.</p>}
@@ -270,16 +292,16 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
                  </div>
                  
                  <div>
-                   <label className="block font-semibold mb-2">Skref (Milli lína)</label>
-                   <textarea rows={10} value={(form.steps_is || []).join('\n')} onChange={e => setForm({...form, steps_is: e.target.value.split('\n').filter(s => s.trim() !== '')})} className="w-full border rounded-xl px-4 py-3 text-sm bg-gray-50 focus:bg-white resize-y" placeholder="Sláðu inn hvert skref og ýttu á Enter (ný lína)..." />
+                   <label className="block font-semibold mb-2 text-foreground">Skref (Milli lína)</label>
+                   <textarea rows={10} value={(form.steps_is || []).join('\n')} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setForm({...form, steps_is: e.target.value.split('\n').filter(s => s.trim() !== '')})} className="w-full border border-border rounded-xl px-4 py-3 text-sm bg-background focus:border-primary outline-none transition-colors resize-y" placeholder="Sláðu inn hvert skref og ýttu á Enter (ný lína)..." />
                  </div>
                </div>
             </section>
 
             {/* AÐGERÐIR */}
-            <div className="pt-6 border-t flex justify-end gap-3">
-              <button type="button" onClick={() => setEditingId(null)} className="px-6 py-3 font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors cursor-pointer">Hætta við</button>
-              <button type="submit" disabled={loading} className="px-8 py-3 font-bold text-white bg-(--color-brand) hover:bg-opacity-90 rounded-xl transition-colors cursor-pointer flex items-center gap-2">
+            <div className="pt-6 border-t border-border flex justify-end gap-3">
+              <button type="button" onClick={() => setEditingId(null)} className="px-6 py-3 font-bold text-foreground bg-muted hover:bg-muted/80 rounded-xl transition-colors cursor-pointer">Hætta við</button>
+              <button type="submit" disabled={loading} className="px-8 py-3 font-bold text-primary-foreground bg-primary hover:bg-primary/90 rounded-xl transition-colors cursor-pointer flex items-center gap-2">
                 {loading ? 'Vistar...' : <><Check className="w-5 h-5"/> Vista Uppskrift</>}
               </button>
             </div>
@@ -290,18 +312,18 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
         <div className="space-y-6">
           {/* Header Controls */}
           <div className="flex flex-col sm:flex-row justify-between gap-4 items-center">
-             <div className="flex gap-2 bg-gray-100 p-1 rounded-xl shrink-0 w-full sm:w-auto">
-               <button onClick={() => setFilterMode('all')} className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-sm font-bold transition-all cursor-pointer ${filterMode === 'all' ? 'bg-white shadow-sm text-gray-900' : 'text-gray-500'}`}>Allar ({recipesList.length})</button>
-               <button onClick={() => setFilterMode('published')} className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-sm font-bold transition-all cursor-pointer flex items-center gap-1 justify-center ${filterMode === 'published' ? 'bg-white shadow-sm text-green-700' : 'text-gray-500'}`}><Eye className="w-3.5 h-3.5"/> Birtar</button>
-               <button onClick={() => setFilterMode('draft')} className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-sm font-bold transition-all cursor-pointer flex items-center gap-1 justify-center ${filterMode === 'draft' ? 'bg-white shadow-sm text-amber-600' : 'text-gray-500'}`}><EyeOff className="w-3.5 h-3.5"/> Í bið</button>
+             <div className="flex gap-2 bg-muted p-1 rounded-xl shrink-0 w-full sm:w-auto">
+               <button onClick={() => setFilterMode('all')} className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-sm font-bold transition-all cursor-pointer ${filterMode === 'all' ? 'bg-background shadow-sm text-foreground' : 'text-muted-foreground'}`}>Allar ({recipesList.length})</button>
+               <button onClick={() => setFilterMode('published')} className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-sm font-bold transition-all cursor-pointer flex items-center gap-1 justify-center ${filterMode === 'published' ? 'bg-background shadow-sm text-primary' : 'text-muted-foreground'}`}><Eye className="w-3.5 h-3.5"/> Birtar</button>
+               <button onClick={() => setFilterMode('draft')} className={`flex-1 sm:flex-none px-4 py-1.5 rounded-lg text-sm font-bold transition-all cursor-pointer flex items-center gap-1 justify-center ${filterMode === 'draft' ? 'bg-background shadow-sm text-muted-foreground' : 'text-muted-foreground'}`}><EyeOff className="w-3.5 h-3.5"/> Í bið</button>
              </div>
              
              <div className="flex gap-3 w-full sm:w-auto">
                <div className="relative flex-1 sm:w-64">
                  <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                 <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Leita í uppskriftum..." className="w-full pl-9 pr-4 py-2 bg-white border border-(--color-border) rounded-xl text-sm focus:outline-none focus:border-(--color-brand) transition-colors" />
+                 <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Leita í uppskriftum..." className="w-full pl-9 pr-4 py-2 bg-background border border-border rounded-xl text-sm focus:outline-none focus:border-primary transition-colors" />
                </div>
-               <button onClick={handleCreateNew} className="shrink-0 flex items-center gap-2 bg-background border border-(--color-border) hover:border-(--color-brand) hover:text-(--color-brand) font-bold text-sm px-4 py-2 rounded-xl transition-colors shadow-sm cursor-pointer">
+               <button onClick={handleCreateNew} className="shrink-0 flex items-center gap-2 bg-background border border-border hover:border-primary hover:text-primary font-bold text-sm px-4 py-2 rounded-xl transition-colors shadow-sm cursor-pointer">
                  <Plus className="w-4 h-4" /> Ný Uppskrift
                </button>
              </div>
@@ -310,14 +332,15 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {filtered.map(recipe => (
-              <div key={recipe.id} className="bg-white border border-(--color-border) rounded-2xl shadow-sm overflow-hidden flex flex-col hover:border-(--color-brand) transition-all group">
+              <div key={recipe.id} className="bg-card border border-border rounded-2xl shadow-sm overflow-hidden flex flex-col hover:border-primary transition-all group">
                 {/* Image */}
-                <div className="relative h-40 bg-gray-100 overflow-hidden">
+                <div className="relative h-40 bg-muted overflow-hidden">
                   {recipe.image_urls?.[0] ? (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img src={recipe.image_urls[0]} alt={recipe.title_is} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 gap-2">
-                       <UtensilsCrossed className="w-8 h-8 opacity-50" />
+                    <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground gap-2">
+                       <UtensilsCrossed className="w-8 h-8 opacity-30" />
                        <span className="text-sm font-bold ml-1">{recipe.rating_avg?.toFixed(1) || '0.0'}</span>
                     </div>
                   )}
@@ -342,18 +365,18 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
                     <span>{recipe.category || 'pizza'} • {recipe.difficulty || 'medium'}</span>
                     <span>{recipe.rating_count ? `★ ${recipe.rating_avg}` : ''}</span>
                   </div>
-                  <h3 className="font-display font-bold leading-tight text-lg mb-1 text-(--color-text-primary) line-clamp-1">{recipe.title_is}</h3>
+                  <h3 className="font-display font-bold leading-tight text-lg mb-1 text-foreground line-clamp-1">{recipe.title_is}</h3>
                   <p className="text-xs text-muted-foreground line-clamp-2 mb-4 flex-1">{recipe.description_is || 'Engin lýsing'}</p>
                   
                   {/* Actions */}
-                  <div className="flex gap-2 pt-3 border-t border-(--color-border-light)">
-                    <button onClick={() => handleEdit(recipe)} className="flex-1 flex justify-center items-center gap-1.5 py-1.5 bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-bold rounded-lg transition-colors cursor-pointer">
+                  <div className="flex gap-2 pt-3 border-t border-border">
+                    <button onClick={() => handleEdit(recipe)} className="flex-1 flex justify-center items-center gap-1.5 py-1.5 bg-muted hover:bg-muted/80 text-foreground text-xs font-bold rounded-lg transition-colors cursor-pointer">
                       <Pencil className="w-3.5 h-3.5" /> Breyta
                     </button>
-                    <a href={`/is/uppskriftir/${recipe.slug}`} target="_blank" className="flex justify-center items-center py-1.5 px-3 bg-gray-50 hover:bg-gray-100 text-blue-600 rounded-lg transition-colors cursor-pointer">
+                    <a href={`/is/uppskriftir/${recipe.slug}`} target="_blank" className="flex justify-center items-center py-1.5 px-3 bg-muted hover:bg-muted/80 text-primary rounded-lg transition-colors cursor-pointer">
                       <LinkIcon className="w-4 h-4" />
                     </a>
-                    <button onClick={() => handleDelete(recipe.id, recipe.title_is)} className="flex justify-center items-center py-1.5 px-3 bg-gray-50 hover:bg-red-50 text-red-500 rounded-lg transition-colors cursor-pointer">
+                    <button onClick={() => handleDelete(recipe.id, recipe.title_is)} className="flex justify-center items-center py-1.5 px-3 bg-muted hover:bg-destructive/10 text-destructive rounded-lg transition-colors cursor-pointer">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
@@ -362,7 +385,7 @@ export function RecipesSection({ recipesList, onRefresh, showMessage }: RecipesS
             ))}
           </div>
           {filtered.length === 0 && (
-            <div className="bg-white border border-(--color-border) rounded-2xl p-12 text-center text-muted-foreground">
+            <div className="bg-card border border-border rounded-2xl p-12 text-center text-muted-foreground">
                Engar uppskriftir fundust með þessum leitarskilyrðum.
             </div>
           )}

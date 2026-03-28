@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Camera, Loader2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { db } from '@/lib/firebase';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { collection, addDoc, serverTimestamp, query, where, orderBy, limit, getDocs } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, query, where, orderBy, limit, getDocs, Timestamp } from 'firebase/firestore';
 import { useAuth } from '@/hooks/useAuth';
 import Image from 'next/image';
 
@@ -13,7 +13,7 @@ interface GalleryPhoto {
   id: string;
   image_url: string;
   user_name: string;
-  created_at: any;
+  created_at: Timestamp;
 }
 
 interface Props {
@@ -28,11 +28,7 @@ export function UserGallery({ recipeId, locale }: Props) {
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryPhoto | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    fetchPhotos();
-  }, [recipeId]);
-
-  const fetchPhotos = async () => {
+  const fetchPhotos = useCallback(async () => {
     try {
       const q = query(
         collection(db, 'gallery_photos'),
@@ -45,7 +41,11 @@ export function UserGallery({ recipeId, locale }: Props) {
     } catch (e) {
       console.warn('Gallery fetch error:', e);
     }
-  };
+  }, [recipeId]);
+
+  useEffect(() => {
+    fetchPhotos();
+  }, [fetchPhotos]);
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -83,13 +83,13 @@ export function UserGallery({ recipeId, locale }: Props) {
   };
 
   return (
-    <div className="bg-(--color-bg-secondary) border border-(--color-border) rounded-2xl p-6 md:p-8 mb-12 shadow-md">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 border-b border-(--color-border-light) pb-6">
+    <div className="bg-secondary border border-border rounded-2xl p-6 md:p-8 mb-12 shadow-md">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 border-b border-border/50 pb-6">
         <div>
-           <h3 className="font-display font-bold text-3xl text-(--color-text-primary)">
+           <h3 className="font-display font-bold text-3xl text-foreground">
              {locale === 'is' ? 'Ég gerði þessa pizzu 📸' : 'I made this! 📸'}
            </h3>
-           <p className="text-(--color-text-secondary) mt-1 font-body">
+           <p className="text-muted-foreground mt-1 font-body">
              {locale === 'is' ? 'Deildu afrakstrinum með samfélaginu.' : 'Share the result with the community.'}
            </p>
         </div>
@@ -114,7 +114,7 @@ export function UserGallery({ recipeId, locale }: Props) {
       
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {photos.length === 0 ? (
-          <div className="aspect-square relative rounded-xl overflow-hidden bg-(--color-bg-tertiary) border border-dashed border-(--color-border-light) group cursor-pointer hover:bg-(--color-bg-warm) transition-colors flex flex-col items-center justify-center"
+          <div className="aspect-square relative rounded-xl overflow-hidden bg-muted border border-dashed border-border/50 group cursor-pointer hover:bg-secondary transition-colors flex flex-col items-center justify-center"
                onClick={() => user && fileInputRef.current?.click()}>
              <Camera className="w-8 h-8 text-muted-foreground mb-2" />
              <span className="font-bold text-sm text-muted-foreground px-4 text-center">
@@ -125,7 +125,7 @@ export function UserGallery({ recipeId, locale }: Props) {
           photos.map((photo) => (
             <div 
               key={photo.id} 
-              className="aspect-square relative rounded-xl overflow-hidden cursor-pointer group border border-(--color-border-light)"
+              className="aspect-square relative rounded-xl overflow-hidden cursor-pointer group border border-border/50"
               onClick={() => setSelectedPhoto(photo)}
             >
               <Image
@@ -146,7 +146,7 @@ export function UserGallery({ recipeId, locale }: Props) {
       {/* Lightbox */}
       {selectedPhoto && (
         <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onClick={() => setSelectedPhoto(null)}>
-          <button className="absolute top-6 right-6 text-white hover:text-(--color-brand) z-10" onClick={() => setSelectedPhoto(null)}>
+          <button className="absolute top-6 right-6 text-white hover:text-primary z-10" onClick={() => setSelectedPhoto(null)}>
             <X className="w-8 h-8" />
           </button>
           <div className="relative max-w-3xl max-h-[80vh] w-full h-full" onClick={e => e.stopPropagation()}>

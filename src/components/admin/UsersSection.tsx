@@ -12,7 +12,7 @@ export interface UserDoc {
   role?: string;
   avatar_url?: string;
   display_name?: string;
-  joined_at?: import('firebase/firestore').Timestamp | any;
+  joined_at?: import('firebase/firestore').Timestamp;
 }
 
 interface UsersSectionProps {
@@ -43,18 +43,18 @@ export function UsersSection({ recentUsers, showMessage, onRefresh }: UsersSecti
     <div className="animate-in fade-in duration-300 max-w-5xl">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-display font-bold text-(--color-text-primary) flex items-center gap-2">
-            <Users className="w-6 h-6 text-(--color-brand)" />
+          <h2 className="text-2xl font-display font-bold text-foreground flex items-center gap-2">
+            <Users className="w-6 h-6 text-primary" />
             Notendur ({recentUsers.length})
           </h2>
           <p className="text-sm text-muted-foreground mt-1">Stjórnaðu notendum og aðgangsheimildum.</p>
         </div>
       </div>
 
-      <div className="bg-white border border-(--color-border) rounded-2xl shadow-sm overflow-hidden">
+      <div className="bg-card border border-border rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="bg-gray-50 border-b border-(--color-border) text-xs uppercase tracking-wider text-muted-foreground font-bold">
+            <thead className="bg-muted border-b border-border text-xs uppercase tracking-wider text-muted-foreground font-bold">
               <tr>
                 <th className="px-6 py-4">Notandi</th>
                 <th className="px-6 py-4">Netfang</th>
@@ -63,20 +63,20 @@ export function UsersSection({ recentUsers, showMessage, onRefresh }: UsersSecti
                 <th className="px-6 py-4 text-right">Aðgerðir</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-(--color-border-light)">
+            <tbody className="divide-y divide-border">
               {recentUsers.map(user => (
-                <tr key={user.uid} className="hover:bg-gray-50 transition-colors">
+                <tr key={user.uid} className="hover:bg-muted/30 transition-colors">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       {user.avatar_url ? (
                         <img src={user.avatar_url} alt="" className="w-8 h-8 rounded-full object-cover" />
                       ) : (
-                        <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs uppercase">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs uppercase">
                           {user.display_name?.charAt(0) || user.email?.charAt(0) || '?'}
                         </div>
                       )}
                       <div>
-                        <p className="font-bold text-(--color-text-primary)">{user.display_name || 'Ónefndur'}</p>
+                        <p className="font-bold text-foreground">{user.display_name || 'Ónefndur'}</p>
                       </div>
                     </div>
                   </td>
@@ -87,7 +87,7 @@ export function UsersSection({ recentUsers, showMessage, onRefresh }: UsersSecti
                   </td>
                   <td className="px-6 py-4">
                     <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                      user.role === 'admin' ? 'bg-amber-100 text-amber-700' : 'bg-gray-100 text-gray-600'
+                      user.role === 'admin' ? 'bg-primary/10 text-primary shadow-sm border border-primary/20' : 'bg-muted text-muted-foreground'
                     }`}>
                       {user.role === 'admin' ? <ShieldAlert className="w-3 h-3" /> : <Shield className="w-3 h-3" />}
                       {user.role || 'user'}
@@ -100,7 +100,7 @@ export function UsersSection({ recentUsers, showMessage, onRefresh }: UsersSecti
                     <button 
                       onClick={() => toggleAdminRole(user.uid, user.role || 'user')}
                       disabled={loading}
-                      className="px-3 py-1.5 text-xs font-bold border border-(--color-border) hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+                      className="px-4 py-2 text-xs font-bold border border-border hover:border-primary hover:text-primary rounded-xl transition-all cursor-pointer shadow-sm bg-background active:scale-95 disabled:opacity-50"
                     >
                       Breyta í {user.role === 'admin' ? 'User' : 'Admin'}
                     </button>

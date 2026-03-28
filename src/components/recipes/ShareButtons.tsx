@@ -1,6 +1,6 @@
 'use client';
 
-import { Share2, Link as LinkIcon, Printer } from 'lucide-react';
+import { Link as LinkIcon, Printer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface Props {
@@ -10,18 +10,7 @@ interface Props {
 }
 
 export function ShareButtons({ url, title, locale }: Props) {
-  const shareData = {
-    title,
-    url,
-  };
 
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-      } catch (err) {}
-    }
-  };
 
   const copyLink = () => {
     navigator.clipboard.writeText(url);
@@ -30,17 +19,17 @@ export function ShareButtons({ url, title, locale }: Props) {
 
   return (
     <div className="flex flex-wrap gap-3 items-center">
-      <span className="text-sm font-bold text-(--color-text-secondary) mr-2 uppercase tracking-wider">{locale === 'is' ? 'Deila:' : 'Share:'}</span>
-      <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-(--color-border-light) bg-white text-(--color-text-secondary) hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-colors shadow-sm font-bold text-xs" onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank')}>
+      <span className="text-sm font-bold text-muted-foreground mr-2 uppercase tracking-wider">{locale === 'is' ? 'Deila:' : 'Share:'}</span>
+      <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-border/50 bg-card text-muted-foreground hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-colors shadow-sm font-bold text-xs cursor-pointer" onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank')}>
         FB
       </Button>
-      <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-(--color-border-light) bg-white text-(--color-text-secondary) hover:bg-[#1DA1F2] hover:text-white hover:border-[#1DA1F2] transition-colors shadow-sm font-bold text-xs" onClick={() => window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank')}>
+      <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-border/50 bg-card text-muted-foreground hover:bg-[#1DA1F2] hover:text-white hover:border-[#1DA1F2] transition-colors shadow-sm font-bold text-xs cursor-pointer" onClick={() => window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank')}>
         X
       </Button>
-      <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-(--color-border-light) bg-white text-(--color-text-secondary) hover:bg-(--color-brand) hover:text-white hover:border-(--color-brand) transition-colors shadow-sm" onClick={copyLink}>
+      <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-border/50 bg-card text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-colors shadow-sm cursor-pointer" onClick={copyLink}>
         <LinkIcon className="w-4 h-4" />
       </Button>
-      <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-(--color-border-light) bg-white text-(--color-text-secondary) hover:bg-gray-600 hover:text-white hover:border-gray-600 transition-colors shadow-sm" onClick={() => window.print()}>
+      <Button variant="outline" size="icon" className="rounded-full w-10 h-10 border-border/50 bg-card text-muted-foreground hover:bg-gray-600 hover:text-white hover:border-gray-600 transition-colors shadow-sm cursor-pointer" onClick={() => window.print()}>
         <Printer className="w-4 h-4" />
       </Button>
     </div>

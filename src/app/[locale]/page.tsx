@@ -1,10 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { ChevronRight, Clock, BarChart3, Search, UtensilsCrossed } from 'lucide-react';
+import { ChevronRight, Clock, BarChart3 } from 'lucide-react';
 import { AdSlot } from '@/components/ads/AdSlot';
-import { db } from '@/lib/firebase';
-import { collection, query, limit, orderBy, getDocs } from 'firebase/firestore';
 import { Recipe } from '@/types/recipe';
 import { mockRecipes } from '@/lib/mockData';
 import { NewsletterForm } from '@/components/layout/NewsletterForm';
@@ -60,18 +58,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         }}
       />
       {/* ===== HERO SECTION (Stitch: split layout) ===== */}
-      <section className="bg-(--color-bg-secondary) py-16 lg:py-24">
+      <section className="bg-secondary py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Left: Text content */}
             <div className="flex-1 max-w-xl">
-              <span className="inline-block py-1.5 px-4 rounded-full bg-(--color-brand)/10 text-(--color-brand) text-xs font-bold uppercase tracking-widest mb-6">
+              <span className="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-6">
                 {isIs ? 'Artisan Pizzería Leiðbeiningar' : 'Artisan Pizzeria Guide'}
               </span>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-(--color-text-primary) leading-[1.05] tracking-tight mb-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.05] tracking-tight mb-6">
                 {isIs ? 'Fullkomnaðu þitt' : 'Perfect your'}
                 <br />
-                <em className="text-(--color-brand) font-normal italic">
+                <em className="text-primary font-normal italic">
                   {isIs ? 'pizzadeig' : 'pizza dough'}
                 </em>
                 <br />
@@ -83,10 +81,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   : 'Discover the secrets of long-fermented dough, high-quality ingredients, and the perfect bake in your own kitchen.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link href="/uppskriftir" className="inline-flex items-center justify-center h-12 px-8 bg-(--color-brand) text-white font-semibold rounded-full shadow-md hover:bg-destructive hover:-translate-y-0.5 transition-all duration-200">
+                <Link href="/uppskriftir" className="inline-flex items-center justify-center h-12 px-8 bg-primary text-white font-semibold rounded-full shadow-md hover:bg-destructive hover:-translate-y-0.5 transition-all duration-200">
                   {isIs ? 'Skoða Uppskriftir' : 'Browse Recipes'}
                 </Link>
-                <Link href="/stilar" className="inline-flex items-center justify-center h-12 px-8 bg-(--color-bg-warm) text-(--color-text-primary) font-semibold rounded-full hover:bg-(--color-bg-tertiary) transition-all duration-200">
+                <Link href="/stilar" className="inline-flex items-center justify-center h-12 px-8 bg-(--color-bg-warm) text-foreground font-semibold rounded-full hover:bg-muted transition-all duration-200">
                   {isIs ? 'Læra Tæknina' : 'Learn Techniques'}
                 </Link>
               </div>
@@ -116,10 +114,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-(--color-text-primary) mb-2">{t('popular_title')}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">{t('popular_title')}</h2>
               <p className="text-(--color-text-secondary)">{t('popular_subtitle')}</p>
             </div>
-            <Link href="/uppskriftir" className="mt-4 md:mt-0 inline-flex items-center text-(--color-brand) font-semibold hover:underline group transition-colors">
+            <Link href="/uppskriftir" className="mt-4 md:mt-0 inline-flex items-center text-primary font-semibold hover:underline group transition-colors">
               {isIs ? 'Sjá allar uppskriftir' : 'See all recipes'} <ChevronRight className="h-5 w-5 ml-0.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -146,7 +144,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                       <div className="absolute inset-0 bg-(--color-bg-tertiary)" />
                     )}
                     {/* Category badge */}
-                    <span className="absolute top-4 right-4 bg-(--color-brand) text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md shadow-md">
+                    <span className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md shadow-md">
                       {catLabel}
                     </span>
                   </div>
@@ -162,7 +160,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                         ({recipe.rating_count || 0} {isIs ? 'umsagnir' : 'reviews'})
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-(--color-text-primary) mb-2 group-hover:text-(--color-brand) transition-colors">
+                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                       {title}
                     </h3>
                     <p className="text-sm text-(--color-text-secondary) leading-relaxed mb-6 line-clamp-2 flex-1">
@@ -195,7 +193,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </div>
 
       {/* ===== NEWSLETTER ===== */}
-      <section className="py-20 bg-(--color-bg-secondary)">
+      <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4">
           <NewsletterForm locale={locale as 'is' | 'en'} />
         </div>

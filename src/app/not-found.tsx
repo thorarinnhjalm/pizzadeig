@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Pizza } from 'lucide-react';
+import { Pizza, Loader2 } from 'lucide-react';
 
 const messages = [
   {
@@ -38,26 +38,37 @@ const messages = [
 ];
 
 export default function NotFound() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    setIndex(Math.floor(Math.random() * messages.length));
+    // We use requestAnimationFrame to avoid "set-state-in-effect" warning
+    // which triggers on synchronous state updates in effects.
+    const frame = requestAnimationFrame(() => {
+      setIndex(Math.floor(Math.random() * messages.length));
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
+
+  if (index === null) {
+     return <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+       <Loader2 className="w-12 h-12 animate-spin text-primary" />
+     </div>;
+  }
 
   const msg = messages[index];
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
-      <div className="relative z-10 text-center max-w-lg bg-(--color-bg-secondary) p-12 rounded-3xl border border-(--color-border) shadow-xl">
+      <div className="relative z-10 text-center max-w-lg bg-card p-12 rounded-3xl border border-border shadow-xl">
         <div className="flex justify-center mb-6">
           <div className="relative">
-            <Pizza className="w-28 h-28 text-(--color-brand) animate-pulse" />
+            <Pizza className="w-28 h-28 text-primary animate-pulse" />
             <span className="absolute -top-2 -right-2 text-4xl">{msg.emoji}</span>
           </div>
         </div>
         <p className="font-chalk text-2xl text-ring mb-2">{msg.subtitle}</p>
-        <h1 className="font-display font-bold text-5xl text-(--color-text-primary) mb-6">{msg.title}</h1>
-        <p className="font-body text-(--color-text-secondary) mb-8 text-lg leading-relaxed">
+        <h1 className="font-display font-bold text-5xl text-foreground mb-6">{msg.title}</h1>
+        <p className="font-body text-muted-foreground mb-8 text-lg leading-relaxed">
           {msg.description}
         </p>
         <Link href="/" className="btn-primary inline-flex items-center gap-2 h-12 px-8 text-base rounded-xl">

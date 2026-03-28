@@ -37,11 +37,11 @@ function getDifficultyLabel(d: string, isIs: boolean) {
   return isIs ? 'Erfitt' : 'Advanced';
 }
 
-function getFermentTime(recipe: any): string {
+function getFermentTime(recipe: { rest_time_min?: number; prep_time_min?: number; cook_time_min?: number }): string {
   const total = recipe.rest_time_min || 0;
   if (total >= 60) return `${Math.round(total / 60)}h`;
   if (total > 0) return `${total}m`;
-  const cook = recipe.prep_time_min + recipe.cook_time_min;
+  const cook = (recipe.prep_time_min || 0) + (recipe.cook_time_min || 0);
   return `${cook} mín`;
 }
 

@@ -1,8 +1,20 @@
 export const dynamic = 'force-dynamic';
 import { MetadataRoute } from 'next';
 import { mockRecipes, mockRestaurants } from '@/lib/mockData';
+import { Timestamp } from 'firebase/firestore';
 
 const BASE_URL = 'https://pizzadeig.is';
+
+/**
+ * Helper to convert Timestamp or string to Date safely for sitemap
+ */
+function toDate(val: Timestamp | string | Date | null | undefined | { toDate: () => Date }): Date {
+  if (!val) return new Date();
+  if (val instanceof Timestamp) return val.toDate();
+  if (typeof val === 'object' && 'toDate' in val && typeof val.toDate === 'function') return val.toDate();
+  if (val instanceof Date) return val;
+  return new Date(val as string);
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sitemapEntries: MetadataRoute.Sitemap = [];
@@ -45,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (!recipe.slug) continue;
       sitemapEntries.push({
         url: `${BASE_URL}/${locale}/uppskriftir/${recipe.slug}`,
-        lastModified: recipe.updated_at ? new Date(recipe.updated_at as any) : new Date(),
+        lastModified: toDate(recipe.updated_at),
         changeFrequency: 'weekly',
         priority: 0.7,
         alternates: {
@@ -62,7 +74,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (!restaurant.slug) continue;
       sitemapEntries.push({
         url: `${BASE_URL}/${locale}/stadir/${restaurant.slug}`,
-        lastModified: restaurant.updated_at ? new Date(restaurant.updated_at as any) : new Date(),
+        lastModified: toDate(restaurant.updated_at),
         changeFrequency: 'monthly',
         priority: 0.6,
         alternates: {

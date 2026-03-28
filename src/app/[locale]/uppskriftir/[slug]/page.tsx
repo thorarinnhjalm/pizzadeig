@@ -144,7 +144,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
         {/* ===== BREADCRUMBS + ACTIONS ===== */}
         <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <nav className="text-sm text-(--color-text-secondary) font-medium flex items-center gap-2">
-            <Link href="/" className="hover:text-[var(--color-brand)] transition-colors">{isIs ? 'Forsíða' : 'Home'}</Link>
+            <Link href="/" className="hover:text-(--color-brand) transition-colors">{isIs ? 'Forsíða' : 'Home'}</Link>
             <span className="text-muted-foreground">/</span>
             <Link href="/uppskriftir" className="hover:text-(--color-brand) transition-colors">{isIs ? 'Uppskriftir' : 'Recipes'}</Link>
             <span className="text-muted-foreground">/</span>

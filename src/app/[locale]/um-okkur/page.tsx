@@ -1,126 +1,46 @@
-import type { Metadata } from 'next';
-import { Pizza, Users, Heart, BookOpen } from 'lucide-react';
+import { ChefHat, Heart, Users } from 'lucide-react';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const isIs = locale === 'is';
-  return {
-    title: isIs
-      ? 'Um Pizzadeig.is — Íslands pizzusamfélag'
-      : 'About Pizzadeig.is — Iceland\'s Pizza Community',
-    description: isIs
-      ? 'Pizzadeig.is er íslenskt pizzusamfélag byggt af pizzuáhugafólki. Uppskriftir, veitingastaðir, deigreiknivél og fleira.'
-      : 'Pizzadeig.is is an Icelandic pizza community built by pizza enthusiasts. Recipes, restaurants, dough calculator, and more.',
-    openGraph: {
-      title: isIs ? 'Um Pizzadeig.is' : 'About Pizzadeig.is',
-      url: `https://www.pizzadeig.is/${locale}/um-okkur`,
-      siteName: 'Pizzadeig.is',
-      locale: isIs ? 'is_IS' : 'en_US',
-      type: 'website',
-    },
-  };
-}
-
-export default async function UmOkkurPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const isIs = locale === 'is';
-
+  const isIslandic = locale === 'is';
+  
   return (
-    <main className="flex-1 w-full bg-background min-h-screen pb-20">
-      {/* Hero */}
-      <div className="bg-(--color-bg-secondary) border-b border-(--color-border-light) pt-16 pb-12">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <div className="w-16 h-16 bg-(--color-brand)/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <Pizza className="w-8 h-8 text-(--color-brand)" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-(--color-text-primary) mb-4">
-            {isIs ? 'Um Pizzadeig.is' : 'About Pizzadeig.is'}
-          </h1>
-          <p className="text-lg text-(--color-text-secondary) max-w-2xl mx-auto italic">
-            {isIs
-              ? 'Íslands eina sérhæfða pizzusamfélagið — af pizzuáhugafólki, fyrir pizzuáhugafólk.'
-              : "Iceland's only dedicated pizza community — by pizza lovers, for pizza lovers."}
-          </p>
+    <main className="flex-1 bg-white py-16 md:py-24">
+      <div className="container mx-auto px-4 max-w-5xl text-center">
+        <h1 className="text-5xl md:text-7xl font-extrabold text-primary mb-8 tracking-tight">
+          {isIslandic ? 'Um Okkur' : 'About Us'}
+        </h1>
+        <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-20 max-w-3xl mx-auto font-medium">
+          {isIslandic 
+            ? 'Pizzadeig.is er opið samfélag bakara, matgæðinga og pizza-nörda. Yfirlýst markmið okkar er að aðstoða alla við að baka og njóta fullkominna pítsa heima í stofu.'
+            : 'Pizzadeig.is is an open community of bakers, foodies, and pizza nerds. Our core mission is to help everyone bake and enjoy the perfect pizza straight from their home kitchen.'}
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+           <div className="bg-secondary p-10 rounded-3xl shadow-sm border border-border hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mb-6">
+                <ChefHat className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-2xl font-bold text-foreground mb-3">{isIslandic ? 'Uppskriftir' : 'Recipes'}</h3>
+              <p className="text-muted-foreground leading-relaxed">{isIslandic ? 'Gagnagrunnur sem stækkar daglega og skilar nákvæmum leiðbeiningum að fullkomnun sem reynar hafa verið af sjálfu samfélaginu.' : 'A daily expanding database delivering precise instructions mapped to perfection and rigorously tested by the community itself.'}</p>
+           </div>
+           
+           <div className="bg-secondary p-10 rounded-3xl shadow-sm border border-border hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-green-500/5 rounded-2xl flex items-center justify-center mb-6">
+                <Heart className="w-8 h-8 text-green-500" />
+              </div>
+              <h3 className="text-2xl font-bold text-foreground mb-3">{isIslandic ? 'Samfélagsdrifið' : 'Community Driven'}</h3>
+              <p className="text-muted-foreground leading-relaxed">{isIslandic ? 'Allt á vefnum er opið fyrir einkunnagjöfum og skiptum. Við stuðlum að opnum og frjálsum umræðum um innihaldsefni og bökunaraðferðir.' : 'Everything is open to rating implementations. We encourage entirely uninhibited exchange of ingredient sourcing techniques.'}</p>
+           </div>
+           
+           <div className="bg-secondary p-10 rounded-3xl shadow-sm border border-border hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-ring/5 rounded-2xl flex items-center justify-center mb-6">
+                <Users className="w-8 h-8 text-ring" />
+              </div>
+              <h3 className="text-2xl font-bold text-foreground mb-3">{isIslandic ? 'Hópastarf' : 'Teamwork'}</h3>
+              <p className="text-muted-foreground leading-relaxed">{isIslandic ? 'Þetta gæti byrjað hér á landi, en sjónarhorn okkar er alþjóðlegt með tvítyngdum aðgengisleiðum fyrir unnendur pitsunnar hvert sem þeir fara.' : 'While starting locally alongside the glaciers, our aim is completely global with dual-language tracking spanning international pizza boundaries.'}</p>
+           </div>
         </div>
-      </div>
-
-      <div className="container mx-auto px-4 max-w-3xl mt-12 space-y-12">
-        {/* Story */}
-        <section className="prose prose-lg max-w-none text-(--color-text-secondary)">
-          <h2 className="text-2xl font-display font-bold text-(--color-text-primary)">
-            {isIs ? 'Sagan okkar' : 'Our Story'}
-          </h2>
-          <p>
-            {isIs
-              ? 'Pizzadeig.is fæddist úr einlægri ástríðu fyrir bökun. Við sáum tækifæri til að búa til einn sameiginlegan vettvang fyrir alla sem elska pizzu á Íslandi — hvort sem þú ert byrjandi sem er að hnoða sitt fyrsta deig, eða rafsæll sérfræðingur sem leitar yfir 72 klst gerjunaruppskrift.'
-              : 'Pizzadeig.is was born from a genuine passion for baking. We saw the opportunity to create a single, shared platform for everyone who loves pizza in Iceland — whether you\'re a beginner kneading your first dough, or a seasoned artisan seeking a 72-hour fermentation recipe.'}
-          </p>
-          <p>
-            {isIs
-              ? 'Við höfum safnað saman bestu uppskriftunum, yfirlit yfir pizzustaði landsins, og byggt tæki eins og deigreiknivélina til þess að ekkert standi í vegi þess að þú bakir draumapizzuna þína.'
-              : 'We\'ve curated the best recipes, mapped out the country\'s pizza spots, and built tools like the dough calculator — so nothing stands in the way of you baking your dream pizza.'}
-          </p>
-        </section>
-
-        {/* Values */}
-        <section>
-          <h2 className="text-2xl font-display font-bold text-(--color-text-primary) mb-8">
-            {isIs ? 'Gildi okkar' : 'Our Values'}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white border border-(--color-border) rounded-2xl p-6 text-center">
-              <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="w-6 h-6 text-amber-600" />
-              </div>
-              <h3 className="font-bold text-(--color-text-primary) mb-2">
-                {isIs ? 'Opin þekking' : 'Open Knowledge'}
-              </h3>
-              <p className="text-sm text-(--color-text-secondary)">
-                {isIs ? 'Allar uppskriftir og leiðbeiningar eru gjaldfrjálsar og opnar öllum.' : 'All recipes and guides are free and open to everyone.'}
-              </p>
-            </div>
-            <div className="bg-white border border-(--color-border) rounded-2xl p-6 text-center">
-              <div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-6 h-6 text-pink-600" />
-              </div>
-              <h3 className="font-bold text-(--color-text-primary) mb-2">
-                {isIs ? 'Ástríða' : 'Passion'}
-              </h3>
-              <p className="text-sm text-(--color-text-secondary)">
-                {isIs ? 'Byggt af fólki sem elskar pizza — ekki sem aukaverkefni, heldur sem lífsgildi.' : 'Built by people who love pizza — not as a side project, but as a way of life.'}
-              </p>
-            </div>
-            <div className="bg-white border border-(--color-border) rounded-2xl p-6 text-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Users className="w-6 h-6 text-blue-600" />
-              </div>
-              <h3 className="font-bold text-(--color-text-primary) mb-2">
-                {isIs ? 'Samfélag' : 'Community'}
-              </h3>
-              <p className="text-sm text-(--color-text-secondary)">
-                {isIs ? 'Við trúum á kraften sem liggur í sameiginlegri þekkingu og stuðningi.' : 'We believe in the power of shared knowledge and mutual support.'}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact */}
-        <section className="bg-(--color-bg-secondary) p-8 rounded-3xl border border-(--color-border) text-center">
-          <h2 className="text-2xl font-display font-bold text-(--color-text-primary) mb-3">
-            {isIs ? 'Viltu ná í okkur?' : 'Want to reach us?'}
-          </h2>
-          <p className="text-(--color-text-secondary) mb-6">
-            {isIs
-              ? 'Sendu okkur línu á netfangið okkar eða hafðu samband í gegnum samfélagsmiðla.'
-              : 'Drop us a line via email or reach out on social media.'}
-          </p>
-          <a
-            href="mailto:thorarinnhjalmarsson@gmail.com?subject=Hæ Pizzadeig.is!"
-            className="inline-flex items-center gap-2 bg-(--color-brand) text-white px-8 py-3 rounded-full font-bold shadow-md hover:bg-destructive transition-colors"
-          >
-            {isIs ? 'Senda tölvupóst' : 'Send Email'}
-          </a>
-        </section>
       </div>
     </main>
   );

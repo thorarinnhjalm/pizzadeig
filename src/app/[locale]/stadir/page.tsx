@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import { useLocale } from 'next-intl';
 import { Restaurant } from '@/types/restaurant';
-import { Search, MapPin, Star, ChefHat, Clock, DollarSign } from 'lucide-react';
+import { Search, MapPin, Star, ChefHat, Clock } from 'lucide-react';
 import { mockRestaurants } from '@/lib/mockData';
 import { Link } from '@/i18n/routing';
 import { CommunityRatingBadge } from '@/components/community/CommunityRatingBadge';

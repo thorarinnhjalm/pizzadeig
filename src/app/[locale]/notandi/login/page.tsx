@@ -72,7 +72,7 @@ export default function LoginPage() {
       } else {
         router.push(`/notandi/${user.uid}`);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setError(isLogin 
         ? 'Rangt netfang eða lykilorð.' 
@@ -113,7 +113,7 @@ export default function LoginPage() {
       } else {
         router.push(`/notandi/${user.uid}`);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setError('Ekki tókst að skrá inn með Google.');
     } finally {

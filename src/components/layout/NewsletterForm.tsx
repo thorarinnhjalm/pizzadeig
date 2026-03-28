@@ -26,7 +26,7 @@ export function NewsletterForm({ locale }: Props) {
       if (!res.ok) throw new Error('Failed');
       setStatus('success');
       setEmail('');
-    } catch(err) {
+    } catch (_err) {
       setStatus('error');
       setTimeout(() => setStatus('idle'), 3000);
     }
@@ -57,7 +57,7 @@ export function NewsletterForm({ locale }: Props) {
               disabled={status === 'loading' || status === 'success'}
               required
             />
-            <Button type="submit" disabled={status === 'loading' || status === 'success'} className="btn-primary h-12 px-8 w-full sm:w-auto hover:bg-[#b02e0b] shadow-md border-x-transparent border-t-transparent border-b-[4px] border-[#912509]">
+            <Button type="submit" disabled={status === 'loading' || status === 'success'} className="btn-primary h-12 px-8 w-full sm:w-auto hover:bg-[#b02e0b] shadow-md border-x-transparent border-t-transparent border-b-4 border-[#912509]">
                {status === 'loading' ? '...' : status === 'success' ? '✅' : (locale === 'is' ? 'Skrá mig' : 'Subscribe')}
             </Button>
          </form>

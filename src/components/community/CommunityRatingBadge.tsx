@@ -16,7 +16,6 @@ export function CommunityRatingBadge({ targetId, targetType, locale, size = 'md'
 
   if (loading || count === 0) return null;
 
-  const pizzaCount = Math.round(avg);
   const isSm = size === 'sm';
 
   return (

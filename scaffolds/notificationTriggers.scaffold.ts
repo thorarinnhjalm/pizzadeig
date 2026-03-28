@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Pizzadeig.is — Cloud Functions for Notifications
  * 
@@ -21,7 +20,7 @@ db.settings({ databaseId: 'pizzadeig' });
  */
 export const onReviewCreate = functions.firestore
   .document('reviews/{reviewId}')
-  .onCreate(async (snap, context) => {
+  .onCreate(async (snap, _context) => {
     const review = snap.data();
     const targetType = review.target_type; // 'recipe' | 'restaurant'
     const targetId = review.target_id;

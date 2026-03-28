@@ -1,113 +1,109 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { collection, query, where, getDocs, limit } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { collection, query, where, getDocs, increment, updateDoc, doc } from 'firebase/firestore';
+import { Ad } from '@/types/ad';
+import { mockAds } from '@/lib/mockData';
 
-interface AdSlotProps {
+interface Props {
   placement: string;
-  format: string;
+  format: '1018x360' | '1080x240' | '300x250' | '310x400' | '320x50' | '468x60' | 'sponsored_card';
   className?: string;
   fallbackText?: string;
 }
 
-export function AdSlot({ placement, format, className = '', fallbackText }: AdSlotProps) {
-  const [ad, setAd] = useState<any | null>(null);
+export function AdSlot({ placement, format, className = '', fallbackText }: Props) {
+  const [ad, setAd] = useState<Ad | null>(null);
   const [loading, setLoading] = useState(true);
-  const [impressionLogged, setImpressionLogged] = useState(false);
+  const impressionRecorded = useRef(false);
 
   useEffect(() => {
-    let isMounted = true;
-    
-    const fetchAd = async () => {
+    async function fetchAd() {
       try {
         const q = query(
           collection(db, 'ads'),
           where('status', '==', 'active'),
-          where('placements', 'array-contains', placement)
+          where('placements', 'array-contains', placement),
+          where('format', '==', format),
+          limit(1)
         );
         const snapshot = await getDocs(q);
-        
         if (!snapshot.empty) {
-          // Get a random active ad for this placement
-          const docs = snapshot.docs;
-          const randomDoc = docs[Math.floor(Math.random() * docs.length)];
-          const adData = { id: randomDoc.id, ...randomDoc.data() };
-          
-          if (isMounted) {
-            setAd(adData);
-            setLoading(false);
-            
-            // Log Impression once
-            if (!impressionLogged) {
-              setImpressionLogged(true);
-              try {
-                const adRef = doc(db, 'ads', adData.id);
-                await updateDoc(adRef, { impressions: increment(1) });
-              } catch (err) {
-                console.warn('Could not log impression', err);
-              }
-            }
-          }
+          setAd({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as Ad);
         } else {
-          if (isMounted) setLoading(false);
+          // Fallback trigger
+          const fallback = mockAds.find(m => m.placements.includes(placement) && m.creatives?.[format as keyof typeof m.creatives]);
+          if (fallback) setAd(fallback);
         }
-      } catch (err) {
-        console.error('Failed to fetch ad:', err);
-        if (isMounted) setLoading(false);
+      } catch (error) {
+        console.error('Error fetching ad slot:', error);
+        // Provide gorgeous UX mock datasets instead of crashing or showing grey boxes if DB is offline.
+        const fallback = mockAds.find(m => m.placements.includes(placement) && m.creatives?.[format as keyof typeof m.creatives]);
+        if (fallback) setAd(fallback);
+      } finally {
+        setLoading(false);
       }
-    };
-    
-    fetchAd();
-    
-    return () => { isMounted = false; };
-  }, [placement, impressionLogged]);
-
-  const handleClick = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (!ad) return;
-    
-    // Log Click
-    try {
-      const adRef = doc(db, 'ads', ad.id);
-      await updateDoc(adRef, { clicks: increment(1) });
-    } catch (err) {
-      console.warn('Could not log ad click', err);
     }
+    fetchAd();
+  }, [placement, format]);
+
+  useEffect(() => {
+    if (ad && !impressionRecorded.current) {
+      impressionRecorded.current = true;
+      // Record Impression via API Proxy to avoid exposing direct unauthenticated firestore writes unnecessarily if possible
+      fetch('/api/ads/event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ad_id: ad.id, type: 'impression', placement })
+      }).catch(console.error);
+    }
+  }, [ad, placement]);
+
+  const handleClick = () => {
+    if (!ad) return;
+    fetch('/api/ads/event', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ad_id: ad.id, type: 'click', placement })
+    }).catch(console.error);
     
-    // Navigate safely (if it's an external URL)
-    window.open(ad.target_url, '_blank', 'noopener,noreferrer');
+    if (ad.target_url) {
+      window.open(ad.target_url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   if (loading) {
     return (
-      <div className={`flex items-center justify-center bg-muted/30 text-muted-foreground border-dashed border-2 rounded-xl animate-pulse ${className}`}>
-        <span className="text-xs font-semibold text-center px-4">Sæki auglýsingu...</span>
+      <div className={`bg-gray-100 animate-pulse rounded-lg border border-gray-200 flex items-center justify-center ${className}`}>
+        <span className="text-[10px] text-gray-300 uppercase tracking-widest font-bold">Safna Auglýsingu</span>
       </div>
     );
   }
 
   if (!ad) {
-    // No active ad — render nothing
-    return null;
+    return (
+      <div className={`bg-[#F8FAFC] border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-gray-400 text-sm font-medium rounded-xl ${className}`}>
+         <span className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-1 bg-(--color-bg-secondary) px-2 py-0.5 rounded shadow-sm border border-gray-100">Laust Auglýsingapláss</span>
+         {fallbackText || placement}
+      </div>
+    );
   }
 
+  const imageSrc = ad.creatives?.[format as keyof typeof ad.creatives] || ad.image_url;
+  if (!imageSrc) return null; // Don't show if missing creative
+
   return (
-    <a 
-      href={ad.target_url} 
+    <div 
       onClick={handleClick}
-      className={`block relative overflow-hidden rounded-xl bg-gray-100 group shadow-sm hover:shadow-lg transition-all cursor-pointer ${className}`}
-      aria-label={`Sponsor: ${ad.client}`}
+      className={`relative cursor-pointer group overflow-hidden rounded-xl border border-(--color-border) shadow-sm hover:shadow-lg transition-all bg-(--color-bg-secondary) ad-slot ${className}`}
     >
-      <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/60 backdrop-blur-md rounded text-[10px] font-bold text-white uppercase tracking-widest z-10 shadow-sm pointer-events-none">
-        Auglýsing
-      </span>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img 
-        src={ad.image_url} 
-        alt={`Auglýsing frá ${ad.client}`} 
-        className={`w-full h-full object-cover origin-center transition-transform duration-700 group-hover:scale-105`}
+      <img
+        src={imageSrc} 
+        alt={ad.name}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
       />
-    </a>
+    </div>
   );
 }

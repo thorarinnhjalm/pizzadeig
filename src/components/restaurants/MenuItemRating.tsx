@@ -9,11 +9,10 @@ import { Loader2, Pizza } from 'lucide-react';
 
 interface Props {
   itemId: string;
-  itemName: string;
   locale: 'is' | 'en';
 }
 
-export function MenuItemRating({ itemId, itemName, locale }: Props) {
+export function MenuItemRating({ itemId, locale }: Props) {
   const { user } = useAuth();
   const [rating, setRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
@@ -90,9 +89,9 @@ export function MenuItemRating({ itemId, itemName, locale }: Props) {
 
   // Show existing community rating
   const ratingDisplay = communityCount > 0 && (
-    <div className="flex items-center gap-1 text-xs text-(--color-text-secondary)">
-      <Pizza className="w-3 h-3 text-(--color-brand)" />
-      <span className="font-bold text-(--color-text-primary)">{communityAvg.toFixed(1)}</span>
+    <div className="flex items-center gap-1 text-xs text-muted-foreground">
+      <Pizza className="w-3 h-3 text-primary" />
+      <span className="font-bold text-foreground">{communityAvg.toFixed(1)}</span>
       <span>({communityCount})</span>
     </div>
   );
@@ -116,7 +115,7 @@ export function MenuItemRating({ itemId, itemName, locale }: Props) {
     return (
       <div className="flex items-center gap-3">
         {ratingDisplay}
-        <div className="text-[10px] text-(--color-text-secondary) italic">
+        <div className="text-[10px] text-muted-foreground italic">
           {isIs ? 'Skráðu þig inn til að gefa einkunn' : 'Log in to rate'}
         </div>
       </div>
@@ -126,7 +125,7 @@ export function MenuItemRating({ itemId, itemName, locale }: Props) {
   return (
     <div className="flex items-center gap-3">
       {loading ? (
-        <Loader2 className="w-4 h-4 animate-spin text-(--color-brand)" />
+        <Loader2 className="w-4 h-4 animate-spin text-primary" />
       ) : (
         <RatingPizzas rating={rating} onChange={handleRate} size={16} />
       )}
