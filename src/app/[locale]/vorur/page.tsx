@@ -8,7 +8,7 @@ export default async function VorurPage({ params }: { params: Promise<{ locale: 
   const categories = [...new Set(PRODUCTS.map(p => p.category))];
 
   return (
-    <main className="flex-1 bg-(--color-bg-primary) min-h-screen">
+    <main className="flex-1 bg-background min-h-screen">
       {/* Hero with background image */}
       <section className="relative h-[300px] flex items-center justify-center bg-linear-to-b from-stone-600 to-stone-800 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1600')] bg-cover bg-center opacity-30" />

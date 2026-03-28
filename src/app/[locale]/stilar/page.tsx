@@ -33,7 +33,7 @@ export default async function StilarPage({ params }: { params: Promise<{ locale:
               <div key={style.id} className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center`}>
                 {/* Image */}
                 <div className="w-full lg:w-1/2">
-                  <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
+                  <div className="relative aspect-4/3 rounded-3xl overflow-hidden shadow-lg">
                     {style.image_url ? (
                       <Image src={style.image_url} alt={name} fill className="object-cover" />
                     ) : (

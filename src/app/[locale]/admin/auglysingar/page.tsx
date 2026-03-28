@@ -102,7 +102,7 @@ export default function AdminAdsPage() {
            <div className="overflow-x-auto">
              <table className="w-full text-left border-collapse min-w-[600px]">
                <thead>
-                 <tr className="bg-[#fcfdfd] border-b border-gray-100 text-xs tracking-widest font-bold text-(--color-text-tertiary) uppercase">
+                 <tr className="bg-[#fcfdfd] border-b border-gray-100 text-xs tracking-widest font-bold text-muted-foreground uppercase">
                    <th className="p-5 w-1/3">Auglýsing / Herferð</th>
                    <th className="p-5">Viðskiptavinur</th>
                    <th className="p-5">Format / Snið</th>
