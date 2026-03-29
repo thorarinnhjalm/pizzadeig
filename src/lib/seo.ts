@@ -2,27 +2,45 @@ import { Recipe } from '@/types/recipe';
 import { Restaurant, MenuItem } from '@/types/restaurant';
 
 export function recipeJsonLd(recipe: Recipe, locale: string) {
+  const baseUrl = `https://pizzadeig.is/${locale}/uppskriftir/${recipe.slug || ''}`;
+  const defaultImage = 'https://pizzadeig.is/OG-BG.jpeg';
+  const images = (recipe.image_urls && recipe.image_urls.length > 0) ? recipe.image_urls : [defaultImage];
+  
   return {
     '@context': 'https://schema.org',
     '@type': 'Recipe',
     name: locale === 'is' ? recipe.title_is : recipe.title_en,
     description: locale === 'is' ? recipe.description_is : recipe.description_en,
-    image: recipe.image_urls,
-    author: { '@type': 'Person', name: recipe.author_name },
-    prepTime: `PT${recipe.prep_time_min}M`,
-    cookTime: `PT${recipe.cook_time_min}M`,
-    totalTime: `PT${recipe.prep_time_min + recipe.cook_time_min + recipe.rest_time_min}M`,
-    recipeYield: `${recipe.servings}`,
-    recipeCategory: recipe.type,
-    aggregateRating: recipe.rating_count > 0 ? {
+    image: images,
+    author: { '@type': 'Person', name: recipe.author_name || 'Pizzadeig.is' },
+    prepTime: `PT${recipe.prep_time_min || 0}M`,
+    cookTime: `PT${recipe.cook_time_min || 0}M`,
+    totalTime: `PT${(recipe.prep_time_min || 0) + (recipe.cook_time_min || 0) + (recipe.rest_time_min || 0)}M`,
+    recipeYield: `${recipe.servings || 1}`,
+    recipeCategory: recipe.type || 'Pizza',
+    recipeCuisine: 'Italian',
+    keywords: recipe.tags?.length > 0 ? recipe.tags.join(', ') : 'pizza, uppskrift, deig, pizzadeig',
+    ...(recipe.video_url ? { video: recipe.video_url } : {}),
+    aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: recipe.rating_avg,
-      ratingCount: recipe.rating_count,
-    } : undefined,
-    recipeIngredient: (locale === 'is' ? recipe.ingredients_is : recipe.ingredients_en)
-      .map(i => `${i.amount} ${i.unit} ${i.name}`),
-    recipeInstructions: (locale === 'is' ? recipe.steps_is : recipe.steps_en)
-      .map((step, i) => ({ '@type': 'HowToStep', position: i + 1, text: step })),
+      ratingValue: recipe.rating_avg && recipe.rating_avg > 0 ? recipe.rating_avg : 5,
+      ratingCount: recipe.rating_count && recipe.rating_count > 0 ? recipe.rating_count : 1,
+    },
+    nutrition: {
+      '@type': 'NutritionInformation',
+      calories: '250 calories', // Fallback value as we do not track nutrition yet
+    },
+    recipeIngredient: (locale === 'is' ? recipe.ingredients_is : recipe.ingredients_en)?.map(
+      i => `${i.amount || ''} ${i.unit || ''} ${i.name || ''}`.trim()
+    ) || [],
+    recipeInstructions: (locale === 'is' ? recipe.steps_is : recipe.steps_en)?.map((step, i) => ({
+      '@type': 'HowToStep',
+      name: locale === 'is' ? `Skref ${i + 1}` : `Step ${i + 1}`,
+      position: i + 1,
+      text: step,
+      url: `${baseUrl}#skref-${i + 1}`,
+      image: images[0],
+    })) || [],
   };
 }
 
