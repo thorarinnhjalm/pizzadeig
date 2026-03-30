@@ -423,6 +423,27 @@ export const mockRestaurants: Restaurant[] = [
     created_at: null as any, updated_at: null as any,
   },
 
+  // ─── AUSTURLAND (Höfn) ───
+  {
+    id: 'ishusid-pizzeria-hofn',
+    name: 'Íshúsið Pizzeria',
+    slug: 'ishusid-pizzeria-hofn',
+    description_is: 'Þekkt fyrir sígildar steinofnspizzur í gamla íshúsinu á Höfn. Humarinn þeirra er goðsagnakenndur!',
+    description_en: 'Famous for classic stone-oven pizzas in the old icehouse in Höfn. Their local langoustine is legendary!',
+    address: 'Heppuvegur 2a',
+    city: 'Höfn í Hornafirði',
+    postal_code: '780',
+    location: { latitude: 64.2505, longitude: -15.2078 } as any,
+    phone: '478 1220',
+    website: 'https://ishusidpizzeria.is',
+    opening_hours: { mán: '11:30-21', þri: '11:30-21', mið: '11:30-21', fim: '11:30-21', fös: '11:30-22', lau: '12-22', sun: '12-21' },
+    price_level: 2,
+    features: ['Dine-in', 'Takeaway', 'Steinofn', 'Humar'],
+    image_urls: ['https://images.unsplash.com/photo-1544982503-9f984c14501a?q=80&w=1200'],
+    rating_avg: 0, rating_count: 0, rating_google: 4.7, rating_tripadvisor: 4.5,
+    likes_count: 0, is_verified: true, tags: ['Höfn', 'Humar', 'Steinofn'],
+    created_at: null as any, updated_at: null as any,
+  },
 
   // ─── LANDSBYGGÐIN (Lota 4) ───
   {
@@ -819,6 +840,11 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'sp-1', restaurant_id: 'stykkid-pizzeria', name_is: 'Snæfellspizza', name_en: 'Snæfellsnes Special', description_is: 'Tómatsósa, mozzarella, reyktur lax, rjómaostur, klettasalat, dill', description_en: 'Tomato sauce, mozzarella, smoked salmon, cream cheese, arugula, dill', price: 3890, category: 'Pizzur', sort_order: 1 },
   { id: 'sp-2', restaurant_id: 'stykkid-pizzeria', name_is: 'Aðalgatan', name_en: 'Main Street', description_is: 'Tómatsósa, mozzarella, pepperóní, sveppir, paprika', description_en: 'Tomato sauce, mozzarella, pepperoni, mushrooms, bell pepper', price: 3590, category: 'Pizzur', sort_order: 2 },
   { id: 'sp-3', restaurant_id: 'stykkid-pizzeria', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2990, category: 'Pizzur', sort_order: 3 },
+
+  // ─── Íshúsið Pizzeria Höfn (Scraped 2026-03) ───
+  { id: 'ip-1', restaurant_id: 'ishusid-pizzeria-hofn', name_is: 'Lobster Classic', name_en: 'Lobster Classic', description_is: 'Sósa, ostur, staðbundinn humar, paprika, hvítlaukur, klettasalat, parmesan', description_en: 'Sauce, cheese, local langoustine, bell peppers, garlic, arugula, parmesan', price: 4290, category: 'Pizzur', sort_order: 1 },
+  { id: 'ip-2', restaurant_id: 'ishusid-pizzeria-hofn', name_is: 'Atli Special', name_en: 'Atli Special', description_is: 'Hvít sósa, ostur, kjúklingur, sveppir, beikon, sterk majónessósa', description_en: 'White sauce, cheese, chicken, mushrooms, bacon, spicy mayo', price: 3690, category: 'Pizzur', sort_order: 2 },
+  { id: 'ip-3', restaurant_id: 'ishusid-pizzeria-hofn', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, ostur, óreganó', description_en: 'Tomato sauce, cheese, oregano', price: 2890, category: 'Pizzur', sort_order: 3 },
 
 /* HIDDEN MOCK DATA FOR FUTURE BATCHES:
   // ─── Flatey Pizza Selfoss ───
