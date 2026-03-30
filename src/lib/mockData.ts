@@ -347,7 +347,6 @@ export const mockRestaurants: Restaurant[] = [
     created_at: null as any, updated_at: null as any,
   },
 
-/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
   // ─── KEFLAVÍK ───
   {
     id: 'antons-mamma-mia',
@@ -387,6 +386,45 @@ export const mockRestaurants: Restaurant[] = [
     likes_count: 0, is_verified: false, tags: ['Keflavík', 'Ítalía'],
     created_at: null as any, updated_at: null as any,
   },
+  {
+    id: 'italiano-kopavogur',
+    name: 'Italiano Pizzeria',
+    slug: 'italiano-kopavogur',
+    description_is: 'Ítölsk pizzería í Kópavogi. Vænir skammtar og klassískar pizzur.',
+    description_en: 'Italian pizzeria in Kópavogur. Generous portions and classic pizzas.',
+    address: 'Smáratorg',
+    city: 'Kópavogur',
+    postal_code: '201',
+    location: { latitude: 64.1069, longitude: -21.8822 } as any,
+    opening_hours: { mán: '11-22', þri: '11-22', mið: '11-22', fim: '11-22', fös: '11-23', lau: '11-23', sun: '12-22' },
+    price_level: 2,
+    features: ['Dine-in', 'Takeaway', 'Delivery'],
+    image_urls: ['https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=80&w=1200'],
+    rating_avg: 0, rating_count: 0, rating_google: 4.2,
+    likes_count: 0, is_verified: false, tags: ['Kópavogur', 'Klassísk'],
+    created_at: null as any, updated_at: null as any,
+  },
+  {
+    id: 'pizza-braedur-mosfellsbaer',
+    name: 'Pizza Bræður',
+    slug: 'pizza-braedur-mosfellsbaer',
+    description_is: 'Nýtt pizzahús í Mosfellsbæ. Bræðurnir baka ferskar pizzur daglega.',
+    description_en: 'New pizza spot in Mosfellsbær. The brothers bake fresh pizzas daily.',
+    address: 'Háholt 13',
+    city: 'Mosfellsbær',
+    postal_code: '270',
+    location: { latitude: 64.1666, longitude: -21.6966 } as any,
+    opening_hours: { mán: '11-21', þri: '11-21', mið: '11-21', fim: '11-21', fös: '11-22', lau: '12-22', sun: '12-21' },
+    price_level: 2,
+    features: ['Takeaway', 'Delivery'],
+    image_urls: ['https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200'],
+    rating_avg: 0, rating_count: 0, rating_google: 4.3,
+    likes_count: 0, is_verified: false, tags: ['Mosfellsbær', 'Nýtt'],
+    created_at: null as any, updated_at: null as any,
+  },
+
+/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
+
 
   // ─── AUSTFIRÐIR ───
   {
@@ -608,42 +646,7 @@ export const mockRestaurants: Restaurant[] = [
     likes_count: 0, is_verified: true, tags: ['Napólí', 'Viðarofn', 'Garðabær'],
     created_at: null as any, updated_at: null as any,
   },
-  {
-    id: 'italiano-kopavogur',
-    name: 'Italiano Pizzeria',
-    slug: 'italiano-kopavogur',
-    description_is: 'Ítölsk pizzería í Kópavogi. Vænir skammtar og klassískar pizzur.',
-    description_en: 'Italian pizzeria in Kópavogur. Generous portions and classic pizzas.',
-    address: 'Smáratorg',
-    city: 'Kópavogur',
-    postal_code: '201',
-    location: { latitude: 64.1069, longitude: -21.8822 } as any,
-    opening_hours: { mán: '11-22', þri: '11-22', mið: '11-22', fim: '11-22', fös: '11-23', lau: '11-23', sun: '12-22' },
-    price_level: 2,
-    features: ['Dine-in', 'Takeaway', 'Delivery'],
-    image_urls: ['https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=80&w=1200'],
-    rating_avg: 0, rating_count: 0, rating_google: 4.2,
-    likes_count: 0, is_verified: false, tags: ['Kópavogur', 'Klassísk'],
-    created_at: null as any, updated_at: null as any,
-  },
-  {
-    id: 'pizza-braedur-mosfellsbaer',
-    name: 'Pizza Bræður',
-    slug: 'pizza-braedur-mosfellsbaer',
-    description_is: 'Nýtt pizzahús í Mosfellsbæ. Bræðurnir baka ferskar pizzur daglega.',
-    description_en: 'New pizza spot in Mosfellsbær. The brothers bake fresh pizzas daily.',
-    address: 'Háholt 13',
-    city: 'Mosfellsbær',
-    postal_code: '270',
-    location: { latitude: 64.1666, longitude: -21.6966 } as any,
-    opening_hours: { mán: '11-21', þri: '11-21', mið: '11-21', fim: '11-21', fös: '11-22', lau: '12-22', sun: '12-21' },
-    price_level: 2,
-    features: ['Takeaway', 'Delivery'],
-    image_urls: ['https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200'],
-    rating_avg: 0, rating_count: 0, rating_google: 4.3,
-    likes_count: 0, is_verified: false, tags: ['Mosfellsbær', 'Nýtt'],
-    created_at: null as any, updated_at: null as any,
-  },
+
 
 */
 ];
@@ -781,15 +784,28 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'pp-9', restaurant_id: 'pizza-popolare', name_is: 'Crispy Guanciale', name_en: 'Crispy Guanciale', description_is: 'San Marzano Tomato, Mozzarella, Crispy Guanciale, Chili Flakes', description_en: '', price: 4090, category: 'Pizzur', sort_order: 9 },
   { id: 'pp-10', restaurant_id: 'pizza-popolare', name_is: 'Parmigiana', name_en: 'Parmigiana', description_is: 'Eggplant Parmigiano Ragù, Basil, Ristaðir kirsuberjatómatar, Mozzarella', description_en: '', price: 3890, category: 'Pizzur', sort_order: 10 },
 
+  // ─── Antons Mamma Mia (Scraped 2026-03) ───
+  { id: 'am-1', restaurant_id: 'antons-mamma-mia', name_is: 'Pizza Grande', name_en: 'Pizza Grande', description_is: 'Nautahakk, skinka, pepperoni, beikonkurl', description_en: 'Ground beef, ham, pepperoni, bacon bits', price: 3190, category: 'Pizzur', sort_order: 1 },
+  { id: 'am-2', restaurant_id: 'antons-mamma-mia', name_is: 'Pizza Falk', name_en: 'Pizza Falk', description_is: 'Nautahakk, pepperoni, ananas, jalapeno, beikonkurl, svartur pipar', description_en: 'Ground beef, pepperoni, pineapple, jalapeno, bacon bits, black pepper', price: 3490, category: 'Pizzur', sort_order: 2 },
+  { id: 'am-3', restaurant_id: 'antons-mamma-mia', name_is: 'Pizza Volcano (Sterk)', name_en: 'Pizza Volcano (Spicy)', description_is: 'Laukur, paprika, pepperoni, nautahakk, jalapeno, cayennepipar, svartar ólífur, chilibitaflögur. Srirachasósa fylgir með.', description_en: 'Onion, bell pepper, pepperoni, ground beef, jalapeno, cayenne pepper, black olives, chili flakes. Served with Sriracha sauce.', price: 3490, category: 'Pizzur', sort_order: 3 },
+  { id: 'am-4', restaurant_id: 'antons-mamma-mia', name_is: 'Pizza Ala Humar (Premium)', name_en: 'Lobster Pizza (Premium)', description_is: 'Hvítlaukssmjör, rjómaostur, hvítlaukur, tómatar, humar. Toppað með klettasalati og ferskum parmesan.', description_en: 'Garlic butter, cream cheese, garlic, tomatoes, langoustine. Topped with arugula and fresh parmesan.', price: 3890, category: 'Pizzur', sort_order: 4 },
+
+  // ─── Fernando's Keflavík (Scraped 2026-03) ───
+  { id: 'fe-1', restaurant_id: 'fernandos-keflavik', name_is: 'Lava Pizza', name_en: 'Lava Pizza', description_is: 'Tómatsósa, ostur, pepperoni, jalapeno, chilikrydd (Sterk)', description_en: 'Tomato sauce, cheese, pepperoni, jalapeno, chili spice (Spicy)', price: 3390, category: 'Pizzur', sort_order: 1 },
+  { id: 'fe-2', restaurant_id: 'fernandos-keflavik', name_is: 'Humarpizza', name_en: 'Langoustine Pizza', description_is: 'Tómatsósa, ostur, íslenskur humar, hvítlaukur, rjómaostur', description_en: 'Tomato sauce, cheese, Icelandic langoustine, garlic, cream cheese', price: 3990, category: 'Pizzur', sort_order: 2 },
+  { id: 'fe-3', restaurant_id: 'fernandos-keflavik', name_is: 'Calzone Fernando', name_en: 'Fernando Calzone', description_is: 'Innbökuð pizza með skinku, sveppum og rjómaosti', description_en: 'Folded pizza with ham, mushrooms and cream cheese', price: 3490, category: 'Pizzur', sort_order: 3 },
+
+  // ─── Pizza Bræður Mosfellsbær (Scraped 2026-03) ───
+  { id: 'pb-1', restaurant_id: 'pizza-braedur-mosfellsbaer', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, ostur', description_en: 'Tomato sauce, cheese', price: 2790, category: 'Pizzur', sort_order: 1 },
+  { id: 'pb-2', restaurant_id: 'pizza-braedur-mosfellsbaer', name_is: 'Pepperoni', name_en: 'Pepperoni', description_is: 'Tómatsósa, ostur, vel af pepperóní', description_en: 'Tomato sauce, cheese, plenty of pepperoni', price: 2990, category: 'Pizzur', sort_order: 2 },
+  { id: 'pb-3', restaurant_id: 'pizza-braedur-mosfellsbaer', name_is: 'Bræðrapizza', name_en: 'Brothers Special', description_is: 'Tómatsósa, ostur, pepperóní, beikon, rjómaostur', description_en: 'Tomato sauce, cheese, pepperoni, bacon, cream cheese', price: 3490, category: 'Pizzur', sort_order: 3 },
+
+  // ─── Italiano Pizzeria (Scraped 2026-03) ───
+  { id: 'ik-1', restaurant_id: 'italiano-kopavogur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, fersk basilíka', description_en: 'Tomato sauce, mozzarella, fresh basil', price: 2890, category: 'Pizzur', sort_order: 1 },
+  { id: 'ik-2', restaurant_id: 'italiano-kopavogur', name_is: 'Vegan Buffalo', name_en: 'Vegan Buffalo', description_is: 'Vegan ostur, vegan buffalo kjúklingur, rauðlaukur, ferskt kóríander, ranch sósa', description_en: 'Vegan cheese, vegan buffalo chicken, red onion, fresh cilantro, ranch sauce', price: 3590, category: 'Pizzur', sort_order: 2 },
+  { id: 'ik-3', restaurant_id: 'italiano-kopavogur', name_is: 'Quattro Formaggi', name_en: 'Four Cheese', description_is: 'Tómatsósa, mozzarella, gorgonzola, parmesan, fetaostur', description_en: 'Tomato sauce, mozzarella, gorgonzola, parmesan, feta cheese', price: 3490, category: 'Pizzur', sort_order: 3 },
+
 /* HIDDEN MOCK DATA FOR FUTURE BATCHES:
-  // ─── Antons Mamma Mia ───
-  { id: 'am-1', restaurant_id: 'antons-mamma-mia', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2990, category: 'Pizzur', sort_order: 1 },
-  { id: 'am-2', restaurant_id: 'antons-mamma-mia', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3290, category: 'Pizzur', sort_order: 2 },
-  { id: 'am-3', restaurant_id: 'antons-mamma-mia', name_is: 'Calzone', name_en: 'Calzone', description_is: 'Samanbrotin, ricotta, mozzarella, skinka, sveppir', description_en: 'Folded, ricotta, mozzarella, ham, mushrooms', price: 3590, category: 'Pizzur', sort_order: 3 },
-  // ─── Fernando's ───
-  { id: 'fe-1', restaurant_id: 'fernandos-keflavik', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2890, category: 'Pizzur', sort_order: 1 },
-  { id: 'fe-2', restaurant_id: 'fernandos-keflavik', name_is: 'Quattro Formaggi', name_en: 'Four Cheese', description_is: 'Mozzarella, gorgonzola, parmesan, ricotta', description_en: 'Mozzarella, gorgonzola, parmesan, ricotta', price: 3490, category: 'Pizzur', sort_order: 2 },
-  { id: 'fe-3', restaurant_id: 'fernandos-keflavik', name_is: 'Hawaii', name_en: 'Hawaiian', description_is: 'Tómatsósa, mozzarella, skinka, ananas', description_en: 'Tomato sauce, mozzarella, ham, pineapple', price: 3190, category: 'Pizzur', sort_order: 3 },
   // ─── Pizzafjörður ───
   { id: 'pf-1', restaurant_id: 'pizzafjordur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2790, category: 'Pizzur', sort_order: 1 },
   { id: 'pf-2', restaurant_id: 'pizzafjordur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3090, category: 'Pizzur', sort_order: 2 },
@@ -834,14 +850,6 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'fg-1', restaurant_id: 'flatey-pizza-gardabaer', name_is: 'Margherita', name_en: 'Margherita', description_is: 'San Marzano, fior di latte, basilíka, ólífuolía', description_en: 'San Marzano, fior di latte, basil, olive oil', price: 3190, category: 'Pizzur', sort_order: 1 },
   { id: 'fg-2', restaurant_id: 'flatey-pizza-gardabaer', name_is: 'Umberto', name_en: 'Umberto', description_is: 'San Marzano, mozzarella, pepperóní, döðlur, mascarpone', description_en: 'San Marzano, mozzarella, pepperoni, dates, mascarpone', price: 3890, category: 'Pizzur', sort_order: 2 },
   { id: 'fg-3', restaurant_id: 'flatey-pizza-gardabaer', name_is: 'Stracciatella', name_en: 'Stracciatella', description_is: 'Gráðaður skinka, mozzarella, stracciatella, basilíkuolía', description_en: 'Cured ham, mozzarella, stracciatella, basil oil', price: 4190, category: 'Pizzur', sort_order: 3 },
-  // ─── Italiano Kópavogur ───
-  { id: 'ik-1', restaurant_id: 'italiano-kopavogur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2890, category: 'Pizzur', sort_order: 1 },
-  { id: 'ik-2', restaurant_id: 'italiano-kopavogur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3190, category: 'Pizzur', sort_order: 2 },
-  { id: 'ik-3', restaurant_id: 'italiano-kopavogur', name_is: 'Quattro Formaggi', name_en: 'Four Cheese', description_is: 'Mozzarella, gorgonzola, parmesan, ricotta', description_en: 'Mozzarella, gorgonzola, parmesan, ricotta', price: 3490, category: 'Pizzur', sort_order: 3 },
-  // ─── Pizza Bræður ───
-  { id: 'pb-1', restaurant_id: 'pizza-braedur-mosfellsbaer', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2790, category: 'Pizzur', sort_order: 1 },
-  { id: 'pb-2', restaurant_id: 'pizza-braedur-mosfellsbaer', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3090, category: 'Pizzur', sort_order: 2 },
-  { id: 'pb-3', restaurant_id: 'pizza-braedur-mosfellsbaer', name_is: 'Bræðrapizza', name_en: 'Brothers Pizza', description_is: 'Tómatsósa, mozzarella, pepperóní, beikon, jalapeño, hunang', description_en: 'Tomato sauce, mozzarella, pepperoni, bacon, jalapeño, honey', price: 3490, category: 'Pizzur', sort_order: 3 },
 
 */
   // ─── Pizzasmiðjan Akureyri (Scraped 2026-03) ───
