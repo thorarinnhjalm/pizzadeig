@@ -520,8 +520,6 @@ export const mockRestaurants: Restaurant[] = [
     likes_count: 0, is_verified: false, tags: ['Stykkishólmur', 'Snæfellsnes'],
     created_at: null as any, updated_at: null as any,
   },
-/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
-
 
   // ─── SELFOSS ───
   {
@@ -662,8 +660,6 @@ export const mockRestaurants: Restaurant[] = [
     created_at: null as any, updated_at: null as any,
   },
 
-
-*/
 ];
 
 export const mockMenuItems: MenuItem[] = [
@@ -846,39 +842,41 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'ip-2', restaurant_id: 'ishusid-pizzeria-hofn', name_is: 'Atli Special', name_en: 'Atli Special', description_is: 'Hvít sósa, ostur, kjúklingur, sveppir, beikon, sterk majónessósa', description_en: 'White sauce, cheese, chicken, mushrooms, bacon, spicy mayo', price: 3690, category: 'Pizzur', sort_order: 2 },
   { id: 'ip-3', restaurant_id: 'ishusid-pizzeria-hofn', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, ostur, óreganó', description_en: 'Tomato sauce, cheese, oregano', price: 2890, category: 'Pizzur', sort_order: 3 },
 
-/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
-  // ─── Flatey Pizza Selfoss ───
+  // ─── Flatey Pizza Selfoss (Scraped 2026-03) ───
   { id: 'fs-1', restaurant_id: 'flatey-pizza-selfoss', name_is: 'Margherita', name_en: 'Margherita', description_is: 'San Marzano, fior di latte, basilíka, ólífuolía', description_en: 'San Marzano, fior di latte, basil, olive oil', price: 3190, category: 'Pizzur', sort_order: 1 },
   { id: 'fs-2', restaurant_id: 'flatey-pizza-selfoss', name_is: 'Padrino', name_en: 'Padrino', description_is: 'San Marzano, mozzarella, pepperóní, súr chili, hunang', description_en: 'San Marzano, mozzarella, pepperoni, pickled chili, honey', price: 3790, category: 'Pizzur', sort_order: 2 },
   { id: 'fs-3', restaurant_id: 'flatey-pizza-selfoss', name_is: 'Tartufo', name_en: 'Tartufo', description_is: 'Mozzarella, sveppir, ricotta, kartöflur, trufflolía', description_en: 'Mozzarella, mushrooms, ricotta, potatoes, truffle oil', price: 4090, category: 'Pizzur', sort_order: 3 },
-  // ─── Kaffi Krús ───
-  { id: 'kk-1', restaurant_id: 'kaffi-krus', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2890, category: 'Pizzur', sort_order: 1 },
-  { id: 'kk-2', restaurant_id: 'kaffi-krus', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3190, category: 'Pizzur', sort_order: 2 },
-  { id: 'kk-3', restaurant_id: 'kaffi-krus', name_is: 'Skinka og sveppir', name_en: 'Ham & Mushroom', description_is: 'Tómatsósa, mozzarella, skinka, sveppir', description_en: 'Tomato sauce, mozzarella, ham, mushrooms', price: 3190, category: 'Pizzur', sort_order: 3 },
 
-  // ─── Pítsugerðin ───
-  { id: 'pg-1', restaurant_id: 'pitsugerdin', name_is: 'Margherita', name_en: 'Margherita', description_is: 'San Marzano, mozzarella, basilíka', description_en: 'San Marzano, mozzarella, basil', price: 3090, category: 'Pizzur', sort_order: 1 },
-  { id: 'pg-2', restaurant_id: 'pitsugerdin', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní, hunang', description_en: 'Tomato sauce, mozzarella, pepperoni, honey', price: 3490, category: 'Pizzur', sort_order: 2 },
-  { id: 'pg-3', restaurant_id: 'pitsugerdin', name_is: 'Eyjapizza', name_en: 'Island Pizza', description_is: 'Tómatsósa, mozzarella, reyktur lambakjöt, laukur, sólþurrkaðir tómatar', description_en: 'Tomato sauce, mozzarella, smoked lamb, onion, sun-dried tomatoes', price: 3890, category: 'Pizzur', sort_order: 3 },
-  // ─── Pizza 67 ───
-  { id: 'p7-1', restaurant_id: 'pizza-67-vestmannaeyjar', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, oreganó', description_en: 'Tomato sauce, mozzarella, oregano', price: 2490, category: 'Pizzur', sort_order: 1 },
-  { id: 'p7-2', restaurant_id: 'pizza-67-vestmannaeyjar', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 2790, category: 'Pizzur', sort_order: 2 },
-  { id: 'p7-3', restaurant_id: 'pizza-67-vestmannaeyjar', name_is: 'Hawaii', name_en: 'Hawaiian', description_is: 'Tómatsósa, mozzarella, skinka, ananas', description_en: 'Tomato sauce, mozzarella, ham, pineapple', price: 2790, category: 'Pizzur', sort_order: 3 },
-  // ─── Hamraborg ───
-  { id: 'hb-1', restaurant_id: 'hamraborg-isafjordur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, oreganó', description_en: 'Tomato sauce, mozzarella, oregano', price: 2890, category: 'Pizzur', sort_order: 1 },
-  { id: 'hb-2', restaurant_id: 'hamraborg-isafjordur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3190, category: 'Pizzur', sort_order: 2 },
-  { id: 'hb-3', restaurant_id: 'hamraborg-isafjordur', name_is: 'Vestfirska', name_en: 'Westfjords Special', description_is: 'Tómatsósa, mozzarella, rækjur, hvítlaukur, dill', description_en: 'Tomato sauce, mozzarella, shrimp, garlic, dill', price: 3590, category: 'Pizzur', sort_order: 3 },
+  // ─── Kaffi Krús Selfoss (Scraped 2026-03) ───
+  { id: 'kk-1', restaurant_id: 'kaffi-krus', name_is: 'Verona', name_en: 'Verona', description_is: 'Sósa, ostur, pepperoni, beikon, sveppir, rjómaostur og oregano', description_en: 'Sauce, cheese, pepperoni, bacon, mushrooms, cream cheese and oregano', price: 3690, category: 'Pizzur', sort_order: 1 },
+  { id: 'kk-2', restaurant_id: 'kaffi-krus', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Sósa, ostur og oregano', description_en: 'Sauce, cheese and oregano', price: 2890, category: 'Pizzur', sort_order: 2 },
+  { id: 'kk-3', restaurant_id: 'kaffi-krus', name_is: 'Sérréttapizza', name_en: 'House Special', description_is: 'Sósa, ostur, skinka, nautahakk, laukur, fersk paprika', description_en: 'Sauce, cheese, ham, ground beef, onion, fresh bell pepper', price: 3590, category: 'Pizzur', sort_order: 3 },
 
-  // ─── Pizzan Hafnarfjörður ───
-  { id: 'ph-1', restaurant_id: 'pizzan-hafnarfjordur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, oreganó', description_en: 'Tomato sauce, mozzarella, oregano', price: 2790, category: 'Pizzur', sort_order: 1 },
-  { id: 'ph-2', restaurant_id: 'pizzan-hafnarfjordur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3090, category: 'Pizzur', sort_order: 2 },
-  { id: 'ph-3', restaurant_id: 'pizzan-hafnarfjordur', name_is: 'Ofurpizza', name_en: 'Supreme', description_is: 'Tómatsósa, mozzarella, skinka, pepperóní, sveppir, paprika, laukur', description_en: 'Tomato sauce, mozzarella, ham, pepperoni, mushrooms, peppers, onion', price: 3590, category: 'Pizzur', sort_order: 3 },
-  // ─── Flatey Pizza Garðabær ───
+  // ─── Pítsugerðin Vestmannaeyjar (Scraped 2026-03) ───
+  { id: 'pg-1', restaurant_id: 'pitsugerdin', name_is: 'Súrdeigs Margherita', name_en: 'Sourdough Margherita', description_is: 'San Marzano, ferskur mozzarella, basilíka', description_en: 'San Marzano, fresh mozzarella, basil', price: 3190, category: 'Pizzur', sort_order: 1 },
+  { id: 'pg-2', restaurant_id: 'pitsugerdin', name_is: 'Gorgonzola Special', name_en: 'Gorgonzola Special', description_is: 'Viðarelduð, mozzarella, gorgonzola, hráskinka, fíkjur', description_en: 'Wood-fired, mozzarella, gorgonzola, prosciutto, figs', price: 3890, category: 'Pizzur', sort_order: 2 },
+  { id: 'pg-3', restaurant_id: 'pitsugerdin', name_is: 'Piccante', name_en: 'Spicy Sourdough', description_is: 'San Marzano, mozzarella, sterk salsiccia, chili', description_en: 'San Marzano, mozzarella, spicy salsiccia, chili', price: 3590, category: 'Pizzur', sort_order: 3 },
+
+  // ─── Pizza 67 Vestmannaeyjar (Scraped 2026-03) ───
+  { id: 'p7-1', restaurant_id: 'pizza-67-vestmannaeyjar', name_is: 'Sjóarinn', name_en: 'The Sailor', description_is: 'Tómatsósa, ostur, rækjur, túnfiskur, laukur', description_en: 'Tomato sauce, cheese, shrimp, tuna, onion', price: 3490, category: 'Pizzur', sort_order: 1 },
+  { id: 'p7-2', restaurant_id: 'pizza-67-vestmannaeyjar', name_is: 'Eyjasérréttur', name_en: 'Islands Special', description_is: 'Tómatsósa, ostur, pepperóní, sveppir, paprika', description_en: 'Tomato sauce, cheese, pepperoni, mushrooms, bell pepper', price: 3290, category: 'Pizzur', sort_order: 2 },
+  { id: 'p7-3', restaurant_id: 'pizza-67-vestmannaeyjar', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, ostur, oreganó', description_en: 'Tomato sauce, cheese, oregano', price: 2790, category: 'Pizzur', sort_order: 3 },
+
+  // ─── Hamraborg Ísafjörður (Scraped 2026-03) ───
+  { id: 'hb-1', restaurant_id: 'hamraborg-isafjordur', name_is: 'Hamraborgar Special', name_en: 'Hamraborg Special', description_is: 'Sósa, ostur, hakk, laukur, gráðostur, bernaisesósa', description_en: 'Sauce, cheese, ground beef, onion, blue cheese, bernaise sauce', price: 3890, category: 'Pizzur', sort_order: 1 },
+  { id: 'hb-2', restaurant_id: 'hamraborg-isafjordur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Sósa, ostur, pepperóní', description_en: 'Sauce, cheese, pepperoni', price: 3190, category: 'Pizzur', sort_order: 2 },
+  { id: 'hb-3', restaurant_id: 'hamraborg-isafjordur', name_is: 'Margarita', name_en: 'Margarita', description_is: 'Sósa, ostur og oreganó', description_en: 'Sauce, cheese and oregano', price: 2890, category: 'Pizzur', sort_order: 3 },
+
+  // ─── Pizzan Hafnarfjörður (Scraped 2026-03) ───
+  { id: 'ph-1', restaurant_id: 'pizzan-hafnarfjordur', name_is: 'Pizzan Deluxe', name_en: 'Pizzan Deluxe', description_is: 'Pepperóní, rjómaostur, piparostur, beikon og svartur pipar', description_en: 'Pepperoni, cream cheese, pepper cheese, bacon and black pepper', price: 3890, category: 'Pizzur', sort_order: 1 },
+  { id: 'ph-2', restaurant_id: 'pizzan-hafnarfjordur', name_is: 'Sweet Bacon', name_en: 'Sweet Bacon', description_is: 'Bacon sulta, pepperóní, jalapeno, hvítlauks aioli og nachos', description_en: 'Bacon jam, pepperoni, jalapeno, garlic aioli and nachos', price: 3990, category: 'Pizzur', sort_order: 2 },
+  { id: 'ph-3', restaurant_id: 'pizzan-hafnarfjordur', name_is: '5 Cheese', name_en: '5 Cheese', description_is: 'Stracciatella, ostur, fior de latte, piparostur og parmesan', description_en: 'Stracciatella, cheese, fior de latte, pepper cheese and parmesan', price: 4190, category: 'Pizzur', sort_order: 3 },
+  { id: 'ph-4', restaurant_id: 'pizzan-hafnarfjordur', name_is: 'Pretty Pesto', name_en: 'Pretty Pesto', description_is: 'Kjúklingur, stracciatella, döðlur, pestó og chilli flögur', description_en: 'Chicken, stracciatella, dates, pesto and chilli flakes', price: 4090, category: 'Pizzur', sort_order: 4 },
+
+  // ─── Flatey Pizza Garðabær (Scraped 2026-03) ───
   { id: 'fg-1', restaurant_id: 'flatey-pizza-gardabaer', name_is: 'Margherita', name_en: 'Margherita', description_is: 'San Marzano, fior di latte, basilíka, ólífuolía', description_en: 'San Marzano, fior di latte, basil, olive oil', price: 3190, category: 'Pizzur', sort_order: 1 },
   { id: 'fg-2', restaurant_id: 'flatey-pizza-gardabaer', name_is: 'Umberto', name_en: 'Umberto', description_is: 'San Marzano, mozzarella, pepperóní, döðlur, mascarpone', description_en: 'San Marzano, mozzarella, pepperoni, dates, mascarpone', price: 3890, category: 'Pizzur', sort_order: 2 },
   { id: 'fg-3', restaurant_id: 'flatey-pizza-gardabaer', name_is: 'Stracciatella', name_en: 'Stracciatella', description_is: 'Gráðaður skinka, mozzarella, stracciatella, basilíkuolía', description_en: 'Cured ham, mozzarella, stracciatella, basil oil', price: 4190, category: 'Pizzur', sort_order: 3 },
-
-*/
   // ─── Pizzasmiðjan Akureyri (Scraped 2026-03) ───
   { id: 'psa-1', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Margherita', name_en: 'Margherita', description_is: 'San Marzano tómatsósa, ferskur mozzarella, basilíka, ólífuolía', description_en: 'San Marzano tomato sauce, fresh mozzarella, basil, olive oil', price: 2990, category: 'Pizzur', sort_order: 1 },
   { id: 'psa-2', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Pepperoni', name_en: 'Pepperoni', description_is: 'Tómatsósa, ferskur mozzarella, hágæða pepperoni', description_en: 'Tomato sauce, fresh mozzarella, high quality pepperoni', price: 3490, category: 'Pizzur', sort_order: 2 },
