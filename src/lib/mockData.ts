@@ -269,7 +269,6 @@ export const mockRestaurants: Restaurant[] = [
     created_at: null as any, updated_at: null as any,
   },
 
-/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
   // ─── AKUREYRI ───
   {
     id: 'pizzasmidjan-akureyri',
@@ -310,6 +309,45 @@ export const mockRestaurants: Restaurant[] = [
     created_at: null as any, updated_at: null as any,
   },
 
+  // ─── HÖFUÐBORGARSVÆÐIÐ ───
+  {
+    id: 'islenska-flatbakan',
+    name: 'Íslenska Flatbakan',
+    slug: 'islenska-flatbakan',
+    description_is: 'Íslensku flatbökurnar — pizzur með íslensku ívafi. Stórt úrval og fjölskylduvænlegt.',
+    description_en: 'The Icelandic Flatbread — pizzas with an Icelandic twist. Wide selection and family-friendly.',
+    address: 'Dalshraun 1',
+    city: 'Kópavogur',
+    postal_code: '201',
+    location: { latitude: 64.1049, longitude: -21.8900 } as any,
+    opening_hours: { mán: '11-21', þri: '11-21', mið: '11-21', fim: '11-21', fös: '11-22', lau: '12-22', sun: '12-21' },
+    price_level: 2,
+    features: ['Takeaway', 'Delivery', 'Fjölskylduvænlegt'],
+    image_urls: ['https://images.unsplash.com/photo-1544982503-9f984c14501a?q=80&w=1200'],
+    rating_avg: 0, rating_count: 0, rating_google: 4.0,
+    likes_count: 0, is_verified: false, tags: ['Kópavogur', 'Íslensku'],
+    created_at: null as any, updated_at: null as any,
+  },
+  {
+    id: 'castello-hafnarfjordur',
+    name: 'Castello Pizzeria',
+    slug: 'castello-hafnarfjordur',
+    description_is: 'Klassísk pizzería í Hafnarfirði. Þykk og þunn skorpa, stórt áleggsval.',
+    description_en: 'Classic pizzeria in Hafnarfjörður. Thick and thin crust options, wide topping selection.',
+    address: 'Strandgata 55',
+    city: 'Hafnarfjörður',
+    postal_code: '220',
+    location: { latitude: 64.0650, longitude: -21.9580 } as any,
+    opening_hours: { mán: '11-22', þri: '11-22', mið: '11-22', fim: '11-22', fös: '11-23', lau: '11-23', sun: '12-22' },
+    price_level: 2,
+    features: ['Dine-in', 'Takeaway', 'Delivery'],
+    image_urls: ['https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?q=80&w=1200'],
+    rating_avg: 0, rating_count: 0, rating_google: 4.1,
+    likes_count: 0, is_verified: false, tags: ['Hafnarfjörður', 'Klassísk'],
+    created_at: null as any, updated_at: null as any,
+  },
+
+/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
   // ─── KEFLAVÍK ───
   {
     id: 'antons-mamma-mia',
@@ -589,24 +627,6 @@ export const mockRestaurants: Restaurant[] = [
     created_at: null as any, updated_at: null as any,
   },
   {
-    id: 'islenska-flatbakan',
-    name: 'Íslenska Flatbakan',
-    slug: 'islenska-flatbakan',
-    description_is: 'Íslensku flatbökurnar — pizzur með íslensku ívafi. Stórt úrval og fjölskylduvænlegt.',
-    description_en: 'The Icelandic Flatbread — pizzas with an Icelandic twist. Wide selection and family-friendly.',
-    address: 'Dalshraun 1',
-    city: 'Kópavogur',
-    postal_code: '201',
-    location: { latitude: 64.1049, longitude: -21.8900 } as any,
-    opening_hours: { mán: '11-21', þri: '11-21', mið: '11-21', fim: '11-21', fös: '11-22', lau: '12-22', sun: '12-21' },
-    price_level: 2,
-    features: ['Takeaway', 'Delivery', 'Fjölskylduvænlegt'],
-    image_urls: ['https://images.unsplash.com/photo-1544982503-9f984c14501a?q=80&w=1200'],
-    rating_avg: 0, rating_count: 0, rating_google: 4.0,
-    likes_count: 0, is_verified: false, tags: ['Kópavogur', 'Íslensku'],
-    created_at: null as any, updated_at: null as any,
-  },
-  {
     id: 'pizza-braedur-mosfellsbaer',
     name: 'Pizza Bræður',
     slug: 'pizza-braedur-mosfellsbaer',
@@ -622,24 +642,6 @@ export const mockRestaurants: Restaurant[] = [
     image_urls: ['https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1200'],
     rating_avg: 0, rating_count: 0, rating_google: 4.3,
     likes_count: 0, is_verified: false, tags: ['Mosfellsbær', 'Nýtt'],
-    created_at: null as any, updated_at: null as any,
-  },
-  {
-    id: 'castello-hafnarfjordur',
-    name: 'Castello Pizzeria',
-    slug: 'castello-hafnarfjordur',
-    description_is: 'Klassísk pizzería í Hafnarfirði. Þykk og þunn skorpa, stórt áleggsval.',
-    description_en: 'Classic pizzeria in Hafnarfjörður. Thick and thin crust options, wide topping selection.',
-    address: 'Strandgata 55',
-    city: 'Hafnarfjörður',
-    postal_code: '220',
-    location: { latitude: 64.0650, longitude: -21.9580 } as any,
-    opening_hours: { mán: '11-22', þri: '11-22', mið: '11-22', fim: '11-22', fös: '11-23', lau: '11-23', sun: '12-22' },
-    price_level: 2,
-    features: ['Dine-in', 'Takeaway', 'Delivery'],
-    image_urls: ['https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?q=80&w=1200'],
-    rating_avg: 0, rating_count: 0, rating_google: 4.1,
-    likes_count: 0, is_verified: false, tags: ['Hafnarfjörður', 'Klassísk'],
     created_at: null as any, updated_at: null as any,
   },
 
@@ -858,6 +860,33 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'ca-3', restaurant_id: 'castello-hafnarfjordur', name_is: 'Castello Special', name_en: 'Castello Special', description_is: 'Tómatsósa, mozzarella, skinka, pepperóní, sveppir, ólífur, paprika', description_en: 'Tomato sauce, mozzarella, ham, pepperoni, mushrooms, olives, peppers', price: 3490, category: 'Pizzur', sort_order: 3 },
 
 */
+
+  // ─── Pizzasmiðjan Akureyri (Scraped 2026-03) ───
+  { id: 'psa-1', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Margherita', name_en: 'Margherita', description_is: 'San Marzano tómatsósa, ferskur mozzarella, basilíka, ólífuolía', description_en: 'San Marzano tomato sauce, fresh mozzarella, basil, olive oil', price: 2990, category: 'Pizzur', sort_order: 1 },
+  { id: 'psa-2', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Pepperoni', name_en: 'Pepperoni', description_is: 'Tómatsósa, ferskur mozzarella, hágæða pepperoni', description_en: 'Tomato sauce, fresh mozzarella, high quality pepperoni', price: 3490, category: 'Pizzur', sort_order: 2 },
+  { id: 'psa-3', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Nduja og Hunang', name_en: 'Nduja & Honey', description_is: 'Tómatsósa, mozzarella, nduja, rjómaostur, chili hunang', description_en: 'Tomato sauce, mozzarella, nduja, cream cheese, hot honey', price: 3890, category: 'Pizzur', sort_order: 3 },
+  { id: 'psa-4', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Sveppapizza', name_en: 'Mushroom Pizza', description_is: 'Hvítlauksolía, mozzarella, blandaðir trufflusveppir', description_en: 'Garlic oil, mozzarella, mixed truffle mushrooms', price: 3890, category: 'Pizzur', sort_order: 4 },
+  { id: 'psa-5', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Hráskinku', name_en: 'Prosciutto', description_is: 'Tómatsósa, mozzarella, hráskinka, klettasalat, parmesan', description_en: 'Tomato sauce, mozzarella, prosciutto, arugula, parmesan', price: 3990, category: 'Pizzur', sort_order: 5 },
+
+  // ─── Íslenska Flatbakan (Scraped 2026-03) ───
+  { id: 'ifb-1', restaurant_id: 'islenska-flatbakan', name_is: 'Sú Boltaða', name_en: 'Sú Boltaða', description_is: 'Mozzarellaosta blanda, flatböku sósa, pepperoni, skinka, sveppir, hvítlaukur, ananas, rjómaostur og svartur pipar', description_en: 'Mozzarella blend, flatbread sauce, pepperoni, ham, mushrooms, garlic, pineapple, cream cheese, black pepper', price: 3690, category: 'Pizzur', sort_order: 1 },
+  { id: 'ifb-2', restaurant_id: 'islenska-flatbakan', name_is: 'Sú Döðlaða', name_en: 'Sú Döðlaða', description_is: 'Mozzarellaosta blanda, flatböku sósa, pepperoni, döðlur, rauðlaukur, beikon, rjómaostur og svartur pipar', description_en: 'Mozzarella blend, flatbread sauce, pepperoni, dates, red onion, bacon, cream cheese, black pepper', price: 3490, category: 'Pizzur', sort_order: 2 },
+  { id: 'ifb-3', restaurant_id: 'islenska-flatbakan', name_is: 'Sú sterka', name_en: 'Sú sterka', description_is: 'Pepperóní, laukur, ferskur chilli, jalapeno, blandaðar ólífur, piparostur og chillikrydd', description_en: 'Pepperoni, onion, fresh chili, jalapeno, mixed olives, pepper cheese, chili spice', price: 3590, category: 'Pizzur', sort_order: 3 },
+  { id: 'ifb-4', restaurant_id: 'islenska-flatbakan', name_is: 'Sú Peppaða', name_en: 'Sú Peppaða', description_is: 'Mozzarellaosta blanda, flatböku sósa, pepperoni, rjómaostur', description_en: 'Mozzarella blend, flatbread sauce, pepperoni, cream cheese', price: 3090, category: 'Pizzur', sort_order: 4 },
+
+  // ─── Greifinn Akureyri (Scraped 2026-03) ───
+  { id: 'greif-1', restaurant_id: 'greifinn-akureyri', name_is: 'Greifinn', name_en: 'Greifinn', description_is: 'Tómatsósa, ostur, skinka, pepperoni, sveppir, laukur, paprika, rjómaostur', description_en: 'Tomato sauce, cheese, ham, pepperoni, mushrooms, onion, peppers, cream cheese', price: 4290, category: 'Pizzur', sort_order: 1 },
+  { id: 'greif-2', restaurant_id: 'greifinn-akureyri', name_is: 'Eldkeilir', name_en: 'Eldkeilir', description_is: 'Tómatsósa, ostur, pepperoni, beikon, grænn pipar, jalapeño, laukur, ferskur chili', description_en: 'Tomato sauce, cheese, pepperoni, bacon, green pepper, jalapeño, onion, fresh chili', price: 4290, category: 'Pizzur', sort_order: 2 },
+  { id: 'greif-3', restaurant_id: 'greifinn-akureyri', name_is: 'Skarðshlíð', name_en: 'Skarðshlíð', description_is: 'Tómatsósa, ostur, nautahakk, skinka, beikon, pepparoni, auka ostur', description_en: 'Tomato sauce, cheese, minced beef, ham, bacon, pepperoni, extra cheese', price: 4390, category: 'Pizzur', sort_order: 3 },
+  { id: 'greif-4', restaurant_id: 'greifinn-akureyri', name_is: 'Hawaii', name_en: 'Hawaii', description_is: 'Tómatsósa, ostur, skinka, ananas', description_en: 'Tomato sauce, cheese, ham, pineapple', price: 3290, category: 'Pizzur', sort_order: 4 },
+  { id: 'greif-5', restaurant_id: 'greifinn-akureyri', name_is: 'Margarita', name_en: 'Margarita', description_is: 'Tómatsósa, mikill ostur', description_en: 'Tomato sauce, lots of cheese', price: 2990, category: 'Pizzur', sort_order: 5 },
+
+  // ─── Castello Pizzeria (Scraped 2026-03) ───
+  { id: 'cast-1', restaurant_id: 'castello-hafnarfjordur', name_is: 'Castello Special', name_en: 'Castello Special', description_is: 'Tómatsósa, ostur, pepperoni, sveppir, rjómaostur, auka pepperoni', description_en: 'Tomato sauce, cheese, pepperoni, mushrooms, cream cheese, extra pepperoni', price: 3950, category: 'Pizzur', sort_order: 1 },
+  { id: 'cast-2', restaurant_id: 'castello-hafnarfjordur', name_is: 'Riddarinn', name_en: 'The Knight', description_is: 'Tómatsósa, ostur, skinka, nautahakk, laukur, gráðaostur', description_en: 'Tomato sauce, cheese, ham, minced beef, onion, blue cheese', price: 3950, category: 'Pizzur', sort_order: 2 },
+  { id: 'cast-3', restaurant_id: 'castello-hafnarfjordur', name_is: 'Kóngurinn', name_en: 'The King', description_is: 'Tómatsósa, ostur, pepperoni, skinka, beikon', description_en: 'Tomato sauce, cheese, pepperoni, ham, bacon', price: 4150, category: 'Pizzur', sort_order: 3 },
+  { id: 'cast-4', restaurant_id: 'castello-hafnarfjordur', name_is: 'Drottningin', name_en: 'The Queen', description_is: 'Tómatsósa, ostur, kjúklingur, paprika, laukur, hvítlaukssósa', description_en: 'Tomato sauce, cheese, chicken, peppers, onion, garlic sauce', price: 4150, category: 'Pizzur', sort_order: 4 },
+  { id: 'cast-5', restaurant_id: 'castello-hafnarfjordur', name_is: 'Margarita', name_en: 'Margarita', description_is: 'Tómatsósa, hefðbundin eða þunn', description_en: 'Tomato sauce, traditional or thin crust', price: 2850, category: 'Pizzur', sort_order: 5 },
 ];
 
 export { allRecipes as mockRecipes } from './recipeData';
