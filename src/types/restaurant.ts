@@ -44,4 +44,6 @@ export interface MenuItem {
   category: string;
   image_url?: string;
   sort_order: number;
+  rating_avg?: number;
+  rating_count?: number;
 }

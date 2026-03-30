@@ -6,6 +6,7 @@ import { AdSlot } from '@/components/ads/AdSlot';
 import { Recipe } from '@/types/recipe';
 import { mockRecipes } from '@/lib/mockData';
 import { NewsletterForm } from '@/components/layout/NewsletterForm';
+import { PriceWatchWidget } from '@/components/home/PriceWatchWidget';
 
 async function getPopularRecipes(): Promise<Recipe[]> {
   return mockRecipes.slice(0, 3);
@@ -108,6 +109,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
 
+
+      {/* ===== PRICE WATCH ===== */}
+      <PriceWatchWidget />
 
       {/* ===== POPULAR RECIPES (Stitch: 3-col cards) ===== */}
       <section className="py-20 bg-(--color-bg-secondary)">

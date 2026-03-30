@@ -13,6 +13,8 @@ import { Users, Pizza, Calendar, ChefHat, Loader2 } from 'lucide-react';
 import { FollowButton } from '@/components/community/FollowButton';
 import { useParams } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { useAuth } from '@/hooks/useAuth';
+import { Bookmark, BookOpen } from 'lucide-react';
 
 export default function UserProfilePage() {
   const params = useParams();
@@ -20,9 +22,13 @@ export default function UserProfilePage() {
   const locale = useLocale() as 'is' | 'en';
   const isIs = locale === 'is';
 
+  const { user: currentUser } = useAuth();
   const [user, setUser] = useState<UserProfile | null>(null);
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
+  const [activeTab, setActiveTab] = useState<'published' | 'cookbook'>('published');
   const [loading, setLoading] = useState(true);
+  const [loadingSaves, setLoadingSaves] = useState(false);
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
@@ -52,6 +58,39 @@ export default function UserProfilePage() {
     }
     if (uid) load();
   }, [uid]);
+
+  useEffect(() => {
+    async function loadSaves() {
+      if (currentUser?.uid !== uid) return;
+      setLoadingSaves(true);
+      try {
+        const savesQ = query(collection(db, 'saves'), where('user_uid', '==', uid), where('target_type', '==', 'recipe'));
+        const savesSnap = await getDocs(savesQ);
+        const saveIds = savesSnap.docs.map(d => d.data().target_id);
+        
+        if (saveIds.length > 0) {
+          const chunks = [];
+          for (let i = 0; i < saveIds.length; i += 10) {
+            chunks.push(saveIds.slice(i, i + 10));
+          }
+          
+          const fetchedSavedRecipes = [];
+          for (const chunk of chunks) {
+            // Using documentId() built-in via firebase
+            const rQ = query(collection(db, 'recipes'), where('__name__', 'in', chunk));
+            const rSnap = await getDocs(rQ);
+            fetchedSavedRecipes.push(...rSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+          }
+          setSavedRecipes(fetchedSavedRecipes as Recipe[]);
+        }
+      } catch (e) {
+        console.error('Error loading cookbook:', e);
+      } finally {
+        setLoadingSaves(false);
+      }
+    }
+    loadSaves();
+  }, [currentUser, uid]);
 
   // Determine fallback details
   const authorName = user?.display_name || (recipes.length > 0 ? recipes[0].author_name : isIs ? 'Óþekktur notandi' : 'Unknown User');
@@ -114,17 +153,62 @@ export default function UserProfilePage() {
 
       {/* User Recipes Library */}
       <div className="container mx-auto px-4 pb-24">
-        <h2 className="text-3xl font-bold text-(--color-text-primary) mb-10 flex items-center gap-3">
-          <ChefHat className="w-8 h-8 text-(--color-green)" />
-          {isIs ? `Uppskriftir eftir ${authorName.split(' ')[0]}` : `Recipes by ${authorName.split(' ')[0]}`}
-        </h2>
-        {recipes.length > 0 ? (
-          <RecipeGrid recipes={recipes} locale={locale} />
-        ) : (
-          <div className="text-center py-20 bg-(--color-bg-secondary) rounded-2xl border border-dashed border-(--color-border)">
-             <Pizza className="w-16 h-16 text-gray-200 mx-auto mb-4" />
-             <p className="text-xl text-(--color-text-secondary) font-medium">{isIs ? 'Engar uppskriftir birtar enn.' : 'No recipes published yet.'}</p>
+        {currentUser?.uid === uid && (
+          <div className="flex justify-center gap-4 mb-10 border-b border-(--color-border) pb-1">
+            <button 
+              onClick={() => setActiveTab('published')}
+              className={`flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider text-sm transition-colors border-b-2 ${activeTab === 'published' ? 'border-(--color-brand) text-(--color-brand)' : 'border-transparent text-muted-foreground hover:text-foreground'}`}
+            >
+              <BookOpen className="w-5 h-5" />
+              {isIs ? 'Mínar Uppskriftir' : 'My Recipes'}
+            </button>
+            <button 
+              onClick={() => setActiveTab('cookbook')}
+              className={`flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider text-sm transition-colors border-b-2 ${activeTab === 'cookbook' ? 'border-(--color-brand) text-(--color-brand)' : 'border-transparent text-muted-foreground hover:text-foreground'}`}
+            >
+              <Bookmark className="w-5 h-5" />
+              {isIs ? 'Minn Matseðill' : 'My Cookbook'}
+            </button>
           </div>
+        )}
+
+        {(activeTab === 'published' || currentUser?.uid !== uid) && (
+          <>
+            <h2 className="text-3xl font-bold text-(--color-text-primary) mb-10 flex items-center gap-3">
+              <ChefHat className="w-8 h-8 text-(--color-green)" />
+              {isIs ? `Uppskriftir eftir ${authorName.split(' ')[0]}` : `Recipes by ${authorName.split(' ')[0]}`}
+            </h2>
+            {recipes.length > 0 ? (
+              <RecipeGrid recipes={recipes} locale={locale} />
+            ) : (
+              <div className="text-center py-20 bg-(--color-bg-secondary) rounded-2xl border border-dashed border-(--color-border)">
+                 <Pizza className="w-16 h-16 text-gray-200 mx-auto mb-4" />
+                 <p className="text-xl text-(--color-text-secondary) font-medium">{isIs ? 'Engar uppskriftir birtar enn.' : 'No recipes published yet.'}</p>
+              </div>
+            )}
+          </>
+        )}
+
+        {activeTab === 'cookbook' && currentUser?.uid === uid && (
+          <>
+            <h2 className="text-3xl font-bold text-(--color-text-primary) mb-10 flex items-center gap-3">
+              <Bookmark className="w-8 h-8 text-(--color-brand)" />
+              {isIs ? 'Mín Uppskriftabók' : 'My Saved Recipes'}
+            </h2>
+            {loadingSaves ? (
+              <div className="text-center py-20">
+                <Loader2 className="w-8 h-8 animate-spin text-(--color-brand) mx-auto" />
+              </div>
+            ) : savedRecipes.length > 0 ? (
+              <RecipeGrid recipes={savedRecipes} locale={locale} />
+            ) : (
+              <div className="text-center py-20 bg-(--color-bg-secondary) rounded-2xl border border-dashed border-(--color-border)">
+                 <Bookmark className="w-16 h-16 text-gray-200 mx-auto mb-4" />
+                 <p className="text-xl text-(--color-text-secondary) font-medium">{isIs ? 'Mín uppskriftabók er tóm.' : 'Your cookbook is empty.'}</p>
+                 <p className="text-muted-foreground mt-2">{isIs ? 'Vistaðu uppskriftir til að hafa þær við höndina hér.' : 'Save recipes to easily find them here later.'}</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </main>

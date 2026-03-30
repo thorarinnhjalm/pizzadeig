@@ -80,7 +80,7 @@ export function RestaurantInteractive({ restaurantId, menuItems, locale }: Props
                           {isIs ? item.description_is : item.description_en}
                         </p>
                       )}
-                      <MenuItemRating itemId={item.id} locale={locale} />
+                      <MenuItemRating item={item} locale={locale} />
                     </div>
                     <div className="text-right shrink-0">
                       <span className="font-bold text-(--color-text-primary)">

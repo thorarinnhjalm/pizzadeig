@@ -8,6 +8,7 @@ import { Map } from '@/components/restaurants/Map';
 import { mockRestaurants, mockMenuItems } from '@/lib/mockData';
 import { ReviewList } from '@/components/community/ReviewList';
 import { ReviewForm } from '@/components/community/ReviewForm';
+import { MenuItemRating } from '@/components/restaurants/MenuItemRating';
 
 export const dynamic = 'force-dynamic';
 
@@ -116,18 +117,21 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
               {menuItems.length > 0 ? (
                 <div className="space-y-6">
                   {menuItems.map(item => (
-                    <div key={item.id} className="flex justify-between items-start border-b border-(--color-border-light) pb-6 group">
-                       <div>
-                         <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                            {isIslandic ? item.name_is : (item.name_en || item.name_is)}
-                         </h3>
-                         <p className="text-(--color-text-secondary) mt-2">
-                            {isIslandic ? item.description_is : (item.description_en || item.description_is)}
-                         </p>
+                    <div key={item.id} className="border-b border-(--color-border-light) pb-6 group">
+                       <div className="flex justify-between items-start">
+                         <div>
+                           <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                              {isIslandic ? item.name_is : (item.name_en || item.name_is)}
+                           </h3>
+                           <p className="text-(--color-text-secondary) mt-2">
+                              {isIslandic ? item.description_is : (item.description_en || item.description_is)}
+                           </p>
+                         </div>
+                         <div className="text-xl font-bold text-foreground ml-4 shrink-0">
+                           {item.price} kr.
+                         </div>
                        </div>
-                       <div className="text-xl font-bold text-foreground ml-4 shrink-0">
-                         {item.price} kr.
-                       </div>
+                       <MenuItemRating item={item} locale={locale as 'is' | 'en'} />
                     </div>
                   ))}
                 </div>

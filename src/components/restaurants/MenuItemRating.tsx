@@ -1,135 +1,46 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useAuth } from '@/hooks/useAuth';
-import { RatingPizzas } from '@/components/community/RatingPizzas';
-import { db } from '@/lib/firebase';
-import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
-import { Loader2, Pizza } from 'lucide-react';
+import { useState } from 'react';
+import { useCommunityRating } from '@/hooks/useCommunityRating';
+import { Pizza, ChevronDown, ChevronUp } from 'lucide-react';
+import { ReviewForm } from '@/components/community/ReviewForm';
+import { ReviewList } from '@/components/community/ReviewList';
+import { MenuItem } from '@/types/restaurant';
 
-interface Props {
-  itemId: string;
-  locale: 'is' | 'en';
-}
-
-export function MenuItemRating({ itemId, locale }: Props) {
-  const { user } = useAuth();
-  const [rating, setRating] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [communityAvg, setCommunityAvg] = useState(0);
-  const [communityCount, setCommunityCount] = useState(0);
-  const [fetchingRating, setFetchingRating] = useState(true);
-  const isIs = locale === 'is';
-
-  // Fetch existing community rating
-  useEffect(() => {
-    const fetchRating = async () => {
-      try {
-        const q = query(
-          collection(db, 'reviews'),
-          where('target_id', '==', itemId),
-          where('target_type', '==', 'menu_item')
-        );
-        const snapshot = await getDocs(q);
-        if (snapshot.size > 0) {
-          const total = snapshot.docs.reduce((sum, doc) => sum + (doc.data().rating || 0), 0);
-          setCommunityAvg(total / snapshot.size);
-          setCommunityCount(snapshot.size);
-
-          // Check if current user already rated
-          if (user) {
-            const userReview = snapshot.docs.find(doc => doc.data().author_uid === user.uid);
-            if (userReview) {
-              setRating(userReview.data().rating);
-              setSubmitted(true);
-            }
-          }
-        }
-      } catch (err) {
-        console.error('Error fetching menu item rating:', err);
-      } finally {
-        setFetchingRating(false);
-      }
-    };
-
-    fetchRating();
-  }, [itemId, user]);
-
-  const handleRate = async (newRating: number) => {
-    if (!user) return;
-    setRating(newRating);
-    setLoading(true);
-
-    try {
-      await addDoc(collection(db, 'reviews'), {
-        target_id: itemId,
-        target_type: 'menu_item',
-        author_uid: user.uid,
-        author_name: user.displayName || 'Unknown',
-        author_avatar: user.photoURL || '',
-        rating: newRating,
-        comment_is: '',
-        comment_en: '',
-        likes_count: 0,
-        created_at: serverTimestamp(),
-      });
-      setSubmitted(true);
-      // Update community stats optimistically
-      const newTotal = communityAvg * communityCount + newRating;
-      const newCount = communityCount + 1;
-      setCommunityAvg(newTotal / newCount);
-      setCommunityCount(newCount);
-    } catch (err) {
-      console.error('Rating error:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Show existing community rating
-  const ratingDisplay = communityCount > 0 && (
-    <div className="flex items-center gap-1 text-xs text-muted-foreground">
-      <Pizza className="w-3 h-3 text-primary" />
-      <span className="font-bold text-foreground">{communityAvg.toFixed(1)}</span>
-      <span>({communityCount})</span>
-    </div>
-  );
-
-  if (fetchingRating) {
-    return <div className="h-5" />;
-  }
-
-  if (submitted) {
-    return (
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-1.5 text-xs text-green-600 font-medium">
-          <span>🍕</span> {isIs ? `${rating}/5 — Takk!` : `${rating}/5 — Thanks!`}
-        </div>
-        {ratingDisplay}
-      </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <div className="flex items-center gap-3">
-        {ratingDisplay}
-        <div className="text-[10px] text-muted-foreground italic">
-          {isIs ? 'Skráðu þig inn til að gefa einkunn' : 'Log in to rate'}
-        </div>
-      </div>
-    );
-  }
+export function MenuItemRating({ item, locale }: { item: MenuItem, locale: 'is' | 'en' }) {
+  const { avg, count } = useCommunityRating(item.id, 'menu_item');
+  const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="flex items-center gap-3">
-      {loading ? (
-        <Loader2 className="w-4 h-4 animate-spin text-primary" />
-      ) : (
-        <RatingPizzas rating={rating} onChange={handleRate} size={16} />
+    <div className="mt-3 w-full">
+      <button 
+        onClick={() => setExpanded(!expanded)}
+        className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors bg-secondary/50 px-3 py-1.5 rounded-full border border-border"
+      >
+        <Pizza className={`w-4 h-4 ${avg > 0 || item.rating_avg ? 'text-primary fill-primary' : ''}`} />
+        <span className="font-bold text-foreground">{avg > 0 ? avg.toFixed(1) : (item.rating_avg ? item.rating_avg.toFixed(1) : (locale === 'is' ? '0 Umsagnir' : '0 Reviews'))}</span>
+        {(count > 0 || (item.rating_count && item.rating_count > 0)) && (
+          <span className="text-xs opacity-75">({count || item.rating_count})</span>
+        )}
+        <span className="ml-1 text-xs border-l border-border pl-2 border-dashed">{locale === 'is' ? (expanded ? 'Loka' : 'Gefa umsögn / Rate') : (expanded ? 'Close' : 'Rate / Review')}</span>
+        {expanded ? <ChevronUp className="w-3 h-3 ml-0.5" /> : <ChevronDown className="w-3 h-3 ml-0.5" />}
+      </button>
+
+      {expanded && (
+        <div className="mt-4 p-4 md:p-6 bg-card/80 backdrop-blur-md rounded-2xl border border-border shadow-inner">
+          <h4 className="font-display font-bold text-xl text-foreground mb-4 flex items-center gap-2">
+            <Pizza className="w-5 h-5 text-primary" />
+            {locale === 'is' ? `Umsagnir um ${item.name_is}` : `Reviews for ${item.name_en || item.name_is}`}
+          </h4>
+          <ReviewForm targetId={item.id} targetType="menu_item" locale={locale} />
+          <div className="mt-8">
+            <h5 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-4 border-b border-border pb-2">
+              {locale === 'is' ? 'Allar umsagnir' : 'All reviews'}
+            </h5>
+            <ReviewList targetId={item.id} targetType="menu_item" locale={locale} />
+          </div>
+        </div>
       )}
-      {ratingDisplay}
     </div>
   );
 }

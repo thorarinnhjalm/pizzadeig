@@ -11,6 +11,7 @@ import { ReviewForm } from '@/components/community/ReviewForm';
 import { UserGallery } from '@/components/recipes/UserGallery';
 import { ShareButtons } from '@/components/recipes/ShareButtons';
 import { GuidedBakeButton } from '@/components/recipes/GuidedBakeButton';
+import { SaveButton } from '@/components/community/SaveButton';
 import { Clock, Timer, Users, BarChart3, Pizza } from 'lucide-react';
 import { mockRecipes } from '@/lib/mockData';
 import { Link } from '@/i18n/routing';
@@ -150,7 +151,8 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
             <span className="text-muted-foreground">/</span>
             <span className="text-(--color-text-primary) font-bold">{title}</span>
           </nav>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4 flex-wrap justify-end">
+            <SaveButton recipeId={recipe.id} locale={locale as 'is' | 'en'} />
             <ShareButtons url={`https://pizzadeig.is/${locale}/uppskriftir/${slug}`} title={title || ''} locale={locale as 'is'|'en'} />
             <GuidedBakeButton recipe={recipe} locale={locale as 'is' | 'en'} />
           </div>
