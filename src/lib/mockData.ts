@@ -347,7 +347,6 @@ export const mockRestaurants: Restaurant[] = [
     created_at: null as any, updated_at: null as any,
   },
 
-/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
   // ─── KEFLAVÍK ───
   {
     id: 'antons-mamma-mia',
@@ -644,8 +643,6 @@ export const mockRestaurants: Restaurant[] = [
     likes_count: 0, is_verified: false, tags: ['Mosfellsbær', 'Nýtt'],
     created_at: null as any, updated_at: null as any,
   },
-
-*/
 ];
 
 export const mockMenuItems: MenuItem[] = [
@@ -780,16 +777,6 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'pp-8', restaurant_id: 'pizza-popolare', name_is: 'Regina', name_en: 'Regina', description_is: 'San Marzano Tomato, Mozzarella, Cooked Ham, Mushroom', description_en: '', price: 3790, category: 'Pizzur', sort_order: 8 },
   { id: 'pp-9', restaurant_id: 'pizza-popolare', name_is: 'Crispy Guanciale', name_en: 'Crispy Guanciale', description_is: 'San Marzano Tomato, Mozzarella, Crispy Guanciale, Chili Flakes', description_en: '', price: 4090, category: 'Pizzur', sort_order: 9 },
   { id: 'pp-10', restaurant_id: 'pizza-popolare', name_is: 'Parmigiana', name_en: 'Parmigiana', description_is: 'Eggplant Parmigiano Ragù, Basil, Ristaðir kirsuberjatómatar, Mozzarella', description_en: '', price: 3890, category: 'Pizzur', sort_order: 10 },
-/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
-  // ─── Pizzasmiðjan Akureyri ───
-  { id: 'pa-1', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 3090, category: 'Pizzur', sort_order: 1 },
-  { id: 'pa-2', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3490, category: 'Pizzur', sort_order: 2 },
-  { id: 'pa-3', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Norðlenska', name_en: 'The Northern', description_is: 'Tómatsósa, mozzarella, reyktur lax, rjómastofn, dill', description_en: 'Tomato sauce, mozzarella, smoked salmon, cream base, dill', price: 3890, category: 'Pizzur', sort_order: 3 },
-  { id: 'pa-4', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Sveppapizza', name_en: 'Mushroom Pizza', description_is: 'Mozzarella, blandaðir sveppir, hvítlaukur, þýmían, trufflolía', description_en: 'Mozzarella, mixed mushrooms, garlic, thyme, truffle oil', price: 3790, category: 'Pizzur', sort_order: 4 },
-  // ─── Greifinn Akureyri ───
-  { id: 'ga-1', restaurant_id: 'greifinn-akureyri', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, oreganó', description_en: 'Tomato sauce, mozzarella, oregano', price: 2990, category: 'Pizzur', sort_order: 1 },
-  { id: 'ga-2', restaurant_id: 'greifinn-akureyri', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3290, category: 'Pizzur', sort_order: 2 },
-  { id: 'ga-3', restaurant_id: 'greifinn-akureyri', name_is: 'Kjúklingapizza', name_en: 'Chicken Pizza', description_is: 'Hvítlaukssósa, mozzarella, kjúklingur, paprika, laukur', description_en: 'Garlic sauce, mozzarella, chicken, peppers, onion', price: 3490, category: 'Pizzur', sort_order: 3 },
   // ─── Antons Mamma Mia ───
   { id: 'am-1', restaurant_id: 'antons-mamma-mia', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2990, category: 'Pizzur', sort_order: 1 },
   { id: 'am-2', restaurant_id: 'antons-mamma-mia', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3290, category: 'Pizzur', sort_order: 2 },
@@ -846,20 +833,10 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'ik-1', restaurant_id: 'italiano-kopavogur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2890, category: 'Pizzur', sort_order: 1 },
   { id: 'ik-2', restaurant_id: 'italiano-kopavogur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3190, category: 'Pizzur', sort_order: 2 },
   { id: 'ik-3', restaurant_id: 'italiano-kopavogur', name_is: 'Quattro Formaggi', name_en: 'Four Cheese', description_is: 'Mozzarella, gorgonzola, parmesan, ricotta', description_en: 'Mozzarella, gorgonzola, parmesan, ricotta', price: 3490, category: 'Pizzur', sort_order: 3 },
-  // ─── Íslenska Flatbakan ───
-  { id: 'if-1', restaurant_id: 'islenska-flatbakan', name_is: 'Klassísk', name_en: 'Classic', description_is: 'Tómatsósa, mozzarella, oreganó', description_en: 'Tomato sauce, mozzarella, oregano', price: 2590, category: 'Pizzur', sort_order: 1 },
-  { id: 'if-2', restaurant_id: 'islenska-flatbakan', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 2890, category: 'Pizzur', sort_order: 2 },
-  { id: 'if-3', restaurant_id: 'islenska-flatbakan', name_is: 'Lambaspes', name_en: 'Lamb Special', description_is: 'Tómatsósa, mozzarella, lambahakk, laukur, paprika', description_en: 'Tomato sauce, mozzarella, ground lamb, onion, peppers', price: 3190, category: 'Pizzur', sort_order: 3 },
   // ─── Pizza Bræður ───
   { id: 'pb-1', restaurant_id: 'pizza-braedur-mosfellsbaer', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2790, category: 'Pizzur', sort_order: 1 },
   { id: 'pb-2', restaurant_id: 'pizza-braedur-mosfellsbaer', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3090, category: 'Pizzur', sort_order: 2 },
   { id: 'pb-3', restaurant_id: 'pizza-braedur-mosfellsbaer', name_is: 'Bræðrapizza', name_en: 'Brothers Pizza', description_is: 'Tómatsósa, mozzarella, pepperóní, beikon, jalapeño, hunang', description_en: 'Tomato sauce, mozzarella, pepperoni, bacon, jalapeño, honey', price: 3490, category: 'Pizzur', sort_order: 3 },
-  // ─── Castello ───
-  { id: 'ca-1', restaurant_id: 'castello-hafnarfjordur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, oreganó', description_en: 'Tomato sauce, mozzarella, oregano', price: 2790, category: 'Pizzur', sort_order: 1 },
-  { id: 'ca-2', restaurant_id: 'castello-hafnarfjordur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3090, category: 'Pizzur', sort_order: 2 },
-  { id: 'ca-3', restaurant_id: 'castello-hafnarfjordur', name_is: 'Castello Special', name_en: 'Castello Special', description_is: 'Tómatsósa, mozzarella, skinka, pepperóní, sveppir, ólífur, paprika', description_en: 'Tomato sauce, mozzarella, ham, pepperoni, mushrooms, olives, peppers', price: 3490, category: 'Pizzur', sort_order: 3 },
-
-*/
 
   // ─── Pizzasmiðjan Akureyri (Scraped 2026-03) ───
   { id: 'psa-1', restaurant_id: 'pizzasmidjan-akureyri', name_is: 'Margherita', name_en: 'Margherita', description_is: 'San Marzano tómatsósa, ferskur mozzarella, basilíka, ólífuolía', description_en: 'San Marzano tomato sauce, fresh mozzarella, basil, olive oil', price: 2990, category: 'Pizzur', sort_order: 1 },
