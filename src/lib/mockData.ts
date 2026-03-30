@@ -423,10 +423,8 @@ export const mockRestaurants: Restaurant[] = [
     created_at: null as any, updated_at: null as any,
   },
 
-/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
 
-
-  // ─── AUSTFIRÐIR ───
+  // ─── LANDSBYGGÐIN (Lota 4) ───
   {
     id: 'pizzafjordur',
     name: 'Pizzafjörður',
@@ -445,6 +443,64 @@ export const mockRestaurants: Restaurant[] = [
     likes_count: 0, is_verified: false, tags: ['Austfirðir', 'Eskifjörður', 'Huggulegt'],
     created_at: null as any, updated_at: null as any,
   },
+  {
+    id: 'pizza-kofinn',
+    name: 'Pizza Kofinn',
+    slug: 'pizza-kofinn',
+    description_is: 'Viðarofnspizza í bæjarkjarna Húsavíkur. Staðbundið, vinalegt og gott. Margherita, pepperóní og Parma.',
+    description_en: 'Wood-fired pizza in the heart of Húsavík. Local, friendly, and delicious. Margherita, pepperoni, and Parma.',
+    address: 'Hafnarstétt 9',
+    city: 'Húsavík',
+    postal_code: '640',
+    location: { latitude: 66.0449, longitude: -17.3389 } as any,
+    website: 'https://pizzakofinn.is',
+    opening_hours: { mán: '12-21', þri: '12-21', mið: '12-21', fim: '12-21', fös: '12-22', lau: '12-22', sun: '12-21' },
+    price_level: 2,
+    features: ['Dine-in', 'Takeaway', 'Viðarofn'],
+    image_urls: ['https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=1200'],
+    rating_avg: 0, rating_count: 0, rating_google: 4.6, rating_tripadvisor: 4.5,
+    likes_count: 0, is_verified: false, tags: ['Viðarofn', 'Húsavík', 'Norðurland'],
+    created_at: null as any, updated_at: null as any,
+  },
+  {
+    id: 'askur-pizzeria',
+    name: 'Askur Pizzeria',
+    slug: 'askur-pizzeria',
+    description_is: 'Staðbundin brugghús-pizzería á Egilsstöðum. Búðu til þína eigin pizzu eða veldu af matseðli.',
+    description_en: 'Local brewery pizzeria in Egilsstaðir. Build your own pizza or choose from the menu.',
+    address: 'Fagradalsbraut 1',
+    city: 'Egilsstaðir',
+    postal_code: '700',
+    location: { latitude: 65.2535, longitude: -14.3948 } as any,
+    website: 'https://askurpizzeria.is',
+    opening_hours: { mán: '11:30-21', þri: '11:30-21', mið: '11:30-21', fim: '11:30-21', fös: '11:30-22', lau: '12-22', sun: '12-21' },
+    price_level: 2,
+    features: ['Dine-in', 'Brugghús', 'Sérsniðið'],
+    image_urls: ['https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200'],
+    rating_avg: 0, rating_count: 0, rating_google: 4.4, rating_tripadvisor: 4.0,
+    likes_count: 0, is_verified: false, tags: ['Brugghús', 'Egilsstaðir', 'Austfirðir'],
+    created_at: null as any, updated_at: null as any,
+  },
+  {
+    id: 'stykkid-pizzeria',
+    name: 'Stykkið Pizzeria',
+    slug: 'stykkid-pizzeria',
+    description_is: 'Pizzería í fallegasta bæ Vesturlands. Ferskt deig og staðbundin hráefni.',
+    description_en: 'Pizzeria in western Iceland\'s most beautiful town. Fresh dough and local ingredients.',
+    address: 'Aðalgata 3',
+    city: 'Stykkishólmur',
+    postal_code: '340',
+    location: { latitude: 65.0758, longitude: -22.7300 } as any,
+    opening_hours: { mán: '12-21', þri: '12-21', mið: '12-21', fim: '12-21', fös: '12-22', lau: '12-22', sun: '12-21' },
+    price_level: 2,
+    features: ['Dine-in', 'Takeaway'],
+    image_urls: ['https://images.unsplash.com/photo-1604382355076-af4b0eb60143?q=80&w=1200'],
+    rating_avg: 0, rating_count: 0, rating_google: 4.3, rating_tripadvisor: 4.0,
+    likes_count: 0, is_verified: false, tags: ['Stykkishólmur', 'Snæfellsnes'],
+    created_at: null as any, updated_at: null as any,
+  },
+/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
+
 
   // ─── SELFOSS ───
   {
@@ -483,27 +539,6 @@ export const mockRestaurants: Restaurant[] = [
     image_urls: ['https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200'],
     rating_avg: 0, rating_count: 0, rating_google: 4.3, rating_tripadvisor: 4.0,
     likes_count: 0, is_verified: false, tags: ['Kaffi', 'Selfoss', 'Huggulegt'],
-    created_at: null as any, updated_at: null as any,
-  },
-
-  // ─── HÚSAVÍK ───
-  {
-    id: 'pizza-kofinn',
-    name: 'Pizza Kofinn',
-    slug: 'pizza-kofinn',
-    description_is: 'Viðarofnspizza í bæjarkjarna Húsavíkur. Staðbundið, vinalegt og gott. Margherita, pepperóní og Parma.',
-    description_en: 'Wood-fired pizza in the heart of Húsavík. Local, friendly, and delicious. Margherita, pepperoni, and Parma.',
-    address: 'Hafnarstétt 9',
-    city: 'Húsavík',
-    postal_code: '640',
-    location: { latitude: 66.0449, longitude: -17.3389 } as any,
-    website: 'https://pizzakofinn.is',
-    opening_hours: { mán: '12-21', þri: '12-21', mið: '12-21', fim: '12-21', fös: '12-22', lau: '12-22', sun: '12-21' },
-    price_level: 2,
-    features: ['Dine-in', 'Takeaway', 'Viðarofn'],
-    image_urls: ['https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=1200'],
-    rating_avg: 0, rating_count: 0, rating_google: 4.6, rating_tripadvisor: 4.5,
-    likes_count: 0, is_verified: false, tags: ['Viðarofn', 'Húsavík', 'Norðurland'],
     created_at: null as any, updated_at: null as any,
   },
 
@@ -563,47 +598,6 @@ export const mockRestaurants: Restaurant[] = [
     image_urls: ['https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?q=80&w=1200'],
     rating_avg: 0, rating_count: 0, rating_google: 4.3,
     likes_count: 0, is_verified: false, tags: ['Ísafjörður', 'Vestfirðir'],
-    created_at: null as any, updated_at: null as any,
-  },
-
-  // ─── EGILSSTAÐIR ───
-  {
-    id: 'askur-pizzeria',
-    name: 'Askur Pizzeria',
-    slug: 'askur-pizzeria',
-    description_is: 'Staðbundin brugghús-pizzería á Egilsstöðum. Búðu til þína eigin pizzu eða veldu af matseðli.',
-    description_en: 'Local brewery pizzeria in Egilsstaðir. Build your own pizza or choose from the menu.',
-    address: 'Fagradalsbraut 1',
-    city: 'Egilsstaðir',
-    postal_code: '700',
-    location: { latitude: 65.2535, longitude: -14.3948 } as any,
-    website: 'https://askurpizzeria.is',
-    opening_hours: { mán: '11:30-21', þri: '11:30-21', mið: '11:30-21', fim: '11:30-21', fös: '11:30-22', lau: '12-22', sun: '12-21' },
-    price_level: 2,
-    features: ['Dine-in', 'Brugghús', 'Sérsniðið'],
-    image_urls: ['https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200'],
-    rating_avg: 0, rating_count: 0, rating_google: 4.4, rating_tripadvisor: 4.0,
-    likes_count: 0, is_verified: false, tags: ['Brugghús', 'Egilsstaðir', 'Austfirðir'],
-    created_at: null as any, updated_at: null as any,
-  },
-
-  // ─── STYKKISHÓLMUR ───
-  {
-    id: 'stykkid-pizzeria',
-    name: 'Stykkið Pizzeria',
-    slug: 'stykkid-pizzeria',
-    description_is: 'Pizzería í fallegasta bæ Vesturlands. Ferskt deig og staðbundin hráefni.',
-    description_en: 'Pizzeria in western Iceland\'s most beautiful town. Fresh dough and local ingredients.',
-    address: 'Aðalgata 3',
-    city: 'Stykkishólmur',
-    postal_code: '340',
-    location: { latitude: 65.0758, longitude: -22.7300 } as any,
-    opening_hours: { mán: '12-21', þri: '12-21', mið: '12-21', fim: '12-21', fös: '12-22', lau: '12-22', sun: '12-21' },
-    price_level: 2,
-    features: ['Dine-in', 'Takeaway'],
-    image_urls: ['https://images.unsplash.com/photo-1604382355076-af4b0eb60143?q=80&w=1200'],
-    rating_avg: 0, rating_count: 0, rating_google: 4.3, rating_tripadvisor: 4.0,
-    likes_count: 0, is_verified: false, tags: ['Stykkishólmur', 'Snæfellsnes'],
     created_at: null as any, updated_at: null as any,
   },
 
@@ -805,11 +799,28 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'ik-2', restaurant_id: 'italiano-kopavogur', name_is: 'Vegan Buffalo', name_en: 'Vegan Buffalo', description_is: 'Vegan ostur, vegan buffalo kjúklingur, rauðlaukur, ferskt kóríander, ranch sósa', description_en: 'Vegan cheese, vegan buffalo chicken, red onion, fresh cilantro, ranch sauce', price: 3590, category: 'Pizzur', sort_order: 2 },
   { id: 'ik-3', restaurant_id: 'italiano-kopavogur', name_is: 'Quattro Formaggi', name_en: 'Four Cheese', description_is: 'Tómatsósa, mozzarella, gorgonzola, parmesan, fetaostur', description_en: 'Tomato sauce, mozzarella, gorgonzola, parmesan, feta cheese', price: 3490, category: 'Pizzur', sort_order: 3 },
 
-/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
-  // ─── Pizzafjörður ───
+  // ─── Pizzafjörður (Scraped 2026-03) ───
   { id: 'pf-1', restaurant_id: 'pizzafjordur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2790, category: 'Pizzur', sort_order: 1 },
   { id: 'pf-2', restaurant_id: 'pizzafjordur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3090, category: 'Pizzur', sort_order: 2 },
   { id: 'pf-3', restaurant_id: 'pizzafjordur', name_is: 'Austfirska', name_en: 'East Iceland Special', description_is: 'Tómatsósa, mozzarella, reyktur lax, kapris, dill', description_en: 'Tomato sauce, mozzarella, smoked salmon, capers, dill', price: 3590, category: 'Pizzur', sort_order: 3 },
+
+  // ─── Pizza Kofinn Húsavík (Scraped 2026-03) ───
+  { id: 'pk-1', restaurant_id: 'pizza-kofinn', name_is: 'Kofapizzan', name_en: 'Cabin Pizza', description_is: 'Tómatsósa, mozzarella, nautahakk, skinka, pepperóní', description_en: 'Tomato sauce, mozzarella, ground beef, ham, pepperoni', price: 3690, category: 'Pizzur', sort_order: 1 },
+  { id: 'pk-2', restaurant_id: 'pizza-kofinn', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3390, category: 'Pizzur', sort_order: 2 },
+  { id: 'pk-3', restaurant_id: 'pizza-kofinn', name_is: 'Grænmetis', name_en: 'Vegetarian', description_is: 'Tómatsósa, mozzarella, sveppir, laukur, paprika, ólífur', description_en: 'Tomato sauce, mozzarella, mushrooms, onion, bell pepper, olives', price: 3490, category: 'Pizzur', sort_order: 3 },
+
+  // ─── Askur Pizzeria Egilsstaðir (Scraped 2026-03) ───
+  { id: 'ap-1', restaurant_id: 'askur-pizzeria', name_is: 'Með allt á hreinu', name_en: 'The Works', description_is: 'Súrdeigsbotn, sósa, ostur, hreindýrahakk, sultaður rauðlaukur, Gellir ferskostur, furuhnetur', description_en: 'Sourdough, sauce, cheese, minced reindeer, pickled red onion, cream cheese, pine nuts', price: 4290, category: 'Pizzur', sort_order: 1 },
+  { id: 'ap-2', restaurant_id: 'askur-pizzeria', name_is: 'Vöðvastæltur', name_en: 'Muscle Man', description_is: 'Súrdeigsbotn, sósa, ostur, pepperoni, skinka, beikon og rjómaostur', description_en: 'Sourdough, sauce, cheese, pepperoni, ham, bacon, cream cheese', price: 3990, category: 'Pizzur', sort_order: 2 },
+  { id: 'ap-3', restaurant_id: 'askur-pizzeria', name_is: 'Fallegi smiðurinn', name_en: 'Handsome Carpenter', description_is: 'Súrdeigsbotn, sósa, ostur, pepperoni, piparostur, rauðlaukur og sveppir', description_en: 'Sourdough, sauce, cheese, pepperoni, pepper cheese, red onion, mushrooms', price: 3890, category: 'Pizzur', sort_order: 3 },
+  { id: 'ap-4', restaurant_id: 'askur-pizzeria', name_is: 'Í átt að tunglinu (Calzone)', name_en: 'To the Moon (Calzone)', description_is: 'Súrdeigsbotn, sósa, ostur, skinka, sveppir og svartur pipar', description_en: 'Sourdough, sauce, cheese, ham, mushrooms, black pepper', price: 3690, category: 'Pizzur', sort_order: 4 },
+
+  // ─── Stykkið Pizzeria Stykkishólmur (Scraped 2026-03) ───
+  { id: 'sp-1', restaurant_id: 'stykkid-pizzeria', name_is: 'Snæfellspizza', name_en: 'Snæfellsnes Special', description_is: 'Tómatsósa, mozzarella, reyktur lax, rjómaostur, klettasalat, dill', description_en: 'Tomato sauce, mozzarella, smoked salmon, cream cheese, arugula, dill', price: 3890, category: 'Pizzur', sort_order: 1 },
+  { id: 'sp-2', restaurant_id: 'stykkid-pizzeria', name_is: 'Aðalgatan', name_en: 'Main Street', description_is: 'Tómatsósa, mozzarella, pepperóní, sveppir, paprika', description_en: 'Tomato sauce, mozzarella, pepperoni, mushrooms, bell pepper', price: 3590, category: 'Pizzur', sort_order: 2 },
+  { id: 'sp-3', restaurant_id: 'stykkid-pizzeria', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2990, category: 'Pizzur', sort_order: 3 },
+
+/* HIDDEN MOCK DATA FOR FUTURE BATCHES:
   // ─── Flatey Pizza Selfoss ───
   { id: 'fs-1', restaurant_id: 'flatey-pizza-selfoss', name_is: 'Margherita', name_en: 'Margherita', description_is: 'San Marzano, fior di latte, basilíka, ólífuolía', description_en: 'San Marzano, fior di latte, basil, olive oil', price: 3190, category: 'Pizzur', sort_order: 1 },
   { id: 'fs-2', restaurant_id: 'flatey-pizza-selfoss', name_is: 'Padrino', name_en: 'Padrino', description_is: 'San Marzano, mozzarella, pepperóní, súr chili, hunang', description_en: 'San Marzano, mozzarella, pepperoni, pickled chili, honey', price: 3790, category: 'Pizzur', sort_order: 2 },
@@ -818,10 +829,7 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'kk-1', restaurant_id: 'kaffi-krus', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2890, category: 'Pizzur', sort_order: 1 },
   { id: 'kk-2', restaurant_id: 'kaffi-krus', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3190, category: 'Pizzur', sort_order: 2 },
   { id: 'kk-3', restaurant_id: 'kaffi-krus', name_is: 'Skinka og sveppir', name_en: 'Ham & Mushroom', description_is: 'Tómatsósa, mozzarella, skinka, sveppir', description_en: 'Tomato sauce, mozzarella, ham, mushrooms', price: 3190, category: 'Pizzur', sort_order: 3 },
-  // ─── Pizza Kofinn ───
-  { id: 'pk-1', restaurant_id: 'pizza-kofinn', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2990, category: 'Pizzur', sort_order: 1 },
-  { id: 'pk-2', restaurant_id: 'pizza-kofinn', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3390, category: 'Pizzur', sort_order: 2 },
-  { id: 'pk-3', restaurant_id: 'pizza-kofinn', name_is: 'Parma', name_en: 'Parma', description_is: 'Mozzarella, Parma-skinka, rúkkóla, parmesan', description_en: 'Mozzarella, Parma ham, arugula, parmesan', price: 3790, category: 'Pizzur', sort_order: 3 },
+
   // ─── Pítsugerðin ───
   { id: 'pg-1', restaurant_id: 'pitsugerdin', name_is: 'Margherita', name_en: 'Margherita', description_is: 'San Marzano, mozzarella, basilíka', description_en: 'San Marzano, mozzarella, basil', price: 3090, category: 'Pizzur', sort_order: 1 },
   { id: 'pg-2', restaurant_id: 'pitsugerdin', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní, hunang', description_en: 'Tomato sauce, mozzarella, pepperoni, honey', price: 3490, category: 'Pizzur', sort_order: 2 },
@@ -834,14 +842,7 @@ export const mockMenuItems: MenuItem[] = [
   { id: 'hb-1', restaurant_id: 'hamraborg-isafjordur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, oreganó', description_en: 'Tomato sauce, mozzarella, oregano', price: 2890, category: 'Pizzur', sort_order: 1 },
   { id: 'hb-2', restaurant_id: 'hamraborg-isafjordur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3190, category: 'Pizzur', sort_order: 2 },
   { id: 'hb-3', restaurant_id: 'hamraborg-isafjordur', name_is: 'Vestfirska', name_en: 'Westfjords Special', description_is: 'Tómatsósa, mozzarella, rækjur, hvítlaukur, dill', description_en: 'Tomato sauce, mozzarella, shrimp, garlic, dill', price: 3590, category: 'Pizzur', sort_order: 3 },
-  // ─── Askur Pizzeria ───
-  { id: 'ap-1', restaurant_id: 'askur-pizzeria', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2990, category: 'Pizzur', sort_order: 1 },
-  { id: 'ap-2', restaurant_id: 'askur-pizzeria', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3290, category: 'Pizzur', sort_order: 2 },
-  { id: 'ap-3', restaurant_id: 'askur-pizzeria', name_is: 'Brugghúspizza', name_en: 'Brewery Pizza', description_is: 'Ölsósa, mozzarella, beikon, sveppir, rauðlaukur', description_en: 'Beer-based sauce, mozzarella, bacon, mushrooms, red onion', price: 3690, category: 'Pizzur', sort_order: 3 },
-  // ─── Stykkið Pizzeria ───
-  { id: 'sp-1', restaurant_id: 'stykkid-pizzeria', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, basilíka', description_en: 'Tomato sauce, mozzarella, basil', price: 2890, category: 'Pizzur', sort_order: 1 },
-  { id: 'sp-2', restaurant_id: 'stykkid-pizzeria', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3190, category: 'Pizzur', sort_order: 2 },
-  { id: 'sp-3', restaurant_id: 'stykkid-pizzeria', name_is: 'Snæfellspizza', name_en: 'Snæfellsnes Special', description_is: 'Tómatsósa, mozzarella, reyktur lax, rjómaostur, dill', description_en: 'Tomato sauce, mozzarella, smoked salmon, cream cheese, dill', price: 3590, category: 'Pizzur', sort_order: 3 },
+
   // ─── Pizzan Hafnarfjörður ───
   { id: 'ph-1', restaurant_id: 'pizzan-hafnarfjordur', name_is: 'Margherita', name_en: 'Margherita', description_is: 'Tómatsósa, mozzarella, oreganó', description_en: 'Tomato sauce, mozzarella, oregano', price: 2790, category: 'Pizzur', sort_order: 1 },
   { id: 'ph-2', restaurant_id: 'pizzan-hafnarfjordur', name_is: 'Pepperóní', name_en: 'Pepperoni', description_is: 'Tómatsósa, mozzarella, pepperóní', description_en: 'Tomato sauce, mozzarella, pepperoni', price: 3090, category: 'Pizzur', sort_order: 2 },
