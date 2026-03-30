@@ -12,7 +12,8 @@ import {
 } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { useRouter } from '@/i18n/routing';
-import { Mail, Lock, AlertCircle } from 'lucide-react';
+import { useLocale } from 'next-intl';
+import { Mail, Lock, AlertCircle, Bookmark, Pizza, MessageSquare } from 'lucide-react';
 
 function isMobile(): boolean {
   if (typeof window === 'undefined') return false;
@@ -26,6 +27,8 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const locale = useLocale();
+  const isIs = locale === 'is';
 
   // Handle redirect result on mount (for mobile Google sign-in)
   useEffect(() => {
@@ -126,12 +129,36 @@ export default function LoginPage() {
       <div className="w-full max-w-md bg-(--color-bg-secondary) border border-(--color-border) rounded-2xl p-8 shadow-sm">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-display font-bold text-(--color-text-primary)">
-            {isLogin ? 'Skrá inn' : 'Nýskráning'}
+            {isLogin ? (isIs ? 'Skrá inn' : 'Log In') : (isIs ? 'Nýskráning' : 'Sign Up')}
           </h1>
           <p className="text-muted-foreground mt-2">
-            {isLogin ? 'Velkominn aftur í bökunarsamfélagið!' : 'Stofnaðu aðgang og taktu þátt í umræðunni.'}
+            {isLogin 
+              ? (isIs ? 'Velkominn aftur í bökunarsamfélagið!' : 'Welcome back to the baking community!') 
+              : (isIs ? 'Stofnaðu aðgang og taktu þátt í umræðunni.' : 'Create an account and join the discussion.')}
           </p>
         </div>
+
+        {!isLogin && (
+          <div className="mb-8 p-5 bg-card border border-border rounded-xl">
+            <h3 className="text-sm font-bold text-foreground mb-3 uppercase tracking-wider">
+              {isIs ? 'Af hverju að vera með aðgang?' : 'Why create an account?'}
+            </h3>
+            <ul className="space-y-3 text-sm text-muted-foreground font-medium">
+              <li className="flex items-center gap-3">
+                <Bookmark className="w-4 h-4 text-primary shrink-0" />
+                {isIs ? 'Vistaðu uppáhalds uppskriftir í þína eigin uppskriftabók' : 'Save your favorite recipes to your personal cookbook'}
+              </li>
+              <li className="flex items-center gap-3">
+                <Pizza className="w-4 h-4 text-primary shrink-0" />
+                {isIs ? 'Gefðu veitingastöðum og uppskriftum einkunn' : 'Rate and review restaurants and recipes'}
+              </li>
+              <li className="flex items-center gap-3">
+                <MessageSquare className="w-4 h-4 text-primary shrink-0" />
+                {isIs ? 'Taktu þátt í samfélaginu og deildu þínum pizza ráðum' : 'Join the community and share your pizza tips'}
+              </li>
+            </ul>
+          </div>
+        )}
 
         {error && (
           <div className="mb-6 p-4 bg-red-50 text-red-600 border border-red-200 rounded-xl flex items-start gap-3">
