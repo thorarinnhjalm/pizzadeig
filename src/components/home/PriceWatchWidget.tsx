@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { mockMenuItems, mockRestaurants } from '@/lib/mockData';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { Badge } from '@/components/ui/badge';
 
 function getCheapest(type: 'margherita' | 'pepperoni' | 'parma') {
