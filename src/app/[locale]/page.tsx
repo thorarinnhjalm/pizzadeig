@@ -134,7 +134,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               const pizzaRating = Math.round(recipe.rating_avg || 0);
               
               return (
-                <Link href={`/${locale}/uppskriftir/${recipe.slug}`} key={recipe.id} className="group rounded-2xl overflow-hidden bg-background shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                <Link href={`/uppskriftir/${recipe.slug}`} key={recipe.id} className="group rounded-2xl overflow-hidden bg-background shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
                   {/* Image */}
                   <div className="h-56 relative overflow-hidden">
                     {recipe.image_urls?.[0] ? (
