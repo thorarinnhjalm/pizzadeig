@@ -31,7 +31,7 @@ export function getKronanSku(ingredientId: string): string | null {
 export function matchIngredientToKronan(name: string): string | null {
   const n = name.toLowerCase();
   
-  if (n.includes('hveiti') || n.includes('flour')) return KRONAN_SKUS.flour;
+  if (n.includes('hveiti') || n.includes('flour') || n.includes('mjöl') || n.includes('caputo')) return KRONAN_SKUS.flour;
   if (n.includes('vatn') || n.includes('water')) return null; // Við kaupum ekki vatn :)
   if (n.includes('ferskt ger') || n.includes('pressuger')) return KRONAN_SKUS.yeast;
   if (n.includes('þurrger') || n.includes('ger') || n.includes('yeast')) return KRONAN_SKUS.idy;
@@ -39,7 +39,7 @@ export function matchIngredientToKronan(name: string): string | null {
   if (n.includes('olía') || n.includes('olífuolía') || n.includes('oil')) return KRONAN_SKUS.oil;
   
   // Basar/Sósur
-  if (n.includes('tómat') || n.includes('tomato')) return KRONAN_SKUS.tomatoes;
+  if (n.includes('tómat') || n.includes('tomato') || n.includes('mutti') || n.includes('marzano')) return KRONAN_SKUS.tomatoes;
   
   // Ostar
   if (n.includes('mozzarella')) return KRONAN_SKUS.mozzarella;

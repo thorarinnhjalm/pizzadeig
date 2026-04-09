@@ -5,14 +5,14 @@ import { Link, usePathname } from '@/i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
 import { useAuth } from '@/hooks/useAuth';
 import { LanguageSwitcher } from './LanguageSwitcher';
-import { Menu, X, User, Pizza, PlusCircle } from 'lucide-react';
+import { Menu, X, User, Pizza, PlusCircle, LogOut } from 'lucide-react';
 
 export function Navbar() {
   const t = useTranslations('Navbar');
   const locale = useLocale() as 'is' | 'en';
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const isIs = locale === 'is';
   
   const adminEmails = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase());
@@ -80,6 +80,16 @@ export function Navbar() {
                     <User className="w-4 h-4 text-(--color-brand)" />
                   )}
                 </Link>
+                <button
+                  onClick={async () => {
+                    await logout();
+                    window.location.href = '/';
+                  }}
+                  className="w-8 h-8 rounded-full bg-(--color-bg-tertiary) hover:bg-red-50 text-(--color-text-secondary) hover:text-red-500 transition-colors flex items-center justify-center border border-(--color-border-light)"
+                  title={isIs ? 'Útskrá' : 'Log out'}
+                >
+                  <LogOut className="w-4 h-4 ml-0.5" />
+                </button>
               </div>
             ) : (
               <Link href="/notandi/login" className="p-2 text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors">
@@ -158,6 +168,16 @@ export function Navbar() {
                       Admin Panel
                     </Link>
                   )}
+                  <button
+                    onClick={async () => {
+                      await logout();
+                      setMobileOpen(false);
+                      window.location.href = '/';
+                    }}
+                    className="w-full inline-flex items-center justify-center gap-2 h-11 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-full mt-2"
+                  >
+                    {isIs ? 'Útskrá / Log out' : 'Log out'}
+                  </button>
                 </>
               ) : (
                 <Link
