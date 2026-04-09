@@ -18,10 +18,10 @@ export default async function DoughPlannerPage({ params }: { params: Promise<{ l
       <section className="bg-brick border-b-4 border-ring py-16 md:py-24 relative fire-glow shadow-xl">
          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
          <div className="container mx-auto px-4 relative z-10 text-center">
-            <h1 className="font-chalk text-6xl md:text-8xl text-(--color-text-chalk) mb-6 drop-shadow-md">
+            <h1 className="font-chalk text-6xl md:text-8xl text-white mb-6 drop-shadow-xl">
               {locale === 'is' ? 'Deigstýringin' : 'The Dough Planner'}
             </h1>
-            <p className="font-body text-xl md:text-2xl text-(--color-text-secondary) max-w-2xl mx-auto drop-shadow">
+            <p className="font-body text-xl md:text-2xl text-white/90 max-w-2xl mx-auto drop-shadow-lg font-medium">
               {locale === 'is' 
                 ? 'Skipuleggðu pizzukvöldið — segðu okkur hvenær þú ætlar að borða og við reiknum út allt sem þú þarft og hvenær.'
                 : 'Plan your pizza night — tell us when you eat and we calculate everything you need and when.'}
@@ -30,10 +30,10 @@ export default async function DoughPlannerPage({ params }: { params: Promise<{ l
       </section>
 
       <div className="container mx-auto px-4 py-8">
-        <nav className="text-sm font-chalk text-[16px] text-(--color-text-secondary) flex items-center gap-3 mb-12">
-          <Link href="/" className="hover:text-(--color-brand) transition-colors">{locale === 'is' ? 'Forsíða' : 'Home'}</Link>
-          <span className="text-muted-foreground">/</span>
-          <span className="text-ring">{locale === 'is' ? 'Deigstýring' : 'Dough Planner'}</span>
+        <nav className="text-sm font-chalk text-[16px] text-foreground/70 flex items-center gap-3 mb-12 bg-background/50 w-fit px-4 py-2 rounded-full backdrop-blur-sm border border-border">
+          <Link href="/" className="hover:text-primary transition-colors">{locale === 'is' ? 'Forsíða' : 'Home'}</Link>
+          <span className="text-border">/</span>
+          <span className="text-ring font-bold">{locale === 'is' ? 'Deigstýring' : 'Dough Planner'}</span>
         </nav>
 
         <div className="max-w-5xl mx-auto">
