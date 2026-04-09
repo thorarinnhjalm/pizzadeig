@@ -1,35 +1,19 @@
-const token = 'act_190e4a0f8580e9e5c6e6e8582364f504c0610014';
-const headers = {
-  'Authorization': `AccessToken ${token}`,
-  'Content-Type': 'application/json'
-};
-
-async function searchProduct(query) {
-  const res = await fetch('https://api.kronan.is/api/v1/products/search/', {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({ query, limit: 3, with_detail: true })
+async function getProductBySku(sku) {
+  const token = 'act_190e4a0f8580e9e5c6e6e8582364f504c0610014';
+  const res = await fetch(`https://api.kronan.is/api/v1/products/${sku}/`, {
+    headers: {
+      Authorization: `AccessToken ${token}`,
+      'Content-Type': 'application/json'
+    }
   });
-  if (!res.ok) {
-    console.error('Error fetching', query, res.status);
-    return;
-  }
-  const data = await res.json();
-  console.log(`\n--- Results for: ${query} ---`);
-  if (data.results) {
-    data.results.forEach(p => {
-      console.log(`[${p.sku}] ${p.name}`);
-    });
-  } else if (data.items) {
-    data.items.forEach(p => {
-      console.log(`[${p.sku || p.id}] ${p.name || p.title}`);
-    });
+  if (res.ok) {
+     const data = await res.json();
+     console.log(`[${sku}] Success -> Price: ${data.price}, Name: ${data.name}`);
   } else {
-    console.log(data);
+     console.error(`[${sku}] Failed: ${res.status}`);
   }
 }
 
 (async () => {
-  await searchProduct('prosciutto');
-  await searchProduct('parmaskinka');
+  await getProductBySku('100262103');
 })();
