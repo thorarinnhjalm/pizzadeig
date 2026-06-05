@@ -1,6 +1,6 @@
 import { Timestamp } from 'firebase/firestore';
 
-export type AdFormat = '1018x360' | '1080x240' | '300x250' | '310x400' | '320x50' | '468x60' | 'sponsored_card';
+export type AdFormat = '1018x360' | '1080x240' | '300x250' | '310x400' | '320x50' | '468x60' | '980x120' | '320x100' | 'sponsored_card';
 export type AdStatus = 'active' | 'paused' | 'ended';
 
 export interface Ad {
@@ -15,6 +15,8 @@ export interface Ad {
     '310x400'?: string;
     '320x50'?: string;
     '468x60'?: string;
+    '980x120'?: string;
+    '320x100'?: string;
   };
   image_url?: string;
   target_url: string;

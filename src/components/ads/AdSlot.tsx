@@ -8,19 +8,51 @@ import { mockAds } from '@/lib/mockData';
 
 interface Props {
   placement: string;
-  format: '1018x360' | '1080x240' | '300x250' | '310x400' | '320x50' | '468x60' | 'sponsored_card';
+  format: '1018x360' | '1080x240' | '300x250' | '310x400' | '320x50' | '468x60' | '980x120' | '320x100' | 'sponsored_card';
   className?: string;
   fallbackText?: string;
 }
 
+interface ExtendedAd extends Ad {
+  birtingurImpressionUrl?: string;
+}
+
+const SERVING_BASE_URL = process.env.NEXT_PUBLIC_BIRTINGUR_SERVING_URL || 'http://localhost:3002';
+
 export function AdSlot({ placement, format, className = '', fallbackText }: Props) {
-  const [ad, setAd] = useState<Ad | null>(null);
+  const [ad, setAd] = useState<ExtendedAd | null>(null);
   const [loading, setLoading] = useState(true);
   const impressionRecorded = useRef(false);
 
   useEffect(() => {
     async function fetchAd() {
       try {
+        if (format === '980x120' || format === '320x100') {
+          const slotId = format === '980x120' ? 'slot_d9e8f575bb5fcd828401fd5a' : 'slot_2ef83ffdcd8057d793f6c9c6';
+          const response = await fetch(`${SERVING_BASE_URL}/v1/ad?slot=${slotId}&consent=none`);
+          if (response.ok) {
+            const data = await response.json();
+            setAd({
+              id: data.creativeId,
+              name: 'Birtingur Ad',
+              client: 'Birtingur.app',
+              format: format as any,
+              image_url: data.imageUrl,
+              target_url: data.clickUrl,
+              status: 'active',
+              placements: [placement],
+              start_date: null as any,
+              end_date: null as any,
+              birtingurImpressionUrl: data.impressionPixel.startsWith('http')
+                ? data.impressionPixel
+                : `${SERVING_BASE_URL}${data.impressionPixel}`
+            });
+          } else {
+            setAd(null);
+          }
+          return;
+        }
+
         const q = query(
           collection(db, 'ads'),
           where('status', '==', 'active'),
@@ -51,17 +83,29 @@ export function AdSlot({ placement, format, className = '', fallbackText }: Prop
   useEffect(() => {
     if (ad && !impressionRecorded.current) {
       impressionRecorded.current = true;
-      // Record Impression via API Proxy to avoid exposing direct unauthenticated firestore writes unnecessarily if possible
-      fetch('/api/ads/event', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ad_id: ad.id, type: 'impression', placement })
-      }).catch(console.error);
+      if (ad.birtingurImpressionUrl) {
+        fetch(ad.birtingurImpressionUrl, { mode: 'no-cors' }).catch(console.error);
+      } else {
+        // Record Impression via API Proxy to avoid exposing direct unauthenticated firestore writes unnecessarily if possible
+        fetch('/api/ads/event', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ad_id: ad.id, type: 'impression', placement })
+        }).catch(console.error);
+      }
     }
   }, [ad, placement]);
 
   const handleClick = () => {
     if (!ad) return;
+
+    if (ad.birtingurImpressionUrl) {
+      if (ad.target_url) {
+        window.open(ad.target_url, '_blank', 'noopener,noreferrer');
+      }
+      return;
+    }
+
     fetch('/api/ads/event', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
