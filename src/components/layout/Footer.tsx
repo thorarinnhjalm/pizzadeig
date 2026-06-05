@@ -7,6 +7,15 @@ export function Footer() {
   
   return (
     <footer className="w-full mt-auto bg-secondary border-t border-border text-muted-foreground">
+      {/* 728x90 Birtingur Leaderboard ofan við footer (desktop) */}
+      <div className="w-full py-8 border-b border-border/50 hidden md:flex justify-center">
+        <BirtingurAdSlot
+          slotId={BIRTINGUR_SLOTS.above_footer_728x90}
+          width={728}
+          height={90}
+        />
+      </div>
+
       <div className="pt-16 pb-8 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-(--color-border-light) pb-12">
