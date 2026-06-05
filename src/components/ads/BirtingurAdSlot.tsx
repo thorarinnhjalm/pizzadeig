@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 
 const SERVING_BASE = 'https://serving.birtingur.app';
-const FALLBACK_CREATIVE = 'cre_fallback_transparent';
 
 interface BirtingurAd {
   creativeId: string;
@@ -22,7 +21,11 @@ interface BirtingurEmpty {
 type BirtingurResponse = BirtingurAd | BirtingurEmpty;
 
 function isAd(r: BirtingurResponse | null): r is BirtingurAd {
-  return !!r && !('empty' in r) && r.creativeId !== FALLBACK_CREATIVE;
+  return !!r && !('empty' in r);
+}
+
+function absolutize(path: string): string {
+  return path.startsWith('http') ? path : `${SERVING_BASE}${path}`;
 }
 
 interface Props {
@@ -34,8 +37,11 @@ interface Props {
 
 /**
  * Hybrid/Headless integration með Birtingur Serving API.
- * Sækir auglýsingu beint úr REST API svo við stjórnum fallback útliti
+ * Sækir auglýsingu beint úr REST API svo við höldum stjórn á fallback
  * og forðumst layout-shift sem widget.js myndi annars valda.
+ *
+ * Birtir bæði alvöru herferðir og Birtingur house ads (cre_fallback_birtingur),
+ * og fellur saman alveg ef slot er ekki til ({empty: true}).
  */
 export function BirtingurAdSlot({ slotId, width, height, className = '' }: Props) {
   const [ad, setAd] = useState<BirtingurResponse | null>(null);
@@ -66,56 +72,38 @@ export function BirtingurAdSlot({ slotId, width, height, className = '' }: Props
   }, [slotId]);
 
   // Birtingatalning: hlaða impressionPixel ósýnilega einu sinni per creative.
+  // Þetta nær líka pageview-talningu fyrir house ads, svo Birtingur veit
+  // um trafficið okkar þótt engin keypt herferð sé í gangi.
   useEffect(() => {
     if (!isAd(ad)) return;
     if (impressionFired.current === ad.creativeId) return;
     impressionFired.current = ad.creativeId;
     const img = new Image();
-    img.src = `${SERVING_BASE}${ad.impressionPixel}`;
+    img.src = absolutize(ad.impressionPixel);
   }, [ad]);
 
   if (loading) {
     return (
       <div
         style={{ width, height }}
-        className={`bg-gray-100 animate-pulse rounded-lg border border-gray-200 flex items-center justify-center ${className}`}
-      >
-        <span className="text-[10px] text-gray-300 uppercase tracking-widest font-bold">
-          Safna Auglýsingu
-        </span>
-      </div>
+        className={`bg-gray-100 animate-pulse rounded-lg ${className}`}
+        aria-hidden="true"
+      />
     );
   }
 
+  // Slot finnst ekki — fellum það alveg saman (Birtingur leiðbeining).
   if (!isAd(ad)) {
-    // Engin virk herferð — höldum samt plássinu (kemur í veg fyrir layout shift)
-    // og hlöðum 1x1 gegnsæjum pixel í bakgrunninn, sama hegðun og Birtingur
-    // widget.js gerir í cre_fallback_transparent tilvikinu.
-    return (
-      <div
-        style={{ width, height }}
-        aria-hidden="true"
-        className={className}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-          alt=""
-          width={1}
-          height={1}
-          style={{ width: 1, height: 1, opacity: 0 }}
-        />
-      </div>
-    );
+    return null;
   }
 
   return (
     <a
-      href={ad.clickUrl.startsWith('http') ? ad.clickUrl : `${SERVING_BASE}${ad.clickUrl}`}
+      href={absolutize(ad.clickUrl)}
       target="_blank"
       rel="noopener noreferrer sponsored"
       style={{ width, height }}
-      className={`relative block overflow-hidden rounded-xl border border-(--color-border) shadow-sm hover:shadow-lg transition-all bg-(--color-bg-secondary) ad-slot ${className}`}
+      className={`relative block overflow-hidden rounded-xl ad-slot ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
