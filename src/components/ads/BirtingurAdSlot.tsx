@@ -15,6 +15,16 @@ interface BirtingurAd {
   ttl: number;
 }
 
+interface BirtingurEmpty {
+  empty: true;
+}
+
+type BirtingurResponse = BirtingurAd | BirtingurEmpty;
+
+function isAd(r: BirtingurResponse | null): r is BirtingurAd {
+  return !!r && !('empty' in r) && r.creativeId !== FALLBACK_CREATIVE;
+}
+
 interface Props {
   slotId: string;
   width: number;
@@ -29,7 +39,7 @@ interface Props {
  * og forðumst layout-shift sem widget.js myndi annars valda.
  */
 export function BirtingurAdSlot({ slotId, width, height, className = '', fallbackText }: Props) {
-  const [ad, setAd] = useState<BirtingurAd | null>(null);
+  const [ad, setAd] = useState<BirtingurResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const impressionFired = useRef<string | null>(null);
 
@@ -42,7 +52,7 @@ export function BirtingurAdSlot({ slotId, width, height, className = '', fallbac
           { cache: 'no-store' }
         );
         if (!res.ok) throw new Error(`Birtingur ${res.status}`);
-        const data = (await res.json()) as BirtingurAd;
+        const data = (await res.json()) as BirtingurResponse;
         if (!cancelled) setAd(data);
       } catch (err) {
         console.error('Birtingur fetch villa:', err);
@@ -58,7 +68,7 @@ export function BirtingurAdSlot({ slotId, width, height, className = '', fallbac
 
   // Birtingatalning: hlaða impressionPixel ósýnilega einu sinni per creative.
   useEffect(() => {
-    if (!ad || ad.creativeId === FALLBACK_CREATIVE) return;
+    if (!isAd(ad)) return;
     if (impressionFired.current === ad.creativeId) return;
     impressionFired.current = ad.creativeId;
     const img = new Image();
@@ -78,7 +88,7 @@ export function BirtingurAdSlot({ slotId, width, height, className = '', fallbac
     );
   }
 
-  if (!ad || ad.creativeId === FALLBACK_CREATIVE) {
+  if (!isAd(ad)) {
     return (
       <div
         style={{ width, height }}
