@@ -30,7 +30,6 @@ interface Props {
   width: number;
   height: number;
   className?: string;
-  fallbackText?: string;
 }
 
 /**
@@ -38,7 +37,7 @@ interface Props {
  * Sækir auglýsingu beint úr REST API svo við stjórnum fallback útliti
  * og forðumst layout-shift sem widget.js myndi annars valda.
  */
-export function BirtingurAdSlot({ slotId, width, height, className = '', fallbackText }: Props) {
+export function BirtingurAdSlot({ slotId, width, height, className = '' }: Props) {
   const [ad, setAd] = useState<BirtingurResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const impressionFired = useRef<string | null>(null);
@@ -89,15 +88,23 @@ export function BirtingurAdSlot({ slotId, width, height, className = '', fallbac
   }
 
   if (!isAd(ad)) {
+    // Engin virk herferð — höldum samt plássinu (kemur í veg fyrir layout shift)
+    // og hlöðum 1x1 gegnsæjum pixel í bakgrunninn, sama hegðun og Birtingur
+    // widget.js gerir í cre_fallback_transparent tilvikinu.
     return (
       <div
         style={{ width, height }}
-        className={`bg-[#F8FAFC] border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-gray-400 text-sm font-medium rounded-xl ${className}`}
+        aria-hidden="true"
+        className={className}
       >
-        <span className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-1 bg-(--color-bg-secondary) px-2 py-0.5 rounded shadow-sm border border-gray-100">
-          Laust Auglýsingapláss
-        </span>
-        {fallbackText || `${width}×${height}`}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          alt=""
+          width={1}
+          height={1}
+          style={{ width: 1, height: 1, opacity: 0 }}
+        />
       </div>
     );
   }

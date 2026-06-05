@@ -62,7 +62,6 @@ export function Footer() {
            slotId={BIRTINGUR_SLOTS.mobile_320x100}
            width={320}
            height={100}
-           fallbackText="Púls Mobile 320x100"
          />
       </div>
     </footer>

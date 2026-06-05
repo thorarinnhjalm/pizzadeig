@@ -196,7 +196,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             slotId={BIRTINGUR_SLOTS.billboard_980x120}
             width={980}
             height={120}
-            fallbackText="Birtingur Billboard 980×120"
           />
         </div>
       </div>
