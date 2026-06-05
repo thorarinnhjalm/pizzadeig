@@ -1,6 +1,7 @@
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { AdSlot } from '../ads/AdSlot';
+import { BirtingurAdSlot, BIRTINGUR_SLOTS } from '../ads/BirtingurAdSlot';
 
 export function Footer() {
   const t = useTranslations('Footer');
@@ -63,9 +64,14 @@ export function Footer() {
         </div>
       </div>
       
-      {/* 320x50 Ad Mobile Sticky */}
+      {/* 320x100 Birtingur Mobile Sticky */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-wood border-t border-amber-600/50 p-2 flex justify-center pb-safe">
-         <AdSlot placement="mobile_sticky" format="320x50" className="w-[320px] h-[50px]" fallbackText="Púls Mobile 320x50" />
+         <BirtingurAdSlot
+           slotId={BIRTINGUR_SLOTS.mobile_320x100}
+           width={320}
+           height={100}
+           fallbackText="Púls Mobile 320x100"
+         />
       </div>
     </footer>
   );
