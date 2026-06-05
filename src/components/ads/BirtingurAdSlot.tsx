@@ -94,7 +94,7 @@ export function BirtingurAdSlot({ slotId, width, height, className = '', fallbac
 
   return (
     <a
-      href={`${SERVING_BASE}${ad.clickUrl}`}
+      href={ad.clickUrl.startsWith('http') ? ad.clickUrl : `${SERVING_BASE}${ad.clickUrl}`}
       target="_blank"
       rel="noopener noreferrer sponsored"
       style={{ width, height }}
