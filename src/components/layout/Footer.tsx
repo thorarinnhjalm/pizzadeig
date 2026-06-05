@@ -1,6 +1,5 @@
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { AdSlot } from '../ads/AdSlot';
 import { BirtingurAdSlot, BIRTINGUR_SLOTS } from '../ads/BirtingurAdSlot';
 
 export function Footer() {
@@ -8,13 +7,6 @@ export function Footer() {
   
   return (
     <footer className="w-full mt-auto bg-secondary border-t border-border text-muted-foreground">
-      {/* 1080x240 Ad Top of Footer */}
-      <div className="w-full py-12 border-b border-border/50 hidden md:block">
-        <div className="container mx-auto flex justify-center">
-          <AdSlot placement="global_footer" format="1080x240" className="w-full max-w-[1080px] h-[240px]" fallbackText="Möguleiki á Breiðum Borða 1080x240" />
-        </div>
-      </div>
-
       <div className="pt-16 pb-8 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-(--color-border-light) pb-12">

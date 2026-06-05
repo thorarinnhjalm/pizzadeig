@@ -2,7 +2,6 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { ChevronRight, Clock, BarChart3 } from 'lucide-react';
-import { AdSlot } from '@/components/ads/AdSlot';
 import { BirtingurAdSlot, BIRTINGUR_SLOTS } from '@/components/ads/BirtingurAdSlot';
 import { Recipe } from '@/types/recipe';
 import { mockRecipes } from '@/lib/mockData';
@@ -189,13 +188,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </section>
-
-      {/* ===== AD SLOT ===== */}
-      <div className="w-full bg-background py-8 border-y border-(--color-border-light)">
-        <div className="container mx-auto flex justify-center">
-          <AdSlot placement="home_hero" format="1018x360" className="w-full max-w-[1018px] h-[360px]" fallbackText="Möguleiki á Púls Stórum Borða 1018x360" />
-        </div>
-      </div>
 
       {/* ===== BIRTINGUR BILLBOARD (980x120) ===== */}
       <div className="w-full bg-background py-6 hidden md:block">
