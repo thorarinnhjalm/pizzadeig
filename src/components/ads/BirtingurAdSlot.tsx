@@ -16,6 +16,9 @@ interface BirtingurAd {
 
 interface BirtingurEmpty {
   empty: true;
+  // Birtingur API v1.1+: empty svar getur innihaldið pageview pixel
+  // sem á að firea til að telja heimsóknir á síður með uncached slots.
+  impressionPixel?: string;
 }
 
 type BirtingurResponse = BirtingurAd | BirtingurEmpty;
@@ -48,6 +51,7 @@ export function BirtingurAdSlot({ slotId, width, height, className = '' }: Props
   const [error, setError] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const impressionFired = useRef<string | null>(null);
+  const pageviewFired = useRef(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const fetchAdRef = useRef<(() => Promise<void>) | null>(null);
 
@@ -151,6 +155,19 @@ export function BirtingurAdSlot({ slotId, width, height, className = '' }: Props
     }
   }, [ad]);
 
+  // Pageview-talning fyrir empty svör (uncached slots).
+  // Án þessa eru heimsóknir á síður með uncached slots ósýnilegar í stats Birtingur.
+  useEffect(() => {
+    if (!ad || pageviewFired.current) return;
+    if ('empty' in ad && ad.impressionPixel) {
+      pageviewFired.current = true;
+      const img = new Image();
+      img.src = ad.impressionPixel.startsWith('http')
+        ? ad.impressionPixel
+        : `${SERVING_BASE}${ad.impressionPixel}`;
+    }
+  }, [ad]);
+
   if (loading) {
     return (
       <div
@@ -214,9 +231,3 @@ export function BirtingurAdSlot({ slotId, width, height, className = '' }: Props
   );
 }
 
-/** Þekkt pláss frá Birtingur — sjá `list_my_slots` MCP tólið. */
-export const BIRTINGUR_SLOTS = {
-  billboard_980x120: 'slot_d9e8f575bb5fcd828401fd5a',
-  mobile_320x100: 'slot_2ef83ffdcd8057d793f6c9c6',
-  above_footer_728x90: 'slot_a63f32bca8451389ecbe11d1',
-} as const;
