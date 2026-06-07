@@ -2,7 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { ChevronRight, Clock, BarChart3 } from 'lucide-react';
-import { BirtingurAdSlot, BIRTINGUR_SLOTS } from '@/components/ads/BirtingurAdSlot';
+import { BirtingurAdSlot } from '@/components/ads/BirtingurAdSlot';
+import { BIRTINGUR_SLOTS } from '@/components/ads/birtingurSlots';
 import { Recipe } from '@/types/recipe';
 import { mockRecipes } from '@/lib/mockData';
 import { NewsletterForm } from '@/components/layout/NewsletterForm';
@@ -108,7 +109,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-
+      {/* ===== BIRTINGUR BANNER (desktop billboard + mobile banner) ===== */}
+      <div className="w-full bg-background py-6">
+        <div className="container mx-auto flex justify-center">
+          <div className="hidden md:block">
+            <BirtingurAdSlot
+              slotId={BIRTINGUR_SLOTS.billboard_980x120}
+              width={980}
+              height={120}
+            />
+          </div>
+          <div className="block md:hidden">
+            <BirtingurAdSlot
+              slotId={BIRTINGUR_SLOTS.mobile_320x100}
+              width={320}
+              height={100}
+            />
+          </div>
+        </div>
+      </div>
 
       {/* ===== PRICE WATCH ===== */}
       <PriceWatchWidget />
@@ -188,17 +207,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </section>
-
-      {/* ===== BIRTINGUR BILLBOARD (980x120) ===== */}
-      <div className="w-full bg-background py-6 hidden md:block">
-        <div className="container mx-auto flex justify-center">
-          <BirtingurAdSlot
-            slotId={BIRTINGUR_SLOTS.billboard_980x120}
-            width={980}
-            height={120}
-          />
-        </div>
-      </div>
 
       {/* ===== NEWSLETTER ===== */}
       <section className="py-20 bg-secondary">
