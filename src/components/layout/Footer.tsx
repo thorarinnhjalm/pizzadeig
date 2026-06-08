@@ -1,6 +1,7 @@
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { BirtingurAdSlot, BIRTINGUR_SLOTS } from '../ads/BirtingurAdSlot';
+import { BirtingurAdSlot } from '../ads/BirtingurAdSlot';
+import { BIRTINGUR_SLOTS } from '../ads/birtingurSlots';
 
 export function Footer() {
   const t = useTranslations('Footer');
