@@ -492,7 +492,7 @@ export const mockRestaurants: Restaurant[] = [
     address: 'Fagradalsbraut 25',
     city: 'Egilsstaðir',
     postal_code: '700',
-    location: { latitude: 65.2535, longitude: -14.3948 } as any,
+    location: { latitude: 65.260038, longitude: -14.390766 } as any,
     phone: '470 6070',
     website: 'https://askurpizzeria.is',
     opening_hours: { mán: '11:30-21', þri: '11:30-21', mið: '11:30-21', fim: '11:30-21', fös: '11:30-21', lau: '11:30-21', sun: '11:30-21' },
