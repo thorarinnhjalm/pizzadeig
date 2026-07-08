@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Link } from '@/i18n/routing';
-import { LayoutDashboard, Utensils, Store, Users, Target, BarChart3, ArrowLeft } from 'lucide-react';
+import { LayoutDashboard, Utensils, Store, Users, Target, BarChart3, Settings, ArrowLeft } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const navItems = [
@@ -10,6 +10,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     { name: 'Notendur', href: '/admin/notendur', icon: Users },
     { name: 'Auglýsingar', href: '/admin/auglysingar', icon: Target },
     { name: 'Tölfræði', href: '/admin/tolfraedi', icon: BarChart3 },
+    { name: 'Kerfi', href: '/admin/kerfi', icon: Settings },
   ];
 
   return (
