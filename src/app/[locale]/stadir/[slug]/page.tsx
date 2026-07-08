@@ -112,7 +112,7 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
         <div className="lg:col-span-2 space-y-16">
            <section>
               <h2 className="text-3xl font-bold text-foreground mb-8 border-b pb-4">
-                 Matskrá
+                 Matseðill
               </h2>
               {menuItems.length > 0 ? (
                 <p className="text-sm text-(--color-text-tertiary) italic mb-8 -mt-4">
@@ -152,7 +152,7 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                   ))}
                 </div>
               ) : (
-                <p className="text-(--color-text-secondary) italic">Engin matskrá skráð eins og er.</p>
+                <p className="text-(--color-text-secondary) italic">Enginn matseðill skráður eins og er.</p>
               )}
            </section>
            
