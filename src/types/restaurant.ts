@@ -41,6 +41,9 @@ export interface MenuItem {
   description_is?: string;
   description_en?: string;
   price: number;
+  price_large?: number;
+  size_small_label?: string;
+  size_large_label?: string;
   category: string;
   image_url?: string;
   sort_order: number;

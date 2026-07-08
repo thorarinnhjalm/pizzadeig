@@ -132,8 +132,19 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                               {isIslandic ? item.description_is : (item.description_en || item.description_is)}
                            </p>
                          </div>
-                         <div className="text-xl font-bold text-foreground ml-4 shrink-0">
-                           {item.price} kr.
+                         <div className="text-xl font-bold text-foreground ml-4 shrink-0 text-right">
+                           {item.price_large ? (
+                             <div className="flex flex-col items-end gap-0.5">
+                               <span className="text-base">
+                                 {item.size_small_label || '12"'} {item.price.toLocaleString('is-IS')} kr.
+                               </span>
+                               <span className="text-base">
+                                 {item.size_large_label || '16"'} {item.price_large.toLocaleString('is-IS')} kr.
+                               </span>
+                             </div>
+                           ) : (
+                             <>{item.price} kr.</>
+                           )}
                          </div>
                        </div>
                        <MenuItemRating item={item} locale={locale as 'is' | 'en'} />

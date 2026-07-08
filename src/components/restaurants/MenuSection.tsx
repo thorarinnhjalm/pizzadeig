@@ -34,7 +34,14 @@ export function MenuSection({ items, locale }: { items: MenuItem[], locale: 'is'
                 </div>
                 <div className="w-full h-px bg-gray-200 absolute top-3.5 -z-0"></div>
                 <div className="font-extrabold text-(--color-text-primary) text-lg bg-[#F8FAFC] px-4 py-1.5 rounded-xl border-2 border-gray-100 shadow-sm whitespace-nowrap z-10 group-hover:bg-(--color-brand) group-hover:text-white group-hover:border-(--color-brand) transition-all">
-                  {formatIsk(item.price)}
+                  {item.price_large ? (
+                    <div className="flex flex-col items-end gap-0.5 text-sm leading-tight">
+                      <span>{item.size_small_label || '12"'} {formatIsk(item.price)}</span>
+                      <span>{item.size_large_label || '16"'} {formatIsk(item.price_large)}</span>
+                    </div>
+                  ) : (
+                    formatIsk(item.price)
+                  )}
                 </div>
               </div>
             ))}
