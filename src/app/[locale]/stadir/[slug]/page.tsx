@@ -115,6 +115,11 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                  Matskrá
               </h2>
               {menuItems.length > 0 ? (
+                <p className="text-sm text-(--color-text-tertiary) italic mb-8 -mt-4">
+                  {isIslandic ? '*Birt með fyrirvara um verð' : '*Prices subject to change'}
+                </p>
+              ) : null}
+              {menuItems.length > 0 ? (
                 <div className="space-y-6">
                   {menuItems.map(item => (
                     <div key={item.id} className="border-b border-(--color-border-light) pb-6 group">
