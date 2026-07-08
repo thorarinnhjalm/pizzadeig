@@ -24,28 +24,33 @@ export function SystemSection({ showMessage, onRefresh, user }: SystemSectionPro
         await setDoc(doc(db, 'users', user.uid), { role: 'admin' }, { merge: true });
       }
 
-      const batch = writeBatch(db);
+      // Collect every write, then commit in chunks — Firestore caps a
+      // single writeBatch at 500 operations.
+      const ops: { ref: ReturnType<typeof doc>; data: Record<string, unknown> }[] = [];
 
       mockRestaurants.forEach((r) => {
-        batch.set(doc(db, 'restaurants', r.id), { ...r, is_seeded: true, created_at: new Date() });
+        ops.push({ ref: doc(db, 'restaurants', r.id), data: { ...r, is_seeded: true, created_at: new Date() } });
       });
 
       mockMenuItems.forEach((item) => {
         const r = mockRestaurants.find(rest => rest.id === item.restaurant_id);
-        batch.set(doc(db, 'menu_items', item.id), { 
-          ...item, restaurant_name: r?.name || '', is_seeded: true, created_at: new Date()
-        });
+        ops.push({ ref: doc(db, 'menu_items', item.id), data: { ...item, restaurant_name: r?.name || '', is_seeded: true, created_at: new Date() } });
       });
 
       mockAds.forEach((ad) => {
-        batch.set(doc(db, 'ads', ad.id), { ...ad, is_seeded: true, impressions: 0, clicks: 0, created_at: new Date() });
+        ops.push({ ref: doc(db, 'ads', ad.id), data: { ...ad, is_seeded: true, impressions: 0, clicks: 0, created_at: new Date() } });
       });
 
       allRecipes.forEach((recipe) => {
-        batch.set(doc(db, 'recipes', recipe.id), { ...recipe, is_seeded: true, created_at: new Date(), updated_at: new Date() });
+        ops.push({ ref: doc(db, 'recipes', recipe.id), data: { ...recipe, is_seeded: true, created_at: new Date(), updated_at: new Date() } });
       });
 
-      await batch.commit();
+      const CHUNK = 450;
+      for (let i = 0; i < ops.length; i += CHUNK) {
+        const batch = writeBatch(db);
+        ops.slice(i, i + CHUNK).forEach(({ ref, data }) => batch.set(ref, data));
+        await batch.commit();
+      }
       showMessage('Gagnagrunnur var uppfærður með gervigögnum! 🎉');
       onRefresh();
     } catch (err) {
