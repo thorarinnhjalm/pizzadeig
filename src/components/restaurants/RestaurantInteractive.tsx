@@ -83,9 +83,20 @@ export function RestaurantInteractive({ restaurantId, menuItems, locale }: Props
                       <MenuItemRating item={item} locale={locale} />
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="font-bold text-(--color-text-primary)">
-                        {item.price.toLocaleString('is-IS')} kr.
-                      </span>
+                      {item.price_large ? (
+                        <div className="flex flex-col items-end gap-0.5">
+                          <span className="font-bold text-(--color-text-primary) text-sm">
+                            {item.size_small_label || '12"'} {item.price.toLocaleString('is-IS')} kr.
+                          </span>
+                          <span className="font-bold text-(--color-text-primary) text-sm">
+                            {item.size_large_label || '16"'} {item.price_large.toLocaleString('is-IS')} kr.
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="font-bold text-(--color-text-primary)">
+                          {item.price.toLocaleString('is-IS')} kr.
+                        </span>
+                      )}
                     </div>
                   </div>
                 ))}

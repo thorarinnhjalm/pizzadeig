@@ -112,8 +112,13 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
         <div className="lg:col-span-2 space-y-16">
            <section>
               <h2 className="text-3xl font-bold text-foreground mb-8 border-b pb-4">
-                 Matskrá
+                 Matseðill
               </h2>
+              {menuItems.length > 0 ? (
+                <p className="text-sm text-(--color-text-tertiary) italic mb-8 -mt-4">
+                  {isIslandic ? '*Birt með fyrirvara um verð' : '*Prices subject to change'}
+                </p>
+              ) : null}
               {menuItems.length > 0 ? (
                 <div className="space-y-6">
                   {menuItems.map(item => (
@@ -127,8 +132,19 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                               {isIslandic ? item.description_is : (item.description_en || item.description_is)}
                            </p>
                          </div>
-                         <div className="text-xl font-bold text-foreground ml-4 shrink-0">
-                           {item.price} kr.
+                         <div className="text-xl font-bold text-foreground ml-4 shrink-0 text-right">
+                           {item.price_large ? (
+                             <div className="flex flex-col items-end gap-0.5">
+                               <span className="text-base">
+                                 {item.size_small_label || '12"'} {item.price.toLocaleString('is-IS')} kr.
+                               </span>
+                               <span className="text-base">
+                                 {item.size_large_label || '16"'} {item.price_large.toLocaleString('is-IS')} kr.
+                               </span>
+                             </div>
+                           ) : (
+                             <>{item.price} kr.</>
+                           )}
                          </div>
                        </div>
                        <MenuItemRating item={item} locale={locale as 'is' | 'en'} />
@@ -136,7 +152,7 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                   ))}
                 </div>
               ) : (
-                <p className="text-(--color-text-secondary) italic">Engin matskrá skráð eins og er.</p>
+                <p className="text-(--color-text-secondary) italic">Enginn matseðill skráður eins og er.</p>
               )}
            </section>
            
