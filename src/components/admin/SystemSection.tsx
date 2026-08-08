@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { db } from '@/lib/firebase';
-import { collection, writeBatch, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
+import { collection, writeBatch, doc, getDocs, getDoc } from 'firebase/firestore';
 import { AlertTriangle, Database, Trash2, Power } from 'lucide-react';
 import { allRecipes } from '@/lib/recipeData';
 import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
@@ -24,19 +24,15 @@ export function SystemSection({ showMessage, onRefresh, user }: SystemSectionPro
     setLoading(true);
     showMessage('Byrja að fræfæða gagnagrunninn...');
     try {
-      // Firestore rules gate every write on users/{uid}.role == 'admin'. Write it
-      // and read it back — without this the batches fail with a bare
-      // "Missing or insufficient permissions" that says nothing about the cause.
-      try {
-        await setDoc(doc(db, 'users', user.uid), { role: 'admin' }, { merge: true });
-      } catch (err) {
-        showMessage(`❌ Gat ekki skráð admin-réttindi á notandann (${user.email}). ${(err as Error).message}`);
-        setLoading(false);
-        return;
-      }
+      // Firestore rules gate every write on users/{uid}.role == 'admin'. The role
+      // cannot be granted from here — a client that could grant itself admin would
+      // make the rules meaningless — so just check it and explain if it is missing.
       const me = await getDoc(doc(db, 'users', user.uid));
       if (me.data()?.role !== 'admin') {
-        showMessage(`❌ Notandinn ${user.email} hefur ekki admin-hlutverk í Firestore. Seed stöðvað.`);
+        showMessage(
+          `❌ Notandinn ${user.email} hefur ekki admin-hlutverk í Firestore. ` +
+          `Settu role: "admin" á skjalið users/${user.uid} í Firebase Console og reyndu aftur.`
+        );
         setLoading(false);
         return;
       }

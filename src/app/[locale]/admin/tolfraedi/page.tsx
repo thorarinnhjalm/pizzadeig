@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { db } from '@/lib/firebase';
+import { db, auth } from '@/lib/firebase';
 import { collection, getDocs, query } from 'firebase/firestore';
 import {
   BarChart3,
@@ -45,6 +45,11 @@ interface SCData {
   period: { start: string; end: string };
 }
 
+async function authHeader(): Promise<Record<string, string>> {
+  const token = await auth.currentUser?.getIdToken();
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
 export default function TolfraediPage() {
   const [stats, setStats] = useState<SiteStats | null>(null);
   const [ga4, setGA4] = useState<GA4Data | null>(null);
@@ -85,7 +90,7 @@ export default function TolfraediPage() {
     // GA4 data
     async function fetchGA4() {
       try {
-        const res = await fetch('/api/analytics');
+        const res = await fetch('/api/analytics', { headers: await authHeader() });
         if (!res.ok) throw new Error(await res.text());
         setGA4(await res.json());
       } catch (err) {
@@ -98,7 +103,7 @@ export default function TolfraediPage() {
     // Search Console data
     async function fetchSC() {
       try {
-        const res = await fetch('/api/search-console');
+        const res = await fetch('/api/search-console', { headers: await authHeader() });
         if (!res.ok) throw new Error(await res.text());
         setSC(await res.json());
       } catch (err) {

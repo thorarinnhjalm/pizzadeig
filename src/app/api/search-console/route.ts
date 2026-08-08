@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
+import { requireAdmin } from '@/lib/adminAuth';
 import { google } from 'googleapis';
 import { getServiceAccountCredentials } from '@/lib/google-auth';
 
-export async function GET() {
+export async function GET(request: Request) {
+  const denied = await requireAdmin(request);
+  if (denied) return denied;
+
   const siteUrl = process.env.SEARCH_CONSOLE_SITE_URL || 'sc-domain:pizzadeig.is';
   const credentials = getServiceAccountCredentials();
 

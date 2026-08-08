@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
+import { requireAdmin } from '@/lib/adminAuth';
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import { getServiceAccountCredentials } from '@/lib/google-auth';
 
-export async function GET() {
+export async function GET(request: Request) {
+  const denied = await requireAdmin(request);
+  if (denied) return denied;
+
   const propertyId = process.env.GA4_PROPERTY_ID;
   const credentials = getServiceAccountCredentials();
 
