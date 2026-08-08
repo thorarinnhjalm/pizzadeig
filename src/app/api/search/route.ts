@@ -30,7 +30,6 @@ export async function GET(request: NextRequest) {
         city: r.city,
         image_urls: r.image_urls,
         rating_avg: r.rating_avg,
-        rating_google: r.rating_google,
       }));
 
     return NextResponse.json({ hits });

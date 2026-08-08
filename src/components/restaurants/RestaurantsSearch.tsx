@@ -24,7 +24,7 @@ export function RestaurantsSearchContent({ restaurants }: Props) {
   // URL State readings
   const paramQ = searchParams.get('q') || '';
   const paramCity = searchParams.get('city') || '';
-  const paramSort = searchParams.get('sort') || 'rating_desc';
+  const paramSort = searchParams.get('sort') || 'alpha_asc';
   const paramTagsStr = searchParams.get('tags');
   const paramTags = useMemo(() => paramTagsStr ? paramTagsStr.split(',') : [], [paramTagsStr]);
 
@@ -108,11 +108,6 @@ export function RestaurantsSearchContent({ restaurants }: Props) {
 
     // 4. Sorting
     results = [...results].sort((a, b) => {
-      if (paramSort === 'rating_desc') {
-        const aRating = a.rating_google || 0;
-        const bRating = b.rating_google || 0;
-        return bRating - aRating;
-      }
       if (paramSort === 'alpha_asc') {
         return (a.name || '').localeCompare(b.name || '');
       }
@@ -220,7 +215,6 @@ export function RestaurantsSearchContent({ restaurants }: Props) {
                     onChange={(e) => updateQueryString('sort', e.target.value)}
                     className="w-full appearance-none bg-white border border-(--color-border) rounded-xl px-4 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-(--color-brand)/50 cursor-pointer"
                   >
-                    <option value="rating_desc">{isIs ? 'Hæstu einkunn (Google)' : 'Highest Rated (Google)'}</option>
                     <option value="alpha_asc">{isIs ? 'Stafrófsröð (A-Ö)' : 'Alphabetical (A-Z)'}</option>
                     <option value="alpha_desc">{isIs ? 'Stafrófsröð (Ö-A)' : 'Alphabetical (Z-A)'}</option>
                   </select>
@@ -325,12 +319,6 @@ export function RestaurantsSearchContent({ restaurants }: Props) {
                         <h3 className="font-display text-xl font-bold text-(--color-text-primary) group-hover:text-(--color-brand) transition-colors line-clamp-2">
                           {restaurant.name}
                         </h3>
-                        {(restaurant.rating_google ?? 0) > 0 && (
-                          <div className="flex items-center gap-1 bg-amber-50 text-amber-900 px-2 py-1 rounded-lg text-sm font-bold shrink-0 border border-amber-200/50">
-                            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                            {restaurant.rating_google?.toFixed(1)}
-                          </div>
-                        )}
                       </div>
                       
                       <p className="text-sm text-(--color-text-secondary) flex items-center gap-1.5 mb-4 font-medium">

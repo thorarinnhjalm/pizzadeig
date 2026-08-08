@@ -122,24 +122,6 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                    <span className="text-3xl font-bold">{restaurant.rating_avg?.toFixed(1) || 'N/A'}</span>
                    <span className="text-xs text-gray-400 ml-1">Pizzadeig.is<br/>{restaurant.rating_count} umsagnir</span>
                  </div>
-                 {(restaurant.rating_google || restaurant.rating_tripadvisor) && (
-                   <div className="flex gap-4 pt-2 border-t border-white/10">
-                     {restaurant.rating_google && (
-                       <div className="flex items-center gap-1.5 text-sm">
-                         <span className="text-[15px]">📍</span>
-                         <span className="font-bold text-white">{restaurant.rating_google.toFixed(1)}</span>
-                         <span className="text-[10px] text-gray-400">Google</span>
-                       </div>
-                     )}
-                     {restaurant.rating_tripadvisor && (
-                       <div className="flex items-center gap-1.5 text-sm">
-                         <span className="text-[15px]">🦉</span>
-                         <span className="font-bold text-white">{restaurant.rating_tripadvisor.toFixed(1)}</span>
-                         <span className="text-[10px] text-gray-400">TripAdvisor</span>
-                       </div>
-                     )}
-                   </div>
-                 )}
               </div>
            </div>
         </div>
@@ -227,6 +209,11 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                <li className="flex items-start">
                  <Clock className="w-5 h-5 text-primary mr-3 shrink-0 mt-0.5" />
                  <div>
+                    {(!restaurant.opening_hours || Object.keys(restaurant.opening_hours).length === 0) && (
+                      <span className="text-muted-foreground">
+                        {isIslandic ? 'Opnunartímar óstaðfestir' : 'Opening hours unconfirmed'}
+                      </span>
+                    )}
                     {restaurant.opening_hours && Object.entries(restaurant.opening_hours).map(([day, hours]) => (
                       <div key={day} className="flex justify-between w-48 mb-1">
                         <span className="capitalize text-muted-foreground">{day}:</span>

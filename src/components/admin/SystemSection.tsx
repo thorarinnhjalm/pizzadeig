@@ -45,13 +45,39 @@ export function SystemSection({ showMessage, onRefresh, user }: SystemSectionPro
         ops.push({ ref: doc(db, 'recipes', recipe.id), data: { ...recipe, is_seeded: true, created_at: new Date(), updated_at: new Date() } });
       });
 
+      // Reconcile: a doc seeded earlier but since dropped from the local data
+      // (e.g. a restaurant that closed) would otherwise linger in Firestore and
+      // keep being served. Collect those for deletion.
+      const deletions: ReturnType<typeof doc>[] = [];
+      const liveIds: Record<string, Set<string>> = {
+        restaurants: new Set(mockRestaurants.map(r => r.id)),
+        menu_items: new Set(mockMenuItems.map(m => m.id)),
+      };
+      for (const [colName, ids] of Object.entries(liveIds)) {
+        const snapshot = await getDocs(collection(db, colName));
+        snapshot.forEach((document) => {
+          if (document.data().is_seeded && !ids.has(document.id)) {
+            deletions.push(document.ref);
+          }
+        });
+      }
+
       const CHUNK = 450;
       for (let i = 0; i < ops.length; i += CHUNK) {
         const batch = writeBatch(db);
         ops.slice(i, i + CHUNK).forEach(({ ref, data }) => batch.set(ref, data));
         await batch.commit();
       }
-      showMessage('Gagnagrunnur var uppfærður með gervigögnum! 🎉');
+      for (let i = 0; i < deletions.length; i += CHUNK) {
+        const batch = writeBatch(db);
+        deletions.slice(i, i + CHUNK).forEach((ref) => batch.delete(ref));
+        await batch.commit();
+      }
+      showMessage(
+        deletions.length > 0
+          ? `Gagnagrunnur uppfærður! ${ops.length} skjöl skrifuð, ${deletions.length} úrelt skjöl fjarlægð. 🎉`
+          : 'Gagnagrunnur var uppfærður með gervigögnum! 🎉'
+      );
       onRefresh();
     } catch (err) {
       showMessage('❌ Gat ekki afkóðað API tákna. ' + (err as Error).message);
