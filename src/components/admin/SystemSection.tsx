@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { db } from '@/lib/firebase';
-import { collection, writeBatch, doc, getDocs, setDoc } from 'firebase/firestore';
+import { collection, writeBatch, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
 import { AlertTriangle, Database, Trash2, Power } from 'lucide-react';
 import { allRecipes } from '@/lib/recipeData';
 import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
@@ -17,11 +17,28 @@ export function SystemSection({ showMessage, onRefresh, user }: SystemSectionPro
   const [loading, setLoading] = useState(false);
 
   const seedData = async () => {
+    if (!user) {
+      showMessage('❌ Þú ert ekki innskráð(ur). Skráðu þig inn með Google og reyndu aftur.');
+      return;
+    }
     setLoading(true);
     showMessage('Byrja að fræfæða gagnagrunninn...');
     try {
-      if (user) {
+      // Firestore rules gate every write on users/{uid}.role == 'admin'. Write it
+      // and read it back — without this the batches fail with a bare
+      // "Missing or insufficient permissions" that says nothing about the cause.
+      try {
         await setDoc(doc(db, 'users', user.uid), { role: 'admin' }, { merge: true });
+      } catch (err) {
+        showMessage(`❌ Gat ekki skráð admin-réttindi á notandann (${user.email}). ${(err as Error).message}`);
+        setLoading(false);
+        return;
+      }
+      const me = await getDoc(doc(db, 'users', user.uid));
+      if (me.data()?.role !== 'admin') {
+        showMessage(`❌ Notandinn ${user.email} hefur ekki admin-hlutverk í Firestore. Seed stöðvað.`);
+        setLoading(false);
+        return;
       }
 
       // Collect every write, then commit in chunks — Firestore caps a
@@ -80,7 +97,7 @@ export function SystemSection({ showMessage, onRefresh, user }: SystemSectionPro
       );
       onRefresh();
     } catch (err) {
-      showMessage('❌ Gat ekki afkóðað API tákna. ' + (err as Error).message);
+      showMessage('❌ Seed mistókst: ' + (err as Error).message);
     } finally {
       setLoading(false);
     }
@@ -124,6 +141,16 @@ export function SystemSection({ showMessage, onRefresh, user }: SystemSectionPro
           </h2>
           <p className="text-sm text-muted-foreground mt-1">Hættulegar aðgerðir og gagnagrunns viðhald aðeins fyrir kerfisstjóra.</p>
         </div>
+      </div>
+
+      <div
+        className={`mb-6 rounded-xl border px-4 py-3 text-sm font-medium ${
+          user ? 'border-(--color-border) bg-(--color-bg-secondary) text-(--color-text-primary)' : 'border-red-300 bg-red-50 text-red-900'
+        }`}
+      >
+        {user
+          ? `Innskráð(ur) sem ${user.email}`
+          : 'Ekki innskráð(ur) — allar aðgerðir hér að neðan munu mistakast. Skráðu þig inn með Google fyrst.'}
       </div>
 
       <div className="bg-red-50/50 border border-red-200 rounded-2xl p-6 shadow-sm">
