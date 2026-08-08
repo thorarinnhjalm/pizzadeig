@@ -1,3 +1,7 @@
+// Vörunúmerakort fyrir Krónuna. Ekkert í vefnum notar þetta núna — verðtengingin
+// var fjarlægð í ágúst 2026 þegar Krónan hætti að taka við tokeninu okkar. Kortið
+// er geymt óbreytt svo hægt sé að tengja aftur ef Krónan býður opið API.
+
 export const KRONAN_SKUS: Record<string, string> = {
   // Mapping from ShoppingItem id to Krónan SKU
   flour: '100262103',       // Caputo hveiti pizzamjöl blátt
