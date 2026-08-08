@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'], // Protect private analytical routes from indexing footprint leakage
     },
-    sitemap: 'https://pizzadeig.is/sitemap.xml',
+    sitemap: 'https://www.pizzadeig.is/sitemap.xml',
   };
 }

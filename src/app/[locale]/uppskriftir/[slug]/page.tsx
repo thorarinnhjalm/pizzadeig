@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { db } from '@/lib/firebase';
 import { collection, query, where, getDocs, limit } from 'firebase/firestore';
 import { Recipe } from '@/types/recipe';
-import { recipeJsonLd } from '@/lib/seo';
+import { recipeJsonLd, localeAlternates, safeJsonLd, SITE_URL } from '@/lib/seo';
 import { IngredientList } from '@/components/recipes/IngredientList';
 import { StepByStep } from '@/components/recipes/StepByStep';
 import { ReviewList } from '@/components/community/ReviewList';
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${title} | Pizzadeig.is`,
     description,
     openGraph: { images: recipe.image_urls?.[0] ? [recipe.image_urls[0]] : [] },
-    alternates: { canonical: `https://pizzadeig.is/${locale}/uppskriftir/${slug}` },
+    alternates: localeAlternates(locale, `/uppskriftir/${slug}`),
   };
 }
 
@@ -71,7 +71,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
       <main className="flex-1 w-full">
         
         {/* ===== FULL-BLEED HERO (Stitch: Masterclass hero) ===== */}
@@ -153,7 +153,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
           </nav>
           <div className="flex items-center gap-2 md:gap-4 flex-wrap justify-end">
             <SaveButton recipeId={recipe.id} locale={locale as 'is' | 'en'} />
-            <ShareButtons url={`https://pizzadeig.is/${locale}/uppskriftir/${slug}`} title={title || ''} locale={locale as 'is'|'en'} />
+            <ShareButtons url={`${SITE_URL}/${locale}/uppskriftir/${slug}`} title={title || ''} locale={locale as 'is'|'en'} />
             <GuidedBakeButton recipe={recipe} locale={locale as 'is' | 'en'} />
           </div>
         </div>

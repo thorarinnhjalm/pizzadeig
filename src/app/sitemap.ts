@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 import { mockRecipes, mockRestaurants } from '@/lib/mockData';
 import { Timestamp } from 'firebase/firestore';
 
-const BASE_URL = 'https://pizzadeig.is';
+const BASE_URL = 'https://www.pizzadeig.is';
 
 /**
  * Helper to convert Timestamp or string to Date safely for sitemap

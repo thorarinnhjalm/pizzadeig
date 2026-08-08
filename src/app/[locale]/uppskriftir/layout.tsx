@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import { localeAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const isIs = locale === 'is';
   return {
+    alternates: localeAlternates(locale, '/uppskriftir'),
     title: isIs
       ? 'Pizza uppskriftir — Pizzadeig, sósur og álegg | Pizzadeig.is'
       : 'Pizza Recipes — Dough, Sauces & Toppings | Pizzadeig.is',

@@ -1,5 +1,16 @@
 import { RecipeForm } from '@/components/recipes/RecipeForm';
+import { localeAlternates } from '@/lib/seo';
 import { Flame } from 'lucide-react';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: locale === 'is' ? 'Ný uppskrift | Pizzadeig.is' : 'New Recipe | Pizzadeig.is',
+    // Form page: keep out of the index and stop it inheriting the list page's canonical
+    robots: { index: false, follow: true },
+    alternates: localeAlternates(locale, '/uppskriftir/ny'),
+  };
+}
 
 export default async function NewRecipePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

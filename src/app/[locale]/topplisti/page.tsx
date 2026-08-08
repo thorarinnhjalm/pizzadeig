@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { mockRecipes } from '@/lib/mockData';
+import { localeAlternates } from '@/lib/seo';
 import { Trophy, Star, Clock, ChefHat } from 'lucide-react';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const isIs = locale === 'is';
   return {
+    alternates: localeAlternates(locale, '/topplisti'),
     title: isIs
       ? 'Topplisti — Hæst metnu pizza uppskriftirnar | Pizzadeig.is'
       : 'Top List — Highest Rated Pizza Recipes | Pizzadeig.is',

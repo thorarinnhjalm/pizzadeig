@@ -26,14 +26,10 @@ export async function generateMetadata({
   return {
     title: `${t('title')} | Pizzadeig.is`,
     description: t('description'),
-    metadataBase: new URL('https://pizzadeig.is'),
-    alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        'is': '/is',
-        'en': '/en',
-      },
-    },
+    metadataBase: new URL('https://www.pizzadeig.is'),
+    // No `alternates` here: layout metadata is inherited, so a canonical set at this
+    // level marks every child page as a duplicate of the homepage. Each page sets its
+    // own via localeAlternates() in src/lib/seo.ts.
     openGraph: {
       type: 'website',
       locale: locale,

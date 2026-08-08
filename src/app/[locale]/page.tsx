@@ -5,7 +5,13 @@ import { ChevronRight, Clock, BarChart3 } from 'lucide-react';
 import { BirtingurAdSlot } from '@/components/ads/BirtingurAdSlot';
 import { BIRTINGUR_SLOTS } from '@/components/ads/birtingurSlots';
 import { Recipe } from '@/types/recipe';
+import { localeAlternates } from '@/lib/seo';
 import { mockRecipes } from '@/lib/mockData';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return { alternates: localeAlternates(locale) };
+}
 import { NewsletterForm } from '@/components/layout/NewsletterForm';
 import { PriceWatchWidget } from '@/components/home/PriceWatchWidget';
 

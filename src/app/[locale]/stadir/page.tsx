@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { mockRestaurants } from '@/lib/mockData';
+import { localeAlternates } from '@/lib/seo';
 import RestaurantsSearch from '@/components/restaurants/RestaurantsSearch';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -7,6 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const isIs = resolvedParams.locale === 'is';
   
   return {
+    alternates: localeAlternates(resolvedParams.locale, '/stadir'),
     title: isIs ? 'Pizzustaðir á Íslandi | Pizzadeig' : 'Pizza Places in Iceland | Pizzadeig',
     description: isIs 
       ? 'Skoðaðu alla helstu pizzustaði Íslands, lærðu um matseðla og farðu eftir einkunnum samfélagsins.' 

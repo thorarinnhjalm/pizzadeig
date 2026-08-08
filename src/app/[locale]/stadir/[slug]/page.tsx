@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { MapPin, Phone, Globe, Clock, Pizza, BadgeCheck } from 'lucide-react';
 import { Map } from '@/components/restaurants/Map';
 import { mockRestaurants, mockMenuItems } from '@/lib/mockData';
+import { restaurantJsonLd, localeAlternates, safeJsonLd } from '@/lib/seo';
 import { ReviewList } from '@/components/community/ReviewList';
 import { ReviewForm } from '@/components/community/ReviewForm';
 import { MenuItemRating } from '@/components/restaurants/MenuItemRating';
@@ -21,6 +22,36 @@ async function getRestaurant(slug: string): Promise<Restaurant | null> {
     console.warn('Firebase offline fallback active');
   }
   return mockRestaurants.find(r => r.slug === slug) || null;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale, slug } = await params;
+  const restaurant = await getRestaurant(slug);
+  if (!restaurant) return {};
+
+  const isIs = locale === 'is';
+  const namePlace = [restaurant.name, restaurant.city].filter(Boolean).join(' ');
+  const title = isIs
+    ? `${namePlace} — Matseðill, verð og einkunnir | Pizzadeig.is`
+    : `${namePlace} — Menu, Prices & Ratings | Pizzadeig.is`;
+  const description = (isIs ? restaurant.description_is : restaurant.description_en)
+    || (isIs
+      ? `${restaurant.name}, ${restaurant.address}, ${restaurant.city}. Matseðill, opnunartímar og einkunnir frá pizzusamfélaginu.`
+      : `${restaurant.name}, ${restaurant.address}, ${restaurant.city}. Menu, opening hours, and community ratings.`);
+
+  return {
+    title,
+    description,
+    alternates: localeAlternates(locale, `/stadir/${slug}`),
+    openGraph: {
+      title,
+      description,
+      images: restaurant.image_urls?.[0] ? [restaurant.image_urls[0]] : [],
+      siteName: 'Pizzadeig.is',
+      locale: isIs ? 'is_IS' : 'en_US',
+      type: 'website',
+    },
+  };
 }
 
 async function getMenu(restaurantId: string): Promise<MenuItem[]> {
@@ -45,8 +76,14 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
   
   const menuItems = await getMenu(restaurant.id);
 
+  const jsonLd = restaurantJsonLd(restaurant, locale, menuItems);
+
   return (
     <main className="flex-1 bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
+      />
       {/* Cover Image */}
       <div className="relative w-full h-[50vh] min-h-[400px]">
         <Image 

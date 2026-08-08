@@ -1,9 +1,31 @@
 import { Recipe } from '@/types/recipe';
 import { Restaurant, MenuItem } from '@/types/restaurant';
 
+// Live host is www (non-www 307-redirects there) — every canonical/hreflang/JSON-LD
+// URL must use it, otherwise Google splits signals across both hosts.
+export const SITE_URL = 'https://www.pizzadeig.is';
+
+// For <script type="application/ld+json"> via dangerouslySetInnerHTML: escapes `<`
+// so user-written Firestore content (recipe titles, steps) can't break out of the
+// script tag and inject markup (stored XSS).
+export function safeJsonLd(data: unknown): string {
+  return JSON.stringify(data).replace(/</g, '\\u003c');
+}
+
+export function localeAlternates(locale: string, path: string = '') {
+  return {
+    canonical: `${SITE_URL}/${locale}${path}`,
+    languages: {
+      is: `${SITE_URL}/is${path}`,
+      en: `${SITE_URL}/en${path}`,
+      'x-default': `${SITE_URL}/is${path}`,
+    },
+  };
+}
+
 export function recipeJsonLd(recipe: Recipe, locale: string) {
-  const baseUrl = `https://pizzadeig.is/${locale}/uppskriftir/${recipe.slug || ''}`;
-  const defaultImage = 'https://pizzadeig.is/OG-BG.jpeg';
+  const baseUrl = `${SITE_URL}/${locale}/uppskriftir/${recipe.slug || ''}`;
+  const defaultImage = `${SITE_URL}/images/dough-frontpage.jpg`;
   const images = (recipe.image_urls && recipe.image_urls.length > 0) ? recipe.image_urls : [defaultImage];
   
   return {
@@ -21,15 +43,16 @@ export function recipeJsonLd(recipe: Recipe, locale: string) {
     recipeCuisine: 'Italian',
     keywords: recipe.tags?.length > 0 ? recipe.tags.join(', ') : 'pizza, uppskrift, deig, pizzadeig',
     ...(recipe.video_url ? { video: recipe.video_url } : {}),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: recipe.rating_avg && recipe.rating_avg > 0 ? recipe.rating_avg : 5,
-      ratingCount: recipe.rating_count && recipe.rating_count > 0 ? recipe.rating_count : 1,
-    },
-    nutrition: {
-      '@type': 'NutritionInformation',
-      calories: '250 calories', // Fallback value as we do not track nutrition yet
-    },
+    // Only markup with real data — fabricated ratings/nutrition risk a rich-result penalty
+    ...(recipe.rating_avg && recipe.rating_count && recipe.rating_count > 0
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: recipe.rating_avg,
+            ratingCount: recipe.rating_count,
+          },
+        }
+      : {}),
     recipeIngredient: (locale === 'is' ? recipe.ingredients_is : recipe.ingredients_en)?.map(
       i => `${i.amount || ''} ${i.unit || ''} ${i.name || ''}`.trim()
     ) || [],
@@ -50,8 +73,8 @@ export function restaurantJsonLd(restaurant: Restaurant, locale: string, menuIte
     '@type': 'Restaurant',
     name: restaurant.name,
     image: restaurant.image_urls,
-    '@id': `https://pizzadeig.is/${locale}/stadir/${restaurant.slug}`,
-    url: `https://pizzadeig.is/${locale}/stadir/${restaurant.slug}`,
+    '@id': `${SITE_URL}/${locale}/stadir/${restaurant.slug}`,
+    url: `${SITE_URL}/${locale}/stadir/${restaurant.slug}`,
     telephone: restaurant.phone,
     address: {
       '@type': 'PostalAddress',
