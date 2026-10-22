@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
         destination: '/:locale/stadir',
         permanent: true,
       },
+      // The community page was removed (2026-10); send its Google traffic to the home page
+      { source: '/:locale(is|en)/samfelag', destination: '/:locale', permanent: true },
     ];
   },
   images: {
