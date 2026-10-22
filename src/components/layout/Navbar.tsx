@@ -22,7 +22,6 @@ export function Navbar() {
     { href: '/uppskriftir', label: isIs ? 'Uppskriftir' : 'Recipes' },
     { href: '/deigreiknivel', label: isIs ? 'Reiknivél' : 'Calculator' },
     { href: '/stadir', label: isIs ? 'Staðir' : 'Restaurants' },
-    { href: '/samfelag', label: isIs ? 'Samfélag' : 'Community' },
     { href: '/stilar', label: isIs ? 'Stílar' : 'Mastery' },
   ];
 
