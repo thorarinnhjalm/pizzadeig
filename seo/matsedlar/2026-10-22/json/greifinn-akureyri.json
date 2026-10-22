@@ -1,459 +1,717 @@
 {
- "slug": "greifinn-akureyri",
- "held_back": true,
- "held_back_reason": "Order-page prices and printed-menu prices disagree substantially (see not_found); held back until the restaurant confirms which prices apply.",
- "register_note": "Verð í ósamræmi milli pöntunarsíðu og prentaðs matseðils; beðið staðfestingar",
- "status": "open",
- "status_evidence": "https://wolt.com/en/isl/akureyri/restaurant/greifinn rendered: \"Greifinn ... Open until 20:30 ... Glerárgata 20, 600 Akureyri ... +3544601600\"; own site shows ordering open \"SÓTT: 20 MÍN / SENT: 40 MÍN\".",
- "fetched": "2026-10-22",
- "sources": [
-  {
-   "url": "https://www.greifinn.is/panta/",
-   "type": "own_order_page",
-   "note": "Pizzur tab (Lítil/Miðstærð/Stór prices, no inch labels). Order-page prices are NOT the same as the printed menu."
+  "slug": "greifinn-akureyri",
+  "held_back": false,
+  "status": "open",
+  "status_evidence": "https://wolt.com/en/isl/akureyri/restaurant/greifinn rendered: \"Greifinn ... Open until 20:30 ... Glerárgata 20, 600 Akureyri ... +3544601600\"; own site shows ordering open \"SÓTT: 20 MÍN / SENT: 40 MÍN\".",
+  "fetched": "2026-10-22",
+  "sources": [
+    {
+      "url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans",
+      "type": "own_site",
+      "note": "Matseðill Greifans (mynd 1 af 5, uppfærð 16. júlí 2026 skv. Last-Modified). Pizzur 10\"/12\" með íslenskum og enskum lýsingum. Lesið af mynd. Hvítlauksbrauð, Mario (veldu sjálf) og hálfmánastangir eru ekki pizzur og eru undanskilin."
+    },
+    {
+      "url": "https://www.greifinn.is/panta/",
+      "type": "own_order_page",
+      "note": "Pöntunarsíðan sýnir annan lista og aðrar stærðir (Lítil/Miðstærð/Stór); ekki notuð. Sjá order_page_items_not_used."
+    }
+  ],
+  "price_basis": "in_house",
+  "size_small_label": "10\"",
+  "size_large_label": "12\"",
+  "contact": {
+    "phone": "460 1600",
+    "address": "Glerárgata 20, 600 Akureyri",
+    "hours_verbatim": "Wolt delivery: Mán-Fim, Sun 11:30-20:30, Fös-Lau 11:30-21:30; earlier agent: dine-in 11:30-21:00 (22:00 Fri/Sat), delivery 11:30-20:00 Mon-Thu, 11:30-17:30 Fri-Sun (own site, not re-fetched)"
   },
-  {
-   "url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans",
-   "type": "own_site",
-   "note": "5 images; image 1 = pizza menu with 10\"/12\" prices and Icelandic+English descriptions (transcribed by eye; verified visually). Date of printed menu unknown."
-  },
-  {
-   "url": "https://wolt.com/en/isl/akureyri/restaurant/greifinn",
-   "type": "wolt",
-   "note": "hours/address only, item prices not rendered"
-  }
- ],
- "price_basis": "in_house",
- "size_small_label": null,
- "size_large_label": null,
- "contact": {
-  "phone": "460 1600",
-  "address": "Glerárgata 20, 600 Akureyri",
-  "hours_verbatim": "Wolt delivery: Mán-Fim, Sun 11:30-20:30, Fös-Lau 11:30-21:30; earlier agent: dine-in 11:30-21:00 (22:00 Fri/Sat), delivery 11:30-20:00 Mon-Thu, 11:30-17:30 Fri-Sun (own site, not re-fetched)"
- },
- "items": [
-  {
-   "name": "Döðludraumur",
-   "desc_is": "Salami, döðlur, rauðlaukur og mexikóostur. Toppað með creamy sriracha.",
-   "desc_en": "",
-   "price": 3870,
-   "price_large": 4940,
-   "sizes_all": {
-    "Lítil": 3200,
-    "Miðstærð": 3870,
-    "Stór": 4940
-   },
-   "source_url": "https://www.greifinn.is/panta/"
-  },
-  {
-   "name": "Margarita",
-   "desc_is": "",
-   "desc_en": "Tomato sauce, cheese.",
-   "price": 2150,
-   "price_large": 2360,
-   "sizes_all": {
-    "Lítil": 1720,
-    "Miðstærð": 2150,
-    "Stór": 2360
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 2670,
-    "12\"": 3170
-   },
-   "desc_is_printed": "Sósa, ostur."
-  },
-  {
-   "name": "Hawaii",
-   "desc_is": "Skinka, Ananas",
-   "desc_en": "Tomato sauce, cheese, ham, pineapple.",
-   "price": 2980,
-   "price_large": 3600,
-   "sizes_all": {
-    "Lítil": 2450,
-    "Miðstærð": 2980,
-    "Stór": 3600
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 3690,
-    "12\"": 4370
-   },
-   "desc_is_printed": "Sósa, ostur, skinka, ananas."
-  },
-  {
-   "name": "Milano",
-   "desc_is": "Nautahakk, Pepperoni, Sveppir, Laukur, Grænn pipar",
-   "desc_en": "Tomato sauce, cheese, minced beef, pepperoni, mushrooms, onions, green peppercorn.",
-   "price": 3810,
-   "price_large": 4880,
-   "sizes_all": {
-    "Lítil": 3180,
-    "Miðstærð": 3810,
-    "Stór": 4880
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4420,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, nautahakk, pepperóní, sveppir, laukur, grænn pipar."
-  },
-  {
-   "name": "Roma",
-   "desc_is": "Skinka, Pepperoni, Beikon, Piparostur, Rjómaostur, Chilli",
-   "desc_en": "Tomato sauce, cheese, ham, pepperoni, bacon, pepper cheese, cream cheese, chili.",
-   "price": 4260,
-   "price_large": 5550,
-   "sizes_all": {
-    "Lítil": 3580,
-    "Miðstærð": 4260,
-    "Stór": 5550
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, skinka, pepperóní, beikon, piparostur, rjómaostur, chilli."
-  },
-  {
-   "name": "Verona",
-   "desc_is": "Skinka, Paprika, Sveppir, Laukur",
-   "desc_en": "Tomato sauce, cheese, ham, mushrooms, onions, bell pepper.",
-   "price": 3740,
-   "price_large": 4740,
-   "sizes_all": {
-    "Lítil": 3110,
-    "Miðstærð": 3740,
-    "Stór": 4740
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, skinka, sveppir, laukur, paprika."
-  },
-  {
-   "name": "Pepperoni",
-   "desc_is": "Pepperoni, Paprika, Sveppir, Laukur",
-   "desc_en": "Tomato sauce, cheese, pepperoni, mushrooms, onions, bell pepper.",
-   "price": 3740,
-   "price_large": 4760,
-   "sizes_all": {
-    "Lítil": 3110,
-    "Miðstærð": 3740,
-    "Stór": 4760
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, pepperóní, sveppir, laukur, paprika."
-  },
-  {
-   "name": "Torino",
-   "desc_is": "BBQ Pulled Pork, Rauðlaukur, Rjómaostur",
-   "desc_en": "Tomato sauce, cheese, BBQ-marinated pulled pork, red onions, cream cheese.",
-   "price": 3340,
-   "price_large": 4190,
-   "sizes_all": {
-    "Lítil": 2780,
-    "Miðstærð": 3340,
-    "Stór": 4190
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, BBQ-marínerað rifið svínakjöt, rauðlaukur, rjómaostur."
-  },
-  {
-   "name": "Messico",
-   "desc_is": "Pepperoni, Laukur, Jalapeno, Mexíkóostur",
-   "desc_en": "Tomato sauce, cheese, pepperoni, onions, jalapeño, Mexican cheese.",
-   "price": 3740,
-   "price_large": 4760,
-   "sizes_all": {
-    "Lítil": 3110,
-    "Miðstærð": 3740,
-    "Stór": 4760
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4260,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, pepperóní, laukur, jalapeño, Mexíkóostur."
-  },
-  {
-   "name": "Pepperoni Festa",
-   "desc_is": "2 x Pepperoni, Auka Ostur, Chilli",
-   "desc_en": "Tomato sauce, cheese, extra pepperoni, chili, extra cheese.",
-   "price": 3430,
-   "price_large": 4310,
-   "sizes_all": {
-    "Lítil": 2850,
-    "Miðstærð": 3430,
-    "Stór": 4310
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4560,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, mikið af pepperóní, chilli, aukaostur."
-  },
-  {
-   "name": "Formaggio Festa",
-   "desc_is": "Piparostur, Parmesan, Gráðaostur. Rifsberjagel fylgir með.",
-   "desc_en": "Tomato sauce, maribo, mozzarella, pepper cheese, parmesan, blue cheese. Served with redcurrant jam.",
-   "price": 3600,
-   "price_large": 4530,
-   "sizes_all": {
-    "Lítil": 3020,
-    "Miðstærð": 3600,
-    "Stór": 4530
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4260,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, maribo, mozzarella, piparostur, parmesan, gráðaostur. Rifsberjasulta fylgir."
-  },
-  {
-   "name": "La gondola",
-   "desc_is": "Skinka, Pepperoni, Ananas",
-   "desc_en": "Tomato sauce, cheese, ham, pepperoni, pineapple.",
-   "price": 3430,
-   "price_large": 4290,
-   "sizes_all": {
-    "Lítil": 2850,
-    "Miðstærð": 3430,
-    "Stór": 4290
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4260,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, skinka, pepperóní, ananas."
-  },
-  {
-   "name": "Tuttobene",
-   "desc_is": "Skinka, Pepperoni, Sveppir",
-   "desc_en": "Tomato sauce, cheese, ham, pepperoni, mushrooms.",
-   "price": 3430,
-   "price_large": 4290,
-   "sizes_all": {
-    "Lítil": 2850,
-    "Miðstærð": 3430,
-    "Stór": 4290
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4260,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, skinka, pepperóní, sveppir."
-  },
-  {
-   "name": "Moderno",
-   "desc_is": "Nautahakk, Pepperoni, Beikon, Piparostur, BBQ Top",
-   "desc_en": "Tomato sauce, cheese, minced beef, pepperoni, bacon, pepper cheese. Topped with BBQ sauce.",
-   "price": 4010,
-   "price_large": 5180,
-   "sizes_all": {
-    "Lítil": 3340,
-    "Miðstærð": 4010,
-    "Stór": 5180
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, nautahakk, pepperóní, beikon, piparostur. Toppað með BBQ-sósu."
-  },
-  {
-   "name": "Stallone",
-   "desc_is": "Pepperoni, Nautahakk, Skinka, Sveppir, Laukur, Ananas, Auka Ostur",
-   "desc_en": "Tomato sauce, cheese, extra cheese, pepperoni, minced beef, ham, onions, mushrooms, pineapple.",
-   "price": 5020,
-   "price_large": 6690,
-   "sizes_all": {
-    "Lítil": 4240,
-    "Miðstærð": 5020,
-    "Stór": 6690
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, aukaostur, pepperóní, nautahakk, skinka, laukur, sveppir, ananas."
-  },
-  {
-   "name": "Mare",
-   "desc_is": "Hvítlaukur, Risarækjur, Rauðlaukur, Rjómaostur, Chilli",
-   "desc_en": "Tomato sauce, cheese, garlic, king prawns, chili, red onions, cream cheese.",
-   "price": 3980,
-   "price_large": 5050,
-   "sizes_all": {
-    "Lítil": 3240,
-    "Miðstærð": 3980,
-    "Stór": 5050
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, hvítlaukur, risarækjur, chilli, rauðlaukur, rjómaostur."
-  },
-  {
-   "name": "Pizza Nautabanans",
-   "desc_is": "Roast Beef, Franskar, Svartur Pipar, Béarnaise. Béarnaise fylgir með.",
-   "desc_en": "Béarnaise sauce, cheese, thinly sliced beef tenderloin, fries, freshly ground black pepper. Served with béarnaise sauce.",
-   "price": 4150,
-   "price_large": 4840,
-   "sizes_all": {
-    "Lítil": 3560,
-    "Miðstærð": 4150,
-    "Stór": 4840
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Béarnaise-sósa, ostur, þunnt sneidd nautalund, franskar, nýmalaður svartur pipar. Béarnaise-sósa fylgir."
-  },
-  {
-   "name": "Saltfiskpizza",
-   "desc_is": "Ólífur, Tómatsneiðar, Laukur, Hvítlaukur, Saltfiskur. Sweet chilli sósa fylgir með.",
-   "desc_en": "Tomato sauce, cheese, olives, tomatoes, onions, garlic, Icelandic salted cod. Served with sweet chili sauce.",
-   "price": 4680,
-   "price_large": 6080,
-   "sizes_all": {
-    "Lítil": 3940,
-    "Miðstærð": 4680,
-    "Stór": 6080
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, ólífur, tómatar, laukur, hvítlaukur, eyfirskur saltfiskur. Sæt chillisósa fylgir."
-  },
-  {
-   "name": "Vegetariana",
-   "desc_is": "Rauðlaukur, Paprika, Ananas, Döðlur, Rjómaostur",
-   "desc_en": "Tomato sauce, cheese, red onions, bell pepper, pineapple, dates, cream cheese.",
-   "price": 4050,
-   "price_large": 5210,
-   "sizes_all": {
-    "Lítil": 3370,
-    "Miðstærð": 4050,
-    "Stór": 5210
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "desc_is_printed": "Sósa, ostur, rauðlaukur, paprika, ananas, döðlur, rjómaostur."
-  },
-  {
-   "name": "Veganíta",
-   "desc_is": "Sósa og Vegan ostur",
-   "desc_en": "Tomato sauce, vegan cheese.",
-   "price": 2470,
-   "price_large": 2870,
-   "sizes_all": {
-    "Lítil": 2000,
-    "Miðstærð": 2470,
-    "Stór": 2870
-   },
-   "source_url": "https://www.greifinn.is/panta/",
-   "printed_menu_10in_12in": {
-    "10\"": 2930,
-    "12\"": 3520
-   },
-   "desc_is_printed": "Sósa, veganostur."
-  },
-  {
-   "name": "Sterkur Bangsímon",
-   "desc_is": "Stórt Pepperoni, Jalapeno, Rjómaostur, Svartur Pipar og toppað með hunangi.",
-   "desc_en": "",
-   "price": 3470,
-   "price_large": 4370,
-   "sizes_all": {
-    "Lítil": 2870,
-    "Miðstærð": 3470,
-    "Stór": 4370
-   },
-   "source_url": "https://www.greifinn.is/panta/"
-  },
-  {
-   "name": "Maverick",
-   "desc_is": "BBQ Sósa, Pepperoni, Beikon, Piparostur, Rjómaostur, Mexíkó ostur og Chilli flögur",
-   "desc_en": "",
-   "price": 4560,
-   "price_large": 5820,
-   "sizes_all": {
-    "Lítil": 3880,
-    "Miðstærð": 4560,
-    "Stór": 5820
-   },
-   "source_url": "https://www.greifinn.is/panta/"
-  },
-  {
-   "name": "Hvítlauks Diavolo",
-   "desc_is": "Hvítlauksbrauð með pepperoni, piparosti og toppað með creamy sriracha",
-   "desc_en": "",
-   "price": 3480,
-   "price_large": 4170,
-   "sizes_all": {
-    "Lítil": 2910,
-    "Miðstærð": 3480,
-    "Stór": 4170
-   },
-   "source_url": "https://www.greifinn.is/panta/"
-  },
-  {
-   "name": "Íslenski Draumurinn",
-   "desc_is": "Pepperoni, döðlur og rjómaostur",
-   "desc_en": "",
-   "price": 3360,
-   "price_large": 4190,
-   "sizes_all": {
-    "Lítil": 2780,
-    "Miðstærð": 3360,
-    "Stór": 4190
-   },
-   "source_url": "https://www.greifinn.is/panta/"
-  },
-  {
-   "name": "Parma",
-   "desc_is": "Sósa, ostur, hvítlaukur, oregano, hráskinka, klettasalat, ferskur parmesan.",
-   "desc_en": "Tomato sauce, cheese, garlic, oregano, prosciutto, rocket salad, fresh parmesan.",
-   "price": 4990,
-   "price_large": null,
-   "sizes_all": {
-    "10\"": 4690,
-    "12\"": 4990
-   },
-   "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans",
-   "note": "only on printed menu image, not in order page"
-  }
- ],
- "not_found": "DOUBTFUL PRICES: the live order page (own_order_page) and the printed menu image disagree substantially, e.g. Margarita order page Lítil 1720 / Miðstærð 2150 / Stór 2360 vs printed 10\" 2670 / 12\" 3170; Hawaii 2450/2980/3600 vs 3690/4370. The order page has no inch labels; the printed menu says 10\"/12\" while Wolt deal text (earlier agent snippet) said 12\" and 15\". In the JSON, price = order-page Miðstærð, price_large = order-page Stór, sizes_all = order-page prices; printed 10\"/12\" prices are in printed_menu_10in_12in. Printed-only: Parma (printed 4690/4990, not on order page). Order-page-only items: Döðludraumur, Sterkur Bangsímon, Maverick, Hvítlauks Diavolo (garlic-bread base with pepperoni; INCLUDED but borderline, verify), Íslenski Draumurinn, and Veganíta. Excluded: Þín pizza / Þitt ostabrauð / Þitt hvítlauksbrauð (custom), calzones (Hálfmánar 4990/4990/3510 printed), pizza deals. Printed menu also lists Hvítlaukspizza (garlic bread) 2950/3740 and Humar hvítlauksbrauð 4690/4990 (excluded). Vegan cheese +250/+330 (10\"/12\"), pan pizza +490.",
- "diff_vs_current": "mock has 5 items; verified 25. Price changes: Hawaii: 3290->2980; Margarita: 2990->2150. Not on source (mock-only): Greifinn (4290); Eldkeilir (4290); Skarðshlíð (4390). New on source: Döðludraumur, Milano, Roma, Verona, Pepperoni, Torino, Messico, Pepperoni Festa, Formaggio Festa, La gondola, Tuttobene, Moderno, Stallone, Mare, Pizza Nautabanans, Saltfiskpizza, Vegetariana, Veganíta, Sterkur Bangsímon, Maverick, Hvítlauks Diavolo, Íslenski Draumurinn, Parma.",
- "sizes_note": "Order page: Lítil/Miðstærð/Stór (inches unknown). Printed: 10\"/12\"."
+  "not_found": "Pöntunarsíðan (greifinn.is/panta) er með öðruvísi pizzulista og stærðir en matseðill staðarins; matseðillinn á greifinn.is var valinn að ósk eiganda vefsins 22. okt. 2026.",
+  "diff_vs_current": "mock has 5 items; verified 25. Price changes: Hawaii: 3290->2980; Margarita: 2990->2150. Not on source (mock-only): Greifinn (4290); Eldkeilir (4290); Skarðshlíð (4390). New on source: Döðludraumur, Milano, Roma, Verona, Pepperoni, Torino, Messico, Pepperoni Festa, Formaggio Festa, La gondola, Tuttobene, Moderno, Stallone, Mare, Pizza Nautabanans, Saltfiskpizza, Vegetariana, Veganíta, Sterkur Bangsímon, Maverick, Hvítlauks Diavolo, Íslenski Draumurinn, Parma.",
+  "sizes_note": "Order page: Lítil/Miðstærð/Stór (inches unknown). Printed: 10\"/12\".",
+  "order_page_items_not_used": [
+    {
+      "name": "Döðludraumur",
+      "desc_is": "Salami, döðlur, rauðlaukur og mexikóostur. Toppað með creamy sriracha.",
+      "desc_en": "",
+      "price": 3870,
+      "price_large": 4940,
+      "sizes_all": {
+        "Lítil": 3200,
+        "Miðstærð": 3870,
+        "Stór": 4940
+      },
+      "source_url": "https://www.greifinn.is/panta/"
+    },
+    {
+      "name": "Margarita",
+      "desc_is": "",
+      "desc_en": "Tomato sauce, cheese.",
+      "price": 2150,
+      "price_large": 2360,
+      "sizes_all": {
+        "Lítil": 1720,
+        "Miðstærð": 2150,
+        "Stór": 2360
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 2670,
+        "12\"": 3170
+      },
+      "desc_is_printed": "Sósa, ostur."
+    },
+    {
+      "name": "Hawaii",
+      "desc_is": "Skinka, Ananas",
+      "desc_en": "Tomato sauce, cheese, ham, pineapple.",
+      "price": 2980,
+      "price_large": 3600,
+      "sizes_all": {
+        "Lítil": 2450,
+        "Miðstærð": 2980,
+        "Stór": 3600
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 3690,
+        "12\"": 4370
+      },
+      "desc_is_printed": "Sósa, ostur, skinka, ananas."
+    },
+    {
+      "name": "Milano",
+      "desc_is": "Nautahakk, Pepperoni, Sveppir, Laukur, Grænn pipar",
+      "desc_en": "Tomato sauce, cheese, minced beef, pepperoni, mushrooms, onions, green peppercorn.",
+      "price": 3810,
+      "price_large": 4880,
+      "sizes_all": {
+        "Lítil": 3180,
+        "Miðstærð": 3810,
+        "Stór": 4880
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4420,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, nautahakk, pepperóní, sveppir, laukur, grænn pipar."
+    },
+    {
+      "name": "Roma",
+      "desc_is": "Skinka, Pepperoni, Beikon, Piparostur, Rjómaostur, Chilli",
+      "desc_en": "Tomato sauce, cheese, ham, pepperoni, bacon, pepper cheese, cream cheese, chili.",
+      "price": 4260,
+      "price_large": 5550,
+      "sizes_all": {
+        "Lítil": 3580,
+        "Miðstærð": 4260,
+        "Stór": 5550
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, skinka, pepperóní, beikon, piparostur, rjómaostur, chilli."
+    },
+    {
+      "name": "Verona",
+      "desc_is": "Skinka, Paprika, Sveppir, Laukur",
+      "desc_en": "Tomato sauce, cheese, ham, mushrooms, onions, bell pepper.",
+      "price": 3740,
+      "price_large": 4740,
+      "sizes_all": {
+        "Lítil": 3110,
+        "Miðstærð": 3740,
+        "Stór": 4740
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, skinka, sveppir, laukur, paprika."
+    },
+    {
+      "name": "Pepperoni",
+      "desc_is": "Pepperoni, Paprika, Sveppir, Laukur",
+      "desc_en": "Tomato sauce, cheese, pepperoni, mushrooms, onions, bell pepper.",
+      "price": 3740,
+      "price_large": 4760,
+      "sizes_all": {
+        "Lítil": 3110,
+        "Miðstærð": 3740,
+        "Stór": 4760
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, pepperóní, sveppir, laukur, paprika."
+    },
+    {
+      "name": "Torino",
+      "desc_is": "BBQ Pulled Pork, Rauðlaukur, Rjómaostur",
+      "desc_en": "Tomato sauce, cheese, BBQ-marinated pulled pork, red onions, cream cheese.",
+      "price": 3340,
+      "price_large": 4190,
+      "sizes_all": {
+        "Lítil": 2780,
+        "Miðstærð": 3340,
+        "Stór": 4190
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, BBQ-marínerað rifið svínakjöt, rauðlaukur, rjómaostur."
+    },
+    {
+      "name": "Messico",
+      "desc_is": "Pepperoni, Laukur, Jalapeno, Mexíkóostur",
+      "desc_en": "Tomato sauce, cheese, pepperoni, onions, jalapeño, Mexican cheese.",
+      "price": 3740,
+      "price_large": 4760,
+      "sizes_all": {
+        "Lítil": 3110,
+        "Miðstærð": 3740,
+        "Stór": 4760
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4260,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, pepperóní, laukur, jalapeño, Mexíkóostur."
+    },
+    {
+      "name": "Pepperoni Festa",
+      "desc_is": "2 x Pepperoni, Auka Ostur, Chilli",
+      "desc_en": "Tomato sauce, cheese, extra pepperoni, chili, extra cheese.",
+      "price": 3430,
+      "price_large": 4310,
+      "sizes_all": {
+        "Lítil": 2850,
+        "Miðstærð": 3430,
+        "Stór": 4310
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4560,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, mikið af pepperóní, chilli, aukaostur."
+    },
+    {
+      "name": "Formaggio Festa",
+      "desc_is": "Piparostur, Parmesan, Gráðaostur. Rifsberjagel fylgir með.",
+      "desc_en": "Tomato sauce, maribo, mozzarella, pepper cheese, parmesan, blue cheese. Served with redcurrant jam.",
+      "price": 3600,
+      "price_large": 4530,
+      "sizes_all": {
+        "Lítil": 3020,
+        "Miðstærð": 3600,
+        "Stór": 4530
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4260,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, maribo, mozzarella, piparostur, parmesan, gráðaostur. Rifsberjasulta fylgir."
+    },
+    {
+      "name": "La gondola",
+      "desc_is": "Skinka, Pepperoni, Ananas",
+      "desc_en": "Tomato sauce, cheese, ham, pepperoni, pineapple.",
+      "price": 3430,
+      "price_large": 4290,
+      "sizes_all": {
+        "Lítil": 2850,
+        "Miðstærð": 3430,
+        "Stór": 4290
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4260,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, skinka, pepperóní, ananas."
+    },
+    {
+      "name": "Tuttobene",
+      "desc_is": "Skinka, Pepperoni, Sveppir",
+      "desc_en": "Tomato sauce, cheese, ham, pepperoni, mushrooms.",
+      "price": 3430,
+      "price_large": 4290,
+      "sizes_all": {
+        "Lítil": 2850,
+        "Miðstærð": 3430,
+        "Stór": 4290
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4260,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, skinka, pepperóní, sveppir."
+    },
+    {
+      "name": "Moderno",
+      "desc_is": "Nautahakk, Pepperoni, Beikon, Piparostur, BBQ Top",
+      "desc_en": "Tomato sauce, cheese, minced beef, pepperoni, bacon, pepper cheese. Topped with BBQ sauce.",
+      "price": 4010,
+      "price_large": 5180,
+      "sizes_all": {
+        "Lítil": 3340,
+        "Miðstærð": 4010,
+        "Stór": 5180
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, nautahakk, pepperóní, beikon, piparostur. Toppað með BBQ-sósu."
+    },
+    {
+      "name": "Stallone",
+      "desc_is": "Pepperoni, Nautahakk, Skinka, Sveppir, Laukur, Ananas, Auka Ostur",
+      "desc_en": "Tomato sauce, cheese, extra cheese, pepperoni, minced beef, ham, onions, mushrooms, pineapple.",
+      "price": 5020,
+      "price_large": 6690,
+      "sizes_all": {
+        "Lítil": 4240,
+        "Miðstærð": 5020,
+        "Stór": 6690
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, aukaostur, pepperóní, nautahakk, skinka, laukur, sveppir, ananas."
+    },
+    {
+      "name": "Mare",
+      "desc_is": "Hvítlaukur, Risarækjur, Rauðlaukur, Rjómaostur, Chilli",
+      "desc_en": "Tomato sauce, cheese, garlic, king prawns, chili, red onions, cream cheese.",
+      "price": 3980,
+      "price_large": 5050,
+      "sizes_all": {
+        "Lítil": 3240,
+        "Miðstærð": 3980,
+        "Stór": 5050
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, hvítlaukur, risarækjur, chilli, rauðlaukur, rjómaostur."
+    },
+    {
+      "name": "Pizza Nautabanans",
+      "desc_is": "Roast Beef, Franskar, Svartur Pipar, Béarnaise. Béarnaise fylgir með.",
+      "desc_en": "Béarnaise sauce, cheese, thinly sliced beef tenderloin, fries, freshly ground black pepper. Served with béarnaise sauce.",
+      "price": 4150,
+      "price_large": 4840,
+      "sizes_all": {
+        "Lítil": 3560,
+        "Miðstærð": 4150,
+        "Stór": 4840
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Béarnaise-sósa, ostur, þunnt sneidd nautalund, franskar, nýmalaður svartur pipar. Béarnaise-sósa fylgir."
+    },
+    {
+      "name": "Saltfiskpizza",
+      "desc_is": "Ólífur, Tómatsneiðar, Laukur, Hvítlaukur, Saltfiskur. Sweet chilli sósa fylgir með.",
+      "desc_en": "Tomato sauce, cheese, olives, tomatoes, onions, garlic, Icelandic salted cod. Served with sweet chili sauce.",
+      "price": 4680,
+      "price_large": 6080,
+      "sizes_all": {
+        "Lítil": 3940,
+        "Miðstærð": 4680,
+        "Stór": 6080
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, ólífur, tómatar, laukur, hvítlaukur, eyfirskur saltfiskur. Sæt chillisósa fylgir."
+    },
+    {
+      "name": "Vegetariana",
+      "desc_is": "Rauðlaukur, Paprika, Ananas, Döðlur, Rjómaostur",
+      "desc_en": "Tomato sauce, cheese, red onions, bell pepper, pineapple, dates, cream cheese.",
+      "price": 4050,
+      "price_large": 5210,
+      "sizes_all": {
+        "Lítil": 3370,
+        "Miðstærð": 4050,
+        "Stór": 5210
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "desc_is_printed": "Sósa, ostur, rauðlaukur, paprika, ananas, döðlur, rjómaostur."
+    },
+    {
+      "name": "Veganíta",
+      "desc_is": "Sósa og Vegan ostur",
+      "desc_en": "Tomato sauce, vegan cheese.",
+      "price": 2470,
+      "price_large": 2870,
+      "sizes_all": {
+        "Lítil": 2000,
+        "Miðstærð": 2470,
+        "Stór": 2870
+      },
+      "source_url": "https://www.greifinn.is/panta/",
+      "printed_menu_10in_12in": {
+        "10\"": 2930,
+        "12\"": 3520
+      },
+      "desc_is_printed": "Sósa, veganostur."
+    },
+    {
+      "name": "Sterkur Bangsímon",
+      "desc_is": "Stórt Pepperoni, Jalapeno, Rjómaostur, Svartur Pipar og toppað með hunangi.",
+      "desc_en": "",
+      "price": 3470,
+      "price_large": 4370,
+      "sizes_all": {
+        "Lítil": 2870,
+        "Miðstærð": 3470,
+        "Stór": 4370
+      },
+      "source_url": "https://www.greifinn.is/panta/"
+    },
+    {
+      "name": "Maverick",
+      "desc_is": "BBQ Sósa, Pepperoni, Beikon, Piparostur, Rjómaostur, Mexíkó ostur og Chilli flögur",
+      "desc_en": "",
+      "price": 4560,
+      "price_large": 5820,
+      "sizes_all": {
+        "Lítil": 3880,
+        "Miðstærð": 4560,
+        "Stór": 5820
+      },
+      "source_url": "https://www.greifinn.is/panta/"
+    },
+    {
+      "name": "Hvítlauks Diavolo",
+      "desc_is": "Hvítlauksbrauð með pepperoni, piparosti og toppað með creamy sriracha",
+      "desc_en": "",
+      "price": 3480,
+      "price_large": 4170,
+      "sizes_all": {
+        "Lítil": 2910,
+        "Miðstærð": 3480,
+        "Stór": 4170
+      },
+      "source_url": "https://www.greifinn.is/panta/"
+    },
+    {
+      "name": "Íslenski Draumurinn",
+      "desc_is": "Pepperoni, döðlur og rjómaostur",
+      "desc_en": "",
+      "price": 3360,
+      "price_large": 4190,
+      "sizes_all": {
+        "Lítil": 2780,
+        "Miðstærð": 3360,
+        "Stór": 4190
+      },
+      "source_url": "https://www.greifinn.is/panta/"
+    },
+    {
+      "name": "Parma",
+      "desc_is": "Sósa, ostur, hvítlaukur, oregano, hráskinka, klettasalat, ferskur parmesan.",
+      "desc_en": "Tomato sauce, cheese, garlic, oregano, prosciutto, rocket salad, fresh parmesan.",
+      "price": 4990,
+      "price_large": null,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans",
+      "note": "only on printed menu image, not in order page"
+    }
+  ],
+  "items": [
+    {
+      "name": "MARGARITA",
+      "desc_is": "Sósa, ostur.",
+      "desc_en": "Tomato sauce, cheese.",
+      "price": 2670,
+      "price_large": 3170,
+      "sizes_all": {
+        "10\"": 2670,
+        "12\"": 3170
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans",
+      "name_en": "MARGHERITA"
+    },
+    {
+      "name": "HAWAII",
+      "desc_is": "Sósa, ostur, skinka, ananas.",
+      "desc_en": "Tomato sauce, cheese, ham, pineapple.",
+      "price": 3690,
+      "price_large": 4370,
+      "sizes_all": {
+        "10\"": 3690,
+        "12\"": 4370
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "MILANO",
+      "desc_is": "Sósa, ostur, nautahakk, pepperóní, sveppir, laukur, grænn pipar.",
+      "desc_en": "Tomato sauce, cheese, minced beef, pepperoni, mushrooms, onions, green peppercorn.",
+      "price": 4420,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4420,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "ROMA",
+      "desc_is": "Sósa, ostur, skinka, pepperóní, beikon, piparostur, rjómaostur, chilli.",
+      "desc_en": "Tomato sauce, cheese, ham, pepperoni, bacon, pepper cheese, cream cheese, chili.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "VERONA",
+      "desc_is": "Sósa, ostur, skinka, sveppir, laukur, paprika.",
+      "desc_en": "Tomato sauce, cheese, ham, mushrooms, onions, bell pepper.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "PEPPERONI",
+      "desc_is": "Sósa, ostur, pepperóní, sveppir, laukur, paprika.",
+      "desc_en": "Tomato sauce, cheese, pepperoni, mushrooms, onions, bell pepper.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "TORINO",
+      "desc_is": "Sósa, ostur, BBQ-marínerað rifið svínakjöt, rauðlaukur, rjómaostur.",
+      "desc_en": "Tomato sauce, cheese, BBQ-marinated pulled pork, red onions, cream cheese.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "MEXICO",
+      "desc_is": "Sósa, ostur, pepperóní, laukur, jalapeño, Mexíkóostur.",
+      "desc_en": "Tomato sauce, cheese, pepperoni, onions, jalapeño, Mexican cheese.",
+      "price": 4260,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4260,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "PEPPERONI FESTA",
+      "desc_is": "Sósa, ostur, mikið af pepperóní, chilli, aukaostur.",
+      "desc_en": "Tomato sauce, cheese, extra pepperoni, chili, extra cheese.",
+      "price": 4560,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4560,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "FORMAGGIO FESTA",
+      "desc_is": "Sósa, maribo, mozzarella, piparostur, parmesan, gráðaostur. Rifsberjasulta fylgir.",
+      "desc_en": "Tomato sauce, maribo, mozzarella, pepper cheese, parmesan, blue cheese. Served with redcurrant jam.",
+      "price": 4260,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4260,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "LA GONDOLA",
+      "desc_is": "Sósa, ostur, skinka, pepperóní, ananas.",
+      "desc_en": "Tomato sauce, cheese, ham, pepperoni, pineapple.",
+      "price": 4260,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4260,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "TUTTOBENE",
+      "desc_is": "Sósa, ostur, skinka, pepperóní, sveppir.",
+      "desc_en": "Tomato sauce, cheese, ham, pepperoni, mushrooms.",
+      "price": 4260,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4260,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "MODERNO",
+      "desc_is": "Sósa, ostur, nautahakk, pepperóní, beikon, piparostur. Toppað með BBQ-sósu.",
+      "desc_en": "Tomato sauce, cheese, minced beef, pepperoni, bacon, pepper cheese. Topped with BBQ sauce.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "STALLONE",
+      "desc_is": "Sósa, ostur, aukaostur, pepperóní, nautahakk, skinka, laukur, sveppir, ananas.",
+      "desc_en": "Tomato sauce, cheese, extra cheese, pepperoni, minced beef, ham, onions, mushrooms, pineapple.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "MARE",
+      "desc_is": "Sósa, ostur, hvítlaukur, risarækjur, chilli, rauðlaukur, rjómaostur.",
+      "desc_en": "Tomato sauce, cheese, garlic, king prawns, chili, red onions, cream cheese.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "PIZZA NAUTABANANS",
+      "desc_is": "Béarnaise-sósa, ostur, þunnt sneidd nautalund, franskar, nýmalaður svartur pipar. Béarnaise-sósa fylgir.",
+      "desc_en": "Béarnaise sauce, cheese, thinly sliced beef tenderloin, fries, freshly ground black pepper. Served with béarnaise sauce.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans",
+      "name_en": "BEEF BÉARNAISE PIZZA"
+    },
+    {
+      "name": "SALTFISKPIZZA",
+      "desc_is": "Sósa, ostur, ólífur, tómatar, laukur, hvítlaukur, eyfirskur saltfiskur. Sæt chillisósa fylgir.",
+      "desc_en": "Tomato sauce, cheese, olives, tomatoes, onions, garlic, Icelandic salted cod. Served with sweet chili sauce.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans",
+      "name_en": "SALTED COD PIZZA"
+    },
+    {
+      "name": "PARMA",
+      "desc_is": "Sósa, ostur, hvítlaukur, oregano, hráskinka, klettasalat, ferskur parmesan.",
+      "desc_en": "Tomato sauce, cheese, garlic, oregano, prosciutto, rocket salad, fresh parmesan.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "VEGETARIANA",
+      "desc_is": "Sósa, ostur, rauðlaukur, paprika, ananas, döðlur, rjómaostur.",
+      "desc_en": "Tomato sauce, cheese, red onions, bell pepper, pineapple, dates, cream cheese.",
+      "price": 4690,
+      "price_large": 4990,
+      "sizes_all": {
+        "10\"": 4690,
+        "12\"": 4990
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "VEGANITA",
+      "desc_is": "Sósa, veganostur.",
+      "desc_en": "Tomato sauce, vegan cheese.",
+      "price": 2930,
+      "price_large": 3520,
+      "sizes_all": {
+        "10\"": 2930,
+        "12\"": 3520
+      },
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans"
+    },
+    {
+      "name": "NAPOLI (hálfmáni)",
+      "desc_is": "Sósa, ostur, skinka, pepperóní, ananas.",
+      "desc_en": "Tomato sauce, cheese, ham, pepperoni, pineapple.",
+      "price": 4990,
+      "price_large": null,
+      "sizes_all": {},
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans",
+      "name_en": "NAPOLI (calzone)"
+    },
+    {
+      "name": "PLAZA (hálfmáni)",
+      "desc_is": "Sósa, ostur, skinka, sveppir, gráðaostur.",
+      "desc_en": "Tomato sauce, cheese, ham, mushrooms, blue cheese.",
+      "price": 4990,
+      "price_large": null,
+      "sizes_all": {},
+      "source_url": "https://www.greifinn.is/is/matsedlar-1/matsedill-greifans",
+      "name_en": "PLAZA (calzone)"
+    }
+  ]
 }
