@@ -12,6 +12,17 @@ export function safeJsonLd(data: unknown): string {
   return JSON.stringify(data).replace(/</g, '\\u003c');
 }
 
+// Route params arrive percent-encoded (e.g. `karamellusoð...` as `karamelluso%C3%B0...`),
+// so decode before matching against stored slugs. Falls back to the raw value on
+// malformed sequences instead of throwing a 500.
+export function decodeSlug(slug: string): string {
+  try {
+    return decodeURIComponent(slug);
+  } catch {
+    return slug;
+  }
+}
+
 export function localeAlternates(locale: string, path: string = '') {
   return {
     canonical: `${SITE_URL}/${locale}${path}`,
