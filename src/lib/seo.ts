@@ -35,7 +35,7 @@ export function localeAlternates(locale: string, path: string = '') {
 }
 
 export function recipeJsonLd(recipe: Recipe, locale: string) {
-  const baseUrl = `${SITE_URL}/${locale}/uppskriftir/${recipe.slug || ''}`;
+  const baseUrl = `${SITE_URL}/${locale}/uppskriftir/${encodeURIComponent(recipe.slug || '')}`;
   const defaultImage = `${SITE_URL}/images/dough-frontpage.jpg`;
   const images = (recipe.image_urls && recipe.image_urls.length > 0) ? recipe.image_urls : [defaultImage];
   
@@ -84,8 +84,8 @@ export function restaurantJsonLd(restaurant: Restaurant, locale: string, menuIte
     '@type': 'Restaurant',
     name: restaurant.name,
     image: restaurant.image_urls,
-    '@id': `${SITE_URL}/${locale}/stadir/${restaurant.slug}`,
-    url: `${SITE_URL}/${locale}/stadir/${restaurant.slug}`,
+    '@id': `${SITE_URL}/${locale}/stadir/${encodeURIComponent(restaurant.slug)}`,
+    url: `${SITE_URL}/${locale}/stadir/${encodeURIComponent(restaurant.slug)}`,
     telephone: restaurant.phone,
     address: {
       '@type': 'PostalAddress',
