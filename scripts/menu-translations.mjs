@@ -59,9 +59,9 @@ export const IS_EN = {
   'gráðostur': 'blue cheese',
   'gráðaostur': 'blue cheese',
   'gráðosti': 'blue cheese',
-  'mexíkóostur': 'Mexican cheese',
-  'mexíkó ostur': 'Mexican cheese',
-  'mexikóostur': 'Mexican cheese',
+  'mexíkóostur': 'Mexíkóostur (Icelandic spiced cheese)',
+  'mexíkó ostur': 'Mexíkóostur (Icelandic spiced cheese)',
+  'mexikóostur': 'Mexíkóostur (Icelandic spiced cheese)',
   'cheddar': 'cheddar',
   'cheddar ostur': 'cheddar cheese',
   'camembert': 'camembert',
@@ -200,7 +200,7 @@ export const IS_EN = {
   'grillaður kúrbítur': 'grilled zucchini',
   'eggaldin': 'eggplant',
   'spergilkál': 'broccoli',
-  'aspas blanda': 'asparagus mix',
+  'aspas blanda': 'asparagus cream spread',
   'maís': 'corn',
   'gular baunir': 'sweetcorn',
   'klettasalat': 'arugula',
@@ -396,6 +396,7 @@ export const IS_EN = {
 // Whole-description overrides. Keys are "<slug>|<name exactly as in the source JSON>".
 export const DESC_OVERRIDES = {
   // --- Rossopomodoro: source has English only; Icelandic is translated.
+  'reykjavik-pizzeria|35. Barnapizza / Pizza for children': { desc_en: 'Pizza with 2 toppings.' },
   'rossopomodoro|Calzone': { desc_is: 'Calzone með tómötum, mozzarella, sveppum og skinku' },
   'rossopomodoro|Capricciosa': { desc_is: 'Tómatar, mozzarella, skinka, sveppir, ólífur og þistilhjörtu.' },
   'rossopomodoro|Corbarella': { desc_is: 'Mozzarella, rjómi, skinka, sveppir og svartur pipar.' },

@@ -6,7 +6,7 @@
 // Reads    <json-dir>/<restaurant-slug>.json   (one file per restaurant in mockRestaurants)
 // Writes   src/lib/menuData.ts                 (mockMenuItems, generated - do not edit by hand)
 //          src/lib/mockData.ts                 (only the menu_* source fields on each restaurant)
-//          <json-dir>/../heimildaskra.csv      (source register, UTF-8 with BOM)
+//          <json-dir>/../heimildaskra.csv      (source register, UTF-8 with BOM, ';' separated for Icelandic Excel)
 //          seo/matsedlar/retired-ids.json      (ids that were dropped once and must never be reused)
 //
 // --prev <file>  previous menu items, used to keep item ids stable (reviews are keyed by id).
@@ -57,6 +57,7 @@ const NAME_FIXES = {
   'kaffi-laugalaekur|LitlaGulaHænan': { name_is: 'Litla Gula Hænan' }, // missing spaces (PDF text artifact)
   'kaffi-laugalaekur|Barnabaka (children\'s menu, 12 and under)': { name_is: 'Barnabaka', name_en: 'Barnabaka' },
   'glosteinn|10"Glómagnaða': { name_is: '10" Glómagnaða' }, // missing space
+  'reykjavik-pizzeria|35. Barnapizza / Pizza for children': { name_is: '35. Barnapizza', name_en: '35. Pizza for children' },
   'ishusid-pizzeria-hofn|Barnabaka | Kids pizza': { name_is: 'Barnabaka', name_en: 'Kids pizza' },
   'hornid|Hvítlaukspizza / Garlic pizza (Pizza con aglio e formaggio)': {
     name_is: 'Hvítlaukspizza (Pizza con aglio e formaggio)',
@@ -64,16 +65,29 @@ const NAME_FIXES = {
   },
 };
 
-// First-round id carry-overs where the source renamed an item but the diff in the JSON says it is the same pizza.
-// Keyed "<slug>|<source name>" -> previous id. Ignored when that id is not in the previous data.
-const ID_ALIASES = {
+// Explicit id assignments, checked BEFORE name matching. Keyed "<slug>|<source name>" -> previous id.
+// Use them when a source renamed an item (the JSON diff says it is the same pizza) or when name matching would
+// move an id onto a different pizza. The build throws when a key no longer matches an item or the id is unknown,
+// so remove entries that go stale.
+const ID_OVERRIDES = {
   'kaffi-laugalaekur|Ostapizza': 'kl-4', // was "Ostabaka"
   'kaffi-laugalaekur|Chorizohálfmáni': 'kl-8', // was "Hálfmáni"
   'bakabaka|Scandinavia': 'bb-8', // was "Scandinava"
   'napoli-pizza-rvk|Ortolana / vegetarian': 'np-8', // was "Ortolana/Vegan"
   'napoli-pizza-rvk|Aglio e olio / Garlic': 'np-10', // was "Aglio e Olio"
   'eldofninn|S - SALAT PIZZA - FERSK': 'el-7', // was "S - Salat Pizza"
+  'italiano-kopavogur|Margherita eða Hvítlauks pizza': 'ik-1', // old Margherita, now sold together with the garlic pizza
+  // Popolare: "MARINARA 2.0" is the old "Napoli Popolare" (same ingredients and price), not the old "Marinara"
+  'pizza-popolare|MARINARA': 'pp-7',
+  'pizza-popolare|MARINARA 2.0': 'pp-6',
+  'pizza-popolare|RAGÙ DI PARMIGIANA DI MELANZANE': 'pp-10', // was "Parmigiana"
+  // Rossopomodoro: the old "Pizza del Piazzaiolo" text is today's "Pizzaiolo"; the old "Pizzaiolo" text is today's "Hottie"
+  'rossopomodoro|Pizzaiolo': 'rs-9',
+  'rossopomodoro|Hottie': 'rs-10',
 };
+
+// Restaurants whose previous English item names were entered by the owner: kept ids keep their old name_en.
+const KEEP_OLD_NAME_EN = new Set(['askur-pizzeria', 'pizzafjordur']);
 
 const LABEL_BY_TYPE = {
   own_site: 'vef staðarins',
@@ -117,10 +131,10 @@ const q = (s) => `'${String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'").repla
 function matchKey(name) {
   let s = name.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   s = s.replace(/\([^)]*\)/g, ' ');
+  s = s.replace(/\s+\d{1,2}\s*["”″]\s*$/, ''); // trailing inch size: Margherita 12"
   s = s.replace(/[.'’"“”″‘`,:!?]/g, '');
   s = s.replace(/[-–/&|]/g, ' ').replace(/\s+/g, ' ').trim();
   s = s.replace(/^\d+\s+(?=[a-zþðæ])/, ''); // menu numbers: "1. Melbær", "4 Formaggi"
-  s = s.replace(/(?<=[a-zþðæ])\s+\d{1,2}$/, ''); // trailing size: "Margherita 12"
   s = s.replace(/^pizza\s+(?=\S)/, '');
   s = s.replace(/marg(?:h?e|a)rita/g, 'margherita');
   return s.replace(/\s+/g, '');
@@ -172,6 +186,15 @@ const restaurants = [];
   while ((m = re.exec(region))) restaurants.push({ id: m[1], name: m[2].replace(/\\'/g, "'"), slug: m[3] });
 }
 if (restaurants.length === 0) throw new Error('no restaurants found in mockData.ts');
+{
+  const slugs = new Set(restaurants.map((r) => r.slug));
+  for (const f of fs.readdirSync(JSON_DIR).filter((n) => n.endsWith('.json'))) {
+    if (!slugs.has(f.slice(0, -5))) throw new Error(`${f}: no restaurant with that slug in mockData.ts`);
+  }
+  for (const r of restaurants) {
+    if (!fs.existsSync(path.join(JSON_DIR, `${r.slug}.json`))) throw new Error(`missing ${r.slug}.json in ${JSON_DIR}`);
+  }
+}
 
 // ─── Previous ids ────────────────────────────────────────────────────────────
 
@@ -188,6 +211,8 @@ const prevItems = fs.existsSync(prevFile) ? loadPrev(prevFile) : [];
 const retiredIds = fs.existsSync(RETIRED) ? readJson(RETIRED).retired : [];
 
 const usedPrev = new Set();
+const claimedIds = new Set(); // every id handed out in this run
+const usedOverrides = new Set();
 const numbers = {}; // prefix -> highest number ever used
 function noteId(id) {
   const m = /^(.+)-(\d+)$/.exec(id);
@@ -226,6 +251,7 @@ function categoryOf(it, name) {
 
 for (const r of restaurants) {
   const file = readJson(path.join(JSON_DIR, `${r.slug}.json`));
+  if (file.slug !== r.slug) throw new Error(`${r.slug}.json has slug "${file.slug}"`);
   const baseFile = file.same_menu_as ? readJson(path.join(JSON_DIR, `${file.same_menu_as}.json`)) : file;
   const branch = BRANCH[r.slug];
   const sources = (file.sources || []).map((s) => ({ ...s, url: cleanUrl(s.url) }));
@@ -305,23 +331,45 @@ for (const r of restaurants) {
   const ordered = built.map((b, i) => ({ b, i })).sort((x, y) => rank[x.b.category] - rank[y.b.category] || x.i - y.i).map((x) => x.b);
 
   // ids
+  const seenKeys = new Map();
+  for (const b of ordered) {
+    const k = matchKey(b.name_is);
+    if (seenKeys.has(k)) throw new Error(`${r.slug}: "${b.name_is}" and "${seenKeys.get(k)}" share the match key "${k}"; add an ID_OVERRIDES entry or fix matchKey`);
+    seenKeys.set(k, b.name_is);
+  }
+  // ids that are assigned explicitly are reserved so name matching cannot take them
+  const reserved = new Set();
+  for (const b of ordered) {
+    const ovKey = `${r.slug}|${b.raw}`;
+    if (ID_OVERRIDES[ovKey]) { b.overrideId = ID_OVERRIDES[ovKey]; usedOverrides.add(ovKey); reserved.add(b.overrideId); }
+    if (b.it.id) reserved.add(b.it.id);
+  }
+  const claim = (id) => {
+    if (claimedIds.has(id)) throw new Error(`${r.slug}: id ${id} is handed out twice`);
+    claimedIds.add(id);
+  };
   ordered.forEach((b, idx) => {
-    const key = matchKey(b.name_is);
+    let prev;
     if (b.it.id) { // id pinned in the JSON (owner-supplied menus)
-      const pinned = prevHere.find((p) => p.id === b.it.id);
-      if (pinned) { usedPrev.add(pinned.id); (report.kept[r.slug] ||= []).push(pinned.id); }
-      else (report.fresh[r.slug] ||= []).push(b.it.id);
-      noteId(b.it.id);
+      if (retiredIds.includes(b.it.id)) throw new Error(`${r.slug}: pinned id ${b.it.id} is in retired-ids.json`);
+      prev = prevHere.find((p) => p.id === b.it.id);
       b.id = b.it.id;
-      b.sort_order = idx + 1;
-      return;
+    } else if (b.overrideId) {
+      prev = prevHere.find((p) => p.id === b.overrideId);
+      if (!prev) throw new Error(`${r.slug}|${b.raw}: ID_OVERRIDES id ${b.overrideId} is not in the previous data`);
+      b.id = prev.id;
+    } else {
+      const key = matchKey(b.name_is);
+      prev = prevHere.find((p) => !usedPrev.has(p.id) && !reserved.has(p.id) && matchKey(p.name_is) === key);
+      b.id = prev ? prev.id : nextId(prefix);
     }
-    let prev = prevHere.find((p) => !usedPrev.has(p.id) && matchKey(p.name_is) === key);
-    if (!prev && ID_ALIASES[`${r.slug}|${b.raw}`]) {
-      prev = prevHere.find((p) => !usedPrev.has(p.id) && p.id === ID_ALIASES[`${r.slug}|${b.raw}`]);
-    }
-    if (prev) { usedPrev.add(prev.id); b.id = prev.id; (report.kept[r.slug] ||= []).push(prev.id); }
-    else { b.id = nextId(prefix); (report.fresh[r.slug] ||= []).push(b.id); }
+    claim(b.id);
+    noteId(b.id);
+    if (prev) {
+      usedPrev.add(prev.id);
+      (report.kept[r.slug] ||= []).push(prev.id);
+      if (KEEP_OLD_NAME_EN.has(r.slug) && prev.name_en && prev.name_en !== b.name_en) { b.name_en = prev.name_en; b.keptNameEn = true; }
+    } else (report.fresh[r.slug] ||= []).push(b.id);
     b.sort_order = idx + 1;
   });
   const dropped = prevHere.filter((p) => !usedPrev.has(p.id)).map((p) => p.id);
@@ -356,6 +404,7 @@ for (const r of restaurants) {
     if (it.printed_menu_10in_12in) notes.push(`prentaður matseðill (ekki notaður): ${Object.entries(it.printed_menu_10in_12in).map(([k, v]) => `${k} ${v}`).join('; ')}`);
     if (it.sizes_discounted_50pct_shown) notes.push(`50% afsláttarverð á vef (ekki notað): ${Object.entries(it.sizes_discounted_50pct_shown).map(([k, v]) => `${k} ${v}`).join('; ')}`);
     if (b.category !== 'Pizzur') notes.push(`flokkur: ${b.category}`);
+    if (b.keptNameEn) notes.push(`enskt heiti úr fyrri skráningu: ${b.name_en}`);
     if (b.name_is !== b.raw && !NAME_FIXES[`${r.slug}|${b.raw}`]?.name_en) notes.push(`heiti í heimild: ${b.raw}`);
     if (file.register_note) notes.push(file.register_note);
     if (baseFile !== file) notes.push(`sami matseðill og ${baseFile.slug}`);
@@ -368,6 +417,15 @@ for (const r of restaurants) {
   if (!(baseFile.items || []).length) {
     registerRows.push([r.name, r.slug, '', '', '', '', '', '', file.price_basis, file.fetched, cleanText(file.not_found)]);
   }
+}
+
+for (const k of Object.keys(ID_OVERRIDES)) {
+  if (!usedOverrides.has(k)) throw new Error(`ID_OVERRIDES entry "${k}" matches no item in the JSON; remove it`);
+}
+{
+  const all = out.map((i) => i.id);
+  const dup = all.filter((id, i) => all.indexOf(id) !== i);
+  if (dup.length) throw new Error(`duplicate ids in output: ${[...new Set(dup)].join(', ')}`);
 }
 
 if (report.missing.length) {
@@ -400,10 +458,11 @@ function updateRestaurants(text) {
   for (const r of restaurants) {
     const slugAt = lines.findIndex((l, i) => i > start && l === `    slug: '${r.slug}',`);
     if (slugAt < 0) throw new Error(`slug line not found for ${r.slug}`);
-    let end = slugAt;
-    while (lines[end] !== '  },') end++;
-    let begin = slugAt;
-    while (lines[begin] !== '  {') begin--;
+    let end = -1;
+    for (let i = slugAt; i < Math.min(lines.length, slugAt + 80); i++) if (lines[i] === '  },') { end = i; break; }
+    let begin = -1;
+    for (let i = slugAt; i > Math.max(0, slugAt - 80); i--) if (lines[i] === '  {') { begin = i; break; }
+    if (end < 0 || begin < 0) throw new Error(`could not find the restaurant block for ${r.slug} in mockData.ts`);
     // drop old menu_* lines
     for (let i = end - 1; i > begin; i--) if (/^    menu_(source_url|source_label|verified_at|price_basis):/.test(lines[i])) { lines.splice(i, 1); end--; }
     const at = lines.findIndex((l, i) => i > slugAt && i < end && /^    price_level:/.test(l));
@@ -423,8 +482,8 @@ const newMock = updateRestaurants(mockText);
 // ─── CSV register ────────────────────────────────────────────────────────────
 
 const csvHeader = ['stadur', 'slug', 'rettur', 'verd', 'verd_stor', 'staerdir', 'heimild_url', 'heimild_tegund', 'verd_grunnur', 'sott_dags', 'athugasemd'];
-const csvCell = (v) => { const s = String(v ?? ''); return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
-const csv = '﻿' + [csvHeader, ...registerRows].map((row) => row.map(csvCell).join(',')).join('\r\n') + '\r\n';
+const csvCell = (v) => { const s = String(v ?? ''); return /[;",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+const csv = '﻿' + [csvHeader, ...registerRows].map((row) => row.map(csvCell).join(';')).join('\r\n') + '\r\n';
 
 // ─── Retired ids ─────────────────────────────────────────────────────────────
 

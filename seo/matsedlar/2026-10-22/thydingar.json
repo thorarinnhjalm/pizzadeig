@@ -321,6 +321,14 @@
       "dir": "is>en"
     }
   ],
+  "reykjavik-pizzeria": [
+    {
+      "name": "35. Barnapizza",
+      "is": "Pizza með 2 áleggstegundum.",
+      "en": "Pizza with 2 toppings.",
+      "dir": "is>en"
+    }
+  ],
   "bakabaka": [
     {
       "name": "Margherita",
@@ -895,7 +903,7 @@
     {
       "name": "Döðludraumur",
       "is": "Salami, döðlur, rauðlaukur og mexikóostur. Toppað með creamy sriracha.",
-      "en": "Salami, dates, red onion and Mexican cheese. Topped with creamy sriracha.",
+      "en": "Salami, dates, red onion and Mexíkóostur (Icelandic spiced cheese). Topped with creamy sriracha.",
       "dir": "is>en"
     },
     {
@@ -907,7 +915,7 @@
     {
       "name": "Maverick",
       "is": "BBQ Sósa, Pepperoni, Beikon, Piparostur, Rjómaostur, Mexíkó ostur og Chilli flögur",
-      "en": "BBQ sauce, Pepperoni, Bacon, Pepper cheese, Cream cheese, Mexican cheese and Chili flakes",
+      "en": "BBQ sauce, Pepperoni, Bacon, Pepper cheese, Cream cheese, Mexíkóostur (Icelandic spiced cheese) and Chili flakes",
       "dir": "is>en"
     },
     {
@@ -1279,7 +1287,7 @@
     {
       "name": "Capri (Ný)",
       "is": "Sósa, ostur, pepperoni, kjúklingur, Doritos, maís, rauðlaukur, mexíkóostur",
-      "en": "Sauce, cheese, pepperoni, chicken, Doritos, corn, red onion, Mexican cheese",
+      "en": "Sauce, cheese, pepperoni, chicken, Doritos, corn, red onion, Mexíkóostur (Icelandic spiced cheese)",
       "dir": "is>en"
     },
     {
@@ -1793,7 +1801,7 @@
     {
       "name": "GRANDMA'S FAVORITE",
       "is": "Aspas blanda, skinka, sveppir, cheddar ostur, papriku krydd",
-      "en": "Asparagus mix, ham, mushrooms, cheddar cheese, paprika seasoning",
+      "en": "Asparagus cream spread, ham, mushrooms, cheddar cheese, paprika seasoning",
       "dir": "is>en"
     },
     {

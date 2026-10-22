@@ -467,6 +467,18 @@
    "only_at": null,
    "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
    "note": null
+  },
+  {
+   "name": "35. Barnapizza / Pizza for children",
+   "desc_is": "Pizza með 2 áleggstegundum.",
+   "desc_en": null,
+   "price": 1590,
+   "sizes_all": {},
+   "kids": true,
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": "Added after review from the PDF text (item 35, Barnapizza / Pizza for children, 1590 kr.). The menu states no size. English line not printed in the PDF: description translated."
   }
  ],
  "not_found": "the online order page (/panta) was not fetched, so I don't know whether delivery or online prices differ. The home page's lunch deal (12\" with two toppings and 0.5 l soda) is inconsistent: banners say 2590 (one says 2690), the PDF says 2690. I did not record it as a menu item.",
