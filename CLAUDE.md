@@ -114,3 +114,11 @@ Defined in `src/app/globals.css` as CSS custom properties. Use these instead of 
 ## Icelandic Route Names
 
 Routes use Icelandic names: `/uppskriftir` (recipes), `/stadir` (restaurants), `/flokkar` (categories), `/topplisti` (top list), `/notandi` (user), `/deigreiknivel` (dough calculator), `/stilar` (styles), `/samfelag` (community), `/um-okkur` (about), `/skilmalar` (terms), `/personuvernd` (privacy), `/tengilidir` (contact).
+
+## Prófanir og umhverfi
+
+- Ekkert prófunarrammaverk (test framework) er uppsett.
+- Raunkerfið er Firebase-verkefnið (Firestore-gagnagrunnurinn `pizzadeig`) ásamt Vercel production.
+- Vercel preview vísar á SAMA raunverulega Firebase-verkefnið. Preview er því aðeins til að skoða (lesa): engin innskráning, engin innsending á formum og engar nýjar færslur búnar til í preview.
+- GA4 er óvirkt utan production (`VERCEL_ENV !== 'production'`), svo preview og staðbundin keyrsla menga ekki mælingar.
+- Staðbundið `npm run dev` les líka raunverulegan Firestore. Síður má því ekki sækja staðbundið til að prófa; notið `npx tsc --noEmit`, `npm run lint` og `npm run build`.
