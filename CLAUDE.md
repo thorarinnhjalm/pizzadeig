@@ -128,4 +128,4 @@ Routes use Icelandic names: `/uppskriftir` (recipes), `/stadir` (restaurants), `
 
 - Uppspretta matseðilsgagna er `seo/matsedlar/<dagsetning>/json` → `scripts/build-menu-data.mjs` → `src/lib/menuData.ts` (mynduð skrá, ekki breyta henni í höndunum). Skriptan fyllir líka `menu_*` reitina á veitingastöðum í `mockData.ts`.
 - Aldrei búa til eða áætla verð eða rétti: allt kemur úr JSON-skránum (heimild, slóð og dagsetning fylgja). Keyrsla og vinnulag: `seo/matsedlar/README.md`.
-- Lifandi síðan les Firestore, ekki kóðann. Eigandi verður að keyra admin seed eftir merge til að birta nýja matseðla, og seed EYÐIR fræddum réttum (`is_seeded`) sem eru ekki lengur í kóðanum.
+- Lifandi síðan les Firestore, ekki kóðann. Eftir merge notar eigandi hnappinn „Uppfæra matseðla“ í admin (Kerfi), EKKI Seed: hann skrifar aðeins `menu_items`, uppfærir fjóra `menu_*` reiti á stöðum og eyðir fræddum réttum sem eru í `seo/matsedlar/retired-ids.json`. Seed yfirskrifar staði, uppskriftir og auglýsingar í heild.
