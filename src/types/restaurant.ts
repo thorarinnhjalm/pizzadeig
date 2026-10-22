@@ -29,6 +29,11 @@ export interface Restaurant {
   is_verified: boolean;
   is_seeded?: boolean;
   tags: string[];
+  // Where the menu and prices come from (see seo/matsedlar/)
+  menu_source_url?: string;
+  menu_source_label?: string;
+  menu_verified_at?: string; // ISO date, e.g. '2026-10-22'
+  menu_price_basis?: 'in_house' | 'delivery_platform' | 'mixed' | 'none';
   created_at: Timestamp;
   updated_at: Timestamp;
 }

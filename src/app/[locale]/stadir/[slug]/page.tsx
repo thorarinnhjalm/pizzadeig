@@ -13,6 +13,25 @@ import { MenuItemRating } from '@/components/restaurants/MenuItemRating';
 
 export const dynamic = 'force-dynamic';
 
+const MONTHS_IS = ['janúar', 'febrúar', 'mars', 'apríl', 'maí', 'júní', 'júlí', 'ágúst', 'september', 'október', 'nóvember', 'desember'];
+const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+// '2026-10-22' -> '22. október 2026' / 'October 22, 2026'
+function formatMenuDate(iso: string, isIs: boolean) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+  if (!m) return iso;
+  const day = Number(m[3]);
+  const month = Number(m[2]) - 1;
+  return isIs ? `${day}. ${MONTHS_IS[month]} ${m[1]}` : `${MONTHS_EN[month]} ${day}, ${m[1]}`;
+}
+
+// menu_source_label is stored in Icelandic; these are the English wordings
+const SOURCE_LABEL_EN: Record<string, string> = {
+  'vef staðarins': "the restaurant's website",
+  'pöntunarsíðu staðarins': "the restaurant's order page",
+  'matseðli staðarins (PDF)': "the restaurant's menu (PDF)",
+};
+
 async function getRestaurant(slug: string): Promise<Restaurant | null> {
   try {
     const q = query(collection(db, 'restaurants'), where('slug', '==', slug), limit(1));
@@ -135,9 +154,36 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                  Matseðill
               </h2>
               {menuItems.length > 0 ? (
-                <p className="text-sm text-(--color-text-tertiary) italic mb-8 -mt-4">
-                  {isIslandic ? '*Birt með fyrirvara um verð' : '*Prices subject to change'}
-                </p>
+                <div className="text-sm text-(--color-text-tertiary) mb-8 -mt-4 space-y-1">
+                  {restaurant.menu_source_label && restaurant.menu_verified_at ? (
+                    <p>
+                      {isIslandic ? 'Matseðill sóttur af ' : 'Menu taken from '}
+                      {restaurant.menu_source_url ? (
+                        <a
+                          href={restaurant.menu_source_url}
+                          target="_blank"
+                          rel="nofollow noopener"
+                          className="underline underline-offset-2 hover:text-primary"
+                        >
+                          {isIslandic ? restaurant.menu_source_label : (SOURCE_LABEL_EN[restaurant.menu_source_label] || restaurant.menu_source_label)}
+                        </a>
+                      ) : (
+                        isIslandic ? restaurant.menu_source_label : (SOURCE_LABEL_EN[restaurant.menu_source_label] || restaurant.menu_source_label)
+                      )}
+                      {isIslandic ? ' ' : ' on '}
+                      {formatMenuDate(restaurant.menu_verified_at, isIslandic)}
+                      {restaurant.menu_price_basis === 'delivery_platform' && (
+                        isIslandic ? ' · verð af pöntunarsíðu, geta verið hærri en á staðnum' : ' · delivery-platform prices, may be higher than in-house'
+                      )}
+                      {restaurant.menu_price_basis === 'mixed' && (
+                        isIslandic ? ' · hluti verðanna er af pöntunarsíðu og getur verið hærri en á staðnum' : ' · some prices are from a delivery platform and may be higher than in-house'
+                      )}
+                    </p>
+                  ) : null}
+                  <p className="italic">
+                    {isIslandic ? '*Birt með fyrirvara um verð' : '*Prices subject to change'}
+                  </p>
+                </div>
               ) : null}
               {menuItems.length > 0 ? (
                 <div className="space-y-6">
@@ -148,9 +194,11 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                               {isIslandic ? item.name_is : (item.name_en || item.name_is)}
                            </h3>
-                           <p className="text-(--color-text-secondary) mt-2">
-                              {isIslandic ? item.description_is : (item.description_en || item.description_is)}
-                           </p>
+                           {(isIslandic ? (item.description_is || item.description_en) : (item.description_en || item.description_is)) && (
+                             <p className="text-(--color-text-secondary) mt-2">
+                                {isIslandic ? (item.description_is || item.description_en) : (item.description_en || item.description_is)}
+                             </p>
+                           )}
                          </div>
                          <div className="text-xl font-bold text-foreground ml-4 shrink-0 text-right">
                            {item.price_large ? (
@@ -163,7 +211,12 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                                </span>
                              </div>
                            ) : (
-                             <>{item.price} kr.</>
+                             <>
+                               {item.size_small_label && (
+                                 <span className="text-base font-normal text-(--color-text-secondary) mr-1">{item.size_small_label}</span>
+                               )}
+                               {item.price.toLocaleString('is-IS')} kr.
+                             </>
                            )}
                          </div>
                        </div>
@@ -172,7 +225,9 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                   ))}
                 </div>
               ) : (
-                <p className="text-(--color-text-secondary) italic">Enginn matseðill skráður eins og er.</p>
+                <p className="text-(--color-text-secondary) italic">
+                  {isIslandic ? 'Matseðill er ekki aðgengilegur á netinu.' : 'The menu is not available online.'}
+                </p>
               )}
            </section>
            
