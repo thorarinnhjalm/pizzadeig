@@ -1,0 +1,157 @@
+{
+ "slug": "napoli-pizza-rvk",
+ "status": "open",
+ "status_evidence": "Wolt listing live: \"Opið til 21:45\", delivery hours Mon-Sun, address Tryggvagata 24, phone +3545455545",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "type": "wolt",
+   "note": "Rendered in browser. Wolt shows a \"Sömu verð og á staðnum\" (same prices as at the restaurant) benefit badge, so these prices are stated to equal in-restaurant prices, but that is Wolt's claim and could not be confirmed on an own site. No own website/ordering page found."
+  }
+ ],
+ "price_basis": "delivery_platform",
+ "size_small_label": null,
+ "size_large_label": null,
+ "contact": {
+  "phone": "+354 545 5545",
+  "address": "Tryggvagata 24, 101 Reykjavík",
+  "hours_verbatim": "Wolt delivery times: Mánudagur-Fimmtudagur 11:45–21:45; Föstudagur 11:45–22:45; Laugardagur 11:45–22:45; Sunnudagur 11:45–21:45"
+ },
+ "items": [
+  {
+   "name": "Marinara",
+   "desc_is": "Marinara sósa, ferskur basil, svartur pipar, oregano, hvítlaukur og ólífuolía.",
+   "desc_en": null,
+   "price": 2190,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Margherita",
+   "desc_is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil og ólífuolía.",
+   "desc_en": null,
+   "price": 2390,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Napoli",
+   "desc_is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, pepperóní, svartur pipar og rifinn parmesan ostur.",
+   "desc_en": null,
+   "price": 2790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Salsiccia",
+   "desc_is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, ítalskar pylsur, friarielli, chilli olía.",
+   "desc_en": null,
+   "price": 2890,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Capricciosa",
+   "desc_is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, skinka, sveppir, oregano, svartar ólífur og þistilhjörtu.",
+   "desc_en": null,
+   "price": 2990,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Polpetta",
+   "desc_is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, ítalskar kjötbollur, rifinn parmesan ostur og ólífuolía.",
+   "desc_en": null,
+   "price": 2890,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Parma",
+   "desc_is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, parmaskinka, klettasalat og rifinn parmesan ostur.",
+   "desc_en": null,
+   "price": 3190,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Ortolana / vegetarian",
+   "desc_is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, svartar ólífur, grilluð papríka, grillaður kúrbítur, oregano og þistilhjörtu. (Fyrir vegan valmöguleika er hægt að sleppa mozzarella eða breyta í vegan mozzarella).",
+   "desc_en": null,
+   "price": 2990,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Quattro Formagi",
+   "desc_is": "Ricotta ostur, ferskur mozzarella, gráðostur og rifinn parmesan ostur.",
+   "desc_en": null,
+   "price": 2990,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Aglio e olio / Garlic",
+   "desc_is": "Ferskur mozzarella, ferskur basil, hvítlaukur og hvítlauksolía.",
+   "desc_en": null,
+   "price": 2290,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  },
+  {
+   "name": "Calzone",
+   "desc_is": "San marzano pizzasósa, ferskur mozzarella, ferskur basil, ricotta ostur, skinka og pepperóní.",
+   "desc_en": null,
+   "price": 2790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/napoli-tryggvagata",
+   "note": "Price re-verified in browser on the rendered Wolt page (price shown above name on each card). Description NOT re-verified: Wolt requires login/address to open item dialogs; text is from the earlier report."
+  }
+ ],
+ "not_found": "Own-site prices; item descriptions could not be re-read (login wall on item dialogs). Wolt min order 2500 kr. Not included: Panuozzo (sandwiches), other category.",
+ "diff_vs_current": "Confirmed 11 pizzas, same names. Wolt prices are 100-300 above mock on every pizza (Marinara 2190 vs 1890, Margherita 2390 vs 2190, Napoli 2790 vs 2590, Salsiccia 2890 vs 2690, Capricciosa 2990 vs 2790, Polpetta 2890 vs 2690, Parma 3190 vs 2890, Ortolana 2990 vs 2690, Quattro Formagi 2990 vs 2690, Aglio e olio 2290 vs 2090, Calzone 2790 vs 2490)."
+}

@@ -1,0 +1,177 @@
+{
+ "slug": "pizzasmidjan-akureyri",
+ "status": "open",
+ "status_evidence": "https://pizzasmidjan.is/is/matsedlar/matsedill rendered: \"Opið í dag: 11:30-22:00 Salurinn á Pizzasmiðjunni er lokaður en þú færð pizzurnar okkar á Bautanum allan daginn\" (hall closed, pizzas served via Bautinn).",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://pizzasmidjan.is/is/matsedlar/matsedill",
+   "type": "own_site",
+   "note": "In-house menu, single price per pizza, no size labels"
+  },
+  {
+   "url": "https://pizzasmidjan.is/en/menus/menu",
+   "type": "own_site",
+   "note": "English page 404 -> desc_en empty"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": null,
+ "contact": {
+  "phone": "s. 4621818 (header) and s. 461 5858 (footer)",
+  "address": "Hafnarstræti 92, 600 Akureyri",
+  "hours_verbatim": "Opið í dag: 11:30-22:00 (hall closed; pizzas available at Bautinn)"
+ },
+ "items": [
+  {
+   "name": "Margarita",
+   "desc_is": "Sósa, mozzarella, basil",
+   "desc_en": "",
+   "price": 2999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Pac man",
+   "desc_is": "Sósa, mozzarella, pepperoni, sveppir, rauðlaukur, svartur pipar",
+   "desc_en": "",
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Spice Girls",
+   "desc_is": "Sósa, mozzarella, pepperoni, piparostur, chillí, trönuber, gráðostur, hunang",
+   "desc_en": "",
+   "price": 4399,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Parma",
+   "desc_is": "Sósa, mozzarella, hráskinka, klettasalat, parmesan, ólífuolía, svartur pipar",
+   "desc_en": "",
+   "price": 4399,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Ítalía",
+   "desc_is": "Sósa, ferskur mozzarella, chorizo, hvítlaukur, basil",
+   "desc_en": "",
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Vegan",
+   "desc_is": "Sósa, grilluð paprika, rauðlaukur, sveppir, ólífur, kryddolía, klettasalat",
+   "desc_en": "",
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Sæta",
+   "desc_is": "Sósa, ferskur mozzarella, pepperoni, döðlur, pikklað chilli, hvítlaukur",
+   "desc_en": "",
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Tiger",
+   "desc_is": "Sósa, mozzarella, hvítlauks tígrisrækjur, chorizo, rjómaostur, hunang, chillísósa",
+   "desc_en": "",
+   "price": 4399,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Sweet Chorizo",
+   "desc_is": "sósa, ferskur mozzarella, chorizo, grillaður ananas, hvítlauksolía",
+   "desc_en": "",
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Bauta Pizza",
+   "desc_is": "hvítlauksolía, mozzarella, nautabrisket, sveppir, laukur - toppað með bernaise sósu og kartöflutvist",
+   "desc_en": "",
+   "price": 4399,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Pizza Blanca",
+   "desc_is": "hvítlauksolía, ferskur mozzarella, gráðostur, beikon og ristaðar pistasíur - toppað með chili hunangi",
+   "desc_en": "",
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Parma Burrata",
+   "desc_is": "hvítlauksolía, ferskur mozzarella, cherrytómatar - toppað með parmaskinku, klettasalati, basilolíu, chili flögum og burrata",
+   "desc_en": "",
+   "price": 4399,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Calzone Pepperoni",
+   "desc_is": "rifinn otur, piparostur, pepperoni",
+   "desc_en": "",
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill",
+   "note": "Calzone (folded) listed under Pizzur"
+  },
+  {
+   "name": "Sweet Spot",
+   "desc_is": "pizzbotn toppaður með hvítu súkkulaðismjöri, oreo-kurli, súkkulaði sósu og jarðaberjum",
+   "desc_en": "",
+   "price": 2999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill",
+   "dessert": true
+  },
+  {
+   "name": "Hvítlauks pizza",
+   "desc_is": "Hvílauksolía, mozzarella, basil, svartur pipar og salt",
+   "desc_en": "",
+   "price": 2999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill"
+  },
+  {
+   "name": "Barnapizza",
+   "desc_is": "Sósa, mozarella, pepperoni eða skinka",
+   "desc_en": "",
+   "price": 1899,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://pizzasmidjan.is/is/matsedlar/matsedill",
+   "kids": true
+  }
+ ],
+ "not_found": "No size labels on source. Source text verbatim incl. typos (\"rifinn otur\", \"Hvílauksolía\"). Excluded: Nutella Bastóní (2999, filled sticks), Osta Brauðstangir (2999). Calzone Pepperoni and Sweet Spot (dessert pizza) and Barnapizza included/flagged. Topping extras 450/350 kr and gluten-free base 1050 kr.",
+ "diff_vs_current": "mock has 5 items; verified 16. Price changes: none. Not on source (mock-only): Margherita (2990); Pepperoni (3490); Nduja og Hunang (3890); Sveppapizza (3890); Hráskinku (3990). New on source: Margarita, Pac man, Spice Girls, Parma, Ítalía, Vegan, Sæta, Tiger, Sweet Chorizo, Bauta Pizza, Pizza Blanca, Parma Burrata, Calzone Pepperoni, Sweet Spot, Hvítlauks pizza, Barnapizza."
+}

@@ -1,0 +1,424 @@
+{
+ "slug": "italiano-kopavogur",
+ "status": "open",
+ "status_evidence": "italiano.is live: \"Opið alla daga frá kl. 11-21, Sími 55-12345, Hlíðasmára 15 Kópavogi\". Wolt listing \"italiano-reykjavik\" is the same branch (Hlíðasmári 15, +354 551 2345, 11:00-20:45 daily). The address matches the audit (Hlíðasmári 15).",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://www.italiano.is/matsedill",
+   "type": "own_site",
+   "note": "Pizza menu page; the pizza menu itself is two image files dated 2025-02-06, read as images."
+  },
+  {
+   "url": "https://irp.cdn-website.com/a5a9b124/dms3rep/multi/Screenshot+2025-02-06+at+11.02.19.png",
+   "type": "own_site",
+   "note": "Pizza menu image dated 2025-02-06."
+  },
+  {
+   "url": "https://irp.cdn-website.com/a5a9b124/dms3rep/multi/Screenshot+2025-02-06+at+11.04.12.png",
+   "type": "own_site",
+   "note": "Pizza menu image dated 2025-02-06."
+  },
+  {
+   "url": "https://wolt.com/is/isl/reykjavik/restaurant/italiano-reykjavik",
+   "type": "wolt",
+   "note": "Prices identical to own menu; used to confirm currency of the list."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": "15\"",
+ "contact": {
+  "phone": "55-12345",
+  "address": "Hlíðasmára 15 Kópavogi",
+  "hours_verbatim": "Opið alla daga frá kl. 11-21"
+ },
+ "items": [
+  {
+   "name": "Margherita eða Hvítlauks pizza",
+   "desc_is": "Sósa, ostur eða hvítlauksolía, ostur, hvítlaukssalt",
+   "desc_en": null,
+   "price": 2350,
+   "price_large": 2950,
+   "sizes_all": {
+    "9\"": 1600,
+    "12\"": 2350,
+    "15\"": 2950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": "Wolt splits these into two items \"Margherita\" and \"Hvítlaukspizza\" at the same prices"
+  },
+  {
+   "name": "Milan",
+   "desc_is": "Sósa, ostur, hakk, sveppir, rauðlaukur, oregano",
+   "desc_en": null,
+   "price": 3700,
+   "price_large": 4700,
+   "sizes_all": {
+    "9\"": 2500,
+    "12\"": 3700,
+    "15\"": 4700
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Napoli",
+   "desc_is": "Sósa, ostur, rækjur, túnfiskur, kræklingur, hvítlaukspipar",
+   "desc_en": null,
+   "price": 3700,
+   "price_large": 4700,
+   "sizes_all": {
+    "9\"": 2500,
+    "12\"": 3700,
+    "15\"": 4700
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Parma (Vinsæl)",
+   "desc_is": "Sósa, ostur, parmaskinka, klettasalat, parmesan ostur",
+   "desc_en": null,
+   "price": 4000,
+   "price_large": 5050,
+   "sizes_all": {
+    "9\"": 2900,
+    "12\"": 4000,
+    "15\"": 5050
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Toscana (Vinsæl)",
+   "desc_is": "Sósa, ostur, pepperoni, sveppir, ananas, svartar ólífur, hvítlaukur, rjómaostur, svartur pipar, oregano",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Pisa",
+   "desc_is": "Sósa, ostur, pepperoni, hakk, dass af hvítlauksolíu",
+   "desc_en": null,
+   "price": 3100,
+   "price_large": 3950,
+   "sizes_all": {
+    "9\"": 2200,
+    "12\"": 3100,
+    "15\"": 3950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Tropical",
+   "desc_is": "Sósa, ostur, skinka, ananas",
+   "desc_en": null,
+   "price": 3100,
+   "price_large": 3950,
+   "sizes_all": {
+    "9\"": 2200,
+    "12\"": 3100,
+    "15\"": 3950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Pepperoni Italiano",
+   "desc_is": "Sósa, ostur, þakin pepperoni",
+   "desc_en": null,
+   "price": 3100,
+   "price_large": 3950,
+   "sizes_all": {
+    "9\"": 2200,
+    "12\"": 3100,
+    "15\"": 3950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Bari",
+   "desc_is": "Sósa, ostur, pepperoni, beikon, laukur, döðlur og piparostur",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Italiano",
+   "desc_is": "Sósa, ostur, pepperoni, sveppir",
+   "desc_en": null,
+   "price": 3100,
+   "price_large": 3950,
+   "sizes_all": {
+    "9\"": 2200,
+    "12\"": 3100,
+    "15\"": 3950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Garda",
+   "desc_is": "Sósa, ostur, rjómaostur, gráðaostur, piparostur, parmesan, rifsberjasulta",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Calzone (Hálfmáni) (Vinsæl)",
+   "desc_is": "Sósa, ostur, skinka, sveppir, piparostur, svartur pipar",
+   "desc_en": null,
+   "price": 3700,
+   "price_large": 4700,
+   "sizes_all": {
+    "9\"": 2500,
+    "12\"": 3700,
+    "15\"": 4700
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "God father (Vinsæl)",
+   "desc_is": "Sósa, ostur, pepperoni, beikon, rjómaostur",
+   "desc_en": null,
+   "price": 3700,
+   "price_large": 4700,
+   "sizes_all": {
+    "9\"": 2500,
+    "12\"": 3700,
+    "15\"": 4700
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Tropical meat",
+   "desc_is": "Sósa, ostur, pepperoni, skinka, ananas",
+   "desc_en": null,
+   "price": 3700,
+   "price_large": 4700,
+   "sizes_all": {
+    "9\"": 2500,
+    "12\"": 3700,
+    "15\"": 4700
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Capri (Ný)",
+   "desc_is": "Sósa, ostur, pepperoni, kjúklingur, Doritos, maís, rauðlaukur, mexíkóostur",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Sicilian (Vinsæl)",
+   "desc_is": "Sósa, ostur, kjúklingur, Doritos, laukur, jalapenos, rjómaostur, ferskur hvítlaukur",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": "Wolt says \"nachos\" instead of \"Doritos\""
+  },
+  {
+   "name": "Roma",
+   "desc_is": "Sósa, ostur, pepperoni, skinka, hakk, beikon",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Maistrone",
+   "desc_is": "Sósa, ostur, tómatar, sveppir, laukur, paprika, klettasalat, gráðaostur",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Gladiator",
+   "desc_is": "Sósa, extra ostur, pepperoni, bananar, piparostur, jalapeno, chilliflögur",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Torino",
+   "desc_is": "Sósa, ostur, pepperoni, beikon, rauðlaukur, ananas, gráðaostur, græn piparkorn",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Florence",
+   "desc_is": "Sósa, ostur, pepperoni, sveppir, paprika, piparostur",
+   "desc_en": null,
+   "price": 3700,
+   "price_large": 4700,
+   "sizes_all": {
+    "9\"": 2500,
+    "12\"": 3700,
+    "15\"": 4700
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Monza (Ný)",
+   "desc_is": "Sósa, ostur, pepperoni, sveppir, rauðlaukur, döðlur, rjómaostur, sv. pipar",
+   "desc_en": null,
+   "price": 3900,
+   "price_large": 4950,
+   "sizes_all": {
+    "9\"": 2800,
+    "12\"": 3900,
+    "15\"": 4950
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Massa (Sterk)",
+   "desc_is": "Sósa, ostur, pepperoni, laukur, jalapeno, chilliflögur, sv. pipar",
+   "desc_en": null,
+   "price": 3700,
+   "price_large": 4700,
+   "sizes_all": {
+    "9\"": 2500,
+    "12\"": 3700,
+    "15\"": 4700
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  },
+  {
+   "name": "Brazzo",
+   "desc_is": "Sósa, ostur, kjúklingur, sveppir, laukur, ananas",
+   "desc_en": null,
+   "price": 3700,
+   "price_large": 4700,
+   "sizes_all": {
+    "9\"": 2500,
+    "12\"": 3700,
+    "15\"": 4700
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.italiano.is/matsedill",
+   "note": null
+  }
+ ],
+ "not_found": "nothing material. The own-site images are dated Feb 2025, but Wolt (current) shows identical prices and an extra check of names/descriptions agrees. The English descriptions do not exist on the source.",
+ "diff_vs_current": "mockData has 3 pizzas (ik-1 Margherita 2890, ik-2 Vegan Buffalo 3590, ik-3 Quattro Formaggi 3490). None of these match the real menu: the real Margherita is 1600/2350/2950 (no 2890), and Vegan Buffalo and Quattro Formaggi do not exist on either source. They look like invented seed data, so replace them entirely with the 24 pizzas above. The English descriptions in mock are also not from the source (the source is Icelandic only)."
+}

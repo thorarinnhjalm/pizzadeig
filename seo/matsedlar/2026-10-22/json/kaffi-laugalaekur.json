@@ -1,0 +1,97 @@
+{
+ "slug": "kaffi-laugalaekur",
+ "status": "open",
+ "status_evidence": "kaffilaugalaekur.is is live with a 26 menu PDF, a Dineout booking link and a brunch menu. It is a cafe and restaurant with pizzas (\"Bökur\"/flatbökur) as one section. The site shows hours Sun–Mon 10:00–22:00 and Tue–Sun 10:00–23:00 (overlapping on Sunday) and no direct sign of recent posts, so open is inferred from the live 2026 menu rather than a dated post. Instagram and Facebook are linked from the site; I did not read them.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://www.kaffilaugalaekur.is/s/Matseill-islenska-26.pdf",
+   "type": "own_site",
+   "note": "Icelandic menu PDF \"Matseðill íslenska 26\", redirects to squarespace static. It lists the pizzas (\"Bökur\") with prices. It carries no date stamp."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": null,
+ "contact": {
+  "phone": null,
+  "address": null,
+  "hours_verbatim": "Sun–Mon 10:00–22:00 and Tue–Sun 10:00–23:00 (overlapping on Sunday)"
+ },
+ "items": [
+  {
+   "name": "LitlaGulaHænan",
+   "desc_is": "Flatbaka með kjúkling og beikoni, grænu pestó, osti og pítsasósu. Toppuð með salati, pikkluðum skarlottulauk, kirsuberja- tómötum, hvítlauksósu og parmesan.",
+   "desc_en": null,
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.kaffilaugalaekur.is/s/Matseill-islenska-26.pdf",
+   "note": null
+  },
+  {
+   "name": "Pylsumeistarinn",
+   "desc_is": "Flatbaka með pylsum, beikoni, pepperoni, sveppum, lauk, sósu og osti.",
+   "desc_en": null,
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.kaffilaugalaekur.is/s/Matseill-islenska-26.pdf",
+   "note": null
+  },
+  {
+   "name": "Chorizohálfmáni",
+   "desc_is": "Fylltur með osti, kryddpylsu, pikkluðum eldpipar, hvítlaukssmjöri. Toppaður með parmesan osti, grænu pestói og salati til hliðar.",
+   "desc_en": null,
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.kaffilaugalaekur.is/s/Matseill-islenska-26.pdf",
+   "note": "calzone"
+  },
+  {
+   "name": "Geiteyjarströnd",
+   "desc_is": "Flatbaka með taðreyktum silung ásamt pikkluðum skarlottulauk, piparrótarsósu, soðnu eggi, grænu pestó, dill og fersku salati.",
+   "desc_en": null,
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.kaffilaugalaekur.is/s/Matseill-islenska-26.pdf",
+   "note": null
+  },
+  {
+   "name": "Ostapizza",
+   "desc_is": "Flatbaka með Brie, gráðosti, mozzarella, pikkluðum lauk og hesilhnetum.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.kaffilaugalaekur.is/s/Matseill-islenska-26.pdf",
+   "note": null
+  },
+  {
+   "name": "Barnabaka (children's menu, 12 and under)",
+   "desc_is": null,
+   "desc_en": null,
+   "price": 1690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://www.kaffilaugalaekur.is/s/Matseill-islenska-26.pdf",
+   "note": "no description given on the menu"
+  }
+ ],
+ "not_found": "no delivery-platform check. I did not check the Brunch PDF for pizzas. The monthly special is not on the menu PDF, so it may exist only as a board or social post. The site's opening hours conflict with themselves.",
+ "diff_vs_current": "all prices differ from the mock: Litla Gula Hænan 3590→3890, Pylsumeistarinn 3590→3890, Geiteyjarströnd 3590→3990, Ostabaka renamed Ostapizza 3490→3790 (ingredients now \"Brie, gráðosti, mozzarella, pikkluðum lauk og hesilhnetum\"; the mock has \"salvía\" as an extra), Hálfmáni/calzone is now \"Chorizohálfmáni\" 3590→3890 (ingredients slightly changed), Barnabaka 1480→1690. Removed: Shawarmabaka, Hnetukræsing, Indversk baka (White chana) and Dolce vita flatbaka (the mock's \"special of the month\" was never a fixed item)."
+}

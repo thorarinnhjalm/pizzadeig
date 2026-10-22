@@ -1,0 +1,159 @@
+{
+ "slug": "flatey-pizza-selfoss",
+ "status": "open",
+ "status_evidence": "https://flateypizza.is/is/store rendered: \"Selfoss Mán - Sun 11:30 - 21:00 Biðtími 5-10 mín\" (live ordering); Upsell API product branches list Selfoss for each included pizza.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://flateypizza.is/is/menu",
+   "type": "own_order_page",
+   "note": "Rendered menu text; chain-wide, with \"Aðeins í boði á\" tags"
+  },
+  {
+   "url": "https://public-api.upsell.is/v2/products (the page's own data feed, read-only GET)",
+   "type": "own_order_page",
+   "note": "Per-product branch availability: Selfoss missing only for Nutella Pizza, Stracciatella, Parma"
+  },
+  {
+   "url": "https://flateypizza.is/is/store",
+   "type": "own_site",
+   "note": "Hours/wait time"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": null,
+ "contact": {
+  "phone": null,
+  "address": null,
+  "hours_verbatim": "Selfoss: Mán - Sun 11:30 - 21:00"
+ },
+ "items": [
+  {
+   "name": "Margherita",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Basilíka, Ólífuolía",
+   "desc_en": "",
+   "price": 3090,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3090
+   },
+   "source_url": "https://flateypizza.is/is/menu",
+   "note": "Site currently shows 1.950 kr with -37% badge (list price 3.090 = API base_price); likely temporary promo",
+   "price_promo_shown": 1950
+  },
+  {
+   "name": "Umberto",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Döðlur, Mascarpone rjómaostur, Basilíka",
+   "desc_en": "",
+   "price": 3590,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3590
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Diavola",
+   "desc_is": "Pepperoni (smáskorið) á Margheritu-grunni",
+   "desc_en": "",
+   "price": 3290,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3290
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Pizza Mánaðarins - Quattro Formaggi",
+   "desc_is": "Ferskur mozzarella, Camembert, Ricotta, Feykir, Chili-sulta, Ólífuolía, Fersk basilíka",
+   "desc_en": "",
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3690
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Bianca",
+   "desc_is": "Mozzarella, Parmesan, Ricotta, Pepperoni, Hvítlaukur og Mike's Hot Honey.",
+   "desc_en": "",
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3690
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Padrino",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Pikklaður chili, Hunang, Basilíka",
+   "desc_en": "",
+   "price": 3590,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3590
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Nduja",
+   "desc_is": "Nduja kryddpylsa, Ricotta á Margheritu-grunni",
+   "desc_en": "",
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3790
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Marinara",
+   "desc_is": "San Marzano tómatar, Hvítlaukur, Oregano, Basilíka, Ólífuolía (enginn ostur)",
+   "desc_en": "",
+   "price": 2790,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 2790
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Cotto",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Silkiskorin skinka, Sveppir, Mascarpone rjómaostur, Ólífuolía og Basilíka",
+   "desc_en": "",
+   "price": 3590,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3590
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Tartufo",
+   "desc_is": "Ferskur mozzarella, Sveppir, Ricotta-ostur, Íslenskar kartöflur, Truffluolía, Basilíka, Sjávarsalt (án tómata)",
+   "desc_en": "",
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3690
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Monella",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Parmesan, Oregano, Chili flögur, Basilíka, Ólífuolía",
+   "desc_en": "",
+   "price": 3290,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3290
+   },
+   "source_url": "https://flateypizza.is/is/menu"
+  }
+ ],
+ "not_found": "Address/phone for Selfoss not on the pages fetched (mock says Brúarstræti 1; audit confirmed per previous agent). No English descriptions on site. Prices are chain-wide (API gives one base_price; no per-branch price). Excluded: Parma, Stracciatella, Nutella Pizza, Hvítlauksbrauð 6\" (garlic bread).",
+ "diff_vs_current": "mock has 3 items; verified 11. Price changes: Margherita: 3190->3090; Padrino: 3790->3590; Tartufo: 4090->3690. Not on source (mock-only): none. New on source: Umberto, Diavola, Pizza Mánaðarins - Quattro Formaggi, Bianca, Nduja, Marinara, Cotto, Monella.",
+ "sizes_note": "Single size 12\"."
+}

@@ -1,0 +1,30 @@
+{
+ "slug": "flatey-pizza-gardabaer",
+ "same_menu_as": "flatey-pizza",
+ "status": "open",
+ "status_evidence": "flateypizza.is lists Garðatorg as \"Mán - Sun 11:30 - 21:00\"; Wolt listing \"flatey-pizza-gardatorg\" live (Garðatorgi 6, Mon-Sun 11:30-20:55, Fri 20:45). The address matches the audit (Garðatorg 6).",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://flateypizza.is/is/menu",
+   "type": "own_site",
+   "note": "One shared menu for all branches (Garðatorg, Grandi, Hlemmur, Kringlan, Selfoss). The site names no branch-specific prices; three items carry an \"Aðeins í boði á Grandi, Garðatorg\" badge."
+  },
+  {
+   "url": "https://wolt.com/is/isl/reykjavik/restaurant/flatey-pizza-gardatorg",
+   "type": "wolt",
+   "note": "Delivery prices, about 500 higher than in-house (e.g. Padrino 4090 vs 3590)."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": "12\"",
+ "contact": {
+  "phone": null,
+  "address": "Garðatorg 6",
+  "hours_verbatim": "GARÐATORG: Mán - Sun 11:30 - 21:00"
+ },
+ "items": [],
+ "not_found": "whether the three badged items are exclusive to Grandi and Garðatorg (see above); the Wolt prices are the delivery prices.",
+ "diff_vs_current": "mockData has 3 pizzas (fg-1 Margherita 3190, fg-2 Umberto 3890, fg-3 Stracciatella 4190). Real in-house prices are Margherita 3090, Umberto 3590, Stracciatella 3990, so all three differ. Mock descriptions use different wording (\"fior di latte\", \"gráðaður skinka\") than the site. The mock menu is a tiny subset. Note the main-Flatey mock (fp-1..fp-12) matches the site prices except that the \"Mánaðarins: Chili Crisp\" pizza (3590) has been replaced by Quattro Formaggi (3690), and Marinara 2790 and Tartufo 3690 are missing from mock."
+}

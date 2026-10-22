@@ -1,0 +1,34 @@
+{
+ "slug": "pizzafjordur",
+ "status": "unknown",
+ "status_evidence": "Evidence for closure: Wanderlog https://wanderlog.com/place/details/6027521/pizzafjörður (rendered in browser) shows \"Permanently Closed ... Pizza Takeout ... Closed\" (aggregator, likely derived from Google). Evidence against/neutral: ja.is https://ja.is/?q=Pizzafj%C3%B6r%C3%B0ur still lists \"Pizzafjörður ehf, Strandgötu 25, 735 Eskifirði, veitingastaður\" (directory lists may lag). Google Maps and Facebook not reachable without login; Bing/DDG returned no results. No local news found.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://wanderlog.com/place/details/6027521/pizzafjörður",
+   "type": "other",
+   "note": "\"Permanently Closed\" badge"
+  },
+  {
+   "url": "https://ja.is/?q=Pizzafj%C3%B6r%C3%B0ur",
+   "type": "other",
+   "note": "directory entry exists"
+  },
+  {
+   "url": "https://www.facebook.com/pizzafjordur",
+   "type": "facebook",
+   "note": "login wall"
+  }
+ ],
+ "price_basis": "none",
+ "size_small_label": null,
+ "size_large_label": null,
+ "contact": {
+  "phone": "+354 475 0500 (earlier agent, Wanderlog)",
+  "address": "Strandgata 25, 735 Eskifjörður",
+  "hours_verbatim": null
+ },
+ "items": [],
+ "not_found": "No menu source reachable (no website). Closure not confirmed beyond one aggregator badge; the user-provided owner menu update should not be overwritten from web data.",
+ "diff_vs_current": ""
+}

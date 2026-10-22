@@ -1,0 +1,176 @@
+{
+ "slug": "antons-mamma-mia",
+ "status": "open",
+ "status_evidence": "https://antons.is/nyr-seðill rendered (prices live). Hours/phone not on menu page text captured; see not_found.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://antons.is/nyr-seðill",
+   "type": "own_site",
+   "note": "Icelandic menu"
+  },
+  {
+   "url": "https://antons.is/new-menu",
+   "type": "own_site",
+   "note": "English menu, same prices"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": null,
+ "contact": {
+  "phone": null,
+  "address": null,
+  "hours_verbatim": null
+ },
+ "items": [
+  {
+   "name": "Pizza Prime",
+   "desc_is": "Skinka, Ananas.",
+   "desc_en": "Ham, Pineapple",
+   "price": 3490,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3490
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza Bella",
+   "desc_is": "Paprika, Laukur, Sveppir, Döðlur, Spínat, Ólífur, Sólþurrkaðir tómatar, Svartur pipar.",
+   "desc_en": "Bell pepper, Onion, Mushrooms, Dates, Spinach, Olive, Sun-dried tomatoes. Black pepper.",
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3790
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza Quo",
+   "desc_is": "BBQ sósa í stað pizzasósu, Paprika, Laukur, Kjúklingur, Ananas, Tómatar, Beikon.",
+   "desc_en": "BBQ sauce insted of pizza sauce, Bell pepper, Onion, Chicken, Pineapple, Tomatoes, Bacon.",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3890
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza Grande",
+   "desc_is": "Pepperoni, Nautahakk, Skinka, Beikon.",
+   "desc_en": "Pepperoni, Ground beef, Ham, Bacon.",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3890
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza Falk",
+   "desc_is": "Nautahakk, Pepperoni, Ananas, Jalapeno, Beikon, Svartur pipar.",
+   "desc_en": "Ground beef, Pepperoni, Pineapple, Jalapeno, Bacon, Black pepper.",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3890
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza Pesto",
+   "desc_is": "Hvítlaukssmjör í stað Pizzasósu, Skinka, Spínat, Þistilhjörtu, Basil pesto, Tómatar, Feta, Chilli flögur, Parmesan.",
+   "desc_en": "Garlic butter insted of Pizza sauce, Ham, Spinach, Artichoke, Basil pesto, Tomatoes, Feta, Chilli flakes, Parmesan.",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza Volcano",
+   "desc_is": "Laukur, Paprika, Pepperoni, Ólífur, Cayanne pipar, Nautahakk, Jalapeno, Chilli flögur. Siriacha til hliðar.",
+   "desc_en": "Onion, Bell pepper, Pepperoni, Olive, Cayanne pepper, Ground beef, Jalapeno, Chilli flakes. Siriacha on the side.",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza Cheesy",
+   "desc_is": "Rjómaostur, Parmesan, Gráðostur, Piparostur, Klettasalat. Rifsberjasulta til hliðar.",
+   "desc_en": "Cream cheese, Parmesan, Blue cheese, Pepper cheese, Arugula. Currant jam on the side.",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza Grudo",
+   "desc_is": "Hvítlaukur, Rjómaostur, Parmesan, Klettasalat, Parma skinka.",
+   "desc_en": "Garlic, Parmesan, Cream cheese, Aruglula, Parma ham.",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza A.la Humar",
+   "desc_is": "Hvítlaukssmjör í stað Pizzasósu, Hvítlaukur, Humar, Rjómaostur, Klettasalat, Tómatar, Parmesan.",
+   "desc_en": "Garlic butter insted of Pizza sauce, Garlic, Cream cheese, Lobster, Aruglula, Tomatoes, Parmesan.",
+   "price": 4790,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4790
+   },
+   "source_url": "https://antons.is/nyr-seðill",
+   "name_en": "Pizza A.la Lobster"
+  },
+  {
+   "name": "Pizza Combs",
+   "desc_is": "Hvítlaukssmjör í stað Pizzasósu, Paprika, Laukur, Humar, Rækjur, Camembert, Klettasalat, Parmesan.",
+   "desc_en": "Garlic butter insted of Pizza sauce, Bell pepper, Onion, Lobster, Shrimps, Camembert, Aruglula, Parmesan.",
+   "price": 4890,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4890
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Pizza Magnum",
+   "desc_is": "Nautahakk, Pepperoni, Skinka, Laukur, Paprika, Sveppir, Ananas, Ólífur, Beikon.",
+   "desc_en": "Ground beef, Pepperoni, Ham, Onion, Bell pepper, Mushrooms, Pineapple, Olive, Bacon.",
+   "price": 4990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4990
+   },
+   "source_url": "https://antons.is/nyr-seðill"
+  },
+  {
+   "name": "Barna Pizza 9\"",
+   "desc_is": "Veldu Tvö álegg á Pizzuna þína.",
+   "desc_en": "Choose Two toppings for your pizza.",
+   "price": 2190,
+   "price_large": null,
+   "sizes_all": {
+    "9\"": 2190
+   },
+   "source_url": "https://antons.is/nyr-seðill",
+   "kids": true
+  }
+ ],
+ "not_found": "Phone/address/hours not on the menu pages; previous pass reported Hafnargata 18 Reykjanesbær, 17:00-22:00, 421 2008 from antons.is (not re-verified here). Calzones (3 items 3990-4190) and Flatbrauð excluded (not pizzas per rules; calzone could be added). English page spelling kept verbatim incl. typos (\"insted\", \"Aruglula\").",
+ "diff_vs_current": "mock has 4 items; verified 13. Price changes: Pizza Grande: 3190->3890; Pizza Falk: 3490->3890. Not on source (mock-only): Pizza Volcano (Sterk) (3490); Pizza Ala Humar (Premium) (3890). New on source: Pizza Prime, Pizza Bella, Pizza Quo, Pizza Pesto, Pizza Volcano, Pizza Cheesy, Pizza Grudo, Pizza A.la Humar, Pizza Combs, Pizza Magnum, Barna Pizza 9\".",
+ "sizes_note": "All pizzas 12\"; kids 9\"."
+}
