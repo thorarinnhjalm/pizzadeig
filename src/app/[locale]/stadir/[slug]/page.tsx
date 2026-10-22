@@ -44,7 +44,7 @@ const sizeLabel = (label: string, isIs: boolean) => {
 // For restaurants that exist in code, the menu and its source info are code-owned (generated from
 // seo/matsedlar by scripts/build-menu-data.mjs), so both always come from the code together and the
 // source line can never sit above a different (older) Firestore menu. The list of branches of a chain
-// is code-owned in the same way (it comes from the same collection round).
+// is code-owned in the same way (it comes from the same collection round), and so is the remark under the opening hours.
 function withMenuSource(restaurant: Restaurant, local: Restaurant | undefined): Restaurant {
   if (!local) return restaurant;
   return {
@@ -54,6 +54,8 @@ function withMenuSource(restaurant: Restaurant, local: Restaurant | undefined): 
     menu_verified_at: local.menu_verified_at,
     menu_price_basis: local.menu_price_basis,
     branches: local.branches,
+    opening_hours_note_is: local.opening_hours_note_is,
+    opening_hours_note_en: local.opening_hours_note_en,
   };
 }
 
@@ -295,10 +297,10 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                            <span>{branch.phone}</span>
                          </li>
                        )}
-                       {branch.opening_hours_note && (
+                       {(isIslandic ? branch.opening_hours_note : (branch.opening_hours_note_en || branch.opening_hours_note)) && (
                          <li className="flex items-start">
                            <Clock className="w-4 h-4 text-primary mr-2 shrink-0 mt-0.5" />
-                           <span>{branch.opening_hours_note}</span>
+                           <span>{isIslandic ? branch.opening_hours_note : (branch.opening_hours_note_en || branch.opening_hours_note)}</span>
                          </li>
                        )}
                      </ul>
@@ -353,6 +355,11 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                         <span className="font-medium">{hours as string}</span>
                       </div>
                     ))}
+                    {(isIslandic ? restaurant.opening_hours_note_is : (restaurant.opening_hours_note_en || restaurant.opening_hours_note_is)) && (
+                      <p className="text-xs italic text-muted-foreground mt-2 max-w-64">
+                        {isIslandic ? restaurant.opening_hours_note_is : (restaurant.opening_hours_note_en || restaurant.opening_hours_note_is)}
+                      </p>
+                    )}
                  </div>
                </li>
              </ul>

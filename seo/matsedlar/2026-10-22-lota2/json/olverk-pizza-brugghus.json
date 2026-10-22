@@ -2,7 +2,7 @@
  "slug": "olverk-pizza-brugghus",
  "status": "open",
  "status_evidence": "https://www.olverk.is/ (Shopify site, footer '© 2026 Ölverk'; homepage banner for Ölverk beerfestival 2.-3. October 2026; 'latest take away deals' banner) and https://www.olverk.is/pages/menu with menu images file-stamped April 2026 ('9 amazing years', opened 28 May 2017); opening hours published on site. No seasonal closure noted (Hveragerði, Golden Circle; hours listed year-round).",
- "fetched": "2026-10-23",
+ "fetched": "2026-10-22",
  "sources": [
   {
    "url": "https://www.olverk.is/pages/menu",
@@ -98,7 +98,7 @@
   {
    "name": "Pizza nr. 7",
    "desc_is": "Sósa, vegan ostur, vegan mexíkóskt hakk, paprika, nachos flögur, vegan chili mayo, vorlaukur VEGAN",
-   "desc_en": "Sauce, vegan cheese, mexican vegan mince, bell pepper, nachos chips,vegan chilimayo, spring onion",
+   "desc_en": "Sauce, vegan cheese, mexican vegan mince, bell pepper, nachos chips,vegan chilimayo, spring onion VEGAN",
    "price": 3650,
    "price_large": null,
    "sizes_all": {
@@ -120,7 +120,7 @@
   {
    "name": "Pizza nr. 9",
    "desc_is": "Ölverk pestó, sveppir, vorlaukur, kókosflögur, ferskur chili, íslensk söl, sesam olía VEGAN (Contains Nuts)",
-   "desc_en": "Ölverk pestó, mushrooms, spring onion, coconut flakes, fresh chilli, icelandic dulse-sea weed, sesame seed oil",
+   "desc_en": "Ölverk pestó, mushrooms, spring onion, coconut flakes, fresh chilli, icelandic dulse-sea weed, sesame seed oil VEGAN (Contains Nuts)",
    "price": 3650,
    "price_large": null,
    "sizes_all": {

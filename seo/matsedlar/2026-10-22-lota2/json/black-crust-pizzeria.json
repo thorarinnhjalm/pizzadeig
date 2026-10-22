@@ -2,7 +2,7 @@
  "slug": "black-crust-pizzeria",
  "status": "open",
  "status_evidence": "https://guidetoiceland.is/travel-iceland/drive/black-crust-pizzeria (updated 15 Sep 2026; 'Mon-Sun 12 - 9pm', opened 2022, 9.4 / ~4,000 reviews); https://airial.travel/restaurants/black-crust-pizzeria-NchwdobK (live 'Closed - Opens Friday 12PM'); https://happywanders.com/black-crust-pizzeria-in-vik-iceland-restaurant-review/ (updated 22 Jun 2026). Own site blackcrustpizzeria.com returned HTTP 403 (hcdn bot check) - not bypassed. Seasonal: high season summer; no winter closure stated, winter hours not verified.",
- "fetched": "2026-10-23",
+ "fetched": "2026-10-22",
  "sources": [
   {
    "url": "https://guidetoiceland.is/travel-iceland/drive/black-crust-pizzeria",
@@ -28,7 +28,7 @@
  "diff_vs_current": "new restaurant",
  "restaurant": {
   "name": "Black Crust Pizzeria",
-  "description_is": "Pitsustaður í Vík í Mýrdal sem opnaði 2022 og er þekktur fyrir svartan kolabotn úr kolum, auk súrdeigspizza. Pantað er við barinn og hægt er að taka með.",
+  "description_is": "Pitsustaður í Vík í Mýrdal sem opnaði 2022 og er þekktur fyrir svartan kolabotn, auk súrdeigspizza. Pantað er við barinn og hægt er að taka með.",
   "description_en": "Pizzeria in Vík í Mýrdal opened in 2022, known for its charcoal-infused black dough and also serving sourdough pizzas. Order at the bar; take-away is possible.",
   "address": "Austurvegur 16",
   "postal_code": "870",

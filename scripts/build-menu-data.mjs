@@ -2,7 +2,7 @@
 // Builds the site's menu data from a folder of verified menu JSON files.
 //
 //   node scripts/build-menu-data.mjs <json-dir> [<json-dir> ...] [--prev <file>] [--dry]
-//   e.g. node scripts/build-menu-data.mjs seo/matsedlar/2026-10-22/json seo/matsedlar/2026-10-23/json
+//   e.g. node scripts/build-menu-data.mjs seo/matsedlar/2026-10-22/json seo/matsedlar/2026-10-22-lota2/json
 //
 // Reads    <json-dir>/<restaurant-slug>.json   (one file per restaurant in mockRestaurants; several dirs = several
 //                                               collection rounds, each restaurant's JSON comes from the one dir that
@@ -48,7 +48,7 @@ const PREFIX = {
   'kaffi-krus': 'kk', 'pizza-67-vestmannaeyjar': 'p7', 'hamraborg-isafjordur': 'hb',
   'pizzan-hafnarfjordur': 'ph', 'flatey-pizza-gardabaer': 'fg', 'pizzasmidjan-akureyri': 'psa',
   'islenska-flatbakan': 'ifb', 'greifinn-akureyri': 'greif', 'castello-hafnarfjordur': 'cast',
-  // 2026-10-23 round
+  // 2026-10-22 round (lota 2)
   'devitos-pizza': 'dv', 'shake-and-pizza': 'shk', 'pizza-107': 'p107', 'radagerdi': 'rg',
   'olverk-pizza-brugghus': 'ov', 'black-crust-pizzeria': 'bc', 'astro-pizza': 'ast', 'sprettur-inn': 'si',
   'daddis-pizza-myvatn': 'dd', 'dominos': 'dm', 'neo-pizza': 'neo',
@@ -65,6 +65,9 @@ const EXCLUDE = {
   'shake-and-pizza|Pestóber - Ostóber pizza': 'seasonal Ostóber (October) promotion',
 };
 // Kids pizzas that do not say so in their name (the JSON describes them as "Barnapizza"). Keyed "<slug>|<source name>".
+// Restaurants whose one-price pizzas on a two-size menu keep their size label (Daddi's Ítalinn/Lúdent are 12" only, so the
+// page shows 12" like on the other pizzas). Opt-in so earlier rounds' output does not change.
+const LABEL_SINGLE_PRICE = new Set(['daddis-pizza-myvatn']);
 const KIDS = new Set(['pizza-107|Baby 107']);
 const EXCLUDE_NAME_RE = /^(veldu|velja|veljið)\s+sjálf|build your own|hvítlauksbrauð|brauðstang|garlic bread|breadstick/i;
 
@@ -372,6 +375,7 @@ for (const r of restaurants) {
   // dominant label of the "price" slot, so only items that differ from the rest get a single-price label
   const counts = {};
   built.forEach((b) => { counts[b.small || ''] = (counts[b.small || ''] || 0) + 1; });
+  const anyLarge = built.some((b) => b.it.price_large != null);
   const dominant = Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? '';
 
   // order: source order, kids and dessert pizzas last
@@ -441,7 +445,7 @@ for (const r of restaurants) {
       item.price_large = it.price_large;
       item.size_small_label = b.small;
       item.size_large_label = b.large;
-    } else if (b.small && b.small !== dominant) {
+    } else if (b.small && (b.small !== dominant || (LABEL_SINGLE_PRICE.has(r.slug) && anyLarge && b.small === baseFile.size_small_label))) {
       item.size_small_label = b.small;
     }
     item.category = b.category;

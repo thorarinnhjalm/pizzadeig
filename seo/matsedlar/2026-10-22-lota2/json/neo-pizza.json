@@ -2,7 +2,7 @@
  "slug": "neo-pizza",
  "status": "active",
  "status_evidence": "Three NEÓ pizza venues live on Wolt on 2026-10-23 (shown 'closed, opens tomorrow' because fetched outside hours): neo-laugavegur, neo-pizza (Hafnartorg Gallery), neo-pizza-smaralind. Own site neopizza.is is behind a Cloudflare block for automated access (not bypassed).",
- "fetched": "2026-10-23",
+ "fetched": "2026-10-22",
  "sources": [
   {
    "url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur",
@@ -123,7 +123,7 @@
  "not_found": "Pizza size (inches) not stated on Wolt; single price per pizza, so price_large null and sizes_all empty. Excluded: Kryddbrauð 9\" (2,690, spiced bread), drinks (Gos), extra toppings. English descriptions not available. In-store hours not found (Wolt delivery times used as opening_hours proxy). Own-site menu not read (blocked). Hafnartorg phone not shown. Hafnartorg street number: Wolt says Geirsgata 17; visitreykjavik.is says Geirsgata 11 for Hafnartorg Gallery, foodle.pro says Geirsgata 17.",
  "diff_vs_current": "new restaurant",
  "restaurant": {
-  "name": "NEÓ pizza (from Flatey)",
+  "name": "NEÓ pizza",
   "description_is": "NEÓ frá Flatey gerir New York pizzur og býður upp á minnst sextán bjóra af ýmsu tagi (lýsing á Wolt); þrír staðir: Laugavegur 81, Hafnartorg Gallery og Smáralind.",
   "description_en": "NEÓ from Flatey makes New York-style pizzas and offers at least sixteen beers (Wolt description); three venues: Laugavegur 81, Hafnartorg Gallery and Smáralind.",
   "address": "Laugavegur 81",

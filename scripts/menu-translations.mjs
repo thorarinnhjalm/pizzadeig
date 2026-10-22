@@ -391,7 +391,7 @@ export const IS_EN = {
   'chilli olía gummós': 'chili oil Gummós',
   'toppuð með steinselju þegar hún kemur úr ofninum': 'topped with parsley when it comes out of the oven',
   'bbq': 'BBQ',
-  // --- 2026-10-23 round (literal translations of the printed ingredient text; typos in the source are translated as meant)
+  // --- 2026-10-22 round (lota 2) (literal translations of the printed ingredient text; typos in the source are translated as meant)
   // Devito's
   'þristilhjörtu': 'artichokes', // sic: Þristilhjörtu (Þistilhjörtu)
   'devito\'s pizza sósa': 'Devito\'s pizza sauce',
@@ -411,8 +411,8 @@ export const IS_EN = {
   'stracciatella burrata ostur': 'stracciatella burrata cheese',
   'burrata stracciatella í botninn': 'burrata stracciatella on the base',
   'kirsuberjatómatar': 'cherry tomatoes',
-  'feykir 12+': 'Feykir 12+',
-  'eðal feykir 12+ á toppnum': 'fine Feykir 12+ on top',
+  'feykir 12+': 'Feykir 12+ (Icelandic cheese)',
+  'eðal feykir 12+ á toppnum': 'fine Feykir 12+ (Icelandic cheese) on top',
   'fersk steinselja': 'fresh parsley',
   'hvítlaukssmjör': 'garlic butter',
   'chillimajó': 'chili mayo',
@@ -433,12 +433,10 @@ export const IS_EN = {
   'græn papríka': 'green bell pepper',
   'græn paprika': 'green bell pepper',
   'chillí krydd': 'chili seasoning',
-  'chilí krydd': 'chili seasoning',
   '(hægt að biðja um vegan ost)': '(vegan cheese on request)',
   'cheddarostur': 'cheddar cheese',
   'sulta yfir': 'jam on top',
   'bbq sósa yfir': 'BBQ sauce on top',
-  'lítið pepperoní': 'small pepperoni',
   'láttu pizzabakarann koma þér á óvart!': 'Let the pizza baker surprise you!',
   // Astro Pizza
   'bernessósa': 'béarnaise sauce',
@@ -469,7 +467,7 @@ export const IS_EN = {
   'basil-steinselju ólífuolía': 'basil-parsley olive oil',
   // Domino's
   'rifsberjagel': 'redcurrant jelly',
-  'tindur': 'Tindur',
+  'tindur': 'Tindur (Icelandic cheese)',
   'nachos flögur': 'nachos chips',
   '2x ostur': '2x cheese',
   'hvítlauksósudressing': 'garlic sauce dressing', // sic: hvítlauksósudressing (hvítlaukssósu...)
@@ -596,7 +594,7 @@ export const DESC_OVERRIDES = {
   'napoli-pizza-rvk|Calzone': {
     desc_en: 'San Marzano pizza sauce, fresh mozzarella, fresh basil, ricotta, ham and pepperoni.',
   },
-  // --- 2026-10-23 round: sentences and descriptions that do not split into ingredient phrases
+  // --- 2026-10-22 round (lota 2): sentences and descriptions that do not split into ingredient phrases
   'shake-and-pizza|Margarita': { desc_en: 'Simple but good! Pizza sauce and the S&P cheese blend' },
   'shake-and-pizza|Ost Við Fyrstu Sýn': {
     desc_en: 'With sour cream, garlic and Mexíkóostur (Icelandic spiced cheese) on the base, grated camembert, pepper cheese and the Shake&Pizza cheese blend. Served with redcurrant jam.',
@@ -616,6 +614,9 @@ export const DESC_OVERRIDES = {
   'shake-and-pizza|Birgitta - Döðlupizza': {
     desc_en: 'Dates, bacon slices, grated camembert, red onion, our pizza sauce and cheese blend, topped with chili mayo.',
   },
+  'pizza-107|Nr.11 Pizzan fyrir partý': { desc_en: 'Mini pepperoni, pepperoni, pepper cheese.' },
+  'pizza-107|Nr.13. Pizzan fyrir Bóbó': { desc_en: 'Mini pepperoni, bacon bits, cheddar cheese, BBQ sauce on top.' },
+  'pizza-107|Nr.14 Pizzan sem er Hot Bananas': { desc_en: 'Mini pepperoni, bananas, pepper cheese, chili seasoning, hot honey' },
   'pizza-107|Baby 107': { desc_en: 'Kids pizza - Mini margarita 8-9"' },
-  'radagerdi|Funghi & Feykir': { desc_en: 'Mascarpone, fresh mozzarella, enoki mushrooms, gremolata, pine nuts and Feykir cheese.' },
+  'radagerdi|Funghi & Feykir': { desc_en: 'Mascarpone, fresh mozzarella, enoki mushrooms, gremolata, pine nuts and Feykir (Icelandic cheese).' },
 };

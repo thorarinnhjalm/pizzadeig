@@ -2,7 +2,7 @@
  "slug": "daddis-pizza-myvatn",
  "status": "open",
  "status_evidence": "https://daddispizza.is/panta/ (own ordering site live 2026-10-22, 'Opening hours 12:00 - 21:00', pickup 15-20 min) and https://guidetoiceland.is/travel-iceland/drive/daddis-pizza (updated 9 Oct 2026; 'Mon-Sun 12 - 10pm'; notes the Reykjavík branch on Skipholt closed in 2026). Seasonal: GTI marks high season as Summer; no winter closure stated on any source, winter hours not verified (Vogar campground is 'open all year round' per https://www.northiceland.is/en/service/daddis-pizza). Separate business from the closed Reykjavík Daddi's.",
- "fetched": "2026-10-23",
+ "fetched": "2026-10-22",
  "sources": [
   {
    "url": "https://daddispizza.is/panta/",
@@ -221,8 +221,8 @@
  "not_found": "Menu numbering on the English page skips #2 (no pizza 2 listed). Sizes offered: 9\", 12\", 16\" plus 12\" Gluten-Free (gluten-free prices not captured). Ítalinn and Lúdent (Daddi's Specials) exist only in 9\" and 12\" (no 16\" option). The IS and EN pages differ in wording (EN 'salami' = IS 'pepperoni') - each kept verbatim. Ítalinn has no English text on the source (only Icelandic), so desc_en is empty. Build-your-own ('Veldu sjálfur') is the Margarita base with toppings; Margarita included as a standard pizza. Offers/combos, breadsticks, dessert breadsticks, cheesy garlic pizza excluded. Own-site hours 12-21 vs GTI 12-22: own site used.",
  "diff_vs_current": "new restaurant",
  "restaurant": {
-  "name": "Daddi's Pizza Mývatn",
-  "description_is": "Fjölskyldurekin pítsustaður við Mývatn, stofnaður 2009, í Vogum við móttöku Vogar Travel Service. Býður pizzur með staðbundnu áleggi eins og reyktum Mývatnssilungi.",
+  "name": "Daddi's Pizza",
+  "description_is": "Fjölskyldurekinn pítsustaður við Mývatn, stofnaður 2009, í Vogum við móttöku Vogar Travel Service. Býður pizzur með staðbundnu áleggi eins og reyktum Mývatnssilungi.",
   "description_en": "Family-run pizzeria by Lake Mývatn, founded in 2009 and located next to the Vogar Travel Service reception. Serves pizzas including a local topping of smoked Lake Mývatn trout.",
   "address": "Vogar",
   "postal_code": "660",

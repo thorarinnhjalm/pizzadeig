@@ -2,7 +2,7 @@
  "slug": "dominos",
  "status": "active",
  "status_evidence": "https://www.dominos.is/panta/pizzur and /stadir rendered live 2026-10-23 (prices, 22 stores, ordering site up). Wolt Akureyri page also live.",
- "fetched": "2026-10-23",
+ "fetched": "2026-10-22",
  "sources": [
   {
    "url": "https://www.dominos.is/panta/pizzur",
@@ -40,7 +40,7 @@
    "source_url": "https://www.dominos.is/panta/pizzur"
   },
   {
-   "name": "Godsilla",
+   "name": "GodSilla",
    "desc_is": "Cheddarostur, jalapeno, nachos flögur, rjómaostur, salsasósa og 2x ostur",
    "desc_en": "",
    "price": 4490,

@@ -2,7 +2,7 @@
  "slug": "astro-pizza",
  "status": "open",
  "status_evidence": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza (live 2026-10-22: rated 9.2, '© Wolt 2026', shown 'Closed - Opens at 16:00 tomorrow' i.e. an active listing with daily hours 16:00-20:45). Own site astropizza.is is behind Cloudflare block (not bypassed). No seasonal closure indicated (urban Akureyri).",
- "fetched": "2026-10-23",
+ "fetched": "2026-10-22",
  "sources": [
   {
    "url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/items/pizzur-3",

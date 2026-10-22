@@ -173,7 +173,7 @@
     {
       "name": "Grænætan",
       "is": "Feykir 12+, hvítlaukur, kirsuberjatómatar, ólífur, ferskt basil, papríka og sveppir. Pizzasósan okkar og Shake&Pizza ostablandan.",
-      "en": "Feykir 12+, garlic, cherry tomatoes, olives, fresh basil, bell pepper and mushrooms. Our pizza sauce and Shake&Pizza cheese blend.",
+      "en": "Feykir 12+ (Icelandic cheese), garlic, cherry tomatoes, olives, fresh basil, bell pepper and mushrooms. Our pizza sauce and Shake&Pizza cheese blend.",
       "dir": "is>en"
     },
     {
@@ -215,7 +215,7 @@
     {
       "name": "Parmela",
       "is": "Hráskinka, Stracciatella Burrata ostur, klettasalat og eðal Feykir 12+ á toppnum. Hvítlaukssmjör og Shake&Pizza ostablandan.",
-      "en": "Prosciutto, Stracciatella burrata cheese, arugula and fine Feykir 12+ on top. Garlic butter and Shake&Pizza cheese blend.",
+      "en": "Prosciutto, Stracciatella burrata cheese, arugula and fine Feykir 12+ (Icelandic cheese) on top. Garlic butter and Shake&Pizza cheese blend.",
       "dir": "is>en"
     },
     {
@@ -245,7 +245,7 @@
     {
       "name": "Carbonara",
       "is": "Burrata stracciatella í botninn, beikonsneiðar, sveppir, svartur pipar, Feykir 12+ og basil.",
-      "en": "Burrata stracciatella on the base, bacon slices, mushrooms, black pepper, Feykir 12+ and basil.",
+      "en": "Burrata stracciatella on the base, bacon slices, mushrooms, black pepper, Feykir 12+ (Icelandic cheese) and basil.",
       "dir": "is>en"
     },
     {
@@ -325,7 +325,7 @@
     {
       "name": "Nr.11 Pizzan fyrir partý",
       "is": "Lítið pepperoni, pepperoni, piparostur.",
-      "en": "Small pepperoni, pepperoni, pepper cheese.",
+      "en": "Mini pepperoni, pepperoni, pepper cheese.",
       "dir": "is>en"
     },
     {
@@ -337,13 +337,13 @@
     {
       "name": "Nr.13. Pizzan fyrir Bóbó",
       "is": "Lítið pepperoni, beikonkurl, cheddarostur, BBQ sósa yfir.",
-      "en": "Small pepperoni, bacon bits, cheddar cheese, BBQ sauce on top.",
+      "en": "Mini pepperoni, bacon bits, cheddar cheese, BBQ sauce on top.",
       "dir": "is>en"
     },
     {
       "name": "Nr.14 Pizzan sem er Hot Bananas",
       "is": "Lítið pepperoní, bananar, piparostur, chilí krydd, hot honey",
-      "en": "Small pepperoni, bananas, pepper cheese, chili seasoning, hot honey",
+      "en": "Mini pepperoni, bananas, pepper cheese, chili seasoning, hot honey",
       "dir": "is>en"
     },
     {
@@ -363,7 +363,7 @@
     {
       "name": "Funghi & Feykir",
       "is": "Mascarpone, ferkur mozzarella, enoki sveppir, gremolata, furuhnetur og Feykir ostur.",
-      "en": "Mascarpone, fresh mozzarella, enoki mushrooms, gremolata, pine nuts and Feykir cheese.",
+      "en": "Mascarpone, fresh mozzarella, enoki mushrooms, gremolata, pine nuts and Feykir (Icelandic cheese).",
       "dir": "is>en"
     }
   ],
@@ -671,11 +671,11 @@
     {
       "name": "Bjarmi",
       "is": "Gráðaostur, piparostur, rifsberjagel, tindur, sósa og ostur",
-      "en": "Blue cheese, pepper cheese, redcurrant jelly, Tindur, sauce and cheese",
+      "en": "Blue cheese, pepper cheese, redcurrant jelly, Tindur (Icelandic cheese), sauce and cheese",
       "dir": "is>en"
     },
     {
-      "name": "Godsilla",
+      "name": "GodSilla",
       "is": "Cheddarostur, jalapeno, nachos flögur, rjómaostur, salsasósa og 2x ostur",
       "en": "Cheddar cheese, jalapeño, nachos chips, cream cheese, salsa and 2x cheese",
       "dir": "is>en"

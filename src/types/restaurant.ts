@@ -13,6 +13,9 @@ export interface Restaurant {
   phone?: string;
   website?: string;
   opening_hours: Record<string, string>;
+  // Optional remark shown under the opening hours (e.g. the hours are Wolt delivery times)
+  opening_hours_note_is?: string;
+  opening_hours_note_en?: string;
   price_level: 1 | 2 | 3 | 4;
   features: string[];
   image_urls: string[];
@@ -29,7 +32,7 @@ export interface Restaurant {
   is_verified: boolean;
   is_seeded?: boolean;
   tags: string[];
-  // Chains: one page for the whole chain, with its locations listed (see seo/matsedlar/2026-10-23/json/dominos.json)
+  // Chains: one page for the whole chain, with its locations listed (see seo/matsedlar/2026-10-22-lota2/json/dominos.json)
   branches?: RestaurantBranch[];
   // Where the menu and prices come from (see seo/matsedlar/)
   menu_source_url?: string;
@@ -46,7 +49,8 @@ export interface RestaurantBranch {
   postal_code?: string;
   city: string;
   phone?: string;
-  opening_hours_note?: string;
+  opening_hours_note?: string; // Icelandic
+  opening_hours_note_en?: string;
 }
 
 export interface MenuItem {

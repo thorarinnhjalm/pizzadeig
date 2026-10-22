@@ -2,7 +2,7 @@
  "slug": "shake-and-pizza",
  "status": "open",
  "status_evidence": "Wolt listing rendered 2026-10-23 with current seasonal 'Ostóber' pizzas (Eldóber, Pestóber), rating 9.0, delivery hours listed, © Wolt 2026; discovery report saw shakepizza.is live with current offers. shakepizza.is returned a Cloudflare block to the headless browser, so not retried (respected).",
- "fetched": "2026-10-23",
+ "fetched": "2026-10-22",
  "sources": [
   {
    "url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza",
