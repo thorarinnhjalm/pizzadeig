@@ -8,11 +8,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     alternates: localeAlternates(locale, '/um-okkur'),
     title: isIs
-      ? 'Um okkur — Opið samfélag pizzabakara | Pizzadeig.is'
-      : 'About Us — An Open Community of Pizza Bakers | Pizzadeig.is',
+      ? 'Um okkur — Samfélag pizzubakara | Pizzadeig.is'
+      : 'About Us — A Pizza Baking Community | Pizzadeig.is',
     description: isIs
-      ? 'Pizzadeig.is er opið samfélag bakara, matgæðinga og pizza-nörda sem hjálpar öllum að baka fullkomna pizzu heima. Lestu um uppskriftirnar, samfélagið og hópinn á bak við vefinn.'
-      : 'Pizzadeig.is is an open community of bakers, foodies and pizza nerds helping everyone bake the perfect pizza at home. Learn about our recipes, community and team.',
+      ? 'Pizzadeig.is er opið samfélag bakara, matgæðinga og pizza-nörda sem hjálpar öllum að baka fullkomna pizzu heima. Lestu um uppskriftirnar og samfélagið.'
+      : 'Pizzadeig.is is an open community of bakers, foodies and pizza nerds helping everyone bake the perfect pizza at home. Learn about our recipes and community.',
   };
 }
 

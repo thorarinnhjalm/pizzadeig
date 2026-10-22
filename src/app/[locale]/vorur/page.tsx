@@ -9,8 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     alternates: localeAlternates(locale, '/vorur'),
     title: isIs
-      ? 'Vörur — Mjöl, tómatar, ofnar og tól fyrir pizzubakstur | Pizzadeig.is'
-      : 'Products — Flour, Tomatoes, Ovens & Tools for Pizza | Pizzadeig.is',
+      ? 'Vörur fyrir pizzubakstur heima | Pizzadeig.is'
+      : 'Products for Baking Pizza at Home | Pizzadeig.is',
     description: isIs
       ? 'Valdar vörur fyrir pizzubakstur heima: pizzumjöl, San Marzano tómatar, ostur, pizzaofnar og tól. Meðmæli frá Pizzadeig.is.'
       : 'Selected products for baking pizza at home: pizza flour, San Marzano tomatoes, cheese, pizza ovens and tools. Recommendations from Pizzadeig.is.',

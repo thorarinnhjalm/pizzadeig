@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     alternates: localeAlternates(locale, '/tengilidir'),
     title: isIs
-      ? 'Tengiliðir — Hafðu samband | Pizzadeig.is'
+      ? 'Tengiliðir | Pizzadeig.is'
       : 'Contact Us | Pizzadeig.is',
     description: isIs
       ? 'Spurning, athugasemd eða uppástunga? Hafðu samband við Pizzadeig.is í tölvupósti. Við reynum að svara öllum fyrirspurnum innan sólarhrings.'

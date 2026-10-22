@@ -47,6 +47,22 @@ function getFermentTime(recipe: { rest_time_min?: number; prep_time_min?: number
   return `${cook} mín`;
 }
 
+// Meta descriptions only mention what the category page actually lists (see mockRecipes).
+const metaDescriptions: Record<string, { is: string; en: string }> = {
+  deig: {
+    is: 'Pizzudeig: napólítönsk, New York, Detroit-pönnudeig og súrdeig. Uppskriftir með hráefnum, hefunartíma og leiðbeiningum skref fyrir skref.',
+    en: 'Pizza dough: Neapolitan, New York, Detroit pan dough and sourdough. Recipes with ingredients, fermentation times and step-by-step instructions.',
+  },
+  sosur: {
+    is: 'Pizzusósur: San Marzano tómatsósa, hvít sósa (béchamel) og basilpestó. Uppskriftir með hráefnum og leiðbeiningum skref fyrir skref.',
+    en: 'Pizza sauces: San Marzano tomato sauce, white sauce (béchamel) and basil pesto. Recipes with ingredients and step-by-step instructions.',
+  },
+  ostur: {
+    is: 'Ostaleiðbeiningar fyrir pizzu: hvernig á að nota mozzarella, fior di latte, burrata og parmesan á pizzu.',
+    en: 'A pizza cheese guide: how to use mozzarella, fior di latte, burrata and parmesan on pizza.',
+  },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; type: string }> }): Promise<Metadata> {
   const { locale, type } = await params;
   if (!Object.hasOwn(validCategories, type)) return {};
@@ -55,9 +71,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     alternates: localeAlternates(locale, `/flokkar/${type}`),
     title: isIs
-      ? `${categoryMeta.label_is} — Pizza uppskriftir | Pizzadeig.is`
+      ? `${categoryMeta.label_is} — Pizzuuppskriftir | Pizzadeig.is`
       : `${categoryMeta.label_en} — Pizza Recipes | Pizzadeig.is`,
-    description: isIs ? categoryMeta.description_is : categoryMeta.description_en,
+    description: isIs ? metaDescriptions[type].is : metaDescriptions[type].en,
   };
 }
 
@@ -65,8 +81,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ local
   const { locale, type: slug } = await params;
   const isIs = locale === 'is';
 
+  if (!Object.hasOwn(validCategories, slug)) notFound();
   const categoryMeta = validCategories[slug];
-  if (!categoryMeta) notFound();
 
   // Filter by the `category` field (not `type` — all recipes have type='heildar')
   const recipes = mockRecipes.filter(r => r.category === categoryMeta.category && r.published);

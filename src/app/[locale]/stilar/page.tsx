@@ -9,8 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     alternates: localeAlternates(locale, '/stilar'),
     title: isIs
-      ? 'Pizzustílar — Napólítönsk, New York, Detroit og rómversk | Pizzadeig.is'
-      : 'Pizza Styles — Neapolitan, New York, Detroit & Roman | Pizzadeig.is',
+      ? 'Pizzustílar: Napólí, New York, Detroit og Róm | Pizzadeig.is'
+      : 'Pizza Styles: Naples, New York, Detroit, Rome | Pizzadeig.is',
     description: isIs
       ? 'Fjórir helstu pizzustílar heimsins útskýrðir: napólítönsk, New York, Detroit og rómversk. Bökunarhiti, bökunartími, vökvahlutfall og einkenni hvers stíls.'
       : 'The four main pizza styles explained: Neapolitan, New York, Detroit and Roman. Baking temperature, bake time, hydration and the characteristics of each style.',

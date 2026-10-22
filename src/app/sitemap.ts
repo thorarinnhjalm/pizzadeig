@@ -36,14 +36,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/um-okkur', changeFrequency: 'monthly' as const, priority: 0.5 },
     { path: '/tengilidir', changeFrequency: 'yearly' as const, priority: 0.3 },
     { path: '/personuvernd', changeFrequency: 'yearly' as const, priority: 0.2 },
-    { path: '/auglysingar', changeFrequency: 'monthly' as const, priority: 0.3 },
     { path: '/vorur', changeFrequency: 'monthly' as const, priority: 0.5 },
     { path: '/hvad-a-eg', changeFrequency: 'monthly' as const, priority: 0.5 },
     ...CATEGORY_TYPES.map(type => ({ path: `/flokkar/${type}`, changeFrequency: 'weekly' as const, priority: 0.7 })),
   ];
   // /skilmalar is intentionally noindex, so it is not listed here.
+  // /auglysingar has Icelandic-only content: only the /is URL is listed, with no en alternate.
 
   for (const locale of locales) {
+    if (locale === 'is') {
+      sitemapEntries.push({
+        url: `${BASE_URL}/is/auglysingar`,
+        changeFrequency: 'monthly',
+        priority: 0.3,
+        alternates: { languages: { is: `${BASE_URL}/is/auglysingar` } },
+      });
+    }
+
     for (const route of staticRoutes) {
       sitemapEntries.push({
         url: `${BASE_URL}/${locale}${route.path}`,

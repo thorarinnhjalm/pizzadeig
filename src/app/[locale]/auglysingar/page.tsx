@@ -1,21 +1,21 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import { localeAlternates } from '@/lib/seo';
+import { SITE_URL } from '@/lib/seo';
 import { Mail, TrendingUp, Users, Target } from 'lucide-react';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
-  const isIs = locale === 'is';
-  return {
-    alternates: localeAlternates(locale, '/auglysingar'),
-    title: isIs
-      ? 'Auglýstu hjá okkur — Auglýsingar á Pizzadeig.is | Pizzadeig.is'
-      : 'Advertise With Us — Ads on Pizzadeig.is | Pizzadeig.is',
-    description: isIs
-      ? 'Náðu til íslensks áhugafólks um pizzabakstur. Kynntu þér auglýsingastaðsetningar og stærðir á Pizzadeig.is og hafðu samband um verð og samstarf.'
-      : 'Reach Icelandic pizza baking enthusiasts. Explore ad placements and sizes on Pizzadeig.is and get in touch about pricing and partnerships.',
-  };
-}
+// The page body is Icelandic only, so both locales serve Icelandic metadata, canonical to the
+// /is URL and no `en` hreflang alternate.
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${SITE_URL}/is/auglysingar`,
+    languages: {
+      is: `${SITE_URL}/is/auglysingar`,
+      'x-default': `${SITE_URL}/is/auglysingar`,
+    },
+  },
+  title: 'Auglýstu á Pizzadeig.is',
+  description: 'Náðu til íslensks áhugafólks um pizzubakstur. Kynntu þér auglýsingastaðsetningar og stærðir og hafðu samband um verð og samstarf.',
+};
 
 export default function AuglysingarPage() {
   return (

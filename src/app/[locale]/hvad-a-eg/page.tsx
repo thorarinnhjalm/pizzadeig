@@ -9,8 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     alternates: localeAlternates(locale, '/hvad-a-eg'),
     title: isIs
-      ? 'Hvað á ég? — Finndu pizzuuppskrift út frá hráefnunum | Pizzadeig.is'
-      : 'What Do I Have? — Find a Pizza Recipe by Your Ingredients | Pizzadeig.is',
+      ? 'Hvað á ég? Pizzuuppskrift úr hráefnunum þínum | Pizzadeig.is'
+      : 'What Do I Have? Pizza Recipe Finder | Pizzadeig.is',
     description: isIs
       ? 'Veldu hráefnin sem þú átt heima og finndu pizzuuppskriftir sem passa við þau.'
       : 'Select the ingredients you have at home and find pizza recipes that match them.',

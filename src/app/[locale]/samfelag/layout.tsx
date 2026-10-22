@@ -7,12 +7,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const isIs = locale === 'is';
   return {
     alternates: localeAlternates(locale, '/samfelag'),
-    title: isIs
-      ? 'Pizzasamfélagið — Deildu, lærðu og baktu með öðrum | Pizzadeig.is'
-      : 'Pizza Community — Share, Learn & Bake Together | Pizzadeig.is',
+    title: isIs ? 'Pizzusamfélagið | Pizzadeig.is' : 'Pizza Community | Pizzadeig.is',
     description: isIs
-      ? 'Samfélag pizzabakara á Íslandi. Sjáðu hvað er að gerast, kynnstu pizzumeisturunum og deildu þinni eigin uppskrift.'
-      : 'The community of pizza bakers in Iceland. See what is happening, meet the pizza masters and share your own recipe.',
+      ? 'Deildu þinni eigin pizzuuppskrift með öðrum íslenskum pizzubökurum. Notaðu deigreiknivélina, topplistann og uppskriftaleit út frá hráefnunum sem þú átt.'
+      : 'Share your own pizza recipe with other Icelandic pizza bakers. Use the dough calculator, the top list and a recipe finder based on the ingredients you have.',
   };
 }
 
