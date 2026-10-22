@@ -1,0 +1,258 @@
+{
+ "slug": "daddis-pizza-myvatn",
+ "status": "open",
+ "status_evidence": "https://daddispizza.is/panta/ (own ordering site live 2026-10-22, 'Opening hours 12:00 - 21:00', pickup 15-20 min) and https://guidetoiceland.is/travel-iceland/drive/daddis-pizza (updated 9 Oct 2026; 'Mon-Sun 12 - 10pm'; notes the Reykjavík branch on Skipholt closed in 2026). Seasonal: GTI marks high season as Summer; no winter closure stated on any source, winter hours not verified (Vogar campground is 'open all year round' per https://www.northiceland.is/en/service/daddis-pizza). Separate business from the closed Reykjavík Daddi's.",
+ "fetched": "2026-10-23",
+ "sources": [
+  {
+   "url": "https://daddispizza.is/panta/",
+   "type": "own_site",
+   "note": "Online-order menu (EN and IS switchable): 15 pizzas incl. 'Daddi's Specials' (Ítalinn, Lúdent); per-size prices read by selecting each size option (no orders placed)"
+  },
+  {
+   "url": "https://guidetoiceland.is/travel-iceland/drive/daddis-pizza",
+   "type": "third_party",
+   "note": "Updated Oct 2026; hours 12-22; 'Pizzas ISK 2,550-5,800'; dine-in and take-out"
+  },
+  {
+   "url": "https://www.northiceland.is/en/service/daddis-pizza",
+   "type": "third_party",
+   "note": "Contact myvatn@daddispizza.is, 773-6060, address 'Vogum, 660 Mývatn', coords N65°37'29.136\" W16°54'52.344\""
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": "16\"",
+ "items": [
+  {
+   "name": "Mýfluga",
+   "desc_is": "Pizzasósa, ostur, reyktur silungur, furuhnetur, rjómaostur",
+   "desc_en": "Tomato sauce, cheese, smoked trout, pine nuts, cream cheese",
+   "price": 4890,
+   "price_large": 5890,
+   "sizes_all": {
+    "9\"": 3890,
+    "12\"": 4890,
+    "16\"": 5890
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Námaskarð",
+   "desc_is": "Pizzasósa, ostur, pepperoni, auka ostur, litið pepperoni, chili flögur",
+   "desc_en": "Tomato sauce, cheese, spicy salami, extra cheese, mini salami, chili flakes",
+   "price": 4100,
+   "price_large": 4990,
+   "sizes_all": {
+    "9\"": 3200,
+    "12\"": 4100,
+    "16\"": 4990
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Vogar",
+   "desc_is": "BBQ-sósa, ostur, pepperoni, laukur, sveppir, sólþurrkaðir tómatar",
+   "desc_en": "BBQ-sauce, cheese, salami, onion, mushrooms, sun-dried tomatoes",
+   "price": 4150,
+   "price_large": 5150,
+   "sizes_all": {
+    "9\"": 3315,
+    "12\"": 4150,
+    "16\"": 5150
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Lónið",
+   "desc_is": "Pizzasósa, ostur, skinka, pepperoni, nautahakk, beikonkurl",
+   "desc_en": "Tomato sauce, cheese, ham, salami, beef, minced bacon",
+   "price": 4100,
+   "price_large": 4990,
+   "sizes_all": {
+    "9\"": 3200,
+    "12\"": 4100,
+    "16\"": 4990
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Hverfjall",
+   "desc_is": "Hvítlauksolía, ostur, skinka, pepperoni, sveppir, laukur, beikon sneiðar",
+   "desc_en": "Garlic oil, cheese, ham, salami, mushrooms, onion, sliced bacon",
+   "price": 4250,
+   "price_large": 5190,
+   "sizes_all": {
+    "9\"": 3315,
+    "12\"": 4250,
+    "16\"": 5190
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Dimmuborgir",
+   "desc_is": "Pizzasósa, ostur, skinka, pepperoni, laukur, ananas",
+   "desc_en": "Tomato sauce, cheese, ham, salami, onion, pineapple",
+   "price": 4000,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3080,
+    "12\"": 4000,
+    "16\"": 4890
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Vindbelgur",
+   "desc_is": "Pizzusósa, ostur, skinka, pepperoni, hakk, laukur, sveppir, paprika, svartar ólífur",
+   "desc_en": "Tomato sauce, cheese, ham, salami, minced beef, onion, mushrooms, bell pepper, olives",
+   "price": 4800,
+   "price_large": 5890,
+   "sizes_all": {
+    "9\"": 3800,
+    "12\"": 4800,
+    "16\"": 5890
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Selið",
+   "desc_is": "Pizzusósa, ostur, skinka, paprika, rjómaostur, beikonkurl",
+   "desc_en": "Tomato sauce, cheese, ham, bell pepper, cream cheese, minced bacon",
+   "price": 4000,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3080,
+    "12\"": 4000,
+    "16\"": 4890
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Húsbóndinn",
+   "desc_is": "Pizzusósa, ostur, pepperoni, sveppir, ananas, svartar ólífur",
+   "desc_en": "Tomato sauce, cheese, salami, mushrooms, pineapple, olives",
+   "price": 4000,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3080,
+    "12\"": 4000,
+    "16\"": 4890
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Húsfreyjan",
+   "desc_is": "Hvítlauksolía, ostur, laukur, sveppir, piparostur, tómatar, svartur pipar",
+   "desc_en": "Garlic oil, cheese, onion, mushrooms, pepper cheese, tomatoes, black pepper",
+   "price": 4000,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3080,
+    "12\"": 4000,
+    "16\"": 4890
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Krafla",
+   "desc_is": "Pizzasósa, ostur, gráðostur, rjómaostur, piparostur, parmesan",
+   "desc_en": "Tomato sauce, cheese, blue cheese, cream cheese, pepper cheese, parmesan",
+   "price": 4100,
+   "price_large": 4990,
+   "sizes_all": {
+    "9\"": 3200,
+    "12\"": 4100,
+    "16\"": 4990
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Höfði",
+   "desc_is": "Pizzasósa, ostur, laukur, sveppir, paprika, ólífur, tómatar",
+   "desc_en": "Tomato sauce, cheese, onion, mushrooms, bell pepper, olives, tomatoes",
+   "price": 4250,
+   "price_large": 5190,
+   "sizes_all": {
+    "9\"": 3315,
+    "12\"": 4250,
+    "16\"": 5190
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Margarita",
+   "desc_is": "Pizzasósa, ostur",
+   "desc_en": "Tomato sauce, cheese",
+   "price": 2550,
+   "price_large": 3150,
+   "sizes_all": {
+    "9\"": 2050,
+    "12\"": 2550,
+    "16\"": 3150
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Ítalinn",
+   "desc_is": "Pizzasósa, ostur, buffalo-mozzarella, gæða skinka, kastaníusveppir, basil-steinselju ólífuolía, svartur pipar",
+   "desc_en": "",
+   "price": 4890,
+   "price_large": null,
+   "sizes_all": {
+    "9\"": 3890,
+    "12\"": 4890
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  },
+  {
+   "name": "Lúdent",
+   "desc_is": "Pizzasósa, ostur, íslenskt lambakjöt, hvítlaukssmjörsveppir, bernaisesósa, svartur pipar",
+   "desc_en": "Tomato sauce, cheese, local lamb, garlic-butter mushrooms, béarnaise sauce, black pepper",
+   "price": 4890,
+   "price_large": null,
+   "sizes_all": {
+    "9\"": 3890,
+    "12\"": 4890
+   },
+   "source_url": "https://daddispizza.is/panta/"
+  }
+ ],
+ "not_found": "Menu numbering on the English page skips #2 (no pizza 2 listed). Sizes offered: 9\", 12\", 16\" plus 12\" Gluten-Free (gluten-free prices not captured). Ítalinn and Lúdent (Daddi's Specials) exist only in 9\" and 12\" (no 16\" option). The IS and EN pages differ in wording (EN 'salami' = IS 'pepperoni') - each kept verbatim. Ítalinn has no English text on the source (only Icelandic), so desc_en is empty. Build-your-own ('Veldu sjálfur') is the Margarita base with toppings; Margarita included as a standard pizza. Offers/combos, breadsticks, dessert breadsticks, cheesy garlic pizza excluded. Own-site hours 12-21 vs GTI 12-22: own site used.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Daddi's Pizza Mývatn",
+  "description_is": "Fjölskyldurekin pítsustaður við Mývatn, stofnaður 2009, í Vogum við móttöku Vogar Travel Service. Býður pizzur með staðbundnu áleggi eins og reyktum Mývatnssilungi.",
+  "description_en": "Family-run pizzeria by Lake Mývatn, founded in 2009 and located next to the Vogar Travel Service reception. Serves pizzas including a local topping of smoked Lake Mývatn trout.",
+  "address": "Vogar",
+  "postal_code": "660",
+  "city": "Mývatn",
+  "location": {
+   "latitude": 65.62476,
+   "longitude": -16.91454,
+   "source": "other https://www.northiceland.is/en/service/daddis-pizza (page states N65° 37' 29.136\" W16° 54' 52.344\", converted to decimal)"
+  },
+  "phone": "773 6060",
+  "website": "https://daddispizza.is",
+  "opening_hours": {
+   "mán": "12-21",
+   "þri": "12-21",
+   "mið": "12-21",
+   "fim": "12-21",
+   "fös": "12-21",
+   "lau": "12-21",
+   "sun": "12-21"
+  },
+  "opening_hours_source": "https://daddispizza.is/panta/ ('12:00 - 21:00' opening hours on the order page; GTI says 12-22) - possible reduced winter hours not verified",
+  "features": [
+   "Dine-in",
+   "Takeaway"
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1590947132387-155cc02f3212",
+  "page_url": null,
+  "photographer": null,
+  "description": "Hand-tossed rustic pizza slices with toppings on a wooden board (images.unsplash.com photo-id; Unsplash page blocked bots (Anubis) so photographer/page not verified; image viewed locally)"
+ }
+}

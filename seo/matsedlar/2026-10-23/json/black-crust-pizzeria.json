@@ -1,0 +1,64 @@
+{
+ "slug": "black-crust-pizzeria",
+ "status": "open",
+ "status_evidence": "https://guidetoiceland.is/travel-iceland/drive/black-crust-pizzeria (updated 15 Sep 2026; 'Mon-Sun 12 - 9pm', opened 2022, 9.4 / ~4,000 reviews); https://airial.travel/restaurants/black-crust-pizzeria-NchwdobK (live 'Closed - Opens Friday 12PM'); https://happywanders.com/black-crust-pizzeria-in-vik-iceland-restaurant-review/ (updated 22 Jun 2026). Own site blackcrustpizzeria.com returned HTTP 403 (hcdn bot check) - not bypassed. Seasonal: high season summer; no winter closure stated, winter hours not verified.",
+ "fetched": "2026-10-23",
+ "sources": [
+  {
+   "url": "https://guidetoiceland.is/travel-iceland/drive/black-crust-pizzeria",
+   "type": "third_party",
+   "note": "Hours 12-21 daily, address, price level EUR-EUR; counter ordering, take-away possible; no reservations"
+  },
+  {
+   "url": "https://happywanders.com/black-crust-pizzeria-in-vik-iceland-restaurant-review/",
+   "type": "third_party",
+   "note": "Numbered pizza list No.1-10 (visit May 2024, page updated June 2026); no ISK prices"
+  },
+  {
+   "url": "https://atmosfy.io/location/va-k-a-ma-rdal/black-crust-pizzeria-774986",
+   "type": "third_party",
+   "note": "Hours 11:30-21 daily (conflicts with GTI 12-21)"
+  }
+ ],
+ "price_basis": "unknown",
+ "size_small_label": null,
+ "size_large_label": null,
+ "items": [],
+ "not_found": "No ISK menu or prices found on any accessible public source: own site (blackcrustpizzeria.com) is behind a bot block (403, respected), Tripadvisor/Restaurant Guru blocked, no Wolt/Aha listing found. Only third-party ranges (e.g. Restaurant Guru ISK 2,000-4,000 pp, GTI EUR-EUR) - not usable as prices. Unverified candidate pizza list from happywanders (May 2024 visit, may be outdated): No.1 langoustine, truffle-infused cream cheese, red onion, arugula, rosemary, chili, balsamic glaze, parmesan (black crust); No.2 marinated duck, cream cheese, spring onion, orange, cashew nuts, chili (black); No.3 pepperoni, cream cheese, cherry tomato, homemade date pesto, fresh basil (black); No.4 spicy tuna with chili and cream cheese, jalapeño, red onion, cherry tomato, arugula, balsamic glaze (black); No.5 Icelandic cheeses, red currant jelly, rose pepper, parmesan (black); No.6 salami, red onion, Búri cheese, parmesan, cherry tomato, basil (sourdough); No.7 ham, pineapple, bacon, cream cheese; No.8 pepperoni, mushrooms, pepper cheese, olives; No.9 mozzarella, cherry tomato, basil; No.10 (vegan) mushrooms, red onion, pulled BBQ soy mince, vegan cheese, date pesto, basil. Recommend: add the venue without a menu (no menu_* fields) or retry the own site from a normal browser.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Black Crust Pizzeria",
+  "description_is": "Pitsustaður í Vík í Mýrdal sem opnaði 2022 og er þekktur fyrir svartan kolabotn úr kolum, auk súrdeigspizza. Pantað er við barinn og hægt er að taka með.",
+  "description_en": "Pizzeria in Vík í Mýrdal opened in 2022, known for its charcoal-infused black dough and also serving sourdough pizzas. Order at the bar; take-away is possible.",
+  "address": "Austurvegur 16",
+  "postal_code": "870",
+  "city": "Vík í Mýrdal",
+  "location": {
+   "latitude": 63.4176209,
+   "longitude": -19.0029202,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Austurvegur+16,+Vík+í+Mýrdal (OSM 'Black Crust Pizzeria, 16, Austurvegur')"
+  },
+  "phone": "854 6611",
+  "website": "https://blackcrustpizzeria.com",
+  "opening_hours": {
+   "mán": "12-21",
+   "þri": "12-21",
+   "mið": "12-21",
+   "fim": "12-21",
+   "fös": "12-21",
+   "lau": "12-21",
+   "sun": "12-21"
+  },
+  "opening_hours_source": "https://guidetoiceland.is/travel-iceland/drive/black-crust-pizzeria (Mon-Sun 12-9pm; Atmosfy says 11:30-21)",
+  "features": [
+   "Dine-in",
+   "Takeaway"
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1564936281291-294551497d81",
+  "page_url": null,
+  "photographer": null,
+  "description": "Neapolitan-style pizza with mozzarella and basil on a plate, top view (images.unsplash.com photo-id; Unsplash page blocked bots (Anubis) so photographer/page not verified; image viewed locally)"
+ }
+}

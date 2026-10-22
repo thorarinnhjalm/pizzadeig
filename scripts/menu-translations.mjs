@@ -391,6 +391,96 @@ export const IS_EN = {
   'chilli olía gummós': 'chili oil Gummós',
   'toppuð með steinselju þegar hún kemur úr ofninum': 'topped with parsley when it comes out of the oven',
   'bbq': 'BBQ',
+  // --- 2026-10-23 round (literal translations of the printed ingredient text; typos in the source are translated as meant)
+  // Devito's
+  'þristilhjörtu': 'artichokes', // sic: Þristilhjörtu (Þistilhjörtu)
+  'devito\'s pizza sósa': 'Devito\'s pizza sauce',
+  'devito\'s sósa': 'Devito\'s sauce',
+  'oreganó': 'oregano',
+  'jalapeño': 'jalapeño',
+  'brokkolí': 'broccoli',
+  // Shake & Pizza
+  'engin botnsósa heldur beikonsulta': 'no base sauce, but bacon jam instead',
+  'fajitas kjúklingur': 'fajita chicken',
+  'jalapenjó': 'jalapeño',
+  'shake&pizza ostablandan': 'Shake&Pizza cheese blend',
+  'ostablöndu shake&pizza': 'Shake&Pizza cheese blend',
+  'hvítlaukssósa á toppnum': 'garlic sauce on top',
+  'pizzasósan okkar': 'our pizza sauce',
+  'pizzusósan okkar': 'our pizza sauce',
+  'stracciatella burrata ostur': 'stracciatella burrata cheese',
+  'burrata stracciatella í botninn': 'burrata stracciatella on the base',
+  'kirsuberjatómatar': 'cherry tomatoes',
+  'feykir 12+': 'Feykir 12+',
+  'eðal feykir 12+ á toppnum': 'fine Feykir 12+ on top',
+  'fersk steinselja': 'fresh parsley',
+  'hvítlaukssmjör': 'garlic butter',
+  'chillimajó': 'chili mayo',
+  'bbq sósa á toppnum': 'BBQ sauce on top',
+  'tvöfalt magn af beikonsneiðum': 'double the amount of bacon slices',
+  'rifinn camembert': 'grated camembert',
+  'buffalo kjúklingur': 'buffalo chicken',
+  'hot sósa á toppnum': 'hot sauce on top',
+  'gráðaostasósa til hliðar': 'blue cheese sauce on the side',
+  'mozzarellasticks': 'mozzarella sticks',
+  'ferskur carolina reaper': 'fresh Carolina Reaper',
+  'blandaður chili': 'mixed chili',
+  'szechuan úr kvörn': 'Szechuan from a grinder',
+  'ostablandan okkar': 'our cheese blend',
+  'tjillí hunang': 'chili honey',
+  // Pizza 107
+  'bl.ólívur': 'mixed olives',
+  'græn papríka': 'green bell pepper',
+  'græn paprika': 'green bell pepper',
+  'chillí krydd': 'chili seasoning',
+  'chilí krydd': 'chili seasoning',
+  '(hægt að biðja um vegan ost)': '(vegan cheese on request)',
+  'cheddarostur': 'cheddar cheese',
+  'sulta yfir': 'jam on top',
+  'bbq sósa yfir': 'BBQ sauce on top',
+  'lítið pepperoní': 'small pepperoni',
+  'láttu pizzabakarann koma þér á óvart!': 'Let the pizza baker surprise you!',
+  // Astro Pizza
+  'bernessósa': 'béarnaise sauce',
+  'bernestopping': 'béarnaise topping',
+  'fetaostur': 'feta cheese',
+  'kantolía': 'crust-edge oil',
+  'siracha': 'sriracha',
+  // Sprettur-Inn
+  'stóru pepperóní': 'large pepperoni',
+  'rauðlauk': 'red onion',
+  'rjómaostu': 'cream cheese', // sic: rjómaostu (rjómaostur)
+  'toppuð með hot honey': 'topped with hot honey',
+  'grænn pipar': 'green pepper',
+  'spínat': 'spinach',
+  'svartar ólifur': 'black olives', // sic: ólifur (ólífur)
+  'beikon kurl': 'bacon bits',
+  'sulta með': 'jam on the side',
+  'pulledpork': 'pulled pork',
+  'bbq top': 'BBQ topping',
+  'mexico ostur': 'Mexíkóostur (Icelandic spiced cheese)',
+  'ex ostur': 'extra cheese',
+  'chilly': 'chili',
+  '2x pepperoni': '2x pepperoni',
+  // Daddi's
+  'buffalo-mozzarella': 'buffalo mozzarella',
+  'gæða skinka': 'quality ham',
+  'kastaníusveppir': 'chestnut mushrooms',
+  'basil-steinselju ólífuolía': 'basil-parsley olive oil',
+  // Domino's
+  'rifsberjagel': 'redcurrant jelly',
+  'tindur': 'Tindur',
+  'nachos flögur': 'nachos chips',
+  '2x ostur': '2x cheese',
+  'hvítlauksósudressing': 'garlic sauce dressing', // sic: hvítlauksósudressing (hvítlaukssósu...)
+  'kebab seasoning': 'kebab seasoning',
+  'sriracha sauce': 'sriracha sauce',
+  'hvítlaukssósu topping': 'garlic sauce topping',
+  'cajun krydd': 'Cajun seasoning',
+  'bbq topping': 'BBQ topping',
+  // NEÓ
+  'kjötbollur': 'meatballs',
+  'smá basil': 'a little basil',
 };
 
 // Whole-description overrides. Keys are "<slug>|<name exactly as in the source JSON>".
@@ -506,4 +596,26 @@ export const DESC_OVERRIDES = {
   'napoli-pizza-rvk|Calzone': {
     desc_en: 'San Marzano pizza sauce, fresh mozzarella, fresh basil, ricotta, ham and pepperoni.',
   },
+  // --- 2026-10-23 round: sentences and descriptions that do not split into ingredient phrases
+  'shake-and-pizza|Margarita': { desc_en: 'Simple but good! Pizza sauce and the S&P cheese blend' },
+  'shake-and-pizza|Ost Við Fyrstu Sýn': {
+    desc_en: 'With sour cream, garlic and Mexíkóostur (Icelandic spiced cheese) on the base, grated camembert, pepper cheese and the Shake&Pizza cheese blend. Served with redcurrant jam.',
+  },
+  'shake-and-pizza|Eva Sombrero': {
+    desc_en: 'With sour cream and Mexíkóostur (Icelandic spiced cheese) on the base, buffalo chicken, homemade nachos, red onion, the Shake&Pizza cheese blend and chili mayo on top.',
+  },
+  'shake-and-pizza|Vegan Með Gísla': { desc_en: 'With kebab oumph!, red onion, bell pepper, chili, cayenne pepper, topped with BBQ sauce' },
+  'shake-and-pizza|Gummi Ben': {
+    desc_en: 'Pulled pork, double the amount of bacon slices, jalapeño, cream cheese, our pizza sauce, Shake&Pizza cheese blend and BBQ sauce on top.',
+  },
+  'shake-and-pizza|The Dude': {
+    desc_en: 'Pepperoni, bacon slices, jalapeño, mozzarella sticks, nachos, cheese sauce, our pizza sauce and Shake&Pizza cheese blend.',
+  },
+  'shake-and-pizza|Sveppi Róni': { desc_en: 'Pizza with pepperoni, mushrooms, sauce and the Shake&Pizza cheese blend.' },
+  'shake-and-pizza|HA WHY?': { desc_en: 'Pizza with ham, pineapple, sauce and the cheese blend' },
+  'shake-and-pizza|Birgitta - Döðlupizza': {
+    desc_en: 'Dates, bacon slices, grated camembert, red onion, our pizza sauce and cheese blend, topped with chili mayo.',
+  },
+  'pizza-107|Baby 107': { desc_en: 'Kids pizza - Mini margarita 8-9"' },
+  'radagerdi|Funghi & Feykir': { desc_en: 'Mascarpone, fresh mozzarella, enoki mushrooms, gremolata, pine nuts and Feykir cheese.' },
 };

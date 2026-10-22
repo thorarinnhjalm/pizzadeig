@@ -1,0 +1,468 @@
+{
+ "slug": "sprettur-inn",
+ "status": "open",
+ "status_evidence": "https://www.spretturinn.is/ (own online-ordering site live 2026-10-22: menu categories, 'Lokað Opnum klukkan 11:20') and https://wolt.com/en/isl/akureyri/restaurant/sprettur-inn (rated 9.0, '© Wolt 2026', daily hours). Urban Akureyri restaurant; no seasonal closure indicated.",
+ "fetched": "2026-10-23",
+ "sources": [
+  {
+   "url": "https://www.spretturinn.is/#/menu/category/8",
+   "type": "own_site",
+   "note": "PIZZULISTI (own online-order menu): 31 named pizzas with LÍTIL/MIÐ/STÓR prices"
+  },
+  {
+   "url": "https://wolt.com/en/isl/akureyri/restaurant/sprettur-inn/items/pizzur-3",
+   "type": "wolt",
+   "note": "Cross-check only: Wolt lists 17 of these with base (10\") price + 12\"/15\" surcharges; Wolt prices differ slightly from own site (e.g. Margarita 1,990 base vs 2,090 own)"
+  },
+  {
+   "url": "https://wolt.com/en/isl/akureyri/restaurant/sprettur-inn",
+   "type": "wolt",
+   "note": "Address (Mýrarvegur, 600 Akureyri), phone +3544646464, delivery hours, link to spretturinn.is"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "MIÐ (12\")",
+ "size_large_label": "STÓR (15\")",
+ "items": [
+  {
+   "name": "Businn",
+   "desc_is": "Sósa, ostur, stóru pepperóní, rauðlauk, jalapeno, rjómaostu og toppuð með hot honey",
+   "desc_en": "",
+   "price": 4140,
+   "price_large": 4910,
+   "sizes_all": {
+    "LÍTIL": 3460,
+    "MIÐ": 4140,
+    "STÓR": 4910
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Margarita",
+   "desc_is": "Sósa, Ostur",
+   "desc_en": "",
+   "price": 2290,
+   "price_large": 2490,
+   "sizes_all": {
+    "LÍTIL": 2090,
+    "MIÐ": 2290,
+    "STÓR": 2490
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Golfarinn",
+   "desc_is": "Sósa, Ostur, Skinka, Pepperoni, Sveppir, Piparostur",
+   "desc_en": "",
+   "price": 4020,
+   "price_large": 4690,
+   "sizes_all": {
+    "LÍTIL": 3400,
+    "MIÐ": 4020,
+    "STÓR": 4690
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Forsetinn",
+   "desc_is": "Sósa, Ostur, Pepperóní, Sveppir, Rauðlaukur, Cheddar ostur, Grænn pipar",
+   "desc_en": "",
+   "price": 3910,
+   "price_large": 4570,
+   "sizes_all": {
+    "LÍTIL": 3310,
+    "MIÐ": 3910,
+    "STÓR": 4570
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Mexíkaninn",
+   "desc_is": "Sósa, Ostur, Pepperóní, Rauðlaukur, Ananas, Mexíkóostur",
+   "desc_en": "",
+   "price": 3910,
+   "price_large": 4570,
+   "sizes_all": {
+    "LÍTIL": 3310,
+    "MIÐ": 3910,
+    "STÓR": 4570
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Pepperoni",
+   "desc_is": "Sósa, Ostur, Pepperoni, Pepperoni, Ólífur, Auka ostur, Hvítlaukur",
+   "desc_en": "",
+   "price": 4020,
+   "price_large": 4690,
+   "sizes_all": {
+    "LÍTIL": 3400,
+    "MIÐ": 4020,
+    "STÓR": 4690
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Sjóarinn Síkáti",
+   "desc_is": "Sósa, Ostur, Túnfiskur, Rækjur, Kræklingur",
+   "desc_en": "",
+   "price": 3670,
+   "price_large": 4230,
+   "sizes_all": {
+    "LÍTIL": 3140,
+    "MIÐ": 3670,
+    "STÓR": 4230
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Solla Stirða",
+   "desc_is": "Sósa, Ostur, Sveppir, Paprika, Laukur, Tómatar",
+   "desc_en": "",
+   "price": 3690,
+   "price_large": 4330,
+   "sizes_all": {
+    "LÍTIL": 3130,
+    "MIÐ": 3690,
+    "STÓR": 4330
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Systir Sollu stirðu",
+   "desc_is": "Sósa, Ostur, Döðlur, Rauðlaukur, Rjómaostur, Ólífur, Spínat",
+   "desc_en": "",
+   "price": 4150,
+   "price_large": 4910,
+   "sizes_all": {
+    "LÍTIL": 3480,
+    "MIÐ": 4150,
+    "STÓR": 4910
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Milljónamæringurinn",
+   "desc_is": "Sósa, Ostur, Kjúklingur, Sveppir, Rauðlaukur, Rjómaostur",
+   "desc_en": "",
+   "price": 3910,
+   "price_large": 4570,
+   "sizes_all": {
+    "LÍTIL": 3310,
+    "MIÐ": 3910,
+    "STÓR": 4570
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Síðan Skein Sól",
+   "desc_is": "Sósa, Ostur, Skinka, Ananas",
+   "desc_en": "",
+   "price": 3100,
+   "price_large": 3530,
+   "sizes_all": {
+    "LÍTIL": 2700,
+    "MIÐ": 3100,
+    "STÓR": 3530
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Mömmustrákurinn",
+   "desc_is": "Sósa, Ostur, Skinka, Pepperoni, Ananas",
+   "desc_en": "",
+   "price": 3560,
+   "price_large": 4110,
+   "sizes_all": {
+    "LÍTIL": 3050,
+    "MIÐ": 3560,
+    "STÓR": 4110
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Kvennagullið",
+   "desc_is": "Sósa, Ostur, Skinka, Sólþurrkaðir tómatar, Döðlur, Svartar ólifur, rjómaostur",
+   "desc_en": "",
+   "price": 4260,
+   "price_large": 5030,
+   "sizes_all": {
+    "LÍTIL": 3570,
+    "MIÐ": 4260,
+    "STÓR": 5030
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Bolinn",
+   "desc_is": "Sósa, Ostur, Pepperoni, Rauðlaukur, Rjómaostur, Beikon kurl, BBQ sósa",
+   "desc_en": "",
+   "price": 4250,
+   "price_large": 5030,
+   "sizes_all": {
+    "LÍTIL": 3550,
+    "MIÐ": 4250,
+    "STÓR": 5030
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Bruggarinn",
+   "desc_is": "Sósa, Ostur, Pepperoni, Sveppir, Laukur, Piparostur",
+   "desc_en": "",
+   "price": 3910,
+   "price_large": 4570,
+   "sizes_all": {
+    "LÍTIL": 3310,
+    "MIÐ": 3910,
+    "STÓR": 4570
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Eyjaskegginn",
+   "desc_is": "Sósa, Ostur, Pepperoni, Gráðaostur, Bananar",
+   "desc_en": "",
+   "price": 3560,
+   "price_large": 4110,
+   "sizes_all": {
+    "LÍTIL": 3050,
+    "MIÐ": 3560,
+    "STÓR": 4110
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Bæjarstjórinn",
+   "desc_is": "Sósa, Ostur, Pepperoni, Kjúklingur, Laukur, Bananar, Piparostur, Jalapeno",
+   "desc_en": "",
+   "price": 4720,
+   "price_large": 5610,
+   "sizes_all": {
+    "LÍTIL": 3920,
+    "MIÐ": 4720,
+    "STÓR": 5610
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Spretturinn",
+   "desc_is": "Sósa, Ostur, Skinka, Pepperoni, Piparostur, Rjómaostur",
+   "desc_en": "",
+   "price": 4130,
+   "price_large": 4810,
+   "sizes_all": {
+    "LÍTIL": 3490,
+    "MIÐ": 4130,
+    "STÓR": 4810
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Ostaveisla",
+   "desc_is": "Sósa, ostur, ferskur mozzarella, gráðaostur, cheddar og sulta með",
+   "desc_en": "",
+   "price": 4020,
+   "price_large": 4930,
+   "sizes_all": {
+    "LÍTIL": 3490,
+    "MIÐ": 4020,
+    "STÓR": 4930
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Trukkurinn",
+   "desc_is": "Sósa, Ostur, Skinka, Nautahakk, Pepperóní, Sveppir, Laukur, Paprika, Ananas",
+   "desc_en": "",
+   "price": 5070,
+   "price_large": 6070,
+   "sizes_all": {
+    "LÍTIL": 4180,
+    "MIÐ": 5070,
+    "STÓR": 6070
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Kjöthleifurinn",
+   "desc_is": "Sósa, Ostur, Skinka, Nautahakk, Pepperoni, Beikon",
+   "desc_en": "",
+   "price": 4130,
+   "price_large": 4810,
+   "sizes_all": {
+    "LÍTIL": 3490,
+    "MIÐ": 4130,
+    "STÓR": 4810
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Sú Sterka",
+   "desc_is": "Sósa, Ostur, 2x Pepperoni, Ananas, Laukur, Grænn Pipar, Jalapeno",
+   "desc_en": "",
+   "price": 4260,
+   "price_large": 5030,
+   "sizes_all": {
+    "LÍTIL": 3570,
+    "MIÐ": 4260,
+    "STÓR": 5030
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Bóndinn",
+   "desc_is": "Sósa, ostur, pulledpork, rauðlaukur, cheddarostur, rjómaostur og bbq sósa",
+   "desc_en": "",
+   "price": 4250,
+   "price_large": 5030,
+   "sizes_all": {
+    "LÍTIL": 3550,
+    "MIÐ": 4250,
+    "STÓR": 5030
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Skyttan",
+   "desc_is": "Sósa, ostur, pepperóní, rauðlaukur, cheddar ostur, beikon, döðlur og bbq sósa.",
+   "desc_en": "",
+   "price": 4600,
+   "price_large": 5490,
+   "sizes_all": {
+    "LÍTIL": 3810,
+    "MIÐ": 4600,
+    "STÓR": 5490
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Bílstjórinn",
+   "desc_is": "Sósa, Ostur, Pepperoni, Beikon kurl, Piparostur, Rjómaostur",
+   "desc_en": "",
+   "price": 4130,
+   "price_large": 4810,
+   "sizes_all": {
+    "LÍTIL": 3490,
+    "MIÐ": 4130,
+    "STÓR": 4810
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Messico",
+   "desc_is": "Pepperoni, Laukur, Jalapeno, Mexico ostur",
+   "desc_en": "",
+   "price": 3910,
+   "price_large": 4570,
+   "sizes_all": {
+    "LÍTIL": 3310,
+    "MIÐ": 3910,
+    "STÓR": 4570
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Moderno",
+   "desc_is": "Pepperoni, Hakk, Beikonkurl, Piparostur, BBQ Top",
+   "desc_en": "",
+   "price": 4360,
+   "price_large": 5150,
+   "sizes_all": {
+    "LÍTIL": 3640,
+    "MIÐ": 4360,
+    "STÓR": 5150
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Pepperoni Festa",
+   "desc_is": "2x Pepperoni, Ex Ostur, Chilly",
+   "desc_en": "",
+   "price": 3670,
+   "price_large": 4230,
+   "sizes_all": {
+    "LÍTIL": 3140,
+    "MIÐ": 3670,
+    "STÓR": 4230
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Roma",
+   "desc_is": "Skinka, Pepperoni, Beikon Kurl, Piparostur, Rjómaostur, Chilly",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5390,
+   "sizes_all": {
+    "LÍTIL": 3840,
+    "MIÐ": 4590,
+    "STÓR": 5390
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Torino",
+   "desc_is": "Pulled Pork, Rauðlaukur, Rjómaostur",
+   "desc_en": "",
+   "price": 3910,
+   "price_large": 4110,
+   "sizes_all": {
+    "LÍTIL": 3050,
+    "MIÐ": 3910,
+    "STÓR": 4110
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  },
+  {
+   "name": "Tuttobene",
+   "desc_is": "Skinka, Pepperoni, Sveppir",
+   "desc_en": "",
+   "price": 3560,
+   "price_large": 4110,
+   "sizes_all": {
+    "LÍTIL": 3050,
+    "MIÐ": 3560,
+    "STÓR": 4110
+   },
+   "source_url": "https://www.spretturinn.is/#/menu/category/8"
+  }
+ ],
+ "not_found": "Own site labels sizes only LÍTIL/MIÐ/STÓR; the inch sizes come from Wolt option labels (10\"/12\"/15\") and the own-site lunch-deal text ('Lítil 10\" pizza', 'Mið 12\" pizza'); 15\" for STÓR is Wolt-only. price = MIÐ, price_large = STÓR, LÍTIL in sizes_all. Pizza list also has a 'STÖK PIZZA' build-your-own header (excluded) and Hálfmáni (deal-section item, excluded). Multi-topping deals, grill, burgers, kids menu (no kids pizza), sides excluded. Some descriptions omit 'Sósa, Ostur' (Messico, Moderno, Pepperoni Festa, Roma, Torino, Tuttobene) - verbatim. Torino MIÐ 3.910 vs STÓR 4.110 (small step) is as published. No English descriptions. Own-site hours not shown; hours below are Wolt delivery times.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Sprettur-Inn",
+  "description_is": "Veitingastaður í Kaupangi við Mýrarveg á Akureyri sem býður pizzur og grillrétti.",
+  "description_en": "Restaurant at Kaupangur by Mýrarvegur in Akureyri offering pizzas and grill dishes.",
+  "address": "Kaupangur við Mýrarveg",
+  "postal_code": "600",
+  "city": "Akureyri",
+  "location": {
+   "latitude": 65.679499,
+   "longitude": -18.1087139,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Sprettur-Inn+Akureyri (OSM 'Sprettur-Inn, Akurgerði, Kaupangur')"
+  },
+  "phone": "464 6464",
+  "website": "https://www.spretturinn.is/",
+  "opening_hours": {
+   "mán": "11:30-20:30",
+   "þri": "11:30-20:30",
+   "mið": "11:30-20:30",
+   "fim": "11:30-20:30",
+   "fös": "11:30-21:30",
+   "lau": "11:30-21:30",
+   "sun": "11:30-20:30"
+  },
+  "opening_hours_source": "https://wolt.com/en/isl/akureyri/restaurant/sprettur-inn ('Delivery times') - delivery hours; in-house hours not found",
+  "features": [
+   "Takeaway",
+   "Delivery"
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1576458088443-04a19bb13da6",
+  "page_url": null,
+  "photographer": null,
+  "description": "Family-style pan pizza with pepperoni, olives and peppers, sliced (images.unsplash.com photo-id; Unsplash page blocked bots (Anubis) so photographer/page not verified; image viewed locally)"
+ }
+}

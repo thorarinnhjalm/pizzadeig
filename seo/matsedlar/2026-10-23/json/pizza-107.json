@@ -1,0 +1,265 @@
+{
+ "slug": "pizza-107",
+ "status": "open",
+ "status_evidence": "pizza107.is live with © 2026 footer; Dineout takeaway page shows 'Næst í boði Oct 23 11:30' (rendered 2026-10-23); Wolt listing live (© Wolt 2026, rating 8.4); Grapevine review 2025-10-13 'Honey Pie: Pizza 107's Neighbourhood Charm Works Wonders'",
+ "fetched": "2026-10-23",
+ "sources": [
+  {
+   "url": "https://takeaway.dineout.is/pizza107/order?lng=is",
+   "type": "own_ordering_page",
+   "note": "Linked from pizza107.is ('Panta mat'); view only. Pizzur á matseðli: Miðstærð (Nr.0-15) and Stórar (Nr.0-15). Nr.0 'veldu sjálfur' excluded (build your own). Current prices."
+  },
+  {
+   "url": "https://dineout-sites-lekock.cdn.prismic.io/dineout-sites-lekock/aW9TKwIvOtkhBuoq_Matse%C3%B0ill20Janu%CC%81ar.pdf",
+   "type": "own_site",
+   "note": "PDF 'Matseðill Janúar' linked from pizza107.is; states 'Miðstærð 12\" / Stór 15\"'. Prices identical to Dineout except Nr.14 (3.890/4.890 in PDF vs 3.790/4.790 on Dineout). Names slightly different (e.g. 'Pizzan hennar Margarítu')."
+  },
+  {
+   "url": "https://pizza107.is/",
+   "type": "own_site",
+   "note": "About text, hours, phone, address."
+  },
+  {
+   "url": "https://wolt.com/en/isl/reykjavik/restaurant/pizza-107",
+   "type": "wolt",
+   "note": "Tagged 'In-store prices'; only deal items rendered; used for delivery confirmation only."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "Miðstærð 12\"",
+ "size_large_label": "Stór 15\"",
+ "items": [
+  {
+   "name": "Nr.1 Pizzan hennar Margaritu",
+   "desc_is": "pizzasósa, ostur.",
+   "desc_en": null,
+   "price": 2790,
+   "price_large": 3790,
+   "sizes_all": {
+    "Miðstærð 12\"": 2790,
+    "Stór 15\"": 3790
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.2 Pizzan hennar mömmu",
+   "desc_is": "Skinka, hakk, sveppir, paprika og auka ostur.",
+   "desc_en": null,
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "Miðstærð 12\"": 3890,
+    "Stór 15\"": 4890
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.3 Pizzan hans Palla",
+   "desc_is": "Klettasalat, hráskinka, parmesan",
+   "desc_en": null,
+   "price": 4140,
+   "price_large": 4990,
+   "sizes_all": {
+    "Miðstærð 12\"": 4140,
+    "Stór 15\"": 4990
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.4 Pizzan hennar sætu sætu",
+   "desc_is": "Pepperoni, döðlur, rjómaostur, hunang",
+   "desc_en": null,
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "Miðstærð 12\"": 3890,
+    "Stór 15\"": 4890
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.5 Pizzan hans heita",
+   "desc_is": "Pepperoni, jalapeno, ferskur chili, laukur, bl.ólívur, græn papríka, hvítlaukur, Laukur, chillí krydd.",
+   "desc_en": null,
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "Miðstærð 12\"": 3990,
+    "Stór 15\"": 4990
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.6 Pizzan hans Gulla Bjarna",
+   "desc_is": "Pepperoni, beikon, ananas.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": 4790,
+   "sizes_all": {
+    "Miðstærð 12\"": 3790,
+    "Stór 15\"": 4790
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.7 Pizzan frá Kamp Knox",
+   "desc_is": "Kjúklingur, laukur, jalapeno, græn papríka, rjómaostur.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": 4790,
+   "sizes_all": {
+    "Miðstærð 12\"": 3790,
+    "Stór 15\"": 4790
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.8 Pizzan úr hverfinu hans Víðis",
+   "desc_is": "Skinka, hakk, sveppir, beikonkurl, piparostur, sv.pipar",
+   "desc_en": null,
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "Miðstærð 12\"": 3990,
+    "Stór 15\"": 4990
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.9 Pizzan úr Garðinum",
+   "desc_is": "Tómatar, salthnetur, rauðlaukur, bl.ólívur, klettasalat. (hægt að biðja um vegan ost)",
+   "desc_en": null,
+   "price": 3590,
+   "price_large": 4590,
+   "sizes_all": {
+    "Miðstærð 12\"": 3590,
+    "Stór 15\"": 4590
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.10 Pizzan á horninu",
+   "desc_is": "Camembert, rjómaostur, gráðaostur, cheddarostur, sulta yfir.",
+   "desc_en": null,
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "Miðstærð 12\"": 3990,
+    "Stór 15\"": 4990
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.11 Pizzan fyrir partý",
+   "desc_is": "Lítið pepperoni, pepperoni, piparostur.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": 4790,
+   "sizes_all": {
+    "Miðstærð 12\"": 3790,
+    "Stór 15\"": 4790
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.12 Pizzan frá hjartanu",
+   "desc_is": "Vegan ostur, döðlur, hvítlaukur, jalapeno, rauðlaukur, tómatar, græn papríka.",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": 4690,
+   "sizes_all": {
+    "Miðstærð 12\"": 3690,
+    "Stór 15\"": 4690
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.13. Pizzan fyrir Bóbó",
+   "desc_is": "Lítið pepperoni, beikonkurl, cheddarostur, BBQ sósa yfir.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": 4790,
+   "sizes_all": {
+    "Miðstærð 12\"": 3790,
+    "Stór 15\"": 4790
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is"
+  },
+  {
+   "name": "Nr.14 Pizzan sem er Hot Bananas",
+   "desc_is": "Lítið pepperoní, bananar, piparostur, chilí krydd, hot honey",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": 4790,
+   "sizes_all": {
+    "Miðstærð 12\"": 3790,
+    "Stór 15\"": 4790
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is",
+   "note": "Older PDF menu (Janúar) shows 3.890 / 4.890 for this pizza; Dineout ordering page (current) shows 3.790 / 4.790, used here."
+  },
+  {
+   "name": "Nr.15 Loki ræður",
+   "desc_is": "Láttu pizzabakarann koma þér á óvart!",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": 4690,
+   "sizes_all": {
+    "Miðstærð 12\"": 3690,
+    "Stór 15\"": 4690
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is",
+   "note": "Chef's-choice pizza (no fixed toppings)."
+  },
+  {
+   "name": "Baby 107",
+   "desc_is": "Barnapizza - Mini margarita 8-9\"",
+   "desc_en": null,
+   "price": 1990,
+   "price_large": null,
+   "sizes_all": {
+    "8-9\"": 1990
+   },
+   "source_url": "https://takeaway.dineout.is/pizza107/order?lng=is",
+   "note": "Kids pizza, listed under Meðlæti on the ordering page."
+  }
+ ],
+ "not_found": "No English item text. Garlic pizzas 'Hvítlaukspizza' (2190) and 'Delux hvítlaukspizza' (2490) are listed under Meðlæti (sides) and were excluded; Nr.0 build-your-own, deals (Tvenna, lunch offers) excluded. Gluten-free/vegan details only as in descriptions. price = medium 12\", price_large = large 15\".",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Pizza 107",
+  "description_is": "Pizza 107 er lítil og hlýleg pizzeria í hjarta Vesturbæjarins, á horni við Hagamel 67, og býður súrdeigspizzur.",
+  "description_en": "Pizza 107 is a small, cosy pizzeria in the heart of Vesturbær, on the corner at Hagamelur 67, serving sourdough pizzas.",
+  "address": "Hagamelur 67",
+  "postal_code": "107",
+  "city": "Reykjavík",
+  "location": {
+   "latitude": 64.145876,
+   "longitude": -21.962613,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Hagamelur+67,+107+Reykjavik (OSM node 'Pizza 107', amenity=fast_food)"
+  },
+  "phone": "761 1107",
+  "website": "https://pizza107.is",
+  "opening_hours": {
+   "mán": "11:30-20:30",
+   "þri": "11:30-20:30",
+   "mið": "11:30-20:30",
+   "fim": "11:30-21:00",
+   "fös": "11:30-21:30",
+   "lau": "12:00-21:30",
+   "sun": "12:00-21:00"
+  },
+  "opening_hours_source": "https://pizza107.is/",
+  "features": [
+   "Dine-in",
+   "Takeaway",
+   "Delivery"
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1717883235373-ef10b2a745a3",
+  "page_url": "https://unsplash.com/photos/a-pizza-sitting-on-top-of-a-wooden-cutting-board-H5Z8wovS9ic",
+  "photographer": "Amadeus Moga",
+  "description": "Mushroom pizza on a wooden cutting board with a pizza cutter, dark background; free Unsplash License (not Unsplash+); viewed, no logos or faces; not used elsewhere."
+ }
+}
