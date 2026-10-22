@@ -5,7 +5,7 @@ import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Recipe } from '@/types/recipe';
 import { Category } from '@/types/category';
-import { mockRecipes } from '@/lib/mockData';
+import { allRecipes as mockRecipes } from '@/lib/recipeData';
 
 export function useRecipes(initialCategory?: string) {
   const [recipes, setRecipes] = useState<Recipe[]>([]);

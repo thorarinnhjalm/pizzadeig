@@ -123,3 +123,9 @@ Routes use Icelandic names: `/uppskriftir` (recipes), `/stadir` (restaurants), `
 - GA4 er óvirkt utan production (`VERCEL_ENV !== 'production'`). Aðeins GA4 er varið svona: Birtingur-auglýsingaplássin (`BirtingurAdSlot`) senda enn birtingarpixla úr preview og staðbundinni keyrslu, svo þær mælingar geta mengast. Preview er á bak við Vercel SSO.
 - Staðbundið `npm run dev` les líka raunverulegan Firestore. Síður má því ekki sækja staðbundið til að prófa; notið `npx tsc --noEmit`, `npm run lint` og `npm run build`.
 - `npm run lint` skilar nú þegar 2 villum sem eru ekki nýjar: `src/components/admin/AdminGate.tsx` og `src/components/recipes/ShareButtons.tsx:18` (setState kallað beint í effect). Berðu lint-niðurstöðu saman við þetta áður en þú segir að breytingin þín hafi bætt við villum.
+
+## Matseðlar
+
+- Uppspretta matseðilsgagna er `seo/matsedlar/<dagsetning>/json` → `scripts/build-menu-data.mjs` → `src/lib/menuData.ts` (mynduð skrá, ekki breyta henni í höndunum). Skriptan fyllir líka `menu_*` reitina á veitingastöðum í `mockData.ts`.
+- Aldrei búa til eða áætla verð eða rétti: allt kemur úr JSON-skránum (heimild, slóð og dagsetning fylgja). Keyrsla og vinnulag: `seo/matsedlar/README.md`.
+- Lifandi síðan les Firestore, ekki kóðann. Eftir merge notar eigandi hnappinn „Uppfæra matseðla“ í admin (Kerfi), EKKI Seed: hann skrifar aðeins `menu_items`, uppfærir fjóra `menu_*` reiti á stöðum og eyðir fræddum réttum sem eru í `seo/matsedlar/retired-ids.json`. Seed yfirskrifar staði, uppskriftir og auglýsingar í heild.

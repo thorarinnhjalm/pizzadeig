@@ -1,0 +1,34 @@
+{
+ "slug": "pizza-67-vestmannaeyjar",
+ "status": "unknown",
+ "status_evidence": "No own site/ordering page found. Wanderlog https://wanderlog.com/place/details/2738869/pizza-67 (rendered in browser): \"Pizza restaurant Open now 17:00-21:00 ... Heidharvegur 5, 900 Vestmannaeyjabaer\" (aggregator; ja.is https://ja.is/?q=Pizza+67 lists \"Pizza 67, Heiðarvegi 5, 900 Vestmannaeyjum, veitingastaður\"). Facebook page needs login.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://wanderlog.com/place/details/2738869/pizza-67",
+   "type": "other",
+   "note": "listing, no menu"
+  },
+  {
+   "url": "https://ja.is/?q=Pizza+67",
+   "type": "other",
+   "note": "directory entry, address only"
+  },
+  {
+   "url": "https://www.facebook.com/Pizza-67-Vestmannaeyjum-47632321266/",
+   "type": "facebook",
+   "note": "login wall in headless browser"
+  }
+ ],
+ "price_basis": "none",
+ "size_small_label": null,
+ "size_large_label": null,
+ "contact": {
+  "phone": "481 1567 (earlier agent, from aggregators; not re-verified)",
+  "address": "Heiðarvegur 5, 900 Vestmannaeyjar",
+  "hours_verbatim": "Wanderlog: Open now 17:00-21:00"
+ },
+ "items": [],
+ "not_found": "No menu or prices found anywhere reachable: no website, Facebook login-walled, no Wolt/Aha listing found (Wolt search page renders nothing).",
+ "diff_vs_current": "mock has 3 items; verified 0. Price changes: none. Not on source (mock-only): Sjóarinn (3490); Eyjasérréttur (3290); Margherita (2790). New on source: none."
+}

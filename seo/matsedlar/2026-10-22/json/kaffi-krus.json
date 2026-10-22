@@ -1,0 +1,243 @@
+{
+ "slug": "kaffi-krus",
+ "status": "open",
+ "status_evidence": "https://kaffikrus.is/panta rendered: \"Pizzur 12\" Hægt að panta: Mánudaga - Fimmtudaga 17:00 - 21:00 Föstdaga - Sunndaga 11:30 - 21:00\"; footer Austurvegur 7, 800 Selfoss, S: 482-1266; © 2026.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://kaffikrus.is/panta",
+   "type": "own_order_page",
+   "note": "Full menu rendered (SalesCloud). In-house prices. Wolt prices (earlier agent) were higher, e.g. Margarita 3190 vs 2890 here."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": null,
+ "contact": {
+  "phone": "482-1266",
+  "address": "Austurvegur 7, 800 Selfoss",
+  "hours_verbatim": "Opnunartími Mán - Fös 11:00 - 21:00, Lau - Sun 12:00 - 21:00; Pizzur hægt að panta: Mánudaga - Fimmtudaga 17:00 - 21:00, Föstdaga - Sunndaga 11:30 - 21:00"
+ },
+ "items": [
+  {
+   "name": "Margarita",
+   "desc_is": "sósa, ostur og oregano",
+   "desc_en": "",
+   "price": 2890,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 2890
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "50"
+  },
+  {
+   "name": "Viva Hawaii",
+   "desc_is": "sósa, ostur, skinka, ananas og oregano",
+   "desc_en": "",
+   "price": 3390,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3390
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "52"
+  },
+  {
+   "name": "Parma Ruccola",
+   "desc_is": "sósa, ostur, hráskinka, klettasalat og parmesan",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4290
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "53"
+  },
+  {
+   "name": "Verona",
+   "desc_is": "sósa, ostur, pepperoni, beikon, sveppir, rjómaostur og oregano",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "55"
+  },
+  {
+   "name": "Favorito",
+   "desc_is": "sósa, ostur, pepperoni, skinka, beikon, ananas, hvítlaukur og rjómaostur",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "56"
+  },
+  {
+   "name": "Hálfmáni með skinku og sveppum",
+   "desc_is": "sósa, ostur, skinka, sveppir og oregano",
+   "desc_en": "",
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3790
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "57"
+  },
+  {
+   "name": "Hálfmáni Carbonara",
+   "desc_is": "Rjómasósa, spaghetti og bacon.",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4490
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "58"
+  },
+  {
+   "name": "Vestmannaeyingur",
+   "desc_is": "BBQ Sósa, Ostur, Beikon og Hvítlaukssósa til að dýfa í.",
+   "desc_en": "",
+   "price": 3390,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3390
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "59"
+  },
+  {
+   "name": "Kjúklingapizza",
+   "desc_is": "sósa, ostur, kjúklingur, beikon, jalapeno, hvítlaukur og bbq",
+   "desc_en": "",
+   "price": 4390,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4390
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "60"
+  },
+  {
+   "name": "Andapizza",
+   "desc_is": "sósa, ostur, hægelduð önd, sveppir, kasjú hnetur, pikklaður rauðlaukur, klettasalat, oregano og trufflumayo",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4490
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "61"
+  },
+  {
+   "name": "Sjávárréttarpizza",
+   "desc_is": "sósa, ostur, djúpsteiktur leturhumar, risa rækjur, chili, vorlaukur, kokteil tómatar og ananas",
+   "desc_en": "",
+   "price": 4690,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4690
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "62"
+  },
+  {
+   "name": "Say Cheese",
+   "desc_is": "sósa, ostur, djúpsteiktur brie, gráðaostur, rjómaostur, parmesan, piparostur og rifsberjasulta til hliðar",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4590
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "63"
+  },
+  {
+   "name": "Crazy Banana",
+   "desc_is": "sósa, ostur, pepperoni, bananar og gráðostur.",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3890
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "64"
+  },
+  {
+   "name": "Fiesta Nachos",
+   "desc_is": "sósa, ostur, nautahakk, nachos, rjómaostur, salsasósa, paprika og jalapeno",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "65"
+  },
+  {
+   "name": "Hot And Sweet",
+   "desc_is": "sósa, ostur, pepperoni, rjómaostur, ferskur chili, döðlur og chili hunang.",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "66"
+  },
+  {
+   "name": "La Bianca Cremonese",
+   "desc_is": "sýrður rjómi, ostur, burrata, kokteiltómatar, parmaskinka, döðlur og basilolía",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4290
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "67"
+  },
+  {
+   "name": "La Bianca Pepperoni",
+   "desc_is": "Sýrður rjómi með basil, ostur, pepperoni, sveppir og piparostur",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "68"
+  },
+  {
+   "name": "Barna Pizza margarita 9\"",
+   "desc_is": "ostur og pizzasósa",
+   "desc_en": "",
+   "price": 1790,
+   "price_large": null,
+   "sizes_all": {
+    "9\"": 1790
+   },
+   "source_url": "https://kaffikrus.is/panta",
+   "menu_no": "77",
+   "kids": true
+  }
+ ],
+ "not_found": "No item numbered 54 on the page. Excluded: 51 Hvítlauksbrauð (2890), 69 Ostafylltar Brauðstangir (2890), 78 Barna Hvítlauksbrauð 9\" (1790). Includes two Hálfmáni (folded/calzone-style, 57 and 58) and kids 9\" Margarita - flagged: Hálfmáni items may not count as pizzas. Item 77 Barna Pizza margarita 9\" included as kids. Only Icelandic text. Item names verbatim incl. typos (e.g. \"Sjávárréttarpizza\").",
+ "diff_vs_current": "mock has 3 items; verified 18. Price changes: Verona: 3690->3990. Not on source (mock-only): Margherita (2890); Sérréttapizza (3590). New on source: Margarita, Viva Hawaii, Parma Ruccola, Favorito, Hálfmáni með skinku og sveppum, Hálfmáni Carbonara, Vestmannaeyingur, Kjúklingapizza, Andapizza, Sjávárréttarpizza, Say Cheese, Crazy Banana, Fiesta Nachos, Hot And Sweet, La Bianca Cremonese, La Bianca Pepperoni, Barna Pizza margarita 9\".",
+ "sizes_note": "12\" except kids 9\"."
+}

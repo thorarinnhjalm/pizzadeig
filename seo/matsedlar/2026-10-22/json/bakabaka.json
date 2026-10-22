@@ -1,0 +1,182 @@
+{
+ "slug": "bakabaka",
+ "status": "open",
+ "status_evidence": "bakabaka.is/menu renders dinner (KVÖLDMATUR) pizza menu with hours, address, phone",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://bakabaka.is/menu",
+   "type": "own_site",
+   "note": "Rendered; the KVÖLDMATUR section (\"PÍTSA 12 TOMMUR\") was shown without clicking; copied verbatim."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": "12\"",
+ "contact": {
+  "phone": "551 4430",
+  "address": "Bankastræti 2, 101 Reykjavík",
+  "hours_verbatim": "PÍTSUSTAÐUR Sun — Fim 17:30 — 22:00; Fös — Lau 17:30 — 23:00; Eldhúsið lokar klukkustund fyrr. (Bakarí: Borðþjónusta 08:00 — 16:30; Morgunmatur 08:00 — 10:45; Hádegismatur 11:00 — 15:00.) Pizza section header: \"KVÖLDMATUR ... 17:00-22:00\" applies to starters."
+ },
+ "items": [
+  {
+   "name": "Margherita",
+   "desc_is": "Siccagno pizzasósa · Mozzarella · Basil",
+   "desc_en": null,
+   "price": 3200,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3200
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Pepperoni",
+   "desc_is": "Siccagno pizzasósa · Mozzarella · Pepperoni · Chilli flögur",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Parma",
+   "desc_is": "Siccagno pizzasósa · Mozzarella · Klettasalat · Parmaskinka · Parmesan",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Mortadella",
+   "desc_is": "Siccagno pizzasósa · Mortadella pylsa · Burrata ostur · Sítrónuolía · Pistasíur",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Formaggi",
+   "desc_is": "Siccagno pizzasósa · Mozzarella · Geitaostur · Gorgonzola · Parmesan · Hunang til hliðar",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Diavola",
+   "desc_is": "Siccagno pizzasósa · Mozzarella · Spicy salami · Rauðlaukur · Ólífur · Chilli flögur · Parmesan",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Bella Vegana",
+   "desc_is": "Siccagno pizzasósa · Grilluð paprika · Rauðlaukur · Ólífur · Pikklaður chili · Vegan rjómaostur",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Scandinavia",
+   "desc_is": "Mascarpone · Sterkt salami · Rauðlaukur · Pikklaður chilli · Garðkarsi",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Capricciosa",
+   "desc_is": "Siccagno pizzasósa · Mozzarella · Prosciutto cotto · Ætiþistlar · Ólífur · Oregano",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Bianca",
+   "desc_is": "Mascarpone · Ostrusveppir · Hvítlauksolía · Villisveppa- & trufflúduft",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Aglio e Prosciutto Cotto",
+   "desc_is": "Mozzarella · Parmesan · Hvítlauksolía · Confit hvítlaukur · Chili flögur",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu"
+  },
+  {
+   "name": "Val kokksins",
+   "desc_is": "Spurðu þjóninn",
+   "desc_en": null,
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://bakabaka.is/menu",
+   "note": "Description is \"Spurðu þjóninn\" (ask the waiter)"
+  }
+ ],
+ "not_found": "English descriptions not fetched (site has an EN toggle). Dessert (Brownie 1900, Tíramísú 1900), starters and salads excluded.",
+ "diff_vs_current": "Mock names not on site now: Tonno e cipolle, Stella di Nduja, Capra Rossa, Patata, \"Scandinava\" (site: \"Scandinavia\"). Mock Parma 3800 and Mortadella 3800 are now 3600. New on site: Formaggi, Capricciosa, Aglio e Prosciutto Cotto, Val kokksins (chef's choice). Mock Margherita 3200, Pepperoni 3600, Diavola 3600, Bella Vegana 3600, Bianca 3600 unchanged. Hours same as mock."
+}

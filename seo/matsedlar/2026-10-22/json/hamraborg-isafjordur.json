@@ -1,0 +1,379 @@
+{
+ "slug": "hamraborg-isafjordur",
+ "status": "open",
+ "status_evidence": "https://hamraborg.com/is/ rendered: opening time \"09:00 - 21:00\", live order app (Upsell), \"Sími 456 3166 ... HAMRABORG EHF HAFNARSTRÆTI 7\"; product data updatedAt 2026-09-28.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://hamraborg.com/is/",
+   "type": "own_order_page",
+   "note": "Upsell ordering app; item data read from the page's own public-api.upsell.is feed (products?categories=<Pizzur>) with IS and EN localizations"
+  },
+  {
+   "url": "https://hamraborg.com/is/#!/ (item detail)",
+   "type": "own_order_page",
+   "note": "Item pages show size selector 12\" / 15\""
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": "15\"",
+ "contact": {
+  "phone": "456 3166",
+  "address": "Hafnarstræti 7, Ísafjörður (footer: HAMRABORG EHF HAFNARSTRÆTI 7)",
+  "hours_verbatim": "09:00 - 21:00 (Opnunartími, as shown in app header)"
+ },
+ "items": [
+  {
+   "name": "Velja sjálfur",
+   "desc_is": "",
+   "desc_en": "",
+   "price": 2790,
+   "price_large": 3590,
+   "sizes_all": {
+    "12\"": 2790,
+    "15\"": 3590
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Sú sterka",
+   "desc_is": "Sósa, ostur, pepperoni, kjúklingur, ananas, Jalapeño, rjómaostur og hot sauce topping",
+   "desc_en": "Sauce, cheese, pepperoni, chicken, pineapple, Jalapeño, cream cheese and hot sauce topping",
+   "price": 4590,
+   "price_large": 5990,
+   "sizes_all": {
+    "12\"": 4590,
+    "15\"": 5990
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Frú Borghildur",
+   "desc_is": "Sósa, ostur, og pepperoni",
+   "desc_en": "Sauce, cheese and pepperoni",
+   "price": 3090,
+   "price_large": 3990,
+   "sizes_all": {
+    "12\"": 3090,
+    "15\"": 3990
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Jósefína",
+   "desc_is": "Sósa, ostur, skinka, pepperoni, hakk, sveppir, paprika, laukur og ólífur",
+   "desc_en": "Sauce, cheese, ham, pepperoni, minced meat, mushrooms, peppers, onions and olives",
+   "price": 4890,
+   "price_large": 6390,
+   "sizes_all": {
+    "12\"": 4890,
+    "15\"": 6390
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Frú Rut",
+   "desc_is": "Sósa, ostur, pepperoni, sveppir og piparostur",
+   "desc_en": "Sauce, cheese, pepperoni, mushrooms and pepper cheese",
+   "price": 3690,
+   "price_large": 4790,
+   "sizes_all": {
+    "12\"": 3690,
+    "15\"": 4790
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Frú Svane",
+   "desc_is": "Sóas, ostur, pepperoni og ananas",
+   "desc_en": "Sauce, cheese, pepperoni and pineapple",
+   "price": 3390,
+   "price_large": 4390,
+   "sizes_all": {
+    "12\"": 3390,
+    "15\"": 4390
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Frú Vegan",
+   "desc_is": "Sósa, vegan ostur, laukur, paprika, sveppir, döðlur og BBQ topping",
+   "desc_en": "Sauce, vegan cheese, onion, paprika, mushrooms, dates and BBQ topping",
+   "price": 3990,
+   "price_large": 5190,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 5190
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Iceboys pizzan",
+   "desc_is": "Sósa, ostur, skinka, pepperoni og rjómaostur",
+   "desc_en": "Sauce, cheese, ham, pepperoni and creme cheese",
+   "price": 3690,
+   "price_large": 4790,
+   "sizes_all": {
+    "12\"": 3690,
+    "15\"": 4790
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Palla Ponta",
+   "desc_is": "Sósa, ostur, pepperoni, sveppir og gráðaostur",
+   "desc_en": "Sauce, cheese, pepperoni, mushrooms and blue cheese",
+   "price": 3690,
+   "price_large": 4790,
+   "sizes_all": {
+    "12\"": 3690,
+    "15\"": 4790
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Frú Sigríður",
+   "desc_is": "Sósa, ostur, skinka, ananas, sveppir og laukur",
+   "desc_en": "Sauce, cheese, ham, pineapple, mushrooms and onion",
+   "price": 3990,
+   "price_large": 5190,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 5190
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Frú Þorbjörg",
+   "desc_is": "Sósa, ostur, pepperoni og sveppir",
+   "desc_en": "Sauce, cheese, pepperoni and mushrooms",
+   "price": 3390,
+   "price_large": 4390,
+   "sizes_all": {
+    "12\"": 3390,
+    "15\"": 4390
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Jóka Stóra",
+   "desc_is": "Sósa, ostur, skinka, paprika og ananas",
+   "desc_en": "Sauce, cheese, ham, paprika and pineapple",
+   "price": 3690,
+   "price_large": 4790,
+   "sizes_all": {
+    "12\"": 3690,
+    "15\"": 4790
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Gústa á Uppsölum",
+   "desc_is": "Sósa, ostur og skinka",
+   "desc_en": "Sauce, cheese and ham",
+   "price": 3090,
+   "price_large": 3990,
+   "sizes_all": {
+    "12\"": 3090,
+    "15\"": 3990
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Margaríta",
+   "desc_is": "Sósa, ostur og oregano",
+   "desc_en": "Sauce, cheese and oregano",
+   "price": 2790,
+   "price_large": 3590,
+   "sizes_all": {
+    "12\"": 2790,
+    "15\"": 3590
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Anna í Hollywood",
+   "desc_is": "Sósa, ostur, skinka, ananas, paprika, tómatsneiðar og rjómaostur",
+   "desc_en": "Sauce, cheese, ham, pineapple, paprika, tomato slices and creme cheese",
+   "price": 4290,
+   "price_large": 5590,
+   "sizes_all": {
+    "12\"": 4290,
+    "15\"": 5590
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Halla",
+   "desc_is": "Sósa, pizzaostur, gráðaostur, cheddar, piparostur og parmesan.",
+   "desc_en": "Sauce, pizza cheese, blue cheese, cheddar, pepper cheese and parmesan",
+   "price": 3990,
+   "price_large": 5190,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 5190
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Stebba",
+   "desc_is": "Sósa, ostur, paprika, tómatsneiðar, laukur og sveppir",
+   "desc_en": "Sauce, cheese, paprika, tomato slices, onion and mushrooms",
+   "price": 3990,
+   "price_large": 5190,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 5190
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Gunna á höfninni",
+   "desc_is": "Sósa, ostur, rækjur, túnfiskur, laukur og tómatsneiðar",
+   "desc_en": "Sauce, cheese, shrimp, tuna, onion and tomato slices",
+   "price": 3990,
+   "price_large": 5190,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 5190
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Ólína",
+   "desc_is": "Sósa, ostur, pepperoni, jalapeño, paprika, rauðlaukur og svartur pipar",
+   "desc_en": "Sauce, cheese, pepperoni, jalapeño, paprika, red onion and black pepper",
+   "price": 3990,
+   "price_large": 5190,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 5190
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Ósk",
+   "desc_is": "Sósa, ostur, skinka og sveppir",
+   "desc_en": "Sauce, cheese, ham and mushrooms",
+   "price": 3390,
+   "price_large": 4390,
+   "sizes_all": {
+    "12\"": 3390,
+    "15\"": 4390
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "Gulla",
+   "desc_is": "Sósa, ostur, skinka og ananas",
+   "desc_en": "Sauce, cheese, ham and pineapple",
+   "price": 3390,
+   "price_large": 4390,
+   "sizes_all": {
+    "12\"": 3390,
+    "15\"": 4390
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "101",
+   "desc_is": "BBQ sósa á botn, ostur, pepperoni, pulled pork, jalepeno, rjómaostur og piparostur",
+   "desc_en": "BBQ sauce on the bottom, cheese, pepperoni, pulled pork, jalepeno, cream cheese and pepper cheese",
+   "price": 4290,
+   "price_large": 5590,
+   "sizes_all": {
+    "12\"": 4290,
+    "15\"": 5590
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "102",
+   "desc_is": "Hvítlauksbotn, pepperoni, skinka, beikon og cajun pipar.",
+   "desc_en": "Garlic bottom, pepperoni, ham, bacon and cajun pepper",
+   "price": 3690,
+   "price_large": 4790,
+   "sizes_all": {
+    "12\"": 3690,
+    "15\"": 4790
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "103",
+   "desc_is": "Sósa, ostur, pepperoni, skinka, ananas, jalepeno, sveppir, rauðlaukur og svartur pipar",
+   "desc_en": "Sauce, cheese, pepperoni, ham, pineapple, jalapeño, mushrooms, red onions and black pepper",
+   "price": 4590,
+   "price_large": 5990,
+   "sizes_all": {
+    "12\"": 4590,
+    "15\"": 5990
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "104",
+   "desc_is": "Sósa, ostur, döðlur, rauðlaukur, sveppir, rjómaostur, svartur pipar",
+   "desc_en": "Sauce, cheese, dates, red onion, mushrooms, creme cheese and black pepper",
+   "price": 3990,
+   "price_large": 5190,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 5190
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "105",
+   "desc_is": "Sósa, ostur, pepperoni, sveppir, döðlur, rjómaostur, chili pipar, hunang",
+   "desc_en": "Sauce, cheese, pepperoni, mushrooms, dates, creme cheese, chili and honey",
+   "price": 4290,
+   "price_large": 5590,
+   "sizes_all": {
+    "12\"": 4290,
+    "15\"": 5590
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "106",
+   "desc_is": "Sósa, ostur, ananas, döðlur, hvítlaukur, piparostur",
+   "desc_en": "Sauce, cheese, pineapple, dates, garlic and pepper cheese",
+   "price": 3990,
+   "price_large": 5190,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 5190
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "107",
+   "desc_is": "Hvítlaukssósa, ostur, pepperoni, beikonkurl, ananas, döðlur, cheddarostur, oregano",
+   "desc_en": "Garlic sauce, cheese, pepperoni, bacon, pineapple, dates, cheddar and topped with oregano",
+   "price": 4290,
+   "price_large": 5590,
+   "sizes_all": {
+    "12\"": 4290,
+    "15\"": 5590
+   },
+   "source_url": "https://hamraborg.com/is/"
+  },
+  {
+   "name": "108",
+   "desc_is": "Sósa, ostur, pepperoni, beikon, piparostur, rjómaostur og svartur pipar",
+   "desc_en": "Sauce, cheese, pepperoni, bacon, pepper cheese, creme cheese and black pepper",
+   "price": 3990,
+   "price_large": 5190,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 5190
+   },
+   "source_url": "https://hamraborg.com/is/"
+  }
+ ],
+ "not_found": "Excluded: Hvítlauksbrauð (2790 / 3590). Item \"Velja sjálfur\" (build your own) kept as an item (12\" 2790, 15\" 3590, no description) - consider excluding. The list view shows the 12\" price; detail view defaults to 15\". Names 101-108 are numbered pizzas. desc_is typos kept verbatim (\"Sóas\" in Frú Svane). Pizza \"Sú sterka\" has same position as Velja sjálfur in feed.",
+ "diff_vs_current": "mock has 3 items; verified 29. Price changes: Margarita: 2890->2790. Not on source (mock-only): Hamraborgar Special (3890); Pepperóní (3190). New on source: Velja sjálfur, Sú sterka, Frú Borghildur, Jósefína, Frú Rut, Frú Svane, Frú Vegan, Iceboys pizzan, Palla Ponta, Frú Sigríður, Frú Þorbjörg, Jóka Stóra, Gústa á Uppsölum, Anna í Hollywood, Halla, Stebba, Gunna á höfninni, Ólína, Ósk, Gulla, 101, 102, 103, 104, 105, 106, 107, 108.",
+ "sizes_note": "12\"/15\" per item; price=12\", price_large=15\"."
+}
