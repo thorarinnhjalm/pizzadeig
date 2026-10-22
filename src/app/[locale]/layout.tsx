@@ -76,7 +76,8 @@ export default async function LocaleLayout({
           <Footer />
           <InstallPrompt locale={locale as 'is' | 'en'} />
         </NextIntlClientProvider>
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        {/* Analytics only in real production: Vercel previews and local dev must not pollute GA4 */}
+        {process.env.VERCEL_ENV === 'production' && process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <ConditionalGA4 gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
       </body>
