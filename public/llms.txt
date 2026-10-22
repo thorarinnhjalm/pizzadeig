@@ -5,17 +5,17 @@
 Slóðir: https://www.pizzadeig.is (notið www). Íslenska er undir /is/…, enska undir /en/…. Sitemap: https://www.pizzadeig.is/sitemap.xml
 
 ## Helstu síður
-- [Pizzuverð á Íslandi](https://www.pizzadeig.is/is/pizzuverd): miðgildi verðs á pizzum og Margheritu, ódýrasta og dýrasta Margherita, höfuðborgarsvæðið á móti landsbyggðinni, tafla fyrir hvern stað með heimild og dagsetningu. Reiknað úr matseðlagögnunum; verð sótt 22. október 2026.
-- [Pizzustaðir á Íslandi](https://www.pizzadeig.is/is/stadir): 39 staðir, hver með síðu (/is/stadir/<slug>) með matseðli, heimild og dagsetningu.
+- [Pizzuverð á Íslandi](https://www.pizzadeig.is/is/pizzuverd): miðgildi verðs á pizzum og Margheritu, ódýrasta og dýrasta Margherita, höfuðborgarsvæðið á móti landsbyggðinni, tafla fyrir hvern stað með heimild og dagsetningu. Reiknað úr matseðlagögnunum; allar tölur úr matseðlum skráðum 22. október 2026 (eldri matseðlar ekki taldir með).
+- [Pizzustaðir á Íslandi](https://www.pizzadeig.is/is/stadir): 39 staðir, hver með síðu (/is/stadir/<slug>); flestar með matseðli, heimild og dagsetningu.
 - [Uppskriftir](https://www.pizzadeig.is/is/uppskriftir): pizzadeig, sósur, ostar og álegg; Recipe-merkingar (schema.org) með hráefni, tímum og skrefum.
-- [Deigreiknivél](https://www.pizzadeig.is/is/deigreiknivel): reiknar mjöl, vatn, salt og ger eftir vatnshlutfalli, fjölda bolta og gerjunartíma.
+- [Deigreiknivél](https://www.pizzadeig.is/is/deigreiknivel): reiknar mjöl, vatn, salt og ger eftir vatnshlutfalli, fjölda kúlna og gerjunartíma.
 - [Pizzustílar](https://www.pizzadeig.is/is/stilar): napólítönsk, New York, Detroit og rómversk pizza.
 
 ## Um matseðla og verð
 - Matseðlar eru sóttir fyrst af vef staðarins, pöntunarsíðu hans eða PDF-matseðli; Wolt aðeins þar sem enginn eigin matseðill fannst. Matseðlar tveggja staða eru skráðir af Pizzadeig.is.
-- Verð eru nákvæmlega eins og heimildin sýndi, aldrei áætluð. Verð af Wolt geta verið hærri en á staðnum. Stærðir eru misjafnar; á verðsíðunni er miðað við venjulega stærð eða miðstærð.
-- Hver staður sýnir slóð á heimild og dagsetningu. Staðir án matseðils á netinu eru merktir sem slíkir.
+- Verð eru nákvæmlega eins og heimildin sýndi, aldrei áætluð. Verð af Wolt geta verið hærri en á staðnum. Stærðir eru misjafnar; á verðsíðunni er notað grunnverð hvers matseðils (oftast 12" eða miðstærð).
+- Hver staður með matseðil sýnir heimild og dagsetningu. Staðir án matseðils eru merktir sem slíkir.
 - Tilvísun: Pizzadeig.is, „Pizzuverð á Íslandi“, dagsetning gagna, https://www.pizzadeig.is/is/pizzuverd
 
 ## English summary
-Pizzadeig.is is an Icelandic pizza site: recipes, a directory of 39 pizza places in Iceland with dated menus and a source for each, a dough calculator and pizza styles. English pages live under /en/. The page https://www.pizzadeig.is/en/pizzuverd ("Pizza prices in Iceland") gives median pizza and Margherita prices computed from those menus (collected 22 October 2026), by place and for the capital area vs. the rest of Iceland, with sources and dates. Prices are as shown by each source, never estimated; Wolt prices can be higher than in-house prices; sizes differ.
+Pizzadeig.is is an Icelandic pizza site: recipes, a directory of 39 pizza places in Iceland, most with a dated menu and its source, a dough calculator and pizza styles. English pages live under /en/. The page https://www.pizzadeig.is/en/pizzuverd ("Pizza prices in Iceland") gives median pizza and Margherita prices computed from those menus (all figures from menus recorded 22 October 2026; older menus are not counted), by place and for the capital area vs. the rest of Iceland, with sources and dates. Prices are as shown by each source, never estimated; Wolt prices can be higher than in-house prices; sizes differ (each menu's base price is used, usually 12" or medium).

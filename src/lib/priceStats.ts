@@ -6,9 +6,11 @@ import type { MenuItem, Restaurant } from '@/types/restaurant';
  *
  * Rules:
  * - Only items in the category 'Pizzur' count (Barnapizzur and Eftirréttapizzur are left out).
- * - The price is `price`, the standard/middle size of the menu (`price_large` is never used). Sizes
- *   differ between places; the size label of the item is carried along so it can be shown.
- * - A place counts only if it has at least one priced pizza.
+ * - The price is `price`, the base price of the menu (usually 12" or medium, at a few places a smaller
+ *   size such as 10"; `price_large` is never used). The size label is carried along so it can be shown.
+ * - A place counts only if it has at least one priced pizza and its menu is from the latest collection
+ *   date (`dataDate`). Older menus are listed in `olderMenus` but left out of every figure, so every
+ *   number on the page has the same date.
  * - Margherita: name matches /margh?erit|margarit/ (case and diacritics ignored) on a Pizzur item;
  *   a place with several (e.g. "Margherita" and "Margherita Speciale") contributes its cheapest.
  */
@@ -64,8 +66,10 @@ export interface RankedMargherita {
 }
 
 export interface PriceStats {
-  /** Latest `menu_verified_at` among the places counted (ISO date). */
+  /** Latest `menu_verified_at` among places with prices (ISO date); every counted menu has this date. */
   dataDate: string | null;
+  /** Places with prices from an earlier date than `dataDate`; not counted in any figure. */
+  olderMenus: StatsRestaurant[];
   /** Places with their menu recorded by Pizzadeig.is (menu_price_basis 'owner_supplied') and the date of each. */
   ownerSupplied: { restaurant: StatsRestaurant; date: string }[];
   /** Places counted, sorted by town then name. */
@@ -154,7 +158,7 @@ export function computePriceStats(restaurants: StatsRestaurant[], menuItems: Sta
     else pizzasByRestaurant.set(item.restaurant_id, [item]);
   }
 
-  const rows: RestaurantPriceRow[] = [];
+  const candidates: RestaurantPriceRow[] = [];
   const withoutMenu: StatsRestaurant[] = [];
   const pricesByRestaurant = new Map<string, number[]>();
 
@@ -168,7 +172,7 @@ export function computePriceStats(restaurants: StatsRestaurant[], menuItems: Sta
     const margheritas = sorted.filter(isMargherita);
     const prices = sorted.map((p) => p.price);
     pricesByRestaurant.set(restaurant.id, prices);
-    rows.push({
+    candidates.push({
       restaurant,
       region: regionOf(restaurant.city),
       pizzaCount: sorted.length,
@@ -179,11 +183,20 @@ export function computePriceStats(restaurants: StatsRestaurant[], menuItems: Sta
     });
   }
 
-  rows.sort((a, b) => compareText(a.restaurant.city, b.restaurant.city) || compareText(a.restaurant.name, b.restaurant.name));
   withoutMenu.sort((a, b) => compareText(a.name, b.name));
 
-  const dates = rows.flatMap((r) => (r.restaurant.menu_verified_at ? [r.restaurant.menu_verified_at] : []));
+  const dates = candidates.flatMap((r) => (r.restaurant.menu_verified_at ? [r.restaurant.menu_verified_at] : []));
   const dataDate = dates.length > 0 ? dates.reduce((a, b) => (a > b ? a : b)) : null;
+
+  // Only menus from the latest collection date count; older ones are listed separately
+  const isCurrent = (r: StatsRestaurant) => dataDate === null || r.menu_verified_at === dataDate;
+  const rows = candidates
+    .filter((r) => isCurrent(r.restaurant))
+    .sort((a, b) => compareText(a.restaurant.city, b.restaurant.city) || compareText(a.restaurant.name, b.restaurant.name));
+  const olderMenus = candidates
+    .filter((r) => !isCurrent(r.restaurant))
+    .map((r) => r.restaurant)
+    .sort((a, b) => compareText(a.name, b.name));
 
   const margheritaRanked: RankedMargherita[] = rows
     .flatMap((r) => (r.margherita ? [{ restaurant: r.restaurant, pick: r.margherita }] : []))
@@ -199,6 +212,7 @@ export function computePriceStats(restaurants: StatsRestaurant[], menuItems: Sta
 
   return {
     dataDate,
+    olderMenus,
     ownerSupplied: rows
       .filter((r) => r.restaurant.menu_price_basis === 'owner_supplied' && r.restaurant.menu_verified_at)
       .map((r) => ({ restaurant: r.restaurant, date: r.restaurant.menu_verified_at as string })),
