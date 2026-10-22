@@ -130,3 +130,8 @@ Routes use Icelandic names: `/uppskriftir` (recipes), `/stadir` (restaurants), `
 - Aldrei búa til eða áætla verð eða rétti: allt kemur úr JSON-skránum (heimild, slóð og dagsetning fylgja). Keyrsla og vinnulag: `seo/matsedlar/README.md`.
 - Fyrir staði sem eru í kóðanum (`mockRestaurants`, parað eftir slug) tekur staðasíðan bæði matseðilinn og heimildarreitina fjóra (`menu_*`) úr kóðanum, aldrei úr Firestore, svo heimildarlínan og matseðillinn koma alltaf frá sama stað. Ný matseðlagögn fara því í loftið við merge; enginn hnappur þarf. Aðeins staðir sem eru eingöngu til í Firestore nota `menu_items` úr Firestore (sú fyrirspurn þarf samsettan index á `restaurant_id` + `sort_order`).
 - Hnappurinn „Uppfæra matseðla“ í admin (Kerfi) heldur Firestore samstilltu við kóðann (skrifar `menu_items`, fjóra `menu_*` reiti og eyðir réttum í `seo/matsedlar/retired-ids.json`) en hefur ekki áhrif á staðasíður kóðastaða. Notið aldrei Seed: hann yfirskrifar staði, uppskriftir og auglýsingar í heild.
+
+## Uppskriftamyndir
+
+- Myndir uppskrifta sem eru í kóðanum (`src/lib/recipeData.ts`) koma alltaf úr kóðanum, líka þegar uppskriftin sjálf er lesin úr Firestore (`withCodeImages` í `src/lib/recipeImages.ts`, parað eftir skjalsauðkenni og slug saman). Uppskriftir notenda sem eru aðeins í Firestore halda eigin myndum.
+- Aðeins myndir með ókeypis Unsplash-leyfi (ekki Unsplash+), og hver mynd skoðuð áður en hún er valin.

@@ -6,6 +6,7 @@ import { db } from '@/lib/firebase';
 import { Recipe } from '@/types/recipe';
 import { Category } from '@/types/category';
 import { allRecipes as mockRecipes } from '@/lib/recipeData';
+import { withCodeImages } from '@/lib/recipeImages';
 
 export function useRecipes(initialCategory?: string) {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -50,7 +51,7 @@ export function useRecipes(initialCategory?: string) {
         }
         
         const snapshot = await getDocs(q);
-        setRecipes(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Recipe)));
+        setRecipes(snapshot.docs.map(doc => withCodeImages({ id: doc.id, ...doc.data() } as Recipe)));
       } catch (error) {
         console.error('Error fetching recipes (Offline Fallback Target):', error);
         setRecipes(mockRecipes);

@@ -5,6 +5,7 @@ import { db } from '@/lib/firebase';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { RecipeGrid } from '@/components/recipes/RecipeGrid';
 import { Recipe } from '@/types/recipe';
+import { withCodeImages } from '@/lib/recipeImages';
 import { UserProfile } from '@/types/user';
 import { UserAvatar } from '@/components/community/UserAvatar';
 import { format } from 'date-fns';
@@ -43,7 +44,7 @@ export default function UserProfilePage() {
         // Fetch user recipes
         const q = query(collection(db, 'recipes'), where('author_uid', '==', uid));
         const snapshot = await getDocs(q);
-        const recipesData = snapshot.docs.map(d => ({ id: d.id, ...d.data() } as Recipe));
+        const recipesData = snapshot.docs.map(d => withCodeImages({ id: d.id, ...d.data() } as Recipe));
         setRecipes(recipesData);
 
         if (!userData && recipesData.length === 0) {
@@ -79,7 +80,7 @@ export default function UserProfilePage() {
             // Using documentId() built-in via firebase
             const rQ = query(collection(db, 'recipes'), where('__name__', 'in', chunk));
             const rSnap = await getDocs(rQ);
-            fetchedSavedRecipes.push(...rSnap.docs.map(d => ({ id: d.id, ...d.data() })));
+            fetchedSavedRecipes.push(...rSnap.docs.map(d => withCodeImages({ id: d.id, ...d.data() } as Recipe)));
           }
           setSavedRecipes(fetchedSavedRecipes as Recipe[]);
         }

@@ -14,13 +14,14 @@ import { GuidedBakeButton } from '@/components/recipes/GuidedBakeButton';
 import { SaveButton } from '@/components/community/SaveButton';
 import { Clock, Timer, Users, BarChart3, Pizza } from 'lucide-react';
 import { mockRecipes } from '@/lib/mockData';
+import { withCodeImages } from '@/lib/recipeImages';
 import { Link } from '@/i18n/routing';
 
 async function getRecipe(slug: string): Promise<Recipe | null> {
   try {
     const q = query(collection(db, 'recipes'), where('slug', '==', slug), limit(1));
     const snapshot = await getDocs(q);
-    if (!snapshot.empty) return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as Recipe;
+    if (!snapshot.empty) return withCodeImages({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as Recipe);
   } catch {
     console.warn('Firebase offline fallback active');
   }
