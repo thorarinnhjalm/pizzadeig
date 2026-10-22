@@ -4,7 +4,6 @@ import { useState, useCallback } from 'react';
 import { ReviewForm } from '@/components/community/ReviewForm';
 import { ReviewList } from '@/components/community/ReviewList';
 import { CommunityRatingBadge } from '@/components/community/CommunityRatingBadge';
-import { MenuItemRating } from '@/components/restaurants/MenuItemRating';
 import { MenuItem } from '@/types/restaurant';
 import { UtensilsCrossed, Pizza } from 'lucide-react';
 
@@ -80,7 +79,6 @@ export function RestaurantInteractive({ restaurantId, menuItems, locale }: Props
                           {isIs ? item.description_is : item.description_en}
                         </p>
                       )}
-                      <MenuItemRating item={item} locale={locale} />
                     </div>
                     <div className="text-right shrink-0">
                       {item.price_large ? (

@@ -9,7 +9,6 @@ import { mockRestaurants, mockMenuItems } from '@/lib/mockData';
 import { restaurantJsonLd, localeAlternates, safeJsonLd, decodeSlug } from '@/lib/seo';
 import { ReviewList } from '@/components/community/ReviewList';
 import { ReviewForm } from '@/components/community/ReviewForm';
-import { MenuItemRating } from '@/components/restaurants/MenuItemRating';
 
 export const dynamic = 'force-dynamic';
 
@@ -229,7 +228,6 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                            )}
                          </div>
                        </div>
-                       <MenuItemRating item={item} locale={locale as 'is' | 'en'} />
                     </div>
                   ))}
                 </div>
