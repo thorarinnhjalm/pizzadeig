@@ -35,8 +35,9 @@ const SOURCE_LABEL_EN: Record<string, string> = {
 const SIZE_LABEL_EN: Record<string, string> = { 'Lítil': 'Small', 'Miðstærð': 'Medium', 'Stór': 'Large' };
 const sizeLabel = (label: string, isIs: boolean) => (isIs ? label : SIZE_LABEL_EN[label] || label);
 
-// Menu source info is code-owned (generated from seo/matsedlar by scripts/build-menu-data.mjs),
-// so it always comes from the code, whatever the Firestore document holds.
+// For restaurants that exist in code, the menu and its source info are code-owned (generated from
+// seo/matsedlar by scripts/build-menu-data.mjs), so both always come from the code together and the
+// source line can never sit above a different (older) Firestore menu.
 function withMenuSource(restaurant: Restaurant, local: Restaurant | undefined): Restaurant {
   if (!local) return restaurant;
   return {
@@ -91,27 +92,37 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-async function getMenu(restaurantId: string): Promise<MenuItem[]> {
+async function getMenu(restaurantId: string, slug: string): Promise<MenuItem[]> {
+  const local = mockRestaurants.find(r => r.slug === slug);
+  if (local) {
+    return mockMenuItems
+      .filter(m => m.restaurant_id === local.id)
+      .sort((a, b) => a.sort_order - b.sort_order);
+  }
+  // Restaurants added only in Firestore keep their Firestore menu
   try {
     const q = query(
-      collection(db, 'menu_items'), 
+      collection(db, 'menu_items'),
       where('restaurant_id', '==', restaurantId),
       orderBy('sort_order', 'asc')
     );
     const snapshot = await getDocs(q);
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as MenuItem));
-  } catch {}
-  return mockMenuItems.filter(m => m.restaurant_id === restaurantId);
+  } catch (err) {
+    console.error(`Menu query failed for ${restaurantId}:`, err);
+  }
+  return [];
 }
 
 export default async function RestaurantDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug: rawSlug } = await params;
   const isIslandic = locale === 'is';
   
-  const restaurant = await getRestaurant(decodeSlug(rawSlug));
+  const slug = decodeSlug(rawSlug);
+  const restaurant = await getRestaurant(slug);
   if (!restaurant) notFound();
-  
-  const menuItems = await getMenu(restaurant.id);
+
+  const menuItems = await getMenu(restaurant.id, slug);
 
   const jsonLd = restaurantJsonLd(restaurant, locale, menuItems);
 
