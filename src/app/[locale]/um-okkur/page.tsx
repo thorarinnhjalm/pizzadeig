@@ -1,4 +1,20 @@
+import type { Metadata } from 'next';
+import { localeAlternates } from '@/lib/seo';
 import { ChefHat, Heart, Users } from 'lucide-react';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isIs = locale === 'is';
+  return {
+    alternates: localeAlternates(locale, '/um-okkur'),
+    title: isIs
+      ? 'Um okkur — Opið samfélag pizzabakara | Pizzadeig.is'
+      : 'About Us — An Open Community of Pizza Bakers | Pizzadeig.is',
+    description: isIs
+      ? 'Pizzadeig.is er opið samfélag bakara, matgæðinga og pizza-nörda sem hjálpar öllum að baka fullkomna pizzu heima. Lestu um uppskriftirnar, samfélagið og hópinn á bak við vefinn.'
+      : 'Pizzadeig.is is an open community of bakers, foodies and pizza nerds helping everyone bake the perfect pizza at home. Learn about our recipes, community and team.',
+  };
+}
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

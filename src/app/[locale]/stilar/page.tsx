@@ -1,5 +1,21 @@
+import type { Metadata } from 'next';
+import { localeAlternates } from '@/lib/seo';
 import { PIZZA_STYLES } from '@/lib/pizzaStyles';
 import Image from 'next/image';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isIs = locale === 'is';
+  return {
+    alternates: localeAlternates(locale, '/stilar'),
+    title: isIs
+      ? 'Pizzustílar — Napólítönsk, New York, Detroit og rómversk | Pizzadeig.is'
+      : 'Pizza Styles — Neapolitan, New York, Detroit & Roman | Pizzadeig.is',
+    description: isIs
+      ? 'Fjórir helstu pizzustílar heimsins útskýrðir: napólítönsk, New York, Detroit og rómversk. Bökunarhiti, bökunartími, vökvahlutfall og einkenni hvers stíls.'
+      : 'The four main pizza styles explained: Neapolitan, New York, Detroit and Roman. Baking temperature, bake time, hydration and the characteristics of each style.',
+  };
+}
 
 export default async function StilarPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

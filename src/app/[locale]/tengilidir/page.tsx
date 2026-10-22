@@ -1,4 +1,20 @@
+import type { Metadata } from 'next';
+import { localeAlternates } from '@/lib/seo';
 import { Mail, MapPin, Clock } from 'lucide-react';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isIs = locale === 'is';
+  return {
+    alternates: localeAlternates(locale, '/tengilidir'),
+    title: isIs
+      ? 'Tengiliðir — Hafðu samband | Pizzadeig.is'
+      : 'Contact Us | Pizzadeig.is',
+    description: isIs
+      ? 'Spurning, athugasemd eða uppástunga? Hafðu samband við Pizzadeig.is í tölvupósti. Við reynum að svara öllum fyrirspurnum innan sólarhrings.'
+      : 'Question, comment or suggestion? Get in touch with Pizzadeig.is by email. We try to respond to all inquiries within 24 hours.',
+  };
+}
 
 export default async function TenglidirPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

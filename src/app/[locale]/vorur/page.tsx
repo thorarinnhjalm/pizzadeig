@@ -1,5 +1,21 @@
+import type { Metadata } from 'next';
+import { localeAlternates } from '@/lib/seo';
 import { PRODUCTS } from '@/lib/products';
 import { ExternalLink } from 'lucide-react';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isIs = locale === 'is';
+  return {
+    alternates: localeAlternates(locale, '/vorur'),
+    title: isIs
+      ? 'Vörur — Mjöl, tómatar, ofnar og tól fyrir pizzubakstur | Pizzadeig.is'
+      : 'Products — Flour, Tomatoes, Ovens & Tools for Pizza | Pizzadeig.is',
+    description: isIs
+      ? 'Valdar vörur fyrir pizzubakstur heima: pizzumjöl, San Marzano tómatar, ostur, pizzaofnar og tól. Meðmæli frá Pizzadeig.is.'
+      : 'Selected products for baking pizza at home: pizza flour, San Marzano tomatoes, cheese, pizza ovens and tools. Recommendations from Pizzadeig.is.',
+  };
+}
 
 export default async function VorurPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

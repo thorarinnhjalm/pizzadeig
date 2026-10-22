@@ -1,4 +1,20 @@
+import type { Metadata } from 'next';
+import { localeAlternates } from '@/lib/seo';
 import { Shield } from 'lucide-react';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isIs = locale === 'is';
+  return {
+    alternates: localeAlternates(locale, '/personuvernd'),
+    title: isIs
+      ? 'Persónuverndarstefna | Pizzadeig.is'
+      : 'Privacy Policy | Pizzadeig.is',
+    description: isIs
+      ? 'Hvaða gögnum Pizzadeig.is safnar, hvernig þau eru notuð, hverjir eru þjónustuaðilar og hver réttindi þín eru. Persónuverndarstefna vefsins.'
+      : 'What data Pizzadeig.is collects, how it is used, which service providers are involved and what your rights are. The privacy policy of the site.',
+  };
+}
 
 export default async function PersonuverndPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

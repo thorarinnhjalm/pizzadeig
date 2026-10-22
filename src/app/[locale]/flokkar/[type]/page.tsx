@@ -1,7 +1,9 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { mockRecipes } from '@/lib/mockData';
+import { localeAlternates } from '@/lib/seo';
 import { Clock, BarChart3 } from 'lucide-react';
 
 const validCategories: Record<string, { label_is: string; label_en: string; description_is: string; description_en: string; emoji: string; category: string }> = {
@@ -43,6 +45,20 @@ function getFermentTime(recipe: { rest_time_min?: number; prep_time_min?: number
   if (total > 0) return `${total}m`;
   const cook = (recipe.prep_time_min || 0) + (recipe.cook_time_min || 0);
   return `${cook} mín`;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; type: string }> }): Promise<Metadata> {
+  const { locale, type } = await params;
+  if (!Object.hasOwn(validCategories, type)) return {};
+  const categoryMeta = validCategories[type];
+  const isIs = locale === 'is';
+  return {
+    alternates: localeAlternates(locale, `/flokkar/${type}`),
+    title: isIs
+      ? `${categoryMeta.label_is} — Pizza uppskriftir | Pizzadeig.is`
+      : `${categoryMeta.label_en} — Pizza Recipes | Pizzadeig.is`,
+    description: isIs ? categoryMeta.description_is : categoryMeta.description_en,
+  };
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ locale: string; type: string }> }) {
