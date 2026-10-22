@@ -32,6 +32,10 @@ const SOURCE_LABEL_EN: Record<string, string> = {
   'matseðli staðarins (PDF)': "the restaurant's menu (PDF)",
 };
 
+// Size labels are stored in Icelandic; the English page uses these wordings
+const SIZE_LABEL_EN: Record<string, string> = { 'Lítil': 'Small', 'Miðstærð': 'Medium', 'Stór': 'Large' };
+const sizeLabel = (label: string, isIs: boolean) => (isIs ? label : SIZE_LABEL_EN[label] || label);
+
 async function getRestaurant(slug: string): Promise<Restaurant | null> {
   try {
     const q = query(collection(db, 'restaurants'), where('slug', '==', slug), limit(1));
@@ -209,16 +213,16 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                            {item.price_large ? (
                              <div className="flex flex-col items-end gap-0.5">
                                <span className="text-base">
-                                 {item.size_small_label || '12"'} {item.price.toLocaleString('is-IS')} kr.
+                                 {sizeLabel(item.size_small_label || '12"', isIslandic)} {item.price.toLocaleString('is-IS')} kr.
                                </span>
                                <span className="text-base">
-                                 {item.size_large_label || '16"'} {item.price_large.toLocaleString('is-IS')} kr.
+                                 {sizeLabel(item.size_large_label || '16"', isIslandic)} {item.price_large.toLocaleString('is-IS')} kr.
                                </span>
                              </div>
                            ) : (
                              <>
-                               {item.size_small_label && (
-                                 <span className="text-base font-normal text-(--color-text-secondary) mr-1">{item.size_small_label}</span>
+                               {item.size_small_label && ![item.name_is, item.name_en].some((n) => n?.includes(item.size_small_label as string)) && (
+                                 <span className="text-base font-normal text-(--color-text-secondary) mr-1">{sizeLabel(item.size_small_label, isIslandic)}</span>
                                )}
                                {item.price.toLocaleString('is-IS')} kr.
                              </>
@@ -231,7 +235,11 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                 </div>
               ) : (
                 <p className="text-(--color-text-secondary) italic">
-                  {isIslandic ? 'Matseðill er ekki aðgengilegur á netinu.' : 'The menu is not available online.'}
+                  {restaurant.menu_price_basis === 'none'
+                    ? (isIslandic
+                        ? `Matseðill er ekki aðgengilegur á netinu${restaurant.menu_verified_at ? ` (athugað ${formatMenuDate(restaurant.menu_verified_at, true)})` : ''}.`
+                        : `The menu is not available online${restaurant.menu_verified_at ? ` (checked ${formatMenuDate(restaurant.menu_verified_at, false)})` : ''}.`)
+                    : (isIslandic ? 'Enginn matseðill skráður' : 'No menu listed')}
                 </p>
               )}
            </section>
