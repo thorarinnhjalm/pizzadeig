@@ -1,5 +1,21 @@
 import React from 'react';
+import type { Metadata } from 'next';
+import { SITE_URL } from '@/lib/seo';
 import { Mail, TrendingUp, Users, Target } from 'lucide-react';
+
+// The page body is Icelandic only, so both locales serve Icelandic metadata, canonical to the
+// /is URL and no `en` hreflang alternate.
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${SITE_URL}/is/auglysingar`,
+    languages: {
+      is: `${SITE_URL}/is/auglysingar`,
+      'x-default': `${SITE_URL}/is/auglysingar`,
+    },
+  },
+  title: 'Auglýstu á Pizzadeig.is',
+  description: 'Náðu til íslensks áhugafólks um pizzubakstur. Kynntu þér auglýsingastaðsetningar og stærðir og hafðu samband um verð og samstarf.',
+};
 
 export default function AuglysingarPage() {
   return (

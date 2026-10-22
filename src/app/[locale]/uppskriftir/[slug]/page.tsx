@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { db } from '@/lib/firebase';
 import { collection, query, where, getDocs, limit } from 'firebase/firestore';
 import { Recipe } from '@/types/recipe';
-import { recipeJsonLd, localeAlternates, safeJsonLd, SITE_URL } from '@/lib/seo';
+import { recipeJsonLd, localeAlternates, safeJsonLd, decodeSlug, SITE_URL } from '@/lib/seo';
 import { IngredientList } from '@/components/recipes/IngredientList';
 import { StepByStep } from '@/components/recipes/StepByStep';
 import { ReviewList } from '@/components/community/ReviewList';
@@ -28,7 +28,8 @@ async function getRecipe(slug: string): Promise<Recipe | null> {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, locale: string }> }) {
-  const { slug, locale } = await params;
+  const { slug: rawSlug, locale } = await params;
+  const slug = decodeSlug(rawSlug);
   const recipe = await getRecipe(slug);
   if (!recipe) return {};
   
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${title} | Pizzadeig.is`,
     description,
     openGraph: { images: recipe.image_urls?.[0] ? [recipe.image_urls[0]] : [] },
-    alternates: localeAlternates(locale, `/uppskriftir/${slug}`),
+    alternates: localeAlternates(locale, `/uppskriftir/${encodeURIComponent(slug)}`),
   };
 }
 
@@ -60,7 +61,8 @@ function formatTime(minutes: number) {
 }
 
 export default async function RecipePage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
-  const { slug, locale } = await params;
+  const { slug: rawSlug, locale } = await params;
+  const slug = decodeSlug(rawSlug);
   const recipe = await getRecipe(slug);
   if (!recipe) notFound();
 
@@ -153,7 +155,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
           </nav>
           <div className="flex items-center gap-2 md:gap-4 flex-wrap justify-end">
             <SaveButton recipeId={recipe.id} locale={locale as 'is' | 'en'} />
-            <ShareButtons url={`${SITE_URL}/${locale}/uppskriftir/${slug}`} title={title || ''} locale={locale as 'is'|'en'} />
+            <ShareButtons url={`${SITE_URL}/${locale}/uppskriftir/${encodeURIComponent(slug)}`} title={title || ''} locale={locale as 'is'|'en'} />
             <GuidedBakeButton recipe={recipe} locale={locale as 'is' | 'en'} />
           </div>
         </div>

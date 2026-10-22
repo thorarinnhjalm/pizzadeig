@@ -114,3 +114,12 @@ Defined in `src/app/globals.css` as CSS custom properties. Use these instead of 
 ## Icelandic Route Names
 
 Routes use Icelandic names: `/uppskriftir` (recipes), `/stadir` (restaurants), `/flokkar` (categories), `/topplisti` (top list), `/notandi` (user), `/deigreiknivel` (dough calculator), `/stilar` (styles), `/samfelag` (community), `/um-okkur` (about), `/skilmalar` (terms), `/personuvernd` (privacy), `/tengilidir` (contact).
+
+## Prófanir og umhverfi
+
+- Ekkert prófunarrammaverk (test framework) er uppsett.
+- Raunkerfið er Firebase-verkefnið (Firestore-gagnagrunnurinn `pizzadeig`) ásamt Vercel production.
+- Vercel preview vísar á SAMA raunverulega Firebase-verkefnið. Preview er því aðeins til að skoða (lesa): engin innskráning, engin innsending á formum og engar nýjar færslur búnar til í preview.
+- GA4 er óvirkt utan production (`VERCEL_ENV !== 'production'`). Aðeins GA4 er varið svona: Birtingur-auglýsingaplássin (`BirtingurAdSlot`) senda enn birtingarpixla úr preview og staðbundinni keyrslu, svo þær mælingar geta mengast. Preview er á bak við Vercel SSO.
+- Staðbundið `npm run dev` les líka raunverulegan Firestore. Síður má því ekki sækja staðbundið til að prófa; notið `npx tsc --noEmit`, `npm run lint` og `npm run build`.
+- `npm run lint` skilar nú þegar 2 villum sem eru ekki nýjar: `src/components/admin/AdminGate.tsx` og `src/components/recipes/ShareButtons.tsx:18` (setState kallað beint í effect). Berðu lint-niðurstöðu saman við þetta áður en þú segir að breytingin þín hafi bætt við villum.

@@ -1,5 +1,21 @@
+import type { Metadata } from 'next';
+import { localeAlternates } from '@/lib/seo';
 import { IngredientMatcher } from '@/components/recipes/IngredientMatcher';
 import { Pizza } from 'lucide-react';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isIs = locale === 'is';
+  return {
+    alternates: localeAlternates(locale, '/hvad-a-eg'),
+    title: isIs
+      ? 'Hvað á ég? Pizzuuppskrift úr hráefnunum þínum | Pizzadeig.is'
+      : 'What Do I Have? Pizza Recipe Finder | Pizzadeig.is',
+    description: isIs
+      ? 'Veldu hráefnin sem þú átt heima og finndu pizzuuppskriftir sem passa við þau.'
+      : 'Select the ingredients you have at home and find pizza recipes that match them.',
+  };
+}
 
 export default async function HvadAEgPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

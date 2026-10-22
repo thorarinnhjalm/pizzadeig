@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { MapPin, Phone, Globe, Clock, Pizza, BadgeCheck } from 'lucide-react';
 import { Map } from '@/components/restaurants/Map';
 import { mockRestaurants, mockMenuItems } from '@/lib/mockData';
-import { restaurantJsonLd, localeAlternates, safeJsonLd } from '@/lib/seo';
+import { restaurantJsonLd, localeAlternates, safeJsonLd, decodeSlug } from '@/lib/seo';
 import { ReviewList } from '@/components/community/ReviewList';
 import { ReviewForm } from '@/components/community/ReviewForm';
 import { MenuItemRating } from '@/components/restaurants/MenuItemRating';
@@ -25,7 +25,8 @@ async function getRestaurant(slug: string): Promise<Restaurant | null> {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
+  const { locale, slug: rawSlug } = await params;
+  const slug = decodeSlug(rawSlug);
   const restaurant = await getRestaurant(slug);
   if (!restaurant) return {};
 
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title,
     description,
-    alternates: localeAlternates(locale, `/stadir/${slug}`),
+    alternates: localeAlternates(locale, `/stadir/${encodeURIComponent(slug)}`),
     openGraph: {
       title,
       description,
@@ -68,10 +69,10 @@ async function getMenu(restaurantId: string): Promise<MenuItem[]> {
 }
 
 export default async function RestaurantDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
+  const { locale, slug: rawSlug } = await params;
   const isIslandic = locale === 'is';
   
-  const restaurant = await getRestaurant(slug);
+  const restaurant = await getRestaurant(decodeSlug(rawSlug));
   if (!restaurant) notFound();
   
   const menuItems = await getMenu(restaurant.id);

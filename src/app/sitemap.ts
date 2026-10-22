@@ -5,11 +5,15 @@ import { Timestamp } from 'firebase/firestore';
 
 const BASE_URL = 'https://www.pizzadeig.is';
 
+// Keep in sync with `validCategories` in src/app/[locale]/flokkar/[type]/page.tsx
+const CATEGORY_TYPES = ['deig', 'sosur', 'ostur'];
+
 /**
  * Helper to convert Timestamp or string to Date safely for sitemap
  */
-function toDate(val: Timestamp | string | Date | null | undefined | { toDate: () => Date }): Date {
-  if (!val) return new Date();
+function toDate(val: Timestamp | string | Date | null | undefined | { toDate: () => Date }): Date | undefined {
+  // No known date → omit lastModified rather than claim "modified now" on every crawl
+  if (!val) return undefined;
   if (val instanceof Timestamp) return val.toDate();
   if (typeof val === 'object' && 'toDate' in val && typeof val.toDate === 'function') return val.toDate();
   if (val instanceof Date) return val;
@@ -31,16 +35,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/samfelag', changeFrequency: 'weekly' as const, priority: 0.6 },
     { path: '/um-okkur', changeFrequency: 'monthly' as const, priority: 0.5 },
     { path: '/tengilidir', changeFrequency: 'yearly' as const, priority: 0.3 },
-    { path: '/skilmalar', changeFrequency: 'yearly' as const, priority: 0.2 },
     { path: '/personuvernd', changeFrequency: 'yearly' as const, priority: 0.2 },
-    { path: '/auglysingar', changeFrequency: 'monthly' as const, priority: 0.3 },
+    { path: '/vorur', changeFrequency: 'monthly' as const, priority: 0.5 },
+    { path: '/hvad-a-eg', changeFrequency: 'monthly' as const, priority: 0.5 },
+    ...CATEGORY_TYPES.map(type => ({ path: `/flokkar/${type}`, changeFrequency: 'weekly' as const, priority: 0.7 })),
   ];
+  // /skilmalar is intentionally noindex, so it is not listed here.
+  // /auglysingar has Icelandic-only content: only the /is URL is listed, with no en alternate.
 
   for (const locale of locales) {
+    if (locale === 'is') {
+      sitemapEntries.push({
+        url: `${BASE_URL}/is/auglysingar`,
+        changeFrequency: 'monthly',
+        priority: 0.3,
+        alternates: { languages: { is: `${BASE_URL}/is/auglysingar` } },
+      });
+    }
+
     for (const route of staticRoutes) {
       sitemapEntries.push({
         url: `${BASE_URL}/${locale}${route.path}`,
-        lastModified: new Date(),
+        // No lastModified for static routes: we have no real modification date for them.
         changeFrequency: route.changeFrequency,
         priority: route.priority,
         alternates: {
@@ -55,15 +71,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Dynamic Recipe Routes
     for (const recipe of mockRecipes) {
       if (!recipe.slug) continue;
+      // Slugs can contain non-ASCII characters (e.g. "ð"), so emit them percent-encoded
+      const slug = encodeURIComponent(recipe.slug);
       sitemapEntries.push({
-        url: `${BASE_URL}/${locale}/uppskriftir/${recipe.slug}`,
+        url: `${BASE_URL}/${locale}/uppskriftir/${slug}`,
         lastModified: toDate(recipe.updated_at),
         changeFrequency: 'weekly',
         priority: 0.7,
         alternates: {
           languages: {
-            is: `${BASE_URL}/is/uppskriftir/${recipe.slug}`,
-            en: `${BASE_URL}/en/uppskriftir/${recipe.slug}`,
+            is: `${BASE_URL}/is/uppskriftir/${slug}`,
+            en: `${BASE_URL}/en/uppskriftir/${slug}`,
           },
         },
       });
@@ -72,15 +90,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Dynamic Restaurant Routes
     for (const restaurant of mockRestaurants) {
       if (!restaurant.slug) continue;
+      const slug = encodeURIComponent(restaurant.slug);
       sitemapEntries.push({
-        url: `${BASE_URL}/${locale}/stadir/${restaurant.slug}`,
+        url: `${BASE_URL}/${locale}/stadir/${slug}`,
         lastModified: toDate(restaurant.updated_at),
         changeFrequency: 'monthly',
         priority: 0.6,
         alternates: {
           languages: {
-            is: `${BASE_URL}/is/stadir/${restaurant.slug}`,
-            en: `${BASE_URL}/en/stadir/${restaurant.slug}`,
+            is: `${BASE_URL}/is/stadir/${slug}`,
+            en: `${BASE_URL}/en/stadir/${slug}`,
           },
         },
       });
