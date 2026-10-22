@@ -38,6 +38,7 @@ export const PIZZA_STYLES: PizzaStyle[] = [
     hydration: '58-65%',
     emoji: '🇮🇹',
     gradient: 'from-red-900 to-orange-800',
+    image_url: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1200',
     recipe_slug: 'sannkallad-napoli-deig',
   },
   {
@@ -57,6 +58,7 @@ export const PIZZA_STYLES: PizzaStyle[] = [
     hydration: '60-65%',
     emoji: '🗽',
     gradient: 'from-blue-900 to-slate-800',
+    image_url: 'https://images.unsplash.com/photo-1707274244494-adf0852ade21?q=80&w=1200',
     recipe_slug: 'new-york-deig',
   },
   {
@@ -76,6 +78,7 @@ export const PIZZA_STYLES: PizzaStyle[] = [
     hydration: '70-75%',
     emoji: '🏭',
     gradient: 'from-amber-900 to-yellow-800',
+    image_url: 'https://images.unsplash.com/photo-1671572579795-385f4b96bcd8?q=80&w=1200',
     recipe_slug: 'detroit-deig',
   },
   {
@@ -95,5 +98,6 @@ export const PIZZA_STYLES: PizzaStyle[] = [
     hydration: '75-85%',
     emoji: '🏛️',
     gradient: 'from-emerald-900 to-teal-800',
+    image_url: 'https://images.unsplash.com/photo-1646851035330-f35fa5b44beb?q=80&w=1200',
   },
 ];
