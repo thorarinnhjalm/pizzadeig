@@ -11,8 +11,9 @@ const CATEGORY_TYPES = ['deig', 'sosur', 'ostur'];
 /**
  * Helper to convert Timestamp or string to Date safely for sitemap
  */
-function toDate(val: Timestamp | string | Date | null | undefined | { toDate: () => Date }): Date {
-  if (!val) return new Date();
+function toDate(val: Timestamp | string | Date | null | undefined | { toDate: () => Date }): Date | undefined {
+  // No known date → omit lastModified rather than claim "modified now" on every crawl
+  if (!val) return undefined;
   if (val instanceof Timestamp) return val.toDate();
   if (typeof val === 'object' && 'toDate' in val && typeof val.toDate === 'function') return val.toDate();
   if (val instanceof Date) return val;
