@@ -29,6 +29,8 @@ export interface Restaurant {
   is_verified: boolean;
   is_seeded?: boolean;
   tags: string[];
+  // Chains: one page for the whole chain, with its locations listed (see seo/matsedlar/2026-10-23/json/dominos.json)
+  branches?: RestaurantBranch[];
   // Where the menu and prices come from (see seo/matsedlar/)
   menu_source_url?: string;
   menu_source_label?: string;
@@ -36,6 +38,15 @@ export interface Restaurant {
   menu_price_basis?: 'in_house' | 'delivery_platform' | 'mixed' | 'owner_supplied' | 'none';
   created_at: Timestamp;
   updated_at: Timestamp;
+}
+
+export interface RestaurantBranch {
+  name: string;
+  address: string;
+  postal_code?: string;
+  city: string;
+  phone?: string;
+  opening_hours_note?: string;
 }
 
 export interface MenuItem {
