@@ -899,32 +899,6 @@
       "dir": "is>en"
     }
   ],
-  "greifinn-akureyri": [
-    {
-      "name": "Döðludraumur",
-      "is": "Salami, döðlur, rauðlaukur og mexikóostur. Toppað með creamy sriracha.",
-      "en": "Salami, dates, red onion and Mexíkóostur (Icelandic spiced cheese). Topped with creamy sriracha.",
-      "dir": "is>en"
-    },
-    {
-      "name": "Sterkur Bangsímon",
-      "is": "Stórt Pepperoni, Jalapeno, Rjómaostur, Svartur Pipar og toppað með hunangi.",
-      "en": "Large pepperoni, Jalapeño, Cream cheese, Black pepper and topped with honey.",
-      "dir": "is>en"
-    },
-    {
-      "name": "Maverick",
-      "is": "BBQ Sósa, Pepperoni, Beikon, Piparostur, Rjómaostur, Mexíkó ostur og Chilli flögur",
-      "en": "BBQ sauce, Pepperoni, Bacon, Pepper cheese, Cream cheese, Mexíkóostur (Icelandic spiced cheese) and Chili flakes",
-      "dir": "is>en"
-    },
-    {
-      "name": "Íslenski Draumurinn",
-      "is": "Pepperoni, döðlur og rjómaostur",
-      "en": "Pepperoni, dates and cream cheese",
-      "dir": "is>en"
-    }
-  ],
   "islenska-flatbakan": [
     {
       "name": "Sú Boltaða",

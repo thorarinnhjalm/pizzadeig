@@ -14,6 +14,8 @@
 //                Default: src/lib/menuData.ts.
 // --dry          print the report only, write nothing.
 //
+// Held back: "held_back": true (+ "register_note") in a JSON keeps the restaurant out this round: no items, no menu_* fields,
+// one explanatory row in the register. Its old ids are retired through the normal mechanism.
 // Owner-supplied menus: a JSON with price_basis 'owner_supplied', optional `id` per item (pins the id), `register_note`.
 // The output is deterministic: same JSON + same previous ids => byte-identical files.
 // Prices come only from the JSON. The only text written here is the translations in
@@ -261,7 +263,10 @@ for (const r of restaurants) {
   // restaurant-level source info
   const preferWolt = file.price_basis === 'delivery_platform' || file.price_basis === 'mixed';
   const main = (preferWolt && sources.find((s) => s.type === 'wolt')) || sources[0];
-  if (file.price_basis === 'owner_supplied') {
+  const held = file.held_back === true; // "held_back": true in the JSON = not published this round
+  if (held) {
+    restaurantMeta[r.slug] = { held: true };
+  } else if (file.price_basis === 'owner_supplied') {
     // menu entered by the site owner: no web source, so no link
     restaurantMeta[r.slug] = { label: 'upplýsingar skráðar af Pizzadeig.is', verified: file.fetched, basis: 'owner_supplied' };
   } else if (file.price_basis === 'none' || !main) {
@@ -278,7 +283,7 @@ for (const r of restaurants) {
 
   // select items
   const selected = [];
-  for (const it of baseFile.items || []) {
+  for (const it of held ? [] : baseFile.items || []) {
     const raw = cleanText(it.name);
     const exKey = `${r.slug}|${raw}`;
     if (it.seasonal === true) { report.excluded.push(`${r.slug}: ${raw} (seasonal)`); continue; }
@@ -414,7 +419,9 @@ for (const r of restaurants) {
       srcUrl, srcType, it.price_basis_item || (file.price_basis === 'mixed' ? 'in_house' : file.price_basis), file.fetched, notes.join(' | '),
     ]);
   }
-  if (!(baseFile.items || []).length) {
+  if (held) {
+    registerRows.push([r.name, r.slug, '', '', '', '', '', '', '', file.fetched, cleanText(file.register_note || file.held_back_reason)]);
+  } else if (!(baseFile.items || []).length) {
     registerRows.push([r.name, r.slug, '', '', '', '', '', '', file.price_basis, file.fetched, cleanText(file.not_found)]);
   }
 }
@@ -445,7 +452,7 @@ ts += `import { MenuItem } from '@/types/restaurant';\n\nexport const mockMenuIt
 for (const r of restaurants) {
   const items = out.filter((i) => i.restaurant_id === r.id);
   const meta = restaurantMeta[r.slug];
-  ts += `  // ─── ${r.name} (${meta.verified}${items.length ? '' : ', enginn matseðill aðgengilegur'}) ───\n`;
+  ts += `  // ─── ${r.name} (${meta.held ? 'í bið, ekki birtur' : meta.verified}${items.length || meta.held ? '' : ', enginn matseðill aðgengilegur'}) ───\n`;
   items.forEach((i) => { ts += line(i) + '\n'; });
 }
 ts += `];\n`;
@@ -468,6 +475,7 @@ function updateRestaurants(text) {
     const at = lines.findIndex((l, i) => i > slugAt && i < end && /^    price_level:/.test(l));
     if (at < 0) throw new Error(`price_level line not found for ${r.slug}`);
     const m = restaurantMeta[r.slug];
+    if (m.held) continue; // held back: no menu_* fields at all
     const add = [];
     if (m.url) add.push(`    menu_source_url: ${q(m.url)},`);
     if (m.label) add.push(`    menu_source_label: ${q(m.label)},`);

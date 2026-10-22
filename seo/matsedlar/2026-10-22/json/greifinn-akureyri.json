@@ -1,5 +1,8 @@
 {
  "slug": "greifinn-akureyri",
+ "held_back": true,
+ "held_back_reason": "Order-page prices and printed-menu prices disagree substantially (see not_found); held back until the restaurant confirms which prices apply.",
+ "register_note": "Verð í ósamræmi milli pöntunarsíðu og prentaðs matseðils; beðið staðfestingar",
  "status": "open",
  "status_evidence": "https://wolt.com/en/isl/akureyri/restaurant/greifinn rendered: \"Greifinn ... Open until 20:30 ... Glerárgata 20, 600 Akureyri ... +3544601600\"; own site shows ordering open \"SÓTT: 20 MÍN / SENT: 40 MÍN\".",
  "fetched": "2026-10-22",
