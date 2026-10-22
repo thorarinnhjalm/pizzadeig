@@ -1,0 +1,29 @@
+{
+ "slug": "stykkid-pizzeria",
+ "status": "unknown",
+ "status_evidence": "ja.is directory (https://ja.is/?q=Stykki%C3%B0 rendered): \"Stykkið Pizzagerð, Borgarbraut 1, 340 Stykkishólmi, veitingastaður\". No evidence of open/closed status.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://ja.is/?q=Stykki%C3%B0",
+   "type": "other",
+   "note": "directory entry"
+  },
+  {
+   "url": "https://au.trip.com/restaurant/iceland/stykkisholmur/detail/Stykki%C3%B0%20Pizzager%C3%B0-19922510",
+   "type": "other",
+   "note": "from earlier agent; listing only"
+  }
+ ],
+ "price_basis": "none",
+ "size_small_label": null,
+ "size_large_label": null,
+ "contact": {
+  "phone": "+354 438 1717 (earlier agent, Trip.com)",
+  "address": "Borgarbraut 1, 340 Stykkishólmur",
+  "hours_verbatim": null
+ },
+ "items": [],
+ "not_found": "No website, menu, hours or ordering page found; Google Maps/Bing searches returned nothing usable from the headless browser; Facebook needs login.",
+ "diff_vs_current": "mock has 3 items; verified 0. Price changes: none. Not on source (mock-only): Snæfellspizza (3890); Aðalgatan (3590); Margherita (2990). New on source: none."
+}

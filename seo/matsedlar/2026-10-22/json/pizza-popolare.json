@@ -1,0 +1,240 @@
+{
+ "slug": "pizza-popolare",
+ "status": "open",
+ "status_evidence": "pizzapopolare.is homepage live (Pósthússtræti 5, 11:30-22:00 every day; Akureyri branch); \"See full menu\" links to the PDF",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://dineout-sites-pizzapopolare.cdn.prismic.io/dineout-sites-pizzapopolare/aKn6KWGNHVfTOOfT_popolare-se%C3%B0ill23a%CC%81gu%CC%81st.pdf",
+   "type": "own_site_pdf",
+   "note": "Image-only 1-page PDF (PÍTSA (ÍSL) / PIZZA (ENG) / DRYKKIR columns, \"Classico 12\"\") read visually. PDF metadata creation date 2025-06-12 although file name says \"23 ágúst\"; cannot confirm it is the latest edition. The 5 pizzas on the homepage match the PDF prices exactly. Descriptions copied as seen; the Icelandic column text was read from a 110-200 dpi render, a few crops re-checked at 220 dpi."
+  },
+  {
+   "url": "https://pizzapopolare.is/",
+   "type": "own_site",
+   "note": "Homepage shows 5 featured pizzas with prices: Piccante 3990, Coppa di Parma 4890, Bresaola 4990, Parma & Pistacchio 4790, Quattro Formaggi 4790 (English text)"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": "Classico 12\"",
+ "contact": {
+  "phone": null,
+  "address": "Pósthússtræti 5, 101 Reykjavík",
+  "hours_verbatim": "11:30 AM – 10:00 PM every day (Pósthússtræti); Akureyri (Iðunn Foodhall, Gleráreyrar 1): 11:30 – 21:00 Everyday"
+ },
+ "items": [
+  {
+   "name": "POPOLARE PICCANTE",
+   "desc_is": "San Marzano tómatar – Mozzarella – Salami Piccante – Nduja – Ólífur – Chiliflögur",
+   "desc_en": "San Marzano Tomato – Mozzarella – Salami Piccante Nduja – Olives – Chili flakes",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 3990
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "COPPA DI PARMA",
+   "desc_is": "Mozzarella – Basil – Bakaðar perur – Coppa di Parma Blámygluostur frá Erpsstöðum – Sítrónuhunang",
+   "desc_en": "Mozzarella – Basil – Roasted Pears – Coppa di Parma Erpsstaðir Blue Cheese – Lemon Honey",
+   "price": 4890,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "BRESAOLA",
+   "desc_is": "San Marzano tómatar – Bakaðir kirsuberjatómatar Bresaola – Klettasalat – Burrata Stracciatella",
+   "desc_en": "San Marzano Tomato – Roasted Cherry Tomatoes Bresaola – Rucola – Burrata Stracciatella",
+   "price": 4990,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 4990
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "PARMA & PISTACCHIO",
+   "desc_is": "San Marzano tómatar – Prosciutto di Parma Pistasíur – Burrata Stracciatella – Basil",
+   "desc_en": "San Marzano Tomato – Prosciutto di Parma Pistachio – Burrata Stracciatella – Basil",
+   "price": 4790,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 4790
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "QUATTRO FORMAGGI",
+   "desc_is": "Mozzarella – Þrír ostar frá Erpsstöðum – Truffluhunang",
+   "desc_en": "Mozzarella – Three Erpsstaðir Cheeses – Truffle Honey",
+   "price": 4790,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 4790
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "PARMA",
+   "desc_is": "San Marzano tómatar – Mozzarella Prosciutto di Parma – Parmigiano – Klettasalat",
+   "desc_en": "San Marzano Tomato – Mozzarella Prosciutto di Parma – Parmigiano – Rucola",
+   "price": 4790,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 4790
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "NDUJA",
+   "desc_is": "San Marzano tómatar – Mozzarella – Basil Ratte kartöflur – Nduja – Parmigiano",
+   "desc_en": "San Marzano Tomato – Mozzarella – Basil Roasted Ratte Potatoes – Nduja – Parmigiano",
+   "price": 4890,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "REGINA",
+   "desc_is": "San Marzano tómatar – Mozzarella – Skinka Sveppir – Oregano",
+   "desc_en": "San Marzano Tomato – Mozzarella – Cooked Ham Mushroom – Oregano",
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 3790
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "CRISPY GUANCIALE",
+   "desc_is": "Mozzarella-múss – Guanciale kirsuberjatómatar – Chiliflögur",
+   "desc_en": "Mozzarella Mousse – Guanciale Roasted Cherry Tomatoes – Chili Flakes",
+   "price": 4090,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 4090
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "RAGÙ DI PARMIGIANA DI MELANZANE",
+   "desc_is": "Grænmetisragú úr eggaldin Parmigiana Basil – Ristaðir kirsuberjatómatar – Mozzarella",
+   "desc_en": "Eggplant Parmigiano Ragù – Basil Roasted Cherry Tomatoes – Mozzarella",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 3890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu",
+   "note": "Name wraps over two lines in the PDF"
+  },
+  {
+   "name": "VEGANA",
+   "desc_is": "San Marzano tómatar – Basil – Hvítlaukur Ratte kartöflur – Grillaðar paprikur – Ætiþistlar Klettasalat – Pistasíur",
+   "desc_en": "San Marzano Tomato – Basil – Garlic Ratte Potatoes – Grilled Peppers – Artichoke Rucola – Pistachio",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 3890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "DIAVOLA",
+   "desc_is": "San Marzano tómatar – Mozzarella Salami Piccante – Chiliflögur",
+   "desc_en": "San Marzano Tomato – Mozzarella Salami Piccante – Chili Flakes",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 3890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "MARINARA 2.0",
+   "desc_is": "San Marzano tómatar – Ristaðir kirsuberjatómatar Hvítlaukur – Ansjósur – Kapers – Basil – Oregano",
+   "desc_en": "San Marzano Tomato – Roasted Cherry Tomatoes Garlic – Anchovies – Capers – Basil – Oregano",
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 3690
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "MARGHERITA",
+   "desc_is": "San Marzano tómatar – Mozzarella – Basil",
+   "desc_en": "San Marzano Tomato – Mozzarella – Basil",
+   "price": 3190,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 3190
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "MARINARA",
+   "desc_is": "San Marzano tómatar – Hvítlaukur – Oregano – Basil",
+   "desc_en": "San Marzano Tomato – Garlic – Oregano – Basil",
+   "price": 3090,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 3090
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu"
+  },
+  {
+   "name": "BAMBINI / BARNAPÍZA",
+   "desc_is": "Með skinku eða pepperoni og djús",
+   "desc_en": "With ham or pepperoni and a juice box",
+   "price": 1490,
+   "price_large": null,
+   "sizes_all": {
+    "Classico 12\"": 1490
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "PDF menu",
+   "note": "Kids pizza. PDF shows 1490 kr. in the Icelandic column but 1390 kr. in the English column; the Icelandic-column price is used"
+  }
+ ],
+ "not_found": "Phone number (site shows pizza@popolare.is only). Allergen icon codes in PDF not transcribed (L=Laktos, G=Gluten, N=Nuts (walnuts), F=Fish per legend) - homepage shows e.g. \"(L/G)\". Wolt delivery prices are higher (e.g. Parma 5310 vs 4790, Margherita 3630 vs 3190).",
+ "diff_vs_current": "mock (10): Popolare Piccante 3990 same; Diavola 3890 same; Margherita 3190 same; Regina 3790 same; Marinara 3090 same; Crispy Guanciale 4090 same. Mock items not on PDF: Vegetarian 3690, Calzone 3890, Napoli Popolare 3690, Parmigiana 3890 (PDF has Ragù di Parmigiana di Melanzane 3890 and Vegana 3890 instead). New vs mock: Coppa di Parma, Bresaola, Parma & Pistacchio, Quattro Formaggi, Parma, Nduja, Marinara 2.0, Bambini 1490."
+}

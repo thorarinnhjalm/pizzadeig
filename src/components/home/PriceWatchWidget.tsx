@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 
 function getCheapest(type: 'margherita' | 'pepperoni' | 'parma') {
   const matches = mockMenuItems.filter(i => {
+    if (i.category !== 'Pizzur') return false; // skip kids and dessert pizzas
     const name = (i.name_is || '').toLowerCase();
     const nameEn = (i.name_en || '').toLowerCase();
     

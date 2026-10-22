@@ -1,0 +1,1994 @@
+{
+  "flatey-pizza": [
+    {
+      "name": "Margherita",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Basilíka, Ólífuolía",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Basil, Olive oil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Umberto",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Döðlur, Mascarpone rjómaostur, Basilíka",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Pepperoni, Dates, Mascarpone cream cheese, Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Diavola",
+      "is": "Pepperoni (smáskorið) á Margheritu-grunni",
+      "en": "Pepperoni (finely chopped) on a Margherita base",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pizza Mánaðarins - Quattro Formaggi",
+      "is": "Ferskur mozzarella, Camembert, Ricotta, Feykir, Chili-sulta, Ólífuolía, Fersk basilíka",
+      "en": "Fresh mozzarella, Camembert, Ricotta, Feykir cheese, Chili jam, Olive oil, Fresh basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Bianca",
+      "is": "Mozzarella, Parmesan, Ricotta, Pepperoni, Hvítlaukur og Mike's Hot Honey.",
+      "en": "Mozzarella, Parmesan, Ricotta, Pepperoni, Garlic and Mike's Hot Honey.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Padrino",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Pikklaður chili, Hunang, Basilíka",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Pepperoni, Pickled chili, Honey, Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Nduja",
+      "is": "Nduja kryddpylsa, Ricotta á Margheritu-grunni",
+      "en": "Nduja spiced sausage, Ricotta on a Margherita base",
+      "dir": "is>en"
+    },
+    {
+      "name": "Marinara",
+      "is": "San Marzano tómatar, Hvítlaukur, Oregano, Basilíka, Ólífuolía (enginn ostur)",
+      "en": "San Marzano tomatoes, Garlic, Oregano, Basil, Olive oil (no cheese)",
+      "dir": "is>en"
+    },
+    {
+      "name": "Cotto",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Silkiskorin skinka, Sveppir, Mascarpone rjómaostur, Ólífuolía og Basilíka",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Thinly sliced ham, Mushrooms, Mascarpone cream cheese, Olive oil and Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Tartufo",
+      "is": "Ferskur mozzarella, Sveppir, Ricotta-ostur, Íslenskar kartöflur, Truffluolía, Basilíka, Sjávarsalt (án tómata)",
+      "en": "Fresh mozzarella, Mushrooms, Ricotta, Icelandic potatoes, Truffle oil, Basil, Sea salt (no tomatoes)",
+      "dir": "is>en"
+    },
+    {
+      "name": "Parma",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Hráskinka, Klettasalat, Parmesan, Basilíka, Ólífuolía",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Prosciutto, Arugula, Parmesan, Basil, Olive oil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Stracciatella",
+      "is": "Hvít pizza (án tómata), Hráskinka, Mozzarella, Stracciatella ostur, Basilolía og Parmesan",
+      "en": "White pizza (no tomatoes), Prosciutto, Mozzarella, Stracciatella cheese, Basil oil and Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "Nutella Pizza",
+      "is": "Nutella Pizza með mascarpone og flórsykri",
+      "en": "Nutella pizza with mascarpone and powdered sugar",
+      "dir": "is>en"
+    },
+    {
+      "name": "Monella",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Parmesan, Oregano, Chili flögur, Basilíka, Ólífuolía",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Parmesan, Oregano, Chili flakes, Basil, Olive oil",
+      "dir": "is>en"
+    }
+  ],
+  "eldofninn": [
+    {
+      "name": "PS - PRINSINN",
+      "is": "Sósa - ostur - pepperoni - piparostur - ferskur chili - smoked hot honey - creamy sriracha",
+      "en": "Sauce - cheese - pepperoni - pepper cheese - fresh chili - smoked hot honey - creamy sriracha",
+      "dir": "is>en"
+    },
+    {
+      "name": "PC - PIZZA CARBONARA",
+      "is": "Rjómaostur á botn - ostur - beikon - rauðlaukur - egg - mozzarella - parmesan - hvítlaukssósa - svartur pipar",
+      "en": "Cream cheese on the base - cheese - bacon - red onion - egg - mozzarella - Parmesan - garlic sauce - black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "PM - GULLVAGNINN",
+      "is": "sósa - ostur - pepperoni - nautahakk - pikklaður laukur - jalapeno",
+      "en": "sauce - cheese - pepperoni - ground beef - pickled onion - jalapeño",
+      "dir": "is>en"
+    },
+    {
+      "name": "A - MARGARITA",
+      "is": "Eldofnssósa - ostur - oregano",
+      "en": "Eldofninn sauce - cheese - oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "A1 - MARGARITA SPECIAL",
+      "is": "Eldofnssósa - mozzarella sneiðar - ferskt basil - ólífuolía",
+      "en": "Eldofninn sauce - mozzarella slices - fresh basil - olive oil",
+      "dir": "is>en"
+    },
+    {
+      "name": "B - BEIKON OG EGG",
+      "is": "Ostur - beikon - egg",
+      "en": "Cheese - bacon - egg",
+      "dir": "is>en"
+    },
+    {
+      "name": "C - PEPPERONI BASIC",
+      "is": "Ostur - pepperoni - sveppir",
+      "en": "Cheese - pepperoni - mushrooms",
+      "dir": "is>en"
+    },
+    {
+      "name": "C1 - PEPPERONI DUO",
+      "is": "Ostur - pepperoni - rjómaostur",
+      "en": "Cheese - pepperoni - cream cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "C2 - PEPPERONI TRIO",
+      "is": "Ostur - pepperoni - sveppir - rjómaostur",
+      "en": "Cheese - pepperoni - mushrooms - cream cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "D - AMERICANO",
+      "is": "Ostur - nautahakk - sveppir - gular baunir - sv. pipar",
+      "en": "Cheese - ground beef - mushrooms - sweetcorn - black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "E - ELDOFNINN",
+      "is": "Ostur - jalapeno - bl. ólífur - gr. piparkorn - piparostur",
+      "en": "Cheese - jalapeño - mixed olives - green peppercorns - pepper cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "E1 - ELDOFNS SPECIAL",
+      "is": "Ostur - pepperoni - jalapeno - bl. ólífur - gr. piparkorn - piparostur",
+      "en": "Cheese - pepperoni - jalapeño - mixed olives - green peppercorns - pepper cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "F - SJÁVARRÉTTA",
+      "is": "Ostur - rækjur - túnfiskur - hvítlaukur - estragon",
+      "en": "Cheese - shrimp - tuna - garlic - tarragon",
+      "dir": "is>en"
+    },
+    {
+      "name": "G - NAPOLITANA",
+      "is": "Ostur - ansjósur - bl. ólífur - hvítlaukur",
+      "en": "Cheese - anchovies - mixed olives - garlic",
+      "dir": "is>en"
+    },
+    {
+      "name": "H - HAWAII",
+      "is": "Ostur - skinka - ananas",
+      "en": "Cheese - ham - pineapple",
+      "dir": "is>en"
+    },
+    {
+      "name": "H1 - BASIC",
+      "is": "Ostur - skinka - sveppir",
+      "en": "Cheese - ham - mushrooms",
+      "dir": "is>en"
+    },
+    {
+      "name": "H2 - HAWAII SPECIAL",
+      "is": "Ostur - skinka - sveppir - ananas",
+      "en": "Cheese - ham - mushrooms - pineapple",
+      "dir": "is>en"
+    },
+    {
+      "name": "I - VEGETAR",
+      "is": "Ostur - plómutómatar - paprika - rauðlaukur - sveppir - sv. pipar",
+      "en": "Cheese - plum tomatoes - bell pepper - red onion - mushrooms - black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "J - CALZONE",
+      "is": "Ostur - skinka - sveppir - sósa Auka sósa fylgir með",
+      "en": "Cheese - ham - mushrooms - sauce, extra sauce on the side",
+      "dir": "is>en"
+    },
+    {
+      "name": "L - ELLI PEPP",
+      "is": "Ostur - pepperoni - jalapeno - rauðlaukur - paprika",
+      "en": "Cheese - pepperoni - jalapeño - red onion - bell pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "M - MEIRA KJÖT",
+      "is": "Ostur - skinka - nautahakk - pepperoni - beikon",
+      "en": "Cheese - ham - ground beef - pepperoni - bacon",
+      "dir": "is>en"
+    },
+    {
+      "name": "N - KJÖTVEISLA",
+      "is": "Ostur - skinka - nautahakk - pepperoni",
+      "en": "Cheese - ham - ground beef - pepperoni",
+      "dir": "is>en"
+    },
+    {
+      "name": "O - OSTAVEISLA",
+      "is": "Ostur - rjómaostur - piparostur - gráðaostur Sulta fylgir með",
+      "en": "Cheese - cream cheese - pepper cheese - blue cheese, served with jam",
+      "dir": "is>en"
+    },
+    {
+      "name": "P - PEPPERONI SPECIAL",
+      "is": "Ostur - pepeproni - rauðlaukur - rjómaostur",
+      "en": "Cheese - pepperoni - red onion - cream cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "R - RUCCOLA PIZZA",
+      "is": "Ostur - klettasalat/ruccola - parma/hráskinka - sv. pipar - ferskur rifinn parmesan",
+      "en": "Cheese - arugula - Parma ham/prosciutto - black pepper - freshly grated Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "S - SALAT PIZZA - FERSK",
+      "is": "Ostur - klettasalat/ruccola - rauðlaukur - paprika - bl. ólífur - ferskur rifinn parmesan - eldofnsolía í boxi",
+      "en": "Cheese - arugula - red onion - bell pepper - mixed olives - freshly grated Parmesan - Eldofninn oil in a container",
+      "dir": "is>en"
+    },
+    {
+      "name": "U - SURF'N TURF",
+      "is": "Ostur - nautahakk - rækjur - rauðlaukur",
+      "en": "Cheese - ground beef - shrimp - red onion",
+      "dir": "is>en"
+    },
+    {
+      "name": "Z - HOT'N SWEET",
+      "is": "Ostur - pepperoni - bananar - chilipipar",
+      "en": "Cheese - pepperoni - bananas - chili pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "Þ - P-IN ÞRJÚ",
+      "is": "Ostur - pepperoni - paprika - piparostur",
+      "en": "Cheese - pepperoni - bell pepper - pepper cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Ö - HALF & HALF",
+      "is": "Vinstri helmingur hálfmáni - Hægri helmingur pizza - ostur - skinka - sveppir",
+      "en": "Left half calzone - Right half pizza - cheese - ham - mushrooms",
+      "dir": "is>en"
+    },
+    {
+      "name": "LL - LUKKU LÁKI",
+      "is": "Sósa - ostur - pepperoni - rauðlaukur - plómukirsuberjatómatar - beikon - hvítlaukssósa",
+      "en": "Sauce - cheese - pepperoni - red onion - plum cherry tomatoes - bacon - garlic sauce",
+      "dir": "is>en"
+    },
+    {
+      "name": "LS - LEXI SPES",
+      "is": "sósa - ostur - skorið pepperoni - rauðlaukur - döðlur - rjómaostur - chilli mæjó",
+      "en": "sauce - cheese - sliced pepperoni - red onion - dates - cream cheese - chili mayo",
+      "dir": "is>en"
+    },
+    {
+      "name": "NS - NONNI SPES",
+      "is": "Lítil sósa - eldofnsolía - ostur - skorið pepperoni - pipar- og rjómaostur - bl. ólífur - hvítlaukur - laukur - döðlur - sv. pipar",
+      "en": "A little sauce - Eldofninn oil - cheese - sliced pepperoni - pepper cheese and cream cheese - mixed olives - garlic - onion - dates - black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "Ó - ÓLI SPES",
+      "is": "Ostur - sveppir - paprika - laukur - þistilhjörtu - annans - gr. ólífur - parmesan - oregano",
+      "en": "Cheese - mushrooms - bell pepper - onion - artichokes - pineapple - green olives - Parmesan - oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Q - SIGGI SPES",
+      "is": "Ostur - skorið pepperoni - sveppir - ananas - sv. ólífur - rjómaostur - hvítlaukur - jalapeno - oregano",
+      "en": "Cheese - sliced pepperoni - mushrooms - pineapple - black olives - cream cheese - garlic - jalapeño - oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "T - TOMMI SPES",
+      "is": "Ostur - skorin skinka - nautahakk - piparostur - bl. ólífur - hvítlaukur",
+      "en": "Cheese - sliced ham - ground beef - pepper cheese - mixed olives - garlic",
+      "dir": "is>en"
+    },
+    {
+      "name": "V - EBBI SPES - HVÍT PIZZA ÁN SÓSU",
+      "is": "ólíuolía - oregano - smá ostur - mozzarella - parma/hráskinka - rifinn ferskur parmesan",
+      "en": "olive oil - oregano - a little cheese - mozzarella - Parma ham/prosciutto - freshly grated Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "Y - GAUTI SPES",
+      "is": "Ostur - skorið pepperoni - nautahakk - sveppir - laukur - paprika -hvítlaukur - jalapeno - sv. pipar - oregano",
+      "en": "Cheese - sliced pepperoni - ground beef - mushrooms - onion - bell pepper - garlic - jalapeño - black pepper - oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Æ ÆTTARSPES",
+      "is": "Ostur - skorið pepperoni - nautahakk - gr. ólífur - jalapeno - hvítlaukur - piparostur",
+      "en": "Cheese - sliced pepperoni - ground beef - green olives - jalapeño - garlic - pepper cheese",
+      "dir": "is>en"
+    }
+  ],
+  "reykjavik-pizzeria": [
+    {
+      "name": "35. Barnapizza",
+      "is": "Pizza með 2 áleggstegundum.",
+      "en": "Pizza with 2 toppings.",
+      "dir": "is>en"
+    }
+  ],
+  "bakabaka": [
+    {
+      "name": "Margherita",
+      "is": "Siccagno pizzasósa · Mozzarella · Basil",
+      "en": "Siccagno pizza sauce · Mozzarella · Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pepperoni",
+      "is": "Siccagno pizzasósa · Mozzarella · Pepperoni · Chilli flögur",
+      "en": "Siccagno pizza sauce · Mozzarella · Pepperoni · Chili flakes",
+      "dir": "is>en"
+    },
+    {
+      "name": "Parma",
+      "is": "Siccagno pizzasósa · Mozzarella · Klettasalat · Parmaskinka · Parmesan",
+      "en": "Siccagno pizza sauce · Mozzarella · Arugula · Parma ham · Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "Mortadella",
+      "is": "Siccagno pizzasósa · Mortadella pylsa · Burrata ostur · Sítrónuolía · Pistasíur",
+      "en": "Siccagno pizza sauce · Mortadella sausage · Burrata · Lemon oil · Pistachios",
+      "dir": "is>en"
+    },
+    {
+      "name": "Formaggi",
+      "is": "Siccagno pizzasósa · Mozzarella · Geitaostur · Gorgonzola · Parmesan · Hunang til hliðar",
+      "en": "Siccagno pizza sauce · Mozzarella · Goat cheese · Gorgonzola · Parmesan · Honey on the side",
+      "dir": "is>en"
+    },
+    {
+      "name": "Diavola",
+      "is": "Siccagno pizzasósa · Mozzarella · Spicy salami · Rauðlaukur · Ólífur · Chilli flögur · Parmesan",
+      "en": "Siccagno pizza sauce · Mozzarella · Spicy salami · Red onion · Olives · Chili flakes · Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "Bella Vegana",
+      "is": "Siccagno pizzasósa · Grilluð paprika · Rauðlaukur · Ólífur · Pikklaður chili · Vegan rjómaostur",
+      "en": "Siccagno pizza sauce · Grilled bell pepper · Red onion · Olives · Pickled chili · Vegan cream cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Scandinavia",
+      "is": "Mascarpone · Sterkt salami · Rauðlaukur · Pikklaður chilli · Garðkarsi",
+      "en": "Mascarpone · Spicy salami · Red onion · Pickled chili · Garden cress",
+      "dir": "is>en"
+    },
+    {
+      "name": "Capricciosa",
+      "is": "Siccagno pizzasósa · Mozzarella · Prosciutto cotto · Ætiþistlar · Ólífur · Oregano",
+      "en": "Siccagno pizza sauce · Mozzarella · Prosciutto cotto · Artichokes · Olives · Oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Bianca",
+      "is": "Mascarpone · Ostrusveppir · Hvítlauksolía · Villisveppa- & trufflúduft",
+      "en": "Mascarpone · Oyster mushrooms · Garlic oil · Wild mushroom & truffle powder",
+      "dir": "is>en"
+    },
+    {
+      "name": "Aglio e Prosciutto Cotto",
+      "is": "Mozzarella · Parmesan · Hvítlauksolía · Confit hvítlaukur · Chili flögur",
+      "en": "Mozzarella · Parmesan · Garlic oil · Confit garlic · Chili flakes",
+      "dir": "is>en"
+    },
+    {
+      "name": "Val kokksins",
+      "is": "Spurðu þjóninn",
+      "en": "Ask the waiter",
+      "dir": "is>en"
+    }
+  ],
+  "kaffi-laugalaekur": [
+    {
+      "name": "Litla Gula Hænan",
+      "is": "Flatbaka með kjúkling og beikoni, grænu pestó, osti og pítsasósu. Toppuð með salati, pikkluðum skarlottulauk, kirsuberja- tómötum, hvítlauksósu og parmesan.",
+      "en": "Flatbread with chicken and bacon, green pesto, cheese and pizza sauce. Topped with salad, pickled shallots, cherry tomatoes, garlic sauce and Parmesan.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pylsumeistarinn",
+      "is": "Flatbaka með pylsum, beikoni, pepperoni, sveppum, lauk, sósu og osti.",
+      "en": "Flatbread with sausages, bacon, pepperoni, mushrooms, onion, sauce and cheese.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Chorizohálfmáni",
+      "is": "Fylltur með osti, kryddpylsu, pikkluðum eldpipar, hvítlaukssmjöri. Toppaður með parmesan osti, grænu pestói og salati til hliðar.",
+      "en": "Filled with cheese, spiced sausage, pickled chili pepper and garlic butter. Topped with Parmesan, green pesto and salad on the side.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Geiteyjarströnd",
+      "is": "Flatbaka með taðreyktum silung ásamt pikkluðum skarlottulauk, piparrótarsósu, soðnu eggi, grænu pestó, dill og fersku salati.",
+      "en": "Flatbread with traditionally smoked (taðreyktur) trout, pickled shallots, horseradish sauce, boiled egg, green pesto, dill and fresh salad.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Ostapizza",
+      "is": "Flatbaka með Brie, gráðosti, mozzarella, pikkluðum lauk og hesilhnetum.",
+      "en": "Flatbread with brie, blue cheese, mozzarella, pickled onion and hazelnuts.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Barnabaka",
+      "is": "Fyrir 12 ára og yngri",
+      "en": "For children 12 and under",
+      "dir": "en>is"
+    }
+  ],
+  "rossopomodoro": [
+    {
+      "name": "Calzone",
+      "is": "Calzone með tómötum, mozzarella, sveppum og skinku",
+      "en": "Calzone with tomato, mozzarella, mushrooms & ham",
+      "dir": "en>is"
+    },
+    {
+      "name": "Capricciosa",
+      "is": "Tómatar, mozzarella, skinka, sveppir, ólífur og þistilhjörtu.",
+      "en": "Tomato, mozzarella, ham, mushrooms, olives and artichokes.",
+      "dir": "en>is"
+    },
+    {
+      "name": "Corbarella",
+      "is": "Mozzarella, rjómi, skinka, sveppir og svartur pipar.",
+      "en": "Mozzarella, cream, ham, mushrooms and black pepper.",
+      "dir": "en>is"
+    },
+    {
+      "name": "4 formaggi",
+      "is": "Mozzarella, ricotta, bufala, camembert og gorgonzola ostur",
+      "en": "Mozzarella, ricotta, bufala, camembert and gorgonzola cheese",
+      "dir": "en>is"
+    },
+    {
+      "name": "Hawaian",
+      "is": "Tómatar, mozzarella, skinka og ananas",
+      "en": "Tomato, mozzarella, ham and pineapple",
+      "dir": "en>is"
+    },
+    {
+      "name": "Margherita",
+      "is": "Tómatsósa, mozzarella og basilíka",
+      "en": "Tomato sauce, mozzarella and basil",
+      "dir": "en>is"
+    },
+    {
+      "name": "Marinarella",
+      "is": "Tómatar, mozzarella, hvítlaukur, kræklingur, smokkfiskur, rækjur og hörpuskel",
+      "en": "Tomato, mozzarella, garlic, mussels, squid, prawns & scallops",
+      "dir": "en>is"
+    },
+    {
+      "name": "Napoli",
+      "is": "Tómatsósa, ostur, oregano, ansjósur, hvítlaukur og ólífur",
+      "en": "Tomato sauce, cheese, oregano, anchovies, garlic and olives",
+      "dir": "en>is"
+    },
+    {
+      "name": "Pizzaiolo",
+      "is": "Uppáhald kokksins, með ferskum mozzarella, skinku, pepperoni, piparosti og beikoni.",
+      "en": "The chef's favorite, with fresh mozzarella, ham, pepperoni, pepper cheese and bacon.",
+      "dir": "en>is"
+    },
+    {
+      "name": "Hottie",
+      "is": "Með pepperoni, jalapeño, hakki og hvítlauk.",
+      "en": "With pepperoni, jalapeño, minced meat and garlic.",
+      "dir": "en>is"
+    },
+    {
+      "name": "Rustica",
+      "is": "Tómatsósa, mozzarella, skinka og sveppir",
+      "en": "Tomato sauce, mozzarella, ham and mushrooms",
+      "dir": "en>is"
+    },
+    {
+      "name": "Salmone",
+      "is": "Mozzarella, rjómaostur, reyktur lax og klettasalat.",
+      "en": "Mozzarella, cream cheese, smoked salmon and rocket salad.",
+      "dir": "en>is"
+    },
+    {
+      "name": "Sorrentina",
+      "is": "Tómatsósa, mozzarella og pepperoni",
+      "en": "Tomato sauce, mozzarella and pepperoni",
+      "dir": "en>is"
+    },
+    {
+      "name": "Tonno e Cipolla",
+      "is": "Tómatsósa, mozzarella, túnfiskur og laukur",
+      "en": "Tomato sauce, mozzarella, tuna and onion",
+      "dir": "en>is"
+    },
+    {
+      "name": "Vegeteriana",
+      "is": "Tómatar, mozzarella og ristað grænmeti, sveppir.",
+      "en": "Tomato, mozzarella & roasted vegetables, mushrooms.",
+      "dir": "en>is"
+    },
+    {
+      "name": "Ventura",
+      "is": "Mozzarella, Parmaskinka, klettasalat, parmesanflögur",
+      "en": "Mozzarella, Parma ham, rocket salad, shavings of parmesan",
+      "dir": "en>is"
+    },
+    {
+      "name": "Verace",
+      "is": "Tómatar, buffalo mozzarella og basilíka",
+      "en": "Tomato, buffalo mozzarella and basil",
+      "dir": "en>is"
+    },
+    {
+      "name": "Verona",
+      "is": "Tómatar, mozzarella, pepperoni, laukur og rjómaostur",
+      "en": "Tomato, mozzarella, pepperoni, onion & cream cheese",
+      "dir": "en>is"
+    },
+    {
+      "name": "Kids: Pizza Margherita",
+      "is": "Pizza Margherita",
+      "en": "Pizza Margherita",
+      "dir": "en>is"
+    },
+    {
+      "name": "Kids: Pizza with chocolate",
+      "is": "Pizza með Nutella",
+      "en": "Pizza with Nutella",
+      "dir": "en>is"
+    },
+    {
+      "name": "Kids: Pizza with ham",
+      "is": "Pizza með skinku og osti",
+      "en": "Pizza with ham and cheese",
+      "dir": "en>is"
+    }
+  ],
+  "napoli-pizza-rvk": [
+    {
+      "name": "Marinara",
+      "is": "Marinara sósa, ferskur basil, svartur pipar, oregano, hvítlaukur og ólífuolía.",
+      "en": "Marinara sauce, fresh basil, black pepper, oregano, garlic and olive oil.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Margherita",
+      "is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil og ólífuolía.",
+      "en": "San Marzano pizza sauce, fresh mozzarella, fresh basil and olive oil.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Napoli",
+      "is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, pepperóní, svartur pipar og rifinn parmesan ostur.",
+      "en": "San Marzano pizza sauce, fresh mozzarella, fresh basil, pepperoni, black pepper and grated Parmesan.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Salsiccia",
+      "is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, ítalskar pylsur, friarielli, chilli olía.",
+      "en": "San Marzano pizza sauce, fresh mozzarella, fresh basil, Italian sausages, friarielli, chili oil.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Capricciosa",
+      "is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, skinka, sveppir, oregano, svartar ólífur og þistilhjörtu.",
+      "en": "San Marzano pizza sauce, fresh mozzarella, fresh basil, ham, mushrooms, oregano, black olives and artichokes.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Polpetta",
+      "is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, ítalskar kjötbollur, rifinn parmesan ostur og ólífuolía.",
+      "en": "San Marzano pizza sauce, fresh mozzarella, fresh basil, Italian meatballs, grated Parmesan and olive oil.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Parma",
+      "is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, parmaskinka, klettasalat og rifinn parmesan ostur.",
+      "en": "San Marzano pizza sauce, fresh mozzarella, fresh basil, Parma ham, arugula and grated Parmesan.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Ortolana / vegetarian",
+      "is": "San Marzano pizzasósa, ferskur mozzarella, ferskur basil, svartar ólífur, grilluð papríka, grillaður kúrbítur, oregano og þistilhjörtu. (Fyrir vegan valmöguleika er hægt að sleppa mozzarella eða breyta í vegan mozzarella).",
+      "en": "San Marzano pizza sauce, fresh mozzarella, fresh basil, black olives, grilled bell pepper, grilled zucchini, oregano and artichokes. (For a vegan option the mozzarella can be left out or swapped for vegan mozzarella.)",
+      "dir": "is>en"
+    },
+    {
+      "name": "Quattro Formagi",
+      "is": "Ricotta ostur, ferskur mozzarella, gráðostur og rifinn parmesan ostur.",
+      "en": "Ricotta, fresh mozzarella, blue cheese and grated Parmesan.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Aglio e olio / Garlic",
+      "is": "Ferskur mozzarella, ferskur basil, hvítlaukur og hvítlauksolía.",
+      "en": "Fresh mozzarella, fresh basil, garlic and garlic oil.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Calzone",
+      "is": "San marzano pizzasósa, ferskur mozzarella, ferskur basil, ricotta ostur, skinka og pepperóní.",
+      "en": "San Marzano pizza sauce, fresh mozzarella, fresh basil, ricotta, ham and pepperoni.",
+      "dir": "is>en"
+    }
+  ],
+  "glosteinn": [
+    {
+      "name": "0. Ostóber",
+      "is": "Grænt pestó - ostur - pestó ostur - döðlur - klettasalat - hráskinka - stracciatella - Feykir",
+      "en": "Green pesto - cheese - pesto cheese - dates - arugula - prosciutto - stracciatella - Feykir cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "1. Melbær",
+      "is": "Glósteinssósa, Ostur.",
+      "en": "Glósteinn sauce, Cheese.",
+      "dir": "is>en"
+    },
+    {
+      "name": "2. Mýrarás",
+      "is": "Glósteinssósa, Ferskur Mozzarella, Basil, Ólífuolía.",
+      "en": "Glósteinn sauce, Fresh mozzarella, Basil, Olive oil.",
+      "dir": "is>en"
+    },
+    {
+      "name": "3. Hraunbær",
+      "is": "Auka Ostur, Hvítlauksolía, Sjávarsalt",
+      "en": "Extra cheese, Garlic oil, Sea salt",
+      "dir": "is>en"
+    },
+    {
+      "name": "4. Fylkisvegur",
+      "is": "Glósteinssósa, Ostur, Pepperoni",
+      "en": "Glósteinn sauce, Cheese, Pepperoni",
+      "dir": "is>en"
+    },
+    {
+      "name": "5. Heiðarás",
+      "is": "Glósteinssósa, Ostur, Skinka, Ananas",
+      "en": "Glósteinn sauce, Cheese, Ham, Pineapple",
+      "dir": "is>en"
+    },
+    {
+      "name": "6. Seiðakvísl",
+      "is": "Glósteinssósa, Ostur, Pepperoni, Sveppir.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Mushrooms.",
+      "dir": "is>en"
+    },
+    {
+      "name": "7. Þingvað",
+      "is": "Glósteinssósa, Ostur, Pepperoni, Nautahakk, Rjómaostur.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Ground beef, Cream cheese.",
+      "dir": "is>en"
+    },
+    {
+      "name": "8. Bröndukvísl",
+      "is": "Glósteinssósa, Ostur, Pepperoni, Kjúklingur, Rjómaostur, Rauðlaukur, Döðlur, Mulið Tortilla Snakk.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Chicken, Cream cheese, Red onion, Dates, Crushed tortilla chips.",
+      "dir": "is>en"
+    },
+    {
+      "name": "9. Glæsibær",
+      "is": "Glósteinssósa, Ostur, Hvítlauksmarineraðar Tígrisrækjur, Klettasalat, Parmesan, Pistasíur, Hvítlauksolía, Sjávarsalt.",
+      "en": "Glósteinn sauce, Cheese, Garlic-marinated tiger prawns, Arugula, Parmesan, Pistachios, Garlic oil, Sea salt.",
+      "dir": "is>en"
+    },
+    {
+      "name": "10. Reykás",
+      "is": "Glósteinssósa, Ostur, Hráskinka, Klettasalat, Parmesan.",
+      "en": "Glósteinn sauce, Cheese, Prosciutto, Arugula, Parmesan.",
+      "dir": "is>en"
+    },
+    {
+      "name": "11. Vesturás",
+      "is": "Ostur, Pepperoni, Beikonkurl, Jalapeno, Eldur chiliostur, Chili-hunang, Sriracha, Rifsberjasulta.",
+      "en": "Cheese, Pepperoni, Bacon bits, Jalapeño, Eldur chili cheese, Chili honey, Sriracha, Redcurrant jam.",
+      "dir": "is>en"
+    },
+    {
+      "name": "12. Laxakvísl",
+      "is": "Glósteinssósa, Ostur, Pepperoni, Nautahakk, Beikonkurl, Sultaður Rauðlaukur.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Ground beef, Bacon bits, Red onion jam.",
+      "dir": "is>en"
+    },
+    {
+      "name": "13. Dísarás",
+      "is": "Glósteinssósa, Ostur, Pepperoni, Döðlur, Gráðaostur.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Dates, Blue cheese.",
+      "dir": "is>en"
+    },
+    {
+      "name": "14. Rofabær",
+      "is": "Glósteinssósa, Ostur, Gráðaostur, Piparostur, Rjómaostur, Rifsberjasulta (til hliðar).",
+      "en": "Glósteinn sauce, Cheese, Blue cheese, Pepper cheese, Cream cheese, Redcurrant jam (on the side).",
+      "dir": "is>en"
+    },
+    {
+      "name": "15. Vallarás",
+      "is": "Glósteinssósa, Ostur, Pepperoni, Beikonkurl, Piparostur, Ferskur Chilli, Chilli Flögur, Chilli Hunang.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Bacon bits, Pepper cheese, Fresh chili, Chili flakes, Chili honey.",
+      "dir": "is>en"
+    },
+    {
+      "name": "16. Móvað",
+      "is": "Glósteinssósa, Ostur, Pepperoni, Jalapeno, Sultaður Rauðlaukur, Piparostur, Svartur Pipar.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Jalapeño, Red onion jam, Pepper cheese, Black pepper.",
+      "dir": "is>en"
+    },
+    {
+      "name": "17. Kambavað",
+      "is": "Glósteinssósa, Ostur, Skinka, Paprika, Laukur, Sveppir, Nautahakk.",
+      "en": "Glósteinn sauce, Cheese, Ham, Bell pepper, Onion, Mushrooms, Ground beef.",
+      "dir": "is>en"
+    },
+    {
+      "name": "18. Naustabryggja",
+      "is": "Glósteinssósa, Ostur, Pepperoni, Jalapeno, Ferskur Chilli, Sveppir, Svartar Ólífur, Chilli Mæjó.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Jalapeño, Fresh chili, Mushrooms, Black olives, Chili mayo.",
+      "dir": "is>en"
+    },
+    {
+      "name": "19. Brekkubær",
+      "is": "Glósteinssósa, ostur, pepperoni, sveppir, laukur, parmesan (eftir ofn).",
+      "en": "Glósteinn sauce, cheese, pepperoni, mushrooms, onion, Parmesan (added after baking).",
+      "dir": "is>en"
+    },
+    {
+      "name": "20. Brúarás",
+      "is": "Grænt pestó, ostur, camembertostur, pepperoni, tómatar, svartur pipar, burrata, rifsberjasulta.",
+      "en": "Green pesto, cheese, camembert, pepperoni, tomatoes, black pepper, burrata, redcurrant jam.",
+      "dir": "is>en"
+    },
+    {
+      "name": "21. Álakvísl",
+      "is": "Glósteinssósa, Ostur, Hvítlauksolía, Sjávarsalt, Klettasalat, Kapers, Nauta carpaccio, Trufflu majó, Parmesan, Wasabi hneturkurl.",
+      "en": "Glósteinn sauce, Cheese, Garlic oil, Sea salt, Arugula, Capers, Beef carpaccio, Truffle mayo, Parmesan, Wasabi nut crumble.",
+      "dir": "is>en"
+    },
+    {
+      "name": "22. Deildarás",
+      "is": "Glósteinssósa, Hvítlauksmarineraðar tígrisrækjur, Ferskur mozzarella, Kapers, Svartar ólífur, Chiliflögur.",
+      "en": "Glósteinn sauce, Garlic-marinated tiger prawns, Fresh mozzarella, Capers, Black olives, Chili flakes.",
+      "dir": "is>en"
+    },
+    {
+      "name": "23. Eyktarás",
+      "is": "Glósteinssósa, Vegan Ostur, Döðlur, Klettasalat, Cherry Tómatar, Ferskur Rauðlaukur, Chilli Mæjó, Mulið Tortilla Snakk.",
+      "en": "Glósteinn sauce, Vegan cheese, Dates, Arugula, Cherry tomatoes, Fresh red onion, Chili mayo, Crushed tortilla chips.",
+      "dir": "is>en"
+    },
+    {
+      "name": "24. Brautarás",
+      "is": "Glósteinssósa, Vegan ostur, Sveppir, Döðlur, Sultaður rauðlaukur, Pistasíur, Hvítlauksolía, Sjávarsalt.",
+      "en": "Glósteinn sauce, Vegan cheese, Mushrooms, Dates, Red onion jam, Pistachios, Garlic oil, Sea salt.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Barnapizza",
+      "is": "Fyrir 12 ára og yngri. 8” Pizza með einu áleggi",
+      "en": "For children 12 and under. 8\" pizza with one topping.",
+      "dir": "is>en"
+    },
+    {
+      "name": "10\" Glómagnaða",
+      "is": "10\" eftirréttarpizza með kanil karamellukurli, nutella og flórsykri",
+      "en": "10\" dessert pizza with cinnamon caramel crumble, Nutella and powdered sugar",
+      "dir": "is>en"
+    }
+  ],
+  "pizzasmidjan-akureyri": [
+    {
+      "name": "Margarita",
+      "is": "Sósa, mozzarella, basil",
+      "en": "Sauce, mozzarella, basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pac man",
+      "is": "Sósa, mozzarella, pepperoni, sveppir, rauðlaukur, svartur pipar",
+      "en": "Sauce, mozzarella, pepperoni, mushrooms, red onion, black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "Spice Girls",
+      "is": "Sósa, mozzarella, pepperoni, piparostur, chillí, trönuber, gráðostur, hunang",
+      "en": "Sauce, mozzarella, pepperoni, pepper cheese, chili, cranberries, blue cheese, honey",
+      "dir": "is>en"
+    },
+    {
+      "name": "Parma",
+      "is": "Sósa, mozzarella, hráskinka, klettasalat, parmesan, ólífuolía, svartur pipar",
+      "en": "Sauce, mozzarella, prosciutto, arugula, Parmesan, olive oil, black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "Ítalía",
+      "is": "Sósa, ferskur mozzarella, chorizo, hvítlaukur, basil",
+      "en": "Sauce, fresh mozzarella, chorizo, garlic, basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Vegan",
+      "is": "Sósa, grilluð paprika, rauðlaukur, sveppir, ólífur, kryddolía, klettasalat",
+      "en": "Sauce, grilled bell pepper, red onion, mushrooms, olives, seasoned oil, arugula",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sæta",
+      "is": "Sósa, ferskur mozzarella, pepperoni, döðlur, pikklað chilli, hvítlaukur",
+      "en": "Sauce, fresh mozzarella, pepperoni, dates, pickled chili, garlic",
+      "dir": "is>en"
+    },
+    {
+      "name": "Tiger",
+      "is": "Sósa, mozzarella, hvítlauks tígrisrækjur, chorizo, rjómaostur, hunang, chillísósa",
+      "en": "Sauce, mozzarella, garlic tiger prawns, chorizo, cream cheese, honey, chili sauce",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sweet Chorizo",
+      "is": "sósa, ferskur mozzarella, chorizo, grillaður ananas, hvítlauksolía",
+      "en": "sauce, fresh mozzarella, chorizo, grilled pineapple, garlic oil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Bauta Pizza",
+      "is": "hvítlauksolía, mozzarella, nautabrisket, sveppir, laukur - toppað með bernaise sósu og kartöflutvist",
+      "en": "garlic oil, mozzarella, beef brisket, mushrooms, onion - topped with béarnaise sauce and potato twist",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pizza Blanca",
+      "is": "hvítlauksolía, ferskur mozzarella, gráðostur, beikon og ristaðar pistasíur - toppað með chili hunangi",
+      "en": "garlic oil, fresh mozzarella, blue cheese, bacon and roasted pistachios - topped with chili honey",
+      "dir": "is>en"
+    },
+    {
+      "name": "Parma Burrata",
+      "is": "hvítlauksolía, ferskur mozzarella, cherrytómatar - toppað með parmaskinku, klettasalati, basilolíu, chili flögum og burrata",
+      "en": "garlic oil, fresh mozzarella, cherry tomatoes - topped with Parma ham, arugula, basil oil, chili flakes and burrata",
+      "dir": "is>en"
+    },
+    {
+      "name": "Calzone Pepperoni",
+      "is": "rifinn otur, piparostur, pepperoni",
+      "en": "Grated cheese, pepper cheese, pepperoni",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sweet Spot",
+      "is": "pizzbotn toppaður með hvítu súkkulaðismjöri, oreo-kurli, súkkulaði sósu og jarðaberjum",
+      "en": "Pizza base topped with white chocolate spread, Oreo crumble, chocolate sauce and strawberries",
+      "dir": "is>en"
+    },
+    {
+      "name": "Hvítlauks pizza",
+      "is": "Hvílauksolía, mozzarella, basil, svartur pipar og salt",
+      "en": "Garlic oil, mozzarella, basil, black pepper and salt",
+      "dir": "is>en"
+    },
+    {
+      "name": "Barnapizza",
+      "is": "Sósa, mozarella, pepperoni eða skinka",
+      "en": "Sauce, mozzarella, pepperoni or ham",
+      "dir": "is>en"
+    }
+  ],
+  "islenska-flatbakan": [
+    {
+      "name": "Sú Boltaða",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni, skinka, sveppir, hvítlaukur, ananas, rjómaostur og svartur pipar.",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni, ham, mushrooms, garlic, pineapple, cream cheese and black pepper.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Döðlaða",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni, döðlur, rauðlaukur, beikon, rjómaostur og svartur pipar.",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni, dates, red onion, bacon, cream cheese and black pepper.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Sterka",
+      "is": "Pepperóní, laukur, ferskur chilli, jalapeno, blandaðar ólífur, piparostur og chillikrydd",
+      "en": "Pepperoni, onion, fresh chili, jalapeño, mixed olives, pepper cheese and chili seasoning",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Peppaða",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni, rjómaostur",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni, cream cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Klassíska",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni og sveppir",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni and mushrooms",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Hawaiiaða",
+      "is": "Mozzarellaosta blanda, flatböku sósa, skinka, annanas.",
+      "en": "Mozzarella cheese blend, flatbread sauce, ham, pineapple.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Gómsæta",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni, döðlur og rjómaostur",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni, dates and cream cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Veizlaða (Nýtt)",
+      "is": "Mozzarellaosta blanda, flatböku sósa, tvöfalt pepperoni, auka ostur, oregano yfir",
+      "en": "Mozzarella cheese blend, flatbread sauce, double pepperoni, extra cheese, oregano on top",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Hálfa",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni, skinka og sveppir (hálfmáni, ekki hægt að opna).",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni, ham and mushrooms (calzone, cannot be opened).",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Mottaða",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni, beikon, jalapeno, laukur, hvítlaukur og rjómaostur.",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni, bacon, jalapeño, onion, garlic and cream cheese.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Eðlaða",
+      "is": "Mozzarellaosta blanda, flatböku sósa, kjúklingur, jalapeno, rjómaostur, ostasósa og nachos yfir.",
+      "en": "Mozzarella cheese blend, flatbread sauce, chicken, jalapeño, cream cheese, cheese sauce and nachos on top.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Geggjaða (Nýtt)",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni, kjúklingur, piparostur, döðlur, rauðlaukur, svartur pipar og svart doritos yfir",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni, chicken, pepper cheese, dates, red onion, black pepper and black Doritos on top",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Cheesn'ndmeet",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni, beikonkurl,piparostur, rjómaostur og sv.pipar",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni, bacon bits, pepper cheese, cream cheese and black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Tryllta",
+      "is": "Mozzarellaosta blanda, flatböku sósa, pepperoni, nautahakk,cheddar ostur, piparostur og hot honey yfir",
+      "en": "Mozzarella cheese blend, flatbread sauce, pepperoni, ground beef, cheddar cheese, pepper cheese and hot honey on top",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Parmaða",
+      "is": "Mozzarellaosta blanda, flatböku sósa, hráskinka, klettasalat og parmesan.",
+      "en": "Mozzarella cheese blend, flatbread sauce, prosciutto, arugula and Parmesan.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Kjötaða",
+      "is": "Mozzarellaosta blanda, flatböku sósa, skinka, pepperoni, hakk, piparostur, rjómaostur oregano og svartur pipar.",
+      "en": "Mozzarella cheese blend, flatbread sauce, ham, pepperoni, minced meat, pepper cheese, cream cheese, oregano and black pepper.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Ostaða",
+      "is": "Mozzarellaosta blanda, flatböku sósa, camembert, mozzarellaostur, piparostur, rjómaostur og sulta til hliðar.",
+      "en": "Mozzarella cheese blend, flatbread sauce, camembert, mozzarella cheese, pepper cheese, cream cheese and jam on the side.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Krúttlega (kids)",
+      "is": "Barnapizza með 1x áleggi, mozzarellaostal blanda og flatböku sósa.",
+      "en": "Kids pizza with 1 topping, mozzarella cheese blend and flatbread sauce.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Buffaða",
+      "is": "Pizzasósa, vegan ostur, Oumph í buffalósósu, nachos og vegan aioli yfir.",
+      "en": "Pizza sauce, vegan cheese, Oumph in buffalo sauce, nachos and vegan aioli on top.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Fullkomna",
+      "is": "Pizzasósa, vegan ostur, döðlur, hvítlaukur, basil, sveppir pistilhjörtu, salthnetur, sjávarsalts-og oreganoblanda.",
+      "en": "Pizza sauce, vegan cheese, dates, garlic, basil, mushrooms, artichokes, salted peanuts, sea salt and oregano mix.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sú Ferska",
+      "is": "Pizzasósa, vegan ostur, hvítlaukur, döðlur, klettasalat, ferskur rauðlaukur, ferskir tómatar og chipotle sósa yfir.",
+      "en": "Pizza sauce, vegan cheese, garlic, dates, arugula, fresh red onion, fresh tomatoes and chipotle sauce on top.",
+      "dir": "is>en"
+    }
+  ],
+  "castello-hafnarfjordur": [
+    {
+      "name": "Hawaian",
+      "is": "Skinka, ananas",
+      "en": "Ham, pineapple",
+      "dir": "is>en"
+    },
+    {
+      "name": "Margarita",
+      "is": "Sósa og ostur",
+      "en": "Sauce and cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Napolitana",
+      "is": "Pepperóní, sveppir, nautahakk",
+      "en": "Pepperoni, mushrooms, ground beef",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pacifico",
+      "is": "Rækjur, Laukur, Chili flögur, Hvítlaukur, Ananas, Oregano, Svartar ólífur",
+      "en": "Shrimp, Onion, Chili flakes, Garlic, Pineapple, Oregano, Black olives",
+      "dir": "is>en"
+    },
+    {
+      "name": "Deviola",
+      "is": "Sósa, Ostur, Pepperóní, Laukur, Jalapeno, Græn piparkorn, Piparostur",
+      "en": "Sauce, Cheese, Pepperoni, Onion, Jalapeño, Green peppercorns, Pepper cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Osta Pizza",
+      "is": "Camembert, Parmesan, Rjómaostur, Gráðostur, Sulta",
+      "en": "Camembert, Parmesan, Cream cheese, Blue cheese, Jam",
+      "dir": "is>en"
+    },
+    {
+      "name": "Kebab pizza m/kjúkling",
+      "is": "Iceberg,jogurt sósa,hvitlauk sósa,jallapeno",
+      "en": "Iceberg lettuce, yogurt sauce, garlic sauce, jalapeño",
+      "dir": "is>en"
+    },
+    {
+      "name": "Caprice",
+      "is": "Skinka, sveppir, paprika, hvítlaukur",
+      "en": "Ham, mushrooms, bell pepper, garlic",
+      "dir": "is>en"
+    },
+    {
+      "name": "Kjötveisla",
+      "is": "Skinka, pepperoni, nautahakk",
+      "en": "Ham, pepperoni, ground beef",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pollo Pizza",
+      "is": "Kjúklingur, Sveppir, Hvítlaukur, Maís",
+      "en": "Chicken, Mushrooms, Garlic, Corn",
+      "dir": "is>en"
+    },
+    {
+      "name": "Castello Special",
+      "is": "Kjúklingur, Laukur, Papríka, Rjómaostur, Jalapeno, Oregano",
+      "en": "Chicken, Onion, Bell pepper, Cream cheese, Jalapeño, Oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "La Rosa",
+      "is": "Skinka, Ostur, Beikon, Ananas, Sósa",
+      "en": "Ham, Cheese, Bacon, Pineapple, Sauce",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sjávarrétta",
+      "is": "Rækjur, Laukur,Hvitlaukur, Kræklingur, Túnfiskur",
+      "en": "Shrimp, Onion, Garlic, Mussels, Tuna",
+      "dir": "is>en"
+    },
+    {
+      "name": "Classic",
+      "is": "Pepperóní, Skinka, Sveppir, Laukur",
+      "en": "Pepperoni, Ham, Mushrooms, Onion",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pizza Grande",
+      "is": "Ostur, Pepperóní, Skinka, Hakk, Papríka, Laukur, Sveppir, Piparostur",
+      "en": "Cheese, Pepperoni, Ham, Minced meat, Bell pepper, Onion, Mushrooms, Pepper cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Primavera",
+      "is": "Skinka, Sveppir, Basil, Camembert",
+      "en": "Ham, Mushrooms, Basil, Camembert",
+      "dir": "is>en"
+    },
+    {
+      "name": "Ruccola Pizza",
+      "is": "Parmaskinka, Klettasalat, Oregano, Parmesan",
+      "en": "Parma ham, Arugula, Oregano, Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "Paradise",
+      "is": "Pepperóní, Ananas, Laukur, Papríka, Jalapeno, Hvítlaukur, Oregano",
+      "en": "Pepperoni, Pineapple, Onion, Bell pepper, Jalapeño, Garlic, Oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Venecia",
+      "is": "Pepperóní, Kjúklingur, Beikon, Hvítlaukur, Hvítlaukssalt, Sólþurrkaðir tómatar",
+      "en": "Pepperoni, Chicken, Bacon, Garlic, Garlic salt, Sun-dried tomatoes",
+      "dir": "is>en"
+    },
+    {
+      "name": "Mexicana",
+      "is": "Rjómaostur, Kjúklingur, Laukur, Maís, Hvítlaukspipar, Hvítlaukssalt",
+      "en": "Cream cheese, Chicken, Onion, Corn, Garlic pepper, Garlic salt",
+      "dir": "is>en"
+    },
+    {
+      "name": "Florence",
+      "is": "Pepperóní, Laukur, Tómatar, Basil, Rjómaostur, Döðlur",
+      "en": "Pepperoni, Onion, Tomatoes, Basil, Cream cheese, Dates",
+      "dir": "is>en"
+    },
+    {
+      "name": "Vegetariana",
+      "is": "Sveppir, Laukur, Hvítlaukspipar, Oregano, Tómatar, Spergilkál, Parmesan, Svartar ólífur",
+      "en": "Mushrooms, Onion, Garlic pepper, Oregano, Tomatoes, Broccoli, Parmesan, Black olives",
+      "dir": "is>en"
+    },
+    {
+      "name": "Siciliana",
+      "is": "Pepperóní, Sveppir, Ananas, Hvítlaukur, Jalapeno, Rjómaostur, Oregano, Svartar ólífur",
+      "en": "Pepperoni, Mushrooms, Pineapple, Garlic, Jalapeño, Cream cheese, Oregano, Black olives",
+      "dir": "is>en"
+    },
+    {
+      "name": "Forsíðupizzan",
+      "is": "Pepperóní, Beikon, Papríka, Hvítlaukssósa, Basil, Jalapeno",
+      "en": "Pepperoni, Bacon, Bell pepper, Garlic sauce, Basil, Jalapeño",
+      "dir": "is>en"
+    }
+  ],
+  "italiano-kopavogur": [
+    {
+      "name": "Margherita eða Hvítlauks pizza",
+      "is": "Sósa, ostur eða hvítlauksolía, ostur, hvítlaukssalt",
+      "en": "Sauce, cheese or garlic oil, cheese, garlic salt",
+      "dir": "is>en"
+    },
+    {
+      "name": "Milan",
+      "is": "Sósa, ostur, hakk, sveppir, rauðlaukur, oregano",
+      "en": "Sauce, cheese, minced meat, mushrooms, red onion, oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Napoli",
+      "is": "Sósa, ostur, rækjur, túnfiskur, kræklingur, hvítlaukspipar",
+      "en": "Sauce, cheese, shrimp, tuna, mussels, garlic pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "Parma (Vinsæl)",
+      "is": "Sósa, ostur, parmaskinka, klettasalat, parmesan ostur",
+      "en": "Sauce, cheese, Parma ham, arugula, Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "Toscana (Vinsæl)",
+      "is": "Sósa, ostur, pepperoni, sveppir, ananas, svartar ólífur, hvítlaukur, rjómaostur, svartur pipar, oregano",
+      "en": "Sauce, cheese, pepperoni, mushrooms, pineapple, black olives, garlic, cream cheese, black pepper, oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pisa",
+      "is": "Sósa, ostur, pepperoni, hakk, dass af hvítlauksolíu",
+      "en": "Sauce, cheese, pepperoni, minced meat, a dash of garlic oil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Tropical",
+      "is": "Sósa, ostur, skinka, ananas",
+      "en": "Sauce, cheese, ham, pineapple",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pepperoni Italiano",
+      "is": "Sósa, ostur, þakin pepperoni",
+      "en": "Sauce, cheese, covered in pepperoni",
+      "dir": "is>en"
+    },
+    {
+      "name": "Bari",
+      "is": "Sósa, ostur, pepperoni, beikon, laukur, döðlur og piparostur",
+      "en": "Sauce, cheese, pepperoni, bacon, onion, dates and pepper cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Italiano",
+      "is": "Sósa, ostur, pepperoni, sveppir",
+      "en": "Sauce, cheese, pepperoni, mushrooms",
+      "dir": "is>en"
+    },
+    {
+      "name": "Garda",
+      "is": "Sósa, ostur, rjómaostur, gráðaostur, piparostur, parmesan, rifsberjasulta",
+      "en": "Sauce, cheese, cream cheese, blue cheese, pepper cheese, Parmesan, redcurrant jam",
+      "dir": "is>en"
+    },
+    {
+      "name": "Calzone (Hálfmáni) (Vinsæl)",
+      "is": "Sósa, ostur, skinka, sveppir, piparostur, svartur pipar",
+      "en": "Sauce, cheese, ham, mushrooms, pepper cheese, black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "God father (Vinsæl)",
+      "is": "Sósa, ostur, pepperoni, beikon, rjómaostur",
+      "en": "Sauce, cheese, pepperoni, bacon, cream cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Tropical meat",
+      "is": "Sósa, ostur, pepperoni, skinka, ananas",
+      "en": "Sauce, cheese, pepperoni, ham, pineapple",
+      "dir": "is>en"
+    },
+    {
+      "name": "Capri (Ný)",
+      "is": "Sósa, ostur, pepperoni, kjúklingur, Doritos, maís, rauðlaukur, mexíkóostur",
+      "en": "Sauce, cheese, pepperoni, chicken, Doritos, corn, red onion, Mexíkóostur (Icelandic spiced cheese)",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sicilian (Vinsæl)",
+      "is": "Sósa, ostur, kjúklingur, Doritos, laukur, jalapenos, rjómaostur, ferskur hvítlaukur",
+      "en": "Sauce, cheese, chicken, Doritos, onion, jalapeños, cream cheese, fresh garlic",
+      "dir": "is>en"
+    },
+    {
+      "name": "Roma",
+      "is": "Sósa, ostur, pepperoni, skinka, hakk, beikon",
+      "en": "Sauce, cheese, pepperoni, ham, minced meat, bacon",
+      "dir": "is>en"
+    },
+    {
+      "name": "Maistrone",
+      "is": "Sósa, ostur, tómatar, sveppir, laukur, paprika, klettasalat, gráðaostur",
+      "en": "Sauce, cheese, tomatoes, mushrooms, onion, bell pepper, arugula, blue cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Gladiator",
+      "is": "Sósa, extra ostur, pepperoni, bananar, piparostur, jalapeno, chilliflögur",
+      "en": "Sauce, extra cheese, pepperoni, bananas, pepper cheese, jalapeño, chili flakes",
+      "dir": "is>en"
+    },
+    {
+      "name": "Torino",
+      "is": "Sósa, ostur, pepperoni, beikon, rauðlaukur, ananas, gráðaostur, græn piparkorn",
+      "en": "Sauce, cheese, pepperoni, bacon, red onion, pineapple, blue cheese, green peppercorns",
+      "dir": "is>en"
+    },
+    {
+      "name": "Florence",
+      "is": "Sósa, ostur, pepperoni, sveppir, paprika, piparostur",
+      "en": "Sauce, cheese, pepperoni, mushrooms, bell pepper, pepper cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Monza (Ný)",
+      "is": "Sósa, ostur, pepperoni, sveppir, rauðlaukur, döðlur, rjómaostur, sv. pipar",
+      "en": "Sauce, cheese, pepperoni, mushrooms, red onion, dates, cream cheese, black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "Massa (Sterk)",
+      "is": "Sósa, ostur, pepperoni, laukur, jalapeno, chilliflögur, sv. pipar",
+      "en": "Sauce, cheese, pepperoni, onion, jalapeño, chili flakes, black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "Brazzo",
+      "is": "Sósa, ostur, kjúklingur, sveppir, laukur, ananas",
+      "en": "Sauce, cheese, chicken, mushrooms, onion, pineapple",
+      "dir": "is>en"
+    }
+  ],
+  "pizza-kofinn": [
+    {
+      "name": "Einföld Margherita",
+      "is": "Pizza Sósa, Ostur",
+      "en": "Pizza sauce, Cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Ítölsk Margherita",
+      "is": "Pizza Sósa, Ferskur mozzarella, Basilika, ólívu olia.",
+      "en": "Pizza sauce, Fresh mozzarella, Basil, olive oil.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pepperoni",
+      "is": "Pizza Sósa, Ostur, Pepperoni.",
+      "en": "Pizza sauce, Cheese, Pepperoni.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Hawaii",
+      "is": "Pizza Sósa, Ostur, Skinka, Ananas.",
+      "en": "Pizza sauce, Cheese, Ham, Pineapple.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Parma",
+      "is": "Pizza Sósa, Ferskur mozzarella, Klettasalat, Hráskinka, Parmesan.",
+      "en": "Pizza sauce, Fresh mozzarella, Arugula, Prosciutto, Parmesan.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Kölski",
+      "is": "Pizza Sósa, Ostur, Parmesan, Sterk salame, Chilíflögur.",
+      "en": "Pizza sauce, Cheese, Parmesan, Spicy salami, Chili flakes.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Field",
+      "is": "San Marzano tómatar, geitaostur, rauðlaukur, ólífur, hunang, klettasalat, sveppir.",
+      "en": "San Marzano tomato, goat cheese, red onion, olives, honey, arugula, mushroom.",
+      "dir": "en>is"
+    },
+    {
+      "name": "Sérstök Pizzakofans",
+      "is": "Pizza Sósa, Ferskur mozzarella, Piparostur, Beikon, Pepperoni, Hálfþurkaðir tómatar.",
+      "en": "Pizza sauce, Fresh mozzarella, Pepper cheese, Bacon, Pepperoni, Semi-dried tomatoes.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Krispí Kjúlli",
+      "is": "Pizza Sósa, Ostur, Kjúklingur, Rauðlaukur, Nachos, Hvítlaukssósa, Chipotlesósa.",
+      "en": "Pizza sauce, Cheese, Chicken, Red onion, Nachos, Garlic sauce, Chipotle sauce.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Fjögurra Osta",
+      "is": "Pizza Sósa, Ostur, Parmesan, Gráðostur, Piparostur. Sulta Fylgir.",
+      "en": "Pizza sauce, Cheese, Parmesan, Blue cheese, Pepper cheese. Served with jam.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Þykkur",
+      "is": "Pizza Sósa, Piparostur, Pulled pork, Beikon, Döðlur, Hvítlsukssósa, Chipotlesósa.",
+      "en": "Pizza sauce, Pepper cheese, Pulled pork, Bacon, Dates, Garlic sauce, Chipotle sauce.",
+      "dir": "is>en"
+    }
+  ],
+  "askur-pizzeria": [
+    {
+      "name": "Með allt á hreinu",
+      "is": "Sósa, ostur, hreindýrahakk, sultaður rauðlaukur, ferskostur, furuhnetur og steinselja.",
+      "en": "Sauce, cheese, ground reindeer, red onion jam, fresh cheese, pine nuts and parsley.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Orginal",
+      "is": "Sósa, ostur ,beikon, döðlur og piparrjómaostur.",
+      "en": "Sauce, cheese, bacon, dates and pepper cream cheese.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Fallegi smiðurinn",
+      "is": "Sósa, ostur, pepperoni, piparostur, rauðlaukur og sveppir.",
+      "en": "Sauce, cheese, pepperoni, pepper cheese, red onion and mushrooms.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Stella í Orlofi",
+      "is": "BBQ sósa, ostur, hakk, beikon, rauðlaukur og kjúklingur.",
+      "en": "BBQ sauce, cheese, minced meat, bacon, red onion and chicken.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Í átt að tunglinu",
+      "is": "Calzone: sósa, ostur, skinka sveppir og svartur pipar.",
+      "en": "Calzone: sauce, cheese, ham, mushrooms and black pepper.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Í Bláum Skugga",
+      "is": "Sósa, ostur, gráðostur, cheddar ostur, piparostur og parmesan.",
+      "en": "Sauce, cheese, blue cheese, cheddar cheese, pepper cheese and Parmesan.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Esjan",
+      "is": "Sósa, ostur, skinka og ananas.",
+      "en": "Sauce, cheese, ham and pineapple.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Vöðvastæltur",
+      "is": "Sósa, ostur, pepperoni, skinka, beikon og rjómaostur.",
+      "en": "Sauce, cheese, pepperoni, ham, bacon and cream cheese.",
+      "dir": "is>en"
+    },
+    {
+      "name": "B.O.B.A",
+      "is": "Ostur, pepperoni, sveppir, ólífur, mozzarella, habanero, græn piparkorn, döðlur, cheddar ostur, ferskostur og chilli olía Gummós.",
+      "en": "Cheese, pepperoni, mushrooms, olives, mozzarella, habanero, green peppercorns, dates, cheddar cheese, fresh cheese and chili oil Gummós.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Járnkallinn",
+      "is": "Sósa, ostur, nautahakk, pepperoni, sveppir, ferskostur, hvítlaukur, rauðlaukur, fersk chilli, chilli flögur, steinselja og parmesan.",
+      "en": "Sauce, cheese, ground beef, pepperoni, mushrooms, fresh cheese, garlic, red onion, fresh chili, chili flakes, parsley and Parmesan.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Vertu þú sjálfur",
+      "is": "Sósa, vegan ostur, sveppir, döðlur, salthnetur, klettasalat og Bera hot sauce.",
+      "en": "Sauce, vegan cheese, mushrooms, dates, salted peanuts, arugula and Bera hot sauce.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Fæ Aldrei Nóg Af Þér",
+      "is": "Sósa, veganostur, hvítlaukur, rauðlaukur, ananas, sveppir, vegan hakk, græn piparkorn og doritos.",
+      "en": "Sauce, vegan cheese, garlic, red onion, pineapple, mushrooms, vegan mince, green peppercorns and Doritos.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Hjálpaðu mér upp",
+      "is": "Sósa, ostur, pepperóní, piparostur, jalapeno og chilli flögur.",
+      "en": "Sauce, cheese, pepperoni, pepper cheese, jalapeño and chili flakes.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Enginn mórall",
+      "is": "Hvítlaukusmauk, rjómaostur, ostur, sveppir, rauðlaukur, piparostur og svartur pipar. Toppuð með steinselju þegar hún kemur úr ofninum.",
+      "en": "Garlic paste, cream cheese, cheese, mushrooms, red onion, pepper cheese and black pepper. Topped with parsley when it comes out of the oven.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pamela",
+      "is": "Hvítlauksmauk, ostur, parma skinka, rucola og parmesan",
+      "en": "Garlic paste, cheese, Parma ham, rucola and Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "Fimm á richter",
+      "is": "Sósa, ostur, vínber, bacon, camembert ostur, valhnetur og chili hunang.",
+      "en": "Sauce, cheese, grapes, bacon, camembert, walnuts and chili honey.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Nutella pizza",
+      "is": "Nutella pizza með einu áleggi. Þú velur á milli m&m eða banana.",
+      "en": "Nutella pizza with one topping. You choose between M&Ms or banana.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Barnapizza",
+      "is": "6″ pizza með sósu, osti og 2 áleggstegundum.",
+      "en": "6\" pizza with sauce, cheese and 2 toppings.",
+      "dir": "is>en"
+    }
+  ],
+  "flatey-pizza-selfoss": [
+    {
+      "name": "Margherita",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Basilíka, Ólífuolía",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Basil, Olive oil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Umberto",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Döðlur, Mascarpone rjómaostur, Basilíka",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Pepperoni, Dates, Mascarpone cream cheese, Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Diavola",
+      "is": "Pepperoni (smáskorið) á Margheritu-grunni",
+      "en": "Pepperoni (finely chopped) on a Margherita base",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pizza Mánaðarins - Quattro Formaggi",
+      "is": "Ferskur mozzarella, Camembert, Ricotta, Feykir, Chili-sulta, Ólífuolía, Fersk basilíka",
+      "en": "Fresh mozzarella, Camembert, Ricotta, Feykir cheese, Chili jam, Olive oil, Fresh basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Bianca",
+      "is": "Mozzarella, Parmesan, Ricotta, Pepperoni, Hvítlaukur og Mike's Hot Honey.",
+      "en": "Mozzarella, Parmesan, Ricotta, Pepperoni, Garlic and Mike's Hot Honey.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Padrino",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Pikklaður chili, Hunang, Basilíka",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Pepperoni, Pickled chili, Honey, Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Nduja",
+      "is": "Nduja kryddpylsa, Ricotta á Margheritu-grunni",
+      "en": "Nduja spiced sausage, Ricotta on a Margherita base",
+      "dir": "is>en"
+    },
+    {
+      "name": "Marinara",
+      "is": "San Marzano tómatar, Hvítlaukur, Oregano, Basilíka, Ólífuolía (enginn ostur)",
+      "en": "San Marzano tomatoes, Garlic, Oregano, Basil, Olive oil (no cheese)",
+      "dir": "is>en"
+    },
+    {
+      "name": "Cotto",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Silkiskorin skinka, Sveppir, Mascarpone rjómaostur, Ólífuolía og Basilíka",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Thinly sliced ham, Mushrooms, Mascarpone cream cheese, Olive oil and Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Tartufo",
+      "is": "Ferskur mozzarella, Sveppir, Ricotta-ostur, Íslenskar kartöflur, Truffluolía, Basilíka, Sjávarsalt (án tómata)",
+      "en": "Fresh mozzarella, Mushrooms, Ricotta, Icelandic potatoes, Truffle oil, Basil, Sea salt (no tomatoes)",
+      "dir": "is>en"
+    },
+    {
+      "name": "Monella",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Parmesan, Oregano, Chili flögur, Basilíka, Ólífuolía",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Parmesan, Oregano, Chili flakes, Basil, Olive oil",
+      "dir": "is>en"
+    }
+  ],
+  "kaffi-krus": [
+    {
+      "name": "Margarita",
+      "is": "sósa, ostur og oregano",
+      "en": "sauce, cheese and oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Viva Hawaii",
+      "is": "sósa, ostur, skinka, ananas og oregano",
+      "en": "sauce, cheese, ham, pineapple and oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Parma Ruccola",
+      "is": "sósa, ostur, hráskinka, klettasalat og parmesan",
+      "en": "sauce, cheese, prosciutto, arugula and Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "Verona",
+      "is": "sósa, ostur, pepperoni, beikon, sveppir, rjómaostur og oregano",
+      "en": "sauce, cheese, pepperoni, bacon, mushrooms, cream cheese and oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Favorito",
+      "is": "sósa, ostur, pepperoni, skinka, beikon, ananas, hvítlaukur og rjómaostur",
+      "en": "sauce, cheese, pepperoni, ham, bacon, pineapple, garlic and cream cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Hálfmáni með skinku og sveppum",
+      "is": "sósa, ostur, skinka, sveppir og oregano",
+      "en": "sauce, cheese, ham, mushrooms and oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "Hálfmáni Carbonara",
+      "is": "Rjómasósa, spaghetti og bacon.",
+      "en": "Cream sauce, spaghetti and bacon.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Vestmannaeyingur",
+      "is": "BBQ Sósa, Ostur, Beikon og Hvítlaukssósa til að dýfa í.",
+      "en": "BBQ sauce, Cheese, Bacon and Garlic sauce for dipping.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Kjúklingapizza",
+      "is": "sósa, ostur, kjúklingur, beikon, jalapeno, hvítlaukur og bbq",
+      "en": "sauce, cheese, chicken, bacon, jalapeño, garlic and BBQ",
+      "dir": "is>en"
+    },
+    {
+      "name": "Andapizza",
+      "is": "sósa, ostur, hægelduð önd, sveppir, kasjú hnetur, pikklaður rauðlaukur, klettasalat, oregano og trufflumayo",
+      "en": "sauce, cheese, slow-cooked duck, mushrooms, cashew nuts, pickled red onion, arugula, oregano and truffle mayo",
+      "dir": "is>en"
+    },
+    {
+      "name": "Sjávárréttarpizza",
+      "is": "sósa, ostur, djúpsteiktur leturhumar, risa rækjur, chili, vorlaukur, kokteil tómatar og ananas",
+      "en": "sauce, cheese, deep-fried langoustine, giant shrimp, chili, spring onion, cherry tomatoes and pineapple",
+      "dir": "is>en"
+    },
+    {
+      "name": "Say Cheese",
+      "is": "sósa, ostur, djúpsteiktur brie, gráðaostur, rjómaostur, parmesan, piparostur og rifsberjasulta til hliðar",
+      "en": "sauce, cheese, deep-fried brie, blue cheese, cream cheese, Parmesan, pepper cheese and redcurrant jam on the side",
+      "dir": "is>en"
+    },
+    {
+      "name": "Crazy Banana",
+      "is": "sósa, ostur, pepperoni, bananar og gráðostur.",
+      "en": "sauce, cheese, pepperoni, bananas and blue cheese.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Fiesta Nachos",
+      "is": "sósa, ostur, nautahakk, nachos, rjómaostur, salsasósa, paprika og jalapeno",
+      "en": "sauce, cheese, ground beef, nachos, cream cheese, salsa, bell pepper and jalapeño",
+      "dir": "is>en"
+    },
+    {
+      "name": "Hot And Sweet",
+      "is": "sósa, ostur, pepperoni, rjómaostur, ferskur chili, döðlur og chili hunang.",
+      "en": "sauce, cheese, pepperoni, cream cheese, fresh chili, dates and chili honey.",
+      "dir": "is>en"
+    },
+    {
+      "name": "La Bianca Cremonese",
+      "is": "sýrður rjómi, ostur, burrata, kokteiltómatar, parmaskinka, döðlur og basilolía",
+      "en": "sour cream, cheese, burrata, cherry tomatoes, Parma ham, dates and basil oil",
+      "dir": "is>en"
+    },
+    {
+      "name": "La Bianca Pepperoni",
+      "is": "Sýrður rjómi með basil, ostur, pepperoni, sveppir og piparostur",
+      "en": "Sour cream with basil, cheese, pepperoni, mushrooms and pepper cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "Barna Pizza margarita 9\"",
+      "is": "ostur og pizzasósa",
+      "en": "cheese and pizza sauce",
+      "dir": "is>en"
+    }
+  ],
+  "pizzan-hafnarfjordur": [
+    {
+      "name": "HAMBORGARA PIZZAN",
+      "is": "Hamborgarasósa, Ostur, Hakk, Pica de Gallo, Súrar gúrkur, Beikon sneiðar, Cheddar",
+      "en": "Burger sauce, Cheese, Minced meat, Pico de gallo, Pickles, Bacon slices, Cheddar",
+      "dir": "is>en"
+    },
+    {
+      "name": "PIZZAN SPECIAL",
+      "is": "Ostur, Skinka, Lítið Pepperóní, Aioli, Beikonkurl , Brauðstangarkrydd",
+      "en": "Cheese, Ham, Small pepperoni, Aioli, Bacon bits, Breadstick seasoning",
+      "dir": "is>en"
+    },
+    {
+      "name": "PIZZAN DELUXE",
+      "is": "Sósa, Ostur, Pepperóní, Rjómaostur, Piparostur, Beikonkurl, Sv.Pipar",
+      "en": "Sauce, Cheese, Pepperoni, Cream cheese, Pepper cheese, Bacon bits, Black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "SWEET BACON",
+      "is": "Bacon Sulta, Ostur, Pepperóní, Jalapeno, Hvítlauks Aioli, Nachos.",
+      "en": "Bacon jam, Cheese, Pepperoni, Jalapeño, Garlic aioli, Nachos.",
+      "dir": "is>en"
+    },
+    {
+      "name": "PAVAROTTI",
+      "is": "Sósa, Ostur, Skinka, Pepperóní, Sveppir, Paprika, Rauðlaukur, Ólífur Sv., Hakk",
+      "en": "Sauce, Cheese, Ham, Pepperoni, Mushrooms, Bell pepper, Red onion, Black olives, Minced meat",
+      "dir": "is>en"
+    },
+    {
+      "name": "DOUBLE TROUBLE",
+      "is": "Sósa, ostur, pepperóní, sveppir",
+      "en": "Sauce, cheese, pepperoni, mushrooms",
+      "dir": "is>en"
+    },
+    {
+      "name": "THE ROYALE",
+      "is": "Sósa, Ostur, Skinka, Pepperóní, Rjómaostur, Sveppir, Jalapeno, Sv.Pipar, Hvítlaukur",
+      "en": "Sauce, Cheese, Ham, Pepperoni, Cream cheese, Mushrooms, Jalapeño, Black pepper, Garlic",
+      "dir": "is>en"
+    },
+    {
+      "name": "HAPPY HAWAII",
+      "is": "Sósa, ostur, skinka og ananas.",
+      "en": "Sauce, cheese, ham and pineapple.",
+      "dir": "is>en"
+    },
+    {
+      "name": "PRETTY PESTO",
+      "is": "Pizzasósa, Ostur, Kjúklingur, Stracciatella, Döðlur, Pestó, Chilli flögur",
+      "en": "Pizza sauce, Cheese, Chicken, Stracciatella, Dates, Pesto, Chili flakes",
+      "dir": "is>en"
+    },
+    {
+      "name": "5 CHEESE",
+      "is": "Stracciatella, Ostur, Fior de latte, Piparostur, Parmesan",
+      "en": "Stracciatella, Cheese, Fior di Latte, Pepper cheese, Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "KING KONG",
+      "is": "Sósa, ostur, pepperoni, skinka, hakk, rjómaostur, sveppir og oregano",
+      "en": "Sauce, cheese, pepperoni, ham, minced meat, cream cheese, mushrooms and oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "HOT AND CHEESY",
+      "is": "Sósa, ostur, pepperoni, rjómaostur, jalapeno, ostasósa, hvítlaukur og svartur pipar.",
+      "en": "Sauce, cheese, pepperoni, cream cheese, jalapeño, cheese sauce, garlic and black pepper.",
+      "dir": "is>en"
+    },
+    {
+      "name": "HOT HONEY",
+      "is": "Sósa, Ostur, Stórt pepperoni, Lítið pepperoni, Jalapeno, Hot Honey.",
+      "en": "Sauce, Cheese, Large pepperoni, Small pepperoni, Jalapeño, Hot honey.",
+      "dir": "is>en"
+    },
+    {
+      "name": "CHEESY GARLIC",
+      "is": "Hvítlauksolía, Hvítlaukur, Ostur",
+      "en": "Garlic oil, Garlic, Cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "GODZILLA",
+      "is": "BBQ sósa (Base), Ostur, Skinka, Pepperóní, Hakk, Cheddar, Sv.pipar",
+      "en": "BBQ sauce (base), Cheese, Ham, Pepperoni, Minced meat, Cheddar, Black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "PIG N' CHEESE",
+      "is": "Sósa, Ostur, Skinka, Paprika, Rauðlaukur, Rjómaostur, Cheddar ostur og hvítlaukspipar.",
+      "en": "Sauce, Cheese, Ham, Bell pepper, Red onion, Cream cheese, Cheddar cheese and garlic pepper.",
+      "dir": "is>en"
+    },
+    {
+      "name": "GRANDMA'S FAVORITE",
+      "is": "Aspas blanda, skinka, sveppir, cheddar ostur, papriku krydd",
+      "en": "Asparagus cream spread, ham, mushrooms, cheddar cheese, paprika seasoning",
+      "dir": "is>en"
+    },
+    {
+      "name": "MIGHTY MEAT",
+      "is": "Sósa, Ostur, Skinka, Pepperóní, Hakk",
+      "en": "Sauce, Cheese, Ham, Pepperoni, Minced meat",
+      "dir": "is>en"
+    },
+    {
+      "name": "LOVELY ITALIA",
+      "is": "Sósa, Ostur, Pepperóní, Rjómaostur, Sveppir, Ananas, Jalapeno, Ólífur Sv., Oregano, Hvítlaukur",
+      "en": "Sauce, Cheese, Pepperoni, Cream cheese, Mushrooms, Pineapple, Jalapeño, Black olives, Oregano, Garlic",
+      "dir": "is>en"
+    },
+    {
+      "name": "A QUEEN MARGARÍTA",
+      "is": "Sósa og ostur",
+      "en": "Sauce and cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "TROPICAL JALAPENO",
+      "is": "Sósa, Ostur, Pepperóní, Rjómaostur, Sveppir, Ananas, Jalapeno, Oregano",
+      "en": "Sauce, Cheese, Pepperoni, Cream cheese, Mushrooms, Pineapple, Jalapeño, Oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "CHILLI DATE",
+      "is": "Sósa, ostur, pepperóní, rjómaostur, rauðlaukur, döðlur, ferskur chilli",
+      "en": "Sauce, cheese, pepperoni, cream cheese, red onion, dates, fresh chili",
+      "dir": "is>en"
+    },
+    {
+      "name": "GREAT BACON",
+      "is": "Sósa, ostur, pepperoni, beikonsneiðar, rjómaostur, döðlur, ferskur chilli og ostasósa",
+      "en": "Sauce, cheese, pepperoni, bacon slices, cream cheese, dates, fresh chili and cheese sauce",
+      "dir": "is>en"
+    },
+    {
+      "name": "GOING TO BAHAMAS",
+      "is": "Sósa, ostur, skinka, beikonkurl, ananas, aukaostur",
+      "en": "Sauce, cheese, ham, bacon bits, pineapple, extra cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "CHEESUS",
+      "is": "Sósa, ostur, pepperoni, aukaostur",
+      "en": "Sauce, cheese, pepperoni, extra cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "MEDITERRANEAN",
+      "is": "Sósa, Ostur, Kjúklingur, Pico De Gallo, Sveppir, Rauðlaukur, Parmesan, Oregano, Hvítlaukur",
+      "en": "Sauce, Cheese, Chicken, Pico de gallo, Mushrooms, Red onion, Parmesan, Oregano, Garlic",
+      "dir": "is>en"
+    },
+    {
+      "name": "CHICKEN BBQ",
+      "is": "Sósa, ostur, pepperóní, kjúklingur, rauðlaukur, BBQ sósa",
+      "en": "Sauce, cheese, pepperoni, chicken, red onion, BBQ sauce",
+      "dir": "is>en"
+    },
+    {
+      "name": "WILD WILD VEGAN",
+      "is": "Sósa, Vegan Ostur, Pico De Gallo, Jalapeno, Hvitlauks Aioli, Nachos",
+      "en": "Sauce, Vegan cheese, Pico de gallo, Jalapeño, Garlic aioli, Nachos",
+      "dir": "is>en"
+    },
+    {
+      "name": "WONDERFUL VEGAN",
+      "is": "Sósa, vegan ostur, vegan pepperoni, sveppir, papríka, rauðlaukur og svartar ólífur",
+      "en": "Sauce, vegan cheese, vegan pepperoni, mushrooms, bell pepper, red onion and black olives",
+      "dir": "is>en"
+    },
+    {
+      "name": "DÓRI STERKI",
+      "is": "Sósa, ostur, Dóri sterki, Pepperoni",
+      "en": "Sauce, cheese, Dóri Sterki, Pepperoni",
+      "dir": "is>en"
+    },
+    {
+      "name": "GREEN DELIGHT",
+      "is": "Sósa, ostur, rauðlaukur, sveppir, döðlur, ferskur chili, rjómaostur, paprika, svartur pipar og nachos",
+      "en": "Sauce, cheese, red onion, mushrooms, dates, fresh chili, cream cheese, bell pepper, black pepper and nachos",
+      "dir": "is>en"
+    },
+    {
+      "name": "FAJITAS FIESTA",
+      "is": "Sósa, ostur, Kjúklingur, Rjómaostur, Sveppir, Rauðlaukur, Paprika",
+      "en": "Sauce, cheese, Chicken, Cream cheese, Mushrooms, Red onion, Bell pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "SOUTHWEST SIZZLE",
+      "is": "Sósa, Ostur, Pepperóní, Rjómaostur, Rauðlaukur, Ferskur Chilli, Dóri Sterki, BBQ Sósa, Oregano",
+      "en": "Sauce, Cheese, Pepperoni, Cream cheese, Red onion, Fresh chili, Dóri Sterki, BBQ sauce, Oregano",
+      "dir": "is>en"
+    },
+    {
+      "name": "BEEF & CHEESE",
+      "is": "Sósa, ostur, pepperóní, hakk, rjómaostur, ostasósa, piparostur og svartur pipar",
+      "en": "Sauce, cheese, pepperoni, minced meat, cream cheese, cheese sauce, pepper cheese and black pepper",
+      "dir": "is>en"
+    },
+    {
+      "name": "DR.FEELGOOD",
+      "is": "Sósa, ostur, kjúklingur, pico de gallo, rauðlaukur, sriracha sósa, hvítlauks aioli",
+      "en": "Sauce, cheese, chicken, pico de gallo, red onion, sriracha sauce, garlic aioli",
+      "dir": "is>en"
+    },
+    {
+      "name": "BEVERLY HILLS",
+      "is": "Sósa, ostur, pepperóní og piparostur.",
+      "en": "Sauce, cheese, pepperoni and pepper cheese.",
+      "dir": "is>en"
+    },
+    {
+      "name": "CHEESY LOVE",
+      "is": "Sósa, ostur, Cheddar, Dóri Sterki, Rjómaostur",
+      "en": "Sauce, cheese, Cheddar, Dóri Sterki, Cream cheese",
+      "dir": "is>en"
+    },
+    {
+      "name": "DOUBLE PEPPERONI",
+      "is": "Sósa, ostur, 2x pepperóní",
+      "en": "Sauce, cheese, 2x pepperoni",
+      "dir": "is>en"
+    }
+  ],
+  "flatey-pizza-gardabaer": [
+    {
+      "name": "Margherita",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Basilíka, Ólífuolía",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Basil, Olive oil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Umberto",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Döðlur, Mascarpone rjómaostur, Basilíka",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Pepperoni, Dates, Mascarpone cream cheese, Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Diavola",
+      "is": "Pepperoni (smáskorið) á Margheritu-grunni",
+      "en": "Pepperoni (finely chopped) on a Margherita base",
+      "dir": "is>en"
+    },
+    {
+      "name": "Pizza Mánaðarins - Quattro Formaggi",
+      "is": "Ferskur mozzarella, Camembert, Ricotta, Feykir, Chili-sulta, Ólífuolía, Fersk basilíka",
+      "en": "Fresh mozzarella, Camembert, Ricotta, Feykir cheese, Chili jam, Olive oil, Fresh basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Bianca",
+      "is": "Mozzarella, Parmesan, Ricotta, Pepperoni, Hvítlaukur og Mike's Hot Honey.",
+      "en": "Mozzarella, Parmesan, Ricotta, Pepperoni, Garlic and Mike's Hot Honey.",
+      "dir": "is>en"
+    },
+    {
+      "name": "Padrino",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Pikklaður chili, Hunang, Basilíka",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Pepperoni, Pickled chili, Honey, Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Nduja",
+      "is": "Nduja kryddpylsa, Ricotta á Margheritu-grunni",
+      "en": "Nduja spiced sausage, Ricotta on a Margherita base",
+      "dir": "is>en"
+    },
+    {
+      "name": "Marinara",
+      "is": "San Marzano tómatar, Hvítlaukur, Oregano, Basilíka, Ólífuolía (enginn ostur)",
+      "en": "San Marzano tomatoes, Garlic, Oregano, Basil, Olive oil (no cheese)",
+      "dir": "is>en"
+    },
+    {
+      "name": "Cotto",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Silkiskorin skinka, Sveppir, Mascarpone rjómaostur, Ólífuolía og Basilíka",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Thinly sliced ham, Mushrooms, Mascarpone cream cheese, Olive oil and Basil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Tartufo",
+      "is": "Ferskur mozzarella, Sveppir, Ricotta-ostur, Íslenskar kartöflur, Truffluolía, Basilíka, Sjávarsalt (án tómata)",
+      "en": "Fresh mozzarella, Mushrooms, Ricotta, Icelandic potatoes, Truffle oil, Basil, Sea salt (no tomatoes)",
+      "dir": "is>en"
+    },
+    {
+      "name": "Parma",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Hráskinka, Klettasalat, Parmesan, Basilíka, Ólífuolía",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Prosciutto, Arugula, Parmesan, Basil, Olive oil",
+      "dir": "is>en"
+    },
+    {
+      "name": "Stracciatella",
+      "is": "Hvít pizza (án tómata), Hráskinka, Mozzarella, Stracciatella ostur, Basilolía og Parmesan",
+      "en": "White pizza (no tomatoes), Prosciutto, Mozzarella, Stracciatella cheese, Basil oil and Parmesan",
+      "dir": "is>en"
+    },
+    {
+      "name": "Nutella Pizza",
+      "is": "Nutella Pizza með mascarpone og flórsykri",
+      "en": "Nutella pizza with mascarpone and powdered sugar",
+      "dir": "is>en"
+    },
+    {
+      "name": "Monella",
+      "is": "San Marzano tómatar, Ferskur mozzarella, Parmesan, Oregano, Chili flögur, Basilíka, Ólífuolía",
+      "en": "San Marzano tomatoes, Fresh mozzarella, Parmesan, Oregano, Chili flakes, Basil, Olive oil",
+      "dir": "is>en"
+    }
+  ]
+}

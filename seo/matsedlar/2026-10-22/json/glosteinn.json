@@ -1,0 +1,341 @@
+{
+ "slug": "glosteinn",
+ "status": "open",
+ "status_evidence": "glosteinn.is menu and opening hours pages live; Dineout takeaway order page live (Nethylur 2 pickup, ©2023 footer on site)",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://glosteinn.is/matsedill",
+   "type": "own_site",
+   "note": "Rendered; 24 numbered sourdough pizzas + kids pizza. \"Allar pizzur á matseðli eru 12\" súrdeigs pizzur\". Descriptions verbatim."
+  },
+  {
+   "url": "https://takeaway.dineout.is/glosteinn/order",
+   "type": "own_ordering_page",
+   "note": "Rendered view-only. Prices identical to glosteinn.is for #1-24 (checked all). Adds 0. Ostóber 3790 and dessert pizza 10\"Glómagnaða 1990. Kids pizza 1590; gift-card \"Barnapizza m/einu áleggi\" 1490 is a gift card, not a menu price."
+  },
+  {
+   "url": "https://glosteinn.is/opnunartimar",
+   "type": "own_site",
+   "note": "hours"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "8\" (kids)",
+ "size_large_label": "12\"",
+ "contact": {
+  "phone": "537-1177",
+  "address": "Nethylur 2, 110 Reykjavík",
+  "hours_verbatim": "Föstudagar: 11:00 til 21:00; Laugardagar: 16:30 til 21:00; Sunnudagar: 16:30 til 21:00 (eldhúsið lokar kl. 20:45); Mánudagar: 17:00 til 21:00 (eldhúsið lokar kl. 20:45); Þriðjudagar: 11:00 til 21:00 (eldhúsið lokar kl. 20:45); Miðvikudagar: 11:00 til 21:00 (eldhúsið lokar kl 20:45); Fimmtudagar: 11:00 til 21:00 (eldhúsið lokar kl. 20:45)"
+ },
+ "items": [
+  {
+   "name": "0. Ostóber",
+   "desc_is": "Grænt pestó - ostur - pestó ostur - döðlur - klettasalat - hráskinka - stracciatella - Feykir",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://takeaway.dineout.is/glosteinn/order",
+   "note": "Only on the Dineout takeaway page (not on glosteinn.is/matsedill at fetch time); seasonal \"Ostóber\" special"
+  },
+  {
+   "name": "1. Melbær",
+   "desc_is": "Glósteinssósa, Ostur.",
+   "desc_en": null,
+   "price": 2590,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "2. Mýrarás",
+   "desc_is": "Glósteinssósa, Ferskur Mozzarella, Basil, Ólífuolía.",
+   "desc_en": null,
+   "price": 3090,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "3. Hraunbær",
+   "desc_is": "Auka Ostur, Hvítlauksolía, Sjávarsalt",
+   "desc_en": null,
+   "price": 2790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "4. Fylkisvegur",
+   "desc_is": "Glósteinssósa, Ostur, Pepperoni",
+   "desc_en": null,
+   "price": 3050,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "5. Heiðarás",
+   "desc_is": "Glósteinssósa, Ostur, Skinka, Ananas",
+   "desc_en": null,
+   "price": 3390,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "6. Seiðakvísl",
+   "desc_is": "Glósteinssósa, Ostur, Pepperoni, Sveppir.",
+   "desc_en": null,
+   "price": 3390,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "7. Þingvað",
+   "desc_is": "Glósteinssósa, Ostur, Pepperoni, Nautahakk, Rjómaostur.",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "8. Bröndukvísl",
+   "desc_is": "Glósteinssósa, Ostur, Pepperoni, Kjúklingur, Rjómaostur, Rauðlaukur, Döðlur, Mulið Tortilla Snakk.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "9. Glæsibær",
+   "desc_is": "Glósteinssósa, Ostur, Hvítlauksmarineraðar Tígrisrækjur, Klettasalat, Parmesan, Pistasíur, Hvítlauksolía, Sjávarsalt.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "10. Reykás",
+   "desc_is": "Glósteinssósa, Ostur, Hráskinka, Klettasalat, Parmesan.",
+   "desc_en": null,
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "11. Vesturás",
+   "desc_is": "Ostur, Pepperoni, Beikonkurl, Jalapeno, Eldur chiliostur, Chili-hunang, Sriracha, Rifsberjasulta.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "12. Laxakvísl",
+   "desc_is": "Glósteinssósa, Ostur, Pepperoni, Nautahakk, Beikonkurl, Sultaður Rauðlaukur.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "13. Dísarás",
+   "desc_is": "Glósteinssósa, Ostur, Pepperoni, Döðlur, Gráðaostur.",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "14. Rofabær",
+   "desc_is": "Glósteinssósa, Ostur, Gráðaostur, Piparostur, Rjómaostur, Rifsberjasulta (til hliðar).",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "15. Vallarás",
+   "desc_is": "Glósteinssósa, Ostur, Pepperoni, Beikonkurl, Piparostur, Ferskur Chilli, Chilli Flögur, Chilli Hunang.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "16. Móvað",
+   "desc_is": "Glósteinssósa, Ostur, Pepperoni, Jalapeno, Sultaður Rauðlaukur, Piparostur, Svartur Pipar.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "17. Kambavað",
+   "desc_is": "Glósteinssósa, Ostur, Skinka, Paprika, Laukur, Sveppir, Nautahakk.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "18. Naustabryggja",
+   "desc_is": "Glósteinssósa, Ostur, Pepperoni, Jalapeno, Ferskur Chilli, Sveppir, Svartar Ólífur, Chilli Mæjó.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "19. Brekkubær",
+   "desc_is": "Glósteinssósa, ostur, pepperoni, sveppir, laukur, parmesan (eftir ofn).",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "20. Brúarás",
+   "desc_is": "Grænt pestó, ostur, camembertostur, pepperoni, tómatar, svartur pipar, burrata, rifsberjasulta.",
+   "desc_en": null,
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "21. Álakvísl",
+   "desc_is": "Glósteinssósa, Ostur, Hvítlauksolía, Sjávarsalt, Klettasalat, Kapers, Nauta carpaccio, Trufflu majó, Parmesan, Wasabi hneturkurl.",
+   "desc_en": null,
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "22. Deildarás",
+   "desc_is": "Glósteinssósa, Hvítlauksmarineraðar tígrisrækjur, Ferskur mozzarella, Kapers, Svartar ólífur, Chiliflögur.",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill"
+  },
+  {
+   "name": "23. Eyktarás",
+   "desc_is": "Glósteinssósa, Vegan Ostur, Döðlur, Klettasalat, Cherry Tómatar, Ferskur Rauðlaukur, Chilli Mæjó, Mulið Tortilla Snakk.",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill",
+   "note": "Vegan pizza"
+  },
+  {
+   "name": "24. Brautarás",
+   "desc_is": "Glósteinssósa, Vegan ostur, Sveppir, Döðlur, Sultaður rauðlaukur, Pistasíur, Hvítlauksolía, Sjávarsalt.",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill",
+   "note": "Vegan pizza"
+  },
+  {
+   "name": "Barnapizza",
+   "desc_is": "Fyrir 12 ára og yngri. 8” Pizza með einu áleggi",
+   "desc_en": null,
+   "price": 1590,
+   "price_large": null,
+   "sizes_all": {
+    "8\"": 1590
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://glosteinn.is/matsedill",
+   "note": "Kids pizza, 8\", one topping; extra toppings: meat 299, cheese 299, vegetables/fruit 250"
+  },
+  {
+   "name": "10\"Glómagnaða",
+   "desc_is": "10\" eftirréttarpizza með kanil karamellukurli, nutella og flórsykri",
+   "desc_en": null,
+   "price": 1990,
+   "price_large": null,
+   "sizes_all": {
+    "10\"": 1990
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://takeaway.dineout.is/glosteinn/order",
+   "note": "Dessert pizza, 10\"; only on Dineout page"
+  }
+ ],
+ "not_found": "English descriptions (site is Icelandic only).",
+ "diff_vs_current": "Prior (Wolt) prices were 100-400 higher on several pizzas: Melbær 2690->2590, Heiðarás 3490->3390, Seiðakvísl 3490->3390 (others same). In-house prices vs mock (10 pizzas): Melbær 2490->2590, Mýrarás 2890->3090, Hraunbær 2690->2790, Fylkisvegur 2950->3050, Heiðarás 3290->3390, Seiðakvísl 3290->3390, Þingvað 3590->3690, Bröndukvísl 3690->3790, Glæsibær 3790 same, Reykás 3790->3890. 14 new numbered pizzas (#11-24) + Ostóber + kids + dessert pizza not in mock. In-house #24 Brautarás has its own description (Wolt duplicated #23 description). Mock hours/phone not checked beyond hours here."
+}

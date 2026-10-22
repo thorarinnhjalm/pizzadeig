@@ -1,0 +1,193 @@
+{
+ "slug": "hornid",
+ "status": "open",
+ "status_evidence": "hornid.is is live: daily 11:00–22:00, kitchen closes at 21:00, phone 551 3340, Hafnarstræti 15. The PDF is uploaded under /2026/06/.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "type": "own_site",
+   "note": "The PDF filename says \"Sept-2025\", but it sits in the 2026/06 upload folder and is the only menu linked from the site. It is bilingual (Icelandic and English)."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": null,
+ "contact": {
+  "phone": "551 3340",
+  "address": "Hafnarstræti 15",
+  "hours_verbatim": "daily 11:00–22:00, kitchen closes at 21:00"
+ },
+ "items": [
+  {
+   "name": "Pizza Margherita",
+   "desc_is": "Ostur, oregano",
+   "desc_en": "Cheese, oregano",
+   "price": 2890,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Calzone (hálfmáni)",
+   "desc_is": "Ostur, skinka, sveppir",
+   "desc_en": "Cheese, ham, mushrooms (closed)",
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Hawaii",
+   "desc_is": "Ostur, skinka, ananas",
+   "desc_en": "Cheese, ham, pineapple",
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Roma",
+   "desc_is": "Ostur, pepperoni, gráðaostur, ananas, grænn pipar",
+   "desc_en": "Cheese, pepperoni, blue cheese, pineapple, green peppercorns",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Pepperoni",
+   "desc_is": "Ostur, pepperoni",
+   "desc_en": "Cheese, pepperoni",
+   "price": 3290,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Pescatore",
+   "desc_is": "Ostur, rækjur, kræklingur",
+   "desc_en": "Cheese, shrimps, mussels",
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Napoletana",
+   "desc_is": "Ostur, ansjósur, ólífur",
+   "desc_en": "Cheese, anchovies, olives",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Quattro Formaggi",
+   "desc_is": "4 osta pizza",
+   "desc_en": "Four kinds of cheese",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Americana",
+   "desc_is": "Ostur, nautahakk, sveppir",
+   "desc_en": "Cheese, ground beef, mushrooms",
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Quattro Stagioni",
+   "desc_is": "Ostur, skinka, sveppir, pepperoni, paprika",
+   "desc_en": "Cheese, mushrooms, ham, pepperoni, peppers",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Vegetariana",
+   "desc_is": "Ostur, tómatur, paprika, laukur, sveppir",
+   "desc_en": "Cheese, tomato, peppers, onion, mushrooms",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza Perez",
+   "desc_is": "Ostur, nautahakk, pepperoni, ólífur, jalapeños",
+   "desc_en": "Cheese, ground beef pepperoni, olives, jalapeños",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Pizza con Parma e Rucola",
+   "desc_is": "Ostur, hráskinka, klettasalat, parmesan",
+   "desc_en": "Cheese, Parma ham, rucola, parmesan",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  },
+  {
+   "name": "Hvítlaukspizza / Garlic pizza (Pizza con aglio e formaggio)",
+   "desc_is": "Maukaður hvítlaukur, ostur",
+   "desc_en": "Garlic and cheese",
+   "price": 2890,
+   "price_large": null,
+   "sizes_all": {},
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://hornid.is/wp-content/uploads/2026/06/Hornidmatsedill-Sept-2025-LOWRES.pdf",
+   "note": null
+  }
+ ],
+ "not_found": "no delivery-platform prices checked. The menu says the pizzas are salad-friendly, with no detail. No separate pizza page on the site.",
+ "diff_vs_current": "price changes: Roma 4290→4490, Pescatore 3790→3690, Quattro Formaggi 4290→4490, Americana 3390→3690, Quattro Stagioni 4290→4490, Perez 4290→4490, Parma e Rucola 4290→4490 (Margherita 2890 unchanged). Added: Calzone, Hawaii, Pepperoni, Napoletana, Vegetariana, Hvítlaukspizza. The mock descriptions are English only and drop some ingredients: Quattro Stagioni and Quattro Formaggi are OK, but Margherita says \"Cheese, sauce\" against the menu's \"Cheese, oregano\". I extracted the prices by cropping the pizza column of the PDF, so the row alignment is checked."
+}

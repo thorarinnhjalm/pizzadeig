@@ -1,0 +1,286 @@
+{
+ "slug": "askur-pizzeria",
+ "status": "open",
+ "status_evidence": "https://askurpizzeria.is/matsedill/ rendered: \"Alla daga frá 11:30-21:00 ... 470 6070 ... Fagradalsbraut 25, 700 Egilsstaðir\"; live web shop with cart.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://askurpizzeria.is/matsedill/",
+   "type": "own_order_page",
+   "note": "Rendered page truncates long descriptions with \"…\""
+  },
+  {
+   "url": "https://askurpizzeria.is/wp-json/wc/store/v1/products?per_page=100",
+   "type": "own_order_page",
+   "note": "The shop's public read-only WooCommerce Store API; gives full untruncated descriptions (some with English line appended as desc_en)"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": null,
+ "contact": {
+  "phone": "470 6070",
+  "address": "Fagradalsbraut 25, 700 Egilsstaðir",
+  "hours_verbatim": "Alla daga frá 11:30-21:00"
+ },
+ "items": [
+  {
+   "name": "Með allt á hreinu",
+   "desc_is": "Sósa, ostur, hreindýrahakk, sultaður rauðlaukur, ferskostur, furuhnetur og steinselja.",
+   "desc_en": "",
+   "price": 5550,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/tolftommutoffarar/",
+   "menu_no": 1,
+   "tags": []
+  },
+  {
+   "name": "Orginal",
+   "desc_is": "Sósa, ostur ,beikon, döðlur og piparrjómaostur.",
+   "desc_en": "",
+   "price": 3550,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/orginal/",
+   "menu_no": 2,
+   "tags": [
+    "Vinsælar"
+   ]
+  },
+  {
+   "name": "Fallegi smiðurinn",
+   "desc_is": "Sósa, ostur, pepperoni, piparostur, rauðlaukur og sveppir.",
+   "desc_en": "",
+   "price": 3650,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/pizza-2/",
+   "menu_no": 3,
+   "tags": [
+    "Vinsælar"
+   ]
+  },
+  {
+   "name": "Stella í Orlofi",
+   "desc_is": "BBQ sósa, ostur, hakk, beikon, rauðlaukur og kjúklingur.",
+   "desc_en": "",
+   "price": 4000,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/stella-i-orlofi/",
+   "menu_no": 4,
+   "tags": []
+  },
+  {
+   "name": "Í átt að tunglinu",
+   "desc_is": "Calzone: sósa, ostur, skinka sveppir og svartur pipar.",
+   "desc_en": "",
+   "price": 3550,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/pizza-3/",
+   "menu_no": 5,
+   "tags": []
+  },
+  {
+   "name": "Í Bláum Skugga",
+   "desc_is": "Sósa, ostur, gráðostur, cheddar ostur, piparostur og parmesan.",
+   "desc_en": "",
+   "price": 3750,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/i-blaum-skugga/",
+   "menu_no": 6,
+   "tags": []
+  },
+  {
+   "name": "Esjan",
+   "desc_is": "Sósa, ostur, skinka og ananas.",
+   "desc_en": "",
+   "price": 3300,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/esjan/",
+   "menu_no": 7,
+   "tags": []
+  },
+  {
+   "name": "Vöðvastæltur",
+   "desc_is": "Sósa, ostur, pepperoni, skinka, beikon og rjómaostur.",
+   "desc_en": "",
+   "price": 3900,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/vodvastaeltur/",
+   "menu_no": 8,
+   "tags": [
+    "Vinsælar"
+   ]
+  },
+  {
+   "name": "B.O.B.A",
+   "desc_is": "Ostur, pepperoni, sveppir, ólífur, mozzarella, habanero, græn piparkorn, döðlur, cheddar ostur, ferskostur og chilli olía Gummós.",
+   "desc_en": "",
+   "price": 4100,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/b-o-b-a/",
+   "menu_no": 9,
+   "tags": [
+    "Sterkar"
+   ]
+  },
+  {
+   "name": "Járnkallinn",
+   "desc_is": "Sósa, ostur, nautahakk, pepperoni, sveppir, ferskostur, hvítlaukur, rauðlaukur, fersk chilli, chilli flögur, steinselja og parmesan.",
+   "desc_en": "",
+   "price": 4100,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/jarnkarlinn/",
+   "menu_no": 10,
+   "tags": [
+    "Sterkar"
+   ]
+  },
+  {
+   "name": "Vertu þú sjálfur",
+   "desc_is": "Sósa, vegan ostur, sveppir, döðlur, salthnetur, klettasalat og Bera hot sauce.",
+   "desc_en": "",
+   "price": 3750,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/vertu-thu-sjalfur-vegan/",
+   "menu_no": 11,
+   "tags": [
+    "Vegan"
+   ]
+  },
+  {
+   "name": "Fæ Aldrei Nóg Af Þér",
+   "desc_is": "Sósa, veganostur, hvítlaukur, rauðlaukur, ananas, sveppir, vegan hakk, græn piparkorn og doritos.",
+   "desc_en": "",
+   "price": 3750,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/fae-aldrei-nog-af-ther/",
+   "menu_no": 12,
+   "tags": [
+    "Vegan"
+   ]
+  },
+  {
+   "name": "Hjálpaðu mér upp",
+   "desc_is": "Sósa, ostur, pepperóní, piparostur, jalapeno og chilli flögur.",
+   "desc_en": "",
+   "price": 3750,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/hjalpadu-mer-upp/",
+   "menu_no": 13,
+   "tags": [
+    "Sterkar"
+   ]
+  },
+  {
+   "name": "Enginn mórall",
+   "desc_is": "Hvítlaukusmauk, rjómaostur, ostur, sveppir, rauðlaukur, piparostur og svartur pipar. Toppuð með steinselju þegar hún kemur úr ofninum.",
+   "desc_en": "",
+   "price": 3750,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/enginn-morall/",
+   "menu_no": 14,
+   "tags": []
+  },
+  {
+   "name": "Pamela",
+   "desc_is": "Hvítlauksmauk, ostur, parma skinka, rucola og parmesan",
+   "desc_en": "",
+   "price": 3950,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/pamela/",
+   "menu_no": 15,
+   "tags": []
+  },
+  {
+   "name": "Vor í Vaglaskógi",
+   "desc_is": "Sósa, ostur, sveppir, rauðlaukur, paprika, svartur ólífur og oregano.",
+   "desc_en": "Sauce, cheese, mushrooms, red onion, paprika, black olives and oregano.",
+   "price": 3750,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/rolegur-kureki/",
+   "menu_no": 16,
+   "tags": []
+  },
+  {
+   "name": "Mér er drull",
+   "desc_is": "Sósa, ostur, tómatar, hvítlaukur, Basil krydd, ferskur mozzarella og fersk basilika.",
+   "desc_en": "Sauce, cheese, tomatoes, garlic, basil seasoning, fresh mozzarella and fresh basil.",
+   "price": 3750,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/mer-er-drull/",
+   "menu_no": 17,
+   "tags": []
+  },
+  {
+   "name": "Fimm á richter",
+   "desc_is": "Sósa, ostur, vínber, bacon, camembert ostur, valhnetur og chili hunang.",
+   "desc_en": "",
+   "price": 3750,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/fimm-a-richter/",
+   "menu_no": 18,
+   "tags": []
+  },
+  {
+   "name": "Margaríta",
+   "desc_is": "Sósa, ostur, mozzarella og basilíka",
+   "desc_en": "Tomato sauce, cheese, mozzarella and fresh basil",
+   "price": 2750,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/margarita/",
+   "menu_no": 19,
+   "tags": []
+  },
+  {
+   "name": "Nutella pizza",
+   "desc_is": "Nutella pizza með einu áleggi. Þú velur á milli m&m eða banana.",
+   "desc_en": "",
+   "price": 2000,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://askurpizzeria.is/product/dessert-pizza/",
+   "menu_no": null,
+   "tags": [
+    "Eftirréttir"
+   ],
+   "dessert": true
+  },
+  {
+   "name": "Barnapizza",
+   "desc_is": "6″ pizza með sósu, osti og 2 áleggstegundum.",
+   "desc_en": "",
+   "price": 2000,
+   "price_large": null,
+   "sizes_all": {
+    "6\"": 2000
+   },
+   "source_url": "https://askurpizzeria.is/product/barnapizza/",
+   "menu_no": null,
+   "tags": [
+    "Barnamatseðill"
+   ],
+   "kids": true
+  }
+ ],
+ "not_found": "Size options (Sérsníða) not captured; pizzas appear single-size, kids 6\". Also in API with no category: \"Snappizza2025\" 1999 (promo? not included), \"Garlic bread\" 2200 (not pizza). Menu no. 10 is \"Járnkallinn\" on page but \"Járnkarlinn\" in a duplicate API record (id 48733, no category) - used page spelling. desc_en only present for items 16-19-ish where site gives it (mixed IS+EN in one field).",
+ "diff_vs_current": "mock has 19 items; verified 21. Price changes: none. Not on source (mock-only): none. New on source: Nutella pizza, Barnapizza.",
+ "sizes_note": "Single size not labelled; kids 6\"."
+}

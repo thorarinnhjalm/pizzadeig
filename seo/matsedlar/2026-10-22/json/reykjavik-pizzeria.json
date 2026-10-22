@@ -1,0 +1,486 @@
+{
+ "slug": "reykjavik-pizzeria",
+ "status": "open",
+ "status_evidence": "reykjavikpizzeria.is is live (Mon–Sun 11:30–22:00, phone 547 4747, Bragagata 38A, 101). It has a 2026 menu PDF, an online ordering page (/panta) and a promo code (TAKEAWAY15). The mock address in mockData is Bragagata 38a, matching the site.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "type": "own_site",
+   "note": "2026 menu PDF, bilingual, 30 numbered pizzas with 12\" and 15\" prices. The online order page /panta was not fetched."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": "15\"",
+ "contact": {
+  "phone": "547 4747",
+  "address": "Bragagata 38A, 101",
+  "hours_verbatim": "Mon–Sun 11:30–22:00"
+ },
+ "items": [
+  {
+   "name": "1. Margherita",
+   "desc_is": "Sósa, ostur, oregano.",
+   "desc_en": "Sauce, cheese, oregano.",
+   "price": 2790,
+   "price_large": 3290,
+   "sizes_all": {
+    "12\"": 2790,
+    "15\"": 3290
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "2. Hawaii",
+   "desc_is": "Sósa, ostur, skinka, ananas.",
+   "desc_en": "Sauce, cheese, ham, pineapple.",
+   "price": 3440,
+   "price_large": 4390,
+   "sizes_all": {
+    "12\"": 3440,
+    "15\"": 4390
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "3. Viðar",
+   "desc_is": "Sósa, ostur, pepperoni, laukur, ananas.",
+   "desc_en": "Sauce, cheese, pepperoni, onion, pineapple.",
+   "price": 3640,
+   "price_large": 4690,
+   "sizes_all": {
+    "12\"": 3640,
+    "15\"": 4690
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "4. Chili Banana",
+   "desc_is": "Sósa, ostur, pepperoni, bananar, chili krydd.",
+   "desc_en": "Sauce, cheese, pepperoni, banana, chili.",
+   "price": 3440,
+   "price_large": 4390,
+   "sizes_all": {
+    "12\"": 3440,
+    "15\"": 4390
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "5. Pizza Flugvirkjans",
+   "desc_is": "Sósa, ostur, pepperoni, hvítlaukur, sveppir, jalapeño, græn paprika, sólþurrkaðir tómatar, græn piparkorn, rjómaostur, svartur pipar, oregano, salthnetur.",
+   "desc_en": "Sauce, cheese, pepperoni, garlic, mushrooms, jalapeño, green bell pepper, sundried tomatoes, green peppercorn, cream cheese, black pepper, oregano, salted peanuts.",
+   "price": 4240,
+   "price_large": 5290,
+   "sizes_all": {
+    "12\"": 4240,
+    "15\"": 5290
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "6. Camembert",
+   "desc_is": "Sósa, ostur, skinka, sveppir, camembert, grænn aspas.",
+   "desc_en": "Sauce, cheese, ham, mushrooms, camembert, green asparagus.",
+   "price": 3790,
+   "price_large": 4790,
+   "sizes_all": {
+    "12\"": 3790,
+    "15\"": 4790
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "7. Reykjavík",
+   "desc_is": "Sósa, ostur, hvítlaukur, skinka, sveppir, græn paprika.",
+   "desc_en": "Sauce, cheese, garlic, ham, mushrooms, green bell pepper.",
+   "price": 3790,
+   "price_large": 4790,
+   "sizes_all": {
+    "12\"": 3790,
+    "15\"": 4790
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "8. Parma",
+   "desc_is": "Sósa, ostur, ítölsk hráskinka, klettasalat, ferskur parmesan.",
+   "desc_en": "Sauce, cheese, italian prosciutto, arugula, parmesan.",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "9. Tex Mex",
+   "desc_is": "Sósa, ostur, kjúklingur, jalapeño, rauðlaukur, maís baunir, rjómaostur, salsa, nachos.",
+   "desc_en": "Sauce, cheese, chicken, jalapeño, red onion, corn, cream cheese, salsa, nachos.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "10. Kaninn",
+   "desc_is": "Sósa, ostur, nautahakk, laukur, beikon, sveppir, græn paprika, svartur pipar.",
+   "desc_en": "Sauce, cheese, minced beef, onion, bacon, mushrooms, green bell pepper, black pepper.",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "11. Sólmyrkvi",
+   "desc_is": "Sósa, ostur, kjúklingur, jalapeño, sveppir, sólþurrkaðir tómatar, rjómaostur, salthnetur.",
+   "desc_en": "Sauce, cheese, chicken, jalapeño, mushrooms, sundried tomatoes, cream cheese, salted peanuts.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "12. Ostapizza",
+   "desc_is": "Sósa, mozzarellablanda, gráðostur, rjómaostur, piparostur, parmesan - borið fram með rifsberjahlaupi.",
+   "desc_en": "Sauce, cheese, mozzarella, blue cheese, cream cheese, pepper cheese, parmesan - served with raspberry jam.",
+   "price": 4090,
+   "price_large": 5090,
+   "sizes_all": {
+    "12\"": 4090,
+    "15\"": 5090
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "13. Óvissan",
+   "desc_is": "Láttu bakarann ráða.",
+   "desc_en": "Let the Chef decide.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "14. Esjan",
+   "desc_is": "Sósa, ostur, pepperoni, laukur, græn paprika, ananas, hvítlaukur, græn piparkorn, jalapeño, oregano.",
+   "desc_en": "Sauce, cheese, pepperoni, onion, green bell pepper, pineapple, garlic, green peppercorn, jalapeño, oregano.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "15. Pizza flugmannsins",
+   "desc_is": "Sósa, ostur, hvítlaukur, pepperoni, rjómaostur, ananas, tómatar, svartur pipar, oregano, parmesan.",
+   "desc_en": "Sauce, cheese, garlic, pepperoni, cream cheese, pineapple, tomatoes, black pepper, oregano, parmesan.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "16. Pizza hússins",
+   "desc_is": "Sósa, ostur, hvítlaukur, jalapeño, pepperoni, sveppir, ananas, blandaðar ólífur, rjómaostur, oregano.",
+   "desc_en": "Sauce, cheese, garlic, jalapeño, pepperoni, mushrooms, pineapple, mixed olives, cream cheese, oregano.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "17. Freyja",
+   "desc_is": "Sósa, ostur, hvítlaukur, skinka, pepperoni, sveppir, blandaðar ólífur, græn piparkorn, parmesan.",
+   "desc_en": "Sauce, cheese, garlic, ham, pepperoni, mushrooms, mixed olives, green peppercorn, parmesan.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "18. Við hafið",
+   "desc_is": "Sósa, ostur, hvítlaukur, rækjur, túnfiskur, þistilhjörtu, oregano, parmesan.",
+   "desc_en": "Sauce, cheese, garlic, shrimp, tuna, artichokes, oregano, parmesan.",
+   "price": 4090,
+   "price_large": 5140,
+   "sizes_all": {
+    "12\"": 4090,
+    "15\"": 5140
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "19. Sjávarþrenna",
+   "desc_is": "Sósa, ostur, rækjur, hörpuskel, kræklingur, þistilhjörtu, sveppir, hvítlaukur, blandaðar ólífur, oregano.",
+   "desc_en": "Sauce, cheese, shrimps, scallops, mussels, artichokes, mushrooms, garlic, mixed olives, oregano.",
+   "price": 4290,
+   "price_large": 5340,
+   "sizes_all": {
+    "12\"": 4290,
+    "15\"": 5340
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "20. Sniglapizza",
+   "desc_is": "Sósa, ostur, hvítlaukur, sveppir, grænar ólífur, parmesan, sniglar, oregano.",
+   "desc_en": "Sauce, cheese, garlic, mushrooms, green olives, parmesan, snails, oregano.",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "21. Ljúfmeti",
+   "desc_is": "Sósa, ostur, laukur, sveppir, brokkolí, tómatar, svartar ólífur, hvítlaukur, oregano, parmesan.",
+   "desc_en": "Sauce, cheese, onion, mushrooms, broccoli, tomatoes, black olives, garlic, oregano, parmesan.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "22. Feti",
+   "desc_is": "Sósa, ostur, sveppir, græn paprika, tómatar, brokkolí, fetaostur, klettasalat, parmesan, oregano.",
+   "desc_en": "Sauce, cheese, mushrooms, green bell pepper, tomatoes, broccoli, feta cheese, arugula, parmesan, oregano.",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "23. Hálfmáni / Calzone",
+   "desc_is": "Sósa, ostur, skinka, sveppir, gráðostur.",
+   "desc_en": "Sauce, cheese, ham, mushrooms, blue cheese.",
+   "price": 3490,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3490
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": "12\" only"
+  },
+  {
+   "name": "24. Vegano",
+   "desc_is": "Sósa, vegan ostur, kebab oumph, rauðlaukur, græn paprika, hvítlaukur, svartur pipar.",
+   "desc_en": "Sauce, vegan cheese, garlic, black pepper.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": "the English line as printed omits the oumph, onion and bell pepper"
+  },
+  {
+   "name": "25. Grænkerinn",
+   "desc_is": "Sósa, vegan ostur, hvítlaukur, döðlur, laukur, græn paprika, klettasalat, spicy mayo, svartur pipar.",
+   "desc_en": "Sauce, vegan cheese, garlic, dates, onion, green bell pepper, arugula, spicy mayo, black pepper.",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "26. Sælkerinn",
+   "desc_is": "Sósa, vegan ostur, Kebab Oumph, sveppir, laukur, salthnetur, aiolí sósa, oregano, svartur pipar.",
+   "desc_en": "Sauce, vegan cheese, Kebab Oumph, mushrooms, onion, salted peanuts, aioli sauce, oregano, black pepper.",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "27. Hekla",
+   "desc_is": "Sósa, ostur, hvítlaukur, jalapeño, pepperoni, sveppir, ananas, piparostur, döðlur, oregano.",
+   "desc_en": "Sauce, cheese, garlic, jalapeño, pepperoni, mushrooms, pineapple, pepper cheese, dates, oregano.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "28. Kjötveisla",
+   "desc_is": "Sósa, ostur, nautahakk, skinka, pepperoni, beikon, svartur pipar.",
+   "desc_en": "Sauce, cheese, minced beef, ham, pepperoni, bacon, black pepper.",
+   "price": 4090,
+   "price_large": 5140,
+   "sizes_all": {
+    "12\"": 4090,
+    "15\"": 5140
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "29. Benninn",
+   "desc_is": "Sósa, ostur, pepperoni, nautahakk, piparostur, béarnaise sósa.",
+   "desc_en": "Sauce, cheese, pepperoni, minced beef, pepper cheese, béarnaise sauce.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "30. Pizza ansjósa",
+   "desc_is": "Sósa, ostur, ansjósur, græn paprika, svartar ólífur, hvítlaukur.",
+   "desc_en": "Sauce, cheese, anchovies, green bell pepper, black olives, garlic.",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": null
+  },
+  {
+   "name": "35. Barnapizza / Pizza for children",
+   "desc_is": "Pizza með 2 áleggstegundum.",
+   "desc_en": null,
+   "price": 1590,
+   "sizes_all": {},
+   "kids": true,
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://irp.cdn-website.com/e9fb91a7/files/uploaded/reykjavik-pizzeria--matsedill-2026.pdf",
+   "note": "Added after review from the PDF text (item 35, Barnapizza / Pizza for children, 1590 kr.). The menu states no size. English line not printed in the PDF: description translated."
+  }
+ ],
+ "not_found": "the online order page (/panta) was not fetched, so I don't know whether delivery or online prices differ. The home page's lunch deal (12\" with two toppings and 0.5 l soda) is inconsistent: banners say 2590 (one says 2690), the PDF says 2690. I did not record it as a menu item.",
+ "diff_vs_current": "all 10 current items have a higher 12\" price than the mock: Margherita 2590→2790, Hawaii 3290→3440, Viðar 3490→3640, Chili Banana 3290→3440, Flugvirkjans 4090→4240, Camembert 3690→3790, Reykjavík 3690→3790, Tex Mex 3790→3890, Kaninn 3890→3990 (Parma 3990 unchanged). 20 pizzas are new, and the 15\" price is new for all. The mock names have a \"12\"\" suffix; the menu uses numbers and has no suffix. The mock uses \"Flight Mechanic's Pizza\" as an English name; the menu has none."
+}

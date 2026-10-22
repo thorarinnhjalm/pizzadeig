@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { db } from '@/lib/firebase';
-import { collection, writeBatch, doc, getDocs, getDoc } from 'firebase/firestore';
-import { AlertTriangle, Database, Trash2, Power } from 'lucide-react';
+import { collection, writeBatch, doc, getDocs, getDoc, deleteField } from 'firebase/firestore';
+import { AlertTriangle, Database, Trash2, Power, UtensilsCrossed } from 'lucide-react';
 import { allRecipes } from '@/lib/recipeData';
 import { mockRestaurants, mockMenuItems, mockAds } from '@/lib/mockData';
+import retiredMenuIds from '../../../seo/matsedlar/retired-ids.json';
 
 interface SystemSectionProps {
   showMessage: (msg: string) => void;
@@ -99,6 +100,141 @@ export function SystemSection({ showMessage, onRefresh, user }: SystemSectionPro
     }
   };
 
+  // Scoped menu update: touches only menu_items that come from the code and the four menu_* source fields
+  // on restaurants. Never rewrites other restaurant fields, recipes or ads.
+  const updateMenus = async () => {
+    if (!user) {
+      showMessage('❌ Þú ert ekki innskráð(ur). Skráðu þig inn með Google og reyndu aftur.');
+      return;
+    }
+    setLoading(true);
+    let committed = 0;
+    let totalBatches = 0;
+    try {
+      const me = await getDoc(doc(db, 'users', user.uid));
+      if (me.data()?.role !== 'admin') {
+        showMessage(
+          `❌ Notandinn ${user.email} hefur ekki admin-hlutverk í Firestore. ` +
+          `Settu role: "admin" á skjalið users/${user.uid} í Firebase Console og reyndu aftur.`
+        );
+        return;
+      }
+
+      const CHUNK = 450;
+      const commitAll = async (writes: ((batch: ReturnType<typeof writeBatch>) => void)[]) => {
+        totalBatches += Math.ceil(writes.length / CHUNK);
+        for (let i = 0; i < writes.length; i += CHUNK) {
+          const batch = writeBatch(db);
+          writes.slice(i, i + CHUNK).forEach((w) => w(batch));
+          await batch.commit();
+          committed += 1;
+        }
+      };
+
+      // One read of menu_items drives everything below.
+      const menuSnap = await getDocs(collection(db, 'menu_items'));
+      const existing = new Map(menuSnap.docs.map((d) => [d.id, d.data()]));
+      const liveIds = new Set(mockMenuItems.map((m) => m.id));
+      const retiredSet = new Set(retiredMenuIds.retired as string[]);
+      const restaurantIds = new Set(mockRestaurants.map((r) => r.id));
+
+      // (A) items in the database that were not seeded (e.g. added by hand) are never overwritten
+      const protectedIds = mockMenuItems.filter((i) => existing.has(i.id) && existing.get(i.id)?.is_seeded !== true).map((i) => i.id);
+      const protectedSet = new Set(protectedIds);
+      const itemsToWrite = mockMenuItems.filter((i) => !protectedSet.has(i.id));
+
+      // Restaurants are only updated if they already exist, so a partial document is never created.
+      const restaurantSnap = await getDocs(collection(db, 'restaurants'));
+      const existingRestaurants = new Set(restaurantSnap.docs.map((d) => d.id));
+      const restaurantsToUpdate = mockRestaurants.filter((r) => existingRestaurants.has(r.id));
+      const restaurantsMissing = mockRestaurants.length - restaurantsToUpdate.length;
+
+      // Retired ids: delete only seeded docs, never an id that is in the current menu.
+      const toDelete = [...retiredSet].filter((id) => !liveIds.has(id) && existing.get(id)?.is_seeded === true);
+
+      // (B) older seeded leftovers of our restaurants that are neither current nor on the retired list
+      const leftovers = menuSnap.docs.filter((d) => {
+        const data = d.data();
+        return data.is_seeded === true && restaurantIds.has(data.restaurant_id) && !liveIds.has(d.id) && !retiredSet.has(d.id);
+      });
+
+      const ok = window.confirm(
+        'Uppfæra matseðla?\n\n' +
+        `• ${itemsToWrite.length} réttir settir inn úr kóða í menu_items\n` +
+        (protectedIds.length > 0
+          ? `• ${protectedIds.length} réttir EKKI skrifaðir því þeir eru ekki fræddir (handskráðir?): ${protectedIds.slice(0, 10).join(', ')}${protectedIds.length > 10 ? ', …' : ''}\n`
+          : '') +
+        `• ${restaurantsToUpdate.length} staðir fá uppfærðar upplýsingar um heimild matseðils (aðeins 4 menu_* reitir)` +
+        (restaurantsMissing > 0 ? ` — ${restaurantsMissing} sleppt (ekki til í gagnagrunni)` : '') + '\n' +
+        `• ${toDelete.length} úreltir réttir eyddir (aðeins fræddir réttir á lista yfir úrelt auðkenni)\n` +
+        `• ${leftovers.length} eldri leifar fundnar (fræddir réttir sem eru hvorki í kóða né á úreltalista); þær er hægt að eyða á eftir með sérstakri staðfestingu\n\n` +
+        'Aðrir reitir staða, uppskriftir, auglýsingar og umsagnir eru ekki snert.'
+      );
+      if (!ok) {
+        showMessage('Hætt við — engu breytt.');
+        return;
+      }
+
+      const writes: ((batch: ReturnType<typeof writeBatch>) => void)[] = [];
+      itemsToWrite.forEach((item) => {
+        const r = mockRestaurants.find((rest) => rest.id === item.restaurant_id);
+        const old = existing.get(item.id);
+        writes.push((batch) =>
+          batch.set(doc(db, 'menu_items', item.id), {
+            ...item,
+            restaurant_name: r?.name || '',
+            is_seeded: true,
+            created_at: old?.created_at ?? new Date(),
+            updated_at: new Date(),
+          })
+        );
+      });
+      restaurantsToUpdate.forEach((r) => {
+        // update (not set) so a missing document fails instead of being created
+        writes.push((batch) =>
+          batch.update(doc(db, 'restaurants', r.id), {
+            menu_source_url: r.menu_source_url ?? deleteField(),
+            menu_source_label: r.menu_source_label ?? deleteField(),
+            menu_verified_at: r.menu_verified_at ?? deleteField(),
+            menu_price_basis: r.menu_price_basis ?? deleteField(),
+          })
+        );
+      });
+      toDelete.forEach((id) => writes.push((batch) => batch.delete(doc(db, 'menu_items', id))));
+      await commitAll(writes);
+
+      let leftoversDeleted = 0;
+      if (leftovers.length > 0) {
+        const sample = leftovers.slice(0, 15).map((d) => `${d.id} (${d.data().name_is ?? '?'})`).join('\n');
+        const okLeftovers = window.confirm(
+          `Eyða ${leftovers.length} eldri leifum úr menu_items?\n\n` +
+          'Aðeins fræddir réttir (is_seeded) á stöðum úr kóðanum sem eru ekki lengur í matseðlinum.\n\n' +
+          sample + (leftovers.length > 15 ? '\n…' : '')
+        );
+        if (okLeftovers) {
+          await commitAll(leftovers.map((d) => (batch: ReturnType<typeof writeBatch>) => batch.delete(d.ref)));
+          leftoversDeleted = leftovers.length;
+        }
+      }
+
+      showMessage(
+        `Matseðlar uppfærðir: ${itemsToWrite.length} réttir settir inn, ${protectedIds.length} sleppt (ekki fræddir), ` +
+        `${restaurantsToUpdate.length} staðir uppfærðir` + (restaurantsMissing > 0 ? ` (${restaurantsMissing} sleppt)` : '') +
+        `, ${toDelete.length} úreltir réttir eyddir, ${leftoversDeleted} af ${leftovers.length} eldri leifum eytt.`
+      );
+      onRefresh();
+    } catch (err) {
+      console.error(err);
+      showMessage(
+        `❌ Uppfærsla matseðla mistókst: ${(err as Error).message}` +
+        (totalBatches > 0 ? ` (${committed} af ${totalBatches} lotum voru skrifaðar.)` : '') +
+        ' Hægt er að smella aftur; það er öruggt.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const clearData = async () => {
     if (!window.confirm('Ertu viss um að þú viljir eyða öllum gervigögnum úr Firebase? Þetta er ekki afturkræft.')) return;
     setLoading(true);
@@ -156,6 +292,26 @@ export function SystemSection({ showMessage, onRefresh, user }: SystemSectionPro
         </h3>
         
         <div className="space-y-8 pl-2">
+          {/* Update menus only */}
+          <div className="flex flex-col md:flex-row gap-6 md:items-start p-4 bg-white rounded-xl shadow-sm border border-green-200">
+            <div className="flex-1">
+               <h4 className="text-sm font-bold flex items-center gap-2 text-stone-900 mb-1">
+                 <UtensilsCrossed className="w-4 h-4 text-(--color-brand)" /> Uppfæra matseðla
+               </h4>
+               <p className="text-xs text-muted-foreground leading-relaxed">
+                 Skrifar alla rétti úr kóðanum í `menu_items`, uppfærir aðeins fjóra `menu_*` reiti (heimild, dagsetning) á stöðum sem þegar eru til
+                 og eyðir úreltum fræddum réttum. Snertir ekki aðra reiti staða, uppskriftir, auglýsingar eða umsagnir. Þú færð staðfestingu með tölum áður en nokkuð er skrifað.
+               </p>
+            </div>
+            <button
+              onClick={updateMenus}
+              disabled={loading}
+              className="md:w-auto w-full px-5 py-2.5 bg-green-700 hover:bg-green-800 text-white font-bold rounded-xl transition-colors cursor-pointer text-sm shadow-md flex justify-center items-center h-fit disabled:opacity-50 mt-2 md:mt-0"
+            >
+              {loading ? 'Vinn...' : 'Uppfæra matseðla'}
+            </button>
+          </div>
+
           {/* Seed */}
           <div className="flex flex-col md:flex-row gap-6 md:items-start p-4 bg-white rounded-xl shadow-sm border border-red-100">
             <div className="flex-1">
@@ -165,6 +321,9 @@ export function SystemSection({ showMessage, onRefresh, user }: SystemSectionPro
                <p className="text-xs text-muted-foreground leading-relaxed">
                  Tekur pizzur, staði og auglýsingar úr lokal kóða (`mockData` og `recipeData`) og stofnar þau gögn í eldveggnum (`is_seeded: true`). 
                  Gott að nota fyrst til að fylla kerfið.
+               </p>
+               <p className="text-xs text-red-700 font-semibold leading-relaxed mt-2">
+                 Yfirskrifar staði, uppskriftir og auglýsingar í heild — notaðu &apos;Uppfæra matseðla&apos; til að uppfæra aðeins matseðla.
                </p>
             </div>
             <button 

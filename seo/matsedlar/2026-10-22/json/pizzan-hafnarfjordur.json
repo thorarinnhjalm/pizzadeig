@@ -1,0 +1,715 @@
+{
+ "slug": "pizzan-hafnarfjordur",
+ "status": "open",
+ "status_evidence": "https://wolt.com/en/isl/reykjavik/restaurant/pizzan-fjardargata (rendered): \"Pizzan - Fjarðargata ... Open until 22:35 ... Fjarðargata 11, 220 ... +3545788888\"; pizzan.is/menu branch list: \"PIZZAN FJARÐARGATA 220, Hafnarfjörður OPIÐ TIL 23:00 15-20 mín\".",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://www.pizzan.is/menu",
+   "type": "own_order_page",
+   "note": "Rendered; menu appears chain-wide (branch chosen at checkout via VELDU STAÐSETNINGU). Every price is shown as a discounted price with the list price struck through and a \"50%\" badge."
+  },
+  {
+   "url": "https://wolt.com/en/isl/reykjavik/restaurant/pizzan-fjardargata",
+   "type": "wolt",
+   "note": "Only availability/hours/address; item prices not rendered. Wolt shows \"20% afsláttur af öllum pizzum\"."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "Miðstærð",
+ "size_large_label": "Stór",
+ "contact": {
+  "phone": "578-8888 (site footer; Wolt +3545788888)",
+  "address": "Fjarðargata, 220 Hafnarfjörður (site); Wolt: Fjarðargata 11, 220",
+  "hours_verbatim": "OPIÐ TIL 23:00 (pizzan.is branch list); Wolt delivery 11:00-22:35 daily"
+ },
+ "items": [
+  {
+   "name": "HAMBORGARA PIZZAN",
+   "desc_is": "Hamborgarasósa, Ostur, Hakk, Pica de Gallo, Súrar gúrkur, Beikon sneiðar, Cheddar",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 3290,
+    "Miðstærð": 4590,
+    "Stór": 5490
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1645,
+    "Miðstærð": 2295,
+    "Stór": 2745
+   }
+  },
+  {
+   "name": "PIZZAN SPECIAL",
+   "desc_is": "Ostur, Skinka, Lítið Pepperóní, Aioli, Beikonkurl , Brauðstangarkrydd",
+   "desc_en": "",
+   "price": 4390,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4390,
+    "Stór": 5190
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2195,
+    "Stór": 2595
+   }
+  },
+  {
+   "name": "PIZZAN DELUXE",
+   "desc_is": "Sósa, Ostur, Pepperóní, Rjómaostur, Piparostur, Beikonkurl, Sv.Pipar",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4490,
+    "Stór": 5490
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2245,
+    "Stór": 2745
+   }
+  },
+  {
+   "name": "SWEET BACON",
+   "desc_is": "Bacon Sulta, Ostur, Pepperóní, Jalapeno, Hvítlauks Aioli, Nachos.",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 3390,
+    "Miðstærð": 4590,
+    "Stór": 5490
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1695,
+    "Miðstærð": 2295,
+    "Stór": 2745
+   }
+  },
+  {
+   "name": "PAVAROTTI",
+   "desc_is": "Sósa, Ostur, Skinka, Pepperóní, Sveppir, Paprika, Rauðlaukur, Ólífur Sv., Hakk",
+   "desc_en": "",
+   "price": 4550,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 3290,
+    "Miðstærð": 4550,
+    "Stór": 5390
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1645,
+    "Miðstærð": 2275,
+    "Stór": 2695
+   }
+  },
+  {
+   "name": "DOUBLE TROUBLE",
+   "desc_is": "Sósa, ostur, pepperóní, sveppir",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4690,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Miðstærð": 3890,
+    "Stór": 4690
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1395,
+    "Miðstærð": 1945,
+    "Stór": 2345
+   }
+  },
+  {
+   "name": "THE ROYALE",
+   "desc_is": "Sósa, Ostur, Skinka, Pepperóní, Rjómaostur, Sveppir, Jalapeno, Sv.Pipar, Hvítlaukur",
+   "desc_en": "",
+   "price": 4390,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4390,
+    "Stór": 5390
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2195,
+    "Stór": 2695
+   }
+  },
+  {
+   "name": "HAPPY HAWAII",
+   "desc_is": "Sósa, ostur, skinka og ananas.",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4790,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Miðstærð": 3890,
+    "Stór": 4790
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1395,
+    "Miðstærð": 1945,
+    "Stór": 2395
+   }
+  },
+  {
+   "name": "PRETTY PESTO",
+   "desc_is": "Pizzasósa, Ostur, Kjúklingur, Stracciatella, Döðlur, Pestó, Chilli flögur",
+   "desc_en": "",
+   "price": 4190,
+   "price_large": 5090,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Miðstærð": 4190,
+    "Stór": 5090
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1495,
+    "Miðstærð": 2095,
+    "Stór": 2545
+   }
+  },
+  {
+   "name": "5 CHEESE",
+   "desc_is": "Stracciatella, Ostur, Fior de latte, Piparostur, Parmesan",
+   "desc_en": "",
+   "price": 4190,
+   "price_large": 5090,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Miðstærð": 4190,
+    "Stór": 5090
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1495,
+    "Miðstærð": 2095,
+    "Stór": 2545
+   }
+  },
+  {
+   "name": "KING KONG",
+   "desc_is": "Sósa, ostur, pepperoni, skinka, hakk, rjómaostur, sveppir og oregano",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4490,
+    "Stór": 5390
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2245,
+    "Stór": 2695
+   }
+  },
+  {
+   "name": "HOT AND CHEESY",
+   "desc_is": "Sósa, ostur, pepperoni, rjómaostur, jalapeno, ostasósa, hvítlaukur og svartur pipar.",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5290,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4490,
+    "Stór": 5290
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2245,
+    "Stór": 2645
+   }
+  },
+  {
+   "name": "HOT HONEY",
+   "desc_is": "Sósa, Ostur, Stórt pepperoni, Lítið pepperoni, Jalapeno, Hot Honey.",
+   "desc_en": "",
+   "price": 4390,
+   "price_large": 5090,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4390,
+    "Stór": 5090
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2195,
+    "Stór": 2545
+   }
+  },
+  {
+   "name": "CHEESY GARLIC",
+   "desc_is": "Hvítlauksolía, Hvítlaukur, Ostur",
+   "desc_en": "",
+   "price": 2990,
+   "price_large": 3890,
+   "sizes_all": {
+    "Lítil": 2390,
+    "Miðstærð": 2990,
+    "Stór": 3890
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1195,
+    "Miðstærð": 1495,
+    "Stór": 1945
+   }
+  },
+  {
+   "name": "GODZILLA",
+   "desc_is": "BBQ sósa (Base), Ostur, Skinka, Pepperóní, Hakk, Cheddar, Sv.pipar",
+   "desc_en": "",
+   "price": 4390,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4390,
+    "Stór": 5190
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2195,
+    "Stór": 2595
+   }
+  },
+  {
+   "name": "PIG N' CHEESE",
+   "desc_is": "Sósa, Ostur, Skinka, Paprika, Rauðlaukur, Rjómaostur, Cheddar ostur og hvítlaukspipar.",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 4990,
+   "sizes_all": {
+    "Lítil": 2890,
+    "Miðstærð": 4090,
+    "Stór": 4990
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1445,
+    "Miðstærð": 2045,
+    "Stór": 2495
+   }
+  },
+  {
+   "name": "GRANDMA'S FAVORITE",
+   "desc_is": "Aspas blanda, skinka, sveppir, cheddar ostur, papriku krydd",
+   "desc_en": "",
+   "price": 4190,
+   "price_large": 5090,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Miðstærð": 4190,
+    "Stór": 5090
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1495,
+    "Miðstærð": 2095,
+    "Stór": 2545
+   }
+  },
+  {
+   "name": "MIGHTY MEAT",
+   "desc_is": "Sósa, Ostur, Skinka, Pepperóní, Hakk",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5090,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4290,
+    "Stór": 5090
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2145,
+    "Stór": 2545
+   }
+  },
+  {
+   "name": "LOVELY ITALIA",
+   "desc_is": "Sósa, Ostur, Pepperóní, Rjómaostur, Sveppir, Ananas, Jalapeno, Ólífur Sv., Oregano, Hvítlaukur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5290,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4490,
+    "Stór": 5290
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2245,
+    "Stór": 2645
+   }
+  },
+  {
+   "name": "A QUEEN MARGARÍTA",
+   "desc_is": "Sósa og ostur",
+   "desc_en": "",
+   "price": 2990,
+   "price_large": 3890,
+   "sizes_all": {
+    "Lítil": 2390,
+    "Miðstærð": 2990,
+    "Stór": 3890
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1195,
+    "Miðstærð": 1495,
+    "Stór": 1945
+   }
+  },
+  {
+   "name": "TROPICAL JALAPENO",
+   "desc_is": "Sósa, Ostur, Pepperóní, Rjómaostur, Sveppir, Ananas, Jalapeno, Oregano",
+   "desc_en": "",
+   "price": 4390,
+   "price_large": 5090,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4390,
+    "Stór": 5090
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2195,
+    "Stór": 2545
+   }
+  },
+  {
+   "name": "CHILLI DATE",
+   "desc_is": "Sósa, ostur, pepperóní, rjómaostur, rauðlaukur, döðlur, ferskur chilli",
+   "desc_en": "",
+   "price": 4390,
+   "price_large": 5290,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4390,
+    "Stór": 5290
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2195,
+    "Stór": 2645
+   }
+  },
+  {
+   "name": "GREAT BACON",
+   "desc_is": "Sósa, ostur, pepperoni, beikonsneiðar, rjómaostur, döðlur, ferskur chilli og ostasósa",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5290,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4490,
+    "Stór": 5290
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2245,
+    "Stór": 2645
+   }
+  },
+  {
+   "name": "GOING TO BAHAMAS",
+   "desc_is": "Sósa, ostur, skinka, beikonkurl, ananas, aukaostur",
+   "desc_en": "",
+   "price": 4390,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4390,
+    "Stór": 5190
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2195,
+    "Stór": 2595
+   }
+  },
+  {
+   "name": "CHEESUS",
+   "desc_is": "Sósa, ostur, pepperoni, aukaostur",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4790,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Miðstærð": 3890,
+    "Stór": 4790
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1395,
+    "Miðstærð": 1945,
+    "Stór": 2395
+   }
+  },
+  {
+   "name": "MEDITERRANEAN",
+   "desc_is": "Sósa, Ostur, Kjúklingur, Pico De Gallo, Sveppir, Rauðlaukur, Parmesan, Oregano, Hvítlaukur",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 4890,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Miðstærð": 4090,
+    "Stór": 4890
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1495,
+    "Miðstærð": 2045,
+    "Stór": 2445
+   }
+  },
+  {
+   "name": "CHICKEN BBQ",
+   "desc_is": "Sósa, ostur, pepperóní, kjúklingur, rauðlaukur, BBQ sósa",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4490,
+    "Stór": 5390
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2245,
+    "Stór": 2695
+   }
+  },
+  {
+   "name": "WILD WILD VEGAN",
+   "desc_is": "Sósa, Vegan Ostur, Pico De Gallo, Jalapeno, Hvitlauks Aioli, Nachos",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": 4790,
+   "sizes_all": {
+    "Lítil": 2850,
+    "Miðstærð": 3990,
+    "Stór": 4790
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1425,
+    "Miðstærð": 1995,
+    "Stór": 2395
+   }
+  },
+  {
+   "name": "WONDERFUL VEGAN",
+   "desc_is": "Sósa, vegan ostur, vegan pepperoni, sveppir, papríka, rauðlaukur og svartar ólífur",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": 4790,
+   "sizes_all": {
+    "Lítil": 2850,
+    "Miðstærð": 3990,
+    "Stór": 4790
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1425,
+    "Miðstærð": 1995,
+    "Stór": 2395
+   }
+  },
+  {
+   "name": "DÓRI STERKI",
+   "desc_is": "Sósa, ostur, Dóri sterki, Pepperoni",
+   "desc_en": "",
+   "price": 3690,
+   "price_large": 4690,
+   "sizes_all": {
+    "Lítil": 2650,
+    "Miðstærð": 3690,
+    "Stór": 4690
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1325,
+    "Miðstærð": 1845,
+    "Stór": 2345
+   }
+  },
+  {
+   "name": "GREEN DELIGHT",
+   "desc_is": "Sósa, ostur, rauðlaukur, sveppir, döðlur, ferskur chili, rjómaostur, paprika, svartur pipar og nachos",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 4890,
+   "sizes_all": {
+    "Lítil": 2890,
+    "Miðstærð": 4090,
+    "Stór": 4890
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1445,
+    "Miðstærð": 2045,
+    "Stór": 2445
+   }
+  },
+  {
+   "name": "FAJITAS FIESTA",
+   "desc_is": "Sósa, ostur, Kjúklingur, Rjómaostur, Sveppir, Rauðlaukur, Paprika",
+   "desc_en": "",
+   "price": 4390,
+   "price_large": 5290,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4390,
+    "Stór": 5290
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2195,
+    "Stór": 2645
+   }
+  },
+  {
+   "name": "SOUTHWEST SIZZLE",
+   "desc_is": "Sósa, Ostur, Pepperóní, Rjómaostur, Rauðlaukur, Ferskur Chilli, Dóri Sterki, BBQ Sósa, Oregano",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5090,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Miðstærð": 4290,
+    "Stór": 5090
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1495,
+    "Miðstærð": 2145,
+    "Stór": 2545
+   }
+  },
+  {
+   "name": "BEEF & CHEESE",
+   "desc_is": "Sósa, ostur, pepperóní, hakk, rjómaostur, ostasósa, piparostur og svartur pipar",
+   "desc_en": "",
+   "price": 4550,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 3290,
+    "Miðstærð": 4550,
+    "Stór": 5390
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1645,
+    "Miðstærð": 2275,
+    "Stór": 2695
+   }
+  },
+  {
+   "name": "DR.FEELGOOD",
+   "desc_is": "Sósa, ostur, kjúklingur, pico de gallo, rauðlaukur, sriracha sósa, hvítlauks aioli",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 3090,
+    "Miðstærð": 4490,
+    "Stór": 5190
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1545,
+    "Miðstærð": 2245,
+    "Stór": 2595
+   }
+  },
+  {
+   "name": "BEVERLY HILLS",
+   "desc_is": "Sósa, ostur, pepperóní og piparostur.",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4690,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Miðstærð": 3890,
+    "Stór": 4690
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1395,
+    "Miðstærð": 1945,
+    "Stór": 2345
+   }
+  },
+  {
+   "name": "CHEESY LOVE",
+   "desc_is": "Sósa, ostur, Cheddar, Dóri Sterki, Rjómaostur",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 4990,
+   "sizes_all": {
+    "Lítil": 2890,
+    "Miðstærð": 4090,
+    "Stór": 4990
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1445,
+    "Miðstærð": 2045,
+    "Stór": 2495
+   }
+  },
+  {
+   "name": "DOUBLE PEPPERONI",
+   "desc_is": "Sósa, ostur, 2x pepperóní",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4790,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Miðstærð": 3890,
+    "Stór": 4790
+   },
+   "source_url": "https://www.pizzan.is/menu",
+   "sizes_discounted_50pct_shown": {
+    "Lítil": 1395,
+    "Miðstærð": 1945,
+    "Stór": 2395
+   }
+  }
+ ],
+ "not_found": "Size labels are Lítil / Miðstærð / Stór with no inch figures on the page. price = Miðstærð LIST price (the struck-through number), price_large = Stór LIST price; the 50%-discounted prices shown on the page are in sizes_discounted_50pct_shown. Unclear whether the 50% is a permanent web-order price or a promotion (page also has HAPPAÞRENNA 3 pizzur 2.990 each when ordered on web). Wolt snippet earlier said Queen Margaríta 3990 and Cheesus 5190 (delivery) - on the site list prices are Stór 3890 / 4790. Combos, sides excluded. VELJA SJÁLF / HÁLF & HÁLF excluded. Names and descriptions verbatim (page shows names in CAPS).",
+ "diff_vs_current": "mock has 4 items; verified 38. Price changes: Pizzan Deluxe: 3890->4490; Sweet Bacon: 3990->4590; Pretty Pesto: 4090->4190. Not on source (mock-only): none. New on source: HAMBORGARA PIZZAN, PIZZAN SPECIAL, PAVAROTTI, DOUBLE TROUBLE, THE ROYALE, HAPPY HAWAII, KING KONG, HOT AND CHEESY, HOT HONEY, CHEESY GARLIC, GODZILLA, PIG N' CHEESE, GRANDMA'S FAVORITE, MIGHTY MEAT, LOVELY ITALIA, A QUEEN MARGARÍTA, TROPICAL JALAPENO, CHILLI DATE, GREAT BACON, GOING TO BAHAMAS, CHEESUS, MEDITERRANEAN, CHICKEN BBQ, WILD WILD VEGAN, WONDERFUL VEGAN, DÓRI STERKI, GREEN DELIGHT, FAJITAS FIESTA, SOUTHWEST SIZZLE, BEEF & CHEESE, DR.FEELGOOD, BEVERLY HILLS, CHEESY LOVE, DOUBLE PEPPERONI.",
+ "sizes_note": "Branch-specific prices not verified (menu looks chain-wide)."
+}

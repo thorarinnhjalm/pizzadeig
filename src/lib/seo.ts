@@ -107,6 +107,7 @@ export function restaurantJsonLd(restaurant: Restaurant, locale: string, menuIte
     priceRange: Array(restaurant.price_level).fill('$').join(''),
     hasMenu: menuItems?.length ? {
       '@type': 'Menu',
+      ...(restaurant.menu_source_url ? { url: restaurant.menu_source_url } : {}),
       hasMenuItem: menuItems.map(item => ({
         '@type': 'MenuItem',
         name: locale === 'is' ? item.name_is : item.name_en,

@@ -1,0 +1,210 @@
+{
+ "slug": "ishusid-pizzeria-hofn",
+ "status": "open",
+ "status_evidence": "https://ishusidpizzeria.is/ rendered: \"TAKE AWAY +354 4781230 ... Heppuvegur 2a | Höfn 780 ... OPENING HOURS Every Day 17:00-21:00 ... © Íshúsið Pizzeria 2017\"; ordering page https://ishusidpizzeria.is/panta/ exists.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://ishusidpizzeria.is/",
+   "type": "own_site",
+   "note": "Bilingual menu: Icelandic line then English line per item (so desc_is and desc_en are verbatim)"
+  },
+  {
+   "url": "https://ishusidpizzeria.is/panta/",
+   "type": "own_order_page",
+   "note": "Rendered but not read in detail"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": null,
+ "contact": {
+  "phone": "+354 4781230",
+  "address": "Heppuvegur 2a, 780 Höfn",
+  "hours_verbatim": "Every Day 17:00-21:00"
+ },
+ "items": [
+  {
+   "name": "MARGHERITA",
+   "desc_is": "Sósa, ostur, oregano",
+   "desc_en": "Sauce, cheese, oregano",
+   "price": 2950,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 2950
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#1"
+  },
+  {
+   "name": "VEGETARIAN",
+   "desc_is": "Sósa, ostur, paprika, rauðlaukur, ólífur, fersk basilika",
+   "desc_en": "Sauce, cheese, bell pepper, red onion, olives, fresh basil",
+   "price": 3950,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3950
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#2"
+  },
+  {
+   "name": "PEPPERONI",
+   "desc_is": "Sósa, ostur, pepperoni",
+   "desc_en": "Sauce, cheese, pepperoni (spicy salami)",
+   "price": 3700,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3700
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#3"
+  },
+  {
+   "name": "HAWAII",
+   "desc_is": "Sósa, ostur, skinka, ananas",
+   "desc_en": "Sauce, cheese, ham, pineapple",
+   "price": 3700,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3700
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#4"
+  },
+  {
+   "name": "MEXICANA",
+   "desc_is": "Sósa, ostur, nautahakk, rauðlaukur, rjómaostur, jalapeño, nachos, toppað með spicy mæjó",
+   "desc_en": "Sauce, cheese, ground beef, red onion, cream cheese, jalapeño, nachos, spicy mayo on top",
+   "price": 4400,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4400
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#5"
+  },
+  {
+   "name": "PARMA",
+   "desc_is": "Sósa, ostur, klettasalat, hráskinka, parmesan",
+   "desc_en": "Sauce, cheese, rucola, prosciutto, parmesan",
+   "price": 4500,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4500
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#6"
+  },
+  {
+   "name": "LOBSTER FESTIVAL",
+   "desc_is": "Hvít sósa, ostur, humar, kirsuberjatómatar, sveppir, toppað með pestó",
+   "desc_en": "White sauce, cheese, langoustine, cherry tomatoes, mushrooms, pesto on top",
+   "price": 5250,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 5250
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#7"
+  },
+  {
+   "name": "LOBSTER CLASSIC",
+   "desc_is": "Sósa, ostur, humar, paprika, hvítlaukur, klettasalat, parmesan",
+   "desc_en": "Sauce, cheese, langoustine, bell peppers, garlic, rucola, parmesan",
+   "price": 5250,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 5250
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#8"
+  },
+  {
+   "name": "QUATTRO FORMAGGI",
+   "desc_is": "Sósa, rifinn mozzarella, gráðaostur, camembert, piparostur, borin fram með rifsberjahlaupi",
+   "desc_en": "Sauce, shredded mozzarella, blue cheese, camembert, pepper cheese, served with red currant jelly",
+   "price": 4100,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4100
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#9"
+  },
+  {
+   "name": "MARADONA",
+   "desc_is": "Sósa, ostur, kjúklingur, beikon, rauðlaukur, toppað með sterkri sósu",
+   "desc_en": "Sauce, cheese, chicken, bacon, red onion, hot sauce on top",
+   "price": 4100,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4100
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#10"
+  },
+  {
+   "name": "BBQ MEAT LOVERS",
+   "desc_is": "Sósa, ostur, pepperoni, beikon, nautahakk, skinka, toppað með BBQ sósu",
+   "desc_en": "Sauce, cheese, pepperoni (spicy salami), bacon, ground beef, ham, BBQ sauce on top",
+   "price": 4400,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4400
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#11"
+  },
+  {
+   "name": "THE PRESIDENT",
+   "desc_is": "Sósa, ostur, pepperoni, sveppir, ólífur, hvítlaukur, jalapeño, rjómaostur, ananas, oregano",
+   "desc_en": "Sauce, cheese, pepperoni (spicy salami), mushrooms, olives, garlic, jalapeño, cream cheese, pineapple, oregano",
+   "price": 4500,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4500
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#12"
+  },
+  {
+   "name": "MEAT & CHEESE",
+   "desc_is": "Sósa, ostur, pepperoni, beikon, rjómaostur, piparostur",
+   "desc_en": "Sauce, cheese, pepperoni (spicy salami), bacon, cream cheese, pepper cheese",
+   "price": 4100,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4100
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#13"
+  },
+  {
+   "name": "ATLI SPECIAL",
+   "desc_is": "Hvít sósa, ostur, kjúklingur, sveppir, beikon, toppað með spicy mæjó",
+   "desc_en": "White sauce, cheese, chicken, mushrooms, bacon, spicy mayo on top",
+   "price": 4100,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 4100
+   },
+   "source_url": "https://ishusidpizzeria.is/",
+   "menu_no": "#14"
+  },
+  {
+   "name": "Barnabaka | Kids pizza",
+   "desc_is": "Pizzusósa, ostur og ein áleggstegund",
+   "desc_en": "Pizzasauce, cheese and one topping",
+   "price": 1800,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://ishusidpizzeria.is/",
+   "kids": true,
+   "note": "size not stated; for children 12 and younger"
+  }
+ ],
+ "not_found": "Not checked: whether /panta/ order page prices differ (it did not render a full menu). Item names verbatim (CAPS on site). Kids pizza size not given. Dessert pizza not offered (Nutella Heaven 2100 is not a pizza).",
+ "diff_vs_current": "mock has 3 items; verified 15. Price changes: Lobster Classic: 4290->5250; Atli Special: 3690->4100; Margherita: 2890->2950. Not on source (mock-only): none. New on source: VEGETARIAN, PEPPERONI, HAWAII, MEXICANA, PARMA, LOBSTER FESTIVAL, QUATTRO FORMAGGI, MARADONA, BBQ MEAT LOVERS, THE PRESIDENT, MEAT & CHEESE, Barnabaka | Kids pizza.",
+ "sizes_note": "All adult pizzas 12\"."
+}

@@ -1,0 +1,140 @@
+{
+ "slug": "pizza-kofinn",
+ "status": "open",
+ "status_evidence": "http://www.pizzakofinn.is/ rendered (© 2026): \"31. maí er síðasti dagur heimsendinga ... Opnunartími Mán - Mið Lokað Fim - Sun 17:00 - 21:00 ... Garðarsbraut 20, 640 Húsavík\"; /panta shows a live menu. Delivery notice has no year; ordering page still lists menu.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "http://www.pizzakofinn.is/panta",
+   "type": "own_order_page",
+   "note": "Menu rendered (SalesCloud); previous agent missed it"
+  },
+  {
+   "url": "http://www.pizzakofinn.is/",
+   "type": "own_site",
+   "note": "hours/address/notice"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": null,
+ "contact": {
+  "phone": null,
+  "address": "Garðarsbraut 20, 640 Húsavík",
+  "hours_verbatim": "Mán - Mið Lokað; Fim - Sun 17:00 - 21:00"
+ },
+ "items": [
+  {
+   "name": "Einföld Margherita",
+   "desc_is": "Pizza Sósa, Ostur",
+   "desc_en": "",
+   "price": 2800,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 1
+  },
+  {
+   "name": "Ítölsk Margherita",
+   "desc_is": "Pizza Sósa, Ferskur mozzarella, Basilika, ólívu olia.",
+   "desc_en": "",
+   "price": 2900,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 2
+  },
+  {
+   "name": "Pepperoni",
+   "desc_is": "Pizza Sósa, Ostur, Pepperoni.",
+   "desc_en": "",
+   "price": 3200,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 3
+  },
+  {
+   "name": "Hawaii",
+   "desc_is": "Pizza Sósa, Ostur, Skinka, Ananas.",
+   "desc_en": "",
+   "price": 3500,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 4
+  },
+  {
+   "name": "Parma",
+   "desc_is": "Pizza Sósa, Ferskur mozzarella, Klettasalat, Hráskinka, Parmesan.",
+   "desc_en": "",
+   "price": 4000,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 5
+  },
+  {
+   "name": "Kölski",
+   "desc_is": "Pizza Sósa, Ostur, Parmesan, Sterk salame, Chilíflögur.",
+   "desc_en": "",
+   "price": 3700,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 6
+  },
+  {
+   "name": "Field",
+   "desc_is": "San Marzano tomato, goat cheese, red onion, olives, honey, arugula, mushroom.",
+   "desc_en": "",
+   "price": 3700,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 7
+  },
+  {
+   "name": "Sérstök Pizzakofans",
+   "desc_is": "Pizza Sósa, Ferskur mozzarella, Piparostur, Beikon, Pepperoni, Hálfþurkaðir tómatar.",
+   "desc_en": "",
+   "price": 4300,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 8
+  },
+  {
+   "name": "Krispí Kjúlli",
+   "desc_is": "Pizza Sósa, Ostur, Kjúklingur, Rauðlaukur, Nachos, Hvítlaukssósa, Chipotlesósa.",
+   "desc_en": "",
+   "price": 4200,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 9
+  },
+  {
+   "name": "Fjögurra Osta",
+   "desc_is": "Pizza Sósa, Ostur, Parmesan, Gráðostur, Piparostur. Sulta Fylgir.",
+   "desc_en": "",
+   "price": 4000,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 10
+  },
+  {
+   "name": "Þykkur",
+   "desc_is": "Pizza Sósa, Piparostur, Pulled pork, Beikon, Döðlur, Hvítlsukssósa, Chipotlesósa.",
+   "desc_en": "",
+   "price": 4400,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "http://www.pizzakofinn.is/panta",
+   "menu_no": 11
+  }
+ ],
+ "not_found": "No sizes on source. No phone number on site pages fetched (Wanderlog earlier: +354 844 9785, unverified). Item 7 \"Field\" description is English on source (\"San Marzano tomato, goat cheese, red onion, olives, honey, arugula, mushroom.\"), placed in desc_is as it is the only text. \"31. maí er síðasti dagur heimsendinga\" - delivery ended/ends 31 May (year not stated); site may be mid-ownership change (audit said for sale).",
+ "diff_vs_current": "mock has 3 items; verified 11. Price changes: Pepperóní: 3390->3200. Not on source (mock-only): Kofapizzan (3690); Grænmetis (3490). New on source: Einföld Margherita, Ítölsk Margherita, Hawaii, Parma, Kölski, Field, Sérstök Pizzakofans, Krispí Kjúlli, Fjögurra Osta, Þykkur."
+}

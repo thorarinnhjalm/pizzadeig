@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { X } from 'lucide-react';
-import { mockRecipes } from '@/lib/mockData';
+import { allRecipes as mockRecipes } from '@/lib/recipeData';
 import Link from 'next/link';
 import Image from 'next/image';
 

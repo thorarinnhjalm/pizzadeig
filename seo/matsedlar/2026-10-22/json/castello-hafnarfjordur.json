@@ -1,0 +1,361 @@
+{
+ "slug": "castello-hafnarfjordur",
+ "status": "open",
+ "status_evidence": "https://castello.is/is/store?branchID=65256a75e00d0409577741bf (rendered): \"Dalshraun 13 Hafnarjordur Mán - Sun : 11:00-23:00 ... Síðasta pöntun kl. 22:30 ... Sími: 577 3333\"; live ordering menu with prices.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://castello.is/is/menu",
+   "type": "own_order_page",
+   "note": "Rendered in headless Chrome (plain headless is blocked by Cloudflare; spoofed UA works). Same menu for IS and EN URL; EN URL shows Icelandic text for items."
+  },
+  {
+   "url": "https://castello.is/en/menu",
+   "type": "own_site",
+   "note": "English UI, item text identical Icelandic -> desc_en empty"
+  },
+  {
+   "url": "https://castello.is/is/store?branchID=65256a75e00d0409577741bf",
+   "type": "own_site",
+   "note": "Dalshraun 13 branch page"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": "15\"",
+ "contact": {
+  "phone": "577 3333",
+  "address": "Dalshraun 13, Hafnarfjörður",
+  "hours_verbatim": "Mán - Sun : 11:00-23:00 (Síðasta pöntun kl. 22:30)"
+ },
+ "items": [
+  {
+   "name": "Hawaian",
+   "desc_is": "Skinka, ananas",
+   "desc_en": "",
+   "price": 3350,
+   "price_large": 3990,
+   "sizes_all": {
+    "9\"": 2750,
+    "12\"": 3350,
+    "15\"": 3990
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Margarita",
+   "desc_is": "Sósa og ostur",
+   "desc_en": "",
+   "price": 2890,
+   "price_large": 3340,
+   "sizes_all": {
+    "9\"": 2390,
+    "12\"": 2890,
+    "15\"": 3340
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Napolitana",
+   "desc_is": "Pepperóní, sveppir, nautahakk",
+   "desc_en": "",
+   "price": 3850,
+   "price_large": 4690,
+   "sizes_all": {
+    "9\"": 3150,
+    "12\"": 3850,
+    "15\"": 4690
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Pacifico",
+   "desc_is": "Rækjur, Laukur, Chili flögur, Hvítlaukur, Ananas, Oregano, Svartar ólífur",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3250,
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Deviola",
+   "desc_is": "Sósa, Ostur, Pepperóní, Laukur, Jalapeno, Græn piparkorn, Piparostur",
+   "desc_en": "",
+   "price": 3850,
+   "price_large": 4690,
+   "sizes_all": {
+    "9\"": 3150,
+    "12\"": 3850,
+    "15\"": 4690
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Osta Pizza",
+   "desc_is": "Camembert, Parmesan, Rjómaostur, Gráðostur, Sulta",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "9\"": 3350,
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Kebab pizza m/kjúkling",
+   "desc_is": "Iceberg,jogurt sósa,hvitlauk sósa,jallapeno",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 5190,
+   "sizes_all": {
+    "9\"": 3490,
+    "12\"": 4090,
+    "15\"": 5190
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Caprice",
+   "desc_is": "Skinka, sveppir, paprika, hvítlaukur",
+   "desc_en": "",
+   "price": 3850,
+   "price_large": 4690,
+   "sizes_all": {
+    "9\"": 3150,
+    "12\"": 3850,
+    "15\"": 4690
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Kjötveisla",
+   "desc_is": "Skinka, pepperoni, nautahakk",
+   "desc_en": "",
+   "price": 3850,
+   "price_large": 4690,
+   "sizes_all": {
+    "9\"": 3150,
+    "12\"": 3850,
+    "15\"": 4690
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Pollo Pizza",
+   "desc_is": "Kjúklingur, Sveppir, Hvítlaukur, Maís",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3250,
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Castello Special",
+   "desc_is": "Kjúklingur, Laukur, Papríka, Rjómaostur, Jalapeno, Oregano",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "9\"": 3350,
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "La Rosa",
+   "desc_is": "Skinka, Ostur, Beikon, Ananas, Sósa",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3250,
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Sjávarrétta",
+   "desc_is": "Rækjur, Laukur,Hvitlaukur, Kræklingur, Túnfiskur",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "9\"": 3350,
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Kebab pizza m/lambajöti",
+   "desc_is": "",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 5190,
+   "sizes_all": {
+    "9\"": 3490,
+    "12\"": 4090,
+    "15\"": 5190
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Classic",
+   "desc_is": "Pepperóní, Skinka, Sveppir, Laukur",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3250,
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Pizza Grande",
+   "desc_is": "Ostur, Pepperóní, Skinka, Hakk, Papríka, Laukur, Sveppir, Piparostur",
+   "desc_en": "",
+   "price": 4190,
+   "price_large": 5290,
+   "sizes_all": {
+    "9\"": 3490,
+    "12\"": 4190,
+    "15\"": 5290
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Primavera",
+   "desc_is": "Skinka, Sveppir, Basil, Camembert",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3250,
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Ruccola Pizza",
+   "desc_is": "Parmaskinka, Klettasalat, Oregano, Parmesan",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "9\"": 3350,
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Paradise",
+   "desc_is": "Pepperóní, Ananas, Laukur, Papríka, Jalapeno, Hvítlaukur, Oregano",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "9\"": 3350,
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Venecia",
+   "desc_is": "Pepperóní, Kjúklingur, Beikon, Hvítlaukur, Hvítlaukssalt, Sólþurrkaðir tómatar",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 5190,
+   "sizes_all": {
+    "9\"": 3490,
+    "12\"": 4090,
+    "15\"": 5190
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Mexicana",
+   "desc_is": "Rjómaostur, Kjúklingur, Laukur, Maís, Hvítlaukspipar, Hvítlaukssalt",
+   "desc_en": "",
+   "price": 3990,
+   "price_large": 4990,
+   "sizes_all": {
+    "9\"": 3350,
+    "12\"": 3990,
+    "15\"": 4990
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Florence",
+   "desc_is": "Pepperóní, Laukur, Tómatar, Basil, Rjómaostur, Döðlur",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 5190,
+   "sizes_all": {
+    "9\"": 3490,
+    "12\"": 4090,
+    "15\"": 5190
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Vegetariana",
+   "desc_is": "Sveppir, Laukur, Hvítlaukspipar, Oregano, Tómatar, Spergilkál, Parmesan, Svartar ólífur",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": 4890,
+   "sizes_all": {
+    "9\"": 3250,
+    "12\"": 3890,
+    "15\"": 4890
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Siciliana",
+   "desc_is": "Pepperóní, Sveppir, Ananas, Hvítlaukur, Jalapeno, Rjómaostur, Oregano, Svartar ólífur",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 5190,
+   "sizes_all": {
+    "9\"": 3490,
+    "12\"": 4090,
+    "15\"": 5190
+   },
+   "source_url": "https://castello.is/is/menu"
+  },
+  {
+   "name": "Forsíðupizzan",
+   "desc_is": "Pepperóní, Beikon, Papríka, Hvítlaukssósa, Basil, Jalapeno",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 5190,
+   "sizes_all": {
+    "9\"": 3490,
+    "12\"": 4090,
+    "15\"": 5190
+   },
+   "source_url": "https://castello.is/is/menu"
+  }
+ ],
+ "not_found": "Item text only in Icelandic (site gives no English descriptions). \"Kebab pizza m/lambajöti\" has no description on source. Excluded: Hvítlauksbrauð (garlic bread, listed under Pizzur: 9\" 2350 / 12\" 2890 / 15\" 3340), \"Gerðu þína eigin\" and \"Hálf & Hálf\" (custom, no fixed price). Menu may be shared by all Castello branches; Dalshraun branch page shows no branch-specific prices. Combo deals (Stór pizza m/ 2 áleggjum 3190 etc.) excluded.",
+ "diff_vs_current": "mock has 5 items; verified 25. Price changes: Castello Special: 3950->3990; Margarita: 2850->2890. Not on source (mock-only): Riddarinn (3950); Kóngurinn (4150); Drottningin (4150). New on source: Hawaian, Napolitana, Pacifico, Deviola, Osta Pizza, Kebab pizza m/kjúkling, Caprice, Kjötveisla, Pollo Pizza, La Rosa, Sjávarrétta, Kebab pizza m/lambajöti, Classic, Pizza Grande, Primavera, Ruccola Pizza, Paradise, Venecia, Mexicana, Florence, Vegetariana, Siciliana, Forsíðupizzan.",
+ "sizes_note": "Every pizza has 9\" / 12\" / 15\". price = 12\", price_large = 15\". 9\" in sizes_all."
+}

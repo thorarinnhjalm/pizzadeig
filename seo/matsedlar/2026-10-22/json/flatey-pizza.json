@@ -1,0 +1,223 @@
+{
+ "slug": "flatey-pizza",
+ "status": "open",
+ "status_evidence": "flateypizza.is/is lists Grandi and Garðatorg with hours; menu page is live ordering (\"Panta\"); fetched 2026-10-22",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://flateypizza.is/is/menu",
+   "type": "own_site",
+   "note": "Blocked by Cloudflare for default headless UA; rendered with standard Chrome UA and scrolled to load all items. Section \"PIZZUR 12\"\". \"Aðeins í boði á\" badge is inside the item card (belongs to the item above its text in page order, verified via DOM)."
+  },
+  {
+   "url": "https://flateypizza.is/is",
+   "type": "own_site",
+   "note": "locations and hours"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": "12\"",
+ "contact": {
+  "phone": null,
+  "address": "Grandagarður (Grandi); also Garðatorg, Hlemmur, Kringlan, Selfoss",
+  "hours_verbatim": "GRANDI: Sun - Fim 11:30 - 21:00; Fös - Lau 11:30 - 22:00. GARÐATORG: Mán - Sun 11:30 - 21:00. HLEMMUR: Mán 11:30 - 21:00; Þri - Mið Lokað; Fim - Sun 11:30 - 22:00. KRINGLAN: Lau - Fim 11:30 - 20:00; Fös 11:30 - 19:00. SELFOSS: Mán - Sun 11:30 - 21:00. (Phone not shown on rendered pages.)"
+ },
+ "items": [
+  {
+   "name": "Margherita",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Basilíka, Ólífuolía",
+   "desc_en": null,
+   "price": 3090,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3090
+   },
+   "promo_price": 1950,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu",
+   "note": "Site shows 1950 Kr. with 3090 Kr. struck through (-37%). Regular price = struck-through price."
+  },
+  {
+   "name": "Umberto",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Döðlur, Mascarpone rjómaostur, Basilíka",
+   "desc_en": null,
+   "price": 3590,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3590
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Diavola",
+   "desc_is": "Pepperoni (smáskorið) á Margheritu-grunni",
+   "desc_en": null,
+   "price": 3290,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3290
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Pizza Mánaðarins - Quattro Formaggi 🧀",
+   "desc_is": "Ferskur mozzarella, Camembert, Ricotta, Feykir, Chili-sulta, Ólífuolía, Fersk basilíka",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3690
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu",
+   "note": "Monthly special - rotates"
+  },
+  {
+   "name": "Bianca",
+   "desc_is": "Mozzarella, Parmesan, Ricotta, Pepperoni, Hvítlaukur og Mike's Hot Honey.",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3690
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Padrino",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Pepperoni, Pikklaður chili, Hunang, Basilíka",
+   "desc_en": null,
+   "price": 3590,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3590
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Nduja",
+   "desc_is": "Nduja kryddpylsa, Ricotta á Margheritu-grunni",
+   "desc_en": null,
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3790
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Marinara",
+   "desc_is": "San Marzano tómatar, Hvítlaukur, Oregano, Basilíka, Ólífuolía (enginn ostur)",
+   "desc_en": null,
+   "price": 2790,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 2790
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Cotto",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Silkiskorin skinka, Sveppir, Mascarpone rjómaostur, Ólífuolía og Basilíka",
+   "desc_en": null,
+   "price": 3590,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3590
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Tartufo",
+   "desc_is": "Ferskur mozzarella, Sveppir, Ricotta-ostur, Íslenskar kartöflur, Truffluolía, Basilíka, Sjávarsalt (án tómata)",
+   "desc_en": null,
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3690
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Parma",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Hráskinka, Klettasalat, Parmesan, Basilíka, Ólífuolía",
+   "desc_en": null,
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "promo_price": null,
+   "only_at": [
+    "Grandi",
+    "Garðatorg"
+   ],
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Stracciatella",
+   "desc_is": "Hvít pizza (án tómata), Hráskinka, Mozzarella, Stracciatella ostur, Basilolía og Parmesan",
+   "desc_en": null,
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3990
+   },
+   "promo_price": null,
+   "only_at": [
+    "Garðatorg",
+    "Grandi"
+   ],
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Nutella Pizza",
+   "desc_is": "Nutella Pizza með mascarpone og flórsykri",
+   "desc_en": null,
+   "price": 2190,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 2190
+   },
+   "promo_price": null,
+   "only_at": [
+    "Garðatorg",
+    "Grandi"
+   ],
+   "source_url": "https://flateypizza.is/is/menu"
+  },
+  {
+   "name": "Monella",
+   "desc_is": "San Marzano tómatar, Ferskur mozzarella, Parmesan, Oregano, Chili flögur, Basilíka, Ólífuolía",
+   "desc_en": null,
+   "price": 3290,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3290
+   },
+   "promo_price": null,
+   "only_at": null,
+   "source_url": "https://flateypizza.is/is/menu"
+  }
+ ],
+ "not_found": "Phone number not on rendered home/menu pages. English descriptions not on site. Excluded: Hvítlauksbrauð 6\" (1990), dips, drinks, web deals (Fjölskyldutilboð 5990, Tvenna 6190, Þrenna 8690, Ferna 10990 - web pickup combos). \"Aðeins í boði á\" lists both Grandi and Garðatorg, i.e. these 3 items are not sold at Hlemmur/Kringlan/Selfoss.",
+ "diff_vs_current": "Mock Margherita 3090 = regular price (promo 1950 currently, -37%). Mock \"Mánaðarins: Chili Crisp 3590\" replaced by \"Pizza Mánaðarins - Quattro Formaggi\" 3690. All other mock prices unchanged (Diavola 3290, Monella 3290, Cotto 3590, Padrino 3590, Umberto 3590, Bianca 3690, Nduja 3790, Parma 3990, Stracciatella 3990, Nutella 2190). New vs mock: Marinara 2790, Tartufo 3690."
+}
