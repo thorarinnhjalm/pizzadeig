@@ -1,12 +1,14 @@
 import { Recipe } from '@/types/recipe';
 import { allRecipes } from '@/lib/recipeData';
 
-const codeImagesBySlug = new Map(allRecipes.filter(r => r.slug).map(r => [r.slug, r.image_urls]));
+const codeRecipesById = new Map(allRecipes.map(r => [r.id, r]));
 
-// Recipes that exist in code (recipeData.ts) are mirrored in Firestore by the admin seed, so a
-// Firestore copy can carry stale images. For those, the image always comes from the code;
-// recipes submitted by users (only in Firestore) keep their own images.
-export function withCodeImages<T extends Pick<Recipe, 'slug' | 'image_urls'>>(recipe: T): T {
-  const images = recipe.slug ? codeImagesBySlug.get(recipe.slug) : undefined;
-  return images ? { ...recipe, image_urls: images } : recipe;
+// Recipes that exist in code (recipeData.ts) are mirrored in Firestore by the admin seed under the
+// same document id, so a Firestore copy can carry stale images. For those, the image always comes
+// from the code. Matching needs both the document id and the slug, so a user recipe that happens to
+// share a title/slug with a code recipe keeps its own images.
+export function withCodeImages<T extends Pick<Recipe, 'id' | 'slug' | 'image_urls'>>(recipe: T): T {
+  const code = codeRecipesById.get(recipe.id);
+  if (!code || code.slug !== recipe.slug || !code.image_urls?.length) return recipe;
+  return { ...recipe, image_urls: [...code.image_urls] };
 }

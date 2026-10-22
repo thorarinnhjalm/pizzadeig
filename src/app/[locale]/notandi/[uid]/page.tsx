@@ -44,7 +44,7 @@ export default function UserProfilePage() {
         // Fetch user recipes
         const q = query(collection(db, 'recipes'), where('author_uid', '==', uid));
         const snapshot = await getDocs(q);
-        const recipesData = snapshot.docs.map(d => ({ id: d.id, ...d.data() } as Recipe));
+        const recipesData = snapshot.docs.map(d => withCodeImages({ id: d.id, ...d.data() } as Recipe));
         setRecipes(recipesData);
 
         if (!userData && recipesData.length === 0) {

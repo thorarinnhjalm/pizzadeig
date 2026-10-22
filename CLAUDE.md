@@ -133,5 +133,5 @@ Routes use Icelandic names: `/uppskriftir` (recipes), `/stadir` (restaurants), `
 
 ## Uppskriftamyndir
 
-- Myndir uppskrifta sem eru í kóðanum (`src/lib/recipeData.ts`) koma alltaf úr kóðanum, líka þegar uppskriftin sjálf er lesin úr Firestore (`withCodeImages` í `src/lib/recipeImages.ts`). Uppskriftir notenda sem eru aðeins í Firestore halda eigin myndum.
+- Myndir uppskrifta sem eru í kóðanum (`src/lib/recipeData.ts`) koma alltaf úr kóðanum, líka þegar uppskriftin sjálf er lesin úr Firestore (`withCodeImages` í `src/lib/recipeImages.ts`, parað eftir skjalsauðkenni og slug saman). Uppskriftir notenda sem eru aðeins í Firestore halda eigin myndum.
 - Aðeins myndir með ókeypis Unsplash-leyfi (ekki Unsplash+), og hver mynd skoðuð áður en hún er valin.
