@@ -1,0 +1,212 @@
+{
+ "slug": "astro-pizza",
+ "status": "open",
+ "status_evidence": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza (live 2026-10-22: rated 9.2, '© Wolt 2026', shown 'Closed - Opens at 16:00 tomorrow' i.e. an active listing with daily hours 16:00-20:45). Own site astropizza.is is behind Cloudflare block (not bypassed). No seasonal closure indicated (urban Akureyri).",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/items/pizzur-3",
+   "type": "wolt",
+   "note": "Category 'Pizzur' - 17 pizzas, price shown per card; descriptions from each item page"
+  },
+  {
+   "url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza",
+   "type": "wolt",
+   "note": "Address, phone +3545880588, delivery times, Wolt map pin 65.688738,-18.097272"
+  }
+ ],
+ "price_basis": "wolt",
+ "size_small_label": null,
+ "size_large_label": null,
+ "items": [
+  {
+   "name": "Margarita",
+   "desc_is": "Sósa & aukaostur.",
+   "desc_en": "",
+   "price": 3460,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/margarita-itemid-3d2557fda58ea2f2eb8c9cc1"
+  },
+  {
+   "name": "Hawaiian",
+   "desc_is": "Sósa, ostur, skinka & ananas.",
+   "desc_en": "",
+   "price": 3880,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/hawaiian-itemid-4eb1814cd2b332251e44dfb5"
+  },
+  {
+   "name": "Kjötveislan",
+   "desc_is": "Sósa, pepperoni, kjúklingur, beikon, hakk & rjómaostur.",
+   "desc_en": "",
+   "price": 5280,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/kjotveislan-itemid-015197ea83a4eaf6bc5403b9"
+  },
+  {
+   "name": "Ostaveisla",
+   "desc_is": "Sósa, ostur, cheddarostur, fetaostur og piparostur",
+   "desc_en": "",
+   "price": 4980,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/ostaveisla-itemid-1052c4e8fdef0912d97afd38"
+  },
+  {
+   "name": "Double Pepperoni",
+   "desc_is": "Sósa, ostur, pepperóní & auka ostur.",
+   "desc_en": "",
+   "price": 4340,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/double-pepperoni-itemid-d5311bc410a233eb97d2c820"
+  },
+  {
+   "name": "Sú klassíska",
+   "desc_is": "Sósa, ostur, rauðlaukur, pepperóní, sveppir & svartur pipar.",
+   "desc_en": "",
+   "price": 4380,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/su-klassiska-itemid-f2e45198ce3a760ec8130b55"
+  },
+  {
+   "name": "Mars",
+   "desc_is": "Sósa, ostur, pepperóní, piparostur, rjómaostur, beikonkurl & svartur pipar.",
+   "desc_en": "",
+   "price": 4980,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/mars-itemid-be9da094bccf465b039451c2"
+  },
+  {
+   "name": "Venus",
+   "desc_is": "Sósa, ostur, laukur, paprika, hakk, pepperóní, skinka, sveppir & ólífur.",
+   "desc_en": "",
+   "price": 4980,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/venus-itemid-37e56ca4f74014e8cd14d3d9"
+  },
+  {
+   "name": "Tunglið",
+   "desc_is": "Sósa, ostur, pepperóní, rauðlaukur, döðlur & piparostur.",
+   "desc_en": "",
+   "price": 4480,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/tunglid-itemid-ca1e60158893b23b6600a5fb"
+  },
+  {
+   "name": "Bernesveisla",
+   "desc_is": "Bernessósa, ostur, hakk, piparostur, rauðlaukur, svartur pipar, sveppir & bernestopping.",
+   "desc_en": "",
+   "price": 4980,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/bernesveisla-itemid-2e2a270b6cdadeaea8409136"
+  },
+  {
+   "name": "Skralli",
+   "desc_is": "Sósa, ostur, pepperóní, skinka, nautahakk & rjómaostur.",
+   "desc_en": "",
+   "price": 4980,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/skralli-itemid-a17336255916d3a23681f554"
+  },
+  {
+   "name": "BBQ Veisla",
+   "desc_is": "BBQ sósa, ostur, kjúklingur, rauðlaukur, pepperóní & paprika.",
+   "desc_en": "",
+   "price": 4980,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/bbq-veisla-itemid-efa3b9cccc9c29e27eb2da0e"
+  },
+  {
+   "name": "Máni",
+   "desc_is": "Sósa, ostur, skinka, ólífur & rjómaostur.",
+   "desc_en": "",
+   "price": 4280,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/mani-itemid-8528d8ff8352c27af7cd3777"
+  },
+  {
+   "name": "Sú sterka",
+   "desc_is": "Sósa, ostur, beikonkurl, ferskur chilli, rauðlaukur, pepperóní & siracha.",
+   "desc_en": "",
+   "price": 4190,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/su-sterka-itemid-8d4c90d0f241e410b8b7d7ac"
+  },
+  {
+   "name": "Júpiter",
+   "desc_is": "Sósa, ostur, sveppir, paprika, rauðlaukur, rjómaostur & fajitas kjúklingur.",
+   "desc_en": "",
+   "price": 4440,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/jupiter-itemid-89749a60044f05e0ff4cfb99"
+  },
+  {
+   "name": "Hvítlauksveislan",
+   "desc_is": "Hvítlaukssósa, ostur, nautahakk, rauðlaukur, kjúklingur & hvítlaukssósu topping.",
+   "desc_en": "",
+   "price": 4980,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/hvitlauksveislan-itemid-ff34613af7ecd680fc47831f"
+  },
+  {
+   "name": "Hot Honey",
+   "desc_is": "Sósa, ostur, pepperóní, rjómaostur, döðlur, hot honey og kantolía",
+   "desc_en": "",
+   "price": 4380,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza/hot-honey-itemid-d257a367ad46feb456268f2c"
+  }
+ ],
+ "not_found": "Wolt shows only one price per pizza and no size label/option group, so size is unknown (null label; sizes_all empty). Prices are Wolt prices and may be higher than in-store. No English descriptions on the source. Own-site menu not readable (Cloudflare block respected). Deals ('Tilboð'), chicken, sides, drinks excluded. Opening hours below are Wolt DELIVERY times, not confirmed in-store opening hours; no dine-in evidence.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Astro Pizza",
+  "description_is": "Pizzastaður á Glerárgötu á Akureyri sem selur pizzur, meðlæti og drykki í heimsendingu í gegnum Wolt.",
+  "description_en": "Pizza place on Glerárgata in Akureyri selling pizzas, sides and drinks for delivery via Wolt.",
+  "address": "Glerárgata 34b",
+  "postal_code": "600",
+  "city": "Akureyri",
+  "location": {
+   "latitude": 65.6887532,
+   "longitude": -18.0976992,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Glerárgata+34b,+Akureyri (OSM address node 34b); matches Wolt map pin 65.688738,-18.097272 on the Wolt page"
+  },
+  "phone": "588 0588",
+  "website": "http://astropizza.is/",
+  "opening_hours": {
+   "mán": "16-20:45",
+   "þri": "16-20:45",
+   "mið": "16-20:45",
+   "fim": "16-20:45",
+   "fös": "16-20:45",
+   "lau": "16-20:45",
+   "sun": "16-20:45"
+  },
+  "opening_hours_source": "https://wolt.com/en/isl/akureyri/restaurant/astro-pizza ('Delivery times' Mon-Sun 16:00-20:45) - delivery hours only",
+  "features": [
+   "Delivery"
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1458642849426-cfb724f15ef7",
+  "page_url": null,
+  "photographer": null,
+  "description": "Whole pepperoni and black olive pizza, close-up (takeaway/delivery style) (images.unsplash.com photo-id; Unsplash page blocked bots (Anubis) so photographer/page not verified; image viewed locally)"
+ }
+}

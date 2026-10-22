@@ -1,0 +1,187 @@
+{
+ "slug": "neo-pizza",
+ "status": "active",
+ "status_evidence": "Three NEÓ pizza venues live on Wolt on 2026-10-23 (shown 'closed, opens tomorrow' because fetched outside hours): neo-laugavegur, neo-pizza (Hafnartorg Gallery), neo-pizza-smaralind. Own site neopizza.is is behind a Cloudflare block for automated access (not bypassed).",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur",
+   "type": "Wolt (Icelandic)",
+   "note": "Menu with descriptions and prices, address Laugavegur 81 101 Reykjavik, tel +3545882066, delivery times 11:30-21:55 daily. Coordinates 64.14374761,-21.91879064 from page map link."
+  },
+  {
+   "url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-pizza",
+   "type": "Wolt (Icelandic)",
+   "note": "NEÓ pizza - Hafnartorg Gallery, Geirsgata 17, 101; same 10 pizzas and same prices; delivery times Mon-Thu 11:30-21:00, Fri-Sat 11:30-22:00, Sun 12:00-21:00; no phone shown."
+  },
+  {
+   "url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-pizza-smaralind",
+   "type": "Wolt (Icelandic)",
+   "note": "NEÓ pizza - Smáralind, Hagsmári 1, 201; same menu and prices; tel +3545882606; delivery times Mon-Thu 11:00-21:00, Fri-Sat 11:00-22:00, Sun 12:00-21:00."
+  },
+  {
+   "url": "https://www.neopizza.is/",
+   "type": "own site",
+   "note": "Blocked (Cloudflare 'Sorry, you have been blocked'); not bypassed."
+  }
+ ],
+ "price_basis": "Wolt delivery prices (own site blocked). Identical at all three branches. Wolt prices may include a delivery-platform markup vs in-store; could not verify.",
+ "size_small_label": null,
+ "size_large_label": null,
+ "items": [
+  {
+   "name": "Margherita",
+   "desc_is": "Sósa, mozzarella, parmesan og basilíka.",
+   "desc_en": "",
+   "price": 3490,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  },
+  {
+   "name": "Pepperoni",
+   "desc_is": "Sósa, mozzarella, pepperoni og basilíka.",
+   "desc_en": "",
+   "price": 3690,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  },
+  {
+   "name": "Apizz",
+   "desc_is": "Sósa, mozzarella, pepperoni, kjötbollur og parmesan.",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  },
+  {
+   "name": "Prima",
+   "desc_is": "Sósa, mozzarella, sveppir, laukur, parmesan, chili flögur og oregano.",
+   "desc_en": "",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  },
+  {
+   "name": "Not Umberto",
+   "desc_is": "Sósa, mozzarella, pepperoni, laukur, sveppir, jalapeno, döðlur og rjómaostur.",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  },
+  {
+   "name": "Flat Island",
+   "desc_is": "Sósa, mozzarella, pepperoni, döðlur og rjómaostur.",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  },
+  {
+   "name": "Hot Honey",
+   "desc_is": "Mozzarella, pepperoni, hvítlaukur, parmesan, rjómaostur, Mike's Hot Honey og smá basil.",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  },
+  {
+   "name": "Ha Waii Not",
+   "desc_is": "Sósa, mozzarella, skinka, beikon og ananas.",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  },
+  {
+   "name": "More is More",
+   "desc_is": "Sósa, mozzarella, pepperoni, jalapeno, ananas, ólífur, sveppir, hvítlaukur, oregano og rjómaostur.",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  },
+  {
+   "name": "Meat Boy",
+   "desc_is": "Sósa, mozzarella, beikon, pepperoni, piparostur, rjómaostur og svartur pipar.",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur"
+  }
+ ],
+ "not_found": "Pizza size (inches) not stated on Wolt; single price per pizza, so price_large null and sizes_all empty. Excluded: Kryddbrauð 9\" (2,690, spiced bread), drinks (Gos), extra toppings. English descriptions not available. In-store hours not found (Wolt delivery times used as opening_hours proxy). Own-site menu not read (blocked). Hafnartorg phone not shown. Hafnartorg street number: Wolt says Geirsgata 17; visitreykjavik.is says Geirsgata 11 for Hafnartorg Gallery, foodle.pro says Geirsgata 17.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "NEÓ pizza",
+  "description_is": "NEÓ frá Flatey gerir New York pizzur og býður upp á minnst sextán bjóra af ýmsu tagi (lýsing á Wolt); þrír staðir: Laugavegur 81, Hafnartorg Gallery og Smáralind.",
+  "description_en": "NEÓ from Flatey makes New York-style pizzas and offers at least sixteen beers (Wolt description); three venues: Laugavegur 81, Hafnartorg Gallery and Smáralind.",
+  "address": "Laugavegur 81",
+  "postal_code": "101",
+  "city": "Reykjavík",
+  "address_note": "Main entry = Laugavegur 81 branch.",
+  "location": {
+   "latitude": 64.1437892,
+   "longitude": -21.9187293,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Laugavegur+81,+Reykjavik (building 81 Laugavegur); agrees with Wolt map link 64.14374761,-21.91879064"
+  },
+  "phone": "+354 588 2066",
+  "website": "https://www.neopizza.is/",
+  "opening_hours": {
+   "mán": "11:30-21:55",
+   "þri": "11:30-21:55",
+   "mið": "11:30-21:55",
+   "fim": "11:30-21:55",
+   "fös": "11:30-21:55",
+   "lau": "11:30-21:55",
+   "sun": "11:30-21:55"
+  },
+  "opening_hours_note": "Wolt DELIVERY times for Laugavegur 81, not confirmed in-store hours.",
+  "opening_hours_source": "https://wolt.com/is/isl/reykjavik/restaurant/neo-laugavegur",
+  "features": [
+   "Delivery"
+  ],
+  "branches": [
+   {
+    "name": "NEÓ pizza - Laugavegur",
+    "address": "Laugavegur 81",
+    "postal_code": "101",
+    "city": "Reykjavík",
+    "phone": "+354 588 2066",
+    "opening_hours_note": "Wolt delivery times: daily 11:30-21:55"
+   },
+   {
+    "name": "NEÓ pizza - Hafnartorg Gallery",
+    "address": "Geirsgata 17",
+    "postal_code": "101",
+    "city": "Reykjavík",
+    "phone": null,
+    "opening_hours_note": "Wolt delivery times: mán-fim 11:30-21:00, fös-lau 11:30-22:00, sun 12:00-21:00 (street number per Wolt; visitreykjavik.is lists Hafnartorg Gallery at Geirsgata 11)"
+   },
+   {
+    "name": "NEÓ pizza - Smáralind",
+    "address": "Hagsmári 1",
+    "postal_code": "201",
+    "city": "Kópavogur",
+    "phone": "+354 588 2606",
+    "opening_hours_note": "Wolt delivery times: mán-fim 11:00-21:00, fös-lau 11:00-22:00, sun 12:00-21:00"
+   }
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1771875600059-665063b27d2d",
+  "page_url": "https://unsplash.com/photos/a-hand-lifts-a-cheesy-slice-of-pepperoni-pizza-jRd2xm7JMx0",
+  "photographer": "Mikey Frost",
+  "description": "Large New York-style pepperoni slice with cheese pull on a metal tray, wooden table; free Unsplash License; viewed, no logos or faces (a hand holds the server); not in mockData/recipeData."
+ }
+}

@@ -1,0 +1,267 @@
+{
+ "slug": "shake-and-pizza",
+ "status": "open",
+ "status_evidence": "Wolt listing rendered 2026-10-23 with current seasonal 'Ostóber' pizzas (Eldóber, Pestóber), rating 9.0, delivery hours listed, © Wolt 2026; discovery report saw shakepizza.is live with current offers. shakepizza.is returned a Cloudflare block to the headless browser, so not retried (respected).",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza",
+   "type": "wolt",
+   "note": "List of 23 pizzas (+4 bread/side items excluded: Hvítlauksbrauð, Ostabrauðstangir, Beikonbrauðstangir, Partýstangir). Item pages give descriptions (Icelandic). Price shown is for the single standard size; gluten-free base +399/+400 kr. and extra toppings +399/+499 kr. exist."
+  },
+  {
+   "url": "https://shakepizza.is/",
+   "type": "own_site",
+   "note": "Cloudflare 'Sorry, you have been blocked' for headless browser; not bypassed. Discovery report (earlier) noted site home shows Margarita 2.899 and others 3.999, i.e. in-house prices may be slightly lower than Wolt."
+  }
+ ],
+ "price_basis": "wolt",
+ "size_small_label": null,
+ "size_large_label": null,
+ "items": [
+  {
+   "name": "Beikon Sultu Pizzan",
+   "desc_is": "Engin botnsósa heldur beikonsulta. Pepperoni, fajitas kjúklingur, jalapenjó og Shake&Pizza ostablandan. Nachos og hvítlaukssósa á toppnum.",
+   "desc_en": null,
+   "price": 4099,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/beikon-sultu-pizzan-itemid-dd0d0b9e5c727823733a01ae"
+  },
+  {
+   "name": "Gísli á Uppsölum",
+   "desc_is": "Pepperoni, beikon, rjómaostur, piparostur og svartur pipar. Pizzasósan okkar og Shake&Pizza ostablandan.",
+   "desc_en": null,
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/gisli-a-uppsolum-itemid-c506dbfeb1ced66dd50acd50"
+  },
+  {
+   "name": "Margarita",
+   "desc_is": "Einföld en góð! Pizzasósa og S&P ostablandan",
+   "desc_en": null,
+   "price": 2999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/margarita-itemid-f489bec0e27cbf08ca5ac9fd"
+  },
+  {
+   "name": "David Hasselhoff",
+   "desc_is": "Pepperoni, skinka, nautahakk og beikonkurl. Pizzasósan okkar og Shake&Pizza ostablandan.",
+   "desc_en": null,
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/david-hasselhoff-itemid-34d7822c4bb0ea031cb79c2b"
+  },
+  {
+   "name": "Roberto Baggio",
+   "desc_is": "Pepperoni, rjómaostur, sveppir, svartar ólífur, svartur pipar og hvítlaukur. Pizzasósan okkar og Shake&Pizza ostablandan.",
+   "desc_en": null,
+   "price": 3799,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/roberto-baggio-itemid-e64d68ff9af5ea6e5e827885"
+  },
+  {
+   "name": "Hilmir Snær",
+   "desc_is": "Fajitas kjúklingur, Stracciatella Burrata ostur, kirsuberjatómatar, hvítlaukur og ferskt basil. Pizzasósan okkar og Shake&Pizza ostablandan.",
+   "desc_en": null,
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/hilmir-snaer-itemid-65a441776b3a1ffad1cd8eac"
+  },
+  {
+   "name": "Grænætan",
+   "desc_is": "Feykir 12+, hvítlaukur, kirsuberjatómatar, ólífur, ferskt basil, papríka og sveppir. Pizzasósan okkar og Shake&Pizza ostablandan.",
+   "desc_en": null,
+   "price": 3799,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/graenaetan-itemid-98fbcebe20127b055a9d3c48"
+  },
+  {
+   "name": "Banderas",
+   "desc_is": "Beikonsneiðar, nautahakk, paprika, rauðlaukur, fersk steinselja, ananas, hvítlaukssmjör, Shake&Pizza ostablandan. Chillimajó og BBQ sósa á toppnum",
+   "desc_en": null,
+   "price": 4199,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/banderas-itemid-5188dc1593adb1256150202d"
+  },
+  {
+   "name": "Eldóber - Ostóber pizza",
+   "desc_is": "Ostóber Pizza! Með Pizzasósu, Pepperpni, Beikon, Rauðlauk, Eldur (chili ostur), Mozzarella skífur og S&P Ostablöndunni",
+   "desc_en": null,
+   "price": 3599,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/eldober-ostober-pizza-itemid-297a7273be3e4fda838169ce"
+  },
+  {
+   "name": "Gummi Ben",
+   "desc_is": "Pulled pork, tvöfalt magn af beikonsneiðum, Jalapenjó, Rjómaostur, Pizzasósan okkar, Shake&Pizza ostablandan og BBQ sósa á toppnum.",
+   "desc_en": null,
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/gummi-ben-itemid-c570dc8890e499f01fd9f3e8"
+  },
+  {
+   "name": "Ost Við Fyrstu Sýn",
+   "desc_is": "Með sýrðum rjóma, hvítlauk og mexikóostur á botninum, rifinn Camembert, piparosti og Ostablöndu Shake&Pizza. Borin fram með rifsberjasultu.",
+   "desc_en": null,
+   "price": 3899,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/ost-vid-fyrstu-syn-itemid-bdd6f5dcf26c83e21415bec8"
+  },
+  {
+   "name": "Rauði Kjúklingurinn",
+   "desc_is": "Buffalo kjúklingur, beikonkurl og rauðlaukur. Pizzasósan okkar og Shake&Pizza ostablandan. Hot sósa á toppnum og gráðaostasósa til hliðar.",
+   "desc_en": null,
+   "price": 3799,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/raudi-kjuklingurinn-itemid-1b8f6c7ed12b3c04e718bd00"
+  },
+  {
+   "name": "The Dude",
+   "desc_is": "Pepperoni, beikonsneiðar, jalapenjó, mozzarellasticks, nachos, ostasósa, Pizzusósan okkar og Shake&Pizza ostablandan.",
+   "desc_en": null,
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/the-dude-itemid-71885e958ff0c6dcdb4ebcbc"
+  },
+  {
+   "name": "Sveppi Róni",
+   "desc_is": "Pizza með pepperoni, sveppum, sósu og ostablöndu Shake&Pizza.",
+   "desc_en": null,
+   "price": 3599,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/sveppi-roni-itemid-ca3683dd987d47afa42a66c0"
+  },
+  {
+   "name": "Parmela",
+   "desc_is": "Hráskinka, Stracciatella Burrata ostur, klettasalat og eðal Feykir 12+ á toppnum. Hvítlaukssmjör og Shake&Pizza ostablandan.",
+   "desc_en": null,
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/parmela-itemid-b3b1c2e3bf4963f2fa70a6a5"
+  },
+  {
+   "name": "Eva Sombrero",
+   "desc_is": "Með sýrðum rjóma og mexíkóosti á botninum, Buffalo kjúklingi, heimagerðu nachos, rauðlauk, Ostablöndu Shake&Pizza og Chili majói á toppnum.",
+   "desc_en": null,
+   "price": 3799,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/eva-sombrero-itemid-1edb1d3f20078d7922b15e15"
+  },
+  {
+   "name": "Gúmmí Tarzan",
+   "desc_is": "Pepperoni, rjómaostur, bananar, tjillí hunang og oregano",
+   "desc_en": null,
+   "price": 3799,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/gummi-tarzan-itemid-7b4a1128304779fee45d3c0c"
+  },
+  {
+   "name": "Ég ann Chili - Sterkasta Pizzan á Íslandi",
+   "desc_is": "Ferskur Carolina Reaper, blandaður chili, Szechuan úr kvörn, pepperoni, ananas, rauðlaukur og ostablandan okkar.",
+   "desc_en": null,
+   "price": 4199,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/eg-ann-chili-sterkasta-pizzan-a-islandi-itemid-20ec8a2ee16df8909190d656"
+  },
+  {
+   "name": "Vegan Með Gísla",
+   "desc_is": "Með kebab oumph!, rauðlaukur, papríka, chili, Cayenne pipar, toppuð með BBQ sósu",
+   "desc_en": null,
+   "price": 3799,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/vegan-med-gisla-itemid-ea956a41d811bc3f4040b7ba"
+  },
+  {
+   "name": "Carbonara",
+   "desc_is": "Burrata stracciatella í botninn, beikonsneiðar, sveppir, svartur pipar, Feykir 12+ og basil.",
+   "desc_en": null,
+   "price": 3999,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/carbonara-itemid-88aaeed86f3c1bf43b271ce6"
+  },
+  {
+   "name": "Birgitta - Döðlupizza",
+   "desc_is": "Döðlur, beikonsneiðar, rifinn camembert, rauðlaukur, pizzasósan og ostablandan okkar, toppuð með chilli majó.",
+   "desc_en": null,
+   "price": 3799,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/birgitta-dodlupizza-itemid-8744fdcbeda56ffefe972c6a"
+  },
+  {
+   "name": "HA WHY?",
+   "desc_is": "Pizza með skinku, ananas, sósu og ostablöndunni",
+   "desc_en": null,
+   "price": 3599,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/ha-why-itemid-fda25b504ead46d930318d36"
+  },
+  {
+   "name": "Pestóber - Ostóber pizza",
+   "desc_is": "Ostóber Pizza! Með grænum pestóosti, Döðlum, klettasalati og S&P Ostablöndunni",
+   "desc_en": null,
+   "price": 3599,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza/pestober-ostober-pizza-itemid-8c383448327be99d62261481"
+  }
+ ],
+ "not_found": "Pizza diameter/size not stated on Wolt (single size shown). Kids ('Krakkar') and offers ('Tilboð') categories exist on Wolt but their items did not render in the headless browser, so kids pizza not captured. Wolt prices may be marked up vs in-store (Margarita 2999 on Wolt vs 2899 per earlier discovery note of the site). Wolt Margarita card lists as 'Margarita'. No English text on source.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Shake & Pizza",
+  "description_is": "Shake&Pizza sérhæfir sig í pizzum og mjólkurhristingum (shake-um). Staðurinn er við Fossaleyni í Grafarvogi og pizzurnar eru heimsendar með Wolt.",
+  "description_en": "Shake&Pizza specialises in pizzas and milkshakes. The restaurant is at Fossaleynir in Grafarvogur and its pizzas are delivered via Wolt.",
+  "address": "Fossaleynir 1",
+  "postal_code": "112",
+  "city": "Reykjavík",
+  "location": {
+   "latitude": 64.1463135,
+   "longitude": -21.7717871,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Fossaleynir+1,+Reykjavik (OSM node 'Shake&Pizza', amenity=fast_food)"
+  },
+  "phone": "517 1819",
+  "website": "https://shakepizza.is",
+  "opening_hours": {
+   "mán": "16:00-20:45",
+   "þri": "16:00-20:45",
+   "mið": "16:00-20:45",
+   "fim": "16:00-21:15",
+   "fös": "16:00-21:45",
+   "lau": "11:30-21:45",
+   "sun": "11:30-20:45"
+  },
+  "opening_hours_source": "https://wolt.com/is/isl/reykjavik/restaurant/shake-pizza (Wolt DELIVERY times, not verified as in-house opening hours; own site blocked)",
+  "features": [
+   "Delivery"
+  ],
+  "name_note": "Street is spelled Fossaleyni on Wolt and Fossaleynir in OpenStreetMap/official use."
+ },
+ "image_candidate": {
+  "photo_id": "photo-1637438333468-2ea466032288",
+  "page_url": "https://unsplash.com/photos/a-pizza-with-various-toppings-on-a-white-background-xiApbm9UV-4",
+  "photographer": "mostafa mahmoudi (@mostafa_mahmoudi24)",
+  "description": "Thick-crust loaded pizza with bacon, peppers and cheese on a white background (American loaded style); free Unsplash License (not Unsplash+); viewed, no logos or faces; not used elsewhere."
+ }
+}

@@ -1,0 +1,363 @@
+{
+ "slug": "devitos-pizza",
+ "status": "open",
+ "status_evidence": "devitos.is live with © 2026 footer, current hours and ordering pages; Wolt listing 'Open until 23:30' (rendered 2026-10-23); Grapevine Best of Reykjavík 2026 (2026-01-20) names it runner-up for late-night bite",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://devitos.is/pizza",
+   "type": "own_site",
+   "note": "Menu list: 22 pizzas (+ garlic bread excluded), 'frá' price = 12\" price. Names are uppercase on the site; title-cased here."
+  },
+  {
+   "url": "https://devitos.is/orders/custom/create?menu_item_id=1",
+   "type": "own_site",
+   "note": "Per-item order page (view only, nothing submitted); size dropdown 12/16/18 and displayed price per size read for ids 1-14,16,18,19,40-44 (id 38 garlic bread excluded). 12\"/16\"/18\" shown without unit on the page; read as inches because the offers page uses 10\"/12\"/16\"/18\"."
+  },
+  {
+   "url": "https://devitos.is/offers",
+   "type": "own_site",
+   "note": "Deals only (10\" 2540, 12\" 3250, 16\" 4900, 18\" 6300, combos); not menu items, excluded. 10\" size exists only in deals."
+  },
+  {
+   "url": "https://devitos.is/uploads/menu2025.pdf",
+   "type": "own_site",
+   "note": "PDF is an allergen/ingredient sheet with no prices; not used for prices."
+  },
+  {
+   "url": "https://wolt.com/en/isl/reykjavik/restaurant/devitos-pizza",
+   "type": "wolt",
+   "note": "Address, delivery hours, phone, history text; item prices did not render."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": "18\"",
+ "items": [
+  {
+   "name": "Peppe",
+   "desc_is": "Hakk, Piparostur, Blandaðar Ólífur",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=40"
+  },
+  {
+   "name": "Vegana",
+   "desc_is": "Þristilhjörtu, Sveppir, Svartar Ólífur",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=41"
+  },
+  {
+   "name": "Classico",
+   "desc_is": "Pepperoni, Sveppir, Rjómaostur",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=42"
+  },
+  {
+   "name": "Power Pizza",
+   "desc_is": "Sveppir, jalapeno, Rjómaostur",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=43"
+  },
+  {
+   "name": "BBQ Olivera",
+   "desc_is": "Kjúklingur, Sveppir, Laukur, BBQ",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=44"
+  },
+  {
+   "name": "Margarita",
+   "desc_is": "Ostur, Devito's Pizza Sósa",
+   "desc_en": null,
+   "price": 2300,
+   "price_large": 3200,
+   "sizes_all": {
+    "12\"": 2300,
+    "16\"": 2800,
+    "18\"": 3200
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=1"
+  },
+  {
+   "name": "La Rosa",
+   "desc_is": "Pepperoni, Skinka, Ananas",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=2"
+  },
+  {
+   "name": "Devito's Special",
+   "desc_is": "Pepperoni, Skinka, Sveppir",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=3"
+  },
+  {
+   "name": "La Pepperoni",
+   "desc_is": "Pepperoni, Skinka, Paprika",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=4"
+  },
+  {
+   "name": "El Toro",
+   "desc_is": "Nautahakk, Sveppir, Paprika",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=5"
+  },
+  {
+   "name": "Tre Formaggi",
+   "desc_is": "Rjómaostur, Cheddar, Piparostur",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=6"
+  },
+  {
+   "name": "Marinera",
+   "desc_is": "Rækjur, Túnfiskur, Oreganó",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=7"
+  },
+  {
+   "name": "Calzone (Hálfmáni)",
+   "desc_is": "Skinka, Sveppir, Ostur, Devito's Sósa",
+   "desc_en": null,
+   "price": 3300,
+   "price_large": 4800,
+   "sizes_all": {
+    "12\"": 3300,
+    "16\"": 4200,
+    "18\"": 4800
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=8",
+   "note": "Calzone (half-moon folded pizza), included as a pizza variant."
+  },
+  {
+   "name": "Primavera",
+   "desc_is": "Þistilhjörtu, Sveppir, Blandaðar Ólífur",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=9"
+  },
+  {
+   "name": "Nonno Mio",
+   "desc_is": "Skinka, Svartar Ólífur, Rjómaostur",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 3800,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=10",
+   "note": "Site shows 16\" at 3800 (same as 12\"), observed twice; likely a site data quirk, recorded as displayed."
+  },
+  {
+   "name": "Olivera",
+   "desc_is": "Kjúklingur, Sveppir, Laukur",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=11"
+  },
+  {
+   "name": "Bella Piccante",
+   "desc_is": "Pepperoni, Jalapeño, Tómatar",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=12"
+  },
+  {
+   "name": "Napolitana",
+   "desc_is": "Pepperoni, Sveppir, Laukur",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=13"
+  },
+  {
+   "name": "Capriccio",
+   "desc_is": "Skinka, Sveppir, Ananas",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=14"
+  },
+  {
+   "name": "Toscana",
+   "desc_is": "Ansjósur, Laukur, Sveppir",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=16"
+  },
+  {
+   "name": "Donna Jones",
+   "desc_is": "Rjómaostur, Sveppir, Brokkolí",
+   "desc_en": null,
+   "price": 3300,
+   "price_large": 4800,
+   "sizes_all": {
+    "12\"": 3300,
+    "16\"": 4200,
+    "18\"": 4800
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=18"
+  },
+  {
+   "name": "Power Pizza (Mozzarella)",
+   "desc_is": "Mozzarella, Jalapeño, Sveppir",
+   "desc_en": null,
+   "price": 3800,
+   "price_large": 5600,
+   "sizes_all": {
+    "12\"": 3800,
+    "16\"": 4900,
+    "18\"": 5600
+   },
+   "source_url": "https://devitos.is/orders/custom/create?menu_item_id=19",
+   "note": "Second item named POWER PIZZA on the site; ingredients differ (menu_item_id 19). Name suffix added to disambiguate."
+  }
+ ],
+ "not_found": "Descriptions only in Icelandic (ingredient lists); no English text. Toppings extras cost 500 ISK at 12\" (build-your-own excluded). 'Veljið sjálf' (build your own), Margarita-based garlic bread (Hvítlauksbrauð 2300/2800/3200) and deals excluded. Price used = 12\" (price) and 18\" (price_large); 16\" is the middle size and is in sizes_all.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Devito's Pizza",
+  "description_is": "Devito's Pizza opnaði fyrst árið 1994 og hefur frá 2004 verið á Laugavegi 126 við Hlemm (gengið inn frá Þverholti). Pizzur með snöggri þjónustu, heimsendar með Aha og Wolt.",
+  "description_en": "Devito's Pizza first opened in 1994 and has been at Laugavegur 126 by Hlemmur (entrance from Þverholt) since 2004. Pizzas with quick service, delivered via Aha and Wolt.",
+  "address": "Laugavegur 126",
+  "postal_code": "105",
+  "city": "Reykjavík",
+  "location": {
+   "latitude": 64.142907,
+   "longitude": -21.912505,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Laugavegur+126,+105+Reykjavik (OSM node 'Devito's', amenity=fast_food)"
+  },
+  "phone": "511 2244",
+  "website": "https://devitos.is",
+  "opening_hours": {
+   "mán": "11:00-23:30",
+   "þri": "11:00-23:30",
+   "mið": "11:00-23:30",
+   "fim": "11:00-23:30",
+   "fös": "11:00-00:00",
+   "lau": "11:00-00:00",
+   "sun": "11:00-23:00"
+  },
+  "opening_hours_source": "https://devitos.is/",
+  "features": [
+   "Delivery"
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1754799565151-e24cd6ea61e7",
+  "page_url": "https://unsplash.com/photos/pepperoni-pizza-in-a-cardboard-box-on-a-wooden-table--gGAtqnlHlE",
+  "photographer": "Ari Kurniawan",
+  "description": "Pepperoni pizza in a takeaway box on a wooden table; free Unsplash License (page says not Unsplash+); viewed, no logos or faces; not in mockData/recipeData or other lota2 files."
+ }
+}

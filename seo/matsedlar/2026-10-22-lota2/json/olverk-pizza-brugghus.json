@@ -1,0 +1,268 @@
+{
+ "slug": "olverk-pizza-brugghus",
+ "status": "open",
+ "status_evidence": "https://www.olverk.is/ (Shopify site, footer '© 2026 Ölverk'; homepage banner for Ölverk beerfestival 2.-3. October 2026; 'latest take away deals' banner) and https://www.olverk.is/pages/menu with menu images file-stamped April 2026 ('9 amazing years', opened 28 May 2017); opening hours published on site. No seasonal closure noted (Hveragerði, Golden Circle; hours listed year-round).",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://www.olverk.is/pages/menu",
+   "type": "own_site",
+   "note": "Menu is image-only (JPG pages a-l, April 2026). Pizza list on april_26-menu-d.jpg (#1-14) and april_26-menu-e.jpg (#15-18); read visually and transcribed."
+  },
+  {
+   "url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg",
+   "type": "own_site_image",
+   "note": "Pizza #1-14, header: 'PIZZA - Eldbökuð 12\" pizza / 12\" wood fired pizzas. Pizzukassi - Pizza box 100,-'"
+  },
+  {
+   "url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-e.jpg",
+   "type": "own_site_image",
+   "note": "Pizza #15-18 and extra toppings"
+  },
+  {
+   "url": "https://www.olverk.is/",
+   "type": "own_site",
+   "note": "Opening hours, address, phone, 2026 evidence"
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": "12\"",
+ "size_large_label": null,
+ "items": [
+  {
+   "name": "Pizza nr. 1",
+   "desc_is": "Sósa, ferskur mozzarella, ferskur basil, Ólífuolía",
+   "desc_en": "Sauce, fresh mozzarella, fresh basil, Olive oil",
+   "price": 2850,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 2850
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 2",
+   "desc_is": "Sósa, ostur, skinka, sveppir, þistilhjörtu - fullkomin sem Calzone",
+   "desc_en": "Sauce, cheese, ham, mushrooms, artichokes - perfect as a Calzone",
+   "price": 3400,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3400
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 3",
+   "desc_is": "Sósa, ostur, skinka, ananas",
+   "desc_en": "Sauce, cheese, ham, pineapple",
+   "price": 3150,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3150
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 4",
+   "desc_is": "Sósa, ostur, tvöfalt magn af pepperoni",
+   "desc_en": "Sauce, cheese, double pepperoni",
+   "price": 3400,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3400
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 5",
+   "desc_is": "Sósa, ostur, pepperoni, beikon, piparostur, sterk Gillasósa",
+   "desc_en": "Sauce, cheese, pepperoni, bacon, black pepper cheese, Gilla hot sauce",
+   "price": 3600,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3600
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 6",
+   "desc_is": "Sósa, ostur, beikon, döðlur, gráðostur",
+   "desc_en": "Sauce, cheese, bacon, dates, blue cheese",
+   "price": 3450,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3450
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 7",
+   "desc_is": "Sósa, vegan ostur, vegan mexíkóskt hakk, paprika, nachos flögur, vegan chili mayo, vorlaukur VEGAN",
+   "desc_en": "Sauce, vegan cheese, mexican vegan mince, bell pepper, nachos chips,vegan chilimayo, spring onion VEGAN",
+   "price": 3650,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3650
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 8",
+   "desc_is": "Sósa, ostur, kjúklingur, paprika, rauðlaukur, rjómaostur",
+   "desc_en": "Sauce, cheese, chicken, bell pepper, red onion, cream cheese",
+   "price": 3650,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3650
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 9",
+   "desc_is": "Ölverk pestó, sveppir, vorlaukur, kókosflögur, ferskur chili, íslensk söl, sesam olía VEGAN (Contains Nuts)",
+   "desc_en": "Ölverk pestó, mushrooms, spring onion, coconut flakes, fresh chilli, icelandic dulse-sea weed, sesame seed oil VEGAN (Contains Nuts)",
+   "price": 3650,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3650
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 10",
+   "desc_is": "Sósa, mozzarella, hráskinka, klettasalat, parmesan ostur, ólífuolía",
+   "desc_en": "Sauce, mozzarella, drycured ham, rucola, parmesan cheese, oliveoil",
+   "price": 3850,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3850
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 11",
+   "desc_is": "Sósa, ostur, pepperoni, bananar, rjómaostur, mulinn pipar",
+   "desc_en": "Sauce, cheese, pepperoni, bananas, cream cheese, crushed black pepper",
+   "price": 3450,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3450
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 12",
+   "desc_is": "Pizza kokksins - góð pizza með öllu því sem er þeim dettur í hug",
+   "desc_en": "Tasty Chef´s choice pizza - with their favorite toppings",
+   "price": 3650,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3650
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 13",
+   "desc_is": "Hvítsósu, ostur, hvítlauksolía, gráðostur, piparostur, brie, rifsberja sulta",
+   "desc_en": "White sauce, cheese, garlic oil, blue cheese, pepper cheese, brie. Red currant gelé included",
+   "price": 3650,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3650
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 14",
+   "desc_is": "Hvítsósa, ostur, hvítlauksolía, parmesan ostur",
+   "desc_en": "White sauce, cheese, garlic oil, parmesan cheese",
+   "price": 2650,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 2650
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-d.jpg"
+  },
+  {
+   "name": "Pizza nr. 15",
+   "desc_is": "Pizzusósa og ostur",
+   "desc_en": "Sauce, cheese",
+   "price": 2650,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 2650
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-e.jpg"
+  },
+  {
+   "name": "Pizza nr. 16",
+   "desc_is": "Hvítsósa, ostur, brie, gráðostur, valhnetur, perur, vorlaukur, hunang, chiliflögur ( Inniheldur hnetur)",
+   "desc_en": "White sauce, cheese, brie, blue cheese, wallnuts, pear, spring onion, honey, chili flakes ( Contains Nuts)",
+   "price": 3850,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3850
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-e.jpg"
+  },
+  {
+   "name": "Pizza nr. 17",
+   "desc_is": "Sósa, ostur, Chorizo hakk, súrsaður laukur, piparostur, spicy Ölverk chili hnetu Krisp & lime-svartpipar-mayo",
+   "desc_en": "Sauce, cheese, Chorizo mince, pickled onions, pepper cheese, Ölverk chili-nut-crisp & lime-black pepper-mayo (Contains Nuts)",
+   "price": 3850,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 3850
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-e.jpg"
+  },
+  {
+   "name": "Pizza nr. 18",
+   "desc_is": "Hvítsósa, sterk ostablanda, hvítlauksolía, parmesan ostur",
+   "desc_en": "White sauce, spicy cheese blend, garlic oil, parmesan cheese",
+   "price": 2850,
+   "price_large": null,
+   "sizes_all": {
+    "12\"": 2850
+   },
+   "source_url": "https://cdn.shopify.com/s/files/1/0510/0067/2429/files/april_26-menu-e.jpg"
+  }
+ ],
+ "not_found": "Pizzas on the menu are numbered, not named: names here are 'Pizza nr. N' (the menu's own numbering), nothing invented. Only one size (12\") listed. Extras: toppings 350/500 kr, pizza box 100 kr (not items). Ostóber / monthly special pizzas excluded (seasonal, not on the standing menu; home page only shows a 2023 special at 3350). Menu images are dated April 2026 - may be older than current prices; no price changes seen elsewhere on site. Snacks/salads excluded.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Ölverk Pizza & Brugghús",
+  "description_is": "Eldbökuð pizza og handverksbjór sem bruggaður er á staðnum í eigin brugghúsi sem knúið er jarðhita. Ölverk opnaði 28. maí 2017 í Hveragerði.",
+  "description_en": "Wood-fired pizza and craft beer brewed on the premises in an in-house brewery powered by geothermal energy. Ölverk opened on 28 May 2017 in Hveragerði.",
+  "address": "Breiðamörk 2",
+  "postal_code": "810",
+  "city": "Hveragerði",
+  "location": {
+   "latitude": 63.9976692,
+   "longitude": -21.1889748,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Breiðamörk+2,+Hveragerði (OSM node 'Ölverk, 2, Breiðamörk')"
+  },
+  "phone": "483 3030",
+  "website": "https://www.olverk.is",
+  "opening_hours": {
+   "mán": "11:30-22",
+   "þri": "11:30-22",
+   "mið": "11:30-22",
+   "fim": "11:30-22",
+   "fös": "11:30-23",
+   "lau": "11:30-23",
+   "sun": "11:30-22"
+  },
+  "opening_hours_source": "https://www.olverk.is/pages/menu (footer: Sunday-Thursday 11:30-22:00, Friday-Saturday 11:30-23:00; 'Note that the kitchen always closes at 21:00!')",
+  "features": [
+   "Dine-in",
+   "Takeaway"
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1528137871618-79d2761e3fd5",
+  "page_url": null,
+  "photographer": null,
+  "description": "Rustic wood-fired style pizza with rocket on paper, charred crust (images.unsplash.com photo-id; Unsplash page blocked bots (Anubis) so photographer/page not verified; image viewed locally)"
+ }
+}

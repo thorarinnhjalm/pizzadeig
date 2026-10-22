@@ -1,0 +1,723 @@
+{
+ "slug": "dominos",
+ "status": "active",
+ "status_evidence": "https://www.dominos.is/panta/pizzur and /stadir rendered live 2026-10-23 (prices, 22 stores, ordering site up). Wolt Akureyri page also live.",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://www.dominos.is/panta/pizzur",
+   "type": "own site (Icelandic pizza menu)",
+   "note": "Names rendered in capitals by the site (CSS); converted to normal case here. English site path /en/... returned 404, so desc_en left empty."
+  },
+  {
+   "url": "https://www.dominos.is/stadir",
+   "type": "own site (store list)",
+   "note": "22 stores with address, postal code, town, hours, pickup/delivery estimates; no per-store phone shown."
+  },
+  {
+   "url": "https://wolt.com/en/isl/akureyri/restaurant/dominos-undirhlid",
+   "type": "Wolt (only used to cross-check prices vs own site)",
+   "note": "Wolt prices are higher than own site for the same pizza (e.g. Hvítlaukur.is/Garlic.is Wolt 5,690 vs own site large 5,390), so Wolt is not used for item prices."
+  }
+ ],
+ "price_basis": "own site list prices (dominos.is/panta/pizzur), regular price, ISK incl. VAT. Banner on the site at fetch time said all pizzas and sides were 50% off for pickup; list prices shown are the regular ones.",
+ "size_small_label": "Mið.",
+ "size_large_label": "Stór",
+ "sizes_note": "Site labels sizes only as Lítil / Mið. / Stór / Pan (no inch sizes shown). price = Mið., price_large = Stór. Pan (pan crust, same price as Stór) in sizes_all.",
+ "items": [
+  {
+   "name": "Bjarmi",
+   "desc_is": "Gráðaostur, piparostur, rifsberjagel, tindur, sósa og ostur",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Mið.": 4590,
+    "Stór": 5490,
+    "Pan": 5490
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "GodSilla",
+   "desc_is": "Cheddarostur, jalapeno, nachos flögur, rjómaostur, salsasósa og 2x ostur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Mið.": 4490,
+    "Stór": 5390,
+    "Pan": 5390
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Tropical Chicken",
+   "desc_is": "Ananas, ferskur chili, hot honey, kjúklingur, rjómaostur, bbq sósa og ostur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4490,
+    "Stór": 5390,
+    "Pan": 5390
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Mixed Kebab",
+   "desc_is": "Græn paprika, hakk, hvítlauksósudressing, kebab seasoning, kjúklingur, rauðlaukur, sriracha sauce, sósa og ostur",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Mið.": 4590,
+    "Stór": 5490,
+    "Pan": 5490
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Chicken Kebab",
+   "desc_is": "Græn paprika, hvítlauksósudressing, kebab seasoning, kjúklingur, rauðlaukur, sósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Festival",
+   "desc_is": "Jalapeno, kjúklingur, nachos flögur, pepperoni, rauðlaukur, rjómaostur, sósa og ostur",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Mið.": 4590,
+    "Stór": 5490,
+    "Pan": 5490
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Ríó",
+   "desc_is": "Beikonkurl, döðlur, hot honey, oregano, rjómaostur, hvítlaukssósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2490,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "BBQ Queen",
+   "desc_is": "Hvítlaukssósu topping, kjúklingur, oregano, rauðlaukur, sveppir, bbq sósa og ostur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Mið.": 4490,
+    "Stór": 5390,
+    "Pan": 5390
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Honey & Heat",
+   "desc_is": "Chiliflögur, hot honey, jalapeno, pepperoni, rauðlaukur, sósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Dóttir",
+   "desc_is": "Beikonkurl, döðlur, ferskur chili, oregano, pepperoni, rauðlaukur, rjómaostur, bbq sósa og ostur",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Mið.": 4590,
+    "Stór": 5490,
+    "Pan": 5490
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Cajun Combo",
+   "desc_is": "Beikonkurl, cajun krydd, hvítlaukssósu topping, hvítlaukur, pepperoni, skinka, hvítlauksolía og ostur",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Mið.": 4590,
+    "Stór": 5490,
+    "Pan": 5490
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Bistro",
+   "desc_is": "Cheddarostur, chiliflögur, pepperoni, rauðlaukur, svartur pipar, sósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "BBQ King",
+   "desc_is": "Jalapeno, pepperoni, piparostur, pulled pork, rjómaostur, bbq sósa og ostur",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Mið.": 4590,
+    "Stór": 5490,
+    "Pan": 5490
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Fiesta",
+   "desc_is": "Ananas, hvítlaukur, oregano, pepperoni, rjómaostur, sveppir, sósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Champion",
+   "desc_is": "Ananas, beikonkurl, hvítlaukur, jalapeno, pepperoni, rauðlaukur, skinka, svartur pipar, sveppir, sósa og ostur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Mið.": 4490,
+    "Stór": 5390,
+    "Pan": 5390
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "T-Rex",
+   "desc_is": "Beikonkurl, hakk, pepperoni, pulled pork, skinka, bbq sósa og ostur",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Mið.": 4590,
+    "Stór": 5490,
+    "Pan": 5490
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Creme Mexicano",
+   "desc_is": "Græn paprika, kjúklingur, rauðlaukur, rjómaostur, sveppir, sósa og ostur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Mið.": 4490,
+    "Stór": 5390,
+    "Pan": 5390
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Meat & Cheese",
+   "desc_is": "Beikonkurl, pepperoni, piparostur, rjómaostur, svartur pipar, sósa og ostur",
+   "desc_en": "",
+   "price": 4590,
+   "price_large": 5490,
+   "sizes_all": {
+    "Lítil": 2990,
+    "Mið.": 4590,
+    "Stór": 5490,
+    "Pan": 5490
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Domino's Surprise",
+   "desc_is": "Hvítlaukur, jalapeno, pepperoni, rjómaostur, skinka, svartur pipar, sveppir, sósa og ostur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Mið.": 4490,
+    "Stór": 5390,
+    "Pan": 5390
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Domino's Extra",
+   "desc_is": "Græn paprika, hakk, pepperoni, rauðlaukur, skinka, svartar ólífur, sveppir, sósa og 2x ostur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Mið.": 4490,
+    "Stór": 5390,
+    "Pan": 5390
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Hvítlaukur.is",
+   "desc_is": "Ananas, beikonkurl, cheddarostur, döðlur, oregano, pepperoni, hvítlaukssósa og ostur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Mið.": 4490,
+    "Stór": 5390,
+    "Pan": 5390
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Sweet & Spicy",
+   "desc_is": "Döðlur, ferskur chili, pepperoni, rauðlaukur, rjómaostur, sósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Bazaar",
+   "desc_is": "Döðlur, rauðlaukur, rjómaostur, spínat, svartur pipar, sveppir, sósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Domino's Deluxe",
+   "desc_is": "Ananas, pepperoni, skinka, sveppir, sósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Vegendary",
+   "desc_is": "Ananas, bbq topping, cheddarostur, chiliflögur, hvítlaukur, jalapeno, rauðlaukur, rjómaostur, svartur pipar, sósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Domino's Classic",
+   "desc_is": "Græn paprika, pepperoni, rauðlaukur, sveppir, sósa og ostur",
+   "desc_en": "",
+   "price": 3690,
+   "price_large": 4590,
+   "sizes_all": {
+    "Lítil": 2190,
+    "Mið.": 3690,
+    "Stór": 4590,
+    "Pan": 4590
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Prinsessan",
+   "desc_is": "Beikonkurl, ferskur chili, pepperoni, piparostur, rauðlaukur, sveppir, sósa og ostur",
+   "desc_en": "",
+   "price": 4490,
+   "price_large": 5390,
+   "sizes_all": {
+    "Lítil": 2790,
+    "Mið.": 4490,
+    "Stór": 5390,
+    "Pan": 5390
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Bahamas",
+   "desc_is": "Ananas, beikonkurl, skinka, sósa og 2x ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Svepperoni",
+   "desc_is": "Pepperoni, sveppir, sósa og ostur",
+   "desc_en": "",
+   "price": 3690,
+   "price_large": 4590,
+   "sizes_all": {
+    "Lítil": 2190,
+    "Mið.": 3690,
+    "Stór": 4590,
+    "Pan": 4590
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Hawaiian",
+   "desc_is": "Ananas, skinka, sósa og ostur",
+   "desc_en": "",
+   "price": 3690,
+   "price_large": 4590,
+   "sizes_all": {
+    "Lítil": 2190,
+    "Mið.": 3690,
+    "Stór": 4590,
+    "Pan": 4590
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Margarita",
+   "desc_is": "Sósa og ostur",
+   "desc_en": "",
+   "price": 2990,
+   "price_large": 3790,
+   "sizes_all": {
+    "Lítil": 2090,
+    "Mið.": 2990,
+    "Stór": 3790,
+    "Pan": 3790
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Kjötveisla",
+   "desc_is": "Hakk, pepperoni, skinka, sósa og ostur",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 4990,
+   "sizes_all": {
+    "Lítil": 2490,
+    "Mið.": 4090,
+    "Stór": 4990,
+    "Pan": 4990
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Pepperoni Veisla",
+   "desc_is": "2x pepperoni, sósa og 2x ostur",
+   "desc_en": "",
+   "price": 4090,
+   "price_large": 4990,
+   "sizes_all": {
+    "Lítil": 2490,
+    "Mið.": 4090,
+    "Stór": 4990,
+    "Pan": 4990
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  },
+  {
+   "name": "Tókýó",
+   "desc_is": "Beikonkurl, hakk, piparostur, skinka, svartur pipar, sósa og ostur",
+   "desc_en": "",
+   "price": 4290,
+   "price_large": 5190,
+   "sizes_all": {
+    "Lítil": 2590,
+    "Mið.": 4290,
+    "Stór": 5190,
+    "Pan": 5190
+   },
+   "source_url": "https://www.dominos.is/panta/pizzur"
+  }
+ ],
+ "not_found": "Excluded: Veljið sjálf (build-your-own, 2,090/2,990/3,790/3,790), Hvítlauksbrauð (garlic bread listed on the pizza page: Lítil 2,090, Mið. 2,990, Stór 3,790, Pan 3,790), 'Skipta í tvennt' (half/half option), deals/combos (Tilboð page not scraped), sides/chicken/sauces/drinks. English item descriptions not available (English site path not found). Inch sizes not shown. Per-store prices not verifiable without the ordering flow (store/address selection); see price note.",
+ "price_variation_note": "Could not verify whether prices differ by branch: dominos.is shows one price list and store selection happens in the order flow (not used). Wolt (Akureyri) prices are different from the own site (higher), so delivery-platform prices differ from own-site prices.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Domino's Pizza",
+  "description_is": "Domino's Pizza er pizzakeðja á Íslandi með 22 staði samkvæmt dominos.is/stadir, í Reykjavík, Kópavogi, Garðabæ, Hafnarfirði, Mosfellsbæ, Akureyri, Akranesi, Selfossi og Keflavík; pantað er til að sækja eða fá sent heim.",
+  "description_en": "Domino's Pizza is a pizza chain in Iceland with 22 stores listed on dominos.is/stadir, in Reykjavík, Kópavogur, Garðabær, Hafnarfjörður, Mosfellsbær, Akureyri, Akranes, Selfoss and Keflavík; orders are for pickup or delivery.",
+  "address": "Skeifan 17",
+  "postal_code": "108",
+  "city": "Reykjavík",
+  "address_note": "Head-office address not found; main entry = first store listed on dominos.is/stadir (Skeifan 17, Reykjavík).",
+  "location": {
+   "latitude": 64.1297932,
+   "longitude": -21.8711516,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Skeifan+17,+Reykjavik (building, 17 Skeifan 108)"
+  },
+  "phone": "58-12345",
+  "website": "https://www.dominos.is",
+  "opening_hours": {
+   "mán": "11:00-01:00",
+   "þri": "11:00-01:00",
+   "mið": "11:00-01:00",
+   "fim": "11:00-01:00",
+   "fös": "11:00-03:00",
+   "lau": "11:00-03:00",
+   "sun": "11:00-01:00"
+  },
+  "opening_hours_note": "Skeifan 17 store hours (SUN-FIM 11:00-01:00, FÖS-LAU 11:00-03:00); delivery ends earlier (SUN-FIM 00:00, FÖS-LAU 01:00). Other stores differ, see branches.",
+  "opening_hours_source": "https://www.dominos.is/stadir",
+  "features": [
+   "Takeaway",
+   "Delivery"
+  ],
+  "branches": [
+   {
+    "name": "Domino's Skeifan 17",
+    "address": "Skeifan 17",
+    "postal_code": "108",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11:00 - 01:00; HEIMSENT: SUN-FIM TIL 00:00; FÖS - LAU: 11:00 - 03:00; HEIMSENT: FÖS - LAU TIL 01:00"
+   },
+   {
+    "name": "Domino's Garðatorg 7",
+    "address": "Garðatorg 7",
+    "postal_code": "210",
+    "city": "Garðabær",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN-FIM: 16-22; FÖS-LAU: 16-00 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Hjarðarhagi 45",
+    "address": "Hjarðarhagi 45",
+    "postal_code": "107",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 00; FÖS - LAU: 11 - 01"
+   },
+   {
+    "name": "Domino's Spöngin 17",
+    "address": "Spöngin 17",
+    "postal_code": "112",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 00; FÖS - LAU: 11 - 01"
+   },
+   {
+    "name": "Domino's Undirhlíð 2",
+    "address": "Undirhlíð 2",
+    "postal_code": "600",
+    "city": "Akureyri",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 22; FÖS - LAU: 11 - 00 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Nýbýlavegur 14",
+    "address": "Nýbýlavegur 14",
+    "postal_code": "200",
+    "city": "Kópavogur",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 00; FÖS - LAU: 11 - 01"
+   },
+   {
+    "name": "Domino's Lóuhólar 2-6",
+    "address": "Lóuhólar 2-6",
+    "postal_code": "111",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 00; FÖS - LAU: 11 - 01"
+   },
+   {
+    "name": "Domino's Skúlagata 17",
+    "address": "Skúlagata 17",
+    "postal_code": "101",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 00; FÖS - LAU: 11 - 01"
+   },
+   {
+    "name": "Domino's Hafnargata 86",
+    "address": "Hafnargata 86",
+    "postal_code": "230",
+    "city": "Keflavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 00; FÖS - LAU: 11 - 00"
+   },
+   {
+    "name": "Domino's Rjúpnasalir 1",
+    "address": "Rjúpnasalir 1",
+    "postal_code": "201",
+    "city": "Kópavogur",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "ALLA DAGA: 16 - 22 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Smiðjuvellir 32",
+    "address": "Smiðjuvellir 32",
+    "postal_code": "300",
+    "city": "Akranes",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "MÁN-FÖS: 16-22; LAU-SUN: 11-22 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Eyravegur 2",
+    "address": "Eyravegur 2",
+    "postal_code": "800",
+    "city": "Selfoss",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "ALLA DAGA: 11 - 22 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Háholt 14",
+    "address": "Háholt 14",
+    "postal_code": "270",
+    "city": "Mosfellsbær",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 22; FÖS - LAU: 11 - 00 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Hraunbær 121",
+    "address": "Hraunbær 121",
+    "postal_code": "110",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "ALLA DAGA: 11 - 00"
+   },
+   {
+    "name": "Domino's Dalbraut 3",
+    "address": "Dalbraut 3",
+    "postal_code": "105",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "ALLA DAGA: 11 - 22 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Flatahraun 13",
+    "address": "Flatahraun 13",
+    "postal_code": "220",
+    "city": "Hafnarfjörður",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 00; FÖS - LAU: 11 - 01"
+   },
+   {
+    "name": "Domino's Ánanaust 15",
+    "address": "Ánanaust 15",
+    "postal_code": "101",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "ALLA DAGA: 16-22 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Tjarnarvellir 3",
+    "address": "Tjarnarvellir 3",
+    "postal_code": "221",
+    "city": "Hafnarfjörður",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 11 - 22; FÖS - LAU: 11 - 00 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Fitjar 2",
+    "address": "Fitjar 2",
+    "postal_code": "260",
+    "city": "Keflavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "ALLA DAGA: 16 - 22 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Nóatún 17",
+    "address": "Nóatún 17",
+    "postal_code": "105",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN - FIM: 16 - 22; FÖS - LAU: 16 - 00 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Skógarlind 2",
+    "address": "Skógarlind 2",
+    "postal_code": "201",
+    "city": "Kópavogur",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "SUN-FIM: 11-22; FÖS-LAU: 11-00 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   },
+   {
+    "name": "Domino's Norðlingabraut 2",
+    "address": "Norðlingabraut 2",
+    "postal_code": "110",
+    "city": "Reykjavík",
+    "phone": "58-12345 (landsnúmer Domino's, ekkert sérnúmer á stað sýnt)",
+    "opening_hours_note": "ALLA DAGA: 16 - 22 [vefur sýndi 'Lokað' við sókn þ. 2026-10-23 (ekki opið til pöntunar þá stundina)]"
+   }
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1692737580547-b45bb4a02356",
+  "page_url": "https://unsplash.com/photos/a-pepperoni-pizza-sitting-on-top-of-a-wooden-cutting-board-xIqVfW8XUt4",
+  "photographer": "David Foodphototasty (@phototastyfood)",
+  "description": "Whole pepperoni pizza on a wooden board, light background; free Unsplash License; viewed, no logos or faces; not in mockData/recipeData."
+ }
+}

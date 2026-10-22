@@ -1,0 +1,171 @@
+{
+ "slug": "radagerdi",
+ "status": "open",
+ "status_evidence": "radagerdi.is live with current opening hours, Jólaseðill nav item and 2026 menu pages (rendered 2026-10-23); visitreykjavik.is service page; Grapevine Best of Reykjavík 2026 (best family restaurant) and May 2026 pizza-restaurant/wine-bar description per discovery report; Wolt listing is gone ('no longer on Wolt'), so no Wolt delivery",
+ "fetched": "2026-10-22",
+ "sources": [
+  {
+   "url": "https://radagerdi.is/matsedlar",
+   "type": "own_site",
+   "note": "Icelandic dine-in menu, Pizza accordion (content present in page HTML, collapsed in the UI). 11 pizzas. Prices identical to takeaway page https://radagerdi.is/takeaway (which adds '10% afsláttur af öllum sóttum réttum' for pickup; list prices used)."
+  },
+  {
+   "url": "https://radagerdi.is/en-matsedlar",
+   "type": "own_site",
+   "note": "English menu page is STALE (different pizza set and some different prices, e.g. Burrata 3690, Parma 3790, Shrimp 3990); used only for desc_en text of pizzas that clearly match an Icelandic entry by ingredients. Funghi & Feykir absent in English."
+  },
+  {
+   "url": "https://radagerdi.is/takeaway",
+   "type": "own_site",
+   "note": "Takeaway menu with lunch offer 'Pizza af matseðli' 2000 kr take-away only weekdays 11:30-15:30 (not a menu price, excluded)."
+  },
+  {
+   "url": "https://visitreykjavik.is/service/radagerdi",
+   "type": "directory",
+   "note": "Address Grótta, 170 Seltjarnarnes; hours consistent with own site; Italian-inspired menu."
+  }
+ ],
+ "price_basis": "in_house",
+ "size_small_label": null,
+ "size_large_label": null,
+ "items": [
+  {
+   "name": "Margherita",
+   "desc_is": "Tómatar, ferskur mozzarella og fersk basilika",
+   "desc_en": "Tomatoes, fresh mozzarella and fresh basil",
+   "price": 2890,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar"
+  },
+  {
+   "name": "Burrata stracciatella",
+   "desc_is": "Tómatar, hálfþurrkaðir tómatar, burrata stracciatella og jurtaolía",
+   "desc_en": "Tomatoes, semi-dried tomatoes, burrata stracciatella and herb oil",
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar"
+  },
+  {
+   "name": "Perur",
+   "desc_is": "Mascarpone, perur, ferskur mozzarella, gráðaostur, karamellaðar valhnetur og klettasalat",
+   "desc_en": "Mascarpone, pears, fresh mozzarella, blue cheese, caramelized walnuts and arugula",
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar"
+  },
+  {
+   "name": "Funghi & Feykir",
+   "desc_is": "Mascarpone, ferkur mozzarella, enoki sveppir, gremolata, furuhnetur og Feykir ostur.",
+   "desc_en": null,
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar",
+   "note": "Not on the (stale) English menu page, so no desc_en."
+  },
+  {
+   "name": "Truffla & kartöflur",
+   "desc_is": "Mascarpone, ofnbakaðar kartöflur, trufflu aioli, klettasalat og parmesan",
+   "desc_en": "Mascarpone, oven-baked potatoes, truffle aioli, arugula and parmesan",
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar"
+  },
+  {
+   "name": "Pepperóní & chili",
+   "desc_is": "Tómatar, ostur, pepperóní, ferskur chili, döðlur, mascarpone, toppað með chili hunangi",
+   "desc_en": "Tomatoes, cheese, pepperoni, fresh chili, dates and mascarpone, topped with chili honey",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar"
+  },
+  {
+   "name": "Pepperóní & Nduja",
+   "desc_is": "Tómatar, ostur, pepperoni, nduja og gráðaostur.",
+   "desc_en": "Tomatoes, cheese, pepperoni, nduja and blue cheese.",
+   "price": 3890,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar"
+  },
+  {
+   "name": "Parma & klettasalat",
+   "desc_is": "Tómatar, mozzarella, parmaskinka, klettasalat og parmesan",
+   "desc_en": "Tomatoes, mozzarella, prosciutto, arugula and parmesan",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar"
+  },
+  {
+   "name": "Mortadella & pistasíur",
+   "desc_is": "Tómatar, ferskur mozzarella, mortadella, burrata stracciatella, pistasíu pestó og muldar pistasíur.",
+   "desc_en": "Tomatoes, fresh mozzarella, mortadella, burrata stracciatella, pistachio pesto and crushed pistachios.",
+   "price": 3990,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar"
+  },
+  {
+   "name": "Rækjur & Þistilhjörtu",
+   "desc_is": "Mascarpone, ostur, chili marineraðar tígrisrækjur, þistilhjörtu, gremolata og parmesan.",
+   "desc_en": "Mascarpone, cheese, chili-marinated tiger shrimp, artichoke hearts, gremolata and parmesan.",
+   "price": 4090,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar"
+  },
+  {
+   "name": "Hálfmáni",
+   "desc_is": "Tómatar, mozzarella, sveppir, silkiskorin skinka eða pepperóní",
+   "desc_en": "Tomatoes, mozzarella, mushrooms, silky thin-sliced ham or pepperoni",
+   "price": 3790,
+   "price_large": null,
+   "sizes_all": {},
+   "source_url": "https://radagerdi.is/matsedlar",
+   "note": "Half-moon (calzone-style folded pizza); EN page calls it CALZONE. Included as a pizza variant."
+  }
+ ],
+ "not_found": "Pizza size/diameter not stated. 10 of 11 items have English text from the (older) English page; its prices differ, only the Icelandic menu prices are used. Lunch offer (Pizza af matseðli 2000 kr, take-away weekdays 11:30-15:30) excluded as a deal. Kids menu page (barnamatsedill) not checked for pizza.",
+ "diff_vs_current": "new restaurant",
+ "restaurant": {
+  "name": "Ráðagerði Veitingahús",
+  "description_is": "Ráðagerði er veitingastaður í elsta timburhúsi Seltjarnarness við Gróttu. Matseldin er með ítölsku ívafi og á matseðlinum eru eldbakaðar pizzur.",
+  "description_en": "Ráðagerði is a restaurant in the oldest timber house on Seltjarnarnes, by Grótta. The cooking has an Italian influence and the menu includes oven-baked pizzas.",
+  "address": "Ráðagerði, Grótta",
+  "postal_code": "170",
+  "city": "Seltjarnarnes",
+  "location": {
+   "latitude": 64.1611656,
+   "longitude": -22.0087356,
+   "source": "nominatim https://nominatim.openstreetmap.org/search?q=Ráðagerði,+Seltjarnarnes (OSM way 'Ráðagerði', amenity=restaurant)"
+  },
+  "phone": "546 1700",
+  "website": "https://radagerdi.is",
+  "opening_hours": {
+   "mán": "11:30-22:00",
+   "þri": "11:30-22:00",
+   "mið": "11:30-22:00",
+   "fim": "11:30-22:00",
+   "fös": "11:30-23:00",
+   "lau": "11:00-23:00",
+   "sun": "11:00-22:00"
+  },
+  "opening_hours_source": "https://radagerdi.is/ (kitchen closes an hour before closing)",
+  "features": [
+   "Dine-in",
+   "Takeaway"
+  ]
+ },
+ "image_candidate": {
+  "photo_id": "photo-1622880833523-7cf1c0bd4296",
+  "page_url": "https://unsplash.com/photos/pizza-on-brown-wooden-table-vHRFraV4U00",
+  "photographer": "Fabrizio Pullara",
+  "description": "Pizza napoletana with melted cheese and tomato on a peel at the mouth of a wood-fired oven; free Unsplash License (not Unsplash+); viewed, no logos or faces; not used elsewhere."
+ }
+}

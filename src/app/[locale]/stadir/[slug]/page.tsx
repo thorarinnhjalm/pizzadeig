@@ -31,13 +31,20 @@ const SOURCE_LABEL_EN: Record<string, string> = {
   'matseðli staðarins (PDF)': "the restaurant's menu (PDF)",
 };
 
-// Size labels are stored in Icelandic; the English page uses these wordings
-const SIZE_LABEL_EN: Record<string, string> = { 'Lítil': 'Small', 'Miðstærð': 'Medium', 'Stór': 'Large' };
-const sizeLabel = (label: string, isIs: boolean) => (isIs ? label : SIZE_LABEL_EN[label] || label);
+// Size labels are stored in Icelandic; the English page translates the leading size word and keeps the rest
+// ('Lítil', 'Miðstærð 12"', 'Mið.', 'MIÐ (12")', 'STÓR (15")' ...)
+const SIZE_WORD_EN: Record<string, string> = { 'lítil': 'Small', 'miðstærð': 'Medium', 'mið': 'Medium', 'mið.': 'Medium', 'stór': 'Large' };
+const SIZE_LABEL_RE = /^(lítil|miðstærð|mið\.?|stór)(?=$|[\s(])(.*)$/i;
+const sizeLabel = (label: string, isIs: boolean) => {
+  if (isIs) return label;
+  const m = SIZE_LABEL_RE.exec(label);
+  return m ? `${SIZE_WORD_EN[m[1].toLowerCase()]}${m[2]}` : label;
+};
 
 // For restaurants that exist in code, the menu and its source info are code-owned (generated from
 // seo/matsedlar by scripts/build-menu-data.mjs), so both always come from the code together and the
-// source line can never sit above a different (older) Firestore menu.
+// source line can never sit above a different (older) Firestore menu. The list of branches of a chain
+// is code-owned in the same way (it comes from the same collection round), and so is the remark under the opening hours.
 function withMenuSource(restaurant: Restaurant, local: Restaurant | undefined): Restaurant {
   if (!local) return restaurant;
   return {
@@ -46,6 +53,9 @@ function withMenuSource(restaurant: Restaurant, local: Restaurant | undefined): 
     menu_source_label: local.menu_source_label,
     menu_verified_at: local.menu_verified_at,
     menu_price_basis: local.menu_price_basis,
+    branches: local.branches,
+    opening_hours_note_is: local.opening_hours_note_is,
+    opening_hours_note_en: local.opening_hours_note_en,
   };
 }
 
@@ -267,6 +277,39 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
               )}
            </section>
            
+           {restaurant.branches && restaurant.branches.length > 0 && (
+             <section>
+               <h2 className="text-3xl font-bold text-foreground mb-8 border-b pb-4">
+                 {isIslandic ? 'Útibú' : 'Locations'}
+               </h2>
+               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                 {restaurant.branches.map(branch => (
+                   <li key={branch.name} className="bg-card p-5 rounded-2xl border border-border shadow-sm">
+                     <h3 className="font-bold text-foreground mb-2">{branch.name}</h3>
+                     <ul className="space-y-1.5 text-sm text-muted-foreground">
+                       <li className="flex items-start">
+                         <MapPin className="w-4 h-4 text-primary mr-2 shrink-0 mt-0.5" />
+                         <span>{branch.address}, {[branch.postal_code, branch.city].filter(Boolean).join(' ')}</span>
+                       </li>
+                       {branch.phone && (
+                         <li className="flex items-start">
+                           <Phone className="w-4 h-4 text-primary mr-2 shrink-0 mt-0.5" />
+                           <span>{branch.phone}</span>
+                         </li>
+                       )}
+                       {(isIslandic ? branch.opening_hours_note : (branch.opening_hours_note_en || branch.opening_hours_note)) && (
+                         <li className="flex items-start">
+                           <Clock className="w-4 h-4 text-primary mr-2 shrink-0 mt-0.5" />
+                           <span>{isIslandic ? branch.opening_hours_note : (branch.opening_hours_note_en || branch.opening_hours_note)}</span>
+                         </li>
+                       )}
+                     </ul>
+                   </li>
+                 ))}
+               </ul>
+             </section>
+           )}
+
            <section>
               <h2 className="text-3xl font-bold text-foreground mb-8 border-b pb-4">
                  Umsagnir
@@ -312,6 +355,11 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
                         <span className="font-medium">{hours as string}</span>
                       </div>
                     ))}
+                    {(isIslandic ? restaurant.opening_hours_note_is : (restaurant.opening_hours_note_en || restaurant.opening_hours_note_is)) && (
+                      <p className="text-xs italic text-muted-foreground mt-2 max-w-64">
+                        {isIslandic ? restaurant.opening_hours_note_is : (restaurant.opening_hours_note_en || restaurant.opening_hours_note_is)}
+                      </p>
+                    )}
                  </div>
                </li>
              </ul>
