@@ -35,15 +35,30 @@ const SOURCE_LABEL_EN: Record<string, string> = {
 const SIZE_LABEL_EN: Record<string, string> = { 'Lítil': 'Small', 'Miðstærð': 'Medium', 'Stór': 'Large' };
 const sizeLabel = (label: string, isIs: boolean) => (isIs ? label : SIZE_LABEL_EN[label] || label);
 
+// For restaurants that exist in code, the menu and its source info are code-owned (generated from
+// seo/matsedlar by scripts/build-menu-data.mjs), so both always come from the code together and the
+// source line can never sit above a different (older) Firestore menu.
+function withMenuSource(restaurant: Restaurant, local: Restaurant | undefined): Restaurant {
+  if (!local) return restaurant;
+  return {
+    ...restaurant,
+    menu_source_url: local.menu_source_url,
+    menu_source_label: local.menu_source_label,
+    menu_verified_at: local.menu_verified_at,
+    menu_price_basis: local.menu_price_basis,
+  };
+}
+
 async function getRestaurant(slug: string): Promise<Restaurant | null> {
+  const local = mockRestaurants.find(r => r.slug === slug);
   try {
     const q = query(collection(db, 'restaurants'), where('slug', '==', slug), limit(1));
     const snapshot = await getDocs(q);
-    if (!snapshot.empty) return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as Restaurant;
+    if (!snapshot.empty) return withMenuSource({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as Restaurant, local);
   } catch {
     console.warn('Firebase offline fallback active');
   }
-  return mockRestaurants.find(r => r.slug === slug) || null;
+  return local || null;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
@@ -77,27 +92,37 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-async function getMenu(restaurantId: string): Promise<MenuItem[]> {
+async function getMenu(restaurantId: string, slug: string): Promise<MenuItem[]> {
+  const local = mockRestaurants.find(r => r.slug === slug);
+  if (local) {
+    return mockMenuItems
+      .filter(m => m.restaurant_id === local.id)
+      .sort((a, b) => a.sort_order - b.sort_order);
+  }
+  // Restaurants added only in Firestore keep their Firestore menu
   try {
     const q = query(
-      collection(db, 'menu_items'), 
+      collection(db, 'menu_items'),
       where('restaurant_id', '==', restaurantId),
       orderBy('sort_order', 'asc')
     );
     const snapshot = await getDocs(q);
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as MenuItem));
-  } catch {}
-  return mockMenuItems.filter(m => m.restaurant_id === restaurantId);
+  } catch (err) {
+    console.error(`Menu query failed for ${restaurantId}:`, err);
+  }
+  return [];
 }
 
 export default async function RestaurantDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug: rawSlug } = await params;
   const isIslandic = locale === 'is';
   
-  const restaurant = await getRestaurant(decodeSlug(rawSlug));
+  const slug = decodeSlug(rawSlug);
+  const restaurant = await getRestaurant(slug);
   if (!restaurant) notFound();
-  
-  const menuItems = await getMenu(restaurant.id);
+
+  const menuItems = await getMenu(restaurant.id, slug);
 
   const jsonLd = restaurantJsonLd(restaurant, locale, menuItems);
 
