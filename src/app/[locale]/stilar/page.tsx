@@ -32,7 +32,7 @@ export default async function StilarPage({ params }: { params: Promise<{ locale:
         </h1>
         <p className="text-lg text-(--color-text-secondary) max-w-2xl mx-auto leading-relaxed mb-6">
           {isIs
-            ? 'Frá brennheitum viðarofnum í Napólí til rétthyrndra pönnupizza í Detroit. Hér eru fjórir þekktustu pizzustílar heims útskýrðir: hitinn, tíminn, deigið og það sem gerir hvern og einn sérstakan.'
+            ? 'Frá brennheitum viðarofnum Napólí til stálbakkanna í Detroit. Hér eru fjórir þekktustu pizzustílar heims útskýrðir: hitinn, tíminn, deigið og það sem gerir hvern og einn sérstakan.'
             : 'From blazing wood-fired ovens in Naples to rectangular pan pizzas in Detroit. The four best-known pizza styles explained: the heat, the time, the dough and what makes each one special.'}
         </p>
         <div className="w-16 h-1 bg-ring mx-auto rounded-full" />
@@ -54,7 +54,14 @@ export default async function StilarPage({ params }: { params: Promise<{ locale:
                 <div className="w-full lg:w-1/2">
                   <div className="relative aspect-4/3 rounded-3xl overflow-hidden shadow-lg">
                     {style.image_url ? (
-                      <Image src={style.image_url} alt={`${name} pizza`} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+                      <Image
+                        src={style.image_url}
+                        alt={(isIs ? style.image_alt_is : style.image_alt_en) || name}
+                        fill
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="object-cover"
+                        style={style.image_position ? { objectPosition: style.image_position } : undefined}
+                      />
                     ) : (
                       <div className="w-full h-full bg-muted flex items-center justify-center">
                         <span className="text-8xl">{style.emoji}</span>
@@ -89,7 +96,7 @@ export default async function StilarPage({ params }: { params: Promise<{ locale:
                       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">
                         {isIs ? 'Tími' : 'Time'}
                       </p>
-                      <p className="text-xl font-bold text-foreground">{style.bakeTime}</p>
+                      <p className="text-xl font-bold text-foreground">{isIs ? style.bakeTime : style.bakeTime_en}</p>
                     </div>
                     <div className="bg-secondary border border-border rounded-xl p-4 text-center">
                       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">
@@ -116,7 +123,7 @@ export default async function StilarPage({ params }: { params: Promise<{ locale:
                       href={`/uppskriftir/${recipe.slug}`}
                       className="inline-flex items-center gap-2 mt-8 font-semibold text-primary hover:underline"
                     >
-                      {isIs ? `Uppskrift: ${recipe.title_is}` : `Recipe: ${recipe.title_en}`} →
+                      {isIs ? `Uppskrift: ${recipe.title_is}` : `Recipe: ${recipe.title_en}`} <span aria-hidden="true">→</span>
                     </Link>
                   )}
                 </div>
