@@ -202,7 +202,7 @@ export const IS_EN = {
   'spergilkál': 'broccoli',
   'aspas blanda': 'asparagus mix',
   'maís': 'corn',
-  'gular baunir': 'yellow beans',
+  'gular baunir': 'sweetcorn',
   'klettasalat': 'arugula',
   'klettasalati': 'arugula',
   'klettasalat/ruccola': 'arugula',
