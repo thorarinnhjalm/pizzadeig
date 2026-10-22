@@ -113,7 +113,7 @@ Defined in `src/app/globals.css` as CSS custom properties. Use these instead of 
 
 ## Icelandic Route Names
 
-Routes use Icelandic names: `/uppskriftir` (recipes), `/stadir` (restaurants), `/flokkar` (categories), `/topplisti` (top list), `/notandi` (user), `/deigreiknivel` (dough calculator), `/stilar` (styles), `/samfelag` (community), `/um-okkur` (about), `/skilmalar` (terms), `/personuvernd` (privacy), `/tengilidir` (contact).
+Routes use Icelandic names: `/uppskriftir` (recipes), `/stadir` (restaurants), `/flokkar` (categories), `/topplisti` (top list), `/notandi` (user), `/deigreiknivel` (dough calculator), `/stilar` (styles), `/um-okkur` (about), `/skilmalar` (terms), `/personuvernd` (privacy), `/tengilidir` (contact).
 
 ## Prófanir og umhverfi
 
