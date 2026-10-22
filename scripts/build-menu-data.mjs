@@ -1,12 +1,17 @@
 #!/usr/bin/env node
 // Builds the site's menu data from a folder of verified menu JSON files.
 //
-//   node scripts/build-menu-data.mjs seo/matsedlar/<date>/json [--prev <file>] [--dry]
+//   node scripts/build-menu-data.mjs <json-dir> [<json-dir> ...] [--prev <file>] [--dry]
+//   e.g. node scripts/build-menu-data.mjs seo/matsedlar/2026-10-22/json seo/matsedlar/2026-10-23/json
 //
-// Reads    <json-dir>/<restaurant-slug>.json   (one file per restaurant in mockRestaurants)
+// Reads    <json-dir>/<restaurant-slug>.json   (one file per restaurant in mockRestaurants; several dirs = several
+//                                               collection rounds, each restaurant's JSON comes from the one dir that
+//                                               has it - a slug in two dirs stops the build)
 // Writes   src/lib/menuData.ts                 (mockMenuItems, generated - do not edit by hand)
 //          src/lib/mockData.ts                 (only the menu_* source fields on each restaurant)
-//          <json-dir>/../heimildaskra.csv      (source register, UTF-8 with BOM, ';' separated for Icelandic Excel)
+//          <json-dir>/../heimildaskra.csv      (source register, UTF-8 with BOM, ';' separated for Icelandic Excel;
+//                                               one per dir, holding only the restaurants whose JSON is in that dir)
+//          <json-dir>/../thydingar.json        (translations written this run, again one per dir)
 //          seo/matsedlar/retired-ids.json      (ids that were dropped once and must never be reused)
 //
 // --prev <file>  previous menu items, used to keep item ids stable (reviews are keyed by id).
@@ -43,6 +48,10 @@ const PREFIX = {
   'kaffi-krus': 'kk', 'pizza-67-vestmannaeyjar': 'p7', 'hamraborg-isafjordur': 'hb',
   'pizzan-hafnarfjordur': 'ph', 'flatey-pizza-gardabaer': 'fg', 'pizzasmidjan-akureyri': 'psa',
   'islenska-flatbakan': 'ifb', 'greifinn-akureyri': 'greif', 'castello-hafnarfjordur': 'cast',
+  // 2026-10-23 round
+  'devitos-pizza': 'dv', 'shake-and-pizza': 'shk', 'pizza-107': 'p107', 'radagerdi': 'rg',
+  'olverk-pizza-brugghus': 'ov', 'black-crust-pizzeria': 'bc', 'astro-pizza': 'ast', 'sprettur-inn': 'si',
+  'daddis-pizza-myvatn': 'dd', 'dominos': 'dm', 'neo-pizza': 'neo',
 };
 
 // Branch name used to filter Flatey items that carry `only_at`
@@ -51,7 +60,12 @@ const BRANCH = { 'flatey-pizza': 'Grandi', 'flatey-pizza-gardabaer': 'Garðatorg
 // Items that are not on a fixed-price pizza menu. Keyed "<slug>|<source name>".
 const EXCLUDE = {
   'greifinn-akureyri|Hvítlauks Diavolo': 'garlic bread base with toppings (not a pizza)',
+  // October "Ostóber" promotion pizzas on Wolt: limited-time, not part of the standing menu (same call as Ölverk's monthly specials)
+  'shake-and-pizza|Eldóber - Ostóber pizza': 'seasonal Ostóber (October) promotion',
+  'shake-and-pizza|Pestóber - Ostóber pizza': 'seasonal Ostóber (October) promotion',
 };
+// Kids pizzas that do not say so in their name (the JSON describes them as "Barnapizza"). Keyed "<slug>|<source name>".
+const KIDS = new Set(['pizza-107|Baby 107']);
 const EXCLUDE_NAME_RE = /^(veldu|velja|veljið)\s+sjálf|build your own|hvítlauksbrauð|brauðstang|garlic bread|breadstick/i;
 
 // Name corrections: source artifacts and the two names where the source itself gives both languages
@@ -99,18 +113,37 @@ const LABEL_BY_TYPE = {
   wolt: 'Wolt',
 };
 
+// The JSON files of later rounds describe source type and price basis in free text ("Wolt (Icelandic)",
+// "own site (Icelandic pizza menu)", "Wolt delivery prices (own site blocked)"). Normalise to the known values.
+function sourceKind(type) {
+  const t = String(type || '').trim().toLowerCase();
+  if (t.startsWith('wolt')) return 'wolt';
+  if (t.startsWith('own site')) return 'own_site';
+  return t.replace(/\s+/g, '_');
+}
+// -> 'in_house' | 'delivery_platform' | 'mixed' | 'owner_supplied' | 'none'  (anything else stops the build)
+function basisOf(file) {
+  const b = String(file.price_basis || '').trim().toLowerCase();
+  const known = { in_house: 'in_house', delivery_platform: 'delivery_platform', mixed: 'mixed', owner_supplied: 'owner_supplied', none: 'none' };
+  if (known[b]) return known[b];
+  if (b === 'unknown' || (file.held_back === true && !b)) return 'none'; // no prices found anywhere
+  if (b === 'wolt' || b.startsWith('wolt ')) return 'delivery_platform';
+  if (b.startsWith('own site')) return 'in_house';
+  throw new Error(`${file.slug}: cannot read price_basis "${file.price_basis}"; use in_house, delivery_platform, mixed, owner_supplied or none`);
+}
+
 // ─── Small helpers ───────────────────────────────────────────────────────────
 
 const args = process.argv.slice(2);
 const flag = (n) => args.includes(n);
 const opt = (n) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : undefined; };
-const jsonDirArg = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--prev');
-if (!jsonDirArg) {
-  console.error('usage: node scripts/build-menu-data.mjs <json-dir> [--prev <file>] [--dry]');
+const jsonDirArgs = args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--prev');
+if (jsonDirArgs.length === 0) {
+  console.error('usage: node scripts/build-menu-data.mjs <json-dir> [<json-dir> ...] [--prev <file>] [--dry]');
   process.exit(1);
 }
-const JSON_DIR = path.resolve(jsonDirArg);
-const OUT_DIR = path.dirname(JSON_DIR);
+const JSON_DIRS = jsonDirArgs.map((d) => path.resolve(d));
+if (new Set(JSON_DIRS).size !== JSON_DIRS.length) throw new Error('the same json dir was given twice');
 const DRY = flag('--dry');
 
 const readJson = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
@@ -156,11 +189,11 @@ function translatePhrase(src, missing) {
   const key = normPhrase(src);
   if (!key) return src;
   if (IS_EN[key] !== undefined) return withCase(src, IS_EN[key]);
-  if (/\s(og|eða)\s/i.test(src)) {
-    const parts = src.split(/\s+(og|eða)\s+/i);
+  if (/\s(og|eða|&)\s/i.test(src)) {
+    const parts = src.split(/\s+(og|eða|&)\s+/i);
     let out = '';
     for (let i = 0; i < parts.length; i++) {
-      if (i % 2 === 1) out += parts[i].toLowerCase() === 'og' ? ' and ' : ' or ';
+      if (i % 2 === 1) out += parts[i].toLowerCase() === 'eða' ? ' or ' : ' and ';
       else out += translatePhrase(parts[i], missing);
     }
     return out;
@@ -188,15 +221,23 @@ const restaurants = [];
   while ((m = re.exec(region))) restaurants.push({ id: m[1], name: m[2].replace(/\\'/g, "'"), slug: m[3] });
 }
 if (restaurants.length === 0) throw new Error('no restaurants found in mockData.ts');
+// slug -> the json dir that holds its file (a slug may live in exactly one dir)
+const DIR_OF = new Map();
 {
   const slugs = new Set(restaurants.map((r) => r.slug));
-  for (const f of fs.readdirSync(JSON_DIR).filter((n) => n.endsWith('.json'))) {
-    if (!slugs.has(f.slice(0, -5))) throw new Error(`${f}: no restaurant with that slug in mockData.ts`);
+  for (const dir of JSON_DIRS) {
+    for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.json'))) {
+      const slug = f.slice(0, -5);
+      if (!slugs.has(slug)) throw new Error(`${f}: no restaurant with that slug in mockData.ts`);
+      if (DIR_OF.has(slug)) throw new Error(`${slug}.json is in both ${DIR_OF.get(slug)} and ${dir}; a restaurant must come from exactly one dir`);
+      DIR_OF.set(slug, dir);
+    }
   }
   for (const r of restaurants) {
-    if (!fs.existsSync(path.join(JSON_DIR, `${r.slug}.json`))) throw new Error(`missing ${r.slug}.json in ${JSON_DIR}`);
+    if (!DIR_OF.has(r.slug)) throw new Error(`missing ${r.slug}.json in ${JSON_DIRS.join(' and ')}`);
   }
 }
+const jsonOf = (slug) => readJson(path.join(DIR_OF.get(slug), `${slug}.json`));
 
 // ─── Previous ids ────────────────────────────────────────────────────────────
 
@@ -227,7 +268,8 @@ const nextId = (prefix) => `${prefix}-${(numbers[prefix] = (numbers[prefix] || 0
 
 const report = { missing: [], translated: {}, excluded: [], matched: {}, kept: {}, fresh: {}, noteWarnings: [] };
 const out = []; // final MenuItem objects with register info attached under `_reg`
-const registerRows = [];
+const registerRows = []; // [row, slug]
+const addRow = (row, slug) => registerRows.push([row, slug]);
 const restaurantMeta = {};
 
 function sizeLabelsFor(file, it) {
@@ -245,39 +287,40 @@ function sizeLabelsFor(file, it) {
   return { small: label, large: undefined };
 }
 
-function categoryOf(it, name) {
-  if (it.kids === true || /barna|bambini|\bkids\b|krútt/i.test(name)) return 'Barnapizzur';
+function categoryOf(it, name, slug) {
+  if (it.kids === true || KIDS.has(`${slug}|${cleanText(it.name)}`) || /barna|bambini|\bkids\b|krútt/i.test(name)) return 'Barnapizzur';
   if (it.dessert === true || /nutella pizza/i.test(name) || /eftirr[ée]tt/i.test(it.desc_is || '')) return 'Eftirréttapizzur';
   return 'Pizzur';
 }
 
 for (const r of restaurants) {
-  const file = readJson(path.join(JSON_DIR, `${r.slug}.json`));
+  const file = jsonOf(r.slug);
   if (file.slug !== r.slug) throw new Error(`${r.slug}.json has slug "${file.slug}"`);
-  const baseFile = file.same_menu_as ? readJson(path.join(JSON_DIR, `${file.same_menu_as}.json`)) : file;
+  const basis = basisOf(file);
+  const baseFile = file.same_menu_as ? jsonOf(file.same_menu_as) : file;
   const branch = BRANCH[r.slug];
   const sources = (file.sources || []).map((s) => ({ ...s, url: cleanUrl(s.url) }));
   const prefix = PREFIX[r.slug];
   if (!prefix) throw new Error(`no id prefix for ${r.slug}`);
 
   // restaurant-level source info
-  const preferWolt = file.price_basis === 'delivery_platform' || file.price_basis === 'mixed';
-  const main = (preferWolt && sources.find((s) => s.type === 'wolt')) || sources[0];
+  const preferWolt = basis === 'delivery_platform' || basis === 'mixed';
+  const main = (preferWolt && sources.find((s) => sourceKind(s.type) === 'wolt')) || sources[0];
   const held = file.held_back === true; // "held_back": true in the JSON = not published this round
   if (held) {
     restaurantMeta[r.slug] = { held: true };
-  } else if (file.price_basis === 'owner_supplied') {
+  } else if (basis === 'owner_supplied') {
     // menu entered by the site owner: no web source, so no link
     restaurantMeta[r.slug] = { label: 'upplýsingar skráðar af Pizzadeig.is', verified: file.fetched, basis: 'owner_supplied' };
-  } else if (file.price_basis === 'none' || !main) {
+  } else if (basis === 'none' || !main) {
     restaurantMeta[r.slug] = { verified: file.fetched, basis: 'none' };
   } else {
     const isPdf = /\.pdf($|\?)/i.test(main.url);
     restaurantMeta[r.slug] = {
       url: safeHref(main.url),
-      label: isPdf ? LABEL_BY_TYPE.own_site_pdf : LABEL_BY_TYPE[main.type] || 'vef staðarins',
+      label: isPdf ? LABEL_BY_TYPE.own_site_pdf : LABEL_BY_TYPE[sourceKind(main.type)] || 'vef staðarins',
       verified: file.fetched,
-      basis: file.price_basis,
+      basis,
     };
   }
 
@@ -323,7 +366,7 @@ for (const r of restaurants) {
     if (translatedNow) (report.translated[r.slug] ||= []).push({ name: name_is, is, en, dir: ov.desc_is ? 'en>is' : 'is>en' });
 
     const { small, large } = sizeLabelsFor(baseFile, it);
-    built.push({ it, raw, name_is, name_en, is, en, notes, small, large, category: categoryOf(it, name_is) });
+    built.push({ it, raw, name_is, name_en, is, en, notes, small, large, category: categoryOf(it, name_is, r.slug) });
   }
 
   // dominant label of the "price" slot, so only items that differ from the rest get a single-price label
@@ -336,9 +379,17 @@ for (const r of restaurants) {
   const ordered = built.map((b, i) => ({ b, i })).sort((x, y) => rank[x.b.category] - rank[y.b.category] || x.i - y.i).map((x) => x.b);
 
   // ids
+  // Names that differ only in a bracketed part ("Power Pizza" / "Power Pizza (Mozzarella)") share a match key;
+  // for those keys the full lower-case name is used instead, so each pizza keeps its own id.
+  const keyCount = new Map();
+  for (const b of ordered) keyCount.set(matchKey(b.name_is), (keyCount.get(matchKey(b.name_is)) || 0) + 1);
+  const keyFor = (name) => {
+    const k = matchKey(name);
+    return keyCount.get(k) > 1 ? `exact:${name.normalize('NFC').toLowerCase().replace(/\s+/g, ' ').trim()}` : k;
+  };
   const seenKeys = new Map();
   for (const b of ordered) {
-    const k = matchKey(b.name_is);
+    const k = keyFor(b.name_is);
     if (seenKeys.has(k)) throw new Error(`${r.slug}: "${b.name_is}" and "${seenKeys.get(k)}" share the match key "${k}"; add an ID_OVERRIDES entry or fix matchKey`);
     seenKeys.set(k, b.name_is);
   }
@@ -364,8 +415,8 @@ for (const r of restaurants) {
       if (!prev) throw new Error(`${r.slug}|${b.raw}: ID_OVERRIDES id ${b.overrideId} is not in the previous data`);
       b.id = prev.id;
     } else {
-      const key = matchKey(b.name_is);
-      prev = prevHere.find((p) => !usedPrev.has(p.id) && !reserved.has(p.id) && matchKey(p.name_is) === key);
+      const key = keyFor(b.name_is);
+      prev = prevHere.find((p) => !usedPrev.has(p.id) && !reserved.has(p.id) && keyFor(p.name_is) === key);
       b.id = prev ? prev.id : nextId(prefix);
     }
     claim(b.id);
@@ -398,9 +449,9 @@ for (const r of restaurants) {
     out.push(item);
 
     // register row
-    const owner = file.price_basis === 'owner_supplied';
+    const owner = basis === 'owner_supplied';
     const srcUrl = owner ? '' : /^https?:\/\//.test(cleanUrl(it.source_url)) ? cleanUrl(it.source_url) : (sources[0] || {}).url || '';
-    const srcType = owner ? 'owner_supplied' : (sources.find((s) => s.url === srcUrl) || sources[0] || {}).type || '';
+    const srcType = owner ? 'owner_supplied' : sourceKind((sources.find((s) => s.url === srcUrl) || sources[0] || {}).type);
     const notes = [...b.notes];
     if (it.note) notes.unshift(cleanText(it.note));
     if (it.promo_price != null) notes.push(`tilboðsverð á vef ${it.promo_price} kr., skráð er almennt verð`);
@@ -412,17 +463,21 @@ for (const r of restaurants) {
     if (b.keptNameEn) notes.push(`enskt heiti úr fyrri skráningu: ${b.name_en}`);
     if (b.name_is !== b.raw && !NAME_FIXES[`${r.slug}|${b.raw}`]?.name_en) notes.push(`heiti í heimild: ${b.raw}`);
     if (file.register_note) notes.push(file.register_note);
+    // free-text price basis (later rounds) and the researcher's remark on price differences stay visible in the register
+    const rawBasis = String(file.price_basis || '').trim();
+    if (!['in_house', 'delivery_platform', 'mixed', 'owner_supplied', 'none', 'wolt', 'unknown', ''].includes(rawBasis.toLowerCase())) notes.push(`verðgrunnur í heimild: ${cleanText(rawBasis)}`);
+    if (file.price_variation_note) notes.push(cleanText(file.price_variation_note));
     if (baseFile !== file) notes.push(`sami matseðill og ${baseFile.slug}`);
-    registerRows.push([
+    addRow([
       r.name, r.slug, b.name_is, it.price, it.price_large ?? '',
       Object.entries(it.sizes_all || {}).map(([k, v]) => `${k}: ${v}`).join('; '),
-      srcUrl, srcType, it.price_basis_item || (file.price_basis === 'mixed' ? 'in_house' : file.price_basis), file.fetched, notes.join(' | '),
-    ]);
+      srcUrl, srcType, it.price_basis_item || (basis === 'mixed' ? 'in_house' : basis), file.fetched, notes.join(' | '),
+    ], r.slug);
   }
   if (held) {
-    registerRows.push([r.name, r.slug, '', '', '', '', '', '', '', file.fetched, cleanText(file.register_note || file.held_back_reason)]);
+    addRow([r.name, r.slug, '', '', '', '', '', '', '', file.fetched, cleanText(file.register_note || file.held_back_reason)], r.slug);
   } else if (!(baseFile.items || []).length) {
-    registerRows.push([r.name, r.slug, '', '', '', '', '', '', file.price_basis, file.fetched, cleanText(file.not_found)]);
+    addRow([r.name, r.slug, '', '', '', '', '', '', basis, file.fetched, cleanText(file.not_found)], r.slug);
   }
 }
 
@@ -491,7 +546,9 @@ const newMock = updateRestaurants(mockText);
 
 const csvHeader = ['stadur', 'slug', 'rettur', 'verd', 'verd_stor', 'staerdir', 'heimild_url', 'heimild_tegund', 'verd_grunnur', 'sott_dags', 'athugasemd'];
 const csvCell = (v) => { const s = String(v ?? ''); return /[;",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
-const csv = '﻿' + [csvHeader, ...registerRows].map((row) => row.map(csvCell).join(';')).join('\r\n') + '\r\n';
+// One register per json dir (= per collection round), holding only the restaurants whose JSON sits in that dir,
+// so an older round's register and its date stay as they were collected.
+const csvFor = (dir) => '﻿' + [csvHeader, ...registerRows.filter(([, slug]) => DIR_OF.get(slug) === dir).map(([row]) => row)].map((row) => row.map(csvCell).join(';')).join('\r\n') + '\r\n';
 
 // ─── Retired ids ─────────────────────────────────────────────────────────────
 
@@ -500,7 +557,7 @@ const retired = [...new Set([...retiredIds, ...prevItems.map((i) => i.id)])].fil
 
 // ─── Report + write ──────────────────────────────────────────────────────────
 
-console.log(`restaurants: ${restaurants.length}, items: ${out.length}, register rows: ${registerRows.length}`);
+console.log(`restaurants: ${restaurants.length}, items: ${out.length}, register rows: ${registerRows.length}, json dirs: ${JSON_DIRS.length}`);
 for (const r of restaurants) {
   const m = report.matched[r.slug];
   const n = out.filter((i) => i.restaurant_id === r.id).length;
@@ -511,8 +568,12 @@ console.log('excluded:\n  ' + report.excluded.join('\n  '));
 if (DRY) { console.log('(dry run, nothing written)'); process.exit(0); }
 fs.writeFileSync(MENU_DATA, ts);
 fs.writeFileSync(MOCK_DATA, newMock);
-fs.writeFileSync(path.join(OUT_DIR, 'heimildaskra.csv'), csv);
+for (const dir of JSON_DIRS) {
+  const outDir = path.dirname(dir);
+  fs.writeFileSync(path.join(outDir, 'heimildaskra.csv'), csvFor(dir));
+  const translated = Object.fromEntries(Object.entries(report.translated).filter(([slug]) => DIR_OF.get(slug) === dir));
+  fs.writeFileSync(path.join(outDir, 'thydingar.json'), JSON.stringify(translated, null, 2) + '\n');
+}
 fs.mkdirSync(path.dirname(RETIRED), { recursive: true });
 fs.writeFileSync(RETIRED, JSON.stringify({ note: 'Item ids that were dropped from the menus. Never reuse them.', retired }, null, 2) + '\n');
-fs.writeFileSync(path.join(OUT_DIR, 'thydingar.json'), JSON.stringify(report.translated, null, 2) + '\n');
 console.log('written: src/lib/menuData.ts, src/lib/mockData.ts (menu_* fields), heimildaskra.csv, retired-ids.json, thydingar.json');
