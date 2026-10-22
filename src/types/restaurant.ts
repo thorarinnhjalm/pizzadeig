@@ -33,7 +33,7 @@ export interface Restaurant {
   menu_source_url?: string;
   menu_source_label?: string;
   menu_verified_at?: string; // ISO date, e.g. '2026-10-22'
-  menu_price_basis?: 'in_house' | 'delivery_platform' | 'mixed' | 'none';
+  menu_price_basis?: 'in_house' | 'delivery_platform' | 'mixed' | 'owner_supplied' | 'none';
   created_at: Timestamp;
   updated_at: Timestamp;
 }

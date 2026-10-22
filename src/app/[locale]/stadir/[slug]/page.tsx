@@ -155,7 +155,12 @@ export default async function RestaurantDetailPage({ params }: { params: Promise
               </h2>
               {menuItems.length > 0 ? (
                 <div className="text-sm text-(--color-text-tertiary) mb-8 -mt-4 space-y-1">
-                  {restaurant.menu_source_label && restaurant.menu_verified_at ? (
+                  {restaurant.menu_price_basis === 'owner_supplied' && restaurant.menu_verified_at ? (
+                    <p>
+                      {isIslandic ? 'Matseðill skráður af Pizzadeig.is ' : 'Menu recorded by Pizzadeig.is on '}
+                      {formatMenuDate(restaurant.menu_verified_at, isIslandic)}
+                    </p>
+                  ) : restaurant.menu_source_label && restaurant.menu_verified_at ? (
                     <p>
                       {isIslandic ? 'Matseðill sóttur af ' : 'Menu taken from '}
                       {restaurant.menu_source_url ? (

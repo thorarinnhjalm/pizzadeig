@@ -14,6 +14,7 @@
 //                Default: src/lib/menuData.ts.
 // --dry          print the report only, write nothing.
 //
+// Owner-supplied menus: a JSON with price_basis 'owner_supplied', optional `id` per item (pins the id), `register_note`.
 // The output is deterministic: same JSON + same previous ids => byte-identical files.
 // Prices come only from the JSON. The only text written here is the translations in
 // scripts/menu-translations.mjs; a source phrase without a translation stops the build.
@@ -234,7 +235,10 @@ for (const r of restaurants) {
   // restaurant-level source info
   const preferWolt = file.price_basis === 'delivery_platform' || file.price_basis === 'mixed';
   const main = (preferWolt && sources.find((s) => s.type === 'wolt')) || sources[0];
-  if (file.price_basis === 'none' || !main) {
+  if (file.price_basis === 'owner_supplied') {
+    // menu entered by the site owner: no web source, so no link
+    restaurantMeta[r.slug] = { label: 'upplýsingar skráðar af Pizzadeig.is', verified: file.fetched, basis: 'owner_supplied' };
+  } else if (file.price_basis === 'none' || !main) {
     restaurantMeta[r.slug] = { verified: file.fetched, basis: 'none' };
   } else {
     const isPdf = /\.pdf($|\?)/i.test(main.url);
@@ -303,6 +307,15 @@ for (const r of restaurants) {
   // ids
   ordered.forEach((b, idx) => {
     const key = matchKey(b.name_is);
+    if (b.it.id) { // id pinned in the JSON (owner-supplied menus)
+      const pinned = prevHere.find((p) => p.id === b.it.id);
+      if (pinned) { usedPrev.add(pinned.id); (report.kept[r.slug] ||= []).push(pinned.id); }
+      else (report.fresh[r.slug] ||= []).push(b.it.id);
+      noteId(b.it.id);
+      b.id = b.it.id;
+      b.sort_order = idx + 1;
+      return;
+    }
     let prev = prevHere.find((p) => !usedPrev.has(p.id) && matchKey(p.name_is) === key);
     if (!prev && ID_ALIASES[`${r.slug}|${b.raw}`]) {
       prev = prevHere.find((p) => !usedPrev.has(p.id) && p.id === ID_ALIASES[`${r.slug}|${b.raw}`]);
@@ -332,8 +345,9 @@ for (const r of restaurants) {
     out.push(item);
 
     // register row
-    const srcUrl = /^https?:\/\//.test(cleanUrl(it.source_url)) ? cleanUrl(it.source_url) : (sources[0] || {}).url || '';
-    const srcType = (sources.find((s) => s.url === srcUrl) || sources[0] || {}).type || '';
+    const owner = file.price_basis === 'owner_supplied';
+    const srcUrl = owner ? '' : /^https?:\/\//.test(cleanUrl(it.source_url)) ? cleanUrl(it.source_url) : (sources[0] || {}).url || '';
+    const srcType = owner ? 'owner_supplied' : (sources.find((s) => s.url === srcUrl) || sources[0] || {}).type || '';
     const notes = [...b.notes];
     if (it.note) notes.unshift(cleanText(it.note));
     if (it.promo_price != null) notes.push(`tilboðsverð á vef ${it.promo_price} kr., skráð er almennt verð`);
@@ -343,6 +357,7 @@ for (const r of restaurants) {
     if (it.sizes_discounted_50pct_shown) notes.push(`50% afsláttarverð á vef (ekki notað): ${Object.entries(it.sizes_discounted_50pct_shown).map(([k, v]) => `${k} ${v}`).join('; ')}`);
     if (b.category !== 'Pizzur') notes.push(`flokkur: ${b.category}`);
     if (b.name_is !== b.raw && !NAME_FIXES[`${r.slug}|${b.raw}`]?.name_en) notes.push(`heiti í heimild: ${b.raw}`);
+    if (file.register_note) notes.push(file.register_note);
     if (baseFile !== file) notes.push(`sami matseðill og ${baseFile.slug}`);
     registerRows.push([
       r.name, r.slug, b.name_is, it.price, it.price_large ?? '',
@@ -395,7 +410,8 @@ function updateRestaurants(text) {
     if (at < 0) throw new Error(`price_level line not found for ${r.slug}`);
     const m = restaurantMeta[r.slug];
     const add = [];
-    if (m.url) { add.push(`    menu_source_url: ${q(m.url)},`); add.push(`    menu_source_label: ${q(m.label)},`); }
+    if (m.url) add.push(`    menu_source_url: ${q(m.url)},`);
+    if (m.label) add.push(`    menu_source_label: ${q(m.label)},`);
     add.push(`    menu_verified_at: ${q(m.verified)},`);
     add.push(`    menu_price_basis: ${q(m.basis)},`);
     lines.splice(at + 1, 0, ...add);

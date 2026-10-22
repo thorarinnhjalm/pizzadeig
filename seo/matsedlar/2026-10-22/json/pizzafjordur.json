@@ -1,34 +1,298 @@
 {
- "slug": "pizzafjordur",
- "status": "unknown",
- "status_evidence": "Evidence for closure: Wanderlog https://wanderlog.com/place/details/6027521/pizzafjörður (rendered in browser) shows \"Permanently Closed ... Pizza Takeout ... Closed\" (aggregator, likely derived from Google). Evidence against/neutral: ja.is https://ja.is/?q=Pizzafj%C3%B6r%C3%B0ur still lists \"Pizzafjörður ehf, Strandgötu 25, 735 Eskifirði, veitingastaður\" (directory lists may lag). Google Maps and Facebook not reachable without login; Bing/DDG returned no results. No local news found.",
- "fetched": "2026-10-22",
- "sources": [
-  {
-   "url": "https://wanderlog.com/place/details/6027521/pizzafjörður",
-   "type": "other",
-   "note": "\"Permanently Closed\" badge"
+  "slug": "pizzafjordur",
+  "status": "unknown",
+  "status_evidence": "Evidence for closure: Wanderlog https://wanderlog.com/place/details/6027521/pizzafjörður (rendered in browser) shows \"Permanently Closed ... Pizza Takeout ... Closed\" (aggregator, likely derived from Google). Evidence against/neutral: ja.is https://ja.is/?q=Pizzafj%C3%B6r%C3%B0ur still lists \"Pizzafjörður ehf, Strandgötu 25, 735 Eskifirði, veitingastaður\" (directory lists may lag). Google Maps and Facebook not reachable without login; Bing/DDG returned no results. No local news found.",
+  "fetched": "2026-07-08",
+  "web_checked": "2026-10-22",
+  "owner_supplied_note": "Menu entered by the site owner (git commit 74226d4, 2026-07-08, prices for the 12\" size and the 16\" size). Kept as entered; web research on 2026-10-22 found no menu source and could not confirm whether the restaurant is open, so it must not be overwritten from web data. Items keep their original ids (pinned via `id`). Breads (pf-b1..pf-b3) are not pizzas and are not carried over.",
+  "register_note": "Staða staðarins óstaðfest: Wanderlog segir varanlega lokað, ja.is listar enn",
+  "sources": [
+    {
+      "url": "https://wanderlog.com/place/details/6027521/pizzafjörður",
+      "type": "other",
+      "note": "\"Permanently Closed\" badge"
+    },
+    {
+      "url": "https://ja.is/?q=Pizzafj%C3%B6r%C3%B0ur",
+      "type": "other",
+      "note": "directory entry exists"
+    },
+    {
+      "url": "https://www.facebook.com/pizzafjordur",
+      "type": "facebook",
+      "note": "login wall"
+    }
+  ],
+  "price_basis": "owner_supplied",
+  "size_small_label": "12\"",
+  "size_large_label": "16\"",
+  "contact": {
+    "phone": "+354 475 0500 (earlier agent, Wanderlog)",
+    "address": "Strandgata 25, 735 Eskifjörður",
+    "hours_verbatim": null
   },
-  {
-   "url": "https://ja.is/?q=Pizzafj%C3%B6r%C3%B0ur",
-   "type": "other",
-   "note": "directory entry exists"
-  },
-  {
-   "url": "https://www.facebook.com/pizzafjordur",
-   "type": "facebook",
-   "note": "login wall"
-  }
- ],
- "price_basis": "none",
- "size_small_label": null,
- "size_large_label": null,
- "contact": {
-  "phone": "+354 475 0500 (earlier agent, Wanderlog)",
-  "address": "Strandgata 25, 735 Eskifjörður",
-  "hours_verbatim": null
- },
- "items": [],
- "not_found": "No menu source reachable (no website). Closure not confirmed beyond one aggregator badge; the user-provided owner menu update should not be overwritten from web data.",
- "diff_vs_current": ""
+  "items": [
+    {
+      "id": "pf-1",
+      "name": "Pizza Margarita",
+      "name_en": "Pizza Margarita",
+      "desc_is": "Pizzusósa, ostur, óreganó",
+      "desc_en": "Pizza sauce, cheese, oregano",
+      "price": 1750,
+      "price_large": 2000,
+      "sizes_all": {
+        "12\"": 1750,
+        "16\"": 2000
+      }
+    },
+    {
+      "id": "pf-2",
+      "name": "Pepperoni Special",
+      "name_en": "Pepperoni Special",
+      "desc_is": "Pepperóní, ananas, laukur",
+      "desc_en": "Pepperoni, pineapple, onions",
+      "price": 2550,
+      "price_large": 3300,
+      "sizes_all": {
+        "12\"": 2550,
+        "16\"": 3300
+      }
+    },
+    {
+      "id": "pf-3",
+      "name": "Ostapizza Prinsessunar",
+      "name_en": "Princess Cheese Pizza",
+      "desc_is": "Ostur, rjómaostur, parmesan, camembert, mexíkóostur",
+      "desc_en": "Cheese, cream cheese, parmesan, camembert, mexican cheese",
+      "price": 3200,
+      "price_large": 3700,
+      "sizes_all": {
+        "12\"": 3200,
+        "16\"": 3700
+      }
+    },
+    {
+      "id": "pf-4",
+      "name": "Pizza Combat",
+      "name_en": "Pizza Combat",
+      "desc_is": "Skinka, ananas, laukur, sveppir, paprika, beikon",
+      "desc_en": "Ham, pineapple, onions, mushroom, bell pepper, bacon",
+      "price": 3500,
+      "price_large": 4300,
+      "sizes_all": {
+        "12\"": 3500,
+        "16\"": 4300
+      }
+    },
+    {
+      "id": "pf-5",
+      "name": "Pizza Napoli",
+      "name_en": "Pizza Napoli",
+      "desc_is": "Skinka, sveppir, paprika, hvítlaukur",
+      "desc_en": "Ham, mushroom, bell pepper, garlic",
+      "price": 2950,
+      "price_large": 3500,
+      "sizes_all": {
+        "12\"": 2950,
+        "16\"": 3500
+      }
+    },
+    {
+      "id": "pf-6",
+      "name": "Veislan",
+      "name_en": "The Feast",
+      "desc_is": "Skinka, pepperóní, sveppir, svartar ólífur, hvítlaukur, grænn pipar, parmesan",
+      "desc_en": "Ham, pepperoni, mushroom, black olives, garlic, green peppercorn, parmesan",
+      "price": 3450,
+      "price_large": 4350,
+      "sizes_all": {
+        "12\"": 3450,
+        "16\"": 4350
+      }
+    },
+    {
+      "id": "pf-7",
+      "name": "Víkin",
+      "name_en": "Víkin",
+      "desc_is": "Skinka, ananas, sveppir",
+      "desc_en": "Ham, pineapple, mushroom",
+      "price": 2750,
+      "price_large": 3400,
+      "sizes_all": {
+        "12\"": 2750,
+        "16\"": 3400
+      }
+    },
+    {
+      "id": "pf-8",
+      "name": "Skarðið",
+      "name_en": "Skarðið",
+      "desc_is": "Mest selda pizzan — pepperóní, sveppir, beikon, rjómaostur",
+      "desc_en": "Best seller — pepperoni, mushroom, bacon, cream cheese",
+      "price": 3100,
+      "price_large": 3850,
+      "sizes_all": {
+        "12\"": 3100,
+        "16\"": 3850
+      }
+    },
+    {
+      "id": "pf-9",
+      "name": "Pizza hafsins",
+      "name_en": "Pizza of the Sea",
+      "desc_is": "Túnfiskur, rækjur, hvítlaukur, óreganó, parmesan",
+      "desc_en": "Tuna, shrimp, garlic, oregano, parmesan",
+      "price": 2950,
+      "price_large": 3550,
+      "sizes_all": {
+        "12\"": 2950,
+        "16\"": 3550
+      }
+    },
+    {
+      "id": "pf-10",
+      "name": "Sveitin",
+      "name_en": "The Countryside",
+      "desc_is": "Nautahakk, kjúklingur, beikon",
+      "desc_en": "Beef, chicken, bacon",
+      "price": 2800,
+      "price_large": 3600,
+      "sizes_all": {
+        "12\"": 2800,
+        "16\"": 3600
+      }
+    },
+    {
+      "id": "pf-11",
+      "name": "Basic",
+      "name_en": "Basic",
+      "desc_is": "Skinka, pepperóní, rjómaostur",
+      "desc_en": "Ham, pepperoni, cream cheese",
+      "price": 2750,
+      "price_large": 3400,
+      "sizes_all": {
+        "12\"": 2750,
+        "16\"": 3400
+      }
+    },
+    {
+      "id": "pf-12",
+      "name": "BBQ Pizza",
+      "name_en": "BBQ Pizza",
+      "desc_is": "BBQ sósa, ostur, nautahakk, beikon, laukur",
+      "desc_en": "BBQ sauce, cheese, beef, bacon, onion",
+      "price": 2750,
+      "price_large": 3400,
+      "sizes_all": {
+        "12\"": 2750,
+        "16\"": 3400
+      }
+    },
+    {
+      "id": "pf-13",
+      "name": "Nýpan Special",
+      "name_en": "Nýpan Special",
+      "desc_is": "Pepperóní, jalapeno, rjómaostur, ananas, svartar ólífur, hvítlaukur, óreganó, sveppir",
+      "desc_en": "Pepperoni, jalapeno, cream cheese, pineapple, black olives, garlic, oregano, mushroom",
+      "price": 3500,
+      "price_large": 4750,
+      "sizes_all": {
+        "12\"": 3500,
+        "16\"": 4750
+      }
+    },
+    {
+      "id": "pf-14",
+      "name": "Nýpan Classic",
+      "name_en": "Nýpan Classic",
+      "desc_is": "Skinka, pepperóní, beikon, paprika, laukur, sveppir, rjómaostur, gráðostur",
+      "desc_en": "Ham, pepperoni, bacon, bell pepper, onions, mushroom, cream cheese, blue cheese",
+      "price": 3750,
+      "price_large": 4800,
+      "sizes_all": {
+        "12\"": 3750,
+        "16\"": 4800
+      }
+    },
+    {
+      "id": "pf-15",
+      "name": "Pollo",
+      "name_en": "Pollo",
+      "desc_is": "Kjúklingur, tómatar, rauðlaukur",
+      "desc_en": "Chicken, tomato, red onion",
+      "price": 2550,
+      "price_large": 3300,
+      "sizes_all": {
+        "12\"": 2550,
+        "16\"": 3300
+      }
+    },
+    {
+      "id": "pf-16",
+      "name": "Meistarinn",
+      "name_en": "The Master",
+      "desc_is": "Pepperóní, skinka, beikon, ananas, jalapeno, hvítlaukur, svartur pipar, laukur, sveppir",
+      "desc_en": "Pepperoni, ham, bacon, pineapple, jalapeno, garlic, black pepper, onion, mushroom",
+      "price": 3750,
+      "price_large": 4800,
+      "sizes_all": {
+        "12\"": 3750,
+        "16\"": 4800
+      }
+    },
+    {
+      "id": "pf-17",
+      "name": "Kjúklinga loco",
+      "name_en": "Chicken Loco",
+      "desc_is": "Kjúklingur, salthnetur, sveppir",
+      "desc_en": "Chicken, salted nuts, mushroom",
+      "price": 2650,
+      "price_large": 3250,
+      "sizes_all": {
+        "12\"": 2650,
+        "16\"": 3250
+      }
+    },
+    {
+      "id": "pf-18",
+      "name": "Fernan",
+      "name_en": "Fernan",
+      "desc_is": "Skinka, paprika, sveppir, ananas",
+      "desc_en": "Ham, bell pepper, mushroom, pineapple",
+      "price": 2950,
+      "price_large": 3750,
+      "sizes_all": {
+        "12\"": 2950,
+        "16\"": 3750
+      }
+    },
+    {
+      "id": "pf-19",
+      "name": "Húsdýragarðurinn",
+      "name_en": "The Petting Zoo",
+      "desc_is": "Nautahakk, beikon, egg, svartur pipar",
+      "desc_en": "Ground beef, bacon, egg, black pepper",
+      "price": 2650,
+      "price_large": 3350,
+      "sizes_all": {
+        "12\"": 2650,
+        "16\"": 3350
+      }
+    },
+    {
+      "id": "pf-20",
+      "name": "Daredevil",
+      "name_en": "Daredevil",
+      "desc_is": "Pepperóní, chili, jalapeno, svartur pipar",
+      "desc_en": "Pepperoni, chili, jalapeno, black pepper",
+      "price": 2500,
+      "price_large": 3050,
+      "sizes_all": {
+        "12\"": 2500,
+        "16\"": 3050
+      }
+    }
+  ],
+  "not_found": "No menu source reachable (no website). Closure not confirmed beyond one aggregator badge; the user-provided owner menu update should not be overwritten from web data.",
+  "diff_vs_current": "Restored on request: pf-1..pf-20 exactly as in git 3ab9d4b (ids, names, prices, sizes, descriptions)."
 }

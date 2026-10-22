@@ -107,13 +107,13 @@
     {
       "name": "A - MARGARITA",
       "is": "Eldofnssósa - ostur - oregano",
-      "en": "Eldofn sauce - cheese - oregano",
+      "en": "Eldofninn sauce - cheese - oregano",
       "dir": "is>en"
     },
     {
       "name": "A1 - MARGARITA SPECIAL",
       "is": "Eldofnssósa - mozzarella sneiðar - ferskt basil - ólífuolía",
-      "en": "Eldofn sauce - mozzarella slices - fresh basil - olive oil",
+      "en": "Eldofninn sauce - mozzarella slices - fresh basil - olive oil",
       "dir": "is>en"
     },
     {
@@ -197,7 +197,7 @@
     {
       "name": "J - CALZONE",
       "is": "Ostur - skinka - sveppir - sósa Auka sósa fylgir með",
-      "en": "Cheese - ham - mushrooms - sauce, extra sauce included",
+      "en": "Cheese - ham - mushrooms - sauce, extra sauce on the side",
       "dir": "is>en"
     },
     {
@@ -221,7 +221,7 @@
     {
       "name": "O - OSTAVEISLA",
       "is": "Ostur - rjómaostur - piparostur - gráðaostur Sulta fylgir með",
-      "en": "Cheese - cream cheese - pepper cheese - blue cheese, jam included",
+      "en": "Cheese - cream cheese - pepper cheese - blue cheese, served with jam",
       "dir": "is>en"
     },
     {
@@ -239,7 +239,7 @@
     {
       "name": "S - SALAT PIZZA - FERSK",
       "is": "Ostur - klettasalat/ruccola - rauðlaukur - paprika - bl. ólífur - ferskur rifinn parmesan - eldofnsolía í boxi",
-      "en": "Cheese - arugula - red onion - bell pepper - mixed olives - freshly grated Parmesan - Eldofn oil in a box",
+      "en": "Cheese - arugula - red onion - bell pepper - mixed olives - freshly grated Parmesan - Eldofninn oil in a container",
       "dir": "is>en"
     },
     {
@@ -281,7 +281,7 @@
     {
       "name": "NS - NONNI SPES",
       "is": "Lítil sósa - eldofnsolía - ostur - skorið pepperoni - pipar- og rjómaostur - bl. ólífur - hvítlaukur - laukur - döðlur - sv. pipar",
-      "en": "A little sauce - Eldofn oil - cheese - sliced pepperoni - pepper cheese and cream cheese - mixed olives - garlic - onion - dates - black pepper",
+      "en": "A little sauce - Eldofninn oil - cheese - sliced pepperoni - pepper cheese and cream cheese - mixed olives - garlic - onion - dates - black pepper",
       "dir": "is>en"
     },
     {
@@ -417,7 +417,7 @@
     {
       "name": "Geiteyjarströnd",
       "is": "Flatbaka með taðreyktum silung ásamt pikkluðum skarlottulauk, piparrótarsósu, soðnu eggi, grænu pestó, dill og fersku salati.",
-      "en": "Flatbread with dung-smoked trout, pickled shallots, horseradish sauce, boiled egg, green pesto, dill and fresh salad.",
+      "en": "Flatbread with traditionally smoked (taðreyktur) trout, pickled shallots, horseradish sauce, boiled egg, green pesto, dill and fresh salad.",
       "dir": "is>en"
     },
     {
@@ -705,7 +705,7 @@
     {
       "name": "12. Laxakvísl",
       "is": "Glósteinssósa, Ostur, Pepperoni, Nautahakk, Beikonkurl, Sultaður Rauðlaukur.",
-      "en": "Glósteinn sauce, Cheese, Pepperoni, Ground beef, Bacon bits, Candied red onion.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Ground beef, Bacon bits, Red onion jam.",
       "dir": "is>en"
     },
     {
@@ -729,7 +729,7 @@
     {
       "name": "16. Móvað",
       "is": "Glósteinssósa, Ostur, Pepperoni, Jalapeno, Sultaður Rauðlaukur, Piparostur, Svartur Pipar.",
-      "en": "Glósteinn sauce, Cheese, Pepperoni, Jalapeño, Candied red onion, Pepper cheese, Black pepper.",
+      "en": "Glósteinn sauce, Cheese, Pepperoni, Jalapeño, Red onion jam, Pepper cheese, Black pepper.",
       "dir": "is>en"
     },
     {
@@ -777,7 +777,7 @@
     {
       "name": "24. Brautarás",
       "is": "Glósteinssósa, Vegan ostur, Sveppir, Döðlur, Sultaður rauðlaukur, Pistasíur, Hvítlauksolía, Sjávarsalt.",
-      "en": "Glósteinn sauce, Vegan cheese, Mushrooms, Dates, Candied red onion, Pistachios, Garlic oil, Sea salt.",
+      "en": "Glósteinn sauce, Vegan cheese, Mushrooms, Dates, Red onion jam, Pistachios, Garlic oil, Sea salt.",
       "dir": "is>en"
     },
     {
@@ -1395,7 +1395,7 @@
     {
       "name": "Fjögurra Osta",
       "is": "Pizza Sósa, Ostur, Parmesan, Gráðostur, Piparostur. Sulta Fylgir.",
-      "en": "Pizza sauce, Cheese, Parmesan, Blue cheese, Pepper cheese. Jam included.",
+      "en": "Pizza sauce, Cheese, Parmesan, Blue cheese, Pepper cheese. Served with jam.",
       "dir": "is>en"
     },
     {
@@ -1409,7 +1409,7 @@
     {
       "name": "Með allt á hreinu",
       "is": "Sósa, ostur, hreindýrahakk, sultaður rauðlaukur, ferskostur, furuhnetur og steinselja.",
-      "en": "Sauce, cheese, minced reindeer, candied red onion, fresh cheese, pine nuts and parsley.",
+      "en": "Sauce, cheese, ground reindeer, red onion jam, fresh cheese, pine nuts and parsley.",
       "dir": "is>en"
     },
     {
