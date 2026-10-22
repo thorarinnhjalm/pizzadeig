@@ -1,34 +1,312 @@
 {
- "slug": "pizza-67-vestmannaeyjar",
- "status": "unknown",
- "status_evidence": "No own site/ordering page found. Wanderlog https://wanderlog.com/place/details/2738869/pizza-67 (rendered in browser): \"Pizza restaurant Open now 17:00-21:00 ... Heidharvegur 5, 900 Vestmannaeyjabaer\" (aggregator; ja.is https://ja.is/?q=Pizza+67 lists \"Pizza 67, Heiðarvegi 5, 900 Vestmannaeyjum, veitingastaður\"). Facebook page needs login.",
- "fetched": "2026-10-22",
- "sources": [
-  {
-   "url": "https://wanderlog.com/place/details/2738869/pizza-67",
-   "type": "other",
-   "note": "listing, no menu"
+  "slug": "pizza-67-vestmannaeyjar",
+  "status": "open",
+  "status_evidence": "Eigandi vefsins lagði fram mynd af matseðli staðarins 22. okt. 2026. Eldri athugun: No own site/ordering page found. Wanderlog https://wanderlog.com/place/details/2738869/pizza-67 (rendered in browser): \"Pizza restaurant Open now 17:00-21:00 ... Heidharvegur 5, 900 Vestmannaeyjabaer\" (aggregator; ja.is https://ja.is/?q=Pizza+67 lists \"Pizza 67, Heiðarvegi 5, 900 Vestmannaeyjum, veitingastaður\"). Facebook page needs login.",
+  "fetched": "2026-10-22",
+  "sources": [
+    {
+      "url": "https://wanderlog.com/place/details/2738869/pizza-67",
+      "type": "other",
+      "note": "listing, no menu"
+    },
+    {
+      "url": "https://ja.is/?q=Pizza+67",
+      "type": "other",
+      "note": "directory entry, address only"
+    },
+    {
+      "url": "https://www.facebook.com/Pizza-67-Vestmannaeyjum-47632321266/",
+      "type": "facebook",
+      "note": "login wall in headless browser"
+    }
+  ],
+  "price_basis": "owner_supplied",
+  "size_small_label": "12\"",
+  "size_large_label": "16\"",
+  "contact": {
+    "phone": "481 1567 (earlier agent, from aggregators; not re-verified)",
+    "address": "Heiðarvegur 5, 900 Vestmannaeyjar",
+    "hours_verbatim": "Wanderlog: Open now 17:00-21:00"
   },
-  {
-   "url": "https://ja.is/?q=Pizza+67",
-   "type": "other",
-   "note": "directory entry, address only"
-  },
-  {
-   "url": "https://www.facebook.com/Pizza-67-Vestmannaeyjum-47632321266/",
-   "type": "facebook",
-   "note": "login wall in headless browser"
-  }
- ],
- "price_basis": "none",
- "size_small_label": null,
- "size_large_label": null,
- "contact": {
-  "phone": "481 1567 (earlier agent, from aggregators; not re-verified)",
-  "address": "Heiðarvegur 5, 900 Vestmannaeyjar",
-  "hours_verbatim": "Wanderlog: Open now 17:00-21:00"
- },
- "items": [],
- "not_found": "No menu or prices found anywhere reachable: no website, Facebook login-walled, no Wolt/Aha listing found (Wolt search page renders nothing).",
- "diff_vs_current": "mock has 3 items; verified 0. Price changes: none. Not on source (mock-only): Sjóarinn (3490); Eyjasérréttur (3290); Margherita (2790). New on source: none."
+  "items": [
+    {
+      "name": "MARGARITA",
+      "desc_is": "Ostur sósa oregano",
+      "desc_en": "Cheese, sauce, oregano",
+      "price": 2690,
+      "price_large": 3190,
+      "sizes_all": {
+        "9\"": 1790,
+        "12\"": 2690,
+        "16\"": 3190
+      }
+    },
+    {
+      "name": "CASANOVA",
+      "desc_is": "Skinka, pepperoni, paprika og ananas",
+      "desc_en": "Ham, pepperoni, sweet pepper, pineapple",
+      "price": 3690,
+      "price_large": 4790,
+      "sizes_all": {
+        "9\"": 2790,
+        "12\"": 3690,
+        "16\"": 4790
+      }
+    },
+    {
+      "name": "SUPREME",
+      "desc_is": "Pepperoni, skinka, nautahakk, sveppir, laukur, paprika, ananas",
+      "desc_en": "Pepperoni, ham, ground beef, mushrooms, onion, sweet pepper, pineapple",
+      "price": 4590,
+      "price_large": 5990,
+      "sizes_all": {
+        "9\"": 3390,
+        "12\"": 4590,
+        "16\"": 5990
+      }
+    },
+    {
+      "name": "BBQ",
+      "desc_is": "Kjúklingur, sveppir, piparostur, beikon, bbq sósa",
+      "desc_en": "Chicken, mushroom, pepper cheese, bacon, bbq sauce",
+      "price": 4090,
+      "price_large": 5290,
+      "sizes_all": {
+        "9\"": 3090,
+        "12\"": 4090,
+        "16\"": 5290
+      }
+    },
+    {
+      "name": "FIMMAN",
+      "desc_is": "Skinka, Pepperoni, sveppir, rjómaostur, jalapeno",
+      "desc_en": "Ham, pepperoni, mushroom, cream cheese, jalapeno",
+      "price": 4090,
+      "price_large": 5290,
+      "sizes_all": {
+        "9\"": 3090,
+        "12\"": 4090,
+        "16\"": 5290
+      }
+    },
+    {
+      "name": "OSTAVEISLA",
+      "desc_is": "Gouda, piparostur, gráðostur, cheddar borið fram með rifsberjahlaupi",
+      "desc_en": "Gouda, pepper cheese, blue cheese, cheddar, comes with jam",
+      "price": 4190,
+      "price_large": 5390,
+      "sizes_all": {
+        "9\"": 3190,
+        "12\"": 4190,
+        "16\"": 5390
+      }
+    },
+    {
+      "name": "CRAZY DATES",
+      "desc_is": "Pepperoni, beikonkurl, rjómaostur, döðlur og rauðlaukur",
+      "desc_en": "Pepperoni, ground bacon, cream cheese, dates and red onion",
+      "price": 4090,
+      "price_large": 5290,
+      "sizes_all": {
+        "9\"": 3090,
+        "12\"": 4090,
+        "16\"": 5290
+      }
+    },
+    {
+      "name": "HUMARPIZZA",
+      "desc_is": "Humar, Laukur, hvítlaukur og piparostur",
+      "desc_en": "Lobster, onion, garlic, pepper cheese.",
+      "price": 3990,
+      "price_large": 5090,
+      "sizes_all": {
+        "9\"": 2890,
+        "12\"": 3990,
+        "16\"": 5090
+      }
+    },
+    {
+      "name": "ROLLING STONES",
+      "desc_is": "Pepperoni, Skinka, hakk",
+      "desc_en": "Pepperoni, ham, ground beef",
+      "price": 3590,
+      "price_large": 4590,
+      "sizes_all": {
+        "9\"": 2690,
+        "12\"": 3590,
+        "16\"": 4590
+      }
+    },
+    {
+      "name": "BEEF & BERNAISE",
+      "desc_is": "Bernaise í botninn, hakk, rauðlaukur, paprika, sveppir, piparostur, svartur pipar",
+      "desc_en": "Bernaise on the bottom, ground beef, red onion, sweet pepper, mushroom, pepper cheese, black pepper",
+      "price": 4090,
+      "price_large": 5290,
+      "sizes_all": {
+        "9\"": 3090,
+        "12\"": 4090,
+        "16\"": 5290
+      }
+    },
+    {
+      "name": "SGT PEPPERS",
+      "desc_is": "Pepperoni, sveppir, laukur, ferskur chilli, svartur pipar.",
+      "desc_en": "Pepperoni, mushrooms, onion, fresh chilli, black pepper",
+      "price": 3490,
+      "price_large": 4390,
+      "sizes_all": {
+        "9\"": 2590,
+        "12\"": 3490,
+        "16\"": 4390
+      }
+    },
+    {
+      "name": "TNT SPICY!",
+      "desc_is": "Pepperoni, Sveppir, ananas, ferskur chilli, jalapeno, tabasco, sterkur pipar.",
+      "desc_en": "Pepperoni, mushrooms, pineapple, fresh chili, jalapeno, tabasco, strong spices",
+      "price": 3990,
+      "price_large": 5190,
+      "sizes_all": {
+        "9\"": 2890,
+        "12\"": 3990,
+        "16\"": 5190
+      }
+    },
+    {
+      "name": "PEPPERONI 67",
+      "desc_is": "Extra Pepperoni, extra ostur og chilli krydd",
+      "desc_en": "Extra Pepperoni, extra cheese, chili spice",
+      "price": 3590,
+      "price_large": 4790,
+      "sizes_all": {
+        "9\"": 2690,
+        "12\"": 3590,
+        "16\"": 4790
+      }
+    },
+    {
+      "name": "KJÖTVEISLA",
+      "desc_is": "Pepperoni, skinka, nautahakk, beikon, chilli krydd",
+      "desc_en": "Pepperoni, ham, ground beef, bacon, chili spice",
+      "price": 4090,
+      "price_large": 5290,
+      "sizes_all": {
+        "9\"": 2990,
+        "12\"": 4090,
+        "16\"": 5290
+      }
+    },
+    {
+      "name": "SENDILLINN",
+      "desc_is": "Skinka, kjúklingur, nautahakk, beikon, sveppir, piparostur smurt með sérstakri smjörolíu",
+      "desc_en": "Ham, chicken, ground beef, bacon, mushrooms, pepper cheese, butter oil",
+      "price": 4490,
+      "price_large": 5990,
+      "sizes_all": {
+        "9\"": 3390,
+        "12\"": 4490,
+        "16\"": 5990
+      }
+    },
+    {
+      "name": "GRÆNMETISPIZZA",
+      "desc_is": "Sveppir, laukur, paprika, olífur, hvítlaukur, oregano",
+      "desc_en": "Mushrooms, onion, sweet pepper, olives, garlic, oregano",
+      "price": 3690,
+      "price_large": 4890,
+      "sizes_all": {
+        "9\"": 2790,
+        "12\"": 3690,
+        "16\"": 4890
+      }
+    },
+    {
+      "name": "CRAZY BANANAS",
+      "desc_is": "Pepperoni, bananar",
+      "desc_en": "Pepperoni, banana",
+      "price": 3090,
+      "price_large": 3990,
+      "sizes_all": {
+        "9\"": 2290,
+        "12\"": 3090,
+        "16\"": 3990
+      }
+    },
+    {
+      "name": "MEAT & CHEESE",
+      "desc_is": "Pepperoni, beikonkurl, piparostur, rjómaostur og svartur pipar",
+      "desc_en": "Pepperoni, ground bacon, pepper cheese, cream cheese, black pepper",
+      "price": 4090,
+      "price_large": 5290,
+      "sizes_all": {
+        "9\"": 2990,
+        "12\"": 4090,
+        "16\"": 5290
+      }
+    },
+    {
+      "name": "HAWAII",
+      "desc_is": "Skinka og ananas",
+      "desc_en": "Ham and pineapple",
+      "price": 3090,
+      "price_large": 3990,
+      "sizes_all": {
+        "9\"": 2290,
+        "12\"": 3090,
+        "16\"": 3990
+      }
+    },
+    {
+      "name": "ROTTERDAM",
+      "desc_is": "Pepperoni, Skinka, laukur og piparostur",
+      "desc_en": "Pepperoni, ham, onion, pepper cheese",
+      "price": 3890,
+      "price_large": 4990,
+      "sizes_all": {
+        "9\"": 2890,
+        "12\"": 3890,
+        "16\"": 4990
+      }
+    },
+    {
+      "name": "FLOWER POWER",
+      "desc_is": "pepperoni, ananas, chillikrydd",
+      "desc_en": "Pepperoni, pineapple, chili spice",
+      "price": 3090,
+      "price_large": 3990,
+      "sizes_all": {
+        "9\"": 2290,
+        "12\"": 3090,
+        "16\"": 3990
+      }
+    },
+    {
+      "name": "STEBBINN",
+      "desc_is": "Hvítlaukssósa í botn, hakk, ananas, rjómaostur",
+      "desc_en": "Garlic sauce, ground beef, pineapple, cream cheese",
+      "price": 3590,
+      "price_large": 4690,
+      "sizes_all": {
+        "9\"": 2690,
+        "12\"": 3590,
+        "16\"": 4690
+      }
+    },
+    {
+      "name": "VEGANERO",
+      "desc_is": "Oumph, paprika, rauðlaukur, döðlur, veganostur",
+      "desc_en": "Oumph, sweet pepper, red onion, dates, vegan cheese",
+      "price": 3790,
+      "price_large": 4890,
+      "sizes_all": {
+        "9\"": 2790,
+        "12\"": 3790,
+        "16\"": 4890
+      }
+    }
+  ],
+  "not_found": "Enginn matseðill á netinu; matseðillinn kemur frá eiganda vefsins.",
+  "diff_vs_current": "mock has 3 items; verified 0. Price changes: none. Not on source (mock-only): Sjóarinn (3490); Eyjasérréttur (3290); Margherita (2790). New on source: none.",
+  "owner_supplied_note": "Matseðill af mynd sem eigandi vefsins sendi 22. okt. 2026 (9\"/12\"/16\", íslenskar og enskar lýsingar). Skráður orðrétt af myndinni; price = 12\", price_large = 16\", 9\" í sizes_all."
 }
