@@ -136,10 +136,15 @@ export function RestaurantsSearchContent({ restaurants }: Props) {
           <h1 className="font-display text-4xl md:text-5xl font-bold text-(--color-text-primary) mb-3">
             {isIs ? '🍕 Pizzustaðir á Íslandi' : '🍕 Pizza Places in Iceland'}
           </h1>
-          <p className="text-lg text-(--color-text-secondary) italic max-w-2xl lg:mb-8 mb-6">
+          <p className="text-lg text-(--color-text-secondary) italic max-w-2xl mb-3">
             {isIs
               ? 'Handvaldar pizzeríur á Íslandi, metnar af samfélaginu. Finndu þinn næsta uppáhalds stað.'
               : "Curated pizzerias across Iceland, rated by the community. Find your next favorite spot."}
+          </p>
+          <p className="text-sm font-semibold lg:mb-8 mb-6">
+            <Link href="/pizzuverd" className="text-(--color-brand) hover:text-(--color-brand-light) underline-offset-2 hover:underline">
+              {isIs ? 'Sjá pizzuverð á Íslandi →' : 'See pizza prices in Iceland →'}
+            </Link>
           </p>
 
           <div className="flex flex-col md:flex-row gap-3 items-center">

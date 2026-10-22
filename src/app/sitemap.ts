@@ -30,6 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/uppskriftir', changeFrequency: 'daily' as const, priority: 0.95 },
     { path: '/stadir', changeFrequency: 'weekly' as const, priority: 0.9 },
     { path: '/stilar', changeFrequency: 'monthly' as const, priority: 0.85 },
+    { path: '/pizzuverd', changeFrequency: 'monthly' as const, priority: 0.8 },
     { path: '/deigreiknivel', changeFrequency: 'monthly' as const, priority: 0.85 },
     { path: '/topplisti', changeFrequency: 'weekly' as const, priority: 0.8 },
     { path: '/um-okkur', changeFrequency: 'monthly' as const, priority: 0.5 },
