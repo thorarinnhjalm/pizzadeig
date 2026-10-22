@@ -35,15 +35,29 @@ const SOURCE_LABEL_EN: Record<string, string> = {
 const SIZE_LABEL_EN: Record<string, string> = { 'Lítil': 'Small', 'Miðstærð': 'Medium', 'Stór': 'Large' };
 const sizeLabel = (label: string, isIs: boolean) => (isIs ? label : SIZE_LABEL_EN[label] || label);
 
+// Menu source info is code-owned (generated from seo/matsedlar by scripts/build-menu-data.mjs),
+// so it always comes from the code, whatever the Firestore document holds.
+function withMenuSource(restaurant: Restaurant, local: Restaurant | undefined): Restaurant {
+  if (!local) return restaurant;
+  return {
+    ...restaurant,
+    menu_source_url: local.menu_source_url,
+    menu_source_label: local.menu_source_label,
+    menu_verified_at: local.menu_verified_at,
+    menu_price_basis: local.menu_price_basis,
+  };
+}
+
 async function getRestaurant(slug: string): Promise<Restaurant | null> {
+  const local = mockRestaurants.find(r => r.slug === slug);
   try {
     const q = query(collection(db, 'restaurants'), where('slug', '==', slug), limit(1));
     const snapshot = await getDocs(q);
-    if (!snapshot.empty) return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as Restaurant;
+    if (!snapshot.empty) return withMenuSource({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as Restaurant, local);
   } catch {
     console.warn('Firebase offline fallback active');
   }
-  return mockRestaurants.find(r => r.slug === slug) || null;
+  return local || null;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
