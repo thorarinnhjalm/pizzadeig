@@ -38,6 +38,12 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
       </div>
 
       <div className="container mx-auto px-4 max-w-3xl mt-12 prose prose-lg text-(--color-text-secondary)">
+        <p>
+          {isIs
+            ? 'Ábyrgðaraðili: Neðri Hóll Hugmyndahús, sem rekur Pizzadeig.is og ber ábyrgð á vinnslu persónuupplýsinga á vefnum. Fyrirspurnir sendist á thorarinnhjalmarsson@gmail.com.'
+            : 'Pizzadeig.is is run by Neðri Hóll Hugmyndahús, which is responsible for the processing of personal data on the site. Questions can be sent to thorarinnhjalmarsson@gmail.com.'}
+        </p>
+
         <h2 className="text-xl font-bold text-(--color-text-primary)">
           {isIs ? '1. Hvaða gögn söfnum við?' : '1. What data do we collect?'}
         </h2>
