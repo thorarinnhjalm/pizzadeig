@@ -22,7 +22,7 @@ No test framework is configured.
 - **Tailwind CSS v4** (via `@tailwindcss/postcss`), **shadcn/ui** (Base UI React)
 - **next-intl** for bilingual i18n (`is` / `en`, default `is`)
 - **Firebase**: Firestore (database `pizzadeig`), Auth (Google Sign-in), Cloud Storage
-- **Google Maps** (`@vis.gl/react-google-maps`), **lucide-react** icons, **Resend** for email
+- **Google Maps** (`@vis.gl/react-google-maps`) and **lucide-react** icons
 
 ## Path Alias
 

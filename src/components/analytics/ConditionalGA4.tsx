@@ -1,13 +1,15 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import {
+  deleteAnalyticsCookies,
   getCookieConsent,
   getServerCookieConsent,
   setCookieConsent,
   subscribeCookieConsent,
+  takeFocusRequest,
 } from '@/lib/cookieConsent';
 
 /**
@@ -17,10 +19,25 @@ import {
 export function ConditionalGA4({ gaId, locale }: { gaId: string; locale: 'is' | 'en' }) {
   const pathname = usePathname();
   const consent = useSyncExternalStore(subscribeCookieConsent, getCookieConsent, getServerCookieConsent);
+  const isAdmin = !!pathname?.includes('/admin');
+  const firstButton = useRef<HTMLButtonElement>(null);
   const isIs = locale === 'is';
 
-  // Don't track admin pages
-  if (pathname?.includes('/admin')) {
+  // Unmounting <GoogleAnalytics> does not unload gtag, so a script that is already on the page is
+  // switched off with Google's opt-out flag whenever tracking is not allowed (withdrawn choice,
+  // another tab declining, admin pages) and switched back on after a new yes.
+  useEffect(() => {
+    if (consent === 'unknown') return;
+    (window as unknown as Record<string, boolean>)[`ga-disable-${gaId}`] = consent !== 'granted' || isAdmin;
+    if (consent === 'denied') deleteAnalyticsCookies();
+  }, [consent, gaId, isAdmin]);
+
+  // When the banner is reopened from the privacy page, move focus to it
+  useEffect(() => {
+    if (consent === 'unset' && takeFocusRequest()) firstButton.current?.focus();
+  }, [consent]);
+
+  if (isAdmin) {
     return null;
   }
 
@@ -33,12 +50,14 @@ export function ConditionalGA4({ gaId, locale }: { gaId: string; locale: 'is' | 
     return null;
   }
 
+  const button =
+    'flex-1 rounded-xl bg-(--color-text-primary) px-4 py-2 text-sm font-semibold text-(--color-bg-primary) hover:opacity-90';
+
   return (
-    <div
-      role="dialog"
-      aria-live="polite"
+    <section
       aria-label={isIs ? 'Vefkökur' : 'Cookies'}
-      className="fixed bottom-4 left-4 right-4 md:right-auto md:left-6 md:w-96 z-60 bg-(--color-bg-primary) border border-(--color-border) rounded-2xl p-4 shadow-2xl"
+      // On phones the sticky ad bar (Footer, ~117px) sits at the bottom, so the banner goes above it
+      className="fixed left-4 right-4 bottom-[calc(124px+env(safe-area-inset-bottom))] md:bottom-4 md:right-auto md:left-6 md:w-96 z-60 bg-(--color-bg-primary) border border-(--color-border) rounded-2xl p-4 shadow-2xl"
     >
       <p className="text-sm text-(--color-text-primary) leading-relaxed">
         {isIs
@@ -49,21 +68,13 @@ export function ConditionalGA4({ gaId, locale }: { gaId: string; locale: 'is' | 
         </a>
       </p>
       <div className="flex gap-3 mt-3">
-        <button
-          type="button"
-          onClick={() => setCookieConsent('denied', gaId)}
-          className="flex-1 rounded-xl border border-(--color-border) px-4 py-2 text-sm font-semibold text-(--color-text-primary) hover:bg-(--color-bg-secondary)"
-        >
+        <button ref={firstButton} type="button" onClick={() => setCookieConsent('denied')} className={button}>
           {isIs ? 'Hafna' : 'Decline'}
         </button>
-        <button
-          type="button"
-          onClick={() => setCookieConsent('granted', gaId)}
-          className="flex-1 rounded-xl bg-(--color-brand) px-4 py-2 text-sm font-semibold text-white hover:bg-(--color-brand-light)"
-        >
+        <button type="button" onClick={() => setCookieConsent('granted')} className={button}>
           {isIs ? 'Samþykkja' : 'Accept'}
         </button>
       </div>
-    </div>
+    </section>
   );
 }

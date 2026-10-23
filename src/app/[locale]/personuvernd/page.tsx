@@ -61,8 +61,8 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
         </h2>
         <p>
           {isIs
-            ? 'Við notum Firebase (Google) fyrir auðkenningu og gagnagrunn, Vercel til hýsingar og Google Analytics til vefmælinga (aðeins ef þú samþykkir). Auglýsingar á vefnum eru birtar í gegnum Birting án persónusniðinnar miðunar. Netföng sem skráð voru á póstlista vefsins áður eru geymd hjá Resend; þú getur beðið um að þeim sé eytt (sjá 4. lið).'
-            : 'We use Firebase (Google) for authentication and database, Vercel for hosting and Google Analytics for site statistics (only if you accept). Ads on the site are served through Birtingur without personalised targeting. Email addresses that were signed up to the site\'s mailing list earlier are stored with Resend; you can ask for them to be deleted (see section 4).'}
+            ? 'Við notum Firebase (Google) fyrir innskráningu og gagnagrunn, Vercel til hýsingar, Google Maps fyrir kort á síðum pizzustaða og Google Analytics til vefmælinga (aðeins ef þú samþykkir). Google Analytics og Google Maps eru þjónusta Google, og gögn geta farið til Bandaríkjanna. Auglýsingar eru sóttar frá Birtingi. Við biðjum um auglýsingar án persónusniðinnar miðunar og sendum Birtingi engar persónuupplýsingar, en Birtingur fær IP-tölu og vafraupplýsingar þegar auglýsing er sótt og birting talin. Netföng sem skráð voru á póstlista vefsins áður eru geymd hjá Resend; þú getur beðið um að þeim sé eytt (sjá 4. lið).'
+            : 'We use Firebase (Google) for sign-in and database, Vercel for hosting, Google Maps for maps on restaurant pages and Google Analytics for site statistics (only if you accept). Google Analytics and Google Maps are Google services, and data may be transferred to the United States. Ads are fetched from Birtingur. We request ads without personalised targeting and send Birtingur no personal data, but Birtingur receives your IP address and browser information when an ad is fetched and an impression is counted. Email addresses that were signed up to the site\'s mailing list earlier are stored with Resend; you can ask for them to be deleted (see section 4).'}
         </p>
 
         <h2 className="text-xl font-bold text-(--color-text-primary)">
@@ -70,17 +70,17 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
         </h2>
         <p>
           {isIs
-            ? 'Þú getur hvenær sem er óskað eftir að fá upplýsingar um þau gögn sem við höfum um þig, eða beðið um að þeim sé eytt. Hafðu samband á thorarinnhjalmarsson@gmail.com.'
-            : 'You may at any time request information about the data we hold about you, or request its deletion. Contact thorarinnhjalmarsson@gmail.com.'}
+            ? 'Þú getur hvenær sem er óskað eftir að fá upplýsingar um þau gögn sem við höfum um þig, eða beðið um að þeim sé eytt. Hafðu samband á thorarinnhjalmarsson@gmail.com. Þú getur líka sent kvörtun til Persónuverndar (personuvernd.is).'
+            : 'You may at any time request information about the data we hold about you, or request its deletion. Contact thorarinnhjalmarsson@gmail.com. You can also complain to the Icelandic Data Protection Authority, Persónuvernd (personuvernd.is).'}
         </p>
 
         <h2 className="text-xl font-bold text-(--color-text-primary)">
-          {isIs ? '5. Fótspor (Cookies)' : '5. Cookies'}
+          {isIs ? '5. Vefkökur' : '5. Cookies'}
         </h2>
         <p>
           {isIs
-            ? 'Vefurinn notar nauðsynlegar vefkökur til innskráningar og til að muna tungumálaval þitt. Google Analytics setur vefkökur (_ga) aðeins ef þú samþykkir þær í borðanum sem birtist við fyrstu heimsókn. Ef þú hafnar eru engar mælingarvefkökur settar. Val þitt er geymt í vafranum þínum.'
-            : 'The site uses essential cookies for sign-in and to remember your language. Google Analytics sets cookies (_ga) only if you accept them in the banner shown on your first visit. If you decline, no analytics cookies are set. Your choice is stored in your browser.'}
+            ? 'Vefurinn notar eina nauðsynlega vefköku til að muna tungumálaval þitt. Innskráning er geymd í vafranum þínum, ekki í vefköku. Google Analytics setur vefkökur (_ga) aðeins ef þú samþykkir þær í borðanum sem birtist þar til þú hefur valið, og grundvöllur þeirrar vinnslu er samþykki þitt. Ef þú hafnar setur Google Analytics engar vefkökur. Val þitt er geymt í vafranum þínum og þú getur breytt því hvenær sem er.'
+            : 'The site uses one essential cookie to remember your language. Sign-in is stored in your browser, not in a cookie. Google Analytics sets cookies (_ga) only if you accept them in the banner, which is shown until you choose; the basis for that processing is your consent. If you decline, Google Analytics sets no cookies. Your choice is stored in your browser and you can change it at any time.'}
         </p>
         <p>
           <CookieSettingsButton locale={isIs ? 'is' : 'en'} />

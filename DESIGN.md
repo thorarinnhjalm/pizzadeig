@@ -77,7 +77,7 @@ hreins stafræns viðmóts. Ljósir, hlýir litir sem minna á 00-mjöl og baka�
 ### Opinberar síður
 | Slóð | Nafn | Lykileiningar |
 |---|---|---|
-| `/` | Forsíða | Hero, RecipeCard×3, AdSlot×3, NewsletterForm |
+| `/` | Forsíða | Hero, RecipeCard×3, AdSlot×3 |
 | `/uppskriftir` | Uppskriftir | CategoryFilter, RecipeGrid, RecipeCard |
 | `/uppskriftir/[slug]` | Uppskriftasíða | IngredientList, StepByStep, GuidedBake, Reviews |
 | `/uppskriftir/ny` | Ný uppskrift | RecipeForm |

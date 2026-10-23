@@ -112,6 +112,8 @@ service firebase.storage {
 
 ## 4. Resend (Fréttabréf)
 
+_Úrelt (október 2026): fréttabréfið var tekið af vefnum og vefurinn notar ekki Resend lengur. Netföng sem skráðust áður eru enn í Resend-áskrifendalistanum þar til honum er eytt._
+
 - [ ] Skrá þig á [resend.com](https://resend.com)
 - [ ] **API Keys** → Create API Key → afrita í `RESEND_API_KEY`
 - [ ] **Audiences** → Create Audience → "Pizzadeig áskrifendur" → afrita ID í `RESEND_AUDIENCE_ID` 
@@ -191,7 +193,6 @@ firebase deploy --only functions
 - [ ] Opna síðuna á vafra → Athuga forsíðu, uppskriftir, staði
 - [ ] Prófa innskráningu (Email + Google)
 - [ ] Prófa leit
-- [ ] Prófa fréttabréfsskráningu
 - [ ] Skoða á síma (responsive)
 - [ ] Athuga 404 síðu (fara á `/ekkert`)
 - [ ] Keyra `npm run build` til að athuga villur
@@ -215,7 +216,6 @@ firebase deploy --only functions
 | **Firebase Auth** | Innskráning | Ókeypis (< 50k notendur) |
 | **Firestore** | Gagnagrunnur | Ókeypis (< 50k reads/dag) |
 | **Firebase Storage** | Myndageymslur | Ókeypis (< 5GB) |
-| **Resend** | Fréttabréf | Ókeypis (< 3k emails/mán) |
 | **Google Maps** | Kort + staðsetning | Ókeypis ($200/mán inneign) |
 | **Leit** | Innbyggð | Ókeypis (engin þriðji aðili) |
 | **ISNIC** | .is lén | ~3.000 kr/ár |

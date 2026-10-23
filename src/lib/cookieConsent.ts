@@ -5,13 +5,15 @@ export type CookieConsent = 'granted' | 'denied' | 'unset' | 'unknown';
 const STORAGE_KEY = 'pd-cookie-consent';
 const CHANGE_EVENT = 'pd-cookie-consent-change';
 
-// Fallback when localStorage is blocked, so a click still holds for this page view
+// Fallback when localStorage cannot be written, so a click still holds for this page view
 let memoryChoice: 'granted' | 'denied' | null = null;
+// Set when the banner is reopened from the privacy page, so it can take focus
+let focusRequested = false;
 
 export function getCookieConsent(): CookieConsent {
   try {
     const value = window.localStorage.getItem(STORAGE_KEY);
-    return value === 'granted' || value === 'denied' ? value : 'unset';
+    return value === 'granted' || value === 'denied' ? value : (memoryChoice ?? 'unset');
   } catch {
     return memoryChoice ?? 'unset';
   }
@@ -31,11 +33,11 @@ export function subscribeCookieConsent(onChange: () => void): () => void {
 }
 
 // Removes the GA cookies (_ga, _ga_<id>) from this host and the parent domain
-function deleteAnalyticsCookies() {
+export function deleteAnalyticsCookies() {
   const names = document.cookie
     .split(';')
     .map((c) => c.split('=')[0].trim())
-    .filter((name) => name === '_ga' || name.startsWith('_ga_') || name === '_gid');
+    .filter((name) => name === '_ga' || name.startsWith('_ga_'));
   const host = window.location.hostname;
   const domains = ['', host, `.${host.replace(/^www\./, '')}`];
   for (const name of names) {
@@ -45,28 +47,31 @@ function deleteAnalyticsCookies() {
   }
 }
 
-export function setCookieConsent(value: 'granted' | 'denied', gaId?: string) {
+export function setCookieConsent(value: 'granted' | 'denied') {
   memoryChoice = value;
   try {
     window.localStorage.setItem(STORAGE_KEY, value);
   } catch {
     // Storage blocked: memoryChoice keeps it for this page view
   }
-  if (value === 'denied') {
-    // Stop a GA script that is already loaded on this page, then clear its cookies
-    if (gaId) (window as unknown as Record<string, boolean>)[`ga-disable-${gaId}`] = true;
-    deleteAnalyticsCookies();
-  }
   window.dispatchEvent(new Event(CHANGE_EVENT));
 }
 
-/** Forget the choice so the banner asks again (link on the privacy page). */
+/** Forget the choice so the banner asks again (button on the privacy page). */
 export function resetCookieConsent() {
   memoryChoice = null;
+  focusRequested = true;
   try {
     window.localStorage.removeItem(STORAGE_KEY);
   } catch {
     // nothing stored
   }
   window.dispatchEvent(new Event(CHANGE_EVENT));
+}
+
+/** True once after resetCookieConsent(); the banner uses it to move focus to itself. */
+export function takeFocusRequest(): boolean {
+  const requested = focusRequested;
+  focusRequested = false;
+  return requested;
 }
