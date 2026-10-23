@@ -45,6 +45,7 @@ export function Footer() {
                 <li><Link href="/flokkar/sosur" className="hover:text-amber-500 transition-colors">Sósur</Link></li>
                 <li><Link href="/flokkar/ostur" className="hover:text-amber-500 transition-colors">Ostur</Link></li>
                 <li><Link href="/topplisti" className="hover:text-amber-500 transition-colors">Topplisti</Link></li>
+                <li><Link href="/pizzuverd" className="hover:text-amber-500 transition-colors">{t('pizza_prices')}</Link></li>
               </ul>
             </div>
             
