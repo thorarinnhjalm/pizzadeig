@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { localeAlternates } from '@/lib/seo';
 import { Shield } from 'lucide-react';
+import { CookieSettingsButton } from '@/components/analytics/CookieSettingsButton';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -31,7 +32,7 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
             {isIs ? 'Persónuverndarstefna' : 'Privacy Policy'}
           </h1>
           <p className="text-sm text-(--color-text-secondary)">
-            {isIs ? 'Síðast uppfært: 27. mars 2026' : 'Last updated: March 27, 2026'}
+            {isIs ? 'Síðast uppfært: 23. október 2026' : 'Last updated: October 23, 2026'}
           </p>
         </div>
       </div>
@@ -42,8 +43,8 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
         </h2>
         <p>
           {isIs
-            ? 'Við söfnum eftirfarandi upplýsingum þegar þú notar Pizzadeig.is: nafn, netfang, prófílmynd (ef þú notast við Google innskráningu), sem og umsagnir og uppskriftir sem þú sendir inn.'
-            : 'We collect the following information when you use Pizzadeig.is: name, email, profile picture (via Google sign-in), as well as reviews and recipes you submit.'}
+            ? 'Ef þú skráir þig inn með Google geymum við nafn, netfang og prófílmynd, ásamt umsögnum og uppskriftum sem þú sendir inn. Ef þú samþykkir vefkökur safnar Google Analytics upplýsingum um notkun vefsins (sjá 5. lið).'
+            : 'If you sign in with Google we store your name, email and profile picture, along with reviews and recipes you submit. If you accept cookies, Google Analytics collects information about how the site is used (see section 5).'}
         </p>
 
         <h2 className="text-xl font-bold text-(--color-text-primary)">
@@ -51,8 +52,8 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
         </h2>
         <p>
           {isIs
-            ? 'Gögnin eru notuð til: að veita þér aðgang að síðunni, sýna notendaprófíla, senda fréttabréf (ef þú skráðir þig) og bæta notendaupplifunina.'
-            : 'Data is used to: provide you with access to the site, display user profiles, send newsletters (if subscribed), and improve the user experience.'}
+            ? 'Gögnin eru notuð til að veita þér aðgang að síðunni, sýna notendaprófíla og, ef þú samþykkir vefkökur, til að sjá hvernig vefurinn er notaður svo hægt sé að bæta hann. Vefurinn sendir ekki út fréttabréf.'
+            : 'Data is used to give you access to the site, show user profiles and, if you accept cookies, to see how the site is used so it can be improved. The site does not send newsletters.'}
         </p>
 
         <h2 className="text-xl font-bold text-(--color-text-primary)">
@@ -60,8 +61,8 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
         </h2>
         <p>
           {isIs
-            ? 'Við notum Firebase (Google) fyrir auðkenningu og gagnagrunn, Vercel til hýsingar og Resend fyrir tölvupóst. Þessir aðilar hafa aðgang að nauðsynlegum gögnum til að veita þjónustuna.'
-            : 'We use Firebase (Google) for authentication and database, Vercel for hosting, and Resend for email. These providers have access to necessary data to deliver their services.'}
+            ? 'Við notum Firebase (Google) fyrir auðkenningu og gagnagrunn, Vercel til hýsingar og Google Analytics til vefmælinga (aðeins ef þú samþykkir). Auglýsingar á vefnum eru birtar í gegnum Birting án persónusniðinnar miðunar. Netföng sem skráð voru á póstlista vefsins áður eru geymd hjá Resend; þú getur beðið um að þeim sé eytt (sjá 4. lið).'
+            : 'We use Firebase (Google) for authentication and database, Vercel for hosting and Google Analytics for site statistics (only if you accept). Ads on the site are served through Birtingur without personalised targeting. Email addresses that were signed up to the site\'s mailing list earlier are stored with Resend; you can ask for them to be deleted (see section 4).'}
         </p>
 
         <h2 className="text-xl font-bold text-(--color-text-primary)">
@@ -78,8 +79,11 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
         </h2>
         <p>
           {isIs
-            ? 'Við notum nauðsynleg vefkökur til innskráningar og til að muna tungumálaval þitt. Engar auglýsingavefkökur eru notaðar.'
-            : 'We use essential cookies for authentication and to remember your language preference. No advertising cookies are used.'}
+            ? 'Vefurinn notar nauðsynlegar vefkökur til innskráningar og til að muna tungumálaval þitt. Google Analytics setur vefkökur (_ga) aðeins ef þú samþykkir þær í borðanum sem birtist við fyrstu heimsókn. Ef þú hafnar eru engar mælingarvefkökur settar. Val þitt er geymt í vafranum þínum.'
+            : 'The site uses essential cookies for sign-in and to remember your language. Google Analytics sets cookies (_ga) only if you accept them in the banner shown on your first visit. If you decline, no analytics cookies are set. Your choice is stored in your browser.'}
+        </p>
+        <p>
+          <CookieSettingsButton locale={isIs ? 'is' : 'en'} />
         </p>
       </div>
     </main>

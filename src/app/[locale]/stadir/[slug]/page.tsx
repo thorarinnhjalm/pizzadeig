@@ -84,8 +84,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     : `${namePlace} — Menu, Prices & Ratings | Pizzadeig.is`;
   const description = (isIs ? restaurant.description_is : restaurant.description_en)
     || (isIs
-      ? `${restaurant.name}, ${restaurant.address}, ${restaurant.city}. Matseðill, opnunartímar og einkunnir frá pizzusamfélaginu.`
-      : `${restaurant.name}, ${restaurant.address}, ${restaurant.city}. Menu, opening hours, and community ratings.`);
+      ? `${restaurant.name}, ${restaurant.address}, ${restaurant.city}. Matseðill, verð og opnunartímar.`
+      : `${restaurant.name}, ${restaurant.address}, ${restaurant.city}. Menu, prices and opening hours.`);
 
   return {
     title,

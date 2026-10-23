@@ -12,7 +12,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   return { alternates: localeAlternates(locale) };
 }
-import { NewsletterForm } from '@/components/layout/NewsletterForm';
 import { PriceWatchWidget } from '@/components/home/PriceWatchWidget';
 
 async function getPopularRecipes(): Promise<Recipe[]> {
@@ -211,13 +210,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* ===== NEWSLETTER ===== */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4">
-          <NewsletterForm locale={locale as 'is' | 'en'} />
         </div>
       </section>
     </main>
