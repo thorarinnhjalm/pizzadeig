@@ -112,7 +112,7 @@ service firebase.storage {
 
 ## 4. Resend (Fréttabréf)
 
-_Úrelt (október 2026): fréttabréfið var tekið af vefnum og vefurinn notar ekki Resend lengur. Netföng sem skráðust áður eru enn í Resend-áskrifendalistanum þar til honum er eytt._
+_Úrelt (október 2026): fréttabréfið var tekið af vefnum og vefurinn notar ekki Resend lengur._
 
 - [ ] Skrá þig á [resend.com](https://resend.com)
 - [ ] **API Keys** → Create API Key → afrita í `RESEND_API_KEY`
