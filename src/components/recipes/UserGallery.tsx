@@ -90,7 +90,7 @@ export function UserGallery({ recipeId, locale }: Props) {
              {locale === 'is' ? 'Ég gerði þessa pizzu 📸' : 'I made this! 📸'}
            </h3>
            <p className="text-muted-foreground mt-1 font-body">
-             {locale === 'is' ? 'Deildu afrakstrinum með samfélaginu.' : 'Share the result with the community.'}
+             {locale === 'is' ? 'Sýndu öðrum afraksturinn.' : 'Show others how it turned out.'}
            </p>
         </div>
         <div>

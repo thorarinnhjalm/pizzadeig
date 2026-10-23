@@ -47,9 +47,9 @@ export default function AuglysingarPage() {
           <div className="w-14 h-14 bg-(--color-brand)/10 rounded-2xl flex items-center justify-center mb-5">
             <TrendingUp className="w-7 h-7 text-(--color-brand)" />
           </div>
-          <h3 className="text-xl font-bold mb-3 text-(--color-text-primary)">Vaxandi samfélag</h3>
+          <h3 className="text-xl font-bold mb-3 text-(--color-text-primary)">Vaxandi vefur</h3>
           <p className="text-(--color-text-secondary) text-sm leading-relaxed">
-            Við erum ört stækkandi vefur þar sem þúsundir Íslendinga leita að uppskriftum í hverjum mánuði.
+            Umferð úr Google-leit fer vaxandi, og vefurinn sýnir dagsetta matseðla og verð pizzustaða um allt land.
           </p>
         </div>
 

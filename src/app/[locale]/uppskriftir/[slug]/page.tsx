@@ -208,7 +208,7 @@ export default async function RecipePage({ params }: { params: Promise<{ slug: s
         <section className="bg-(--color-bg-secondary) py-16 border-t border-(--color-border)">
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-3xl font-bold text-(--color-text-primary) mb-10 text-center">
-              {isIs ? 'Hvað finnst samfélaginu?' : 'Community Reviews'}
+              {isIs ? 'Umsagnir' : 'Reviews'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start">
               <div className="md:col-span-2">

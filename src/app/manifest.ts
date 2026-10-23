@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Pizzadeig',
     short_name: 'Pizzadeig',
-    description: 'Íslenskt pizzusamfélag: Allt frá deigi til diskins',
+    description: 'Allt um pizzu á Íslandi: uppskriftir, pizzustaðir og verð',
     start_url: '/',
     display: 'standalone',
     background_color: '#FDF9F2',

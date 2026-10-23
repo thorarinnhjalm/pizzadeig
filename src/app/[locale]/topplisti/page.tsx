@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ? 'Topplisti — Hæst metnu pizza uppskriftirnar | Pizzadeig.is'
       : 'Top List — Highest Rated Pizza Recipes | Pizzadeig.is',
     description: isIs
-      ? 'Topplisti yfir hæst metnu pizzu uppskriftirnar á Íslandi. Samfélagið kýs bestu deigin, sósurnar og pizzurnar.'
-      : 'Top list of highest rated pizza recipes in Iceland. The community votes on the best dough, sauces, and pizzas.',
+      ? 'Topplisti yfir hæst metnu pizzu uppskriftirnar á Íslandi. Raðað eftir einkunnum notenda.'
+      : 'Top list of highest rated pizza recipes in Iceland. Ranked by user ratings.',
     openGraph: {
       title: isIs ? 'Topplisti uppskrifta | Pizzadeig.is' : 'Top Rated Recipes | Pizzadeig.is',
       url: `https://www.pizzadeig.is/${locale}/topplisti`,
@@ -52,8 +52,8 @@ export default async function TopplistiPage({ params }: { params: Promise<{ loca
           </h1>
           <p className="text-lg text-(--color-text-secondary) max-w-2xl mx-auto italic">
             {isIs
-              ? 'Vinsælustu og hæst metnu uppskriftirnar samkvæmt samfélaginu.'
-              : 'The most popular and highest rated recipes according to the community.'}
+              ? 'Vinsælustu og hæst metnu uppskriftirnar samkvæmt einkunnum notenda.'
+              : 'The most popular and highest rated recipes according to user ratings.'}
           </p>
         </div>
       </div>

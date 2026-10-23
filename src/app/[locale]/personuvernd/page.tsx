@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { localeAlternates } from '@/lib/seo';
 import { Shield } from 'lucide-react';
+import { CookieSettingsButton } from '@/components/analytics/CookieSettingsButton';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -31,19 +32,25 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
             {isIs ? 'Persónuverndarstefna' : 'Privacy Policy'}
           </h1>
           <p className="text-sm text-(--color-text-secondary)">
-            {isIs ? 'Síðast uppfært: 27. mars 2026' : 'Last updated: March 27, 2026'}
+            {isIs ? 'Síðast uppfært: 23. október 2026' : 'Last updated: October 23, 2026'}
           </p>
         </div>
       </div>
 
       <div className="container mx-auto px-4 max-w-3xl mt-12 prose prose-lg text-(--color-text-secondary)">
+        <p>
+          {isIs
+            ? 'Ábyrgðaraðili: Neðri Hóll Hugmyndahús, sem rekur Pizzadeig.is og ber ábyrgð á vinnslu persónuupplýsinga á vefnum. Fyrirspurnir sendist á thorarinnhjalmarsson@gmail.com.'
+            : 'Pizzadeig.is is run by Neðri Hóll Hugmyndahús, which is responsible for the processing of personal data on the site. Questions can be sent to thorarinnhjalmarsson@gmail.com.'}
+        </p>
+
         <h2 className="text-xl font-bold text-(--color-text-primary)">
           {isIs ? '1. Hvaða gögn söfnum við?' : '1. What data do we collect?'}
         </h2>
         <p>
           {isIs
-            ? 'Við söfnum eftirfarandi upplýsingum þegar þú notar Pizzadeig.is: nafn, netfang, prófílmynd (ef þú notast við Google innskráningu), sem og umsagnir og uppskriftir sem þú sendir inn.'
-            : 'We collect the following information when you use Pizzadeig.is: name, email, profile picture (via Google sign-in), as well as reviews and recipes you submit.'}
+            ? 'Ef þú skráir þig inn með Google geymum við nafn, netfang og prófílmynd, ásamt umsögnum og uppskriftum sem þú sendir inn. Ef þú samþykkir vefkökur safnar Google Analytics upplýsingum um notkun vefsins (sjá 5. lið).'
+            : 'If you sign in with Google we store your name, email and profile picture, along with reviews and recipes you submit. If you accept cookies, Google Analytics collects information about how the site is used (see section 5).'}
         </p>
 
         <h2 className="text-xl font-bold text-(--color-text-primary)">
@@ -51,8 +58,8 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
         </h2>
         <p>
           {isIs
-            ? 'Gögnin eru notuð til: að veita þér aðgang að síðunni, sýna notendaprófíla, senda fréttabréf (ef þú skráðir þig) og bæta notendaupplifunina.'
-            : 'Data is used to: provide you with access to the site, display user profiles, send newsletters (if subscribed), and improve the user experience.'}
+            ? 'Gögnin eru notuð til að veita þér aðgang að síðunni, sýna notendaprófíla og, ef þú samþykkir vefkökur, til að sjá hvernig vefurinn er notaður svo hægt sé að bæta hann. Vefurinn sendir ekki út fréttabréf.'
+            : 'Data is used to give you access to the site, show user profiles and, if you accept cookies, to see how the site is used so it can be improved. The site does not send newsletters.'}
         </p>
 
         <h2 className="text-xl font-bold text-(--color-text-primary)">
@@ -60,8 +67,8 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
         </h2>
         <p>
           {isIs
-            ? 'Við notum Firebase (Google) fyrir auðkenningu og gagnagrunn, Vercel til hýsingar og Resend fyrir tölvupóst. Þessir aðilar hafa aðgang að nauðsynlegum gögnum til að veita þjónustuna.'
-            : 'We use Firebase (Google) for authentication and database, Vercel for hosting, and Resend for email. These providers have access to necessary data to deliver their services.'}
+            ? 'Við notum Firebase (Google) fyrir innskráningu og gagnagrunn, Vercel til hýsingar, Google Maps fyrir kort á síðum pizzustaða og Google Analytics til vefmælinga (aðeins ef þú samþykkir). Google Analytics og Google Maps eru þjónusta Google, og gögn geta farið til Bandaríkjanna. Auglýsingar eru sóttar frá Birtingi. Við biðjum um auglýsingar án persónusniðinnar miðunar og sendum Birtingi engar persónuupplýsingar, en Birtingur fær IP-tölu og vafraupplýsingar þegar auglýsing er sótt og birting talin.'
+            : 'We use Firebase (Google) for sign-in and database, Vercel for hosting, Google Maps for maps on restaurant pages and Google Analytics for site statistics (only if you accept). Google Analytics and Google Maps are Google services, and data may be transferred to the United States. Ads are fetched from Birtingur. We request ads without personalised targeting and send Birtingur no personal data, but Birtingur receives your IP address and browser information when an ad is fetched and an impression is counted.'}
         </p>
 
         <h2 className="text-xl font-bold text-(--color-text-primary)">
@@ -69,17 +76,20 @@ export default async function PersonuverndPage({ params }: { params: Promise<{ l
         </h2>
         <p>
           {isIs
-            ? 'Þú getur hvenær sem er óskað eftir að fá upplýsingar um þau gögn sem við höfum um þig, eða beðið um að þeim sé eytt. Hafðu samband á thorarinnhjalmarsson@gmail.com.'
-            : 'You may at any time request information about the data we hold about you, or request its deletion. Contact thorarinnhjalmarsson@gmail.com.'}
+            ? 'Þú getur hvenær sem er óskað eftir að fá upplýsingar um þau gögn sem við höfum um þig, eða beðið um að þeim sé eytt. Hafðu samband á thorarinnhjalmarsson@gmail.com. Þú getur líka sent kvörtun til Persónuverndar (personuvernd.is).'
+            : 'You may at any time request information about the data we hold about you, or request its deletion. Contact thorarinnhjalmarsson@gmail.com. You can also complain to the Icelandic Data Protection Authority, Persónuvernd (personuvernd.is).'}
         </p>
 
         <h2 className="text-xl font-bold text-(--color-text-primary)">
-          {isIs ? '5. Fótspor (Cookies)' : '5. Cookies'}
+          {isIs ? '5. Vefkökur' : '5. Cookies'}
         </h2>
         <p>
           {isIs
-            ? 'Við notum nauðsynleg vefkökur til innskráningar og til að muna tungumálaval þitt. Engar auglýsingavefkökur eru notaðar.'
-            : 'We use essential cookies for authentication and to remember your language preference. No advertising cookies are used.'}
+            ? 'Vefurinn notar eina nauðsynlega vefköku til að muna tungumálaval þitt. Innskráning er geymd í vafranum þínum, ekki í vefköku. Google Analytics setur vefkökur (_ga) aðeins ef þú samþykkir þær í borðanum sem birtist þar til þú hefur valið, og grundvöllur þeirrar vinnslu er samþykki þitt. Ef þú hafnar setur Google Analytics engar vefkökur. Val þitt er geymt í vafranum þínum og þú getur breytt því hvenær sem er.'
+            : 'The site uses one essential cookie to remember your language. Sign-in is stored in your browser, not in a cookie. Google Analytics sets cookies (_ga) only if you accept them in the banner, which is shown until you choose; the basis for that processing is your consent. If you decline, Google Analytics sets no cookies. Your choice is stored in your browser and you can change it at any time.'}
+        </p>
+        <p>
+          <CookieSettingsButton locale={isIs ? 'is' : 'en'} />
         </p>
       </div>
     </main>

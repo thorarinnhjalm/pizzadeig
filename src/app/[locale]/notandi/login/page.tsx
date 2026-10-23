@@ -133,8 +133,8 @@ export default function LoginPage() {
           </h1>
           <p className="text-muted-foreground mt-2">
             {isLogin 
-              ? (isIs ? 'Velkominn aftur í bökunarsamfélagið!' : 'Welcome back to the baking community!') 
-              : (isIs ? 'Stofnaðu aðgang og taktu þátt í umræðunni.' : 'Create an account and join the discussion.')}
+              ? (isIs ? 'Gaman að sjá þig aftur!' : 'Welcome back!') 
+              : (isIs ? 'Stofnaðu aðgang til að vista uppskriftir og skrifa umsagnir.' : 'Create an account to save recipes and write reviews.')}
           </p>
         </div>
 
@@ -154,7 +154,7 @@ export default function LoginPage() {
               </li>
               <li className="flex items-center gap-3">
                 <MessageSquare className="w-4 h-4 text-primary shrink-0" />
-                {isIs ? 'Taktu þátt í samfélaginu og deildu þínum pizza ráðum' : 'Join the community and share your pizza tips'}
+                {isIs ? 'Deildu myndum af pizzunum sem þú bakar' : 'Share photos of the pizzas you bake'}
               </li>
             </ul>
           </div>

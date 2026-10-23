@@ -11,8 +11,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: localeAlternates(resolvedParams.locale, '/stadir'),
     title: isIs ? 'Pizzustaðir á Íslandi | Pizzadeig' : 'Pizza Places in Iceland | Pizzadeig',
     description: isIs 
-      ? 'Skoðaðu alla helstu pizzustaði Íslands, lærðu um matseðla og farðu eftir einkunnum samfélagsins.' 
-      : 'Explore the top pizza places in Iceland, check out their menus and follow community ratings.',
+      ? 'Pizzustaðir á Íslandi með matseðlum, verði og heimild fyrir hvern matseðil. Reykjavík, Akureyri og víðar.' 
+      : 'Pizza places in Iceland with menus, prices and a source for each menu. Reykjavík, Akureyri and more.',
   };
 }
 
