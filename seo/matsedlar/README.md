@@ -1,5 +1,7 @@
 # Matseðlar og heimildaskrá
 
+Verkáætlun næstu söfnunar (janúar 2027): `ENDURSOFNUN.md`.
+
 Matseðlar pizzastaða á pizzadeig.is með heimild og dagsetningu fyrir hvern rétt. Hver söfnun á sína möppu: `<dagsetning>/json` (ein JSON-skrá á stað), `heimildaskra.csv` (UTF-8 með BOM, aðskilin með `;` svo íslenskt Excel opni hana rétt) og `thydingar.json` (þýddar lýsingar til yfirlestrar).
 Söfnun 22. okt 2026: fyrst eigin vefur, pöntunarsíða eða PDF-matseðill staðarins, síðan Wolt þar sem enginn eigin matseðill fannst. Verð eru nákvæmlega eins og heimildin sýndi þann dag, aldrei áætluð; verð af Wolt geta verið hærri en á staðnum (`verd_grunnur`).
 Stykkið á engan matseðil á netinu. Pizza 67: matseðill af mynd sem eigandi vefsins sendi 22. okt. 2026 (`owner_supplied`, 9"/12"/16"). Greifinn: matseðill af greifinn.is (myndir uppfærðar 16. júlí 2026, 10"/12"), að ósk eiganda; pöntunarsíðan sýnir annan lista og er ekki notuð. Skriptan styður `"held_back": true` í JSON til að halda stað utan lotu (engir réttir, engir `menu_*` reitir, skýringarlína í CSV). Pizzafjörður: matseðill skráður af eiganda 8. júlí 2026 (`owner_supplied`, id fest í JSON), ekki yfirskrifaður með vefgögnum; brauðin pf-b1 til pf-b3 voru viljandi felld niður (aðeins pizzur, eins og á Ask).
